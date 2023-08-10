@@ -21,8 +21,3 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('login-register.register');
 });
-Route::get('/login', function () {
-    return view('login-register.login');
-});
-
-require __DIR__."/adi.php";
