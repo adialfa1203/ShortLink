@@ -41,16 +41,11 @@
     <link href="{{ asset('template/themesbrand.com/steex/layouts/assets/css/custom.min.css') }}" rel="stylesheet"
         type="text/css">
 
-</head>
-
-<body>
     <style>
         .right-section {
             background-color: #104898;
             color: white;
-            /* Set the text color to white for better visibility */
             padding: 20px;
-            /* Add some padding for spacing */
         }
 
         .custom-btn {
@@ -58,6 +53,9 @@
         }
     </style>
 
+</head>
+
+<body>
     <section
         class="auth-page-wrapper py-5 position-relative d-flex align-items-center justify-content-center min-vh-100">
         <div class="container">
@@ -71,7 +69,7 @@
                                         <div class="card-body p-sm-5 m-lg-4">
                                             <div class="text-center mt-5">
                                                 <h5 class="fs-3xl" style="color: #104898">LOGIN</h5>
-                                                <p class="text-muted">Sign in to continue to Steex.</p>
+                                                <p class="text-muted">Sign in to continue to LINK.ID</p>
                                             </div>
                                             <div class="p-2 mt-5">
                                                 <form action="{{ route('loginuser') }}" method="POST">

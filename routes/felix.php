@@ -13,12 +13,9 @@ use App\Http\Controllers\AuthController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/login',[AuthController::class,'login'])->name('login');
-Route::post('/loginuser',[AuthController::class,'loginuser'])->name('loginuser');
 Route::get('/', function () {
         return view('welcome');
 });
 
 Route::group(['middleware' => ['role:admin']], function () {
-
 });
