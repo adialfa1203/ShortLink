@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+    public function login(){
+        return view('login');
+    }
 
-    public function loginuser(Request $request)
-    {
+    public function loginuser(Request $request){
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -21,7 +23,6 @@ class AuthController extends Controller
                 return redirect()->route('');
             }
         }
-
         return redirect()->route('login')->with('error', 'Email Atau Password Yang Anda Masukkan Salah');
     }
 
