@@ -14,3 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 require __DIR__."/adi.php";
 require __DIR__."/felix.php";
+
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/register', function () {
+    return view('login-register.register');
+});
+Route::get('/login', function () {
+    return view('login-register.login');
+});
+
+require __DIR__."/adi.php";
