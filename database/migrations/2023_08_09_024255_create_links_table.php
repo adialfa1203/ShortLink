@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('original_url');
             $table->string('short_code');
-            $table->timestamp('creation_date');
-            $table->timestamp('expiration_date');
+            $table->datetime('creation_date');
+            $table->datetime('expiration_date');
             $table->bigInteger('click_count');
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('qr_code');
