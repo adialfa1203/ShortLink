@@ -118,7 +118,7 @@
         <!-- ============================================================== -->
         <div class="main-content">
             @yield('content')
-            <!-- End Page-content -->
+
             @include('layout.footer')
         </div>
         <!-- end main content-->
