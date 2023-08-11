@@ -104,10 +104,8 @@
                                                     </div>
 
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="auth-remember-check">
-                                                        <label class="form-check-label"
-                                                            for="auth-remember-check">Remember me</label>
+                                                        <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                                                        <label class="form-check-label" for="remember">Remember me</label>
                                                     </div>
 
                                                     <div class="mt-4">
@@ -138,7 +136,7 @@
 
                                                 <div class="text-center mt-5">
                                                     <p class="mb-0">Don't have an account ? <a
-                                                            href="auth-signup.html"
+                                                            href="{{url('register')}}"
                                                             class="fw-semibold text-secondary text-decoration-underline">
                                                             SignUp</a> </p>
                                                 </div>

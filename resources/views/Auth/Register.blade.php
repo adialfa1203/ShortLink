@@ -118,18 +118,22 @@
                                                     <p class="text-muted">Silahkan lengkapi seluruh data dibawah ini!</p>
                                                 </div>
                                                 <div class="p-2 mt-5">
-                                                    <form action="https://themesbrand.com/steex/layouts/index.html">
+                                                    <form action="{{ route ('registeruser')}}" method="POST">
+                                                        @csrf
                                                         <div class="row">
                                                             <div class="col-6 mb-3">
                                                                 <label class="form-label">Nomer Ponsel <span class="text-danger">*</span></label>
                                                                 <div class="position-relative ">
-                                                                    <input type="number" class="form-control"placeholder="098765432" required>
+                                                                    <input name="number" type="number" class="form-control" placeholder="Masukan Nomor" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-6 mb-3">
                                                                 <label for="username" class="form-label">Email <span class="text-danger">*</span></label>
                                                                 <div class="position-relative ">
-                                                                    <input type="text" class="form-control  password-input" id="username" placeholder="Email Anda" required>
+                                                                    <input name="email" type="email" class="form-control  password-input" id="username" placeholder="Masukanm Email" required>
+                                                                    @error('email')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -137,30 +141,29 @@
                                                             <div class="col-6 mb-3">
                                                                 <label class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
                                                                 <div class="position-relative ">
-                                                                    <input type="text" class="form-control  password-input"placeholder="Jihan Prahasti Saharani" required>
+                                                                    <input name="name" type="text" class="form-control  password-input"placeholder="Masukan Nama Lengkap" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-6 mb-3">
                                                                 <label class="form-label">Password <span class="text-danger">*</span></label>
-                                                                <div class="position-relative">
-                                                                    <input type="text" class="form-control" placeholder="*********" required>
+                                                                <div class="position-relative auth-pass-inputgroup mb-3">
+                                                                    <input name="password" type="password" class="form-control pe-5 password-input " placeholder="Enter password" id="password-input" required>
+                                                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                                                    @error('password')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <div class="float-end">
-                                                                <a href="auth-pass-reset.html" class="text-muted">Lupa Password?</a>
-                                                            </div>
                                                             <label class="form-label" for="password-input">Ulangi Password <span class="text-danger">*</span></label>
                                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                                <input type="password" class="form-control pe-5 password-input " placeholder="Enter password" id="password-input" required>
+                                                                <input name="password_confirmation" type="password" class="form-control pe-5 password-input " placeholder="Enter password" id="password-input" required>
                                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                                                @error('password_confirmation')
+                                                                    <div class="text-danger">{{ $message }}</div>
+                                                                @enderror
                                                             </div>
-                                                        </div>
-                                
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
-                                                            <label class="form-check-label" for="auth-remember-check">Ingat Saya</label>
                                                         </div>
                                 
                                                         <div class="mt-4">
@@ -181,7 +184,7 @@
                                                     </form>
                                 
                                                     <div class="text-center mt-5">
-                                                        <p class="mb-0">Don't have an account ? <a href="auth-signup.html" class="fw-semibold text-secondary text-decoration-underline"> SignUp</a> </p>
+                                                        <p class="mb-0">Already have an account ? <a href="{{ url ('login')}}" class="fw-semibold text-secondary text-decoration-underline"> SignUp</a> </p>
                                                     </div>
                                                 </div>
                                             </div><!-- end card body -->
@@ -206,19 +209,19 @@
         </section>
         
         <!-- JAVASCRIPT -->
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/js/plugins.js"></script>
+        <script src="{{ asset ('template/themesbrand.com/steex/layouts/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{ asset ('template/themesbrand.com/steex/layouts/assets/libs/simplebar/simplebar.min.js')}}"></script>
+        <script src="{{ asset ('template/themesbrand.com/steex/layouts/assets/js/plugins.js')}}"></script>
         
 
         
-        <script src="assets/js/pages/password-addon.init.js"></script>
+        <script src="{{ asset ('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js')}}"></script>
         
         <!--Swiper slider js-->
-        <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+        <script src="{{ asset ('template/themesbrand.com/steex/layouts/assets/libs/swiper/swiper-bundle.min.js')}}"></script>
         
         <!-- swiper.init js -->
-        <script src="assets/js/pages/swiper.init.js"></script>
+        <script src="{{ asset ('template/themesbrand.com/steex/layouts/assets/js/pages/swiper.init.js')}}"></script>
 
     </body>
 

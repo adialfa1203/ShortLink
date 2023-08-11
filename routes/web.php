@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +18,7 @@ Route::get('/loginuser',[AuthController::class,'loginuser'])->name('loginuser');
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
 
-require __DIR__."/adi.php";
-require __DIR__."/gmbs.php";
-Route::get('/register', function () {
-    return view('login-register.register');
-});
-
-require __DIR__."/adi.php";
-require __DIR__."/felix.php";
-
+Route::get('register', [AuthController::class, 'register']);
+Route::post('registeruser', [AuthController::class, 'registeruser'])->name('registeruser');
