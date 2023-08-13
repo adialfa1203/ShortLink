@@ -22,3 +22,17 @@ Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
 
 Route::get('register', [AuthController::class, 'register']);
 Route::post('registeruser', [AuthController::class, 'registeruser'])->name('registeruser');
+
+Route::get('/Home', function () {
+    return view('Landingpage.Home');
+});
+Route::get('/Shortlink', function () {
+    return view('Landingpage.Shortlink');
+});
+Route::get('/Microsite', function () {
+    return view('Landingpage.Microsite');
+});
+Route::get('/Subscribe', function () {
+    return view('Landingpage.Subscribe');
+});
+
