@@ -114,7 +114,7 @@
                                         <div class="card mb-0 border-0 shadow-none mb-0">
                                             <div class="card-body p-sm-5 m-lg-4">
                                                 <div class="text-center mt-5">
-                                                    <h5 class="fs-3xl" style="color: #104898">REGISTER</h5>
+                                                    <h5 class="fs-3xl" style="color: #104898">DAFTAR</h5>
                                                     <p class="text-muted">Silahkan lengkapi seluruh data dibawah ini!</p>
                                                 </div>
                                                 <div class="p-2 mt-5">
@@ -122,15 +122,15 @@
                                                         @csrf
                                                         <div class="row">
                                                             <div class="col-6 mb-3">
-                                                                <label class="form-label">Nomer Ponsel <span class="text-danger">*</span></label>
+                                                                <label class="form-label">Nomer Ponsel</label>
                                                                 <div class="position-relative ">
                                                                     <input name="number" type="number" class="form-control" placeholder="Masukan Nomor" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-6 mb-3">
-                                                                <label for="username" class="form-label">Email <span class="text-danger">*</span></label>
+                                                                <label for="username" class="form-label">Email</label>
                                                                 <div class="position-relative ">
-                                                                    <input name="email" type="email" class="form-control  password-input" id="username" placeholder="Masukanm Email" required>
+                                                                    <input name="email" type="email" class="form-control  password-input" id="username" placeholder="Masukan Email" required>
                                                                     @error('email')
                                                                         <div class="text-danger">{{ $message }}</div>
                                                                     @enderror
@@ -139,15 +139,15 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-6 mb-3">
-                                                                <label class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                                                                <label class="form-label">Nama Lengkap</label>
                                                                 <div class="position-relative ">
                                                                     <input name="name" type="text" class="form-control  password-input"placeholder="Masukan Nama Lengkap" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-6 mb-3">
-                                                                <label class="form-label">Password <span class="text-danger">*</span></label>
+                                                                <label class="form-label">Kata Sandi</label>
                                                                 <div class="position-relative auth-pass-inputgroup mb-3">
-                                                                    <input name="password" type="password" class="form-control pe-5 password-input " placeholder="Enter password" id="password-input" required>
+                                                                    <input name="password" type="password" class="form-control pe-5 password-input " placeholder="Kata Sandi" id="password-input" required>
                                                                     <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                                                     @error('password')
                                                                         <div class="text-danger">{{ $message }}</div>
@@ -156,9 +156,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label class="form-label" for="password-input">Ulangi Password <span class="text-danger">*</span></label>
+                                                            <label class="form-label" for="password-input">Ulangi Password</label>
                                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                                <input name="password_confirmation" type="password" class="form-control pe-5 password-input " placeholder="Enter password" id="password-input" required>
+                                                                <input name="password_confirmation" type="password" class="form-control pe-5 password-input " placeholder="Masukkan ulang Kata Sandi" id="password-input" required>
                                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                                                 @error('password_confirmation')
                                                                     <div class="text-danger">{{ $message }}</div>
@@ -167,12 +167,12 @@
                                                         </div>
                                 
                                                         <div class="mt-4">
-                                                            <button class="btn btn-primary w-100 custom-btn" type="submit">Login</button>
+                                                            <button class="btn btn-primary w-100 custom-btn" type="submit">Daftar</button>
                                                         </div>
                                 
                                                         <div class="mt-4 pt-2 text-center">
                                                             <div class="signin-other-title position-relative">
-                                                                <h5 class="fs-sm mb-4 title">Sign In with</h5>
+                                                                <h5 class="fs-sm mb-4 title">Masuk Dengan</h5>
                                                             </div>
                                                             <div class="pt-2 hstack gap-2 justify-content-center">
                                                                 <button type="button" class="btn btn-subtle-primary btn-icon"><i class="ri-facebook-fill fs-lg"></i></button>
@@ -184,7 +184,7 @@
                                                     </form>
                                 
                                                     <div class="text-center mt-5">
-                                                        <p class="mb-0">Already have an account ? <a href="{{ url ('login')}}" class="fw-semibold text-secondary text-decoration-underline"> SignUp</a> </p>
+                                                        <p class="mb-0">Sudah memiliki akun ? <a href="{{ url ('login')}}" class="fw-semibold text-secondary text-decoration-underline"> Masuk</a> </p>
                                                     </div>
                                                 </div>
                                             </div><!-- end card body -->

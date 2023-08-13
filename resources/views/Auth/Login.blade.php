@@ -68,33 +68,30 @@
                                     <div class="card mb-0 border-0 shadow-none mb-0">
                                         <div class="card-body p-sm-5 m-lg-4">
                                             <div class="text-center mt-5">
-                                                <h5 class="fs-3xl" style="color: #104898">LOGIN</h5>
-                                                <p class="text-muted">Sign in to continue to LINK.ID</p>
+                                                <h5 class="fs-3xl" style="color: #104898">MASUK</h5>
+                                                <p class="text-muted">Masuk untuk melanjutkan ke LINK.ID</p>
                                             </div>
                                             <div class="p-2 mt-5">
                                                 <form action="{{ route('loginuser') }}" method="POST">
                                                     @csrf
                                                     <div class="mb-3">
-                                                        <label for="username" class="form-label">Email <span
-                                                                class="text-danger">*</span></label>
+                                                        <label for="username" class="form-label">Email</label>
                                                         <div class="position-relative ">
                                                             <input type="text" class="form-control password-input"
-                                                                name="email" id="username" placeholder="Email Anda"
+                                                                name="email" id="username" placeholder="Masukkan Email"
                                                                 required>
                                                         </div>
                                                     </div>
 
                                                     <div class="mb-3">
                                                         <div class="float-end">
-                                                            <a href="auth-pass-reset.html" class="text-muted">Forgot
-                                                                password?</a>
+                                                            <a href="{{ url('sendemail')}}" class="text-muted">Lupa kata sandi?</a>
                                                         </div>
-                                                        <label class="form-label" for="password-input">Password <span
-                                                                class="text-danger">*</span></label>
+                                                        <label class="form-label" for="password-input">Kata Sandi</label>
                                                         <div class="position-relative auth-pass-inputgroup mb-3">
                                                             <input type="password"
                                                                 class="form-control pe-5 password-input" name="password"
-                                                                placeholder="Enter password" id="password-input"
+                                                                placeholder="Kata Sandi" id="password-input"
                                                                 required>
                                                             <button
                                                                 class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
@@ -105,17 +102,17 @@
 
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" name="remember" id="remember">
-                                                        <label class="form-check-label" for="remember">Remember me</label>
+                                                        <label class="form-check-label" for="remember">Ingat saya</label>
                                                     </div>
 
                                                     <div class="mt-4">
                                                         <button class="btn btn-primary w-100 custom-btn"
-                                                            type="submit">Login</button>
+                                                            type="submit">Masuk</button>
                                                     </div>
 
                                                     <div class="mt-4 pt-2 text-center">
                                                         <div class="signin-other-title position-relative">
-                                                            <h5 class="fs-sm mb-4 title">Sign In with</h5>
+                                                            <h5 class="fs-sm mb-4 title">Daftar Dengan</h5>
                                                         </div>
                                                         <div class="pt-2 hstack gap-2 justify-content-center">
                                                             <button type="button"
@@ -135,10 +132,10 @@
                                                 </form>
 
                                                 <div class="text-center mt-5">
-                                                    <p class="mb-0">Don't have an account ? <a
+                                                    <p class="mb-0">Tidak mempunyai akun ? <a
                                                             href="{{url('register')}}"
                                                             class="fw-semibold text-secondary text-decoration-underline">
-                                                            SignUp</a> </p>
+                                                            Daftar</a> </p>
                                                 </div>
                                             </div>
                                         </div><!-- end card body -->
