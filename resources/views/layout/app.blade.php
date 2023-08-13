@@ -942,6 +942,13 @@
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/dashboard-ecommerce.init.js') }}">
     </script>
 
+    <!-- apexcharts -->
+    <script src="{{ asset ('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+
+    <!-- real estate earnings init JS -->
+    <script src="{{ asset ('assets/js/pages/real-estate-earnings.init.js') }}"></script>
+
+
     <!-- App js -->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/app.js') }}"></script>
     @yield('script')
