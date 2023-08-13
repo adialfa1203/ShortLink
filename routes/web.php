@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::get('/loginuser',[AuthController::class,'loginuser'])->name('loginuser');
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
 
 Route::get('register', [AuthController::class, 'register']);
@@ -48,3 +46,12 @@ Route::get('sample', [AuthController::class, 'sendEmail']);
 Route::post('sendEmail', [AuthController::class, 'sendSampleEmail'])->name('sendEmail');
 Route::get('verification', [AuthController::class, 'verification'])->name('verification');
 Route::post('verificationCode', [AuthController::class, 'verificationCode'])->name('verificationCode');
+
+// user
+Route::get('/ProfilUser', function () {
+    return view('User.ProfilUser');
+});
+
+Route::get('/DashboardUser', function () {
+    return view('User.DashboardUser');
+});
