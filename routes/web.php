@@ -37,3 +37,14 @@ Route::get('/Subscribe', function () {
     return view('Landingpage.Subscribe');
 });
 
+//Send email
+Route::get('sendemail', [AuthController::class, 'sendEmail']);
+Route::get('changepassword/{email}', [AuthController::class, 'changePassword'])->name('changePassword');
+//change password
+Route::post('updatePassword', [AuthController::class, 'updatePassword'])->name('updatePassword');
+
+//sendEmail
+Route::get('sample', [AuthController::class, 'sendEmail']);
+Route::post('sendEmail', [AuthController::class, 'sendSampleEmail'])->name('sendEmail');
+Route::get('verification', [AuthController::class, 'verification'])->name('verification');
+Route::post('verificationCode', [AuthController::class, 'verificationCode'])->name('verificationCode');
