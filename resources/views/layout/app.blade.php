@@ -942,6 +942,14 @@
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/dashboard-ecommerce.init.js') }}">
     </script>
 
+    <!-- apexcharts -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+
+    <script src="{{ asset('template/apexcharts.com/samples/assets/stock-prices.js') }}"></script>
+
+    <!-- linecharts init -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/apexcharts-line.init.js') }}"></script>
+
     <!-- App js -->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/app.js') }}"></script>
     @yield('script')

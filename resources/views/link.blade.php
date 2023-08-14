@@ -36,6 +36,11 @@
     }
 
     /* Gaya untuk tag <a> saat cursor di atasnya */
+    .garisbawah:hover {
+        text-decoration: underline;
+        /* Menambahkan garis bawah saat cursor di atasnya */
+    }
+
     a:hover {
         text-decoration: underline;
         /* Menambahkan garis bawah saat cursor di atasnya */
@@ -194,35 +199,35 @@
                         <button type="button" class="btn btn-outline-light col-2">Light</button>
                     </div>
                     <a>
-                        <h3 class="card-title mb-2"><span style="color: red;">Link</span>.id/sunardi</h3>
+                        <h3 class="garisbawah card-title mb-2"><span style="color: red;">Link</span>.id/sunardi</h3>
                     </a>
                     <a href="https://youtu.be/r-XVPvj4_ns" class="card-subtitle font-14 text-muted">https://youtu.be/r-XVPvj4_ns</a>
                 </div>
                 <div class="card-footer">
                     <div class="d-flex">
-                        <div class="col-8">
+                        <div class="col-3">
                             <p style="margin-top: 10px;">03 agt 2023 13:13</p>
                         </div>
-                        <div class="col-2">
-                            <button type="button" class="btn btn-light" style="float: right;"><span><i class="fa-solid fa-clock"></i>&nbsp;Atur waktu</span></button>
-                        </div>
-                        &nbsp;
-                        <div class="col-1">
-                            <button type="button" class="btn btn-light"><span style="color: blue;"><i class="fa-solid fa-lock"></i>&nbsp;terkunci</span></button>
-                        </div>
-                        <div class="col-1">
-                            <div class="hstack gap-2 flex-wrap mb-3">
-                                <button class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample112" role="button" aria-expanded="true" aria-controls="collapseExample112">
-                                    statistik
-                                </button>
-                            </div>
+                        <div class=" col-9 d-flex flex-row justify-content-end">
+                            <button type="button" class="btn btn-light me-3"><span><i class="fa-solid fa-clock"></i>&nbsp;Atur waktu</span></button>
+                            <button type="button" class="btn btn-light me-3"><span style="color: blue;"><i class="fa-solid fa-lock"></i>&nbsp;terkunci</span></button>
+                            <button type="button" class="btn btn-light" data-bs-toggle="collapse" href="#collapseExample112" role="button" aria-expanded="true" aria-controls="collapseExample112">
+                                <i class="bi bi-bar-chart-line-fill"></i> statistik
+                            </button>
                         </div>
 
                     </div>
                     <div class="collapse" id="collapseExample112">
                         <div class="card mb-0">
-                            When designing, the goal is to draw someone’s attention and portray to them what you’re trying to say. You can make a big statement by using little tricks, like this one. Use contrasting fonts. you can use a bold sanserif font with a cursive.
+                        <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title mb-0">Basic Line Chart</h4>
+                                </div><!-- end card header -->
 
+                                <div class="card-body">
+                                    <div id="chart" ></div>
+                                </div><!-- end card-body -->
+                            </div><!-- end card -->
                         </div>
                     </div>
                 </div>
@@ -248,6 +253,42 @@
             toggleButton.textContent = 'Tampilkan lebih banyak ';
         }
     });
+    var options = {
+          series: [{
+            name: "sunardi",
+            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+        }],
+          chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
+            enabled: false
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        title: {
+          text: 'Product Trends by Month',
+          align: 'left'
+        },
+        grid: {
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        xaxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
 </script>
 @endsection
 @endsection
