@@ -124,13 +124,16 @@
                                                             <div class="col-6 mb-3">
                                                                 <label class="form-label">Nomer Ponsel</label>
                                                                 <div class="position-relative ">
-                                                                    <input name="number" type="number" class="form-control" placeholder="Masukan Nomor" required>
+                                                                    <input name="number" type="number" class="form-control" placeholder="Masukan Nomor">
+                                                                    @error('number')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
                                                             <div class="col-6 mb-3">
                                                                 <label for="username" class="form-label">Email</label>
                                                                 <div class="position-relative ">
-                                                                    <input name="email" type="email" class="form-control  password-input" id="username" placeholder="Masukan Email" required>
+                                                                    <input name="email" type="text" class="form-control  password-input" id="username" placeholder="Masukan Email">
                                                                     @error('email')
                                                                         <div class="text-danger">{{ $message }}</div>
                                                                     @enderror
@@ -141,13 +144,16 @@
                                                             <div class="col-6 mb-3">
                                                                 <label class="form-label">Nama Lengkap</label>
                                                                 <div class="position-relative ">
-                                                                    <input name="name" type="text" class="form-control  password-input"placeholder="Masukan Nama Lengkap" required>
+                                                                    <input name="name" type="text" class="form-control  password-input"placeholder="Masukan Nama Lengkap">
+                                                                    @error('name')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
                                                             <div class="col-6 mb-3">
                                                                 <label class="form-label">Kata Sandi</label>
                                                                 <div class="position-relative auth-pass-inputgroup mb-3">
-                                                                    <input name="password" type="password" class="form-control pe-5 password-input " placeholder="Kata Sandi" id="password-input" required>
+                                                                    <input name="password" type="password" class="form-control pe-5 password-input " placeholder="Kata Sandi" id="password-input">
                                                                     <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                                                     @error('password')
                                                                         <div class="text-danger">{{ $message }}</div>
@@ -158,7 +164,7 @@
                                                         <div class="mb-3">
                                                             <label class="form-label" for="password-input">Ulangi Password</label>
                                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                                <input name="password_confirmation" type="password" class="form-control pe-5 password-input " placeholder="Masukkan ulang Kata Sandi" id="password-input" required>
+                                                                <input name="password_confirmation" type="password" class="form-control pe-5 password-input " placeholder="Masukkan ulang Kata Sandi" id="password-input">
                                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                                                 @error('password_confirmation')
                                                                     <div class="text-danger">{{ $message }}</div>

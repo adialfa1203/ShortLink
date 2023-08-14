@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/login',[AuthController::class,'login'])->name('login');
-Route::get('/loginuser',[AuthController::class,'loginuser'])->name('loginuser');
+Route::post('/loginuser',[AuthController::class,'loginuser'])->name('loginuser');
 
 Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
 
@@ -48,10 +49,13 @@ Route::get('verification', [AuthController::class, 'verification'])->name('verif
 Route::post('verificationCode', [AuthController::class, 'verificationCode'])->name('verificationCode');
 
 // user
-Route::get('/ProfilUser', function () {
-    return view('User.ProfilUser');
-});
+Route::get('profiluser', [ProfilController::class, 'profile']);
+Route::post('updateprofil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
 
 Route::get('/DashboardUser', function () {
     return view('User.DashboardUser');
+});
+
+Route::get('/tester', function () {
+    return view('tester.afterlogin');
 });

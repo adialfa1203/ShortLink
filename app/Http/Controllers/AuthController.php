@@ -26,7 +26,7 @@ class AuthController extends Controller
             if ($user->hasRole('admin')) {
                 return redirect()->route('admin.dashboard')->with('success', 'Login Admin Berhasil');
             } elseif ($user->hasRole('user')) {
-                return redirect()->route('user.dashboard')->with('success', 'Login User Berhasil');
+                return redirect('tester')->with('success', 'Login User Berhasil');
             }
         }
         return redirect()->route('login')->with('error', 'Email atau Password Yang Anda Masukkan Salah');
@@ -55,8 +55,14 @@ class AuthController extends Controller
             'password' => 'required|min:8',
             'password_confirmation' => 'required_with:password|same:password'
         ], [
+            'name.required' => 'Nama Lengkap harus diisi',
+            'email.required' => 'Email harus diisi',
+            'email.email' => 'Email harus menyertakan karakter @ untuk menjadi alamat email yang valid.',
+            'number.required' => 'Nomor Ponsel harus diisi', 
             'password_confirmation.same' => 'Password dan Konfirmasi Password tidak cocok.',
-            'email.unique' => 'Email sudah terdaftar, silahkan gunakan email lain.'
+            'email.unique' => 'Email sudah terdaftar, silahkan gunakan email lain.',
+            'password.required' => 'Kata sandi harus diisi.',
+            'password.min' => 'Kata sandi minimal terdiri dari 8 karakter.'
         ]);
         // $name = 'adi';
         // $email = 'adi@gmail.com';
@@ -171,6 +177,5 @@ class AuthController extends Controller
         $user->save();
         return redirect()->route('login')->with('success', 'Password berhasil diubah. Silahkan login.');
     }
-
 
 }
