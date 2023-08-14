@@ -943,12 +943,11 @@
     </script>
 
     <!-- apexcharts -->
-    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset ('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
-    <script src="{{ asset('template/apexcharts.com/samples/assets/stock-prices.js') }}"></script>
+    <!-- real estate earnings init JS -->
+    <script src="{{ asset ('assets/js/pages/real-estate-earnings.init.js') }}"></script>
 
-    <!-- linecharts init -->
-    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/apexcharts-line.init.js') }}"></script>
 
     <!-- App js -->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/app.js') }}"></script>
