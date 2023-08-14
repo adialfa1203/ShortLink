@@ -766,13 +766,15 @@ header.fixed .navbar {
 /* hero banner images */
 .banner_section .banner_image {
     display: flex;
-    position: relative;
-    width: 100%;
+    justify-content: flex-end; /* Memindahkan konten ke sisi kanan */
+    align-items: center; /* Untuk mempertahankan penempatan vertikal */
+    width: 90%;
 }
 
 .banner_section .banner_image img{
-    max-width: 100%;
+    max-width: 90%;
 }
+
 
 
 .owl-carousel .owl-item img {
