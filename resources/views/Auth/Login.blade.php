@@ -72,7 +72,7 @@
                                                 <p class="text-muted">Masuk untuk melanjutkan ke LINK.ID</p>
                                             </div>
                                             <div class="p-2 mt-5">
-                                                <form action="{{ route('loginuser') }}" method="POST">
+                                                <form action="{{ route('loginuser') }}" method="">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="username" class="form-label">Email</label>

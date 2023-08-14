@@ -16,14 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/login',[AuthController::class,'login'])->name('login');
-Route::post('/loginuser',[AuthController::class,'loginuser'])->name('loginuser');
+Route::get('/loginuser',[AuthController::class,'loginuser'])->name('loginuser');
+Route::get('register', [AuthController::class, 'register']);
+Route::post('registeruser', [AuthController::class, 'registeruser'])->name('registeruser');
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
 
-Route::get('register', [AuthController::class, 'register']);
-Route::post('registeruser', [AuthController::class, 'registeruser'])->name('registeruser');
 
-Route::get('/Home', function () {
+Route::get('/', function () {
     return view('Landingpage.Home');
 });
 Route::get('/Shortlink', function () {
@@ -48,14 +53,21 @@ Route::post('sendEmail', [AuthController::class, 'sendSampleEmail'])->name('send
 Route::get('verification', [AuthController::class, 'verification'])->name('verification');
 Route::post('verificationCode', [AuthController::class, 'verificationCode'])->name('verificationCode');
 
-// user
-Route::get('profiluser', [ProfilController::class, 'profile']);
-Route::post('updateprofil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
-
 Route::get('/DashboardUser', function () {
     return view('User.DashboardUser');
 });
 
-Route::get('/tester', function () {
-    return view('tester.afterlogin');
+//Middleware User
+Route::group(['middleware' => ['role:user']], function () {
+Route::get('profiluser', [ProfilController::class, 'profile']);
+Route::post('updateprofil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
+
 });
+
+//Middleware Admin
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/tester', function () {
+        return view('tester.afterlogin');
+    });
+});
+

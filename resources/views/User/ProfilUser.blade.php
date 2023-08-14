@@ -3,28 +3,28 @@
 @section('title','Profile')
             @section('content')
             <form action="{{ route ('updateProfile')}}" method="POST">
-                @csrf            
+                @csrf
                 <div class="page-content">
                     <div class="container-fluid">
-    
+
                         <!-- start page title -->
                         <div class="row">
                             <div class="col-xl-12 ">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                     <h4 class="mb-sm-0">Profil Pengguna</h4>
-    
+
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
                                             <li class="breadcrumb-item active">Profile Settings</li>
                                         </ol>
                                     </div>
-    
+
                                 </div>
                             </div>
                         </div>
                         <!-- end page title -->
-    
+
                         <div class="row">
                             <!--end col-->
                             <div class="col-xxl-12">
@@ -52,12 +52,12 @@
                                                 </div>
                                             </div>
                                             <div class="mt-3">
-                                                <h5>{{$user->name}}<i class="bi bi-patch-check-fill align-baseline text-info ms-1"></i></h5>                                              
+                                                <h5>{{Auth()->user()->name}}<i class="bi bi-patch-check-fill align-baseline text-info ms-1"></i></h5>
                                                 <p class="text-muted">Web Developer</p>
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                     <div class="card-body border-top">
                                         <div class="card-body">
                                             <form action="javascript:void(0);">
@@ -65,21 +65,21 @@
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="firstnameInput" class="form-label">Nama Lengkap</label>
-                                                            <input type="text" name="name" class="form-control" value="{{$user->name}}">
+                                                            <input type="text" name="name" class="form-control" value="{{Auth()->user()->name}}">
                                                         </div>
                                                     </div>
                                                     <!--end col-->
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="lastnameInput" class="form-label">E-mail</label>
-                                                            <input type="text" name="email" class="form-control" value="{{$user->email}}">
+                                                            <input type="text" name="email" class="form-control" value="{{Auth()->user()->email}}">
                                                         </div>
                                                     </div>
                                                     <!--end col-->
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="lastnameInput" class="form-label">Nomor Telepon</label>
-                                                            <input type="number" name="number" class="form-control" value="{{$user->number}}">
+                                                            <input type="number" name="number" class="form-control" value="{{Auth()->user()->number}}">
                                                         </div>
                                                     </div>
                                                     <!--end col-->
@@ -122,7 +122,7 @@
                                                         </div>
                                                     </div>
                                                     <!--end col-->
-                                                  
+
                                                     <div class="col-lg-12">
                                                         <div class="hstack gap-2 justify-content-end">
                                                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -131,7 +131,7 @@
                                                     <!--end col-->
                                                 </div>
                                                 <!--end row-->
-                                                
+
                                             </form>
                                         </div>
                                     </div>
@@ -142,21 +142,21 @@
                                       <span style="margin-left: 5px;">Logout</span>
                                     </button>
                                   </div>
-                                  
+
                                 </div>
-                                
-                                
+
+
                                 </div>
                             </div>
-                           
+
                             <!--end col-->
                         </div>
                         <!--end row-->
-                        
+
                     </div>
                     <!-- container-fluid -->
                 </div><!-- End Page-content -->
-            </form>         
+            </form>
             @endsection
 @section('script')
     <!-- profile-setting init js -->

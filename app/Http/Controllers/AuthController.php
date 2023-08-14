@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
-use App\Mail\SampleMail; // Ganti dengan kelas mail yang sesuai
+use Spatie\Permission\Traits\HasRoles;
+use App\Mail\SampleMail;
 
 class AuthController extends Controller
 {
@@ -18,28 +19,20 @@ class AuthController extends Controller
 
     public function loginuser(Request $request){
         $credentials = $request->only('email', 'password');
-        $remember = $request->has('remember'); // Ambil nilai "Ingat Saya" dari permintaan
-        
+        $remember = $request->has('remember');
+
         if (Auth::attempt($credentials, $remember)) {
             $user = Auth::user();
-    
             if ($user->hasRole('admin')) {
-                return redirect()->route('admin.dashboard')->with('success', 'Login Admin Berhasil');
+                return redirect('tester')->with('success', 'Login Admin Berhasil');
             } elseif ($user->hasRole('user')) {
-                return redirect('tester')->with('success', 'Login User Berhasil');
+                return redirect('')->with('success', 'Login User Berhasil');
             }
         }
         return redirect()->route('login')->with('error', 'Email atau Password Yang Anda Masukkan Salah');
-    }    
-    
-
-    public function logout(Request $request)
-    {
-    Auth::logout();
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
-    return redirect('/');
     }
+
+
 
     public function register()
     {
@@ -58,17 +51,12 @@ class AuthController extends Controller
             'name.required' => 'Nama Lengkap harus diisi',
             'email.required' => 'Email harus diisi',
             'email.email' => 'Email harus menyertakan karakter @ untuk menjadi alamat email yang valid.',
-            'number.required' => 'Nomor Ponsel harus diisi', 
+            'number.required' => 'Nomor Ponsel harus diisi',
             'password_confirmation.same' => 'Password dan Konfirmasi Password tidak cocok.',
             'email.unique' => 'Email sudah terdaftar, silahkan gunakan email lain.',
             'password.required' => 'Kata sandi harus diisi.',
             'password.min' => 'Kata sandi minimal terdiri dari 8 karakter.'
         ]);
-        // $name = 'adi';
-        // $email = 'adi@gmail.com';
-        // $number = '876543456';
-        // $password = '12345';
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -76,16 +64,23 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $user->assignRole('user');
-        
+        if (!Role::where('name', 'user')->exists()) {
+            Role::create(['name' => 'user', 'guard_name' => 'web']);
+        }
+
+        $roleUser = Role::where('name', 'user')->first();
+
+        if ($roleUser) {
+            $user->assignRole($roleUser);
+        }
         return redirect()->route('login')->with('success', 'Regristrasi berhasil. Silahkan login');
-    }
+        }
 
     public function sendEmail()
     {
         return view('Auth.ForgotPassword.SendEmail');
     }
-    
+
 
 
     public function sendSampleEmail(Request $request)
@@ -93,13 +88,13 @@ class AuthController extends Controller
         $this->validate($request, [
             'email' => 'required|email',
         ]);
-        
+
         $user = User::where('email', $request->email)->first();
-        
+
         if ($user) {
             // Generate random verification code
             $verificationCode = mt_rand(100000, 999999);
-            
+
             // Save the verification code in the user's database record
             $user->verification_code = $verificationCode;
             $user->save();
@@ -111,7 +106,7 @@ class AuthController extends Controller
             ];
 
             Mail::to($user->email)->send(new SampleMail($details));
-            
+
             return redirect()->route('verification')->with('success', 'Kode berhasil dikirim');
         } else {
             return back()->withErrors(['email' => 'Email tidak terdaftar']);
@@ -164,7 +159,7 @@ class AuthController extends Controller
             'password.confirmed' => 'Konfirmasi kata sandi tidak cocok.',
             'password_confirmation.required_with' => 'Konfirmasi kata sandi harus diisi.',
             'password_confirmation.same' => 'Kata sandi dan Konfirmasi Kata sandi tidak cocok.',
-        ]);        
+        ]);
 
         $user = User::where('email', $request->email)->first();
 
@@ -176,6 +171,14 @@ class AuthController extends Controller
         $user->verification_code = null; // Clear verification code
         $user->save();
         return redirect()->route('login')->with('success', 'Password berhasil diubah. Silahkan login.');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
 }
