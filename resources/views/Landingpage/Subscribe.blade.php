@@ -32,43 +32,6 @@
 
 <body>
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Amarante');
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  outline: none;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-html { overflow-y: scroll; }
-body { 
-  background: #eee url('https://i.imgur.com/eeQeRmk.png'); /* https://subtlepatterns.com/weave/ */
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 62.5%;
-  line-height: 1;
-  color: #585858;
-  padding: 22px 10px;
-  padding-bottom: 55px;
-}
-
-::selection { background: #5f74a0; color: #fff; }
-::-moz-selection { background: #5f74a0; color: #fff; }
-::-webkit-selection { background: #5f74a0; color: #fff; }
-
-br { display: block; line-height: 1.6em; } 
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
-ol, ul { list-style: none; }
-
 input, textarea { 
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
@@ -86,14 +49,6 @@ strong, b { font-weight: bold; }
 table { border-collapse: collapse; border-spacing: 0; }
 img { border: 0; max-width: 100%; }
 
-h1 { 
-  font-family: 'Amarante', Tahoma, sans-serif;
-  font-weight: bold;
-  font-size: 3.6em;
-  line-height: 1.7em;
-  margin-bottom: 10px;
-  text-align: center;
-}
 
 
 /** page structure **/
@@ -200,43 +155,44 @@ h1 {
       	<!-- navigation bar -->
         <nav class="navbar navbar-expand-lg">
           <a class="navbar-brand" href="#">
-            <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image" >
+              <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image">
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon">
-              <!-- <i class="icofont-navigation-menu ico_menu"></i> -->
-              <div class="toggle-wrap">
-                <span class="toggle-bar"></span>
-              </div>
-            </span>
+          <button class="navbar-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon">
+                  <!-- <i class="icofont-navigation-menu ico_menu"></i> -->
+                  <div class="toggle-wrap">
+                      <span class="toggle-bar"></span>
+                  </div>
+              </span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              <!-- secondery menu start -->
-              <li class="nav-item has_dropdown">
-                <a class="nav-link" href="/">Beranda</a>
-              </li>
+              <ul class="navbar-nav ml-auto">
+                  <!-- secondery menu start -->
+                  <li class="nav-item has_dropdown">
+                      <a class="nav-link" href="/">Beranda</a>
+                  </li>
 
-              <!-- secondery menu start -->
-              <li class="nav-item has_dropdown">
-                <a class="nav-link" href="/Shortlink">Perpendek Link</a>
-              </li>
-              <!-- secondery menu end -->
+                  <!-- secondery menu start -->
+                  <li class="nav-item has_dropdown">
+                      <a class="nav-link" href="/Shortlink">Perpendek Link</a>
+                  </li>
+                  <!-- secondery menu end -->
 
-              <li class="nav-item has_dropdown">
-                <a class="nav-link" href="/Microsite">Situs Mikro</a>
-              </li>
-              <li class="nav-item has_dropdown">
-                <a class="nav-link" href="/Subscribe">Berlangganan</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link dark_btn" href="/login">Login / Register</a>
-              </li>
-            </ul>
+                  <li class="nav-item has_dropdown">
+                      <a class="nav-link" href="/Microsite">Situs Mikro</a>
+                  </li>
+                  <li class="nav-item has_dropdown">
+                      <a class="nav-link" href="/Subscribe">Berlangganan</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link dark_btn" href="/login">Login / Register</a>
+                  </li>
+              </ul>
           </div>
-        </nav>
+      </nav>
         <!-- navigation end -->
       </div>
       <!-- container end -->
@@ -344,170 +300,185 @@ h1 {
           </div>
           <div class="row d-flex justify-content-md-center" style="margin-top: 2%;">
               <div class="col-12" style="margin-bottom: 2%;">
-                  <div class="tabel_box" data-aos="fade-up" data-aos-duration="1500">
-                      <div id="wrapper">
-                          <table id="keywords" cellspacing="0" cellpadding="0">
-                            <div class="row">
-                              <div class="col-lg-10 button_wrapper  d-flex justify-content-end" data-aos="fade-up" data-aos-duration="1500">
-                                <a href="#" class="btn btn-white white-button">Gratis</a>
-                              </div> 
-                              <div class="col-1 button_wrapper" data-aos="fade-up" data-aos-duration="1500">
-                                <a href="#" class="btn btn-white white-button">Premium</a>
-                              </div>
-                            </div>                            
-                              <thead class="text-center">
-                                  <tr>
-                                      <th><span>Batasan Pengunjung Tautan Link.id</span></th>
-                                      <th><span>Tanpa Batas</span></th>
-                                      <th><span>Tanpa Batas</span></th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  <tr>
-                                      <td class="lalign"><b>Menyingkat Tautan</b></td>
-                                      <td>100/bln</td>
-                                      <td>Tanpa batas</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="lalign">— Kustomisasi nama tautan</td>
-                                      <td><i class="fas fa-check"></i></td>
-                                      <td><i class="fas fa-check"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <td class="lalign">— Mengubah nama tautan kustomisasi</td>
-                                      <td>5/bln</td>
-                                      <td>Tanpa batas</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="lalign">— Ubah Tautan Asli</td>
-                                      <td><i class="fas fa-times"></i></td>
-                                      <td><i class="fas fa-check"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <td colspan="3"><hr></td>
-                                  </tr>
-                                  <tr>
-                                      <td class="lalign"><b>Membuat Microsite</b></td>
-                                      <td>Hingga 10</td>
-                                      <td>Tanpa batas</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="lalign">— Komponen Microsite</td>
-                                      <td>Hingga 100</td>
-                                      <td>Tanpa batas</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="lalign">— Mengubah nama tautan microsite</td>
-                                      <td><i class="fas fa-times"></i></td>
-                                      <td><i class="fas fa-check"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <td class="lalign">— Komponen terkunci</td>
-                                      <td><i class="fas fa-times"></i></td>
-                                      <td><i class="fas fa-check"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <td colspan="3"><hr></td>
-                                  </tr>
-                                  <tr>
-                                      <td class="lalign">Nama Pendek untuk Tautan / Microsite terbatas</td>
-                                      <td><i class="fas fa-times"></i></td>
-                                      <td>Tanpa batas</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="lalign">Kode QR</td>
-                                      <td><i class="fas fa-check"></i></td>
-                                      <td><i class="fas fa-check"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <td colspan="3"><hr></td>
-                                  </tr>
-                                  <tr>
-                                      <td class="lalign"><b>Analitik</b></td>
-                                      <td><i class="fas fa-check"></i></td>
-                                      <td><i class="fas fa-check"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <td class="lalign">— Pengunjung Keseluruhan</td>
-                                      <td><i class="fas fa-check"></i></td>
-                                      <td><i class="fas fa-check"></i></td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div> 
-                  </div>
+                <div class="tabel_box" data-aos="fade-up" data-aos-duration="1500">
+                  <div id="wrapper">
+                      <table id="keywords">
+                        <div class="row">
+                          <div class="col-lg-10 button_wrapper  d-flex justify-content-end" data-aos="fade-up" data-aos-duration="1500">
+                            <a href="#" class="btn btn-white white-button">Gratis</a>
+                          </div> 
+                          <div class="col-1 button_wrapper" data-aos="fade-up" data-aos-duration="1500">
+                            <a href="#" class="btn btn-white white-button">Premium</a>
+                          </div>
+                        </div>                            
+                          <thead class="text-center">
+                              <tr style="font-size: 12px;">
+                                  <th><span>Batasan Pengunjung Tautan Link.id</span></th>
+                                  <th>Tanpa Batas</th>
+                                  <th>Tanpa Batas</th>
+                              </tr>
+                          </thead>
+                          <tbody style="font-size: 12px;">
+                              <tr>
+                                  <td class="lalign"><b>Menyingkat Tautan</b></td>
+                                  <td>100/bln</td>
+                                  <td>Tanpa batas</td>
+                              </tr>
+                              <tr>
+                                  <td class="lalign">— Kustomisasi nama tautan</td>
+                                  <td><i class="fas fa-check"></i></td>
+                                  <td><i class="fas fa-check"></i></td>
+                              </tr>
+                              <tr>
+                                  <td class="lalign">— Mengubah nama tautan kustomisasi</td>
+                                  <td>5/bln</td>
+                                  <td>Tanpa batas</td>
+                              </tr>
+                              <tr>
+                                  <td class="lalign">— Ubah Tautan Asli</td>
+                                  <td><i class="fas fa-times"></i></td>
+                                  <td><i class="fas fa-check"></i></td>
+                              </tr>
+                              <tr>
+                                  <td colspan="3"><hr></td>
+                              </tr>
+                              <tr>
+                                  <td class="lalign"><b>Membuat Microsite</b></td>
+                                  <td>Hingga 10</td>
+                                  <td>Tanpa batas</td>
+                              </tr>
+                              <tr>
+                                  <td class="lalign">— Komponen Microsite</td>
+                                  <td>Hingga 100</td>
+                                  <td>Tanpa batas</td>
+                              </tr>
+                              <tr>
+                                  <td class="lalign">— Mengubah nama tautan microsite</td>
+                                  <td><i class="fas fa-times"></i></td>
+                                  <td><i class="fas fa-check"></i></td>
+                              </tr>
+                              <tr>
+                                  <td class="lalign">— Komponen terkunci</td>
+                                  <td><i class="fas fa-times"></i></td>
+                                  <td><i class="fas fa-check"></i></td>
+                              </tr>
+                              <tr>
+                                  <td colspan="3"><hr></td>
+                              </tr>
+                              <tr>
+                                  <td class="lalign">Nama Pendek untuk Tautan / Microsite terbatas</td>
+                                  <td><i class="fas fa-times"></i></td>
+                                  <td>Tanpa batas</td>
+                              </tr>
+                              <tr>
+                                  <td class="lalign">Kode QR</td>
+                                  <td><i class="fas fa-check"></i></td>
+                                  <td><i class="fas fa-check"></i></td>
+                              </tr>
+                              <tr>
+                                  <td colspan="3"><hr></td>
+                              </tr>
+                              <tr>
+                                  <td class="lalign"><b>Analitik</b></td>
+                                  <td><i class="fas fa-check"></i></td>
+                                  <td><i class="fas fa-check"></i></td>
+                              </tr>
+                              <tr>
+                                  <td class="lalign">— Pengunjung Keseluruhan</td>
+                                  <td><i class="fas fa-check"></i></td>
+                                  <td><i class="fas fa-check"></i></td>
+                              </tr>
+                          </tbody>
+                      </table>
               </div>
+          </div>
           </div>
       </div>
   </section>
   
-    <footer>
-        <div class="top_footer" id="kontak">
-          	<!-- container start -->
-            <div class="container">
-              <!-- row start -->
-              <div class="row">
-              	<span class="banner_shape1"> <img src="https://i.postimg.cc/3RVg0kJv/banner-shape1.png" alt="image" > </span>
-        		    <span class="banner_shape2"> <img src="https://i.postimg.cc/rp6XjJnn/banner-shape2.png" alt="image" > </span>
-        		    <span class="banner_shape3"> <img src="https://i.postimg.cc/wxrWDBbF/banner-shape3.png" alt="image" > </span>
-              	  <!-- footer link 1 -->
-                  <div class="col-lg-4 col-md-6 col-12">
-                      <div class="abt_side">
-                        <div class="logo"> <img src="https://i.postimg.cc/0NVBwBW8/logoland.png" alt="image" ></div>
-                        <ul>
-                          <li><a href="mailto:kalopsia@gmail.com">kalopsia@gmail.com</a></li>
-                          <li><a href="https://api.whatsapp.com/send?phone=+628123456789">+62 0812 3456 789</a></li>
-                          <li><a href="#">Hummasoft Technology</a></li>
-                        </ul>
-                        <ul class="social_media">
-                          <li><a href="#" id="facebook-link"><i class="icofont-facebook"></i></a></li>
-                          <li><a href="#" id="twitter-link"><i class="icofont-twitter"></i></a></li>
-                          <li><a href="#" id="instagram-link"><i class="icofont-instagram"></i></a></li>
-                      </ul>
-                      
-                      </div>
-                  </div>
-
-                  <!-- footer link 3 -->
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <div class="links">
-                      <h3>Tentang</h3>
-                        <ul style="text-align: justify;">
-                          <li><a href="/Home">Beranda</a></li>
-                            <li><a href="#features">Tentang</a></li>
-                            <li><a href="#kontak">Kontak</a></li>
-                            <li><a href="/login">Login</a></li>
-                        </ul>
-                    </div>
+  <footer>
+    <div class="top_footer" id="kontak">
+        <!-- container start -->
+        <div class="container">
+          <!-- row start -->
+          <div class="row">
+            <span class="banner_shape1"> <img src="https://i.postimg.cc/3RVg0kJv/banner-shape1.png" alt="image" > </span>
+            <span class="banner_shape2"> <img src="https://i.postimg.cc/rp6XjJnn/banner-shape2.png" alt="image" > </span>
+            <span class="banner_shape3"> <img src="https://i.postimg.cc/wxrWDBbF/banner-shape3.png" alt="image" > </span>
+              <!-- footer link 1 -->
+              <div class="col-lg-4 col-md-6 col-12">
+                  <div class="abt_side">
+                    <div class="logo"> <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image" style="margin-top: -50px;" ></div>
                   </div>
               </div>
-              <!-- row end -->
-          </div>
-          <!-- container end -->
-        </div>
 
-        <!-- last footer -->
-        <div class="bottom_footer">
-        	<!-- container start -->
-            <div class="container">
-              <!-- row start -->
+              <!-- footer link 3 -->
               <div class="row">
-                <div class="col-md-12">
-                  <center>
-                    <p>© Kalopsia</p>
-                    </center>
+                <div class="col-lg-5 col-md-6 col-12">
+                  <div class="links">
+                    <h3>Dukungan</h3>
+                      <ul style="text-align: justify;">
+                        <li><a href="/Home">Bantuan</a></li>
+                          <li><a href="#features">Laporkan</a></li>
+                          <li><a href="#kontak">Status</a></li>
+                      </ul>
+                  </div>
                 </div>
-            </div>
-            <!-- row end -->
-            </div>
-            <!-- container end -->
-        </div>
+                <div class="col-lg-7 col-md-6 col-12">
+                  <div class="links">
+                    <h3>Hubungi Kami</h3>
+                      <ul style="text-align: justify;">
+                        <li>
+                          <a href="https://wa.me/085606270454">
+                              <i class="fab fa-whatsapp"></i>
+                              085606270454
+                          </a>
+                      </li>
+                      
+                      <li>
+                        <a href="#features">
+                            <i class="fab fa-instagram"></i>
+                            @link.id
+                        </a>
+                    </li>
+                    
+                    <li>
+                      <a href="#features">
+                          <i class="fab fa-twitter"></i>
+                          @link.id
+                      </a>
+                  </li>
+                  
+                      </ul>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- row end -->
+      </div>
+      <!-- container end -->
+    </div>
 
-        <!-- go top button -->
-        <div class="go_top">
-            <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image" ></span>
+    <!-- last footer -->
+    <div class="bottom_footer">
+      <!-- container start -->
+        <div class="container">
+          <!-- row start -->
+          <div class="row">
+            <div class="col-md-12" style="text-align: right;">
+                <p>©LINK.ID Dikelola oleh PT. Hummatech</p>
+            </div>
         </div>
-    </footer>
+        <!-- row end -->
+        </div>
+        <!-- container end -->
+    </div>
+
+    <!-- go top button -->
+    <div class="go_top">
+        <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image" ></span>
+    </div>
+</footer>
     <!-- Footer-Section end -->
 
   <!-- VIDEO MODAL -->

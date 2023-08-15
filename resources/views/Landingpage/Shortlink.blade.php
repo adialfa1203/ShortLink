@@ -317,76 +317,85 @@
         <!-- Footer-Section start -->
         <footer>
             <div class="top_footer" id="kontak">
-                <!-- container start -->
+                  <!-- container start -->
                 <div class="container">
-                    <!-- row start -->
-                    <div class="row">
-                        <span class="banner_shape1"> <img src="https://i.postimg.cc/3RVg0kJv/banner-shape1.png"
-                                alt="image"> </span>
-                        <span class="banner_shape2"> <img src="https://i.postimg.cc/rp6XjJnn/banner-shape2.png"
-                                alt="image"> </span>
-                        <span class="banner_shape3"> <img src="https://i.postimg.cc/wxrWDBbF/banner-shape3.png"
-                                alt="image"> </span>
+                  <!-- row start -->
+                  <div class="row">
+                      <span class="banner_shape1"> <img src="https://i.postimg.cc/3RVg0kJv/banner-shape1.png" alt="image" > </span>
+                        <span class="banner_shape2"> <img src="https://i.postimg.cc/rp6XjJnn/banner-shape2.png" alt="image" > </span>
+                        <span class="banner_shape3"> <img src="https://i.postimg.cc/wxrWDBbF/banner-shape3.png" alt="image" > </span>
                         <!-- footer link 1 -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="abt_side">
-                                <div class="logo"> <img src="https://i.postimg.cc/0NVBwBW8/logoland.png"
-                                        alt="image"></div>
-                                <ul>
-                                    <li><a href="mailto:kalopsia@gmail.com">kalopsia@gmail.com</a></li>
-                                    <li><a href="https://api.whatsapp.com/send?phone=+628123456789">+62 0812 3456
-                                            789</a></li>
-                                    <li><a href="#">Hummasoft Technology</a></li>
-                                </ul>
-                                <ul class="social_media">
-                                    <li><a href="#" id="facebook-link"><i class="icofont-facebook"></i></a>
-                                    </li>
-                                    <li><a href="#" id="twitter-link"><i class="icofont-twitter"></i></a></li>
-                                    <li><a href="#" id="instagram-link"><i class="icofont-instagram"></i></a>
-                                    </li>
-                                </ul>
-
-                            </div>
+                      <div class="col-lg-4 col-md-6 col-12">
+                          <div class="abt_side">
+                            <div class="logo"> <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image" style="margin-top: -50px;" ></div>
+                          </div>
+                      </div>
+    
+                      <!-- footer link 3 -->
+                      <div class="row">
+                        <div class="col-lg-5 col-md-6 col-12">
+                          <div class="links">
+                            <h3>Dukungan</h3>
+                              <ul style="text-align: justify;">
+                                <li><a href="/Home">Bantuan</a></li>
+                                  <li><a href="#features">Laporkan</a></li>
+                                  <li><a href="#kontak">Status</a></li>
+                              </ul>
+                          </div>
                         </div>
-
-                        <!-- footer link 3 -->
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="links">
-                                <h3>Tentang</h3>
-                                <ul style="text-align: justify;">
-                                    <li><a href="/Home">Beranda</a></li>
-                                    <li><a href="#features">Tentang</a></li>
-                                    <li><a href="#kontak">Kontak</a></li>
-                                    <li><a href="/login">Login</a></li>
-                                </ul>
-                            </div>
+                        <div class="col-lg-7 col-md-6 col-12">
+                          <div class="links">
+                            <h3>Hubungi Kami</h3>
+                              <ul style="text-align: justify;">
+                                <li>
+                                  <a href="https://wa.me/085606270454">
+                                      <i class="fab fa-whatsapp"></i>
+                                      085606270454
+                                  </a>
+                              </li>
+                              
+                              <li>
+                                <a href="#features">
+                                    <i class="fab fa-instagram"></i>
+                                    @link.id
+                                </a>
+                            </li>
+                            
+                            <li>
+                              <a href="#features">
+                                  <i class="fab fa-twitter"></i>
+                                  @link.id
+                              </a>
+                          </li>
+                          
+                              </ul>
+                          </div>
                         </div>
-                    </div>
-                    <!-- row end -->
-                </div>
-                <!-- container end -->
+                      </div>
+                  </div>
+                  <!-- row end -->
+              </div>
+              <!-- container end -->
             </div>
-
+    
             <!-- last footer -->
             <div class="bottom_footer">
                 <!-- container start -->
                 <div class="container">
-                    <!-- row start -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <center>
-                                <p>© Kalopsia</p>
-                            </center>
-                        </div>
+                  <!-- row start -->
+                  <div class="row">
+                    <div class="col-md-12" style="text-align: right;">
+                        <p>©LINK.ID Dikelola oleh PT. Hummatech</p>
                     </div>
-                    <!-- row end -->
+                </div>
+                <!-- row end -->
                 </div>
                 <!-- container end -->
             </div>
-
+    
             <!-- go top button -->
             <div class="go_top">
-                <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
+                <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image" ></span>
             </div>
         </footer>
         <!-- Footer-Section end -->

@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="{{asset('landingPage/css/wave-animation-style.css')}}">
   <!-- Favicon -->
   <link rel="shortcut icon" href="{{asset('https://i.postimg.cc/P55dtZjM/Logo-A-1.png')}}" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
@@ -171,7 +172,7 @@
              <!-- story -->
              <div class="col-md-4" style="margin-bottom: 2%;">
                  <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" style="margin-top: 10%;"><path fill="#BA2D3B" d="M5.5 8H6v.5a1 1 0 0 0 2 0V8h.5a1 1 0 0 0 0-2H8v-.5a1 1 0 0 0-2 0V6h-.5a1 1 0 0 0 0 2Zm-.62 11.12a1 1 0 0 0 1.41 0l.71-.71l.71.71a1 1 0 0 0 1.41 0a1 1 0 0 0 0-1.41L8.41 17l.71-.71a1 1 0 0 0-1.41-1.41l-.71.71l-.71-.71a1 1 0 0 0-1.41 1.41l.71.71l-.71.71a1 1 0 0 0 0 1.41ZM20 1H4a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V4a3 3 0 0 0-3-3Zm-9 20H4a1 1 0 0 1-1-1v-7h8Zm0-10H3V4a1 1 0 0 1 1-1h7Zm10 9a1 1 0 0 1-1 1h-7v-8h8Zm0-9h-8V3h7a1 1 0 0 1 1 1Zm-5.5 5.5h3a1 1 0 0 0 0-2h-3a1 1 0 0 0 0 2Zm3-10.5h-3a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2Zm-3 13.5h3a1 1 0 0 0 0-2h-3a1 1 0 0 0 0 2Z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg"width="80" height="80" viewBox="0 0 576 512" style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#104898" d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
                      <div class="story_text">
                            <h3>Pembuatan Microsite</h3>
                          <p>Juga Disebut tautan Bio sering digunakan
@@ -347,31 +348,49 @@
               	  <!-- footer link 1 -->
                   <div class="col-lg-4 col-md-6 col-12">
                       <div class="abt_side">
-                        <div class="logo"> <img src="https://i.postimg.cc/0NVBwBW8/logoland.png" alt="image" ></div>
-                        <ul>
-                          <li><a href="mailto:kalopsia@gmail.com">kalopsia@gmail.com</a></li>
-                          <li><a href="https://api.whatsapp.com/send?phone=+628123456789">+62 0812 3456 789</a></li>
-                          <li><a href="#">Hummasoft Technology</a></li>
-                        </ul>
-                        <ul class="social_media">
-                          <li><a href="#" id="facebook-link"><i class="icofont-facebook"></i></a></li>
-                          <li><a href="#" id="twitter-link"><i class="icofont-twitter"></i></a></li>
-                          <li><a href="#" id="instagram-link"><i class="icofont-instagram"></i></a></li>
-                      </ul>
-                      
+                        <div class="logo"> <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image" style="margin-top: -50px;" ></div>
                       </div>
                   </div>
 
                   <!-- footer link 3 -->
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <div class="links">
-                      <h3>Tentang</h3>
-                        <ul style="text-align: justify;">
-                          <li><a href="/Home">Beranda</a></li>
-                            <li><a href="#features">Tentang</a></li>
-                            <li><a href="#kontak">Kontak</a></li>
-                            <li><a href="/login">Login</a></li>
-                        </ul>
+                  <div class="row">
+                    <div class="col-lg-5 col-md-6 col-12">
+                      <div class="links">
+                        <h3>Dukungan</h3>
+                          <ul style="text-align: justify;">
+                            <li><a href="/Home">Bantuan</a></li>
+                              <li><a href="#features">Laporkan</a></li>
+                              <li><a href="#kontak">Status</a></li>
+                          </ul>
+                      </div>
+                    </div>
+                    <div class="col-lg-7 col-md-6 col-12">
+                      <div class="links">
+                        <h3>Hubungi Kami</h3>
+                          <ul style="text-align: justify;">
+                            <li>
+                              <a href="https://wa.me/085606270454">
+                                  <i class="fab fa-whatsapp"></i>
+                                  085606270454
+                              </a>
+                          </li>
+                          
+                          <li>
+                            <a href="#features">
+                                <i class="fab fa-instagram"></i>
+                                @link.id
+                            </a>
+                        </li>
+                        
+                        <li>
+                          <a href="#features">
+                              <i class="fab fa-twitter"></i>
+                              @link.id
+                          </a>
+                      </li>
+                      
+                          </ul>
+                      </div>
                     </div>
                   </div>
               </div>
@@ -386,10 +405,8 @@
             <div class="container">
               <!-- row start -->
               <div class="row">
-                <div class="col-md-12">
-                  <center>
-                    <p>© Kalopsia</p>
-                    </center>
+                <div class="col-md-12" style="text-align: right;">
+                    <p>©LINK.ID Dikelola oleh PT. Hummatech</p>
                 </div>
             </div>
             <!-- row end -->
