@@ -45,19 +45,20 @@
         .right-section {
             background-color: #104898;
             color: white;
-            padding: 20px;
+            padding: 30px;
         }
 
         .custom-btn {
             background-color: #0B7EFF;
         }
+
     </style>
 
 </head>
 
 <body>
     <section
-        class="auth-page-wrapper py-5 position-relative d-flex align-items-center justify-content-center min-vh-100">
+        class="auth-page-wrapper py-5 position-relative d-flex align-items-center justify-content-center min-vh-100">>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-11">

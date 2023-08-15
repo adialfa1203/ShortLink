@@ -216,7 +216,7 @@ h1 {
             <ul class="navbar-nav ml-auto">
               <!-- secondery menu start -->
               <li class="nav-item has_dropdown">
-                <a class="nav-link" href="/Home">Beranda</a>
+                <a class="nav-link" href="/">Beranda</a>
               </li>
 
               <!-- secondery menu start -->
