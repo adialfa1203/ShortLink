@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\LinkAdminController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\UserdataController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::get('/loginuser',[AuthController::class,'loginuser'])->name('loginuser');
+Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
+Route::get('/Userdata', [UserdataController::class, 'index'])->name('index');
+
 Route::get('register', [AuthController::class, 'register']);
 Route::post('registeruser', [AuthController::class, 'registeruser'])->name('registeruser');
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');

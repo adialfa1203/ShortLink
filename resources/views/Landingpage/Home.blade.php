@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="{{asset('landingPage/css/wave-animation-style.css')}}">
   <!-- Favicon -->
   <link rel="shortcut icon" href="{{asset('https://i.postimg.cc/P55dtZjM/Logo-A-1.png')}}" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
@@ -62,8 +63,8 @@
             <ul class="navbar-nav ml-auto">
               <!-- secondery menu start -->
               <li class="nav-item has_dropdown">
-                <a class="nav-link" href="/Home">Beranda</a>
-              </li>
+                <a class="nav-link active" href="/">Beranda</a>
+              </li>              
 
               <!-- secondery menu start -->
               <li class="nav-item has_dropdown">
@@ -117,7 +118,7 @@
           <!-- banner slides start -->
           <div class="col-lg-6 col-md-12"  data-aos="fade-in" data-aos-duration="1500">
             <div class="banner_image">
-              <img class="moving_animation" src="https://i.postimg.cc/c1fdwGmN/landingpage.png" alt="image" >
+              <img class="moving_animation" src="https://i.postimg.cc/2jPMN15L/welcomyu.png" alt="image" width="450" height="450" >
             </div>
           </div>
           <!-- banner slides end -->
@@ -158,10 +159,7 @@
              <!-- story -->
              <div class="col-md-4" style="margin-bottom: 2%;">
                  <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="#BA2D3B" class="bi bi-calculator" viewBox="0 0 16 16" style="margin-top: 10%;">
-                      <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
-                      <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4z"/>
-                    </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 640 512" style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#104898" d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
                      <div class="story_text">
                          <h3>Pemotongan URL</h3>
                          <p>Anda dapat memotong URL
@@ -174,7 +172,7 @@
              <!-- story -->
              <div class="col-md-4" style="margin-bottom: 2%;">
                  <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" style="margin-top: 10%;"><path fill="#BA2D3B" d="M5.5 8H6v.5a1 1 0 0 0 2 0V8h.5a1 1 0 0 0 0-2H8v-.5a1 1 0 0 0-2 0V6h-.5a1 1 0 0 0 0 2Zm-.62 11.12a1 1 0 0 0 1.41 0l.71-.71l.71.71a1 1 0 0 0 1.41 0a1 1 0 0 0 0-1.41L8.41 17l.71-.71a1 1 0 0 0-1.41-1.41l-.71.71l-.71-.71a1 1 0 0 0-1.41 1.41l.71.71l-.71.71a1 1 0 0 0 0 1.41ZM20 1H4a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V4a3 3 0 0 0-3-3Zm-9 20H4a1 1 0 0 1-1-1v-7h8Zm0-10H3V4a1 1 0 0 1 1-1h7Zm10 9a1 1 0 0 1-1 1h-7v-8h8Zm0-9h-8V3h7a1 1 0 0 1 1 1Zm-5.5 5.5h3a1 1 0 0 0 0-2h-3a1 1 0 0 0 0 2Zm3-10.5h-3a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2Zm-3 13.5h3a1 1 0 0 0 0-2h-3a1 1 0 0 0 0 2Z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg"width="80" height="80" viewBox="0 0 576 512" style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#104898" d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
                      <div class="story_text">
                            <h3>Pembuatan Microsite</h3>
                          <p>Juga Disebut tautan Bio sering digunakan
@@ -187,7 +185,7 @@
              <!-- story -->
              <div class="col-md-4" style="margin-bottom: 2%;">
                  <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="70" viewBox="0 0 640 512" style="margin-top: 10%;"><path fill="#BA2D3B" d="M320 0c17.7 0 32 14.3 32 32v208c0 8.8 7.2 16 16 16s16-7.2 16-16V64c0-17.7 14.3-32 32-32s32 14.3 32 32v176c0 8.8 7.2 16 16 16s16-7.2 16-16V128c0-17.7 14.3-32 32-32s32 14.3 32 32v195.1c-11.9 4.8-21.3 14.9-25 27.8l-8.9 31.2l-31.2 8.9c-18.3 5.3-30.9 22-30.9 41c0 18.9 12.5 35.6 30.6 40.9C448.4 497.4 409.9 512 368 512h-19.2c-59.6 0-116.9-22.9-160-64L76.4 341c-16-15.2-16.6-40.6-1.4-56.6s40.6-16.6 56.6-1.4l60.5 57.6c0-1.5-.1-3.1-.1-4.6V64c0-17.7 14.3-32 32-32s32 14.3 32 32v176c0 8.8 7.2 16 16 16s16-7.2 16-16V32c0-17.7 14.3-32 32-32zm-7.3 326.6c-1.1-3.9-4.7-6.6-8.7-6.6s-7.6 2.7-8.7 6.6L288 352l-25.4 7.3c-3.9 1.1-6.6 4.7-6.6 8.7s2.7 7.6 6.6 8.7L288 384l7.3 25.4c1.1 3.9 4.7 6.6 8.7 6.6s7.6-2.7 8.7-6.6L320 384l25.4-7.3c3.9-1.1 6.6-4.7 6.6-8.7s-2.7-7.6-6.6-8.7L320 352l-7.3-25.4zM104 120l48.3 13.8c4.6 1.3 7.7 5.5 7.7 10.2s-3.1 8.9-7.7 10.2L104 168l-13.8 48.3c-1.3 4.6-5.5 7.7-10.2 7.7s-8.9-3.1-10.2-7.7L56 168L7.7 154.2C3.1 152.9 0 148.7 0 144s3.1-8.9 7.7-10.2L56 120l13.8-48.3C71.1 67.1 75.3 64 80 64s8.9 3.1 10.2 7.7L104 120zm480 288l48.3 13.8c4.6 1.3 7.7 5.5 7.7 10.2s-3.1 8.9-7.7 10.2L584 456l-13.8 48.3c-1.3 4.6-5.5 7.7-10.2 7.7s-8.9-3.1-10.2-7.7L536 456l-48.3-13.8c-4.6-1.3-7.7-5.5-7.7-10.2s3.1-8.9 7.7-10.2L536 408l13.8-48.3c1.3-4.6 5.5-7.7 10.2-7.7s8.9 3.1 10.2 7.7L584 408z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 512 512" style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#104898" d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64V400c0 44.2 35.8 80 80 80H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H80c-8.8 0-16-7.2-16-16V64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L240 221.3l57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z"/></svg>
                      <div class="story_text">
                            <h3>Analitik</h3>
                          <p>Untuk melacak kinerja tautan Link.id Anda,
@@ -350,31 +348,49 @@
               	  <!-- footer link 1 -->
                   <div class="col-lg-4 col-md-6 col-12">
                       <div class="abt_side">
-                        <div class="logo"> <img src="https://i.postimg.cc/0NVBwBW8/logoland.png" alt="image" ></div>
-                        <ul>
-                          <li><a href="mailto:kalopsia@gmail.com">kalopsia@gmail.com</a></li>
-                          <li><a href="https://api.whatsapp.com/send?phone=+628123456789">+62 0812 3456 789</a></li>
-                          <li><a href="#">Hummasoft Technology</a></li>
-                        </ul>
-                        <ul class="social_media">
-                          <li><a href="#" id="facebook-link"><i class="icofont-facebook"></i></a></li>
-                          <li><a href="#" id="twitter-link"><i class="icofont-twitter"></i></a></li>
-                          <li><a href="#" id="instagram-link"><i class="icofont-instagram"></i></a></li>
-                      </ul>
-                      
+                        <div class="logo"> <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image" style="margin-top: -50px;" ></div>
                       </div>
                   </div>
 
                   <!-- footer link 3 -->
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <div class="links">
-                      <h3>Tentang</h3>
-                        <ul style="text-align: justify;">
-                          <li><a href="/Home">Beranda</a></li>
-                            <li><a href="#features">Tentang</a></li>
-                            <li><a href="#kontak">Kontak</a></li>
-                            <li><a href="/login">Login</a></li>
-                        </ul>
+                  <div class="row">
+                    <div class="col-lg-5 col-md-6 col-12">
+                      <div class="links">
+                        <h3>Dukungan</h3>
+                          <ul style="text-align: justify;">
+                            <li><a href="/Home">Bantuan</a></li>
+                              <li><a href="#features">Laporkan</a></li>
+                              <li><a href="#kontak">Status</a></li>
+                          </ul>
+                      </div>
+                    </div>
+                    <div class="col-lg-7 col-md-6 col-12">
+                      <div class="links">
+                        <h3>Hubungi Kami</h3>
+                          <ul style="text-align: justify;">
+                            <li>
+                              <a href="https://wa.me/085606270454">
+                                  <i class="fab fa-whatsapp"></i>
+                                  085606270454
+                              </a>
+                          </li>
+                          
+                          <li>
+                            <a href="#features">
+                                <i class="fab fa-instagram"></i>
+                                @link.id
+                            </a>
+                        </li>
+                        
+                        <li>
+                          <a href="#features">
+                              <i class="fab fa-twitter"></i>
+                              @link.id
+                          </a>
+                      </li>
+                      
+                          </ul>
+                      </div>
                     </div>
                   </div>
               </div>
@@ -389,10 +405,8 @@
             <div class="container">
               <!-- row start -->
               <div class="row">
-                <div class="col-md-12">
-                  <center>
-                    <p>© Kalopsia</p>
-                    </center>
+                <div class="col-md-12" style="text-align: right;">
+                    <p>©LINK.ID Dikelola oleh PT. Hummatech</p>
                 </div>
             </div>
             <!-- row end -->
