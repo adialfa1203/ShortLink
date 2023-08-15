@@ -60,7 +60,6 @@
     </div><!--end row-->
     <div class="card">
         <div class="card-body">
-            <p class="text-muted">Use <code>table-borderless</code> to set a table without borders.</p>
             <div class="table-responsive">
                 <table class="table table-borderless align-middle table-nowrap mb-0">
                     <thead>
