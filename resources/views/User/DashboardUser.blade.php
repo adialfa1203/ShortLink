@@ -67,6 +67,9 @@
     .card-title {
         font-size: 13px; /* Anda bisa mengatur ukuran font sesuai keinginan */
     }
+    .text-white {
+    color: white !important;
+}
 </style>
       
 </head>
@@ -1590,15 +1593,16 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="card border-bottom border-2 card-animate border-secondary" data-bs-toggle="modal" data-bs-target="#addAmount">
-                                        <div class="card-body d-flex justify-content-between align-items-center" style="background-color: #910000">
-                                            <div class="wrapper d-flex align-items-center">
-                                                <i class="bi bi-link-45deg custom-icon-size"></i>
-                                                <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white">Buat Tautan Baru</p>
-                                            </div>
-                                            <i class="ri-arrow-right-s-line custom-icon-size"></i>
-                                        </div>
-                                    </div>
+                                   <div class="card border-bottom border-2 card-animate border-secondary" data-bs-toggle="modal" data-bs-target="#addAmount">
+    <div class="card-body d-flex justify-content-between align-items-center" style="background-color: #910000">
+        <div class="wrapper d-flex align-items-center">
+            <i class="bi bi-link-45deg custom-icon-size"></i>
+            <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white">Buat Tautan Baru</p>
+        </div>
+        <i class="ri-arrow-right-s-line custom-icon-size"></i>
+    </div>
+</div>
+
 
                                     {{-- modal --}}
                                     <div class="modal fade" id="addAmount" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
@@ -1860,11 +1864,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex mb-4 pb-1">
-                                    <div class="flex-grow-1">
                                         <h6 class="card-title">Tautan dibuat/bulan <i class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip" data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i></h6>
-                                       
-                                    </div>
-                                   
                                 </div>
                                 <div class="progress" data-bs-toggle="tooltip" data-bs-title="$234.95 Paid Amount">
                                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
