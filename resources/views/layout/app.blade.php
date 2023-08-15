@@ -948,7 +948,11 @@
     <!-- real estate earnings init JS -->
     <script src="{{ asset ('assets/js/pages/real-estate-earnings.init.js') }}"></script>
 
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/modal.init.js')}}"></script>
+<!-- Lord Icon -->
+        <script src="{{asset('template/cdn.lordicon.com/mssddfmo.js')}}"></script>
 
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/prismjs/prism.js')}}"></script>
     <!-- App js -->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/app.js') }}"></script>
     @yield('script')
