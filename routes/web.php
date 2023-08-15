@@ -4,7 +4,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\UserdataController;
+use App\Http\Controllers\ShortLinkController;
+use App\Http\Controllers\DahsboardController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,17 +64,24 @@ Route::get('/DashboardUser', function () {
     return view('User.DashboardUser');
 });
 
+
 //Middleware User
 Route::group(['middleware' => ['role:user']], function () {
 Route::get('profiluser', [ProfilController::class, 'profile']);
 Route::post('updateprofil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
-
+Route::get('/tester', function () {
+    return view('tester.afterlogin');
+});
 });
 
 //Middleware Admin
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::get('/tester', function () {
-        return view('tester.afterlogin');
-    });
+    
 });
 
+//ShortLink 
+Route::get('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
+
+Route::get('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
+//dahsboard
+Route::get('dashboard', [DahsboardController::class, 'dashboard']);

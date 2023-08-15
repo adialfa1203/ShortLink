@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('microsites', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('type');
+            $table->foreignId('type_id')->references('id')->on('types')->onUpdate('cascade')->onDelete('cascade');
             $table->string('background');
             $table->string('title');
             $table->string('description');

@@ -26,7 +26,7 @@ class AuthController extends Controller
             if ($user->hasRole('admin')) {
                 return redirect('tester')->with('success', 'Login Admin Berhasil');
             } elseif ($user->hasRole('user')) {
-                return redirect('')->with('success', 'Login User Berhasil');
+                return redirect('tester')->with('success', 'Login User Berhasil');
             }
         }
         return redirect()->route('login')->with('error', 'Email atau Password Yang Anda Masukkan Salah');
@@ -57,6 +57,8 @@ class AuthController extends Controller
             'password.required' => 'Kata sandi harus diisi.',
             'password.min' => 'Kata sandi minimal terdiri dari 8 karakter.'
         ]);
+        
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
