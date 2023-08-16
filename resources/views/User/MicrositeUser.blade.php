@@ -46,20 +46,21 @@
                 </div>
             </div><!--end card-->
 
+            @foreach ($data as $row)
             <div class="col-12">
                 <div class="card card-body">
                     <div class="wrapper d-flex align-items-center">
-                        <div class="avatar-md">
+                        <div class="avatar-md col-1">
                             <div class="avatar-title bg-success-subtle text-success fs-xl rounded mx-3">
                                 <img src="https://i.postimg.cc/tR5pMsYz/orang-gtg.jpg" style="width: 150%; height: 100%;"
                                     alt="Gambar">
                             </div>
                         </div>
-                        <div class="wrapper mx-5">
-                            <h5 class="card-title">Adi</h5>
-                            <p class="card-text text-muted">ShortLink.id/Adi</p>
+                        <div class="wrapper mx-5 col-7">
+                            <h5 class="card-title">{{$row->name_microsite}}</h5>
+                            <p class="card-text text-muted">{{$row->link_microsite}}</p>
                         </div>
-                        <div style="margin-left:55%;"  >
+                        <div class="col-4" >
                             <a href="" class="btn btn-primary btn-xs"><i class="bi bi-bar-chart-fill"></i> Statistik</a>
                             <a href="" class="btn btn-primary btn-xs"><i class="bi bi-pencil-square"></i> Edit</a>
                             <a href="" class="btn btn-primary btn-xs"><i class="bi bi-share-fill"></i> </a>
@@ -67,6 +68,7 @@
                     </div>
                 </div>
             </div><!-- end col -->
+            @endforeach
         </div>
         <!-- container-fluid -->
     </div>

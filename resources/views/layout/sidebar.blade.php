@@ -88,7 +88,7 @@
                                 @php
                                 $email = Auth::user()->email;
                                 @endphp
-                            
+
                                 @if (strlen($email) < 15)
                                     <span class="d-none d-xl-block ms-1 fs-sm user-name-sub-text text-white">
                                         {{ $email }}
@@ -117,14 +117,14 @@
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link " href="#sidebarDashboards" role="button" aria-expanded="false"
+                    <a class="nav-link menu-link " href="/dashboard-user" role="button" aria-expanded="false"
                         aria-controls="sidebarDashboards">
                         <i class="bi bi-house-fill"></i> <span data-key="t-dashboards">Dasbor</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="apps-email.html" class="nav-link menu-link"> <i class="bi bi-bar-chart-line-fill"></i>
+                    <a href="/analytic-user" class="nav-link menu-link"> <i class="bi bi-bar-chart-line-fill"></i>
                         <span data-key="t-email">Analitik</span> </a>
                 </li>
 
@@ -136,11 +136,11 @@
                     <div class="collapse menu-dropdown" id="sidebarEcommerce">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="apps-ecommerce-products.html" class="nav-link" data-key="t-products">Tutan
+                                <a href="/Link" class="nav-link" data-key="t-products">Tutan
                                     Aktif</a>
                             </li>
                             <li class="nav-item">
-                                <a href="apps-ecommerce-products-grid.html" class="nav-link"
+                                <a href="/archive-link" class="nav-link"
                                     data-key="t-products-grid">Tautan Diarsip</a>
                             </li>
                         </ul>
@@ -148,17 +148,17 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="apps-file-manager.html" class="nav-link menu-link"> <i class="bi bi-person-badge-fill"></i>
+                    <a href="/microsite-user" class="nav-link menu-link"> <i class="bi bi-person-badge-fill"></i>
                         <span data-key="t-file-manager">Microsite</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="/subscribe-user">
                         <i class="bi bi-fire"></i> <span data-key="t-widgets">Berlangganan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="apps-chat.html" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
+                    <a href="/profil-user" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
                             data-key="t-chat">Profil</span> </a>
                 </li>
             </ul>

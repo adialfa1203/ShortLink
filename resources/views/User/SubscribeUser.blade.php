@@ -41,7 +41,7 @@
                                                 <p class="card-text text-muted long-text">Anda menggunakan layanan gratis dari link.id</p>
                                             </div>
                                             <div style="margin-left:30%;"  >
-                                                <button type="button" class="btn btn-outline-danger">Berlangganan Sekarang</button>
+                                                <a href="/subscribe-product-user" type="button" class="btn btn-outline-danger">Berlangganan Sekarang</a>
                                             </div>
                                         </div>
                                     </div>

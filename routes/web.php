@@ -5,9 +5,13 @@ use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\LinkAdminController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfilController;
-use App\Http\Controllers\UserdataController;
+use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\ShortLinkController;
 use App\Http\Controllers\DahsboardController;
+use App\Http\Controllers\MicrositeController;
+use App\Http\Controllers\AnalyticUserController;
+use App\Http\Controllers\ArchiveLinkController;
+use App\Http\Controllers\SubscribeUserController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -24,8 +28,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 //Auth
 Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::get('/loginuser',[AuthController::class,'loginuser'])->name('loginuser');
-Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
-Route::get('/Userdata', [UserdataController::class, 'index'])->name('index');
+
 Route::get('register', [AuthController::class, 'register']);
 Route::post('registeruser', [AuthController::class, 'registeruser'])->name('registeruser');
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
@@ -35,8 +38,7 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/LinkAdmin', [LinkAdminController::class, 'LinkAdmin'])->name('LinkAdmin');
-Route::get('/DashboardAdmin', [DashboardAdminController::class, 'DashboardAdmin'])->name('DashboardAdmin');
-Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
+
 
 
 Route::get('/', function () {
@@ -63,7 +65,7 @@ Route::post('sendEmail', [AuthController::class, 'sendSampleEmail'])->name('send
 Route::get('verification', [AuthController::class, 'verification'])->name('verification');
 Route::post('verificationCode', [AuthController::class, 'verificationCode'])->name('verificationCode');
 
-Route::get('/DashboardUser', function () {
+Route::get('/dashboard-user', function () {
     return view('User.DashboardUser');
 });
 
@@ -72,18 +74,34 @@ Route::get('/DashboardUser', function () {
 Route::group(['middleware' => ['role:user']], function () {
 //Dashboard
 Route::get('dashboard', [DahsboardController::class, 'dashboard']);
-//ShortLink 
+//ShortLink
 Route::get('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
 Route::get('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
 //Profile
-Route::get('profil-user', [ProfilController::class, 'profile']);
+Route::get('/profil-user', [ProfilController::class, 'profile']);
 Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
+//Microsite
+Route::get('/microsite-user', [MicrositeController::class, 'micrositeUser'])->name('microsite.user');
+//analytic
+Route::get('/analytic-user', [AnalyticUserController::class, 'analyticUser'])->name('analytic.user');
+//link
+Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
+Route::get('/archive-link', [ArchiveLinkController::class, 'archiveLink'])->name('archive.link');
+//subscribe
+Route::get('/subscribe-user', [SubscribeUserController::class, 'subscribeUser'])->name('subscribe.user');
+Route::get('/subscribe-product-user', [SubscribeUserController::class, 'subscribeProductUser'])->name('subscribe.product.user');
+
+//Dashboard Admin
+Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin'])->name('dashboard.admin');
+//Data User (Admin)
+Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
+
 
 });
 
 //Middleware Admin
 Route::group(['middleware' => ['role:admin']], function () {
-    
+
 });
 
 Route::get('/tester', function () {
