@@ -21,11 +21,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//Auth
 Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::get('/loginuser',[AuthController::class,'loginuser'])->name('loginuser');
 Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
 Route::get('/Userdata', [UserdataController::class, 'index'])->name('index');
-
 Route::get('register', [AuthController::class, 'register']);
 Route::post('registeruser', [AuthController::class, 'registeruser'])->name('registeruser');
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
@@ -57,7 +57,6 @@ Route::get('sendemail', [AuthController::class, 'sendEmail']);
 Route::get('changepassword/{email}', [AuthController::class, 'changePassword'])->name('changePassword');
 //change password
 Route::post('updatePassword', [AuthController::class, 'updatePassword'])->name('updatePassword');
-
 //sendEmail
 Route::get('sample', [AuthController::class, 'sendEmail']);
 Route::post('sendEmail', [AuthController::class, 'sendSampleEmail'])->name('sendEmail');
@@ -71,11 +70,15 @@ Route::get('/DashboardUser', function () {
 
 //Middleware User
 Route::group(['middleware' => ['role:user']], function () {
-Route::get('profiluser', [ProfilController::class, 'profile']);
-Route::post('updateprofil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
-Route::get('/tester', function () {
-    return view('tester.afterlogin');
-});
+//Dashboard
+Route::get('dashboard', [DahsboardController::class, 'dashboard']);
+//ShortLink 
+Route::get('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
+Route::get('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
+//Profile
+Route::get('profil-user', [ProfilController::class, 'profile']);
+Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
+
 });
 
 //Middleware Admin
@@ -83,9 +86,6 @@ Route::group(['middleware' => ['role:admin']], function () {
     
 });
 
-//ShortLink 
-Route::get('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
-
-Route::get('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
-//dahsboard
-Route::get('dashboard', [DahsboardController::class, 'dashboard']);
+Route::get('/tester', function () {
+    return view('tester.afterlogin');
+});

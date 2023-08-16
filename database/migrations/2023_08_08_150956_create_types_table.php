@@ -13,12 +13,8 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->string('acara');
-            $table->string('brand');
-            $table->string('edukasi');
-            $table->string('kartu_nama');
-            $table->string('makanan_minuman');
-            $table->string('portofolio');
+            $table->string('name');
+            $table->string('template');
             $table->timestamps();
         });
     }

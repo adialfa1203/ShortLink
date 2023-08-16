@@ -83,21 +83,20 @@
                                 src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/32/avatar-1.jpg') }}"
                                 alt="Header Avatar">
                             <div class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium text-white user-name-text">Hi!
-                                    Felix Jevon32</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium text-white user-name-text">Hi! {{ Auth::user()->name }}</span>
 
                                 @php
-                                    $marqueeText = 'felixalbertajevon@gmail.com';
+                                $email = Auth::user()->email;
                                 @endphp
-
-                                @if (strlen($marqueeText) < 15)
+                            
+                                @if (strlen($email) < 15)
                                     <span class="d-none d-xl-block ms-1 fs-sm user-name-sub-text text-white">
-                                        {{ $marqueeText }}
+                                        {{ $email }}
                                     </span>
                                 @else
                                     <marquee behavior="scroll" direction="right" scrollamount="4"
                                         class="d-none d-xl-block ms-1 fs-sm user-name-sub-text text-white">
-                                        {{ $marqueeText }}
+                                        {{ $email }}
                                     </marquee>
                                 @endif
                             </div>
