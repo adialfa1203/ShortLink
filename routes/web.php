@@ -54,6 +54,9 @@ Route::get('/Microsite', function () {
 Route::get('/Subscribe', function () {
     return view('Landingpage.Subscribe');
 });
+Route::get('/ProfilAdmin', function () {
+    return view('Admin.ProfilAdmin');
+});
 
 //Send email
 Route::get('send-email', [AuthController::class, 'sendEmail']);

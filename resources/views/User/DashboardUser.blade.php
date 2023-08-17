@@ -1,8 +1,40 @@
 @extends('layout.app')
 
 @section('title','Dashboard')
+                        @section('style')
+            <style>
+            .custom-icon-size {
+          font-size: 24px; /* Ubah ukuran sesuai kebutuhan */
+        }
+        .custom-icon-size {
+          font-size: 30px; /* Ubah ukuran font sesuai kebutuhan Anda */
+          color: #fafafa; /* Warna merah muda */
+        }
+        .custom-card {
+          background-color: #910000; /* Warna merah muda */
+          border-color: #FF69B4; /* Warna border merah muda */
+        }
+    .form-label {
+        display: block;
+    }
+     .unavailable-text {
+        font-size: 10px;
+        opacity: 0.5; /* Nilai opacity untuk membuat teks transparan */
+    }
+    .quota-reset {
+        font-size: 12px;
+        opacity: 0.5; /* Nilai opacity untuk membuat teks sedikit memudar */
+    }
+    .card-title {
+        font-size: 13px; /* Anda bisa mengatur ukuran font sesuai keinginan */
+    }
+    .text-white {
+    color: white !important;
+}
+</style>
+            @endsection
             @section('content')
-            <form action="{{ route ('shortLink')}}" method="POST">
+            <form action="" method="POST">
                 @csrf
                 <div class="page-content">
                     <div class="container-fluid">
@@ -181,16 +213,98 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-danger" style="width: 100%;">
+                                                            <button type="button" class="btn btn-danger" style="width: 100%;">
                                                                 <i class="bi bi-link-45deg"></i> Singkatkan!
                                                             </button>
                                                         </div>
                                                     </div>
                                                     
+
                                                 </div>
                                             </div>
                                         </div>
+<!-- Modal singkatkan-->
+        <div class="modal fade" id="singkatkan" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="addAmountLabel">Buat tautan pemendek baru</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#!">
+                            <div class="row g-3">
+                                <div class="col-lg-12">
                                        
+<button type="button" class="btn btn-primary" style="width: 100%;">
+                                Berhasil menyingkatkan tautan!
+                                </button>
+
+                                </div>
+                                <div class="col-lg-12">
+                                    <label class="form-label">Nanda</label>
+                                </div>
+                                <hr>
+                                <div class="col-lg-12">
+                                    <div>
+                                        <label for="cardNumber" class="form-label">URL yang diperpendek</label>
+                                        <input type="text" class="form-control" id="cardNumber" placeholder="link.id/ 1SrQ">
+                                    </div>
+                                </div>
+                                <form action="#!">
+                                    <div class="countdown-input-subscribe">
+                                        <label for="cardNumber" class="form-label">URL asli</label>
+                                        <div class="countdown-input-subscribe">
+                                        <input type="email" class="form-control" placeholder="https://www.youtube.com/watch?v=JLd09jmEAYA">
+                                        <button class="btn btn-danger" type="button" id="button-email"  data-bs-toggle="modal" data-bs-target="#bagikan"><i class="bi bi-share-fill"></i> &nbsp; Bagikan</button>
+                    
+                    
+                                        </div>
+                                    </div>
+                                </form>
+                               
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end Modal singkatkan -->
+                  <!-- Modal bagikan -->
+                  <div class="modal fade" id="bagikan" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <form action="#!">
+                                    <div class="row g-3">
+
+                                        <form action="#!">
+                                            <div class="countdown-input-subscribe">
+                                                
+                                                
+                                                <label class="" type="" id="button-email"><i class="bi bi-facebook"></i> &nbsp; Facebook</label>
+                                                                                                <label class="" type="" id="button-email"><i class="bi bi-twitter"></i> &nbsp; Twitter</label>
+                                                                                                <label class="" type="" id="button-email"><i class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
+                                                                                                <label class="" type="" id="button-email"><i class="bi bi-clipboard-fill"></i> &nbsp; Copy</label>
+                                                                                                <label class="" type="" id="button-email"><i class="bi bi-qr-code"></i> &nbsp; QR Code</label>
+                                                
+
+
+
+
+                            
+                            
+                                               
+                                                </div>
+                                                                                        </form>
+                                       
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end Modal bagikan-->
                                     
                               
                             </div><!--end col-->
