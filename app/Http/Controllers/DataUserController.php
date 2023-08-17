@@ -8,6 +8,6 @@ class DataUserController extends Controller
 {
     public function dataUser(){
         $data = User::all();
-        return view('DataUserAdmin', compact('data'));
+        return view('Admin.DataUserAdmin', compact('data'));
     }
 }

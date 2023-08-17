@@ -95,17 +95,17 @@ Route::get('/archive-link', [ArchiveLinkController::class, 'archiveLink'])->name
 Route::get('/subscribe-user', [SubscribeUserController::class, 'subscribeUser'])->name('subscribe.user');
 Route::get('/subscribe-product-user', [SubscribeUserController::class, 'subscribeProductUser'])->name('subscribe.product.user');
 
-//Dashboard Admin
-Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin'])->name('dashboard.admin');
-//Data User (Admin)
-Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
 
 
 });
 
 //Middleware Admin
 Route::group(['middleware' => ['role:admin']], function () {
-    
+//Dashboard Admin
+Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin'])->name('dashboard.admin');
+//Data User (Admin)
+Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
+
 });
 
 Route::get('/tester', function () {

@@ -9,6 +9,6 @@ class DashboardAdminController extends Controller
    public function dashboardAdmin()
    {
     $jumlahuser = User::count();
-    return view('DashboardAdmin.index', compact('jumlahuser'));
+    return view('Admin.index', compact('jumlahuser'));
    }
 }

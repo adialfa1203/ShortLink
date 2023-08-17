@@ -104,7 +104,7 @@
         <div class="buttons">
             @auth
                 @if (auth()->user()->hasRole('admin'))
-                    <a class="btn btn-info" href="{{ route('DashboardAdmin') }}">Kembali</a>
+                    <a class="btn btn-info" href="{{ route('dashboard.admin') }}">Kembali</a>
                 @elseif(auth()->user()->hasRole('user'))
                     <a class="btn btn-info" href="{{ route('DashboardEmployee') }}">Kembali</a>
                 @else
