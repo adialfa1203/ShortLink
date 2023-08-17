@@ -98,7 +98,7 @@
                                                                 <div class="col-lg-12">
                                                                     <div>
                                                                         <label for="AmountInput" class="form-label">Tautan Panjang</label>
-                                                                        <input  class="form-control" name="destination_url" id="AmountInput" placeholder="http://domain-mu.id/yang-paling-panjang-disini">
+                                                                        <input  class="form-control" name="original_url" id="AmountInput" placeholder="http://domain-mu.id/yang-paling-panjang-disini">
                                                                     </div>
                                                                 </div>
                                                                 
@@ -213,7 +213,7 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" style="width: 100%;">
+                                                            <button type="button" class="btn btn-danger" style="width: 100%;" data-bs-toggle="modal" data-bs-target="#singkatkan">
                                                                 <i class="bi bi-link-45deg"></i> Singkatkan!
                                                             </button>
                                                         </div>
@@ -283,20 +283,24 @@
                                                 
                                                 
                                                 <label class="" type="" id="button-email"><i class="bi bi-facebook"></i> &nbsp; Facebook</label>
-                                                                                                <label class="" type="" id="button-email"><i class="bi bi-twitter"></i> &nbsp; Twitter</label>
-                                                                                                <label class="" type="" id="button-email"><i class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
-                                                                                                <label class="" type="" id="button-email"><i class="bi bi-clipboard-fill"></i> &nbsp; Copy</label>
-                                                                                                <label class="" type="" id="button-email"><i class="bi bi-qr-code"></i> &nbsp; QR Code</label>
+                                                <div class="countdown-input-subscribe">
+                                                <label class="" type="" id="button-email"><i class="bi bi-twitter"></i> &nbsp; Twitter</label>
+                                                <div class="countdown-input-subscribe">
+                                                <label class="" type="" id="button-email"><i class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
+                                                <div class="countdown-input-subscribe">
+                                                <label class="" type="" id="button-email"><i class="bi bi-clipboard-fill"></i> &nbsp; Copy</label>
+                                                <div class="countdown-input-subscribe">
+                                             <label class="" type="" id="button-email"><i class="bi bi-qr-code"></i> &nbsp; QR Code</label>
                                                 
 
 
 
-
-                            
-                            
-                                               
                                                 </div>
-                                                                                        </form>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                </div>
+                                            </form>
                                        
                                     </div>
                                 </form>
