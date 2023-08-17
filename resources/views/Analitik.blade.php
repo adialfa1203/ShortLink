@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.user.app')
 
 @section('title', 'Analitik')
 
@@ -86,7 +86,7 @@
                                             <div class="counter-value mr-2" data-target="0">0</div>
                                             <div class="note-box d-flex">
                                                 <div class="color-box" style="background-color: rgb(16, 143, 233); margin-bottom: auto;"></div>
-                                                <div class="small-note" style="color: rgb(16, 143, 233); white-space: nowrap; margin-top: auto;"> Litetime visitor</div>
+                                                <div class="small-note" style="color: rgb(16, 143, 233); white-space: nowrap; margin-top: auto;">Litetime visitor</div>
                                             </div>
                                         </div>
                                     </div>

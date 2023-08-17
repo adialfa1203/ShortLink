@@ -11,4 +11,8 @@ class AnalyticUserController extends Controller
 
         return view('User.AnalyticUser');
     }
+    public function Analitik()
+    {
+        return view('Analitik');
+    }
 }

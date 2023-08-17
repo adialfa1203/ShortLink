@@ -54,7 +54,7 @@
     <div id="layout-wrapper">
 
         <!-- ========== App Menu ========== -->
-        @include('layout.useer.sidebar')
+        @include('layout.user.sidebar')
         <!-- Left Sidebar End -->
 
         <!-- Vertical Overlay-->
