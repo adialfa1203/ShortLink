@@ -125,7 +125,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="apps-email.html" class="nav-link menu-link"> <i class="bi bi-bar-chart-line-fill"></i>
+                    <a href="/Analitik" class="nav-link menu-link"> <i class="bi bi-bar-chart-line-fill"></i>
                         <span data-key="t-email">Analitik</span> </a>
                 </li>
 

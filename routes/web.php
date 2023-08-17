@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\UserdataController;
 use App\Http\Controllers\ShortLinkController;
 use App\Http\Controllers\DahsboardController;
+use App\Http\Controllers\AnaliticController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -37,6 +38,7 @@ Route::get('/welcome', function () {
 Route::get('/LinkAdmin', [LinkAdminController::class, 'LinkAdmin'])->name('LinkAdmin');
 Route::get('/DashboardAdmin', [DashboardAdminController::class, 'DashboardAdmin'])->name('DashboardAdmin');
 Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
+Route::get('/Analitik', [AnaliticController::class, 'Analitik'])->name('Analitik');
 
 
 Route::get('/', function () {
