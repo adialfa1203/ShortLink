@@ -38,7 +38,8 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/LinkAdmin', [LinkAdminController::class, 'LinkAdmin'])->name('LinkAdmin');
-
+Route::get('/DashboardAdmin', [DashboardAdminController::class, 'DashboardAdmin'])->name('DashboardAdmin');
+Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
 
 
 Route::get('/', function () {
@@ -55,17 +56,17 @@ Route::get('/Subscribe', function () {
 });
 
 //Send email
-Route::get('sendemail', [AuthController::class, 'sendEmail']);
-Route::get('changepassword/{email}', [AuthController::class, 'changePassword'])->name('changePassword');
+Route::get('send-email', [AuthController::class, 'sendEmail']);
+Route::get('change-password/{email}', [AuthController::class, 'changePassword'])->name('changePassword');
 //change password
 Route::post('updatePassword', [AuthController::class, 'updatePassword'])->name('updatePassword');
 //sendEmail
 Route::get('sample', [AuthController::class, 'sendEmail']);
-Route::post('sendEmail', [AuthController::class, 'sendSampleEmail'])->name('sendEmail');
+Route::post('send-emails', [AuthController::class, 'sendSampleEmail'])->name('sendEmail');
 Route::get('verification', [AuthController::class, 'verification'])->name('verification');
 Route::post('verificationCode', [AuthController::class, 'verificationCode'])->name('verificationCode');
 
-Route::get('/dashboard-user', function () {
+Route::get('/DashboardUser', function () {
     return view('User.DashboardUser');
 });
 
@@ -75,8 +76,8 @@ Route::group(['middleware' => ['role:user']], function () {
 //Dashboard
 Route::get('dashboard', [DahsboardController::class, 'dashboard']);
 //ShortLink
-Route::get('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
-Route::get('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
+Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
+Route::post('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
 //Profile
 Route::get('/profil-user', [ProfilController::class, 'profile']);
 Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
@@ -101,7 +102,7 @@ Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.us
 
 //Middleware Admin
 Route::group(['middleware' => ['role:admin']], function () {
-
+    
 });
 
 Route::get('/tester', function () {

@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('original_url');
             $table->string('short_code');
-            $table->datetime('creation_date');
-            $table->datetime('expiration_date');
-            $table->bigInteger('click_count');
+            $table->datetime('creation_date')->nullable();
+            $table->datetime('expiration_date')->nullable();
+            $table->bigInteger('click_count')->nullable();
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('qr_code');
-            $table->boolean('active');
-            $table->string('password');
-            $table->string('deleted_add');
+            $table->string('qr_code')->nullable();
+            $table->boolean('active')->nullable();
+            $table->string('password')->nullable();
+            $table->string('deleted_add')->nullable();
             $table->timestamps();
         });
     }

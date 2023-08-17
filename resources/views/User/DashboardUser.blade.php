@@ -66,7 +66,7 @@
                                                                 <div class="col-lg-12">
                                                                     <div>
                                                                         <label for="AmountInput" class="form-label">Tautan Panjang</label>
-                                                                        <input  class="form-control" name="original_url" id="AmountInput" placeholder="http://domain-mu.id/yang-paling-panjang-disini">
+                                                                        <input  class="form-control" name="destination_url" id="AmountInput" placeholder="http://domain-mu.id/yang-paling-panjang-disini">
                                                                     </div>
                                                                 </div>
                                                                 
@@ -181,7 +181,7 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" style="width: 100%;">
+                                                            <button type="submit" class="btn btn-danger" style="width: 100%;">
                                                                 <i class="bi bi-link-45deg"></i> Singkatkan!
                                                             </button>
                                                         </div>

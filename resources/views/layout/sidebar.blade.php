@@ -80,8 +80,7 @@
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
                             <img class="header-profile-user"
-                                src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/32/avatar-1.jpg') }}"
-                                alt="Header Avatar">
+                            src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="Header Avatar">                        
                             <div class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium text-white user-name-text">Hi! {{ Auth::user()->name }}</span>
 
@@ -104,7 +103,7 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome Richard!</h6>
+                        <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}!</h6>
                         <a class="dropdown-item" href="pages-profile.html"><i
                                 class="mdi mdi-account-circle text-muted fs-lg align-middle me-1"></i> <span
                                 class="align-middle">Profile</span></a>
@@ -117,7 +116,7 @@
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link " href="/dashboard-user" role="button" aria-expanded="false"
+                    <a class="nav-link menu-link " href="{{ url ('dashboard')}}" role="button" aria-expanded="false"
                         aria-controls="sidebarDashboards">
                         <i class="bi bi-house-fill"></i> <span data-key="t-dashboards">Dasbor</span>
                     </a>
@@ -158,7 +157,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/profil-user" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
+                    <a href="{{ url ('profil-user')}}" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
                             data-key="t-chat">Profil</span> </a>
                 </li>
             </ul>
