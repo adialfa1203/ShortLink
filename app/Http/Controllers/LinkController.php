@@ -8,6 +8,6 @@ class LinkController extends Controller
 {
     public function Link()
     {
-        return view('Link');
+        return view('User.Link');
     }
 }

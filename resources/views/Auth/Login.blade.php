@@ -86,7 +86,7 @@
 
                                                     <div class="mb-3">
                                                         <div class="float-end">
-                                                            <a href="{{ url('sendemail')}}" class="text-muted">Lupa kata sandi?</a>
+                                                            <a href="{{ url('send-email')}}" class="text-muted">Lupa kata sandi?</a>
                                                         </div>
                                                         <label class="form-label" for="password-input">Kata Sandi</label>
                                                         <div class="position-relative auth-pass-inputgroup mb-3">

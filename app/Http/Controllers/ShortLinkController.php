@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Link;
+use App\Models\ShortUrl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,49 +14,36 @@ class ShortLinkController extends Controller
     public function shortLink(Request $request)
     {
         $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
-        $shortURLObject = $builder->destinationUrl('https://www.google.com')->forwardQueryParams()->make();
+        $shortURLObject = $builder->destinationUrl($request->destination_url)->forwardQueryParams()->make();
         $shortURL = $shortURLObject->default_short_url;
 
-        // $ShortLink = Link::create([
-        //     'original_url' => $request->original_url,
-        //     'short_code' => $shortURL,
-        //     'creation_date' => $request->creation_date,
-        //     'expiration_date' => $request->expiration_date,
-        //     'click_count' => $request->click_count,
-        //     'user_id' => Auth::user()->user_id,
-        //     'qr_code' => $request->qr_code,
-        //     'active' => $request->active,
-        //     'password' => Hash::make($request->password),
-        //     'deleted_add' => $request->deleted_add,                       
-        // ]);
-        // $request->original_url
-        $ShortLink = Link::create([
-            'original_url' => 'https://www.google.com',
-            'short_code' => $shortURL,
-            'creation_date' => '2023-08-11',
-            'expiration_date' => '2023-08-12',
-            'click_count' => '11',
-            'user_id' => '1',
-            'qr_code' => 'https://google.com',
-            'active' => '1',
-            'password' => Hash::make('12345'),
-            'deleted_add' => 'yaaa',                     
+        // dd($shortURLObject);
+
+        $find = ShortUrl::query()->where('url_key', $shortURLObject->url_key)->first();
+
+        $find->update([
+            'user_id' => auth()->id(),
+            'default_short_url' => $shortURL,
+            'password' => Hash::make($request->password),
+            'active' => $request->active,
+            'deleted_add' => $request->deleted_add,
+            'click_count' => $request->click_count,
+            'qr_code' => $request->qr_code,
         ]);
         // $request->original_url
-
         // $ShortLink = Link::create([
-        //     'original_url' => 'https://open.spotify.com/intl-id',
+        //     'original_url' => 'https://www.google.com',
         //     'short_code' => $shortURL,
         //     'creation_date' => '2023-08-11',
         //     'expiration_date' => '2023-08-12',
         //     'click_count' => '11',
         //     'user_id' => '1',
-        //     'qr_code' => 'https://open.spotify.com/intl-id',
+        //     'qr_code' => 'https://google.com',
         //     'active' => '1',
         //     'password' => Hash::make('12345'),
-        //     'deleted_add' => 'yaaa',                       
+        //     'deleted_add' => 'yaaa',                     
         // ]);
-        $ShortLink->save();
+        // $ShortLink->save();
 
         return redirect()->back()->with('success', 'Link berhasil terpotong');
     }

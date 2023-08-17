@@ -80,24 +80,22 @@
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
                             <img class="header-profile-user"
-                                src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/32/avatar-1.jpg') }}"
-                                alt="Header Avatar">
+                            src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="Header Avatar">                        
                             <div class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium text-white user-name-text">Hi!
-                                    Felix Jevon32</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium text-white user-name-text">Hi! {{ Auth::user()->name }}</span>
 
                                 @php
-                                    $marqueeText = 'felixalbertajevon@gmail.com';
+                                $email = Auth::user()->email;
                                 @endphp
 
-                                @if (strlen($marqueeText) < 15)
+                                @if (strlen($email) < 15)
                                     <span class="d-none d-xl-block ms-1 fs-sm user-name-sub-text text-white">
-                                        {{ $marqueeText }}
+                                        {{ $email }}
                                     </span>
                                 @else
                                     <marquee behavior="scroll" direction="right" scrollamount="4"
                                         class="d-none d-xl-block ms-1 fs-sm user-name-sub-text text-white">
-                                        {{ $marqueeText }}
+                                        {{ $email }}
                                     </marquee>
                                 @endif
                             </div>
@@ -105,7 +103,7 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome Richard!</h6>
+                        <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}!</h6>
                         <a class="dropdown-item" href="pages-profile.html"><i
                                 class="mdi mdi-account-circle text-muted fs-lg align-middle me-1"></i> <span
                                 class="align-middle">Profile</span></a>
@@ -118,14 +116,14 @@
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link " href="#sidebarDashboards" role="button" aria-expanded="false"
+                    <a class="nav-link menu-link " href="{{ url ('dashboard')}}" role="button" aria-expanded="false"
                         aria-controls="sidebarDashboards">
                         <i class="bi bi-house-fill"></i> <span data-key="t-dashboards">Dasbor</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="/Analitik" class="nav-link menu-link"> <i class="bi bi-bar-chart-line-fill"></i>
+                    <a href="/analytic-user" class="nav-link menu-link"> <i class="bi bi-bar-chart-line-fill"></i>
                         <span data-key="t-email">Analitik</span> </a>
                 </li>
 
@@ -137,11 +135,11 @@
                     <div class="collapse menu-dropdown" id="sidebarEcommerce">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="apps-ecommerce-products.html" class="nav-link" data-key="t-products">Tutan
+                                <a href="/Link" class="nav-link" data-key="t-products">Tutan
                                     Aktif</a>
                             </li>
                             <li class="nav-item">
-                                <a href="apps-ecommerce-products-grid.html" class="nav-link"
+                                <a href="/archive-link" class="nav-link"
                                     data-key="t-products-grid">Tautan Diarsip</a>
                             </li>
                         </ul>
@@ -149,17 +147,17 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="apps-file-manager.html" class="nav-link menu-link"> <i class="bi bi-person-badge-fill"></i>
+                    <a href="/microsite-user" class="nav-link menu-link"> <i class="bi bi-person-badge-fill"></i>
                         <span data-key="t-file-manager">Microsite</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="/subscribe-user">
                         <i class="bi bi-fire"></i> <span data-key="t-widgets">Berlangganan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="apps-chat.html" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
+                    <a href="{{ url ('profil-user')}}" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
                             data-key="t-chat">Profil</span> </a>
                 </li>
             </ul>

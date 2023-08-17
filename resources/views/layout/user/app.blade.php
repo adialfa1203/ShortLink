@@ -54,12 +54,12 @@
     <div id="layout-wrapper">
 
         <!-- ========== App Menu ========== -->
-        @include('layout.sidebar')
+        @include('layout.useer.sidebar')
         <!-- Left Sidebar End -->
 
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>
-        @include('layout.header')
+        @include('layout.user.header')
 
         <!-- removeNotificationModal -->
         <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
@@ -124,7 +124,7 @@
         <div class="main-content">
             @yield('content')
 
-            @include('layout.footer')
+            @include('layout.user.footer')
         </div>
         <!-- end main content-->
 
