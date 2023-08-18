@@ -81,14 +81,14 @@
                                     <!--end col-->
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label for="emailInput" class="form-label">Kata sandi baru</label>
+                                            <label for="phonenumberInput" class="form-label">Kata sandi lama</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input name="new_password" type="password" class="form-control pe-5 password-input " placeholder="Kata sandi baru">
+                                                <input name="old_password" type="password" class="form-control pe-5 password-input" placeholder="Kata sandi lama">
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon">
                                                     <i class="ri-eye-fill align-middle"></i>
                                                 </button>
                                             </div>
-                                            @error('new_password')
+                                            @error('old_password')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -103,14 +103,14 @@
                                     <!--end col-->
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label for="phonenumberInput" class="form-label">Kata sandi lama</label>
+                                            <label for="emailInput" class="form-label">Kata sandi baru</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input name="old_password" type="password" class="form-control pe-5 password-input" placeholder="Kata sandi lama">
+                                                <input name="new_password" type="password" class="form-control pe-5 password-input " placeholder="Kata sandi baru">
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon">
                                                     <i class="ri-eye-fill align-middle"></i>
                                                 </button>
                                             </div>
-                                            @error('old_password')
+                                            @error('new_password')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>

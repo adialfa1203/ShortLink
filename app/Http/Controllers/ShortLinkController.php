@@ -29,23 +29,11 @@ class ShortLinkController extends Controller
             'deleted_add' => $request->deleted_add,
             'click_count' => $request->click_count,
             'qr_code' => $request->qr_code,
+            'title' => $request->title,
+            'deactivated_at' => $request->deactivated_at
         ]);
-        // $request->original_url
-        // $ShortLink = Link::create([
-        //     'original_url' => 'https://www.google.com',
-        //     'short_code' => $shortURL,
-        //     'creation_date' => '2023-08-11',
-        //     'expiration_date' => '2023-08-12',
-        //     'click_count' => '11',
-        //     'user_id' => '1',
-        //     'qr_code' => 'https://google.com',
-        //     'active' => '1',
-        //     'password' => Hash::make('12345'),
-        //     'deleted_add' => 'yaaa',                     
-        // ]);
-        // $ShortLink->save();
 
-        return redirect()->back()->with('success', 'Link berhasil terpotong');
+        return response()->json($find);
     }
     public function accessShortLink(Request $request, $shortCode)
     {
