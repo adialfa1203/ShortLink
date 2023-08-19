@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.user.app')
 
 @section('title','Link')
 @section('style')
