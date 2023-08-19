@@ -123,7 +123,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="/Subscribe">
                         <i class="bi bi-fire"></i> <span data-key="t-widgets">Berlangganan</span>
                     </a>
                 </li>

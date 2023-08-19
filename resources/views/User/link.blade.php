@@ -56,9 +56,6 @@
                 <div class="countdown-input-subscribe">
                     <input type="email" class="form-control" placeholder="Https://domainkamu.id/very-long-link" required />
                     <button class="btn btn-danger" type="submit" id="button-email"><i class="fa-solid fa-link"></i> &nbsp; Singkatkan</button>
-
-
-
                 </div>
             </form>
             <div class="collapse" id="collapseExample">

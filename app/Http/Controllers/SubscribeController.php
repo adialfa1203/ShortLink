@@ -10,4 +10,8 @@ class SubscribeController extends Controller
     {
         return view('SubscribeAdmin.index');
     }
+    public function AddSubscribe()
+    {
+        return view('SubscribeAdmin.AddSubscribe');
+    }
 }
