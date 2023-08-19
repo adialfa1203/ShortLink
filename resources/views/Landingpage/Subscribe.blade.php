@@ -214,7 +214,7 @@ img { border: 0; max-width: 100%; }
               <!-- h1 -->
               <h1>Berlangganan</h1>
               <!-- p -->
-              <span style="color: yellow;">Mari berlangganan dari sekarang!!
+              <span style="color: white;">Mari berlangganan dari sekarang!!
                 Agar Anda bebas untuk memangkas atau mempersingkat URL
                 yang Anda inginkan.</span>
             </div>
@@ -272,6 +272,8 @@ img { border: 0; max-width: 100%; }
                         <h5 class="mb-3 fs-17"><b>Gratis</b></h5>
                         <p class="text-muted">Paket Dasar untuk memulai perjalanan Anda bersama kami</p>
                         <p class="text-muted">Benar-benar gratis</p>
+                        <p class="text-muted">Menyingkat Tautan 100/bln, bisa Kustomisasi nama tautan dan  Mengubah nama tautan kustomisasi 5/bln</p>
+
                     </div>
                 </div>
             </div>
@@ -283,6 +285,7 @@ img { border: 0; max-width: 100%; }
                         <h2 class="mb-3 fs-17"><b>Rp. 100.000/bln</b></h2>
                         <h5 class="mb-3 fs-17"><b>Premium</b></h5>
                         <p class="text-muted">Paket Dasar untuk memulai perjalanan Anda bersama kami</p>
+                        <p class="text-muted">Menyingkat Tautan tanpa batas, bisa Kustomisasi nama tautan, Mengubah nama tautan kustomisasi tanpa batas dan mengubah Tautan Asli tanpa batas</p>
 
                     </div>
                 </div>

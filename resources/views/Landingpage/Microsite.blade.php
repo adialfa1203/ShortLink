@@ -165,7 +165,7 @@
                             <!-- h1 -->
                             <h1>Buat dan kreasikan tautan Anda</h1>
                             <!-- p -->
-                            <span style="color: yellow;">Penyingkat tautan terbaik dan Terpendek
+                            <span style="color: white;">Penyingkat tautan terbaik dan Terpendek
                                 untuk</span>
                             <p>Apakah kamu ingin mempersingkat URL sesuai dengan
                                 yang Anda inginkan?
@@ -234,9 +234,9 @@
                         <div class="col-xl-5 col-lg-6">
                             <div>
                                 {{-- <h6 class="home-subtitle text-primary mb-4">Awesome</h6> --}}
-                                <h1 style="color: #FFC727; font-family">Gak cuma untuk Bio-
+                                <h1 style="color: #1B5A6F;">Gak cuma untuk Bio-
                                     Link</h1>
-                                <h6 class="" style="color: #FFC727;">Microsite bukan hanya tentang memasukkan
+                                <h6 class="" style="color:  #1B5A6F;">Microsite bukan hanya tentang memasukkan
                                     banyak tautan ke dalam satu URL,
                                     Anda juga dapat membuat dan menempatkan banyak konten dan berkreasi sendiri
                                     dengan lebih banyak konten di dalam microsite Anda.</h6>
