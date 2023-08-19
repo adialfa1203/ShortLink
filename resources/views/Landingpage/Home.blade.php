@@ -31,6 +31,61 @@
 </head>
 
 <body>
+  <style>
+    body {
+        margin: 0;
+        /* Reset margin body */
+    }
+
+    .link-form {
+        width: 100%;
+        margin: 20px;
+        /* Ubah margin dari auto ke nilai tetap */
+        padding: 20px;
+    }
+
+    .input-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .input-icon {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .input-icon i {
+        position: absolute;
+        right: 10px;
+        color: #00;
+        margin-right: 17%;
+        /* Margin kanan untuk jarak antara ikon dan input */
+        margin-top: 1%;
+        /* Margin bawah untuk jarak antara ikon dan teks */
+    }
+
+    input[type="text"] {
+        width: 400px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 10px 0 0 10px;
+    }
+
+    button {
+        background-color: #D9D9D9;
+        color: #000;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 0 10px 10px 0;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #D9D9D9;
+    }
+</style>
 
   <!-- Page-wrapper-Start -->
   <div class="page_wrapper">
@@ -108,9 +163,25 @@
               <p>Apakah kamu ingin mempersingkat URL sesuai dengan
                 yang Anda inginkan?
               </p>
-              <span style="color: yellow;">Kini tersedia web yang dapat membantu untuk memrpumah dalam 
+              <span style="color: #ffffff;">Kini tersedia web yang dapat membantu untuk mempermudah anda dalam 
                 mempersingkat URL yang Anda  mau!</span>
+                
             </div>
+            <div class="link-form" style="float: left;">
+              <form action="#" method="#">
+                  <div class="input-container">
+                      <div class="input-icon">
+                          <input type="text" id="linkInput" name="linkInput"
+                              placeholder="Https://Domain-mu/yang-ingin kau ">
+                          <button type="submit">
+                              <i class="fas fa-link"></i>
+                              <span style="margin-left: 10%">Singkatkan</span>
+                          </button>
+
+                      </div>
+                  </div>
+              </form>
+          </div>
             <!-- app buttons -->
 
             <!-- users -->
@@ -168,7 +239,6 @@
                      </div>
                  </div>
              </div>
-
              <!-- story -->
              <div class="col-md-4" style="margin-bottom: 2%;">
                  <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">

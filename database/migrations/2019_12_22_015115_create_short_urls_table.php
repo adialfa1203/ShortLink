@@ -18,6 +18,7 @@ class CreateShortUrlsTable extends Migration
             $table->text('destination_url');
             $table->string('url_key')->unique();
             $table->foreignId('user_id')->nullable()->constrained();
+            $table->string('title')->nullable();
             $table->string('password')->nullable();
             $table->string('qr_code')->nullable();
             $table->string('deleted_add')->nullable();
