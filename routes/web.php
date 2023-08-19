@@ -9,6 +9,7 @@ use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\ShortLinkController;
 use App\Http\Controllers\DahsboardController;
 use App\Http\Controllers\AnalyticUserController;
+use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -102,6 +103,7 @@ Route::get('/subscribe-product-user', [SubscribeUserController::class, 'subscrib
 Route::group(['middleware' => ['role:admin']], function () {
 //Dashboard Admin
 Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin'])->name('dashboard.admin');
+Route::get('/Subscribe', [SubscribeController::class, 'Subscribe'])->name('Subscribe');
 //Data User (Admin)
 Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
 
