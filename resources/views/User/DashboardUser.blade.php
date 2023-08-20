@@ -248,25 +248,26 @@
                                                     <label class="form-label">Judul</label>
                                                     <input class="form-control" id="title">
                                                 </div>
-                                                <hr>
+                                                <hr>                                                
                                                 <div class="col-lg-12">
                                                     <div>
                                                         <label for="cardNumber" class="form-label">URL yang
                                                             diperpendek</label>
-                                                        <input class="form-control" id="default_short_url">
-                                                    </div>
-                                                </div>
-                                                    <div class="countdown-input-subscribe">
-                                                        <label for="cardNumber" class="form-label">URL asli</label>
-                                                        <div class="countdown-input-subscribe">
-                                                            <input id="destination_url"  class="form-control">
-                                                            <button class="btn btn-danger" type="button"
+                                                            <div class="countdown-input-subscribe">
+                                                                <input id="default_short_url"  class="form-control">  
+                                                                <button class="btn btn-danger" type="button"
                                                                 id="button-email" data-bs-toggle="modal"
                                                                 data-bs-target="#bagikan"><i class="bi bi-share-fill"></i>
-                                                                &nbsp; Bagikan</button>
-                                                        </div>
+                                                                &nbsp; Bagikan</button>                                                          
+                                                            </div>
                                                     </div>
-
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="countdown-input-subscribe">
+                                                        <label for="cardNumber" class="form-label">URL asli</label>
+                                                        <input class="form-control" id="destination_url">                                                     
+                                                    </div>
+                                                </div>
                                             </div>
                                     </div>
                                 </div>

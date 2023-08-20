@@ -13,8 +13,12 @@ class ShortLinkController extends Controller
 {
     public function shortLink(Request $request)
     {
+        // $Visits = \AshAllenDesign\ShortURL\Models\ShortURL::find(1);
+        // $visits = $Visits->visits;
+
         $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
-        $shortURLObject = $builder->destinationUrl($request->destination_url)->forwardQueryParams()->make();
+        $shortURLObject = $builder->destinationUrl($request->destination_url)
+                        ->make();
         $shortURL = $shortURLObject->default_short_url;
 
         // dd($shortURLObject);

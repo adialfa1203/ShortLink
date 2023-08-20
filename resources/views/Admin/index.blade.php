@@ -19,7 +19,7 @@
                             <i class="fa-solid fa-user" style="font-size: 30px;"></i>
                         </div>
                         <div class="col-10">
-                            <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{$jumlahuser}}">0</span> </h3>
+                            <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{$totalUser}}">0</span> </h3>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                             <i class="fa-solid fa-link" style="font-size: 30px;"></i>
                         </div>
                         <div class="col-10">
-                            <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="291.32">0</span> </h3>
+                            <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{$totalUrl}}">0</span> </h3>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                             <i class="fa-solid fa-user" style="font-size: 30px;"></i>
                         </div>
                         <div class="col-10">
-                            <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="291.32">0</span> </h3>
+                            <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="">0</span> </h3>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                             <i class="fa-solid fa-thumbs-up" style="font-size: 30px;"></i>
                         </div>
                         <div class="col-10">
-                            <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="291.32">0</span> </h3>
+                            <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="0">0</span> </h3>
                         </div>
                     </div>
                 </div>

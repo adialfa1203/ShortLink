@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\ShortLinkController;
 use App\Http\Controllers\DahsboardController;
+use App\Http\Controllers\ArchiveLinkController;
 use App\Http\Controllers\AnalyticUserController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\MicrositeController;
@@ -96,8 +97,6 @@ Route::get('/archive-link', [ArchiveLinkController::class, 'archiveLink'])->name
 Route::get('/subscribe-user', [SubscribeUserController::class, 'subscribeUser'])->name('subscribe.user');
 Route::get('/subscribe-product-user', [SubscribeUserController::class, 'subscribeProductUser'])->name('subscribe.product.user');
 
-
-
 });
 
 //Middleware Admin
@@ -108,9 +107,11 @@ Route::get('/Subscribe', [SubscribeController::class, 'Subscribe'])->name('Subsc
 Route::get('/AddSubscribe', [SubscribeController::class, 'AddSubscribe'])->name('AddSubscribe');
 //Data User (Admin)
 Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
-
+//link
+Route::get('/link-admin', [LinkAdminController::class, 'linkAdmin'])->name('link.admin');
 });
 
+Route::post('/negroo', [ProfilController::class, 'updateAdmin']);
 Route::get('/tester', function () {
     return view('tester.afterlogin');
 });
