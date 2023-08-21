@@ -606,19 +606,48 @@
 
                         // Menampilkan tombol Copy
                         $("#copyButton").show();
+
+                        // Mengosongkan nilai-nilai input di dalam modal
+                        $("#AmountInput").val(""); // Mengosongkan input tautan panjang
+                        $("#cardNumber").val(""); // Mengosongkan input judul
+                        $(".password-input").val(""); // Mengosongkan input kata sandi
+                        $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
+
+                        // Menutup modal saat ini (jika perlu)
+                        $("#addAmount").modal("hide");
                     },
                     error: function(error) {
                         console.error("Error:", error);
                     }
                 });
             });
+            // Menangani klik pada tombol mata
+            $("#password-addon").click(function() {
+                var passwordInput = $(".password-input");
+                var passwordAddon = $("#password-addon");
 
+                if (passwordInput.attr("type") === "password") {
+                    passwordInput.attr("type", "text");
+                    passwordAddon.html('<i class="ri-eye-off-fill align-middle"></i>');
+                } else {
+                    passwordInput.attr("type", "password");
+                    passwordAddon.html('<i class="ri-eye-fill align-middle"></i>');
+                }
+            });
             // Menangani klik pada tombol Copy
             $("#copyButton").click(function() {
                 var copyText = document.getElementById("default_short_url");
                 copyText.select();
                 document.execCommand("copy");
                 // Anda bisa menambahkan logika lain untuk memberi tahu pengguna bahwa tautan telah disalin
+            });
+            // Menangani klik pada tombol Reset untuk modal tautan terproteksi
+            $("#resetButton").click(function() {
+                $(".password-input").val(""); // Mengosongkan input kata sandi
+            });
+            // Menangani klik pada tombol Reset untuk modal tautan berjangka
+            $("#time-reset").click(function() {
+                $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
             });
         });
     </script>
@@ -643,63 +672,5 @@
     <script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/pages/profile-setting.init.js')}}"></script>
     <script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#shortlinkSubmit").submit(function(event) {
-                event.preventDefault(); // Mencegah form submission bawaan
-
-                var formData = $(this).serialize(); // Mengambil data form
-                $.ajax({
-                    type: "POST",
-                    url: "short-link", // Ganti dengan URL endpoint Anda
-                    data: formData,
-                    success: function(response) {
-                        // Tangani respons dari server
-
-                        // Mengosongkan nilai-nilai input di dalam modal
-                        $("#AmountInput").val(""); // Mengosongkan input tautan panjang
-                        $("#cardNumber").val(""); // Mengosongkan input judul
-                        $(".password-input").val(""); // Mengosongkan input kata sandi
-                        $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
-
-                        // Menutup modal saat ini (jika perlu)
-                        $("#addAmount").modal("hide");
-
-                        // Menampilkan modal berikutnya (jika perlu)
-                        // ...
-
-                        // Atau, Anda bisa menggunakan window.location untuk berpindah ke halaman baru
-                        // window.location.href = "halaman-baru";
-                    },
-                    error: function(error) {
-                        console.error("Error:", error);
-                    }
-                });
-            });
-
-            // Menangani klik pada tombol mata
-            $("#password-addon").click(function() {
-                var passwordInput = $(".password-input");
-                var passwordAddon = $("#password-addon");
-
-                if (passwordInput.attr("type") === "password") {
-                    passwordInput.attr("type", "text");
-                    passwordAddon.html('<i class="ri-eye-off-fill align-middle"></i>');
-                } else {
-                    passwordInput.attr("type", "password");
-                    passwordAddon.html('<i class="ri-eye-fill align-middle"></i>');
-                }
-            });
-
-            // Menangani klik pada tombol Reset untuk modal tautan terproteksi
-            $("#resetButton").click(function() {
-                $(".password-input").val(""); // Mengosongkan input kata sandi
-            });
-
-            // Menangani klik pada tombol Reset untuk modal tautan berjangka
-            $("#time-reset").click(function() {
-                $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
-            });
-        });
-    </script>
+    
 @endsection

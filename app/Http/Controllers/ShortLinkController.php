@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Link;
 use App\Models\ShortUrl;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use AshAllenDesign\ShortURL\Classes\Builder;
+use Carbon\Carbon;
 
 class ShortLinkController extends Controller
 {
@@ -17,9 +17,17 @@ class ShortLinkController extends Controller
         // $visits = $Visits->visits;
 
         $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
-        $shortURLObject = $builder->destinationUrl($request->destination_url)
+        $shortURLObject = $builder
+                        ->destinationUrl($request->destination_url)
+                        ->when(
+                            $request->date('activation'),
+                            function (Builder $builder) use($request) : Builder  {
+                                return $builder
+                                    ->activateAt(now())
+                                    ->deactivateAt(Carbon::parse($request->deactivated_at));
+                            },
+                        )
                         ->make();
-        $shortURL = $shortURLObject->default_short_url;
 
         // dd($shortURLObject);
 
@@ -27,7 +35,7 @@ class ShortLinkController extends Controller
 
         $find->update([
             'user_id' => auth()->id(),
-            'default_short_url' => $shortURL,
+            'default_short_url' => $shortURLObject->default_short_url,
             'password' => Hash::make($request->password),
             'active' => $request->active,
             'deleted_add' => $request->deleted_add,

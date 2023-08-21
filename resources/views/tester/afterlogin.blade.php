@@ -1,57 +1,122 @@
 <?php
 
-namespace App\Http\Controllers;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\LinkAdminController;
+use App\Http\Controllers\LinkController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\DataUserController;
+use App\Http\Controllers\ShortLinkController;
+use App\Http\Controllers\DahsboardController;
+use App\Http\Controllers\ArchiveLinkController;
+use App\Http\Controllers\AnalyticUserController;
+use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\MicrositeController;
+use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+//Auth
+Route::get('/login',[AuthController::class,'login'])->name('login');
+Route::get('/loginuser',[AuthController::class,'loginuser'])->name('loginuser');
 
-class ProfilController extends Controller
-{
-    public function profileAdmin()
-    {
-        $admin = Auth::user();
-        return view('Admin.ProfilAdmin', compact('admin'));
-    }
-    
-    public function updateAdmin(Request $request)
-    {
-        $admin = Auth::user(); 
-        $request->validate([
-            'name' => 'required',
-            // 'email' => 'required|email|unique:users,email,' . $admin->id,
-            'number' => 'required', // Sesuaikan dengan kebutuhan Anda
-            'old_password' => 'required_with:new_password', // Memerlukan old_password hanya jika new_password diisi
-            'new_password' => 'nullable|min:8|confirmed',
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
-        ],);
+Route::get('register', [AuthController::class, 'register']);
+Route::post('registeruser', [AuthController::class, 'registeruser'])->name('registeruser');
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
-    
-// dd($request);
-        // Mengisi data pengguna dengan data yang diinputkan oleh pengguna
-        $admin->name = $request->name;
-        $admin->email = $request->email;
-        $admin->number = $request->number;
-    
-// Memeriksa dan mengupdate kata sandi jika diinputkan
-        if ($request->filled('new_password')) {
-            if (!Hash::check($request->old_password, $admin->password)) {
-                return redirect()->back()->withErrors(['old_password' => 'Kata sandi lama tidak cocok.']);
-            }
-            $admin->password = Hash::make($request->new_password);
-        }
-    
-// Upload dan simpan gambar profil jika ada
-        if ($request->hasFile('profile_picture')) {
-            $profilePicturePath = $request->file('profile_picture')->store('profile_pictures', 'public');
-            $admin->profile_picture = $profilePicturePath;
-        }
-    
-        $admin->save(); // Menyimpan perubahan pada data pengguna
-        return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
-    }
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+Route::get('/LinkAdmin', [LinkAdminController::class, 'LinkAdmin'])->name('LinkAdmin');
+Route::get('/DashboardAdmin', [DashboardAdminController::class, 'DashboardAdmin'])->name('DashboardAdmin');
+Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
+Route::get('/Analitik', [AnalyticUserController::class, 'Analitik'])->name('Analitik');
 
 
-}
+
+Route::get('/', function () {
+    return view('Landingpage.Home');
+});
+Route::get('/Shortlink', function () {
+    return view('Landingpage.Shortlink');
+});
+Route::get('/Microsite', function () {
+    return view('Landingpage.Microsite');
+});
+Route::get('/Subscribe', function () {
+    return view('Landingpage.Subscribe');
+});
+Route::get('/ProfilAdmin', function () {
+    return view('Admin.ProfilAdmin');
+});
+
+//Send email
+Route::get('send-email', [AuthController::class, 'sendEmail']);
+Route::get('change-password/{email}', [AuthController::class, 'changePassword'])->name('changePassword');
+//change password
+Route::post('updatePassword', [AuthController::class, 'updatePassword'])->name('updatePassword');
+//sendEmail
+Route::get('sample', [AuthController::class, 'sendEmail']);
+Route::post('send-emails', [AuthController::class, 'sendSampleEmail'])->name('sendEmail');
+Route::get('verification', [AuthController::class, 'verification'])->name('verification');
+Route::post('verificationCode', [AuthController::class, 'verificationCode'])->name('verificationCode');
+
+Route::get('/DashboardUser', function () {
+    return view('User.DashboardUser');
+});
+
+
+//Middleware User
+Route::group(['middleware' => ['role:user']], function () {
+//Dashboard
+Route::get('dashboard', [DahsboardController::class, 'dashboard']);
+//ShortLink
+Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
+//AccessLink
+Route::post('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
+//ActiveLink
+Route::post('active-link', [LinkController::class,'activeLink'])->name('active.link');
+//ArchiveLink
+Route::post('archive-link', [LinkController::class,'archiveLink'])->name('archive.link');
+//Profile
+Route::get('/profil-user', [ProfilController::class, 'profile']);
+Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
+//Microsite
+Route::get('/microsite-user', [MicrositeController::class, 'micrositeUser'])->name('microsite.user');
+//analytic
+Route::get('/analytic-user', [AnalyticUserController::class, 'analyticUser'])->name('analytic.user');
+//link
+Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
+Route::get('/archive-link', [ArchiveLinkController::class, 'archiveLink'])->name('archive.link');
+//subscribe
+Route::get('/subscribe-user', [SubscribeUserController::class, 'subscribeUser'])->name('subscribe.user');
+Route::get('/subscribe-product-user', [SubscribeUserController::class, 'subscribeProductUser'])->name('subscribe.product.user');
+
+});
+
+//Middleware Admin
+Route::group(['middleware' => ['role:admin']], function () {
+//Dashboard Admin
+Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin'])->name('dashboard.admin');
+Route::get('/Subscribe', [SubscribeController::class, 'Subscribe'])->name('Subscribe');
+Route::get('/AddSubscribe', [SubscribeController::class, 'AddSubscribe'])->name('AddSubscribe');
+//Data User (Admin)
+Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
+//link
+Route::get('/link-admin', [LinkAdminController::class, 'linkAdmin'])->name('link.admin');
+});
+
+Route::post('/negroo', [ProfilController::class, 'updateAdmin']);
+Route::get('/tester', function () {
+    return view('tester.afterlogin');
+});

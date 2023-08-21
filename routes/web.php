@@ -27,10 +27,10 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 //Auth
 Route::get('/login',[AuthController::class,'login'])->name('login');
-Route::get('/loginuser',[AuthController::class,'loginuser'])->name('loginuser');
+Route::get('/loginuser',[AuthController::class,'loginuser'])->name('login.user');
 
 Route::get('register', [AuthController::class, 'register']);
-Route::post('registeruser', [AuthController::class, 'registeruser'])->name('registeruser');
+Route::post('registeruser', [AuthController::class, 'registeruser'])->name('register.user');
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
 Route::get('/welcome', function () {
@@ -79,7 +79,7 @@ Route::get('/DashboardUser', function () {
 //Middleware User
 Route::group(['middleware' => ['role:user']], function () {
 //Dashboard
-Route::get('dashboard', [DahsboardController::class, 'dashboard']);
+Route::get('dashboard', [DahsboardController::class, 'dashboard'])->name('dashboard.user');
 //ShortLink
 Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
 //AccessLink
@@ -118,7 +118,6 @@ Route::get('/profil-admin', [ProfilController::class, 'profile']);
 Route::post('/update-admin', [ProfilController::class, 'UpdateAdmin'])->name('update.admin');
 });
 
-Route::post('/negroo', [ProfilController::class, 'updateAdmin']);
 Route::get('/tester', function () {
     return view('tester.afterlogin');
 });

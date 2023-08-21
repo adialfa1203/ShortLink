@@ -39,7 +39,7 @@
                             <div class="card border-bottom border-2 card-animate border-primary">
                                 <div class="card-body">
                                     <span class="badge bg-success-subtle text-success float-end"></span>
-                                    <h4 class="mb-4"><span class="counter-value" data-target="2356">0</span></h4>
+                                    <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisits }}">0</span></h4>
 
                                     <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung</p>
                                 </div>
