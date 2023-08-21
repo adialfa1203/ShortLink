@@ -72,7 +72,7 @@
                                                 <p class="text-muted">Sign in to continue to LINK.ID</p>
                                             </div>
                                             <div class="p-2 mt-5">
-                                                <form action="{{ route('loginuser') }}" method="POST">
+                                                <form action="{{ route('login.user') }}" method="POST">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="username" class="form-label">Email <span

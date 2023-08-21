@@ -59,7 +59,7 @@
                                                     <p class="text-muted">Silahkan lengkapi seluruh data dibawah ini!</p>
                                                 </div>
                                                 <div class="p-2 mt-5">
-                                                    <form action="{{ route ('registeruser')}}" method="POST">
+                                                    <form action="{{ route ('register.user')}}" method="POST">
                                                         @csrf
                                                         <div class="row">
                                                             <div class="col-6 mb-3">
