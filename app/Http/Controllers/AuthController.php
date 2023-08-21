@@ -17,16 +17,16 @@ class AuthController extends Controller
         return view('Auth\Login');
     }
 
-    public function loginuser(Request $request){
+    public function loginUser(Request $request){
         $credentials = $request->only('email', 'password');
         $remember = $request->has('remember');
 
         if (Auth::attempt($credentials, $remember)) {
             $user = Auth::user();
             if ($user->hasRole('admin')) {
-                return redirect('dashboard-admin')->with('success', 'Login Admin Berhasil');
+                return redirect()->route('dashboard.admin')->with('success', 'Login Admin Berhasil');
             } elseif ($user->hasRole('user')) {
-                return redirect('dashboard')->with('success', 'Login User Berhasil');
+                return redirect()->route('dashboard.user')->with('success', 'Login User Berhasil');
             }
         }
         return redirect()->route('login')->with('error', 'Email atau Password Yang Anda Masukkan Salah');
@@ -39,7 +39,7 @@ class AuthController extends Controller
         return view('Auth.Register');
     }
 
-    public function registeruser(Request $request)
+    public function registerUser(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
@@ -57,7 +57,7 @@ class AuthController extends Controller
             'password.required' => 'Kata sandi harus diisi.',
             'password.min' => 'Kata sandi minimal terdiri dari 8 karakter.'
         ]);
-        
+
 
         $user = User::create([
             'name' => $request->name,
