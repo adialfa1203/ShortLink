@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LinkAdminController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfilController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\ArchiveLinkController;
 use App\Http\Controllers\AnalyticUserController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\MicrositeController;
+use App\Http\Controllers\SubscribeUserController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -37,9 +39,9 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/LinkAdmin', [LinkAdminController::class, 'LinkAdmin'])->name('LinkAdmin');
-Route::get('/DashboardAdmin', [DashboardAdminController::class, 'DashboardAdmin'])->name('DashboardAdmin');
-Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
+// Route::get('/LinkAdmin', [LinkAdminController::class, 'LinkAdmin'])->name('LinkAdmin');
+// Route::get('/DashboardAdmin', [DashboardAdminController::class, 'DashboardAdmin'])->name('DashboardAdmin');
+// Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
 Route::get('/Analitik', [AnalyticUserController::class, 'Analitik'])->name('Analitik');
 
 
@@ -79,7 +81,8 @@ Route::get('/DashboardUser', function () {
 //Middleware User
 Route::group(['middleware' => ['role:user']], function () {
 //Dashboard
-Route::get('dashboard', [DahsboardController::class, 'dashboard']);
+// Route::get('dashboard', [DahsboardController::class, 'dashboard']);
+Route::get('dashboard', [DahsboardController::class, 'dashboard'])->name('dashboard');
 //ShortLink
 Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
 //AccessLink
@@ -114,6 +117,8 @@ Route::get('/AddSubscribe', [SubscribeController::class, 'AddSubscribe'])->name(
 Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
 //link
 Route::get('/link-admin', [LinkAdminController::class, 'linkAdmin'])->name('link.admin');
+
+
 });
 
 Route::post('/negroo', [ProfilController::class, 'updateAdmin']);

@@ -234,7 +234,7 @@
                                         <h1 class="modal-title" id="addAmountLabel">Buat tautan pemendek baru</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
-                                    </div>                                    
+                                    </div>
                                     <div class="modal-body">
                                             <div class="row g-3">
                                                 <div class="col-lg-12">
@@ -393,11 +393,9 @@
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
                                         <div class="d-flex flex-column h-100">
-                                            <p class="fs-md text-muted mb-4">Properties for sale</p>
+                                            <p class="fs-md text-muted mb-4">Pengunjung </p>
                                             <h3 class="mb-0 mt-auto"><span class="counter-value"
-                                                    data-target="3652">0</span> <small
-                                                    class="text-success fs-xs mb-0 ms-1"><i
-                                                        class="bi bi-arrow-up me-1"></i> 06.19%</small></h3>
+                                                    data-target="3652">0</span></h3>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0">
@@ -413,11 +411,9 @@
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
                                         <div class="d-flex flex-column h-100">
-                                            <p class="fs-md text-muted mb-4">Properties for sale</p>
+                                            <p class="fs-md text-muted mb-4">Pengunjung Unik</p>
                                             <h3 class="mb-0 mt-auto"><span class="counter-value"
-                                                    data-target="3652">0</span> <small
-                                                    class="text-success fs-xs mb-0 ms-1"><i
-                                                        class="bi bi-arrow-up me-1"></i> 06.19%</small></h3>
+                                                    data-target="3652">0</span></h3>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0">
@@ -433,11 +429,9 @@
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
                                         <div class="d-flex flex-column h-100">
-                                            <p class="fs-md text-muted mb-4">Properties for sale</p>
+                                            <p class="fs-md text-muted mb-4">Pengunjung Kode QR</p>
                                             <h3 class="mb-0 mt-auto"><span class="counter-value"
-                                                    data-target="3652">0</span> <small
-                                                    class="text-success fs-xs mb-0 ms-1"><i
-                                                        class="bi bi-arrow-up me-1"></i> 06.19%</small></h3>
+                                                    data-target="3652">0</span></h3>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0">
@@ -592,7 +586,7 @@
         $(document).ready(function() {
             $("#shortlinkSubmit").submit(function(event) {
                 event.preventDefault(); // Mencegah form submission bawaan
-    
+
                 var formData = $(this).serialize(); // Mengambil data form
                 $.ajax({
                     type: "POST",
@@ -604,12 +598,12 @@
                         var defaultShort = response.default_short_url;
                         var title = response.title;
                         var url = response.destination_url;
-    
+
                         // Tampilkan data yang dipotong di dalam input
                         $("#default_short_url").val(defaultShort);
                         $("#title").val(title);
                         $('#destination_url').val(url);
-    
+
                         // Menampilkan tombol Copy
                         $("#copyButton").show();
                     },
@@ -618,7 +612,7 @@
                     }
                 });
             });
-    
+
             // Menangani klik pada tombol Copy
             $("#copyButton").click(function() {
                 var copyText = document.getElementById("default_short_url");
@@ -653,7 +647,7 @@
         $(document).ready(function() {
             $("#shortlinkSubmit").submit(function(event) {
                 event.preventDefault(); // Mencegah form submission bawaan
-    
+
                 var formData = $(this).serialize(); // Mengambil data form
                 $.ajax({
                     type: "POST",
@@ -661,19 +655,19 @@
                     data: formData,
                     success: function(response) {
                         // Tangani respons dari server
-    
+
                         // Mengosongkan nilai-nilai input di dalam modal
                         $("#AmountInput").val(""); // Mengosongkan input tautan panjang
                         $("#cardNumber").val(""); // Mengosongkan input judul
                         $(".password-input").val(""); // Mengosongkan input kata sandi
                         $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
-    
+
                         // Menutup modal saat ini (jika perlu)
                         $("#addAmount").modal("hide");
-    
+
                         // Menampilkan modal berikutnya (jika perlu)
                         // ...
-    
+
                         // Atau, Anda bisa menggunakan window.location untuk berpindah ke halaman baru
                         // window.location.href = "halaman-baru";
                     },
@@ -682,12 +676,12 @@
                     }
                 });
             });
-    
+
             // Menangani klik pada tombol mata
             $("#password-addon").click(function() {
                 var passwordInput = $(".password-input");
                 var passwordAddon = $("#password-addon");
-    
+
                 if (passwordInput.attr("type") === "password") {
                     passwordInput.attr("type", "text");
                     passwordAddon.html('<i class="ri-eye-off-fill align-middle"></i>');
@@ -696,12 +690,12 @@
                     passwordAddon.html('<i class="ri-eye-fill align-middle"></i>');
                 }
             });
-    
+
             // Menangani klik pada tombol Reset untuk modal tautan terproteksi
             $("#resetButton").click(function() {
                 $(".password-input").val(""); // Mengosongkan input kata sandi
             });
-    
+
             // Menangani klik pada tombol Reset untuk modal tautan berjangka
             $("#time-reset").click(function() {
                 $(".time-input").val(""); // Mengosongkan input tanggal dan waktu

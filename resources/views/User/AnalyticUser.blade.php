@@ -28,8 +28,8 @@
                         <div class="col">
                             <div class="card border-bottom border-2 card-animate border-secondary">
                                 <div class="card-body">
-                                    <span class="badge bg-success-subtle text-success float-end"><i class="ph-trend-up align-middle me-1"></i> 9.3%</span>
-                                    <h4 class="mb-4">$<span class="counter-value" data-target="798.97">0</span>M</h4>
+                                    <span class="badge bg-success-subtle text-success float-end"></span>
+                                    <h4 class="mb-4"><span class="counter-value" data-target="798.97">0</span></h4>
 
                                     <p class="text-muted fw-medium text-uppercase mb-0">Jumlah tautan</p>
                                 </div>
@@ -38,8 +38,8 @@
                         <div class="col">
                             <div class="card border-bottom border-2 card-animate border-primary">
                                 <div class="card-body">
-                                    <span class="badge bg-success-subtle text-success float-end"><i class="ph-trend-up align-middle me-1"></i> 20.8%</span>
-                                    <h4 class="mb-4">$<span class="counter-value" data-target="2356">0</span>k</h4>
+                                    <span class="badge bg-success-subtle text-success float-end"></span>
+                                    <h4 class="mb-4"><span class="counter-value" data-target="2356">0</span></h4>
 
                                     <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung</p>
                                 </div>
@@ -48,8 +48,8 @@
                         <div class="col">
                             <div class="card border-bottom border-2 card-animate border-warning">
                                 <div class="card-body">
-                                    <span class="badge bg-success-subtle text-success float-end"><i class="ph-trend-up align-middle me-1"></i> 12.6%</span>
-                                    <h4 class="mb-4">$<span class="counter-value" data-target="337.32">0</span>M</h4>
+                                    <span class="badge bg-success-subtle text-success float-end"></span>
+                                    <h4 class="mb-4"><span class="counter-value" data-target="337.32">0</span></h4>
 
                                     <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Unik</p>
                                 </div>
@@ -58,15 +58,15 @@
                         <div class="col">
                             <div class="card border-bottom border-2 card-animate border-success">
                                 <div class="card-body">
-                                    <span class="badge bg-success-subtle text-success float-end"><i class="ph-trend-up align-middle me-1"></i> 18.7%</span>
-                                    <h4 class="mb-4">$<span class="counter-value" data-target="365.32">0</span>M</h4>
+                                    <span class="badge bg-success-subtle text-success float-end"></span>
+                                    <h4 class="mb-4"><span class="counter-value" data-target="365.32">0</span></h4>
 
-                                    <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Kode Unik</p>
+                                    <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Kode QR</p>
                                 </div>
                             </div>
                         </div>
                     </div><!---end row-->
-
+                    <div> <h5 class="mb-sm-0">Lini Masa</h5></div><br>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">

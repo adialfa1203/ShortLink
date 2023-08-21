@@ -133,7 +133,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link menu-link"><i class="bi bi-link-45deg"></i>
+                    <a href="/link-admin" class="nav-link menu-link"><i class="bi bi-link-45deg"></i>
                         <span data-key="t-email">Tautan</span> </a>
                 </li>
                 <li class="nav-item">

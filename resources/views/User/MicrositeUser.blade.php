@@ -27,14 +27,24 @@
                 <div class="card-body">
                     <div class="row align-items-center g-2">
                         <div class="col-lg-3 me-auto">
-                            <a href="#addInstructor" data-bs-toggle="modal" class="btn btn-success"><i
-                                    class="bi bi-plus-circle align-baseline me-1"></i> Buat Baru</a>
+
+                                    {{-- <div class="hstack gap-2">
+                                        <a href="" class="btn rounded-pill btn-danger btn-sm"> Semua</a>
+                                        <a href="" class="btn rounded-pill btn-secondary btn-sm"> Terakhir Diperbarui</a>
+                                    </div> --}}
+                            <!-- Radio Buttons -->
+                            <div class="btn-group  mt-2" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked="">
+                                <label class="btn btn-light" for="btnradio1">Semua</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                <label class="btn btn-light" for="btnradio2">Terakhir Diperbarui</label>
+                            </div>
+
                         </div><!--end col-->
                         <div class="col-lg-auto">
-                            <div class="hstack gap-2">
-                                <a href="" class="btn rounded-pill btn-danger"> Semua</a>
-                                <a href="" class="btn rounded-pill btn-secondary"> Terakhir Diperbarui</a>
-                            </div>
+                            <a href="#addInstructor" data-bs-toggle="modal" class="btn btn-success"><i
+                                class="bi bi-plus-circle align-baseline me-1"></i> Buat Baru</a>
                         </div><!--end col-->
                         <div class="col-lg-2">
                             <div class="search-box">

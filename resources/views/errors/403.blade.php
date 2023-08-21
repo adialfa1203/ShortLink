@@ -106,7 +106,7 @@
                 @if (auth()->user()->hasRole('admin'))
                     <a class="btn btn-info" href="{{ route('dashboard.admin') }}">Kembali</a>
                 @elseif(auth()->user()->hasRole('user'))
-                    <a class="btn btn-info" href="{{ route('DashboardEmployee') }}">Kembali</a>
+                    <a class="btn btn-info" href="{{ route('dashboard') }}">Kembali</a>
                 @else
                     <a class="btn btn-info" href="{{ route('login') }}">Kembali ke Login</a>
                 @endif

@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class LinkAdminController extends Controller
 {
-    public function LinkAdmin()
+    public function linkAdmin()
     {
-        return view('LinkAdmin.LinkAdmin');
+        return view('Admin.LinkAdmin');
     }
 }
