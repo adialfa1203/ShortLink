@@ -13,7 +13,6 @@
                 <div class="col-xl-12 ">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                         <h4 class="mb-sm-0">Profil Pengguna</h4>
-
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
