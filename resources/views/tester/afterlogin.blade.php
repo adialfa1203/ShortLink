@@ -12,14 +12,14 @@ class ProfilController extends Controller
 {
     public function profileAdmin()
     {
-        $admin = User::where('email', 'admin@gmail.com')->first();
+        $admin = Auth::user();
         return view('Admin.ProfilAdmin', compact('admin'));
     }
     
     public function updateAdmin(Request $request)
     {
-        $admin = User::where('email', 'admin@gmail.com')->first();
-                $request->validate([
+        $admin = Auth::user(); 
+        $request->validate([
             'name' => 'required',
             // 'email' => 'required|email|unique:users,email,' . $admin->id,
             'number' => 'required', // Sesuaikan dengan kebutuhan Anda

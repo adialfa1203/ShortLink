@@ -57,19 +57,15 @@
 </style>
 @endsection
 @section('content')
-
+<form action="{{ route ('archive.link')}}" method="POST">
+    @csrf
 <div class="page-content">
     <div class="container-fluid">
-        <div class="card">
-            <form action="#!">
+        <div class="card">            
                 <div class="countdown-input-subscribe">
-                    <input type="email" class="form-control" placeholder="Https://domainkamu.id/very-long-link" required />
+                    <input type="text" name="destination_url" class="form-control" placeholder="Https://domainkamu.id/very-long-link"/>
                     <button class="btn btn-danger" type="submit" id="button-email"><i class="fa-solid fa-link"></i> &nbsp; Singkatkan</button>
-
-
-
-                </div>
-            </form>
+                </div>            
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                     <div class="container">
@@ -79,17 +75,14 @@
                                 <h6 class="card-title mb-0">Judul (Opsional)</h6>
                             </div>
                             <div class="card-body">
-                                <form>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
-                                                <input type="text" class="form-control" id="degreeName" placeholder="Judul" disabled>
+                                                <input type="text" name="title" class="form-control" placeholder="Judul">
                                             </div>
                                         </div>
                                         <!--end col-->
                                     </div>
-                                    <!--end row-->
-                                </form>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -109,7 +102,6 @@
                                                             <h6 class="card-title mb-0"> Tautan terproteksi</h6>
                                                         </div>
                                                         <div class="card-body">
-                                                            <form>
                                                                 <div class="row">
                                                                     <div class="col-lg-12">
                                                                         <div class="mb-3">
@@ -119,16 +111,21 @@
                                                                     <!--end col-->
                                                                     <div class="col-lg-12">
                                                                         <div class="mb-3">
-                                                                            <input type="text" class="form-control" id="degreeName" placeholder="Password">
+                                                                            <div class="position-relative auth-pass-inputgroup mb-3">
+                                                                                <input name="password" type="password" class="form-control pe-5 password-input" placeholder="Kata sandi">
+                                                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon">
+                                                                                    <i class="ri-eye-fill align-middle"></i>
+                                                                                </button>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <!--end col-->
                                                                     <div class="hstack gap-2 justify-content-end">
-                                                                        <a class="btn btn-danger" href="javascript:deleteEl(1)">Delete</a>
+                                                                        <button type="button" id="resetButton" style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; justify-content: flex-end; float: right;">
+                                                                            <span class="bi bi-arrow-clockwise"> Reset</span>
+                                                                        </button>
                                                                     </div>
                                                                 </div>
-                                                                <!--end row-->
-                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -140,7 +137,6 @@
                                                             <h6 class="card-title mb-0"> Tautan berjangka</h6>
                                                         </div>
                                                         <div class="card-body">
-                                                            <form>
                                                                 <div class="row">
                                                                     <div class="col-lg-12">
                                                                         <div class="mb-3">
@@ -149,22 +145,18 @@
                                                                     </div>
                                                                     <!--end col-->
                                                                     <div class="col-lg-12 d-flex">
-                                                                        <div class="col-lg-6 mb-3">
-                                                                            <label for="">Tanggal</label>
-                                                                            <input type="date" class="form-control" id="degreeName" placeholder="Password">
-                                                                        </div>
-                                                                        <div class="col-lg-6 mb-3">
-                                                                            <label for="">Waktu</label>
-                                                                            <input type="time" class="form-control" id="appt" name="appt" min="09:00" max="18:00">
+                                                                        <div class="col-lg-12 mb-3">
+                                                                            <label for="degreeName">Tanggal dan Waktu</label>
+                                                                            <input name="deactivated_at" type="datetime-local" class="form-control time-input" id="degreeName" placeholder="Password">
                                                                         </div>
                                                                     </div>
                                                                     <!--end col-->
                                                                     <div class="hstack gap-2 justify-content-end">
-                                                                        <a class="btn btn-danger" href="javascript:deleteEl(1)">Delete</a>
+                                                                        <button type="button" id="time-reset" style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; justify-content: flex-end; float: right;">
+                                                                            <span class="bi bi-arrow-clockwise"></span> Reset
+                                                                        </button>
                                                                     </div>
                                                                 </div>
-                                                                <!--end row-->
-                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -247,6 +239,7 @@
     </div>
     <!-- container-fluid -->
 </div>
+</form>
 @section('script')
 <script>
     const toggleButton = document.getElementById('toggleButton');
@@ -299,6 +292,19 @@
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
 
+</script>
+<script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#resetButton").click(function() {
+                $(".password-input").val(""); // Mengosongkan input kata sandi
+            });
+        // Menangani klik pada tombol Reset untuk modal tautan berjangka
+        $("#time-reset").click(function() {
+            $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
+        });
+    });
 </script>
 @endsection
 @endsection

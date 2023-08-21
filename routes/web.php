@@ -82,7 +82,12 @@ Route::group(['middleware' => ['role:user']], function () {
 Route::get('dashboard', [DahsboardController::class, 'dashboard']);
 //ShortLink
 Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
+//AccessLink
 Route::post('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
+//ActiveLink
+Route::post('active-link', [LinkController::class,'activeLink'])->name('active.link');
+//ArchiveLink
+Route::post('archive-link', [LinkController::class,'archiveLink'])->name('archive.link');
 //Profile
 Route::get('/profil-user', [ProfilController::class, 'profile']);
 Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
