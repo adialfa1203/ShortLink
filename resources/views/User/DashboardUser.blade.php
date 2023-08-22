@@ -395,7 +395,7 @@
                                         <div class="d-flex flex-column h-100">
                                             <p class="fs-md text-muted mb-4">Pengunjung </p>
                                             <h3 class="mb-0 mt-auto"><span class="counter-value"
-                                                    data-target="3652">0</span></h3>
+                                                    data-target="{{($totalVisits)}}">0</span></h3>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0">
@@ -413,7 +413,7 @@
                                         <div class="d-flex flex-column h-100">
                                             <p class="fs-md text-muted mb-4">Pengunjung Unik</p>
                                             <h3 class="mb-0 mt-auto"><span class="counter-value"
-                                                    data-target="3652">0</span></h3>
+                                                    data-target="">0</span></h3>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0">
@@ -431,7 +431,7 @@
                                         <div class="d-flex flex-column h-100">
                                             <p class="fs-md text-muted mb-4">Pengunjung Kode QR</p>
                                             <h3 class="mb-0 mt-auto"><span class="counter-value"
-                                                    data-target="3652">0</span></h3>
+                                                    data-target="">0</span></h3>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0">
@@ -457,10 +457,10 @@
 
                             </div>
                             <div class="progress" data-bs-toggle="tooltip" data-bs-title="$234.95 Paid Amount">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                            </div>
-                            <p class="text-muted mb-0"><b>50 dari 100</p>
+                                <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated"
+                                     role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                            </div>                            
+                            <p class="text-muted mb-0"><b>{{$countURL}} dari 100</p>
 
                             <br>
                             <h6 class="card-title">Nama yang telah diubah/bulan <i
@@ -506,13 +506,11 @@
                                                     {{-- </div> --}}
 
                                                     {{-- </div> --}}
-                                                    <div class="progress" data-bs-toggle="tooltip"
-                                                        data-bs-title="$234.95 Paid Amount">
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                                            role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                                                            aria-valuemax="100" style="width: 75%"></div>
-                                                    </div>
-                                                    <p class="text-muted mb-0"><b>50 dari 100</p>
+                                                    <div class="progress" data-bs-toggle="tooltip" data-bs-title="$234.95 Paid Amount">
+                                                        <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated"
+                                                             role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                                                    </div>                                                                                                       
+                                                    <p class="text-muted mb-0"><b>{{$countURL}} dari 100</p>
 
                                                     <br>
                                                     <h3 class="card-title">Nama yang telah diubah/bulan <i
@@ -672,5 +670,16 @@
     <script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/pages/profile-setting.init.js')}}"></script>
     <script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Ambil data dari {{$countURL}} (misalnya menggunakan AJAX)
+        var countData = {{$countURL}}; // Contoh nilai statis
+    
+        // Ubah lebar bar progres sesuai dengan data yang diperoleh
+        var progressBar = document.getElementById("progress-bar");
+        var progressBarWidth = (countData / 100) * 100; // Ubah 100 menjadi nilai maksimum yang sesuai
+        progressBar.style.width = progressBarWidth + "%";
+        progressBar.setAttribute("aria-valuenow", countData);
+    </script>
+    
     
 @endsection

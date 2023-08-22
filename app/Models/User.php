@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -46,5 +48,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
+    public function shortUrls()
+    {
+        return $this->hasMany(ShortUrl::class);
+    }
+    public function totalVisits()
+    {
+        return $this->hasMany(ShortURLVisit::class);
+    }
 }

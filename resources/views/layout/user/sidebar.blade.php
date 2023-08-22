@@ -39,6 +39,7 @@
             justify-content: space-between;
         }
     </style>
+    <link href="path/to/bootstrap.min.css" rel="stylesheet">
 @endsection
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
