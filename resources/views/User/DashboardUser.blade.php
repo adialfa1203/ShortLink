@@ -258,7 +258,7 @@
                                                                 <button class="btn btn-danger" type="button"
                                                                 id="button-email" data-bs-toggle="modal"
                                                                 data-bs-target="#bagikan"><i class="bi bi-share-fill"></i>
-                                                                &nbsp; Bagikan</button>                                                          
+                                                                &nbsp; Bagik</button>                                                          
                                                             </div>
                                                     </div>
                                                 </div>

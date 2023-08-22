@@ -33,7 +33,7 @@ Route::get('register', [AuthController::class, 'register']);
 Route::post('registeruser', [AuthController::class, 'registeruser'])->name('register.user');
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
-Route::get('/welcome', function () {
+Route::get('/monyett', function () {
     return view('welcome');
 });
 
