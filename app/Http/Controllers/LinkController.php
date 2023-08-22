@@ -10,8 +10,17 @@ class LinkController extends Controller
 {
     public function Link()
     {
-        return view('User.Link');
+        $urlshort = ShortUrl::all();
+        return view('User.Link', compact('urlshort'));
     }
+
+    public function archive($id)
+    {
+        $link = ShortUrl::find($id);
+        $link->delete();
+        return redirect()->back()->with('success', 'Link telah diarsipkan');
+    }
+
     public function activeLink(Request $request)
     {
         // $Visits = \AshAllenDesign\ShortURL\Models\ShortURL::find(1);

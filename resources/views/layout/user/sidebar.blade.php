@@ -80,7 +80,7 @@
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
                             <img class="header-profile-user"
-                            src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="Header Avatar">                        
+                            src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="Header Avatar">
                             <div class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium text-white user-name-text">Hi! {{ Auth::user()->name }}</span>
 
@@ -139,7 +139,7 @@
                                     Aktif</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/archive-link" class="nav-link"
+                                <a href="/archive-link-user" class="nav-link"
                                     data-key="t-products-grid">Tautan Diarsip</a>
                             </li>
                         </ul>

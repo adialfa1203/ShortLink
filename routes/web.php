@@ -85,9 +85,13 @@ Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('short
 //AccessLink
 Route::post('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
 //ActiveLink
+Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
 Route::post('active-link', [LinkController::class,'activeLink'])->name('active.link');
+Route::get('/archive/{id}', [LinkController::class, 'archive'])->name('archive');
 //ArchiveLink
 Route::post('archive-link', [LinkController::class,'archiveLink'])->name('archive.link');
+Route::get('/archive-link-user', [ArchiveLinkController::class, 'archiveLinkUser'])->name('archive.link.user');
+Route::get('/restore/{id}', [ArchiveLinkController::class, 'restore'])->name('restore');
 //Profile
 Route::get('/profil-user', [ProfilController::class, 'profile']);
 Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
@@ -95,9 +99,6 @@ Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('
 Route::get('/microsite-user', [MicrositeController::class, 'micrositeUser'])->name('microsite.user');
 //analytic
 Route::get('/analytic-user', [AnalyticUserController::class, 'analyticUser'])->name('analytic.user');
-//link
-Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
-Route::get('/archive-link', [ArchiveLinkController::class, 'archiveLink'])->name('archive.link');
 //subscribe
 Route::get('/subscribe-user', [SubscribeUserController::class, 'subscribeUser'])->name('subscribe.user');
 Route::get('/subscribe-product-user', [SubscribeUserController::class, 'subscribeProductUser'])->name('subscribe.product.user');
