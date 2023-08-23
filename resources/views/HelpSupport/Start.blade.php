@@ -31,6 +31,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link id="fontsLink" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Layout config Js -->
     <!-- Bootstrap Css -->
@@ -48,7 +49,12 @@
         max-width: 300px; /* Sesuaikan dengan lebar maksimum yang Anda inginkan */
         margin: 5px; /* Sesuaikan jarak antara tombol jika diperlukan */
     }
-    
+    header {
+  height: 100px; /* Ganti dengan tinggi yang Anda inginkan */
+}
+header {
+  padding: 20px 0; /* Atur padding sesuai kebutuhan Anda */
+}
     </style>
 
     <!-- Page-wrapper-Start -->
@@ -64,13 +70,13 @@
             <!-- container start -->
             <div class="container">
                 <!-- navigation bar -->
-              <nav class="navbar navbar-expand-lg">
+              <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
                 <a class="navbar-brand mb-6" href="#">
                   <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image" >
                 </a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <div class="banner-text">
-                        <h1 style="color: white; font-size: 40px;">Bantuan & Dukungan | Memulai</h1>
+                        <h6 style="color: white;">Bantuan & Dukungan | Memulai</h6>
                     </div>
                 </div>
                 
@@ -84,7 +90,7 @@
         <!-- Banner-Section-Start -->
         <section class="banner_section" id="beranda">
             <div>
-                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                {{-- <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
                     <defs>
                         <path id="gentle-wave"
@@ -96,7 +102,7 @@
                         <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
                         <use xlink:href="#gentle-wave" x="48" y="7" fill="#f6f4fe" />
                     </g>
-                </svg>
+                </svg> --}}
             </div>
             <!-- wave animation end -->
 
@@ -104,6 +110,10 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
+                    <a href="/HelpSupport" class="col-1 btn btn-info">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </a>
+                    <p></p>
                     <div class="col-xl-12">
                         <div class="accordion accordion-border-box" id="genques-accordion">
                             <div class="accordion-item ">

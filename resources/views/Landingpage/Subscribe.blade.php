@@ -181,9 +181,9 @@ header {
               </li>              
 
               <!-- secondery menu start -->
-              {{-- <li class="nav-item has_dropdown">
+              <li class="nav-item has_dropdown">
                 <a class="nav-link" href="/Shortlink">Perpendek Link</a>
-              </li> --}}
+              </li>
               <!-- secondery menu end -->
 
               <li class="nav-item has_dropdown">

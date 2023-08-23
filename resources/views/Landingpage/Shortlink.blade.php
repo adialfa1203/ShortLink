@@ -32,59 +32,13 @@
 
 <body>
     <style>
-        body {
-            margin: 0;
-            /* Reset margin body */
-        }
+         header {
+  height: 100px; /* Ganti dengan tinggi yang Anda inginkan */
+}
+header {
+  padding: 20px 0; /* Atur padding sesuai kebutuhan Anda */
+}
 
-        .link-form {
-            width: 100%;
-            margin: 20px;
-            /* Ubah margin dari auto ke nilai tetap */
-            padding: 20px;
-        }
-
-        .input-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .input-icon {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .input-icon i {
-            position: absolute;
-            right: 10px;
-            color: #00;
-            margin-right: 17%;
-            /* Margin kanan untuk jarak antara ikon dan input */
-            margin-top: 1%;
-            /* Margin bawah untuk jarak antara ikon dan teks */
-        }
-
-        input[type="text"] {
-            width: 400px;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 10px 0 0 10px;
-        }
-
-        button {
-            background-color: #D9D9D9;
-            color: #000;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 0 10px 10px 0;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #D9D9D9;
-        }
     </style>
 
     <!-- Page-wrapper-Start -->
@@ -100,7 +54,7 @@
             <!-- container start -->
             <div class="container">
                 <!-- navigation bar -->
-                <nav class="navbar navbar-expand-lg">
+                <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
                     <a class="navbar-brand" href="#">
                         <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image">
                     </a>
@@ -169,21 +123,6 @@
                             <p>Apakah kamu ingin mempersingkat URL sesuai dengan
                                 yang Anda inginkan?
                             </p>
-                            <div class="link-form" style="float: left;">
-                                <form action="#" method="#">
-                                    <div class="input-container">
-                                        <div class="input-icon">
-                                            <input type="text" id="linkInput" name="linkInput"
-                                                placeholder="Https://Domain-mu/yang-ingin kau ">
-                                            <button type="submit">
-                                                <i class="fas fa-link"></i>
-                                                <span style="margin-left: 10%">Singkatkan</span>
-                                            </button>
-
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
 
                         </div>
                         <!-- app buttons -->

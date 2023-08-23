@@ -53,9 +53,9 @@ Route::get('ShortLink', [DahsboardController::class, 'ShortLink']);
 Route::get('/', function () {
     return view('Landingpage.Home');
 });
-// Route::get('/Shortlink', function () {
-//     return view('Landingpage.Shortlink');
-// });
+Route::get('/Shortlink', function () {
+    return view('Landingpage.Shortlink');
+});
 Route::get('/Microsite', function () {
     return view('Landingpage.Microsite');
 });

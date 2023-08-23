@@ -129,9 +129,9 @@ header {
                     </li>              
       
                     <!-- secondery menu start -->
-                    {{-- <li class="nav-item has_dropdown">
+                    <li class="nav-item has_dropdown">
                       <a class="nav-link" href="/Shortlink">Perpendek Link</a>
-                    </li> --}}
+                    </li>
                     <!-- secondery menu end -->
       
                     <li class="nav-item has_dropdown">
@@ -175,21 +175,6 @@ header {
                             <p>Apakah kamu ingin mempersingkat URL sesuai dengan
                                 yang Anda inginkan?
                             </p>
-                            <div class="link-form" style="float: left;">
-                                <form action="#" method="#">
-                                    <div class="input-container">
-                                        <div class="input-icon">
-                                            <input type="text" id="linkInput" name="linkInput"
-                                                placeholder="Link.id//Nama Microsite">
-                                            <button type="submit">
-                                                <i class="fas fa-link"></i>
-                                                <span style="margin-left: 10%">Singkatkan</span>
-                                            </button>
-
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
                         </div>
                         <!-- app buttons -->
 
