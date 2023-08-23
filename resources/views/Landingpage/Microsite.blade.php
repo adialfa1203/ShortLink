@@ -87,6 +87,12 @@
         button:hover {
             background-color: #D9D9D9;
         }
+        header {
+  height: 100px; /* Ganti dengan tinggi yang Anda inginkan */
+}
+header {
+  padding: 20px 0; /* Atur padding sesuai kebutuhan Anda */
+}
     </style>
     <!-- Page-wrapper-Start -->
     <div class="page_wrapper">
@@ -101,50 +107,49 @@
             <!-- container start -->
             <div class="container">
                 <!-- navigation bar -->
-                <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="#">
-                        <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon">
-                            <!-- <i class="icofont-navigation-menu ico_menu"></i> -->
-                            <div class="toggle-wrap">
-                                <span class="toggle-bar"></span>
-                            </div>
-                        </span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <!-- secondery menu start -->
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/">Beranda</a>
-                            </li>
-
-                            <!-- secondery menu start -->
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/Shortlink">Perpendek Link</a>
-                            </li>
-                            <!-- secondery menu end -->
-
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/Microsite">Situs Mikro</a>
-                            </li>
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/Subscribe">Berlangganan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link dark_btn" href="/login">Login / Register</a>
-                            </li>
-                        </ul>
+              <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
+                <a class="navbar-brand" href="#">
+                  <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image" >
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+                    <!-- <i class="icofont-navigation-menu ico_menu"></i> -->
+                    <div class="toggle-wrap">
+                      <span class="toggle-bar"></span>
                     </div>
-                </nav>
-                <!-- navigation end -->
+                  </span>
+                </button>
+      
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                    <!-- secondery menu start -->
+                    <li class="nav-item has_dropdown">
+                      <a class="nav-link active" href="/">Beranda</a>
+                    </li>              
+      
+                    <!-- secondery menu start -->
+                    {{-- <li class="nav-item has_dropdown">
+                      <a class="nav-link" href="/Shortlink">Perpendek Link</a>
+                    </li> --}}
+                    <!-- secondery menu end -->
+      
+                    <li class="nav-item has_dropdown">
+                      <a class="nav-link" href="/Microsite">Situs Mikro</a>
+                    </li>
+                    <li class="nav-item has_dropdown">
+                      <a class="nav-link" href="/Subscribe">Berlangganan</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link dark_btn" href="/login">Login / Register</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+              <!-- navigation end -->
             </div>
             <!-- container end -->
-        </header>
+          </header>
 
         <!-- Banner-Section-Start -->
         <section class="banner_section" id="beranda">
@@ -175,7 +180,7 @@
                                     <div class="input-container">
                                         <div class="input-icon">
                                             <input type="text" id="linkInput" name="linkInput"
-                                                placeholder="Https://Domain-mu/yang-ingin kau ">
+                                                placeholder="Link.id//Nama Microsite">
                                             <button type="submit">
                                                 <i class="fas fa-link"></i>
                                                 <span style="margin-left: 10%">Singkatkan</span>

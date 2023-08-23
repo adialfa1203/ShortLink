@@ -37,19 +37,25 @@ Route::get('/monyett', function () {
     return view('welcome');
 });
 
-Route::get('/LinkAdmin', [LinkAdminController::class, 'LinkAdmin'])->name('LinkAdmin');
 Route::get('/DashboardAdmin', [DashboardAdminController::class, 'DashboardAdmin'])->name('DashboardAdmin');
 Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
 Route::get('/Analitik', [AnalyticUserController::class, 'Analitik'])->name('Analitik');
-
+//HelpSupport
+Route::get('HelpSupport', [DahsboardController::class, 'HelpSupport']);
+Route::get('Start', [DahsboardController::class, 'Start']);
+Route::get('Announcement', [DahsboardController::class, 'Announcement']);
+Route::get('Account', [DahsboardController::class, 'Account']);
+Route::get('BillingSubscriptions', [DahsboardController::class, 'BillingSubscriptions']);
+Route::get('PlatformMicrosite', [DahsboardController::class, 'PlatformMicrosite']);
+Route::get('ShortLink', [DahsboardController::class, 'ShortLink']);
 
 
 Route::get('/', function () {
     return view('Landingpage.Home');
 });
-Route::get('/Shortlink', function () {
-    return view('Landingpage.Shortlink');
-});
+// Route::get('/Shortlink', function () {
+//     return view('Landingpage.Shortlink');
+// });
 Route::get('/Microsite', function () {
     return view('Landingpage.Microsite');
 });

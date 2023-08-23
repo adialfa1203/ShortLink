@@ -85,6 +85,14 @@
     button:hover {
         background-color: #D9D9D9;
     }
+    header {
+  height: 100px; /* Ganti dengan tinggi yang Anda inginkan */
+}
+header {
+  padding: 20px 0; /* Atur padding sesuai kebutuhan Anda */
+}
+
+
 </style>
 
   <!-- Page-wrapper-Start -->
@@ -100,7 +108,7 @@
       <!-- container start -->
       <div class="container">
       	<!-- navigation bar -->
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
           <a class="navbar-brand" href="#">
             <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image" >
           </a>
@@ -122,9 +130,9 @@
               </li>              
 
               <!-- secondery menu start -->
-              <li class="nav-item has_dropdown">
+              {{-- <li class="nav-item has_dropdown">
                 <a class="nav-link" href="/Shortlink">Perpendek Link</a>
-              </li>
+              </li> --}}
               <!-- secondery menu end -->
 
               <li class="nav-item has_dropdown">

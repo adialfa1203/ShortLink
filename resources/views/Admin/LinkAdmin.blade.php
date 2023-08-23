@@ -64,29 +64,34 @@
                 <table class="table table-borderless align-middle table-nowrap mb-0">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Job Title</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Status</th>
-                            <th scope="col"></th>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Tautan</th>
+                            <th scope="col">Tautan Populer</th>
+                            <th scope="col">Microsite</th>
+                            <th scope="col">Mikrosite Populer</th>
+
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="fw-medium">01</td>
-                            <td>Annette Black</td>
-                            <td>Industrial Designer</td>
-                            <td>10, Nov 2021</td>
-                            <td><span class="badge bg-success-subtle text-success">Active</span></td>
+                            <td>Jihan Prahasti Saharani</td>
+                            <td>10</td>
+                            <td>https://link.id/1Sd9P</td>
+                            <td>4</td>
+                            <td>https://link.id/1Sd9P</td>
+
+                            {{-- <td><span class="badge bg-success-subtle text-success">Active</span></td> --}}
                             <td>
                                 <div class="hstack gap-3 fs-base">
-                                    <a href="javascript:void(0);" class="link-primary"><i class="ri-settings-4-line"></i></a>
+                                    {{-- <a href="javascript:void(0);" class="link-primary"><i class="fa fa-ban" style="color: red"></i></a> --}}
                                     <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <td class="fw-medium">02</td>
                             <td>Bessie Cooper</td>
                             <td>Graphic Designer</td>
@@ -124,7 +129,7 @@
                                     <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>

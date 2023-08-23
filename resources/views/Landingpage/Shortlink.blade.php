@@ -164,7 +164,7 @@
                             <!-- h1 -->
                             <h1>Buat dan kreasikan tautan Anda</h1>
                             <!-- p -->
-                            <span style="color: yellow;">Penyingkat tautan terbaik dan Terpendek
+                            <span style="color: white;">Penyingkat tautan terbaik dan Terpendek
                                 untuk</span>
                             <p>Apakah kamu ingin mempersingkat URL sesuai dengan
                                 yang Anda inginkan?

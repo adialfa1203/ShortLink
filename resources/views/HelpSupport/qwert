@@ -1,0 +1,300 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>LINK.ID | Help Support </title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/headers/">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <!-- Bootstrap core CSS -->
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#7952b3">
+<link rel="shortcut icon" href="{{ asset('template/themesbrand.com/steex/layouts/assets/images/favicon.ico') }}">
+
+<!-- Icons Css -->
+
+<!-- custom Css-->
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .logo-img {
+            margin-top: -10px; /* Atur margin atas sesuai kebutuhan Anda */
+            max-width: 100px; /* Atur lebar maksimum sesuai kebutuhan Anda */
+        }
+        .search-form {
+            position: absolute; /* Membuat posisi absolut untuk form */
+            bottom: 10px; /* Menempatkannya di bagian bawah wadah */
+            padding: 10px; /* Memberikan padding agar lebih baik terlihat */
+            border-radius: 5px; /* Memberikan sudut yang lebih lembut */
+        }
+
+        /* CSS untuk mengatur tampilan input pencarian */
+        .search-input {
+            width: 100%; /* Agar input memenuhi lebar form */
+            border: none; /* Menghilangkan border */
+            padding: 5px; /* Memberikan sedikit padding */
+            border-radius: 5px; /* Memberikan sudut yang lebih lembut */
+        }
+        .custom-btn {
+        width: 100%;
+        max-width: 300px; /* Sesuaikan dengan lebar maksimum yang Anda inginkan */
+        margin: 5px; /* Sesuaikan jarak antara tombol jika diperlukan */
+    }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="headers.css" rel="stylesheet">
+  </head>
+  <body>
+  <nav class="py-2 bg-white border-bottom">
+    <div class="container d-flex flex-wrap">
+      <ul class="nav me-auto">
+        <li class="nav-item"><a href="#" class="nav-link link-dark px-2 active" aria-current="page">Bantuan & Dukungan</a></li>
+      </ul>
+      <ul class="nav">
+        <img src="https://i.postimg.cc/bNVMqCR0/help.png" alt="image" class="logo-img">
+    </ul>
+    </div>
+  </nav>
+  <nav class="py-2 bg-white">
+    <div class="container d-flex flex-wrap">
+      <ul class="nav me-auto">
+        <li class="nav-item"><a href="#" class="nav-link link-dark px-2 active" aria-current="page">Pusat Bantuan LINK.ID >> Pengumuman</a></li>
+      </ul>
+      <ul class="nav">
+        <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Kirim Masukan</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Masuk</a></li>
+      </ul>
+    </div>
+  </nav>
+</main>
+
+<div class="container">
+    <div class="card mb-3">
+        <img src="https://i.postimg.cc/85PX89YV/langit2.png">
+        <form class="col-6 search-form mb-5 position-absolute top-50 start-50 translate-middle">
+          <div class="input-group mx-auto">
+              <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+              <span class="input-group-text"><i class="bi bi-search"></i></span>
+          </div>
+      </form>
+    </div>
+    <div class="container">
+      <div class="row justify-content-between mb-3">
+          <div class="col-12 text-center">
+              <a href="/Start" class="btn btn-outline-info custom-btn">Memulai</a>
+              <a href="/Announcement" class="btn btn-outline-info custom-btn">Pengumuman</a>
+              <a href="/Account" class="btn btn-outline-info custom-btn">Akun</a>
+          </div>
+      </div>
+  </div>
+  <div class="container">
+      <div class="row justify-content-between mb-5">
+          <div class="col-12 text-center">
+            <a href="/BillingSubscriptions" class="btn btn-outline-info custom-btn">Penagihan dan Langganan</a>
+              <a href="/PlatformMicrosite" class="btn btn-outline-info custom-btn">Platform Microsite</a>
+              <a href="/ShortLink" class="btn btn-outline-info custom-btn">Penyingkat Tautan</a>
+          </div>
+      </div>
+  </div>
+  <div class="col-xxl-12">
+    <div class="card mb-4">
+        <div class="card-header d-flex align-items-center mb-4">
+            <h3 class="card-title mb-0 flex-grow-1 text-center">Aktivitas Terbaru</h3>
+        </div>
+        <div class="card-body px-0">
+            <div data-simplebar style="max-height: 390px;">
+                <div class="card border-bottom rounded-0 shadow-none mb-0">
+                    <div class="card-body pt-0">
+                        <div class="d-flex gap-2">
+                            <div class="flex-shrink-0">
+                                <!-- Ganti dengan ikon pesan -->
+                                <i class="bi bi-chat-square-text fs-lg text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <span class="text-muted clearfix float-end">Komentar ditambahkan 4 hari yang lalu</span>
+                                <h6 class="fs-md mb-1"><a href="#!" class="text-reset">Penyingkat Link</a></h6>
+                                <div class="text-warning mb-2 fs-xs">
+                                    <!-- Tambahkan bintang atau rating di sini jika diperlukan -->
+                                </div>
+                                <p class="text-muted mb-0">Bisakah saya menghapus tautan pendek atau shortener link?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-bottom rounded-0 shadow-none mb-0">
+                    <div class="card-body">
+                        <div class="d-flex gap-2">
+                            <div class="flex-shrink-0">
+                                <!-- Ganti dengan ikon pesan -->
+                                <i class="bi bi-chat-square-text fs-lg text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <span class="text-muted clearfix float-end">Komentar ditambahkan 4 hari yang lalu</span>
+                                <h6 class="fs-md mb-1"><a href="#!" class="text-reset">Memverifikasi Microsite</a></h6>
+                                <div class="text-warning mb-2 fs-xs">
+                                    <!-- Tambahkan bintang atau rating di sini jika diperlukan -->
+                                </div>
+                                <p class="text-muted mb-0">Apa yang terjadi jika saya kehilangan lencana terverifikasi microsite saya?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--end card-->
+</div><!--end col-->
+
+<footer class="footer mt-12">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> © Nama Perusahaan Anda.
+            </div>
+            <div class="col-sm-6">
+                <div class="text-sm-end d-none d-sm-block">
+                    Design & Develop by Nama Tim Anda
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>LINK.ID | Memulai</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/headers/">
+
+    <!-- Pustaka CSS Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <!-- Gaya kustom untuk template ini -->
+    <link href="headers.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .logo-img {
+            margin-top: -10px;
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="py-2 bg-white border-bottom">
+        <div class="container d-flex flex-wrap">
+            <ul class="nav me-auto">
+                <li class="nav-item"><a href="#" class="nav-link link-dark px-2 active" aria-current="page">Bantuan & Dukungan</a></li>
+            </ul>
+            <ul class="nav">
+                <img src="https://i.postimg.cc/bNVMqCR0/help.png" alt="image" class="logo-img">
+            </ul>
+        </div>
+    </nav>
+    <nav class="py-2 bg-white">
+        <div class="container d-flex flex-wrap">
+            <ul class="nav me-auto">
+                <li class="nav-item"><a href="#" class="nav-link link-dark px-2 active" aria-current="page">Pusat Bantuan LINK.ID >> Pengumuman</a></li>
+            </ul>
+            <ul class="nav">
+                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Kirim Masukan</a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Masuk</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <h2 class="col-9">Memulai</h2>
+            <form class="col-3 search-form mb-3">
+                <div class="input-group">
+                    <input type="search" class="form-control search-input" placeholder="Search..." aria-label="Search">
+                </div>
+            </form>
+        </div>
+        <div class="container text-align-center mb-12">
+            <h5>Selamat Datang di S.id</h5>
+            <p>Fitur Tautan</p>
+            <p>Dengan S.ID, sekarang kamu bisa dengan mudah membuat microsite untuk link bio</p>
+            <p>Keuntungan menggunakan penyingkat tautan</p>
+            <p>Buat tautan pendek untuk personalisasi Anda</p>
+            <p>Kreasikan tautan Anda untuk hasil yang lebih baik</p>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6">
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script> © Nama Perusahaan Anda.
+                    </div>
+                    <div class="col-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Design & Develop by Nama Tim Anda
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Pustaka JavaScript Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
