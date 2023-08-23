@@ -332,6 +332,22 @@
         </form>
         @endforeach
         <!-- end col -->
+        <div class="row align-items-center mb-4 justify-content-between text-center text-sm-start" id="pagination-element">
+            <div class="col-sm">
+                <div class="text-muted">
+                    Showing <span class="fw-semibold">{{ $urlshort->firstItem() }}</span>
+                    to <span class="fw-semibold">{{ $urlshort->lastItem() }}</span>
+                    of <span class="fw-semibold">{{ $urlshort->total() }}</span> Results
+                </div>
+            </div>
+            <div class="col-sm-auto mt-3 mt-sm-0">
+                <div class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
+                    <div class="page-item">
+                        {{ $urlshort->links('pagination::bootstrap-5') }}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- container-fluid -->
 </div>
