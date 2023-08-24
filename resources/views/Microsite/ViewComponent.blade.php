@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <strong class="fs-md text-muted mb-0">{{ $item->component_name }}</strong>
-                                </div>
+                                </div>  
                                 <div>
                                     <img src="{{ asset('component/' . $item->cover_img) }}" alt=""
                                         class="card-img-top profile-wid-img object-fit-cover" style="height: 200px;">

@@ -105,7 +105,7 @@
                             </div>
                             <div class="wrapper mx-5 col-8">
                                 <h5 class="card-title">{{ Auth()->user()->name }}</h5>
-                                <p type="button" class="card-text text-muted" id="copyText{{ $loop->index }}"
+                                <p type="button" class="link-primary link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover card-text text-muted" id="copyText{{ $loop->index }}"
                                     onclick="copyTextToClipboard('{{ $row->link_microsite }}', 'copyText{{ $loop->index }}')">
                                     {{ $row->link_microsite }}
                                 </p>

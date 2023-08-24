@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Button extends Model
 {
+    protected $fillable = [
+        'name_button',
+        'icon',
+        'color_hex',
+    ];
+
     use HasFactory;
 }

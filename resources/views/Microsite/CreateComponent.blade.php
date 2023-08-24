@@ -2,7 +2,8 @@
 @section('title', 'Komponen Baru')
 
 @section('content')
-    <form action="{{ Route('save.component') }}" method="POST" enctype="multipart/form-data" class="page-content">
+    <form action="{{ Route('save.component') }}" method="POST" enctype="multipart/form-data"
+        class="page-content needs-validation" novalidate>
         @csrf
         <div class="container-fluid">
 
@@ -22,9 +23,15 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label for="designationInput" class="form-label">Nama Komponen</label>
-                                    <input type="text" class="form-control" id="designationInput"
-                                        placeholder="Designation" name="component_name">
+                                    <label for="validationCustom01" class="form-label">Nama Komponen</label>
+                                    <input type="text" class="form-control" id="validationCustom01"
+                                        placeholder="Designation" name="component_name" required>
+                                    <div class="invalid-feedback">
+                                        Harap isi kolom ini sebelum melanjutkan proses.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Kolom telah diisi dengan benar. Terima kasih.
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +46,13 @@
                                             style="height: 200px;">
                                         <div>
                                             <input id="profile-foreground-img-file-input" type="file"
-                                                class="profile-foreground-img-file-input d-none" name="cover_img">
+                                                class="profile-foreground-img-file-input d-none" name="cover_img" required>
+                                            <div class="invalid-feedback">
+                                                Harap isi cover dan profil sebelum melanjutkan proses.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Kolom telah diisi dengan benar. Terima kasih.
+                                            </div>
                                             <label for="profile-foreground-img-file-input"
                                                 class="profile-photo-edit btn btn-light btn-sm position-absolute end-0 top-0 m-3">
                                                 <i class="ri-image-edit-line align-bottom me-1"></i> Edit Gambar Cover
@@ -55,7 +68,7 @@
                                                 <div
                                                     class="avatar-xs p-0 rounded-circle profile-photo-edit position-absolute end-0 bottom-0">
                                                     <input id="profile-img-file-input" type="file"
-                                                        class="profile-img-file-input d-none" name="profile_img">
+                                                        class="profile-img-file-input d-none" name="profile_img" required>
                                                     <label for="profile-img-file-input"
                                                         class="profile-photo-edit avatar-xs">
                                                         <span class="avatar-title rounded-circle bg-light text-body">
@@ -79,6 +92,7 @@
     </form>
 @endsection
 @section('script')
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-validation.init.js') }}"></script>
     <!-- password-create init -->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/passowrd-create.init.js') }}"></script>
 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name_button');
             $table->string('icon');
-            $table->string('color_button');
+            $table->string('color_hex');
             $table->timestamps();
         });
     }

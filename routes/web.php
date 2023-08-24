@@ -119,6 +119,10 @@ Route::get('/view-component', [MicrositeController::class, 'viewComponent'])->na
 Route::get('/subscribe-admin', [SubscribeController::class, 'subscribe']);
 Route::get('add-subscribe', [SubscribeController::class, 'addSubscribe']);
 // button
-Route::get('/view-button', [ButtonController::class, 'viewButton'])->name('view.button');
 Route::get('/create-button', [ButtonController::class, 'createButton'])->name('create.button');
+Route::post('/save-button', [ButtonController::class, 'saveButton'])->name('save.button');
+Route::post('/update-button/{id}', [ButtonController::class, 'updateButton'])->name('update.button');
+Route::get('/edit-button/{id}', [ButtonController::class, 'editButton'])->name('edit.button');
+Route::get('/delete-button/{id}', [ButtonController::class, 'deleteButton'])->name('delete.button');
+Route::get('/view-button', [ButtonController::class, 'viewButton'])->name('view.button');
 });
