@@ -38,6 +38,16 @@
         max-width: 300px; /* Sesuaikan dengan lebar maksimum yang Anda inginkan */
         margin: 5px; /* Sesuaikan jarak antara tombol jika diperlukan */
     }
+    header {
+  height: 100px; /* Ganti dengan tinggi yang Anda inginkan */
+}
+header {
+  padding: 20px 0; /* Atur padding sesuai kebutuhan Anda */
+}
+.text-muted {
+    --tb-text-opacity: 1;
+    color: var(--tb-secondary-color) !important;
+}
     </style>
 
     <!-- Page-wrapper-Start -->
@@ -53,13 +63,13 @@
             <!-- container start -->
             <div class="container">
                 <!-- navigation bar -->
-              <nav class="navbar navbar-expand-lg">
+              <nav class="navbar navbar-expand-lg" style="margin-top: -100px; margin-bottom: -50px;">
                 <a class="navbar-brand mb-6" href="#">
-                  <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image" >
+                    <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image">
                 </a>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <div class="banner-text ">
-                        <h1 style="color: white;">Bantuan & Dukungan</h1>
+                        <h6 style="color: white;">Bantuan & Dukungan</h6>
                     </div>
                 </div>
                 
@@ -70,44 +80,27 @@
           </header>
 
         <!-- Banner-Section-Start -->
-        <section class="banner_section" id="beranda">
+        <section class="banner_section mb-5" id="beranda">
             <!-- container start -->
-            <div class="container">
-                <!-- row start -->
-                <div class="row">
-                    <!-- shape animation  -->
-                    <span class="banner_shape1"> <img src="https://i.postimg.cc/3RVg0kJv/banner-shape1.png"
-                            alt="image"> </span>
-                    <span class="banner_shape2"> <img src="https://i.postimg.cc/rp6XjJnn/banner-shape2.png"
-                            alt="image"> </span>
-                    <span class="banner_shape3"> <img src="https://i.postimg.cc/wxrWDBbF/banner-shape3.png"
-                            alt="image"> </span>
-                    <div class="col-lg-12 col-md-12 text-center mb-5" data-aos="fade-right" data-aos-duration="1500">
-                        <!-- banner text -->
-                        <div class="banner_text">
-                            {{-- <h1>Bantuan & Dukungan</h1> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
 
             <!-- container end -->
 
             <!-- wave animation start -->
             <div>
-                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                {{-- <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
                     <defs>
                         <path id="gentle-wave"
                             d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                    </defs>
+                    </defs> 
                     <g class="parallax">
                         <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
                         <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
                         <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
                         <use xlink:href="#gentle-wave" x="48" y="7" fill="#f6f4fe" />
                     </g>
-                </svg>
+                </svg> --}}
             </div>
             <!-- wave animation end -->
 
@@ -141,140 +134,129 @@
           </div>
       </div>
       <div class="col-xxl-12">
-        <div class="card mb-4">
-            <div class="card-header d-flex align-items-center mb-4">
-                <h3 class="card-title mb-0 flex-grow-1 text-center">Aktivitas Terbaru</h3>
+        <div class="card mb-3">
+            <div class="card-header-white d-flex align-items-center">
+                <h5 class="card-title mb-0 flex-grow-1 text-center mt-2">Aktivitas Terbaru</h5>
             </div>
             <div class="card-body px-0">
-                <div data-simplebar style="max-height: 390px;">
-                    <div class="card border-bottom rounded-0 shadow-none mb-0">
-                        <div class="card-body pt-0">
-                            <div class="d-flex gap-2">
-                                <div class="flex-shrink-0">
-                                    <!-- Ganti dengan ikon pesan -->
-                                    <i class="bi bi-chat-square-text fs-lg text-primary"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <span class="text-muted clearfix float-end">Komentar ditambahkan 4 hari yang lalu</span>
-                                    <h6 class="fs-md mb-1"><a href="#!" class="text-reset">Penyingkat Link</a></h6>
-                                    <div class="text-warning mb-2 fs-xs">
-                                        <!-- Tambahkan bintang atau rating di sini jika diperlukan -->
-                                    </div>
-                                    <p class="text-muted mb-0">Bisakah saya menghapus tautan pendek atau shortener link?</p>
-                                </div>
+                <div class="card-body">
+                        <div class="d-flex align-items-start text-muted mb-4">
+                            <div class="flex-shrink-0 me-3">
+                                <img src="{{asset('template/themesbrand.com/steex/layouts/assets/images/users/avatar-2.jpg')}}" class="avatar-sm rounded" alt="..." width="50px" height="50px">
+                            </div>
+
+                            <div class="flex-grow-1">
+                                <h6 class="fs-md" style="margin-left: 1%;">Jihan Prahasti Saharani</h6>
+                                <p class="mb-1" style="margin-left: 1%;">Web ini sangat Membantu</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="card border-bottom rounded-0 shadow-none mb-0">
-                        <div class="card-body">
-                            <div class="d-flex gap-2">
-                                <div class="flex-shrink-0">
-                                    <!-- Ganti dengan ikon pesan -->
-                                    <i class="bi bi-chat-square-text fs-lg text-primary"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <span class="text-muted clearfix float-end">Komentar ditambahkan 4 hari yang lalu</span>
-                                    <h6 class="fs-md mb-1"><a href="#!" class="text-reset">Memverifikasi Microsite</a></h6>
-                                    <div class="text-warning mb-2 fs-xs">
-                                        <!-- Tambahkan bintang atau rating di sini jika diperlukan -->
-                                    </div>
-                                    <p class="text-muted mb-0">Apa yang terjadi jika saya kehilangan lencana terverifikasi microsite saya?</p>
-                                </div>
+                        <div class="d-flex align-items-start text-muted mb-4">
+                            <div class="flex-shrink-0 me-3">
+                                <img src="{{asset('template/themesbrand.com/steex/layouts/assets/images/users/avatar-2.jpg')}}" class="avatar-sm rounded" alt="..." width="50px" height="50px">
+                            </div>
+
+                            <div class="flex-grow-1">
+                                <h6 class="fs-md" style="margin-left: 1%;">Fira</h6>
+                                <p class="mb-1" style="margin-left: 1%;">Semoga Semakin Upgrade</p>
                             </div>
                         </div>
+                        
+                        
                     </div>
-                </div>
+                </div><!-- end card-body -->
             </div>
         </div><!--end card-->
     </div><!--end col-->
+    
        </div>
-        <footer>
-            <div class="top_footer" id="kontak">
-                <!-- container start -->
-                <div class="container">
-                    <!-- row start -->
-                    <div class="row">
-                        <span class="banner_shape1"> <img src="https://i.postimg.cc/3RVg0kJv/banner-shape1.png"
-                                alt="image"> </span>
-                        <span class="banner_shape2"> <img src="https://i.postimg.cc/rp6XjJnn/banner-shape2.png"
-                                alt="image"> </span>
-                        <span class="banner_shape3"> <img src="https://i.postimg.cc/wxrWDBbF/banner-shape3.png"
-                                alt="image"> </span>
-                        <!-- footer link 1 -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="abt_side">
-                                <div class="logo"> <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png"
-                                        alt="image" style="margin-top: -50px;"></div>
-                            </div>
-                        </div>
-
-                        <!-- footer link 3 -->
-                        <div class="row">
-                            <div class="col-lg-5 col-md-6 col-12">
-                                <div class="links">
-                                    <h3>Dukungan</h3>
-                                    <ul style="text-align: justify;">
-                                        <li><a href="/Home">Bantuan</a></li>
-                                        <li><a href="#features">Laporkan</a></li>
-                                        <li><a href="#kontak">Status</a></li>
+       <footer>
+        <div class="top_footer" id="kontak">
+            <div class="container">
+                <div class="row">
+                    <!-- Logo -->
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="abt_side">
+                            <div class="logo">
+                                <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
+                                    style="margin-top: -27%;">
+                                    <ul style="margin-top: -16%; margin-left:20px;">
+                                        <li style="color: white; font-size:14px;">S.id adalah platform untuk orang-orang untuk menunjukkan keahlian mereka dalam membuat situs mikro dan memperpendek tautan terpendek dengan kode s.id/.</li>
                                     </ul>
                                 </div>
-                            </div>
-                            <div class="col-lg-7 col-md-6 col-12">
-                                <div class="links">
-                                    <h3>Hubungi Kami</h3>
-                                    <ul style="text-align: justify;">
-                                        <li>
-                                            <a href="https://wa.me/085606270454">
-                                                <i class="fab fa-whatsapp"></i>
-                                                085606270454
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#features">
-                                                <i class="fab fa-instagram"></i>
-                                                @link.id
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#features">
-                                                <i class="fab fa-twitter"></i>
-                                                @link.id
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                    <!-- row end -->
-                </div>
-                <!-- container end -->
-            </div>
 
-            <!-- last footer -->
-            <div class="bottom_footer">
-                <!-- container start -->
-                <div class="container">
-                    <!-- row start -->
-                    <div class="row">
-                        <div class="col-md-12" style="text-align: right;">
-                            <p>©LINK.ID Dikelola oleh PT. Hummatech</p>
+                    <!-- Footer Links -->
+                    
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <div class="links">
+                            <h3>Dukungan</h3>
+                            <ul style="text-align: justify;">
+                                <li><a href="#kontak">Kebijakan Privasi</a></li>
+                                <li><a href="/Home">Bantuan</a></li>
+                                <li><a href="#features">Laporkan</a></li>
+                                <li><a href="#kontak">Status</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <!-- row end -->
-                </div>
-                <!-- container end -->
-            </div>
 
-            <!-- go top button -->
-            <div class="go_top">
-                <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
+                    <!-- Contact Information -->
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <div class="links">
+                            <h3>Hubungi Kami</h3>
+                            <ul style="text-align: justify;">
+                                <li>
+                                    <a href="https://wa.me/085606270454">
+                                        <i class="fab fa-whatsapp"></i>
+                                        085606270454
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#features">
+                                        <i class="fab fa-instagram"></i>
+                                        @link.id
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#features">
+                                        <i class="fab fa-twitter"></i>
+                                        @link.id
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Comment Form -->
+                    <div class="col-lg-5 col-md-6 col-12 mb-5" >
+                        <form action="javascript:void(0);" class="mt-3">
+                            <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
+                                placeholder="Tambahkan Komentar"></textarea>
+                            <div class="text-end mt-2">
+                                <a href="javascript:void(0);" class="btn btn-success">Kirim</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </footer>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="bottom_footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Go Top Button -->
+        <div class="go_top">
+            <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
+        </div>
+    </footer>
         <!-- Footer-Section end -->
 
         <!-- VIDEO MODAL -->
