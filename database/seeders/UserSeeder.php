@@ -26,5 +26,18 @@ class UserSeeder extends Seeder
             'profile_picture' => 'gambar1.png'
         ]);
         $admin->assignRole($role);
+
+        $role = Role::create([
+            'name' => 'user',
+            'guard_name' => 'web'
+        ]);
+        $user = User::create([
+            'name' => "mizu",
+            'number' => "089637885692",
+            'email' => 'mizu@gmail.com',
+            'password' => bcrypt('gataumales'),
+            'profile_picture' => 'gambar1.png'
+        ]);
+        $user->assignRole($role);
     }
 }

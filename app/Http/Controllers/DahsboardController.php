@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DahsboardController extends Controller
 {
-    public function dashboard()
+    public function dashboardUser()
     {
         $user = Auth::user();
         $totalVisits = ShortURLVisit::query('user_id', $user)->count();

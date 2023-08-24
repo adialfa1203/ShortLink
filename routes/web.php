@@ -10,8 +10,9 @@ use App\Http\Controllers\ShortLinkController;
 use App\Http\Controllers\DahsboardController;
 use App\Http\Controllers\ArchiveLinkController;
 use App\Http\Controllers\AnalyticUserController;
-use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\SubscribeUserController;
 use App\Http\Controllers\MicrositeController;
+use App\Http\Controllers\ButtonController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -25,13 +26,18 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//Auth
+Route::middleware(['guest'])->group(function () {
 Route::get('/login',[AuthController::class,'login'])->name('login');
-Route::get('/loginuser',[AuthController::class,'loginuser'])->name('login.user');
+Route::get('/login-user',[AuthController::class,'loginUser'])->name('login.user');
+Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
+Route::get('/register', [AuthController::class, 'register']);
+Route::post('/register-user', [AuthController::class, 'registerUser'])->name('register.user');
+});
 
-Route::get('register', [AuthController::class, 'register']);
-Route::post('registeruser', [AuthController::class, 'registeruser'])->name('register.user');
+Route::middleware(['auth'])->group(function () {
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+});
+
 
 Route::get('/monyett', function () {
     return view('welcome');
@@ -62,15 +68,14 @@ Route::get('/Microsite', function () {
 Route::get('/Subscribe', function () {
     return view('Landingpage.Subscribe');
 });
-Route::get('/ProfilAdmin', function () {
-    return view('Admin.ProfilAdmin');
-});
+
 
 //Send email
 Route::get('send-email', [AuthController::class, 'sendEmail']);
 Route::get('change-password/{email}', [AuthController::class, 'changePassword'])->name('changePassword');
 //change password
 Route::post('updatePassword', [AuthController::class, 'updatePassword'])->name('updatePassword');
+
 //sendEmail
 Route::get('sample', [AuthController::class, 'sendEmail']);
 Route::post('send-emails', [AuthController::class, 'sendSampleEmail'])->name('sendEmail');
@@ -83,9 +88,9 @@ Route::get('/DashboardUser', function () {
 
 
 //Middleware User
-Route::group(['middleware' => ['role:user']], function () {
+Route::group(['middleware' => ['checkBanStatus', 'role:user']], function () {
 //Dashboard
-Route::get('dashboard', [DahsboardController::class, 'dashboard'])->name('dashboard.user');
+Route::get('/dashboard-user', [DahsboardController::class, 'dashboardUser'])->name('dashboard.user');
 //ShortLink
 Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
 //AccessLink
@@ -101,28 +106,37 @@ Route::get('/restore/{id}', [ArchiveLinkController::class, 'restore'])->name('re
 //Profile
 Route::get('/profil-user', [ProfilController::class, 'profile']);
 Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
-//Microsite
-Route::get('/microsite-user', [MicrositeController::class, 'micrositeUser'])->name('microsite.user');
 //analytic
 Route::get('/analytic-user', [AnalyticUserController::class, 'analyticUser'])->name('analytic.user');
 //subscribe
 Route::get('/subscribe-user', [SubscribeUserController::class, 'subscribeUser'])->name('subscribe.user');
 Route::get('/subscribe-product-user', [SubscribeUserController::class, 'subscribeProductUser'])->name('subscribe.product.user');
-
+// microsite
+Route::post('/create-microsite', [MicrositeController::class, 'createMicrosite'])->name('create.microsite');
+Route::get('/edit-microsite/{id}', [MicrositeController::class, 'editMicrosite'])->name('edit.microsite');
+Route::get('/update-microsite/{id}', [MicrositeController::class, 'updateMicrosite'])->name('update.microsite');
+Route::get('/microsite-user', [MicrositeController::class, 'microsite'])->name('microsite');
+Route::get('/add-microsite', [MicrositeController::class, 'addMicrosite'])->name('add.microsite');
 });
 
 //Middleware Admin
 Route::group(['middleware' => ['role:admin']], function () {
 //Dashboard Admin
 Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin'])->name('dashboard.admin');
-Route::get('/Subscribe', [SubscribeController::class, 'Subscribe'])->name('Subscribe');
-Route::get('/AddSubscribe', [SubscribeController::class, 'AddSubscribe'])->name('AddSubscribe');
 //Data User (Admin)
 Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
-//link
-Route::get('/link-admin', [LinkAdminController::class, 'linkAdmin'])->name('link.admin');
-Route::get('/profil-admin', [ProfilController::class, 'profile']);
-Route::post('/update-admin', [ProfilController::class, 'UpdateAdmin'])->name('update.admin');
+Route::get('admin/user/{userId}/ban', [DataUserController::class, 'banUser'])->name('user.ban');
+Route::get('admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
+// microsite Admin
+Route::get('/create-component', [MicrositeController::class, 'createComponent'])->name('create.component');
+Route::post('/save-component', [MicrositeController::class, 'saveComponent'])->name('save.component');
+Route::post('/update-component/{id}', [MicrositeController::class, 'updateComponent'])->name('update.component');
+Route::get('/edit-component/{id}', [MicrositeController::class, 'editComponent'])->name('edit.component');
+Route::get('/delete-component/{id}', [MicrositeController::class, 'deleteComponent'])->name('delete.component');
+Route::get('/view-component', [MicrositeController::class, 'viewComponent'])->name('view.component');
+// button
+Route::get('/view-button', [ButtonController::class, 'viewButton'])->name('view.button');
+Route::get('/create-button', [ButtonController::class, 'createButton'])->name('create.button');
 });
 
 Route::get('/tester', function () {

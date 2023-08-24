@@ -76,7 +76,7 @@
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                <li>
+                {{-- <li>
                     <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
@@ -112,7 +112,7 @@
                                 class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i> <span
                                 class="align-middle" data-key="t-logout">Logout</span></a>
                     </div>
-                </li>
+                </li> --}}
 
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 

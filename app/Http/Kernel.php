@@ -69,4 +69,9 @@ class Kernel extends HttpKernel
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
     ];
+    
+    protected $routeMiddleware = [
+        'checkBanStatus' => \App\Http\Middleware\CheckUserBanStatus::class,
+    ];
+
 }

@@ -13,17 +13,15 @@ return new class extends Migration
     {
         Schema::create('microsites', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('type_id')->references('id')->on('types')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('background');
-            $table->string('title');
-            $table->string('description');
+            $table->foreignId('components_id')->references('id')->on('components')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('buttons_id')->references('id')->on('buttons')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->date('creation_date');
-            $table->date('expiration_date');
-            $table->string('name_microsite');
-            $table->string('link_microsite');
-            $table->string('qr_code');
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->date('creation_date')->nullable();
+            $table->date('expiration_date')->nullable();
+            $table->string('name_microsite')->nullable();
+            $table->string('qr_code')->nullable();
             $table->timestamps();
         });
     }
