@@ -13,23 +13,20 @@ class AnalyticUserController extends Controller
     {
         $user = Auth::user()->id;
 
-        // total semua
-        $totalVisits = ShortURLVisit::query('user_id', $user)->count();
-        // dd($user,$totalVisits);
+
+        $totalVisits = ShortURLVisit::query()
+        ->whereRelation('shortURL', 'user_id', '=', $user)
+        ->count();
+
         // find by id
         // bentuk array / collection
         // $shortURL = \AshAllenDesign\ShortURL\Models\ShortURL::find();
 
         // hitung jumlah array / collection dari shortURL
         // $visits = count($shortURL->visits) ;
-        
-        $countURL = ShortURL::where('user_id', $user)->count();
-        dd($totalVisits,$countURL);
-        return view('User.AnalyticUser', compact('totalVisits','countURL'));
-    }
 
-    public function Analitik()
-    {
-        return view('Analitik');
+        $countURL = ShortURL::where('user_id', $user)->count();
+
+        return view('User.AnalyticUser', compact('totalVisits','countURL'));
     }
 }

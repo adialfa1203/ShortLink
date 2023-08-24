@@ -175,7 +175,7 @@
         <div class="col-4">
             <h5>Tautan yang Dihasilkan Terbaru</h5>
         </div>
-        <div class=" col-8 col-sm mb-3">
+        <div class="col-8 col-sm mb-3">
             <div class="d-flex justify-content-sm-end">
                 <div class="search-box ms-2">
                     <input type="text" class="form-control search" placeholder="Search...">
@@ -188,7 +188,7 @@
         @foreach ($urlshort as $row)
         <form action="/archive/{{$row->id}}">
             <div class="col-lg-12">
-                <div class="card" style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;">
+                <div class="card" style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;" id="card{{ $row->id }}">
                     <div class="card-body">
                         <div class="d-flex">
                             <h6 class="col-3">{{$row->title}}</h6>
@@ -332,22 +332,6 @@
         </form>
         @endforeach
         <!-- end col -->
-        <div class="row align-items-center mb-4 justify-content-between text-center text-sm-start" id="pagination-element">
-            <div class="col-sm">
-                <div class="text-muted">
-                    Showing <span class="fw-semibold">{{ $urlshort->firstItem() }}</span>
-                    to <span class="fw-semibold">{{ $urlshort->lastItem() }}</span>
-                    of <span class="fw-semibold">{{ $urlshort->total() }}</span> Results
-                </div>
-            </div>
-            <div class="col-sm-auto mt-3 mt-sm-0">
-                <div class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
-                    <div class="page-item">
-                        {{ $urlshort->links('pagination::bootstrap-5') }}
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- container-fluid -->
 </div>
@@ -425,5 +409,16 @@
         }
     }
 </script>
+<script>
+    $(document).ready(function() {
+        $(".search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $(".card").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+</script>
+
 @endsection
 @endsection

@@ -39,7 +39,6 @@
             justify-content: space-between;
         }
     </style>
-    <link href="path/to/bootstrap.min.css" rel="stylesheet">
 @endsection
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
@@ -76,12 +75,12 @@
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                {{-- <li>
+                <li>
                     <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
                             <img class="header-profile-user"
-                            src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="Header Avatar">
+                                src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="Header Avatar">
                             <div class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium text-white user-name-text">Hi! {{ Auth::user()->name }}</span>
 
@@ -104,7 +103,7 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}!</h6>
+                        <h6 class="dropdown-header">Welcome {{Auth::user()->name}}!</h6>
                         <a class="dropdown-item" href="{{ url ('profil-user')}}"><i
                                 class="mdi mdi-account-circle text-muted fs-lg align-middle me-1"></i> <span
                                 class="align-middle">Profile</span></a>
@@ -112,19 +111,19 @@
                                 class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i> <span
                                 class="align-middle" data-key="t-logout">Logout</span></a>
                     </div>
-                </li> --}}
+                </li>
 
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link " href="{{ url ('dashboard')}}" role="button" aria-expanded="false"
+                    <a class="nav-link menu-link " href="{{ url ('dashboard-user')}}" role="button" aria-expanded="false"
                         aria-controls="sidebarDashboards">
                         <i class="bi bi-house-fill"></i> <span data-key="t-dashboards">Dasbor</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="/analytic-user" class="nav-link menu-link"> <i class="bi bi-bar-chart-line-fill"></i>
+                    <a href="{{ url ('analytic-user')}}" class="nav-link menu-link"> <i class="bi bi-bar-chart-line-fill"></i>
                         <span data-key="t-email">Analitik</span> </a>
                 </li>
 
@@ -136,11 +135,11 @@
                     <div class="collapse menu-dropdown" id="sidebarEcommerce">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="/Link" class="nav-link" data-key="t-products">Tutan
+                                <a href="{{ url ('Link')}}" class="nav-link" data-key="t-products">Tutan
                                     Aktif</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/archive-link-user" class="nav-link"
+                                <a href="{{ url ('archive')}}" class="nav-link"
                                     data-key="t-products-grid">Tautan Diarsip</a>
                             </li>
                         </ul>
@@ -148,12 +147,12 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/microsite-user" class="nav-link menu-link"> <i class="bi bi-person-badge-fill"></i>
+                    <a href="{{ url ('microsite-user')}}" class="nav-link menu-link"> <i class="bi bi-person-badge-fill"></i>
                         <span data-key="t-file-manager">Microsite</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="/subscribe-user">
+                    <a class="nav-link menu-link" href="{{ url ('subscribe-user')}}">
                         <i class="bi bi-fire"></i> <span data-key="t-widgets">Berlangganan</span>
                     </a>
                 </li>

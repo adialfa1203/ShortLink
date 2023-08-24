@@ -75,7 +75,7 @@
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                {{-- <li>
+                <li>
                     <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
@@ -112,34 +112,33 @@
                                 class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i> <span
                                 class="align-middle" data-key="t-logout">Logout</span></a>
                     </div>
-                </li> --}}
+                </li>
 
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link " href="/dashboard-admin" role="button" aria-expanded="false"
+                    <a class="nav-link menu-link " href="{{ url ('dashboard-admin')}}" role="button" aria-expanded="false"
                         aria-controls="sidebarDashboards">
                         <i class="bi bi-house-fill"></i> <span data-key="t-dashboards">Dasbor</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="/Subscribe">
+                    <a class="nav-link menu-link" href="{{ url ('subscribe-admin')}}">
                         <i class="bi bi-fire"></i> <span data-key="t-widgets">Berlangganan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/data-user" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
+                    <a href="{{ url ('data-user')}}" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
                             data-key="t-chat">Pengguna</span> </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="/link-admin" class="nav-link menu-link"><i class="bi bi-link-45deg"></i>
+                    <a href="{{ url ('link-admin')}}" class="nav-link menu-link"><i class="bi bi-link-45deg"></i>
                         <span data-key="t-email">Tautan</span> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link menu-link"><i class="bi bi-gear-fill"></i>
-                        <span data-key="t-file-manager">Pengaturan</span>
-                    </a>
+                    <a href="#" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
+                            data-key="t-chat">Profil</span> </a>
                 </li>
 
             </ul>

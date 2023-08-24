@@ -88,7 +88,7 @@
                                 @php
                                 $email = Auth::user()->email;
                                 @endphp
-                            
+
                                 @if (strlen($email) < 15)
                                     <span class="d-none d-xl-block ms-1 fs-sm user-name-sub-text text-white">
                                         {{ $email }}
@@ -104,11 +104,11 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome Richard!</h6>
+                        <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}!</h6>
                         <a class="dropdown-item" href="pages-profile.html"><i
                                 class="mdi mdi-account-circle text-muted fs-lg align-middle me-1"></i> <span
                                 class="align-middle">Profile</span></a>
-                        <a class="dropdown-item" href="auth-logout.html"><i
+                        <a class="dropdown-item" href="{{url('logout')}}"><i
                                 class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i> <span
                                 class="align-middle" data-key="t-logout">Logout</span></a>
                     </div>

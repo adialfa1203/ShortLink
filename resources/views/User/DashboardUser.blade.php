@@ -124,7 +124,7 @@
                                                 </div>
                                                 <br>
                                                 {{-- modal panjang tautan terproteksi --}}
-                                                <div class="container-fluid">
+                                                {{-- <div class="container-fluid">
                                                     <div class="card">
                                                             <button type="button"
                                                                 style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center;">
@@ -167,7 +167,7 @@
                                                             Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>
                                                         </button>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 {{-- end modal panjang --}}
                                                 {{-- modal panjang tautan berjangka --}}
                                                 <div class="container-fluid">
@@ -248,24 +248,24 @@
                                                     <label class="form-label">Judul</label>
                                                     <input class="form-control" id="title">
                                                 </div>
-                                                <hr>                                                
+                                                <hr>
                                                 <div class="col-lg-12">
                                                     <div>
                                                         <label for="cardNumber" class="form-label">URL yang
                                                             diperpendek</label>
                                                             <div class="countdown-input-subscribe">
-                                                                <input id="default_short_url"  class="form-control">  
+                                                                <input id="default_short_url"  class="form-control">
                                                                 <button class="btn btn-danger" type="button"
                                                                 id="button-email" data-bs-toggle="modal"
                                                                 data-bs-target="#bagikan"><i class="bi bi-share-fill"></i>
-                                                                &nbsp; Bagik</button>                                                          
+                                                                &nbsp; Bagik</button>
                                                             </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="countdown-input-subscribe">
                                                         <label for="cardNumber" class="form-label">URL asli</label>
-                                                        <input class="form-control" id="destination_url">                                                     
+                                                        <input class="form-control" id="destination_url">
                                                     </div>
                                                 </div>
                                             </div>
@@ -459,7 +459,7 @@
                             <div class="progress" data-bs-toggle="tooltip" data-bs-title="$234.95 Paid Amount">
                                 <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated"
                                      role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-                            </div>                            
+                            </div>
                             <p class="text-muted mb-0"><b>{{$countURL}} dari 100</p>
 
                             <br>
@@ -506,10 +506,15 @@
                                                     {{-- </div> --}}
 
                                                     {{-- </div> --}}
-                                                    <div class="progress" data-bs-toggle="tooltip" data-bs-title="$234.95 Paid Amount">
-                                                        <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated"
-                                                             role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-                                                    </div>                                                                                                       
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                                             role="progressbar"
+                                                             aria-valuenow="{{$countURL}}"
+                                                             aria-valuemin="0"
+                                                             aria-valuemax="100"
+                                                             style="width: {{$countURL}}%;">
+                                                        </div>
+                                                    </div>
                                                     <p class="text-muted mb-0"><b>{{$countURL}} dari 100</p>
 
                                                     <br>
@@ -673,13 +678,29 @@
     <script>
         // Ambil data dari {{$countURL}} (misalnya menggunakan AJAX)
         var countData = {{$countURL}}; // Contoh nilai statis
-    
+
         // Ubah lebar bar progres sesuai dengan data yang diperoleh
         var progressBar = document.getElementById("progress-bar");
         var progressBarWidth = (countData / 100) * 100; // Ubah 100 menjadi nilai maksimum yang sesuai
         progressBar.style.width = progressBarWidth + "%";
         progressBar.setAttribute("aria-valuenow", countData);
     </script>
-    
-    
+    <script>
+        // Get the value from the server-side variable {{$countURL}}
+        var countURLValue = {{$countURL}};
+
+        // Calculate the percentage
+        var percentage = (countURLValue / 100) * 100; // Assuming 100 is the total
+
+        // Update the progress bar width
+        var progressBar = document.querySelector('.progress-bar');
+        progressBar.style.width = percentage + '%';
+        progressBar.setAttribute('aria-valuenow', countURLValue);
+
+        // Update the text
+        var progressText = document.querySelector('.text-muted.mb-0 b');
+        progressText.textContent = countURLValue + ' dari 100';
+    </script>
+
+
 @endsection

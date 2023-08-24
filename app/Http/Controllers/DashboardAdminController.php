@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ShortUrl;
 use App\Models\User;
+use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 use Illuminate\Http\Request;
 
 class DashboardAdminController extends Controller
@@ -12,6 +13,7 @@ class DashboardAdminController extends Controller
    {
     $totalUser = User::where('email', '!=', 'admin@gmail.com')->count();
     $totalUrl = ShortUrl::count();
-    return view('Admin.index', compact('totalUser','totalUrl'));
+    $totalVisits = ShortURLVisit::query()->count();
+    return view('Admin.index', compact('totalUser','totalUrl','totalVisits'));
    }
 }

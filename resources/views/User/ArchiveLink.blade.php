@@ -182,7 +182,7 @@
             <div class="col-4">
                 <h5>Tautan yang Diarsip</h5>
             </div>
-            <div class=" col-8 col-sm mb-3">
+            <div class="col-8 col-sm mb-3">
                 <div class="d-flex justify-content-sm-end">
                     <div class="search-box ms-2">
                         <input type="text" class="form-control search" placeholder="Search...">
@@ -195,7 +195,7 @@
             @foreach ($data as $row)
             <form action="/restore/{{$row->id}}">
                 <div class="col-lg-12">
-                    <div class="card" style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;">
+                    <div class="card" style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;" id="card{{ $row->id }}">
                         <div class="card-body">
                             <div class="d-flex">
                                 <h6 class="col-6">{{$row->title}}</h6>
@@ -335,6 +335,16 @@
             window.location.reload();
         }
     }
+</script>
+<script>
+    $(document).ready(function() {
+        $(".search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $(".card").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
 </script>
 @endsection
 @endsection
