@@ -54,6 +54,29 @@
 header {
   padding: 20px 0; /* Atur padding sesuai kebutuhan Anda */
 }
+.carousel-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: #104898; */
+    /* opacity: 0.7; */
+    z-index: 1;
+}
+
+/* Mengatur teks "Memulai" menjadi putih */
+.image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 100% 100%;
+    border-radius: 5%;
+}
     </style>
 
     <!-- Page-wrapper-Start -->
@@ -69,49 +92,73 @@ header {
             <!-- container start -->
             <div class="container">
                 <!-- navigation bar -->
-              <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
-                <a class="navbar-brand mb-6" href="#">
-                  <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image" >
-                </a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="banner-text">
-                        <h6 style="color: white;">Bantuan & Dukungan | Platform Microsite</h6>
+                <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
+                    <a class="navbar-brand" href="#">
+                        <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            <!-- <i class="icofont-navigation-menu ico_menu"></i> -->
+                            <div class="toggle-wrap">
+                                <span class="toggle-bar"></span>
+                            </div>
+                        </span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <!-- secondery menu start -->
+                            <li class="nav-item has_dropdown">
+                                <a class="nav-link" href="/">Beranda</a>
+                            </li>
+
+                            <!-- secondery menu start -->
+                            <li class="nav-item has_dropdown">
+                                <a class="nav-link" href="/Shortlink">Perpendek Link</a>
+                            </li>
+                            <!-- secondery menu end -->
+
+                            <li class="nav-item has_dropdown">
+                                <a class="nav-link" href="/Microsite">Situs Mikro</a>
+                            </li>
+                            <li class="nav-item has_dropdown">
+                                <a class="nav-link" href="/Subscribe">Berlangganan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link dark_btn" href="/login">Login / Register</a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                
-                
-              </nav>
-              <!-- navigation end -->
+                </nav>
+                <!-- navigation end -->
             </div>
             <!-- container end -->
-          </header>
+        </header>
 
         <!-- Banner-Section-Start -->
         <section class="banner_section" id="beranda">
             <div>
-                {{-- <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-                    <defs>
-                        <path id="gentle-wave"
-                            d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                    </defs>
-                    <g class="parallax">
-                        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-                        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-                        <use xlink:href="#gentle-wave" x="48" y="7" fill="#f6f4fe" />
-                    </g>
-                </svg> --}}
+                <div id="carouselExampleFade" class="carousel slide carousel-fade">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                                <img src="https://i.postimg.cc/BQR0t7wR/Desain-tanpa-judul.png" class="w-100" alt="..." style="max-height: 200px;">
+                            <!-- Menggunakan style untuk mengatur tinggi gambar -->
+                            <div class="image-text">
+                                <p style="color: white; font-size:50px;"><b>Platform&nbsp;Microsite</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- wave animation end -->
-
         </section>
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <a href="/HelpSupport" class="col-1 btn btn-info btn-sm">
+                    {{-- <a href="/HelpSupport" class="col-1 btn btn-info btn-sm">
                         <i class="fas fa-arrow-left"></i> Kembali
-                    </a>
+                    </a> --}}
                     <p></p>
                     <div class="col-12">
                         <div class="accordion accordion-border-box" id="genques-accordion">
@@ -208,10 +255,23 @@ header {
                         <div class="links">
                             <h3 style="margin-left: 30px;">Dukungan</h3>
                             <ul>
-                                <li><a href="#kontak">Kebijakan Privasi</a></li>
                                 <li><a href="/Home">Bantuan</a></li>
                                 <li><a href="#features">Laporkan</a></li>
                                 <li><a href="#kontak">Status</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <div class="links">
+                            <h3 style="margin-left: 30px;">SiteMaps</h3>
+                            <ul>
+                                <li><a href="#kontak">Beranda</a></li>
+                                <li><a href="/Home">Perpendek Link</a></li>
+                                <li><a href="#features">Situs Mikro</a></li>
+                                <li><a href="#kontak">Berlanggaan</a></li>
+                                <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                <li><a href="/HelpSupport">Kebijakan Privasi</a></li>
+
                             </ul>
                         </div>
                     </div>
@@ -219,7 +279,7 @@ header {
                     <!-- Contact Information -->
                     <div class="col-lg-2 col-md-6 col-12">
                         <div class="links">
-                            <h3 style="margin-left: 30px;" >Hubungi Kami</h3>
+                            <h3 style="margin-left: 30px;">Hubungi Kami</h3>
                             <ul style="text-align: justify;">
                                 <li>
                                     <a href="https://wa.me/085606270454">
@@ -244,10 +304,10 @@ header {
                     </div>
 
                     <!-- Comment Form -->
-                    <div class="col-lg-5 col-md-6 col-12 mb-5" >
+                    <div class="col-lg-3 col-md-6 col-12 mb-1" >
                         <form action="javascript:void(0);" class="mt-3">
                             <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
-                                placeholder="Tambahkan Komentar"></textarea>
+                                placeholder="Tambahkan Komentar" style="font-size:12px ;"></textarea>
                             <div class="text-start mt-2">
                                 <a href="javascript:void(0);" class="btn btn-success">Kirim</a>
                             </div>
@@ -273,6 +333,7 @@ header {
             <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
         </div>
     </footer>
+
         <!-- Footer-Section end -->
 
         <!-- VIDEO MODAL -->

@@ -216,7 +216,7 @@ header {
           	<!-- banner text -->
             <div class="banner_text">
               <!-- h1 -->
-              <h1>Berlangganan</h1>
+              <h2 style="color: white">Berlangganan</h2>
               <!-- p -->
               <span style="color: white;">Mari berlangganan dari sekarang!!
                 Agar Anda bebas untuk memangkas atau mempersingkat URL
@@ -405,87 +405,106 @@ header {
   
   <footer>
     <div class="top_footer" id="kontak">
-        <!-- container start -->
         <div class="container">
-          <!-- row start -->
-          <div class="row">
-            <span class="banner_shape1"> <img src="https://i.postimg.cc/3RVg0kJv/banner-shape1.png" alt="image" > </span>
-            <span class="banner_shape2"> <img src="https://i.postimg.cc/rp6XjJnn/banner-shape2.png" alt="image" > </span>
-            <span class="banner_shape3"> <img src="https://i.postimg.cc/wxrWDBbF/banner-shape3.png" alt="image" > </span>
-              <!-- footer link 1 -->
-              <div class="col-lg-4 col-md-6 col-12">
-                  <div class="abt_side">
-                    <div class="logo"> <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image" style="margin-top: -50px;" ></div>
-                  </div>
-              </div>
-
-              <!-- footer link 3 -->
-              <div class="row">
-                <div class="col-lg-5 col-md-6 col-12">
-                  <div class="links">
-                    <h3>Dukungan</h3>
-                      <ul style="text-align: justify;">
-                        <li><a href="/Home">Bantuan</a></li>
-                          <li><a href="#features">Laporkan</a></li>
-                          <li><a href="#kontak">Status</a></li>
-                      </ul>
-                  </div>
+            <div class="row">
+                <!-- Logo -->
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="abt_side">
+                        <div class="logo">
+                            <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
+                                style="margin-top: -27%;">
+                                <ul style="margin-top: -16%; margin-right:40px;">
+                                    <li style="color: white; font-size:14px;">S.id adalah platform untuk orang-orang untuk menunjukkan keahlian mereka dalam membuat situs mikro dan memperpendek tautan terpendek dengan kode s.id/.</li>
+                                </ul>
+                            </div>
+                    </div>
                 </div>
-                <div class="col-lg-7 col-md-6 col-12">
-                  <div class="links">
-                    <h3>Hubungi Kami</h3>
-                      <ul style="text-align: justify;">
-                        <li>
-                          <a href="https://wa.me/085606270454">
-                              <i class="fab fa-whatsapp"></i>
-                              085606270454
-                          </a>
-                      </li>
-                      
-                      <li>
-                        <a href="#features">
-                            <i class="fab fa-instagram"></i>
-                            @link.id
-                        </a>
-                    </li>
-                    
-                    <li>
-                      <a href="#features">
-                          <i class="fab fa-twitter"></i>
-                          @link.id
-                      </a>
-                  </li>
-                  
-                      </ul>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <!-- row end -->
-      </div>
-      <!-- container end -->
-    </div>
 
-    <!-- last footer -->
-    <div class="bottom_footer">
-      <!-- container start -->
-        <div class="container">
-          <!-- row start -->
-          <div class="row">
-            <div class="col-md-12" style="text-align: right;">
-                <p>©LINK.ID Dikelola oleh PT. Hummatech</p>
+                <!-- Footer Links -->
+                
+                <div class="col-lg-2 col-md-6 col-12">
+                    <div class="links">
+                        <h3>Dukungan</h3>
+                        <ul>
+                            <li><a href="/Home">Bantuan</a></li>
+                            <li><a href="#features">Laporkan</a></li>
+                            <li><a href="#kontak">Status</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-12">
+                    <div class="links">
+                        <h3>SiteMaps</h3>
+                        <ul>
+                            <li><a href="#kontak">Beranda</a></li>
+                            <li><a href="/Home">Perpendek Link</a></li>
+                            <li><a href="#features">Situs Mikro</a></li>
+                            <li><a href="#kontak">Berlanggaan</a></li>
+                            <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                            <li><a href="/HelpSupport">Kebijakan Privasi</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="col-lg-2 col-md-6 col-12">
+                    <div class="links">
+                        <h3>Hubungi Kami</h3>
+                        <ul style="text-align: justify;">
+                            <li>
+                                <a href="https://wa.me/085606270454">
+                                    <i class="fab fa-whatsapp"></i>
+                                    085606270454
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#features">
+                                    <i class="fab fa-instagram"></i>
+                                    @link.id
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#features">
+                                    <i class="fab fa-twitter"></i>
+                                    @link.id
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Comment Form -->
+                <div class="col-lg-3 col-md-6 col-12 mb-1" >
+                    <form action="javascript:void(0);" class="mt-3">
+                        <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="Tambahkan Komentar" style="font-size:12px ;"></textarea>
+                        <div class="text-start mt-2">
+                            <a href="javascript:void(0);" class="btn btn-success">Kirim</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <!-- row end -->
-        </div>
-        <!-- container end -->
     </div>
 
-    <!-- go top button -->
+    <!-- Bottom Footer -->
+    <div class="bottom_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Go Top Button -->
     <div class="go_top">
-        <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image" ></span>
+        <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
     </div>
 </footer>
+
     <!-- Footer-Section end -->
 
   <!-- VIDEO MODAL -->
