@@ -11,6 +11,7 @@ use App\Http\Controllers\DahsboardController;
 use App\Http\Controllers\ArchiveLinkController;
 use App\Http\Controllers\AnalyticUserController;
 use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\SubscribeUserController;
 use App\Http\Controllers\MicrositeController;
 use App\Http\Controllers\ButtonController;
 use Illuminate\Support\Facades\Route;

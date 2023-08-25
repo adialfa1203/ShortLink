@@ -15,14 +15,12 @@
     <link rel="shortcut icon" href="{{ asset('template/themesbrand.com/steex/layouts/assets/images/favicon.ico') }}">
 
     <!-- Fonts css load -->
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="{{ asset('https://fonts.googleapis.com/') }}">
+    <link rel="preconnect" href="{{ asset('https://fonts.gstatic.com/') }}" crossorigin>
     <link id="fontsLink"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
+        href="{{ asset('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap') }}"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css') }}" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- jsvectormap css -->
     <link href="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/jsvectormap/css/jsvectormap.min.css') }}"

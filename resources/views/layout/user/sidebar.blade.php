@@ -38,6 +38,9 @@
             display: flex;
             justify-content: space-between;
         }
+        .sidebar-hidden {
+            display: none;
+        }
     </style>
 @endsection
 <div class="app-menu navbar-menu">
@@ -75,21 +78,21 @@
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                <li>
-                    <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
+                <li class="nav-item">
+                    {{-- <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="d-flex align-items-center">
+                        <span data-key="t-apps" class="d-flex align-items-center">
                             <img class="header-profile-user"
                                 src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="Header Avatar">
                             <div class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium text-white user-name-text">Hi! {{ Auth::user()->name }}</span>
+                                <span>Hi! {{ Auth::user()->name }}</span>
 
                                 @php
                                 $email = Auth::user()->email;
                                 @endphp
 
                                 @if (strlen($email) < 15)
-                                    <span class="d-none d-xl-block ms-1 fs-sm user-name-sub-text text-white">
+                                    <span class="d-none d-xl-block ms-1 fs-sm user-name-sub-text text-white" data-key="t-hot">
                                         {{ $email }}
                                     </span>
                                 @else
@@ -100,7 +103,24 @@
                                 @endif
                             </div>
                         </span>
-                    </button>
+                    </button> --}}
+                        <button class="nav-link bg-transparent text-white" type="button" role="button" aria-expanded="false" data-bs-toggle="dropdown"
+                            aria-controls="sidebarDashboards">
+                            <img class="header-profile-user"
+                                src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="Header Avatar">
+                                <div class="text-start ms-xl-2">
+                                    <span><b>Hi! {{ Auth::user()->name }}</b></span>
+
+                                    @php
+                                    $email = Auth::user()->email;
+                                    @endphp
+
+
+                                        <span data-key="t-hot">
+                                            {{ $email }}
+                                        </span>
+                                </div>
+                        </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
                         <h6 class="dropdown-header">Welcome {{Auth::user()->name}}!</h6>
@@ -113,8 +133,13 @@
                     </div>
                 </li>
 
-                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                <style>
+                    .navbar-menu .navbar-nav .nav-link:hover {
+                        background: #ffffff;
+                    }
+                </style>
 
+                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link " href="{{ url ('dashboard-user')}}" role="button" aria-expanded="false"
                         aria-controls="sidebarDashboards">
@@ -167,3 +192,4 @@
 
     <div class="sidebar-background"></div>
 </div>
+

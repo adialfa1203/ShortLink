@@ -76,7 +76,7 @@
             </div>
             <ul class="navbar-nav" id="navbar-nav">
                 <li>
-                    <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
+                    {{-- <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
                             <img class="header-profile-user"
@@ -101,6 +101,23 @@
                                 @endif
                             </div>
                         </span>
+                    </button> --}}
+                    <button class="nav-link bg-transparent text-white" type="button" role="button" aria-expanded="false" data-bs-toggle="dropdown"
+                        aria-controls="sidebarDashboards">
+                        <img class="header-profile-user"
+                            src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/32/avatar-1.jpg') }}" alt="Header Avatar">
+                            <div class="text-start ms-xl-2">
+                                <span><b>Hi! {{ Auth::user()->name }}</b></span>
+
+                                @php
+                                $email = Auth::user()->email;
+                                @endphp
+
+
+                                    <span data-key="t-hot">
+                                        {{ $email }}
+                                    </span>
+                            </div>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->

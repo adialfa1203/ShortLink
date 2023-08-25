@@ -225,21 +225,21 @@
                                 </div>
                             </div>
                         </div>
-                         
+
                         <!-- Modal singkatkan-->
-                        
+
                         <div class="modal fade" id="singkatkan" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
-                            
+
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title" id="addAmountLabel">Buat tautan pemendek baru</h1>
-                                       
+
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
-                                             
+
                                     </div>
-                                   
+
                                     <div class="modal-body">
                                             <div class="row g-3">
                                                 <div class="col-lg-12">
@@ -278,7 +278,7 @@
                                                             <button type="button" class="btn btn-success me-2" id="simpanButton" style="font-size: 13px; padding: 5px 10px; display: flex; align-items: center; justify-content: flex-end; float: right;">
                                                                 <i class="bi bi-check mr-2"></i> Simpan <!-- Tambahkan margin kanan (mr-2) untuk tombol pertama -->
                                                             </button>
-                                                            
+
                                                         <button type="button" class="btn btn-danger me-2" id="keluarButton" style="font-size: 13px; padding: 5px 10px; display: flex; align-items: center; justify-content: flex-end; float: right;">
                                                             <i class="bi bi-x mr-2"></i> Keluar <!-- Tambahkan margin kiri (ml-2) untuk tombol kedua -->
                                                         </button>
@@ -286,7 +286,7 @@
                                                     </div>
                                                 </div>
                                                 {{-- end modal edit --}}
-                                                
+
                                                 <div class="col-lg-12">
                                                     <div class="countdown-input-subscribe">
                                                         <label for="cardNumber" class="form-label">URL asli</label>
@@ -303,7 +303,7 @@
                         </div>
                         </div>
                         <!-- end Modal singkatkan -->
-                          
+
                         <!-- Modal bagikan -->
                         <div class="modal fade" id="bagikan" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -333,7 +333,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- end Modal bagikan-->
 
 
@@ -769,8 +769,8 @@
         // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
         resetEditModal();
     });
-   
-    
+
+
      });
     </script>
     <!-- apexcharts -->
@@ -797,7 +797,7 @@
     <script>
         // Ambil data dari {{$countURL}} (misalnya menggunakan AJAX)
         var countData = {{$countURL}}; // Contoh nilai statiskeluar
-    
+
         // Ubah lebar bar progres sesuai dengan data yang diperoleh
         var progressBar = document.getElementById("progress-bar");
         var progressBarWidth = (countData / 100) * 100; // Ubah 100 menjadi nilai maksimum yang sesuai
@@ -823,15 +823,15 @@
     <script>
         // Temukan tombol "Keluar" berdasarkan ID
         var keluarButton = document.getElementById("keluarButton");
-    
+
         // Temukan modal edit berdasarkan ID
         var modalEdit = document.getElementById("edit");
-    
+
         // Tambahkan event listener untuk tombol "Keluar"
         keluarButton.addEventListener("click", function () {
             // Tutup modal edit
             modalEdit.classList.remove("show");
         });
     </script>
-    
+
 @endsection
