@@ -29,7 +29,7 @@ class ProfilController extends Controller
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
         ],);
 
-        
+
         // dd($request);
         // Mengisi data pengguna dengan data yang diinputkan oleh pengguna
         $user->name = $request->name;
@@ -58,8 +58,8 @@ class ProfilController extends Controller
         $admin = Auth::user();
         return view('Admin.ProfilAdmin', compact('admin'));
     }
-    
-    public function updateAdmin(Request $request)
+
+    public function update_admin(Request $request)
     {
         $admin = Auth::user();
         $request->validate([
@@ -71,13 +71,14 @@ class ProfilController extends Controller
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
         ],);
 
-    
+
 // dd($request);
         // Mengisi data pengguna dengan data yang diinputkan oleh pengguna
         $admin->name = $request->name;
         $admin->email = $request->email;
+
         $admin->number = $request->number;
-    
+
 // Memeriksa dan mengupdate kata sandi jika diinputkan
         if ($request->filled('new_password')) {
             if (!Hash::check($request->old_password, $admin->password)) {
@@ -85,16 +86,16 @@ class ProfilController extends Controller
             }
             $admin->password = Hash::make($request->new_password);
         }
-    
+
 // Upload dan simpan gambar profil jika ada
         if ($request->hasFile('profile_picture')) {
             $profilePicturePath = $request->file('profile_picture')->store('profile_pictures', 'public');
             $admin->profile_picture = $profilePicturePath;
         }
-    
+
         $admin->save(); // Menyimpan perubahan pada data pengguna
         return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
     }
-    
+
 
 }

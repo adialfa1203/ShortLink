@@ -53,10 +53,10 @@
         @csrf
         <div class="container-fluid">
             <div class="card">
-                    <div class="countdown-input-subscribe">
-                        <input type="text" name="destination_url" class="form-control" placeholder="http://domain-mu.id/yang-paling-panjang-disini"/>
-                        <button class="btn btn-danger" type="submit" ><i class="fa-solid fa-link"></i> &nbsp; Singkatkan</button>
-                    </div>
+                <div class="countdown-input-subscribe">
+                    <input type="text" name="destination_url" class="form-control" placeholder="http://domain-mu.id/yang-paling-panjang-disini" />
+                    <button class="btn btn-danger" type="submit"><i class="fa-solid fa-link"></i> &nbsp; Singkatkan</button>
+                </div>
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
                         <div class="container">
@@ -66,15 +66,15 @@
                                     <h6 class="card-title mb-0">Judul (Opsional)</h6>
                                 </div>
                                 <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="mb-3">
-                                                    <input name="title" type="text" class="form-control" id="degreeName" placeholder="Judul">
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <input name="title" type="text" class="form-control" id="degreeName" placeholder="Judul">
                                             </div>
-                                            <!--end col-->
                                         </div>
-                                        <!--end row-->
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -94,31 +94,31 @@
                                                                 <h6 class="card-title mb-0"> Tautan terproteksi</h6>
                                                             </div>
                                                             <div class="card-body">
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12">
-                                                                            <div class="mb-3">
-                                                                                <input type="text" class="form-control" id="degreeName" placeholder="Tautan  yang diberi kode privasi sebelum beralih ke tautan yang asli" disabled>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--end col-->
-                                                                        <div class="col-lg-12">
-                                                                            <div class="mb-3">
-                                                                                <div class="position-relative auth-pass-inputgroup mb-3">
-                                                                                    <input name="password" type="password" class="form-control pe-5 password-input" placeholder="Kata sandi">
-                                                                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon">
-                                                                                        <i class="ri-eye-fill align-middle"></i>
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--end col-->
-                                                                        <div class="hstack gap-2 justify-content-end">
-                                                                            <button type="button" id="resetButton" style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; justify-content: flex-end; float: right;">
-                                                                                <span class="bi bi-arrow-clockwise"> Reset</span>
-                                                                            </button>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="mb-3">
+                                                                            <input type="text" class="form-control" id="degreeName" placeholder="Tautan  yang diberi kode privasi sebelum beralih ke tautan yang asli" disabled>
                                                                         </div>
                                                                     </div>
-                                                                    <!--end row-->
+                                                                    <!--end col-->
+                                                                    <div class="col-lg-12">
+                                                                        <div class="mb-3">
+                                                                            <div class="position-relative auth-pass-inputgroup mb-3">
+                                                                                <input name="password" type="password" class="form-control pe-5 password-input" placeholder="Kata sandi">
+                                                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon">
+                                                                                    <i class="ri-eye-fill align-middle"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--end col-->
+                                                                    <div class="hstack gap-2 justify-content-end">
+                                                                        <button type="button" id="resetButton" style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; justify-content: flex-end; float: right;">
+                                                                            <span class="bi bi-arrow-clockwise"> Reset</span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!--end row-->
                                                             </div>
                                                         </div>
                                                     </div>
@@ -130,27 +130,27 @@
                                                                 <h6 class="card-title mb-0"> Tautan berjangka</h6>
                                                             </div>
                                                             <div class="card-body">
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12">
-                                                                            <div class="mb-3">
-                                                                                <input type="text" class="form-control" id="degreeName" placeholder="Apabila tautan sudah kadaluarsa, pengunjung tidak dapat mengakses tautan" disabled>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--end col-->
-                                                                        <div class="col-lg-12 d-flex">
-                                                                            <div class="col-lg-12 mb-3">
-                                                                                <label for="degreeName">Tanggal dan Waktu</label>
-                                                                                <input name="deactivated_at" type="datetime-local" class="form-control time-input" id="degreeName" placeholder="Password">
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--end col-->
-                                                                        <div class="hstack gap-2 justify-content-end">
-                                                                            <button type="button" id="time-reset" style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; justify-content: flex-end; float: right;">
-                                                                                <span class="bi bi-arrow-clockwise"></span> Reset
-                                                                            </button>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="mb-3">
+                                                                            <input type="text" class="form-control" id="degreeName" placeholder="Apabila tautan sudah kadaluarsa, pengunjung tidak dapat mengakses tautan" disabled>
                                                                         </div>
                                                                     </div>
-                                                                    <!--end row-->
+                                                                    <!--end col-->
+                                                                    <div class="col-lg-12 d-flex">
+                                                                        <div class="col-lg-12 mb-3">
+                                                                            <label for="degreeName">Tanggal dan Waktu</label>
+                                                                            <input name="deactivated_at" type="datetime-local" class="form-control time-input" id="degreeName" placeholder="Password">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--end col-->
+                                                                    <div class="hstack gap-2 justify-content-end">
+                                                                        <button type="button" id="time-reset" style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; justify-content: flex-end; float: right;">
+                                                                            <span class="bi bi-arrow-clockwise"></span> Reset
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!--end row-->
                                                             </div>
                                                         </div>
                                                     </div>
@@ -201,11 +201,37 @@
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Separated link</a>
                                 </div>
-                                <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal2"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Kode QR"><i class="fa-solid fa-qrcode"></i></span></button>
+                                <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal-{{ $row->id }}"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Kode QR"><i class="fa-solid fa-qrcode"></i></span></button>
                                 <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal"><span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit</span></button>
                                 <button type="submit" class="btn btn-primary me-3 btn-sm" onclick="archive({{ $row->id }})"><i class="bi bi-archive-fill"></i> Arsipkan</button>
                             </div>
                         </div>
+                        <div id="zoomInModal-{{ $row->id }}" class="modal fade zoomIn modal-sm" tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="zoomInModalLabel">Gambar Kode QR</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="visible-print text-center">
+                                            {!! QrCode::size(200)->generate($row->destination_url); !!}
+                                            <br>
+                                            <p>{{ $row->default_short_url }}</p>
+
+                                        </div>
+                                        <!-- <center>
+                                        <img src="{{asset('template/themesbrand.com/steex/layouts/assets/images/qr.png')}}" alt="" width="100%">
+                                    </center> -->
+                                    </div>
+                                    <center>
+                                        <button type="button" class="btn btn-danger">Download</button>
+                                        <button type="button" class="btn btn-light  me-3"><span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Ganti</span></button>
+                                    </center>
+                                    <div class="modal-footer"></div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
                         <a>
                             <h3 class="garisbawah card-title mb-2"><span style="color: red;">Link</span>{{$row->default_short_url}}</h3>
                         </a>
@@ -254,28 +280,7 @@
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
-                    <div id="zoomInModal2" class="modal fade zoomIn modal-sm" tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="zoomInModalLabel">Gambar Kode QR</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <center>
-                                        <img src="{{asset('template/themesbrand.com/steex/layouts/assets/images/qr.png')}}" alt="" width="100%">
-                                    </center>
-                                </div>
-                                <center>
-                                    <a href="{{asset('template/themesbrand.com/steex/layouts/assets/images/qr.png')}}" download>
-                                        <button type="button" class="btn btn-danger">Download</button>
-                                    </a>
-                                    <button type="button" class="btn btn-light  me-3"><span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Ganti</span></button>
-                                </center>
-                                <div class="modal-footer"></div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
+
                     <div id="zoomInModal" class="modal fade zoomIn" tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -389,22 +394,42 @@
     chart.render();
 </script>
 <script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js')}}"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="./jquery.qrcode.js"></script>
+<script type="text/javascript" src="./qrcode.js"></script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $("#resetButton").click(function() {
-                $(".password-input").val(""); // Mengosongkan input kata sandi
-            });
+            $(".password-input").val(""); // Mengosongkan input kata sandi
+        });
         // Menangani klik pada tombol Reset untuk modal tautan berjangka
         $("#time-reset").click(function() {
             $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
         });
+
+        $('.btn-qr').click(function() {
+
+            alert($(this).data('link'))
+            $(".demo").qrcode({
+
+                // 0: normal
+                // 1: label strip
+                // 2: label box
+                mode: 1,
+                label: 'jQueryScript.Net',
+                fontname: 'sans',
+                fontcolor: '#000'
+
+            });
+            $('#zoomInModal2').modal({
+                show: true
+            })
+        })
     });
 </script>
 <script>
     function archive() {
         message = confirm('Apakah Anda Ingin Mengarsip Tautan?');
-        if(message){
+        if (message) {
             window.location.reload();
         }
     }

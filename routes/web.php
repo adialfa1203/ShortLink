@@ -116,7 +116,7 @@ Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.us
 //link
 Route::get('/link-admin', [LinkAdminController::class, 'linkAdmin'])->name('link.admin');
 Route::get('/profil-admin', [ProfilController::class, 'profile']);
-Route::post('/update-admin', [ProfilController::class, 'UpdateAdmin'])->name('update.admin');
+Route::post('/update_admin', [ProfilController::class, 'update_admin'])->name('update_admin');
 });
 
 Route::get('/tester', function () {

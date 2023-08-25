@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Hash;
 
 class LinkController extends Controller
 {
+    
     public function Link()
     {
         $urlshort = ShortUrl::all();
+
         return view('User.Link', compact('urlshort'));
     }
 
