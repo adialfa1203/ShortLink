@@ -26,7 +26,7 @@ class AnalyticUserController extends Controller
         // $visits = count($shortURL->visits) ;
 
         $countURL = ShortURL::where('user_id', $user)->count();
-
+        // dd($totalVisits,$countURL);
         return view('User.AnalyticUser', compact('totalVisits','countURL'));
     }
 }

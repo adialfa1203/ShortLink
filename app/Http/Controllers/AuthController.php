@@ -113,7 +113,6 @@ class AuthController extends Controller
             ];
 
             Mail::to($user->email)->send(new SampleMail($details));
-
             return redirect()->route('verification')->with('success', 'Kode berhasil dikirim');
         } else {
             return back()->withErrors(['email' => 'Email tidak terdaftar']);

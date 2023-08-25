@@ -14,6 +14,7 @@ use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\MicrositeController;
 use App\Http\Controllers\ButtonController;
 use Illuminate\Support\Facades\Route;
+// use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -63,6 +64,12 @@ Route::get('BillingSubscriptions', [DahsboardController::class, 'BillingSubscrip
 Route::get('PlatformMicrosite', [DahsboardController::class, 'PlatformMicrosite']);
 Route::get('ShortLink', [DahsboardController::class, 'ShortLink']);
 });
+// Route::get('/qr', function()
+// {
+// 	return QrCode::size(250)
+// 	->backgroundColor(255, 255, 204)
+// 	->generate('BELAJAR QR');
+// });
 
 Route::middleware(['auth'])->group(function () {
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
