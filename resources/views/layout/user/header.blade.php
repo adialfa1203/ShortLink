@@ -37,7 +37,7 @@
                     </span>
                 </button>
 
-                
+
             </div>
 
             <div class="d-flex align-items-center">
@@ -66,12 +66,12 @@
                     </div>
                 </div>
 
-                <div class="dropdown topbar-head-dropdown ms-1 header-item"><button type="button"
+                <div class="dropdown topbar-head-dropdown ms-1 header-item"><a href="/subscribe-product-user" type="button"
                         class="btn btn-danger"><i class="bi bi-fire"></i>
-                        <span>Berlangganan</span></button>
+                        <span>Berlangganan</span></a>
                 </div>
 
-                <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
+                {{-- <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle"
                         id="page-header-notifications-dropdown" data-bs-toggle="dropdown"
                         data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
@@ -258,7 +258,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 {{-- <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -307,3 +307,14 @@
         </div>
     </div>
 </header>
+
+@section('script')
+<script>
+    const hamburgerButton = document.getElementById('topnav-hamburger-icon');
+    const contentDiv = document.querySelector('.text-start');
+
+    hamburgerButton.addEventListener('click', function() {
+        contentDiv.classList.toggle('hamburger-icon-open');
+    });
+</script>
+@endsection

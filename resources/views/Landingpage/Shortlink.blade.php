@@ -32,59 +32,19 @@
 
 <body>
     <style>
-        body {
-            margin: 0;
-            /* Reset margin body */
-        }
+         header {
+  height: 100px; /* Ganti dengan tinggi yang Anda inginkan */
+}
+header {
+  padding: 20px 0; /* Atur padding sesuai kebutuhan Anda */
+}
+.banner_image img {
+    max-width: 100%; /* Maksimum lebar gambar adalah lebar kontainer */
+    max-height: 100%; /* Maksimum tinggi gambar adalah tinggi kontainer */
+    width: auto; /* Menjaga aspek rasio gambar */
+    height: auto; /* Menjaga aspek rasio gambar */
+}
 
-        .link-form {
-            width: 100%;
-            margin: 20px;
-            /* Ubah margin dari auto ke nilai tetap */
-            padding: 20px;
-        }
-
-        .input-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .input-icon {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .input-icon i {
-            position: absolute;
-            right: 10px;
-            color: #00;
-            margin-right: 17%;
-            /* Margin kanan untuk jarak antara ikon dan input */
-            margin-top: 1%;
-            /* Margin bawah untuk jarak antara ikon dan teks */
-        }
-
-        input[type="text"] {
-            width: 400px;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 10px 0 0 10px;
-        }
-
-        button {
-            background-color: #D9D9D9;
-            color: #000;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 0 10px 10px 0;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #D9D9D9;
-        }
     </style>
 
     <!-- Page-wrapper-Start -->
@@ -100,7 +60,7 @@
             <!-- container start -->
             <div class="container">
                 <!-- navigation bar -->
-                <nav class="navbar navbar-expand-lg">
+                <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
                     <a class="navbar-brand" href="#">
                         <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image">
                     </a>
@@ -162,29 +122,23 @@
                         <!-- banner text -->
                         <div class="banner_text">
                             <!-- h1 -->
-                            <h1>Buat dan kreasikan tautan Anda</h1>
+                            <h2 style="color: white;">Buat dan kreasikan tautan Anda</h2>
                             <!-- p -->
-                            <span style="color: yellow;">Penyingkat tautan terbaik dan Terpendek
-                                untuk</span>
+                            <span style="color: white;">Penyingkat tautan terbaik dan Terpendek
+                                untuk kamu gunakan.</span>
                             <p>Apakah kamu ingin mempersingkat URL sesuai dengan
-                                yang Anda inginkan?
+                                yang Anda inginkan? Sesuaikan Penyingkat URL Anda dengan fitur yang memberi Anda pemendekan tautan berkualitas lebih baik.
                             </p>
-                            <div class="link-form" style="float: left;">
-                                <form action="#" method="#">
-                                    <div class="input-container">
-                                        <div class="input-icon">
-                                            <input type="text" id="linkInput" name="linkInput"
-                                                placeholder="Https://Domain-mu/yang-ingin kau ">
-                                            <button type="submit">
-                                                <i class="fas fa-link"></i>
-                                                <span style="margin-left: 10%">Singkatkan</span>
-                                            </button>
-
-                                        </div>
+                            <div class="col-12 mt-3" style="margin-right: 100%;">
+                                {{-- <div class="input-group align-items-center rounded" style="background: #E9EEF5">
+                                    <input class="form-control" type="text"
+                                        placeholder="Https://Domain-mu/yang-ingin kau">
+                                    <div class="position-absolute ms-auto" style="margin-left: 75%;">
+                                        <button type="button" class="btn btn-danger btn-sm m-1"><i class="fas fa-link"></i>
+                                            Singkatkan</button>
                                     </div>
-                                </form>
+                                </div> --}}
                             </div>
-
                         </div>
                         <!-- app buttons -->
 
@@ -193,7 +147,7 @@
                     <!-- banner slides start -->
                     <div class="col-lg-6 col-md-12" data-aos="fade-in" data-aos-duration="1500">
                         <div class="banner_image">
-                            <img class="moving_animation" src="https://i.postimg.cc/D00862P6/shortlink.png"
+                            <img class="moving_animation" src="https://i.postimg.cc/ZqHQGxQD/Landing-Page2.png"
                                 alt="image">
                         </div>
                     </div>
@@ -317,87 +271,106 @@
         <!-- Footer-Section start -->
         <footer>
             <div class="top_footer" id="kontak">
-                  <!-- container start -->
                 <div class="container">
-                  <!-- row start -->
-                  <div class="row">
-                      <span class="banner_shape1"> <img src="https://i.postimg.cc/3RVg0kJv/banner-shape1.png" alt="image" > </span>
-                        <span class="banner_shape2"> <img src="https://i.postimg.cc/rp6XjJnn/banner-shape2.png" alt="image" > </span>
-                        <span class="banner_shape3"> <img src="https://i.postimg.cc/wxrWDBbF/banner-shape3.png" alt="image" > </span>
-                        <!-- footer link 1 -->
-                      <div class="col-lg-4 col-md-6 col-12">
-                          <div class="abt_side">
-                            <div class="logo"> <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image" style="margin-top: -50px;" ></div>
-                          </div>
-                      </div>
-    
-                      <!-- footer link 3 -->
-                      <div class="row">
-                        <div class="col-lg-5 col-md-6 col-12">
-                          <div class="links">
-                            <h3>Dukungan</h3>
-                              <ul style="text-align: justify;">
-                                <li><a href="/Home">Bantuan</a></li>
-                                  <li><a href="#features">Laporkan</a></li>
-                                  <li><a href="#kontak">Status</a></li>
-                              </ul>
-                          </div>
+                    <div class="row">
+                        <!-- Logo -->
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="abt_side">
+                                <div class="logo">
+                                    <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
+                                        style="margin-top: -27%;">
+                                        <ul style="margin-top: -16%; margin-right:40px;">
+                                            <li style="color: white; font-size:14px;">S.id adalah platform untuk orang-orang untuk menunjukkan keahlian mereka dalam membuat situs mikro dan memperpendek tautan terpendek dengan kode s.id/.</li>
+                                        </ul>
+                                    </div>
+                            </div>
                         </div>
-                        <div class="col-lg-7 col-md-6 col-12">
-                          <div class="links">
-                            <h3>Hubungi Kami</h3>
-                              <ul style="text-align: justify;">
-                                <li>
-                                  <a href="https://wa.me/085606270454">
-                                      <i class="fab fa-whatsapp"></i>
-                                      085606270454
-                                  </a>
-                              </li>
-                              
-                              <li>
-                                <a href="#features">
-                                    <i class="fab fa-instagram"></i>
-                                    @link.id
-                                </a>
-                            </li>
-                            
-                            <li>
-                              <a href="#features">
-                                  <i class="fab fa-twitter"></i>
-                                  @link.id
-                              </a>
-                          </li>
-                          
-                              </ul>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-                  <!-- row end -->
-              </div>
-              <!-- container end -->
-            </div>
     
-            <!-- last footer -->
-            <div class="bottom_footer">
-                <!-- container start -->
-                <div class="container">
-                  <!-- row start -->
-                  <div class="row">
-                    <div class="col-md-12" style="text-align: right;">
-                        <p>©LINK.ID Dikelola oleh PT. Hummatech</p>
+                        <!-- Footer Links -->
+                        
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <div class="links">
+                                <h3>Dukungan</h3>
+                                <ul>
+                                    <li><a href="/Home">Bantuan</a></li>
+                                    <li><a href="#features">Laporkan</a></li>
+                                    <li><a href="#kontak">Status</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <div class="links">
+                                <h3>SiteMaps</h3>
+                                <ul>
+                                    <li><a href="#kontak">Beranda</a></li>
+                                    <li><a href="/Home">Perpendek Link</a></li>
+                                    <li><a href="#features">Situs Mikro</a></li>
+                                    <li><a href="#kontak">Berlanggaan</a></li>
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/HelpSupport">Kebijakan Privasi</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+    
+                        <!-- Contact Information -->
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <div class="links">
+                                <h3>Hubungi Kami</h3>
+                                <ul style="text-align: justify;">
+                                    <li>
+                                        <a href="https://wa.me/085606270454">
+                                            <i class="fab fa-whatsapp"></i>
+                                            085606270454
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#features">
+                                            <i class="fab fa-instagram"></i>
+                                            @link.id
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#features">
+                                            <i class="fab fa-twitter"></i>
+                                            @link.id
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                        <!-- Comment Form -->
+                        <div class="col-lg-3 col-md-6 col-12 mb-1" >
+                            <form action="javascript:void(0);" class="mt-3">
+                                <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
+                                    placeholder="Tambahkan Komentar" style="font-size:12px ;"></textarea>
+                                <div class="text-start mt-2">
+                                    <a href="javascript:void(0);" class="btn btn-success">Kirim</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <!-- row end -->
-                </div>
-                <!-- container end -->
             </div>
     
-            <!-- go top button -->
+            <!-- Bottom Footer -->
+            <div class="bottom_footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Go Top Button -->
             <div class="go_top">
-                <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image" ></span>
+                <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
             </div>
         </footer>
+
         <!-- Footer-Section end -->
 
         <!-- VIDEO MODAL -->

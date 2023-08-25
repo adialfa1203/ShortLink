@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'number',
+        'is_banned',
         'profile_picture',
         'verification_code'
     ];
@@ -56,4 +57,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(ShortURLVisit::class);
     }
+
+    public function ban() {
+        $this->update(['is_banned' => true]);
+    }
+
+    public function unban() {
+        $this->update(['is_banned' => false]);
+    }
+
 }

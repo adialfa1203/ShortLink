@@ -11,8 +11,7 @@ class LinkController extends Controller
     
     public function Link()
     {
-        $urlshort = ShortUrl::all();
-
+        $urlshort = ShortUrl::orderBy('created_at', 'desc')->paginate(5);
         return view('User.Link', compact('urlshort'));
     }
 

@@ -26,7 +26,12 @@ class AuthController extends Controller
             if ($user->hasRole('admin')) {
                 return redirect()->route('dashboard.admin')->with('success', 'Login Admin Berhasil');
             } elseif ($user->hasRole('user')) {
-                return redirect()->route('dashboard.user')->with('success', 'Login User Berhasil');
+                if ($user->is_banned) {
+                    Auth::logout();
+                    return redirect('/login')->with('error', 'Akun Anda telah dibanned. Silakan hubungi admin untuk informasi lebih lanjut.');
+                } else {
+                    return redirect()->route('dashboard.user')->with('success', 'Login User Berhasil');
+                }
             }
         }
         return redirect()->route('login')->with('error', 'Email atau Password Yang Anda Masukkan Salah');
@@ -108,7 +113,6 @@ class AuthController extends Controller
             ];
 
             Mail::to($user->email)->send(new SampleMail($details));
-
             return redirect()->route('verification')->with('success', 'Kode berhasil dikirim');
         } else {
             return back()->withErrors(['email' => 'Email tidak terdaftar']);

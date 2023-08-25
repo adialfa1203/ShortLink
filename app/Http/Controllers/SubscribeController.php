@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 class SubscribeController extends Controller
 {
-    public function Subscribe()
+    public function subscribe()
     {
         return view('SubscribeAdmin.index');
     }
-    public function AddSubscribe()
+    public function addSubscribe()
     {
         return view('SubscribeAdmin.AddSubscribe');
     }

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DahsboardController extends Controller
 {
-    public function dashboard()
+    public function dashboardUser()
     {
         $user = Auth::user();
         $totalVisits = ShortURLVisit::query('user_id', $user)->count();
@@ -20,5 +20,27 @@ class DahsboardController extends Controller
         } 
         $ShortLink = ShortUrl::all();
         return view('User.DashboardUser',compact('ShortLink','totalVisits','countURL'));
+    }
+
+    public function HelpSupport (){
+        return view('HelpSupport.HelpSupport');
+    }
+    public function Start (){
+        return view('HelpSupport.Start');
+    }
+    public function Announcement (){
+        return view('HelpSupport.Announcement');
+    }
+    public function Account (){
+        return view('HelpSupport.Account');
+    }
+    public function BillingSubscriptions (){
+        return view('HelpSupport.BillingSubscriptions');
+    }
+    public function PlatformMicrosite (){
+        return view('HelpSupport.PlatformMicrosite');
+    }
+    public function ShortLink (){
+        return view('HelpSupport.ShortLink');
     }
 }

@@ -21,7 +21,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect()->back()->with('error', 'Silahkan Logout untuk mengakses halaman ini');
+                return redirect(RouteServiceProvider::HOME);
             }
         }
 

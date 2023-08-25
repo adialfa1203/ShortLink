@@ -9,7 +9,7 @@ class ArchiveLinkController extends Controller
 {
     public function archiveLinkUser()
     {
-        $data = ShortUrl::onlyTrashed()->get();
+        $data = ShortUrl::onlyTrashed()->paginate(5);
 
         return view('User.ArchiveLink', compact('data'));
     }

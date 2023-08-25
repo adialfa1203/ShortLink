@@ -28,7 +28,7 @@
       </div>
       <!-- end page title -->
       <div>
-          <a href="/AddSubscribe"> <button type="button" class="btn btn-success">Tambah</button></a>
+          <a href="{{ url ('add-subscribe')}}"> <button type="button" class="btn btn-success">Tambah</button></a>
 
       </div><br>
 
@@ -39,7 +39,7 @@
               <br>
               <div class="card-body text-center">
                 <h2 class=" mb-2">Rp:0</h2>
-                  <h4 class="card-title mb-2">Geratis</h4>
+                  <h4 class="card-title mb-2">Gratis</h4>
                   <p class="card-text">Paket Dasar untuk memulai perjalanan Anda bersama kami</p>
                   <p>Benar-benar Geratis</p>
               </div>

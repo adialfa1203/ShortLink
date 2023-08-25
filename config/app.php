@@ -169,6 +169,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        // SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -184,6 +185,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
     'Permission' => Spatie\Permission\Facades\Permission::class,
+    // 'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 

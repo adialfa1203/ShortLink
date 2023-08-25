@@ -59,7 +59,7 @@ class ProfilController extends Controller
         return view('Admin.ProfilAdmin', compact('admin'));
     }
 
-    public function update_admin(Request $request)
+    public function updateAdmin(Request $request)
     {
         $admin = Auth::user();
         $request->validate([

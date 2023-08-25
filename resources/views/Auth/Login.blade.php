@@ -46,6 +46,7 @@
             background-color: #104898;
             color: white;
             padding: 30px;
+            margin: 0;
         }
 
         .custom-btn {
@@ -62,8 +63,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-11">
-                    <div class="card mb-0">
-                        <div class="row g-0 align-items-center">
+                    <div class="card mb-0 p-0 d-flex justify-content-between">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="card mb-0 border-0 shadow-none mb-0">
@@ -85,9 +85,9 @@
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <div class="float-end">
+                                                        {{-- <div class="float-end">
                                                             <a href="{{ url('send-email')}}" class="text-muted">Lupa kata sandi?</a>
-                                                        </div>
+                                                        </div> --}}
                                                         <label class="form-label" for="password-input">Kata Sandi</label>
                                                         <div class="position-relative auth-pass-inputgroup mb-3">
                                                             <input type="password"
@@ -99,12 +99,15 @@
                                                                 type="button" id="password-addon"><i
                                                                     class="ri-eye-fill align-middle"></i></button>
                                                         </div>
+                                                        <div class="float-end">
+                                                            <a href="{{ url('send-email')}}" class="text-muted">Lupa kata sandi?</a>
+                                                        </div>
+                                                        <div class="k">
+                                                            <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                                                            <label class="form-check-label" for="remember">Ingat saya</label>
+                                                        </div>
                                                     </div>
 
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="remember" id="remember">
-                                                        <label class="form-check-label" for="remember">Ingat saya</label>
-                                                    </div>
 
                                                     <div class="mt-4">
                                                         <button class="btn btn-primary w-100 custom-btn"
@@ -142,15 +145,16 @@
                                         </div><!-- end card body -->
                                     </div><!-- end card -->
                                 </div>
-                                <div class="col-6 right-section">
-                                    <div class="text-center" style="margin-top: 20%">
+                                <div class="col-6 right-section m-0">
+                                    <center>
+                                    <div class="w-100" style="margin-top: 20%">
                                         <img src="{{ asset('template/image/Login.png') }} " width="400"
                                             height="400">
                                     </div>
+                                </center>
                                 </div>
                             </div>
                             <!--end col-->
-                        </div>
                         <!--end row-->
                     </div>
                 </div>

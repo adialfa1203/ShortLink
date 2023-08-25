@@ -124,7 +124,7 @@
                                                 </div>
                                                 <br>
                                                 {{-- modal panjang tautan terproteksi --}}
-                                                <div class="container-fluid">
+                                                {{-- <div class="container-fluid">
                                                     <div class="card">
                                                             <button type="button"
                                                                 style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center;">
@@ -167,7 +167,7 @@
                                                             Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>
                                                         </button>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 {{-- end modal panjang --}}
                                                 {{-- modal panjang tautan berjangka --}}
                                                 <div class="container-fluid">
@@ -225,16 +225,21 @@
                                 </div>
                             </div>
                         </div>
+
                         <!-- Modal singkatkan-->
-                        <div class="modal fade" id="singkatkan" tabindex="-1" aria-labelledby="addAmountLabel"
-                            aria-hidden="true">
+
+                        <div class="modal fade" id="singkatkan" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
+
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title" id="addAmountLabel">Buat tautan pemendek baru</h1>
+
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
+
                                     </div>
+
                                     <div class="modal-body">
                                             <div class="row g-3">
                                                 <div class="col-lg-12">
@@ -248,74 +253,87 @@
                                                     <label class="form-label">Judul</label>
                                                     <input class="form-control" id="title">
                                                 </div>
-                                                <hr>                                                
+                                                <hr>
                                                 <div class="col-lg-12">
-                                                    <div>
-                                                        <label for="cardNumber" class="form-label">URL yang
-                                                            diperpendek</label>
-                                                            <div class="countdown-input-subscribe">
-                                                                <input id="default_short_url"  class="form-control">  
-                                                                <button class="btn btn-danger" type="button"
-                                                                id="button-email" data-bs-toggle="modal"
-                                                                data-bs-target="#bagikan"><i class="bi bi-share-fill"></i>
-                                                                &nbsp; Bagik</button>                                                          
-                                                            </div>
+                                                    <div class="input-group align-items-center rounded" style="background: #E9EEF5">
+                                                        <input id="default_short_url" class="form-control" type="text" id="salin">
+                                                        {{-- salin --}}
+                                                        <div id="successCopy" class="alert alert-success mt-3" style="display: none; position: fixed; bottom: 570px; right: 560px; max-width: 500px;">
+                                                            Tautan berhasil disalin ke clipboard
+                                                        </div>
+                                                        {{-- end salin --}}
+                                                         <div class="wrapper end-0 position-absolute" style="z-index: 5">
+                                                            <button class="btn btn-transparent btn-sm m-0 p-1"  type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#edit" id="editclose" onclick="statusEdit()">
+                                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                            </button>
+                                                            <button type="button" id="button-email" data-bs-toggle="modal" data-bs-target="#bagikan" class="btn btn-danger btn-sm m-1"><i class="fa-solid fa-square-share-nodes"></i> Bagikan</button>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                {{-- modal edit --}}
+                                                <div class="collapse" id="edit">
+                                                    <div class="card card-body">
+                                                        <div class="container">
+                                                            <button type="button" class="btn btn-success me-2" id="simpanButton" style="font-size: 13px; padding: 5px 10px; display: flex; align-items: center; justify-content: flex-end; float: right;">
+                                                                <i class="bi bi-check mr-2"></i> Simpan <!-- Tambahkan margin kanan (mr-2) untuk tombol pertama -->
+                                                            </button>
+
+                                                        <button type="button" class="btn btn-danger me-2" id="keluarButton" style="font-size: 13px; padding: 5px 10px; display: flex; align-items: center; justify-content: flex-end; float: right;">
+                                                            <i class="bi bi-x mr-2"></i> Keluar <!-- Tambahkan margin kiri (ml-2) untuk tombol kedua -->
+                                                        </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- end modal edit --}}
+
                                                 <div class="col-lg-12">
                                                     <div class="countdown-input-subscribe">
                                                         <label for="cardNumber" class="form-label">URL asli</label>
-                                                        <input class="form-control" id="destination_url">                                                     
+                                                        <input class="form-control" id="destination_url">
                                                     </div>
                                                 </div>
                                             </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Pemberitahuan "Data berhasil disimpan" (atur posisi dan ukuran) -->
+                          <div id="successAlert" class="alert alert-success mt-3" style="display: none; position: fixed; bottom: 570px; right: 590px; max-width: 500px;">
+                            Data berhasil disimpan.
+                        </div>
                         </div>
                         <!-- end Modal singkatkan -->
+
                         <!-- Modal bagikan -->
-                        <div class="modal fade" id="bagikan" tabindex="-1" aria-labelledby="addAmountLabel"
-                            aria-hidden="true">
+                        <div class="modal fade" id="bagikan" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-body">
-                                            <div class="row g-3">
-                                                    <div class="countdown-input-subscribe">
-
-
-                                                        <label class="" type="" id="button-email"><i
-                                                                class="bi bi-facebook"></i> &nbsp; Facebook</label>
-                                                        <div class="countdown-input-subscribe">
-                                                            <label class="" type="" id="button-email"><i
-                                                                    class="bi bi-twitter"></i> &nbsp; Twitter</label>
-                                                            <div class="countdown-input-subscribe">
-                                                                <label class="" type="" id="button-email"><i
-                                                                        class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
-                                                                <div class="countdown-input-subscribe">
-                                                                    <label class="" type=""
-                                                                        id="button-email"><i
-                                                                            class="bi bi-clipboard-fill"></i> &nbsp;
-                                                                        Copy</label>
-                                                                    <div class="countdown-input-subscribe">
-                                                                        <label class="" type=""
-                                                                            id="button-email"><i
-                                                                                class="bi bi-qr-code"></i> &nbsp; QR
-                                                                            Code</label>
-
-
-
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                        <div class="row g-3">
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="facebook"><i class="bi bi-facebook"></i> &nbsp; Facebook</label>
                                             </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="twitter"><i class="bi bi-twitter"></i> &nbsp; Twitter</label>
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="whatsapp"><i class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="copy" id="copyButton"><i class="bi bi-clipboard-fill"></i> &nbsp; Copy</label>
+                                            </div>
+                                            <div id="successCopyAlert" class="alert alert-success mt-3" style="display: none; position: fixed; bottom: 570px; right: 433px; max-width: 500px;">
+                                                Tautan berhasil disalin ke clipboard
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="qr"><i class="bi bi-qr-code"></i> &nbsp; QR Code</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <!-- end Modal bagikan-->
 
 
@@ -387,7 +405,8 @@
                 </div><!--end row-->
 
                 <div class="row">
-                    <div class="col-xxl-4 col-md-6">
+
+                    <div class="col-xl-4 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex">
@@ -405,7 +424,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-4 col-md-6">
+                    <div class="col-xl-4 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex">
@@ -423,7 +442,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-4 col-md-6">
+                    <div class="col-xl-4 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex">
@@ -459,7 +478,7 @@
                             <div class="progress" data-bs-toggle="tooltip" data-bs-title="$234.95 Paid Amount">
                                 <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated"
                                      role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-                            </div>                            
+                            </div>
                             <p class="text-muted mb-0"><b>{{$countURL}} dari 100</p>
 
                             <br>
@@ -506,10 +525,15 @@
                                                     {{-- </div> --}}
 
                                                     {{-- </div> --}}
-                                                    <div class="progress" data-bs-toggle="tooltip" data-bs-title="$234.95 Paid Amount">
-                                                        <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated"
-                                                             role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-                                                    </div>                                                                                                       
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                                             role="progressbar"
+                                                             aria-valuenow="{{$countURL}}"
+                                                             aria-valuemin="0"
+                                                             aria-valuemax="100"
+                                                             style="width: {{$countURL}}%;">
+                                                        </div>
+                                                    </div>
                                                     <p class="text-muted mb-0"><b>{{$countURL}} dari 100</p>
 
                                                     <br>
@@ -581,6 +605,11 @@
 @section('script')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        let edit = false;
+        function statusEdit() {
+            edit = !edit;
+            console.log(edit);
+        }
         $(document).ready(function() {
             $("#shortlinkSubmit").submit(function(event) {
                 event.preventDefault(); // Mencegah form submission bawaan
@@ -610,6 +639,7 @@
                         $("#cardNumber").val(""); // Mengosongkan input judul
                         $(".password-input").val(""); // Mengosongkan input kata sandi
                         $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
+                        $(".close-edit").val(""); // Mengosongkan button edit
 
                         // Menutup modal saat ini (jika perlu)
                         $("#addAmount").modal("hide");
@@ -647,7 +677,101 @@
             $("#time-reset").click(function() {
                 $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
             });
+             // Menangani klik pada label platform dalam modal "bagikan"
+    $(".platform").click(function() {
+        var platform = $(this).data("platform");
+        var shortUrl = $("#default_short_url").val();
+
+        switch (platform) {
+            case "facebook":
+                // Tambahkan logika untuk membagikan tautan ke Facebook
+                // Misalnya, membuka jendela baru dengan tautan Facebook Share
+                window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shortUrl));
+                break;
+            case "twitter":
+                // Tambahkan logika untuk membagikan tautan ke Twitter
+                // Misalnya, membuka jendela baru dengan tautan Twitter Share
+                window.open("https://twitter.com/intent/tweet?url=" + encodeURIComponent(shortUrl));
+                break;
+            case "whatsapp":
+                // Tambahkan logika untuk membagikan tautan ke WhatsApp
+                // Misalnya, membuka jendela baru dengan tautan WhatsApp Share
+                window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shortUrl));
+                break;
+            case "copy":
+                var copyText = document.getElementById("default_short_url");
+                copyText.select();
+
+                navigator.clipboard.writeText(copyText.value)
+                .then(function() {
+                if (edit != true) {
+                }
+                })
+                .catch(function(err) {
+                console.error("Penyalinan gagal: ", err);
+                alert("Penyalinan gagal. Silakan salin tautan secara manual.");
+                });
+                break;
+
+            case "qr":
+                // Tambahkan logika untuk menghasilkan QR Code dari tautan
+                // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
+                window.open("https://www.qr-code-generator.com/?url=" + encodeURIComponent(shortUrl));
+                break;
+            default:
+                break;
+        }
+    });
+    $("#default_short_url").click(function() {
+        var copyText = document.getElementById("default_short_url");
+        copyText.select();
+        document.execCommand("copy");
+        if (edit != true) {
+        // Menambahkan pesan atau tindakan lain sesuai kebutuhan
+            // alert("Tautan telah disalin ke clipboardsdfg.");
+            // Setelah data berhasil disimpan, tampilkan pemberitahuan
+            $("#successCopy").fadeIn();
+
+    // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
+    setTimeout(function() {
+        $("#successCopy").fadeOut();
+    }, 3000); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
+
+
+            }
         });
+    // Menangani klik pada tombol "Simpan"
+    $("#simpanButton").click(function() {
+        // Lakukan aksi penyimpanan data di sini (misalnya, pengiriman data ke server).
+
+        // Setelah data berhasil disimpan, tampilkan pemberitahuan
+        $("#successAlert").fadeIn();
+
+        // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
+        setTimeout(function() {
+            $("#successAlert").fadeOut();
+        }, 3000); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
+
+        // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
+        // resetEditModal();
+    });
+    $("#copyButton").click(function() {
+        // Lakukan aksi penyimpanan data di sini (misalnya, pengiriman data ke server).
+
+        // Setelah data berhasil disimpan, tampilkan pemberitahuan
+        $("#successCopyAlert").fadeIn();
+
+        // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
+        setTimeout(function() {
+            $("#successCopyAlert").fadeOut();
+        }, 3000); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
+
+        // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
+        resetEditModal();
+    });
+
+
+     });
     </script>
     <!-- apexcharts -->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
@@ -672,14 +796,42 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         // Ambil data dari {{$countURL}} (misalnya menggunakan AJAX)
-        var countData = {{$countURL}}; // Contoh nilai statis
-    
+        var countData = {{$countURL}}; // Contoh nilai statiskeluar
+
         // Ubah lebar bar progres sesuai dengan data yang diperoleh
         var progressBar = document.getElementById("progress-bar");
         var progressBarWidth = (countData / 100) * 100; // Ubah 100 menjadi nilai maksimum yang sesuai
         progressBar.style.width = progressBarWidth + "%";
         progressBar.setAttribute("aria-valuenow", countData);
     </script>
-    
-    
+    <script>
+        // Get the value from the server-side variable {{$countURL}}
+        var countURLValue = {{$countURL}};
+
+        // Calculate the percentage
+        var percentage = (countURLValue / 100) * 100; // Assuming 100 is the total
+
+        // Update the progress bar width
+        var progressBar = document.querySelector('.progress-bar');
+        progressBar.style.width = percentage + '%';
+        progressBar.setAttribute('aria-valuenow', countURLValue);
+
+        // Update the text
+        var progressText = document.querySelector('.text-muted.mb-0 b');
+        progressText.textContent = countURLValue + ' dari 100';
+    </script>
+    <script>
+        // Temukan tombol "Keluar" berdasarkan ID
+        var keluarButton = document.getElementById("keluarButton");
+
+        // Temukan modal edit berdasarkan ID
+        var modalEdit = document.getElementById("edit");
+
+        // Tambahkan event listener untuk tombol "Keluar"
+        keluarButton.addEventListener("click", function () {
+            // Tutup modal edit
+            modalEdit.classList.remove("show");
+        });
+    </script>
+
 @endsection

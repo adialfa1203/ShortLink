@@ -30,7 +30,7 @@
                                     <div class="row align-items-center gy-3">
                                         <div class="col-lg-3 col-md-6">
                                             <div class="search-box">
-                                                <input type="text" class="form-control search" placeholder="Cari...">
+                                                <input type="text" class="form-control search" id="searchInput" placeholder="Cari...">
                                                 <i class="ri-search-line search-icon"></i>
                                             </div>
                                         </div>
@@ -57,7 +57,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                             <thead class="text-muted table-light">
-                                                <tr>
+                                                <tr  class="searchable">
                                                     <th>
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox" value="option" id="checkAll">
@@ -150,5 +150,18 @@
                 <!-- container-fluid -->
             </div>
 
+        @endsection
+        @section('script')
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".search").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $(".list tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
         @endsection
 

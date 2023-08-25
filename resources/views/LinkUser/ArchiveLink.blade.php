@@ -61,11 +61,11 @@
     @csrf
 <div class="page-content">
     <div class="container-fluid">
-        <div class="card">            
+        <div class="card">
                 <div class="countdown-input-subscribe">
                     <input type="text" name="destination_url" class="form-control" placeholder="Https://domainkamu.id/very-long-link"/>
                     <button class="btn btn-danger" type="submit" id="button-email"><i class="fa-solid fa-link"></i> &nbsp; Singkatkan</button>
-                </div>            
+                </div>
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                     <div class="container">
