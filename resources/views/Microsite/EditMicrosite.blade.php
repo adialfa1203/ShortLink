@@ -15,7 +15,7 @@
             </div>
             <!-- end page title -->
 
-            <form action="{{ route('update.microsite', ['id' => $row->id])) }}" method="post" class="row">
+            <form action="{{ route('update.microsite', ['id' => $id]) }}" method="post" class="row">
                 <div class="col-xxl-9">
                     <div class="card">
                         <div class="card-body">
@@ -220,13 +220,10 @@
                             </div>
                             <div class="card-body border-top">
                                 <div class="d-flex align-items-center text-center mb-4">
+
                                     <div class="flex-grow-1">
-                                        <button type="button" class="btn ms-2 btn-subtle-success btn-icon"><i
-                                                class="bi bi-whatsapp"></i></button>
-                                        <button type="button" class="btn ms-2 btn-subtle-warning btn-icon"><i
-                                                class="bi bi-envelope"></i></button>
-                                        <button type="button" class="btn ms-2 btn-subtle-primary btn-icon"><i
-                                                class="bi bi-linkedin"></i></button>
+                                        <button style="background-color: {{ $microsite->social->button->color_hex }}" type="button" class="btn ms-2 btn-icon"><i
+                                                class="{{ $microsite->social->button->icon }}"></i></button>
                                     </div>
                                 </div>
                                 <button type="button" class="col-12 mb-2 btn btn-success btn-label rounded-pill"

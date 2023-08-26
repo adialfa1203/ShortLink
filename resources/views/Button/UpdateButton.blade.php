@@ -14,50 +14,63 @@
 @endsection
 
 @section('content')
-<div class="page-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="card">
-                <div class="card-body">
-                    <form action="{{ route('update.button', ['id' => $button->id]) }}" method="POST">
-                        @csrf
-                        <div class="col-xxl-12 col-md-12">
-                            <div class="mt-2">
-                                <label for="name_button" class="form-label">Nama Button</label>
-                                <input type="text" name="name_button" class="form-control" id="name_button" placeholder="Nama Button" value="{{ $button->name_button }}" required>
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="{{ route('update.button', ['id' => $button->id]) }}" method="POST">
+                            @csrf
+                            <div class="col-xxl-12 col-md-12">
+                                <div class="mt-2">
+                                    <label for="name_button" class="form-label">Nama Button</label>
+                                    <input type="text" name="name_button" class="form-control" id="name_button"
+                                        placeholder="Nama Button" value="{{ $button->name_button }}" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xxl-12 col-md-12">
-                            <div class="mt-2">
-                                <label for="icon" class="form-label">Options</label>
-                                <select name="icon" class="form-select" id="icon" value="{{ $button->icon }}" required>
-                                    <option value="bi bi-whatsapp"></option>
-                                    <option value="bi bi-facebook"></option>
-                                    <option value="bi bi-twitter"></option>
-                                    <option value="bi bi-telephone-fill"></option>
-                                    <option value="bi bi-instagram"></option>
-                                    <option value="bi bi-linkedin"></option>
-                                    <option value="bi bi-telegram"></option>
-                                    <option value="bi bi-tiktok"></option>
-                                    <option value="bi bi-spotify"></option>
-                                </select>
+                            <div class="col-xxl-12 col-md-12">
+                                <div class="mt-2">
+                                    <label for="icon" class="form-label">Options</label>
+                                    <select name="icon" class="form-select" id="icon" required>
+                                        <option value="" disabled selected>Choose...</option>
+                                        <option value="bi bi-whatsapp"
+                                            {{ $button->icon == 'bi bi-whatsapp' ? 'selected' : '' }}>WhatsApp</option>
+                                        <option value="bi bi-facebook"
+                                            {{ $button->icon == 'bi bi-facebook' ? 'selected' : '' }}>Facebook</option>
+                                        <option value="bi bi-twitter"
+                                            {{ $button->icon == 'bi bi-twitter' ? 'selected' : '' }}>Twitter</option>
+                                        <option value="bi bi-telephone-fill"
+                                            {{ $button->icon == 'bi bi-telephone-fill' ? 'selected' : '' }}>Telephone
+                                        </option>
+                                        <option value="bi bi-instagram"
+                                            {{ $button->icon == 'bi bi-instagram' ? 'selected' : '' }}>Instagram</option>
+                                        <option value="bi bi-linkedin"
+                                            {{ $button->icon == 'bi bi-linkedin' ? 'selected' : '' }}>LinkedIn</option>
+                                        <option value="bi bi-telegram"
+                                            {{ $button->icon == 'bi bi-telegram' ? 'selected' : '' }}>Telegram</option>
+                                        <option value="bi bi-tiktok"
+                                            {{ $button->icon == 'bi bi-tiktok' ? 'selected' : '' }}>TikTok</option>
+                                        <option value="bi bi-spotify"
+                                            {{ $button->icon == 'bi bi-spotify' ? 'selected' : '' }}>Spotify</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xxl-12 col-md-6">
-                            <div>
-                                <label for="colorPicker" class="form-label">Color Picker</label>
-                                <input type="color" class="form-control form-control-color w-100" id="colorPicker" name="color_hex" value="{{ $button->color_hex }}">
+                            <div class="col-xxl-12 col-md-6">
+                                <div>
+                                    <label for="colorPicker" class="form-label">Color Picker</label>
+                                    <input type="color" class="form-control form-control-color w-100" id="colorPicker"
+                                        name="color_hex" value="{{ $button->color_hex }}">
+                                </div>
                             </div>
-                        </div>
-                        <div class="mt-3">
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                        </div>
-                    </form>
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-success">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 @section('script')
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-validation.init.js') }}"></script>

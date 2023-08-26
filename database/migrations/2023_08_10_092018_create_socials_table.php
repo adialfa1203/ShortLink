@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('buttons', function (Blueprint $table) {
+        Schema::create('socials', function (Blueprint $table) {
             $table->id();
-            $table->string('name_button');
-            $table->string('icon');
-            $table->string('color_hex');
+            $table->foreignId('microsite_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('buttons_id')->references('id')->on('buttons')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->timestamps();
-        }); 
+        });
     }
 
     /**
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('buttons');
+        Schema::dropIfExists('socials');
     }
 };

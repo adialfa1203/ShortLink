@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Components;
+use App\Models\Button;
+use App\Models\Social;
 use App\Models\Microsite;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Components;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MicrositeController extends Controller
 {
@@ -16,33 +18,46 @@ class MicrositeController extends Controller
 
     public function addMicrosite(){
         $data = Components::all();
-        return view('microsite.AddMicrosite',compact('data'));
+        $button = Button::all();
+        return view('microsite.AddMicrosite',compact('data', 'button'));
     }
 
-    public function createMicrosite(Request $request){
-            $request->validate([
-                'microsite_selection' => 'required',
-                'name' => 'required',
-                'link_microsite' => 'required',
+    public function createMicrosite(Request $request)
+    {
+        $request->validate([
+            'microsite_selection' => 'required',
+            'name' => 'required',
+            'link_microsite' => 'required',
+        ]);
+
+        $selectedComponentId = $request->input('microsite_selection');
+        $selectedButtons = $request->input('selectedButtons', []);
+
+        $microsite = new Microsite();
+        $microsite->components_id = $selectedComponentId;
+        $microsite->user_id = auth()->user()->id;
+        $microsite->name = $request->input('name');
+        $microsite->link_microsite = 'link.id/' . $request->input('link_microsite');
+
+        $microsite->save();
+
+        foreach($selectedButtons as $select){
+            Social::create([
+                'buttons_id' => $select,
+                'microsite_id' => $microsite->id
             ]);
+        }
+        // dd($selectedButtons);
 
-            $selectedComponentId = $request->input('microsite_selection');
-
-            $microsite = new Microsite();
-            $microsite->components_id = $selectedComponentId;
-            $microsite->user_id = auth()->user()->id;
-            $microsite->name = $request->input('name');
-            $microsite->link_microsite = 'link.id/' . $request->input('link_microsite');
-            $microsite->save();
-
-            return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
+        return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
     }
 
     public function editMicrosite($id){
             $component = Components::find($id);
-            $microsite = Microsite::find($id);
+            $microsite = Microsite::findorFail($id);
+            // dd($microsite);
 
-            return view('microsite.EditMicrosite', compact('component', 'microsite'));
+            return view('microsite.EditMicrosite', compact('component', 'microsite','id'));
     }
 
     public function updateMicrosite($id){

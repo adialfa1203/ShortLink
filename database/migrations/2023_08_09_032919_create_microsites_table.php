@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('microsites', function (Blueprint $table) {
             $table->id();
             $table->foreignId('components_id')->references('id')->on('components')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('buttons_id')->references('id')->on('buttons')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('link_microsite');
