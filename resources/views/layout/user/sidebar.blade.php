@@ -48,22 +48,22 @@
     <div class="navbar-brand-box">
         <a href="index.html" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/logo-sm.png') }}" alt=""
+                <img src="{{ asset('template/image/LINKlogo.png') }}" alt=""
                     height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/logo-dark.png') }}"
+                <img src="{{ asset('template/image/LINKlogo.png') }}"
                     alt="" height="22">
             </span>
         </a>
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/logo-sm.png') }}"
-                    alt="" height="22">
+                <img src="{{ asset('template/image/LINKlogo.png') }}"
+                    alt="" width="50" height="20">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/logo-light.png') }}"
-                    alt="" height="22">
+                <img src="{{ asset('template/image/LINKlogo.png') }}"
+                    alt="" width="130" height="35">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-3xl header-item float-end btn-vertical-sm-hover"

@@ -74,14 +74,30 @@
             </div>
         </div><!--end col-->
     </div><!--end row-->
-    <div class="card">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body pb-0 mb-n4">
+                    <div class="d-flex z-1 position-relative">
+                        <div class="flex-shrink-0">
+                            <div data-provider="flatpickr" data-range-date="true" data-date-format="d M, Y" data-default-date="01 March 2023 to 31 March 2023">01 March 2023 to 31 March 2023 <i class="ph-caret-down align-middle ms-1"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-0 mt-4 mt-md-0">
+                    <div id="line_chart_basic" data-colors='["--tb-primary", "--tb-danger"]' class="apex-charts" dir="ltr"></div>
+                </div>
+            </div>
+        </div><!--end col-->
+    </div><!--end row-->
+    {{-- <div class="card">
                         <div class="card-body">
                             <div id="chart1"></div>
                         </div><!-- end card-body -->
-                    </div><!-- end card -->
+                    </div><!-- end card --> --}}
 </div>
 @section('script')
-<script>
+{{-- <script>
     var options = {
         series: [{
             name: "sunardi",
@@ -117,6 +133,11 @@
 
     var chart = new ApexCharts(document.querySelector("#chart1"), options);
     chart.render();
-</script>
+</script> --}}
+<!-- apexcharts -->
+<script src="{{ asset ('template/themesbrand.com/steex/layouts/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
+
+<!-- real estate earnings init JS -->
+<script src="{{ asset ('template/themesbrand.com/steex/layouts/assets/js/pages/real-estate-earnings.init.js')}}"></script>
 @endsection
 @endsection

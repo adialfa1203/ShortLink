@@ -584,9 +584,9 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" style="width: 100%;">
+                                            <a href="/subscribe-product-user" type="button" class="btn btn-danger" style="width: 100%;">
                                                 Langganan untuk mendapatkan kuota
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
 
