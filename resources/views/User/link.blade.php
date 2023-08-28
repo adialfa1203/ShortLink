@@ -185,7 +185,13 @@
         </div>
     </div>
     <div class="row">
+        @php
+            $i = 0;
+        @endphp
         @foreach ($urlshort as $row)
+        @php
+            $i++;
+        @endphp
         <form action="/archive/{{$row->id}}">
             <div class="col-lg-12">
                 <div class="card" style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;" id="card{{ $row->id }}">
@@ -193,20 +199,44 @@
                         <div class="d-flex">
                             <h6 class="col-3">{{$row->title}}</h6>
                             <div class=" col-9 d-flex flex-row justify-content-end">
-                                <button type="button" class="btn btn-primary me-3 btn-sm" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-share-nodes"></i> &nbsp;Bagikan</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
+                                <button type="button" id="button-email" data-bs-toggle="modal" data-bs-target="#bagikan{{$i}}" class="btn btn-primary btn-sm m-1"><i class="fa-solid fa-share-nodes"></i> &nbsp;Bagikan</button>
+                                 <!-- Modal bagikan -->
+                        <div class="modal fade" id="bagikan{{$i}}" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="row g-3">
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-facebook"></i> &nbsp; Facebook</label>
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-twitter"></i> &nbsp; Twitter</label>
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="copy" id="copyButton" data-url="{{ $row->default_short_url }}" data-id-copy="{{$i}}"><i class="bi bi-clipboard-fill"></i> &nbsp; Copy</label>
+                                            </div>
+                                            <div id="successCopyAlert" class="alert alert-success mt-3" style="display: none; position: fixed; bottom: 570px; right: 433px; max-width: 500px;">
+                                                Tautan berhasil disalin ke clipboard
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-qr-code"></i> &nbsp; QR Code</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                        
+                        <!-- end Modal bagikan-->
                                 <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal-{{ $row->id }}"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Kode QR"><i class="fa-solid fa-qrcode"></i></span></button>
                                 <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal"><span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit</span></button>
                                 <button type="submit" class="btn btn-primary me-3 btn-sm" onclick="archive({{ $row->id }})"><i class="bi bi-archive-fill"></i> Arsipkan</button>
                             </div>
                         </div>
-                        <div id="zoomInModal-{{ $row->id }}" class="modal fade zoomIn modal-sm" tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
+                        {{-- <div id="zoomInModal-{{ $row->id }}" class="modal fade zoomIn modal-sm" tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -231,9 +261,10 @@
                                     <div class="modal-footer"></div>
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
+                        </div><!-- /.modal --> --}}
+                        <p class="d-none" id="default_short_url{{$i}}">{{$row->default_short_url}}</p>
                         <a>
-                            <h3 class="garisbawah card-title mb-2"><span style="color: red;">Link</span>{{$row->default_short_url}}</h3>
+                            <h3 class="garisbawah card-title mb-2">{{$row->default_short_url}}</h3>
                         </a>
                         <a href="{{$row->destination_url}}" class="card-subtitle font-14 text-muted">{{$row->destination_url}}</a>
                     </div>
@@ -396,8 +427,19 @@
 <script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js')}}"></script>
 <script type="text/javascript" src="./jquery.qrcode.js"></script>
 <script type="text/javascript" src="./qrcode.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
+        $("#copyButton").click(function () {
+            let id = $(this).data('id-copy');
+            let data = $("#default_short_url" + id);
+        //    alert(data)
+
+         data.select();
+         data.setSelectionRange(0, 99999); 
+         navigator.clipboard.writeText(data.value);
+
+        })
         $("#resetButton").click(function() {
             $(".password-input").val(""); // Mengosongkan input kata sandi
         });
@@ -425,6 +467,90 @@
             })
         })
     });
+     // Saat tombol "Bagikan" diklik
+    $("#button-email").click(function () {
+        // Dapatkan nilai tautan dari elemen h3
+        var linkToCopy = $("#link-to-copy").text();
+
+        // Masukkan nilai tautan ke dalam modal
+        $("#default_short_url").val(linkToCopy);
+
+        // Tambahkan atribut data-clipboard-text pada tombol "Copy"
+        $("#copyButton").attr("data-clipboard-text", linkToCopy);
+    });
+
+    // ...
+
+    // Menangani klik pada tombol Copy di dalam modal
+    $("#copyButton").click(function () {
+        var linkToCopy = $(this).attr("data-clipboard-text");
+
+        // Salin tautan ke clipboard
+        var tempInput = $("<input>");
+        $("body").append(tempInput);
+        tempInput.val(linkToCopy).select();
+        document.execCommand("copy");
+        tempInput.remove();
+
+        // Tampilkan pesan sukses
+        $("#successCopyAlert").fadeIn().delay(1500).fadeOut();
+    });
+      // Menangani klik pada label platform dalam modal "bagikan"
+      $(".platform").click(function() {
+          var platform = $(this).data("platform");
+        //   alert(platform)
+        var shortUrl = $("#default_short_url").text();
+
+        switch (platform) {
+            case "facebook":
+                // Tambahkan logika untuk membagikan tautan ke Facebook
+                // Misalnya, membuka jendela baru dengan tautan Facebook Share
+                window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shortUrl));
+                break;
+            case "twitter":
+                // Tambahkan logika untuk membagikan tautan ke Twitter
+                // Misalnya, membuka jendela baru dengan tautan Twitter Share
+                window.open("https://twitter.com/intent/tweet?url=" + encodeURIComponent(shortUrl));
+                break;
+            case "whatsapp":
+                // Tambahkan logika untuk membagikan tautan ke WhatsApp
+                console.log(shortUrl)// Misalnya, membuka jendela baru dengan tautan WhatsApp Share
+                window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shortUrl));
+                break;
+            case "copy":
+                var copyText = $(this).data('url')
+                // alert(copyText)
+                console.log()
+                // copyText.focus();
+                try {
+                    navigator.clipboard.writeText(copyText);
+                    console.log('Content copied to clipboard');
+                } catch (err) {
+                    console.error('Failed to copy: ', err);
+                    alert('gagal ' + err)
+                }
+
+                // navigator.clipboard.writeText(copyText)
+                // .then(function() {
+                // if (edit != true) {
+                // }
+                // })
+                // .catch(function(err) {
+                // console.error("Penyalinan gagal: ", err);
+                // alert("Penyalinan gagal. Silakan salin tautan secara manual.");
+                // });
+                break;
+
+            case "qr":
+                // Tambahkan logika untuk menghasilkan  dari tautan
+                // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
+                window.open(" https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('default_short_url{{$i}}').innerText}" + encodeURIComponent(shortUrl));
+                break;
+            default:
+                break;
+        }
+    });
+
 </script>
 <script>
     function archive() {

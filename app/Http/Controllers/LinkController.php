@@ -17,7 +17,7 @@ class LinkController extends Controller
 
     public function archive($id)
     {
-        $link = ShortUrl::find($id);
+        $link = ShortUrl::findOrFail($id);
         $link->delete();
         return redirect()->back()->with('success', 'Link telah diarsipkan');
     }
@@ -50,28 +50,28 @@ class LinkController extends Controller
 
         return redirect()->back()->with('success', 'link berhasil terpotong');
     }
-    public function archiveLink(Request $request)
-    {
+    // public function archiveLink(Request $request)
+    // {
 
-        $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
-        $shortURLObject = $builder->destinationUrl($request->destination_url)
-                        ->make();
-        $shortURL = $shortURLObject->default_short_url;
+    //     $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
+    //     $shortURLObject = $builder->destinationUrl($request->destination_url)
+    //                     ->make();
+    //     $shortURL = $shortURLObject->default_short_url;
 
-        $find = ShortUrl::query()->where('url_key', $shortURLObject->url_key)->first();
+    //     $find = ShortUrl::query()->where('url_key', $shortURLObject->url_key)->first();
 
-        $find->update([
-            'user_id' => auth()->id(),
-            'default_short_url' => $shortURL,
-            'password' => Hash::make($request->password),
-            'active' => '1',
-            'deleted_add' => $request->deleted_add,
-            'click_count' => $request->click_count,
-            'qr_code' => $request->qr_code,
-            'title' => $request->title,
-            'deactivated_at' => $request->deactivated_at
-        ]);
+    //     $find->update([
+    //         'user_id' => auth()->id(),
+    //         'default_short_url' => $shortURL,
+    //         'password' => Hash::make($request->password),
+    //         'active' => '1',
+    //         'deleted_add' => $request->deleted_add,
+    //         'click_count' => $request->click_count,
+    //         'qr_code' => $request->qr_code,
+    //         'title' => $request->title,
+    //         'deactivated_at' => $request->deactivated_at
+    //     ]);
 
-        return redirect()->back()->with('success', 'link berhasil terpotong');
-    }
+    //     return redirect()->back()->with('success', 'link berhasil terpotong');
+    // }
 }

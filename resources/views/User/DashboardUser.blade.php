@@ -719,7 +719,7 @@
             case "qr":
                 // Tambahkan logika untuk menghasilkan QR Code dari tautan
                 // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
-                window.open("https://www.qr-code-generator.com/?url=" + encodeURIComponent(shortUrl));
+                window.open(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${ encodeURIComponent(shortUrl)}`);
                 break;
             default:
                 break;
