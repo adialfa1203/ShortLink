@@ -275,13 +275,16 @@
                                                 <div class="collapse" id="edit">
                                                     <div class="card card-body">
                                                         <div class="container">
+                                                            <label for="new_url_key">Kustom Tautan</label>
+                                                            <input type="text" class="form-control" id="new_url_key" name="new_url_key" placeholder="Nama Tautan">
+
                                                             <button type="button" class="btn btn-success me-2" id="simpanButton" style="font-size: 13px; padding: 5px 10px; display: flex; align-items: center; justify-content: flex-end; float: right;">
-                                                                <i class="bi bi-check mr-2"></i> Simpan <!-- Tambahkan margin kanan (mr-2) untuk tombol pertama -->
+                                                                <i class="bi bi-check mr-2"></i> Simpan
                                                             </button>
 
-                                                        <button type="button" class="btn btn-danger me-2" id="keluarButton" style="font-size: 13px; padding: 5px 10px; display: flex; align-items: center; justify-content: flex-end; float: right;">
-                                                            <i class="bi bi-x mr-2"></i> Keluar <!-- Tambahkan margin kiri (ml-2) untuk tombol kedua -->
-                                                        </button>
+                                                            <button type="button" class="btn btn-danger me-2" id="keluarButton" style="font-size: 13px; padding: 5px 10px; display: flex; align-items: center; justify-content: flex-end; float: right;">
+                                                                <i class="bi bi-x mr-2"></i> Keluar
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -414,7 +417,7 @@
                                         <div class="d-flex flex-column h-100">
                                             <p class="fs-md text-muted mb-4">Pengunjung </p>
                                             <h3 class="mb-0 mt-auto"><span class="counter-value"
-                                                    data-target="{{($totalVisits)}}">0</span></h3>
+                                                    data-target="{{($countURL)}}">0</span></h3>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0">
@@ -755,6 +758,9 @@
         // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
         // resetEditModal();
     });
+    // $("#simpanButton").click(function() {
+    //     alert('');
+    // });
     $("#copyButton").click(function() {
         // Lakukan aksi penyimpanan data di sini (misalnya, pengiriman data ke server).
 
@@ -769,8 +775,6 @@
         // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
         resetEditModal();
     });
-
-
      });
     </script>
     <!-- apexcharts -->
@@ -833,5 +837,32 @@
             modalEdit.classList.remove("show");
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $("#simpanButton").click(function() {
+                var newUrlKey = $('#new_url_key').val();
+                var title = $('#title').val();
+                var shortCode = '{{ $shortCode }}'; // Use the Blade variable here
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('update.shortlink', ['shortCode' => ':shortCode']) }}".replace(':shortCode', shortCode),
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        new_url_key: newUrlKey,
+                        title: title
+                    },
+                    success: function(response) {
+                        alert('Nama berhasil diubah');
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                    }
+                });
+            });
+        });
+    </script>
+
+
 
 @endsection

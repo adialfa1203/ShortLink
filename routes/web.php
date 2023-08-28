@@ -106,6 +106,9 @@ Route::post('/create-microsite', [MicrositeController::class, 'createMicrosite']
 Route::get('/edit-microsite/{id}', [MicrositeController::class, 'editMicrosite'])->name('edit.microsite');
 Route::get('/update-microsite/{id}', [MicrositeController::class, 'updateMicrosite'])->name('update.microsite');
 Route::get('/add-microsite', [MicrositeController::class, 'addMicrosite'])->name('add.microsite');
+//update key
+Route::post('update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
+
 });
 
 //Middleware Admin
@@ -116,6 +119,8 @@ Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin
 Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
 Route::get('admin/user/{userId}/ban', [DataUserController::class, 'banUser'])->name('user.ban');
 Route::get('admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
+//Link Admin
+Route::get('link-admin', [LinkAdminController::class, 'linkAdmin']);
 // microsite Admin
 Route::get('/create-component', [MicrositeController::class, 'createComponent'])->name('create.component');
 Route::post('/save-component', [MicrositeController::class, 'saveComponent'])->name('save.component');

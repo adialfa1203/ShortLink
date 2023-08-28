@@ -8,19 +8,36 @@ use Illuminate\Support\Facades\Auth;
 
 class DahsboardController extends Controller
 {
+    // public function dashboardUser()
+    // {
+    //     $user = Auth::user();
+    //     // $totalVisits = ShortURLVisit::query('user_id', $user)->count();
+    //     if ($user) {
+    //         $userId = $user->id;
+
+    //         // Menghitung total kunjungan berdasarkan user ID
+    //         $countURL = ShortURL::where('user_id', $userId)->count();
+    //     }
+    //     $ShortLink = ShortUrl::all();
+    //     return view('User.DashboardUser',compact('ShortLink','countURL'));
+    // }
+
     public function dashboardUser()
     {
         $user = Auth::user();
-        $totalVisits = ShortURLVisit::query('user_id', $user)->count();
         if ($user) {
             $userId = $user->id;
-            
-            // Menghitung total kunjungan berdasarkan user ID
             $countURL = ShortURL::where('user_id', $userId)->count();
-        } 
+        }
+
         $ShortLink = ShortUrl::all();
-        return view('User.DashboardUser',compact('ShortLink','totalVisits','countURL'));
+
+        // Use the actual short code value you want to pass to the view
+        $shortCode = 'example';
+
+        return view('User.DashboardUser', compact('ShortLink', 'countURL', 'shortCode'));
     }
+
 
     public function HelpSupport (){
         return view('HelpSupport.HelpSupport');

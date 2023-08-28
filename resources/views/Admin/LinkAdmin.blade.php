@@ -75,22 +75,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="fw-medium">01</td>
-                            <td>Jihan Prahasti Saharani</td>
-                            <td>10</td>
-                            <td>https://link.id/1Sd9P</td>
-                            <td>4</td>
-                            <td>https://link.id/1Sd9P</td>
-
-                            {{-- <td><span class="badge bg-success-subtle text-success">Active</span></td> --}}
-                            <td>
-                                <div class="hstack gap-3 fs-base">
-                                    {{-- <a href="javascript:void(0);" class="link-primary"><i class="fa fa-ban" style="color: red"></i></a> --}}
-                                    <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach ($count as $userId => $urlCount)
+                            @php
+                                $user = $users->find($userId);
+                            @endphp
+                            <tr>
+                                <td class="fw-medium">{{ $loop->iteration }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $urlCount }}</td>
+                                <td>https://link.id/1Sd9P</td>
+                                <td>4</td>
+                                <td>https://link.id/1Sd9P</td>
+                                <td>
+                                    <div class="hstack gap-3 fs-base">
+                                        <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         {{-- <tr>
                             <td class="fw-medium">02</td>
                             <td>Bessie Cooper</td>
