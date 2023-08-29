@@ -104,7 +104,7 @@ Route::get('/subscribe-product-user', [SubscribeUserController::class, 'subscrib
 Route::get('/microsite-user', [MicrositeController::class, 'microsite'])->name('microsite');
 Route::post('/create-microsite', [MicrositeController::class, 'createMicrosite'])->name('create.microsite');
 Route::get('/edit-microsite/{id}', [MicrositeController::class, 'editMicrosite'])->name('edit.microsite');
-Route::get('/update-microsite/{id}', [MicrositeController::class, 'updateMicrosite'])->name('update.microsite');
+Route::post('/update-microsite/{id}', [MicrositeController::class, 'updateMicrosite'])->name('update.microsite');
 Route::get('/add-microsite', [MicrositeController::class, 'addMicrosite'])->name('add.microsite');
 //update key
 Route::post('update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');

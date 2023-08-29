@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Button;
 use App\Models\Social;
 use App\Models\Microsite;
+use App\Models\ButtonLink;
 use App\Models\Components;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -47,27 +47,37 @@ class MicrositeController extends Controller
                 'microsite_id' => $microsite->id
             ]);
         }
-        // dd($selectedButtons);
+        // dd($request);
 
         return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
     }
 
-    public function editMicrosite($id){
-            $component = Components::find($id);
-            $microsite = Microsite::findorFail($id);
-            // dd($microsite);
+    public function editMicrosite($id) {
+        $component = Components::find($id);
+        $microsite = Microsite::findorFail($id);
+        $social = Social::where('microsite_id', $id)->get();
 
-            return view('microsite.EditMicrosite', compact('component', 'microsite','id'));
+        return view('microsite.EditMicrosite', compact('component', 'microsite', 'id', 'social'));
     }
 
-    public function updateMicrosite($id){
+
+    public function updateMicrosite(Request $request, $id){
         $component = Components::find($id);
         $microsite = Microsite::find($id);
+        $data = Microsite::all();
+        $buttonLinks = $request->input('button_link');
 
-        $data = [
-            'components' => $component,
-            'microsite' => $microsite
-        ];
+        foreach ($buttonLinks as $socialId => $buttonLink) {
+            $buttonLinkData = [
+                'microsite_id' => $id,
+                'buttons_id' => $socialId,
+                'button_link' => $buttonLink
+            ];
+            ButtonLink::create($buttonLinkData);
+        }
+        // dd($buttonLinks);
+
+        return redirect()->route('microsite', compact('data'))->with('success', 'Button links added successfully.');
     }
 
     public function createComponent(){

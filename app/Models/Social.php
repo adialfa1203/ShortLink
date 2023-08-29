@@ -9,10 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Social extends Model
 {
     use HasFactory;
-    protected $guarded=[];
+    protected $guarded = [];
 
-    public function button(): BelongsTo
-    {
+    public function button() {
         return $this->belongsTo(Button::class, 'buttons_id');
     }
 }

@@ -1,6 +1,17 @@
 @extends('layout.user.app')
 @section('title', 'Microsite')
 
+@section('style')
+    <style>
+        .hover {
+            border: 0.5px solid black;
+        }
+    </style>
+
+@endsection
+
+
+
 @section('content')
     <div class="page-content">
         <div class="container-fluid">
@@ -170,24 +181,24 @@
                                                     <div class="row">
                                                         @foreach ($button as $data)
                                                             <div class="col-xl-4 col-sm-6 mb-4">
-                                                                <div class="card">
-                                                                    <div class="card-footer text-center">
+                                                                <div class="card" id="{{ $data->id }}">
+                                                                    <div class="card-footer text-center ">
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-end">
-                                                                            <label class="mb-0 me-2">
+                                                                            <label class="mb-0 me-2 ">
                                                                                 <input type="checkbox"
                                                                                     name="selectedButtons[]"
                                                                                     value="{{ $data->id }}"
-                                                                                    class="checkbox">
+                                                                                    class="checkbox"
+                                                                                    style="display: none;">
                                                                             </label>
                                                                             <button
                                                                                 style="background-color: {{ $data->color_hex }}; color: white;"
-                                                                                type="button"
+                                                                                type="button" name="button"
+                                                                                value="{{ $data->name_button }}"
                                                                                 class="col-xl-12 btn btn-label rounded-pill"
-                                                                                data-bs-toggle="collapse"
-                                                                                data-bs-target="{{ $data->id }}"
-                                                                                aria-expanded="true"
-                                                                                aria-controls="{{ $data->id }}">
+                                                                                data-button-value="{{ $data->id }}"
+                                                                                onclick="toggleCardHover('{{ $data->id }}')">
                                                                                 <i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2"
                                                                                     style="color: white;"></i>
                                                                                 {{ $data->name_button }}
@@ -265,5 +276,27 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $(".btn").click(function() {
+                var buttonValue = $(this).attr("data-button-value");
+
+                var checkbox = $("input[type='checkbox'][value='" + buttonValue + "']");
+
+                if (checkbox.is(":checked")) {
+                    checkbox.prop("checked", false);
+                } else {
+                    checkbox.prop("checked", true);
+                }
+            });
+        });
+    </script>
+    <script>
+        function toggleCardHover(cardId) {
+            const card = document.getElementById(cardId);
+            card.classList.toggle('hover');
+        }
+    </script>
+
 
 @endsection
