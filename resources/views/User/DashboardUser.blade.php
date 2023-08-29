@@ -169,6 +169,7 @@
                                                     </div>
                                                 </div> --}}
                                                 {{-- end modal panjang --}}
+                                                <br>
                                                 {{-- modal panjang tautan berjangka --}}
                                                 <div class="container-fluid">
                                                     <div class="card">
@@ -277,7 +278,7 @@
                                                         <div class="container">
                                                             <label for="new_url_key">Kustom Tautan</label>
                                                             <input type="text" class="form-control" id="new_url_key" name="new_url_key" placeholder="Nama Tautan">
-
+                                                            <br>
                                                             <button type="button" class="btn btn-success me-2" id="simpanButton" style="font-size: 13px; padding: 5px 10px; display: flex; align-items: center; justify-content: flex-end; float: right;">
                                                                 <i class="bi bi-check mr-2"></i> Simpan
                                                             </button>
@@ -859,6 +860,19 @@
                         console.error("Error:", error);
                     }
                 });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#toggleButton").click(function () {
+                $("#tautanberjangka").collapse('toggle');
+                var buttonText = $(this).text();
+                if (buttonText.trim() === "Tampilkan lebih banyak") {
+                    $(this).html('Sembunyikan <i class="fa-solid fa-angle-up"></i>');
+                } else {
+                    $(this).html('Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>');
+                }
             });
         });
     </script>
