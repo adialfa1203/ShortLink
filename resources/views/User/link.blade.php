@@ -76,7 +76,27 @@
                                     </div>
                                     <!--end row-->
                                 </div>
+                                <div class="card-header">
+                                    <h6 class="card-title mb-0">Tautan berjangka</h6>
+                                </div>
                                 <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" id="degreeName" placeholder="Apabila tautan sudah kadaluarsa, pengunjung tidak dapat mengakses tautan" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 d-flex">
+                                            <div class="col-lg-12 mb-3">
+                                                {{-- <label for="degreeName">Tanggal dan Waktu</label> --}}
+                                                <input name="deactivated_at" type="datetime-local" class="form-control time-input" id="degreeName" placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
+                                </div>
+                                {{-- <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -159,7 +179,7 @@
                                         </div><!--  end col -->
                                     </div>
                                     <!--end row-->
-                                </div><!-- end card-body -->
+                                </div><!-- end card-body --> --}}
                             </div>
 
                         </div>
@@ -245,7 +265,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="visible-print text-center">
-                                            {!! QrCode::size(200)->generate($row->destination_url); !!}
+                                            {{-- {!! QrCode::size(200)->generate($row->destination_url); !!} --}}
                                             <br>
                                             <p>{{ $row->default_short_url }}</p>
 

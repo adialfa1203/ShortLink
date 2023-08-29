@@ -162,7 +162,7 @@
                         <span data-key="t-email">Button</span> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
+                    <a href="{{ url ('profil-admin')}}" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
                             data-key="t-chat">Profil</span> </a>
                 </li>
 

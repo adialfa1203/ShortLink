@@ -119,8 +119,8 @@ Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin
 Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
 Route::get('admin/user/{userId}/ban', [DataUserController::class, 'banUser'])->name('user.ban');
 Route::get('admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
-//Link Admin
-Route::get('link-admin', [LinkAdminController::class, 'linkAdmin']);
+//link
+Route::get('/link-admin', [LinkAdminController::class, 'linkAdmin'])->name('link.admin');
 // microsite Admin
 Route::get('/create-component', [MicrositeController::class, 'createComponent'])->name('create.component');
 Route::post('/save-component', [MicrositeController::class, 'saveComponent'])->name('save.component');
@@ -128,6 +128,8 @@ Route::post('/update-component/{id}', [MicrositeController::class, 'updateCompon
 Route::get('/edit-component/{id}', [MicrositeController::class, 'editComponent'])->name('edit.component');
 Route::get('/delete-component/{id}', [MicrositeController::class, 'deleteComponent'])->name('delete.component');
 Route::get('/view-component', [MicrositeController::class, 'viewComponent'])->name('view.component');
+//prufil
+Route::get('/profil-admin', [ProfilController::class, 'profileAdmin']);
 //Subscribe
 Route::get('/subscribe-admin', [SubscribeController::class, 'subscribe']);
 Route::get('add-subscribe', [SubscribeController::class, 'addSubscribe']);
