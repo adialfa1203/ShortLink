@@ -85,7 +85,7 @@ Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('short
 //AccessLink
 Route::post('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
 //ActiveLink
-Route::get('/Link', [LinkController::class, 'Link'])->name('Link');
+Route::get('/link/{shortCode}', [LinkController::class, 'showLink'])->name('link.show');
 Route::post('active-link', [LinkController::class,'activeLink'])->name('active.link');
 Route::get('/archive/{id}', [LinkController::class, 'archive'])->name('archive');
 //ArchiveLink
@@ -107,7 +107,7 @@ Route::get('/edit-microsite/{id}', [MicrositeController::class, 'editMicrosite']
 Route::post('/update-microsite/{id}', [MicrositeController::class, 'updateMicrosite'])->name('update.microsite');
 Route::get('/add-microsite', [MicrositeController::class, 'addMicrosite'])->name('add.microsite');
 //update key
-Route::post('update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
+Route::post('/update-short-link', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
 
 });
 

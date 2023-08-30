@@ -8,35 +8,36 @@ use Illuminate\Support\Facades\Auth;
 
 class DahsboardController extends Controller
 {
-    // public function dashboardUser()
-    // {
-    //     $user = Auth::user();
-    //     // $totalVisits = ShortURLVisit::query('user_id', $user)->count();
-    //     if ($user) {
-    //         $userId = $user->id;
-
-    //         // Menghitung total kunjungan berdasarkan user ID
-    //         $countURL = ShortURL::where('user_id', $userId)->count();
-    //     }
-    //     $ShortLink = ShortUrl::all();
-    //     return view('User.DashboardUser',compact('ShortLink','countURL'));
-    // }
-
     public function dashboardUser()
     {
         $user = Auth::user();
+
+        $totalVisits = ShortURLVisit::query('user_id', $user)->count();
         if ($user) {
             $userId = $user->id;
+
+            // Menghitung total kunjungan berdasarkan user ID
             $countURL = ShortURL::where('user_id', $userId)->count();
         }
-
         $ShortLink = ShortUrl::all();
-
-        // Use the actual short code value you want to pass to the view
-        $shortCode = 'example';
-
-        return view('User.DashboardUser', compact('ShortLink', 'countURL', 'shortCode'));
+        return view('User.DashboardUser',compact('ShortLink','countURL','totalVisits'));
     }
+
+    // public function dashboardUser()
+    // {
+    //     $user = Auth::user();
+    //     if ($user) {
+    //         $userId = $user->id;
+    //         $countURL = ShortURL::where('user_id', $userId)->count();
+    //     }
+
+    //     $ShortLink = ShortUrl::all();
+
+    //     // Use the actual short code value you want to pass to the view
+    //     $shortCode = 'example';
+
+    //     return view('User.DashboardUser', compact('ShortLink', 'countURL', 'shortCode'));
+    // }
 
 
     public function HelpSupport (){

@@ -263,33 +263,11 @@
                                                             Tautan berhasil disalin ke clipboard
                                                         </div>
                                                         {{-- end salin --}}
-                                                         <div class="wrapper end-0 position-absolute" style="z-index: 5">
-                                                            <button class="btn btn-transparent btn-sm m-0 p-1"  type="button"
-                                                            data-bs-toggle="collapse" data-bs-target="#edit" id="editclose" onclick="statusEdit()">
-                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                            </button>
+                                                         <div class="wrapper end-0 position-absolute" style="z-index: 5">                                                            
                                                             <button type="button" id="button-email" data-bs-toggle="modal" data-bs-target="#bagikan" class="btn btn-danger btn-sm m-1"><i class="fa-solid fa-square-share-nodes"></i> Bagikan</button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{-- modal edit --}}
-                                                <div class="collapse" id="edit">
-                                                    <div class="card card-body">
-                                                        <div class="container">
-                                                            <label for="new_url_key">Kustom Tautan</label>
-                                                            <input type="text" class="form-control" id="new_url_key" name="new_url_key" placeholder="Nama Tautan">
-                                                            <br>
-                                                            <button type="button" class="btn btn-success me-2" id="simpanButton" style="font-size: 13px; padding: 5px 10px; display: flex; align-items: center; justify-content: flex-end; float: right;">
-                                                                <i class="bi bi-check mr-2"></i> Simpan
-                                                            </button>
-
-                                                            <button type="button" class="btn btn-danger me-2" id="keluarButton" style="font-size: 13px; padding: 5px 10px; display: flex; align-items: center; justify-content: flex-end; float: right;">
-                                                                <i class="bi bi-x mr-2"></i> Keluar
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {{-- end modal edit --}}
 
                                                 <div class="col-lg-12">
                                                     <div class="countdown-input-subscribe">
@@ -418,7 +396,7 @@
                                         <div class="d-flex flex-column h-100">
                                             <p class="fs-md text-muted mb-4">Pengunjung </p>
                                             <h3 class="mb-0 mt-auto"><span class="counter-value"
-                                                    data-target="{{($countURL)}}">0</span></h3>
+                                                    data-target="{{($totalVisits)}}">0</span></h3>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0">
@@ -836,44 +814,6 @@
         keluarButton.addEventListener("click", function () {
             // Tutup modal edit
             modalEdit.classList.remove("show");
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("#simpanButton").click(function() {
-                var newUrlKey = $('#new_url_key').val();
-                var title = $('#title').val();
-                var shortCode = '{{ $shortCode }}'; // Use the Blade variable here
-
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('update.shortlink', ['shortCode' => ':shortCode']) }}".replace(':shortCode', shortCode),
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        new_url_key: newUrlKey,
-                        title: title
-                    },
-                    success: function(response) {
-                        alert('Nama berhasil diubah');
-                    },
-                    error: function(error) {
-                        console.error("Error:", error);
-                    }
-                });
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $("#toggleButton").click(function () {
-                $("#tautanberjangka").collapse('toggle');
-                var buttonText = $(this).text();
-                if (buttonText.trim() === "Tampilkan lebih banyak") {
-                    $(this).html('Sembunyikan <i class="fa-solid fa-angle-up"></i>');
-                } else {
-                    $(this).html('Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>');
-                }
-            });
         });
     </script>
 

@@ -336,33 +336,29 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="zoomInModalLabel"><i class="fa-solid fa-clock"></i>&nbsp;Tautan berbasis waktu</h5>
+                                    <h5 class="modal-title" id="zoomInModalLabel"><i class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom Tautan</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="card-body d-flex" style="background-color: #D9D9D9;">
-                                        <p><i class="fa-solid fa-clock"></i></p>
-                                        &nbsp;
-                                        <p>
-                                            Tautan berbasis waktu adalah jenis tautan yang hanya berlangsung selama periode waktu tertentu. Ketika tautan telah kedaluwarsa, maka tautan tersebut tidak dapat diakses lagi.
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-12 d-flex mtx-3">
-                                        <div class="col-lg-6 mb-3">
-                                            <label for="">Tanggal</label>
-                                            <input type="date" class="form-control" id="degreeName" placeholder="Password">
+                                <form id="ajax-form" action="{{ route('update.shortlink') }}" method="POST">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <div class="card-body d-flex" style="background-color: #D9D9D9;">
+                                            <p><i class="fa-solid fa-pen-to-square"></i></p>
+                                            &nbsp;
+                                            <p>
+                                                Kustom Tautan adalah fitur yang memungkinkan pengguna untuk membuat tautan pendek yang disesuaikan dengan keinginan mereka. Pengguna dapat mengganti atau menentukan bagian akhir dari tautan pendek untuk mencerminkan kata kunci, nama merek, atau informasi yang relevan dengan tautan tersebut.
+                                            </p>
                                         </div>
-                                        <div class="col-lg-6 mb-3">
-                                            <label for="">Waktu</label>
-                                            <input type="time" class="form-control" id="appt" name="appt" min="09:00" max="18:00">
+                                        <div class="col-lg-12 mb-3">
+                                            <label for="new_url_key">Kustom Nama</label>
+                                            <input type="text" class="form-control" name="new_url_key" placeholder="Kustom nama">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
-                                    <button type="button" class="btn btn-primary ">Simpan</button>
-                                </div>
-
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                                        <button id="ajax-form-submit" type="button" class="btn btn-primary">Simpan</button>
+                                    </div>
+                                </form>
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
@@ -587,6 +583,54 @@
             $(".card").filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
             });
+        });
+    });
+</script>
+<script>
+    function updateUrlKey(shortCode) {
+        var newUrlKey = document.getElementById('newUrlKey').value;
+~
+        // Kirim permintaan AJAX ke endpoint updateShortLink
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/update-short-link/' + shortCode, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                alert(response.message);
+                // Tutup modal setelah berhasil
+                $('#zoomInModal').modal('hide');
+            } else if (xhr.readyState === 4) {
+                var response = JSON.parse(xhr.responseText);
+                alert(response.error);
+            }
+        };
+        var data = JSON.stringify({ new_url_key: newUrlKey });
+        xhr.send(data);
+    }
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const ajaxForm = document.getElementById("ajax-form");
+        const ajaxFormSubmitButton = document.getElementById("ajax-form-submit");
+
+        ajaxFormSubmitButton.addEventListener("click", function() {
+            // Get the URL for the route "update.shortlink"
+            const action = "{{ route('update.shortlink') }}";
+
+            // Collect data from the form
+            const formData = new FormData(ajaxForm);
+
+            // Send data to the server using Ajax
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", action, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Handle server response here
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send(formData);
         });
     });
 </script>

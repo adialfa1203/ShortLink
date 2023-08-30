@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Hash;
 class LinkController extends Controller
 {
     
-    public function Link()
+    public function showLink($shortCode)
     {
         $urlshort = ShortUrl::orderBy('created_at', 'desc')->paginate(5);
-        return view('User.Link', compact('urlshort'));
+        return view('User.Link', compact('urlshort', 'shortCode'));
     }
 
     public function archive($id)

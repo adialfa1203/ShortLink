@@ -65,19 +65,23 @@ class ShortLinkController extends Controller
     }
     public function updateShortLink(Request $request, $shortCode)
     {
-        $updateUrl = ShortUrl::query()->where('url_key', $shortCode)->first();
+        $updateUrl = ShortUrl::where('url_key', $shortCode)->first();
 
         if (!$updateUrl) {
             return response()->json(['error' => 'Short link not found'], 404);
         }
 
+        // Mengambil data dari permintaan Ajax
+        $newUrlKey = $request->input('new_url_key');
+
+        // Memperbarui URL key dan default short URL
         $updateUrl->update([
-            'url_key' => $request->new_url_key,
-            'default_short_url' => route('access.shortlink', $request->new_url_key),
+            'url_key' => $newUrlKey,
+            'default_short_url' => route('access.shortlink', $newUrlKey),
         ]);
 
+        // Mengirimkan respon ke JavaScript
         return response()->json(['message' => 'URL key updated successfully']);
     }
-
 
 }

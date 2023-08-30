@@ -9,9 +9,10 @@ class ArchiveLinkController extends Controller
 {
     public function archiveLinkUser()
     {
+        $urlshort = ShortUrl::orderBy('created_at', 'desc')->paginate(5);
         $data = ShortUrl::onlyTrashed()->paginate(5);
 
-        return view('User.ArchiveLink', compact('data'));
+        return view('User.ArchiveLink', compact('data','urlshort'));
     }
 
     public function restore($id)

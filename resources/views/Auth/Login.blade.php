@@ -59,7 +59,7 @@
 
 <body>
     <section
-        class="auth-page-wrapper py-5 position-relative d-flex align-items-center justify-content-center min-vh-100">>
+        class="auth-page-wrapper py-5 position-relative d-flex align-items-center justify-content-center min-vh-100">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-11">
