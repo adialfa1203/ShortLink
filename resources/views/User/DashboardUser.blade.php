@@ -457,7 +457,7 @@
                                 </div>
 
                             </div>
-                            <div class="progress" data-bs-toggle="tooltip" data-bs-title="$234.95 Paid Amount">
+                            <div class="progress" data-bs-toggle="tooltip" data-bs-title="{{ $countURL }} Tautan">
                                 <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated"
                                      role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
                             </div>
@@ -469,7 +469,7 @@
                                     data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
                             </h6>
 
-                            <div class="progress" data-bs-toggle="tooltip" data-bs-title="$234.95 Paid Amount">
+                            <div class="progress" data-bs-toggle="tooltip" data-bs-title="{{ $countURL }}">
                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
 

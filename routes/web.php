@@ -107,13 +107,13 @@ Route::get('/edit-microsite/{id}', [MicrositeController::class, 'editMicrosite']
 Route::post('/update-microsite/{id}', [MicrositeController::class, 'updateMicrosite'])->name('update.microsite');
 Route::get('/add-microsite', [MicrositeController::class, 'addMicrosite'])->name('add.microsite');
 //update key
-Route::post('/update-short-link', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
-
+Route::post('update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
 });
 
 //Middleware Admin
 Route::group(['middleware' => ['role:admin']], function () {
 //Dashboard Admin
+Route::get('/dashboard-chart', [DashboardAdminController::class, 'dashboardChart'])->name('dashboard.chart');
 Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin'])->name('dashboard.admin');
 //Data User (Admin)
 Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
