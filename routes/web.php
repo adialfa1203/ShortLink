@@ -97,6 +97,8 @@ Route::get('/profil-user', [ProfilController::class, 'profile']);
 Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
 //analytic
 Route::get('/analytic-user', [AnalyticUserController::class, 'analyticUser'])->name('analytic.user');
+Route::get('/analytic-chart', [AnalyticUserController::class, 'AnalyticUsersChart'])->name('analytic.users.chart');
+
 //subscribe
 Route::get('/subscribe-user', [SubscribeUserController::class, 'subscribeUser'])->name('subscribe.user');
 Route::get('/subscribe-product-user', [SubscribeUserController::class, 'subscribeProductUser'])->name('subscribe.product.user');

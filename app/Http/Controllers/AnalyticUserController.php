@@ -1,14 +1,37 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\ShortUrl;
 use App\Models\User;
 use AshAllenDesign\ShortURL\Models\ShortURLVisit;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class AnalyticUserController extends Controller
 {
+    public function AnalyticUsersChart()
+    {
+        $user = Auth::user()->id;
+
+        $startDate = Carbon::now()->subDays(7);
+
+        $totalUrl = ShortURL::where('created_at', '>=', $startDate)
+        ->selectRaw('DATE(created_at) as date, COUNT(*) as totalUrl')
+        ->groupBy('date')
+        ->orderBy('date')
+        ->get();
+
+        $totalVisits = ShortURLVisit::query()
+        ->whereRelation('shortURL', 'user_id', '=', $user)
+        ->selectRaw('DATE(created_at) as date, COUNT(*) as totalVisits')
+        ->groupBy('date')
+        ->orderBy('date')
+        ->get();
+
+        return response()->json(compact('startDate', 'user', 'totalUrl', 'totalVisits'));
+    }
+
+
     public function analyticUser()
     {
         $user = Auth::user()->id;
@@ -22,6 +45,8 @@ class AnalyticUserController extends Controller
         ])->get();
 
         $countURL = ShortURL::where('user_id', $user)->count();
+
+        $dataLink = SHortURL::all();
 
         $totalVisits = ShortURLVisit::query()
         ->whereRelation('shortURL', 'user_id', '=', $user)
@@ -42,6 +67,6 @@ class AnalyticUserController extends Controller
         // $visits = count($shortURL->visits) ;
 
         // dd($totalVisits,$countURL);
-        return view('User.AnalyticUser', compact('totalVisits','countURL','count','users','links'));
+        return view('User.AnalyticUser', compact('totalVisits','countURL','count','users','links', 'dataLink'));
     }
 }
