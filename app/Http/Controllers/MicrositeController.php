@@ -56,9 +56,11 @@ class MicrositeController extends Controller
         $component = Components::find($id);
         $microsite = Microsite::findorFail($id);
         $social = Social::where('microsite_id', $id)->get();
-        $buttonLink = ButtonLink::findorFail($id);
+        // $buttonLink = ButtonLink::findorFail($id);
 
-        return view('microsite.EditMicrosite', compact('component', 'microsite', 'id', 'social', 'buttonLink'));
+        return view('microsite.EditMicrosite', compact('component', 'microsite', 'id', 'social'));
+
+
     }
 
 
@@ -68,35 +70,17 @@ class MicrositeController extends Controller
         $data = Microsite::all();
         $buttonLinks = $request->input('button_link');
 
-        if (!$microsite) {
-            return redirect()->route('microsite')->with('error', 'Microsite not found.');
-        }
-
-        $request->validate([
-            'name_microsite' => 'required',
-            'description' => 'required',
-            'company_name' => 'required',
-            'company_address' => 'required'
-        ]);
-
-        $microsite->name_microsite = $request->input('name_microsite');
-        $microsite->description = $request->input('description');
-        $microsite->company_name = $request->input('company_name');
-        $microsite->company_address = $request->input('company_address');
-        $microsite->save();
-
-        $buttonLinks = $request->input('button_link');
         foreach ($buttonLinks as $socialId => $buttonLink) {
             $buttonLinkData = [
                 'microsite_id' => $id,
                 'buttons_id' => $socialId,
-                'button_link' => $buttonLink,
+                'button_link' => $buttonLink
             ];
             ButtonLink::create($buttonLinkData);
         }
-        // dd($request);
+        // dd($buttonLinks);
 
-        return redirect()->route('microsite', compact('data'))->with('success', 'Microsite berhasil ditambahkan.');
+        return redirect()->route('microsite', compact('data'))->with('success', 'Button links added successfully.');
     }
 
     public function createComponent(){
