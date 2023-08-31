@@ -94,7 +94,7 @@
                                                         </ul>
                                                     </td>
                                                 </tr>
-                                            @endforeach
+                                                @endforeach
                                                 {{-- <tr>
                                                     <th>
                                                         <div class="form-check">
@@ -118,7 +118,9 @@
                                                 </tr> --}}
 
                                             </tbody><!-- end tbody -->
-                                        </table><!-- end table -->
+                                        </table>
+                                        <br><!-- end table -->
+                                        <button type="button" class="btn btn-subtle-danger"><i class="fas fa-ban me-1" ></i>Banned</button>
                                         <div class="noresult" style="display: none">
                                             <div class="text-center py-4">
                                                 <i class="ph-magnifying-glass fs-1 text-primary"></i>

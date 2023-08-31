@@ -62,40 +62,32 @@
                         <div class="container">
 
                             <div class="card">
-                                <div class="card-header">
-                                    <h6 class="card-title mb-0">Judul (Opsional)</h6>
+                                <div class="card-header d-flex">
+                                    <h6 class="card-title mb-0 col-6">Judul (Opsional)</h6>
+                                    <h6 class="card-title mb-0 col-6">Tautan Terproteksi</h6>
                                 </div>
+                                {{-- <div class="card-header me-2 d-flex justify-content-end  ">
+                                </div> --}}
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <input name="title" type="text" class="form-control" id="degreeName" placeholder="Judul">
                                             </div>
                                         </div>
-                                        <!--end col-->
-                                    </div>
-                                    <!--end row-->
-                                </div>
-                                <div class="card-header">
-                                    <h6 class="card-title mb-0">Tautan berjangka</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" id="degreeName" placeholder="Apabila tautan sudah kadaluarsa, pengunjung tidak dapat mengakses tautan" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 d-flex">
-                                            <div class="col-lg-12 mb-3">
-                                                {{-- <label for="degreeName">Tanggal dan Waktu</label> --}}
                                                 <input name="deactivated_at" type="datetime-local" class="form-control time-input" id="degreeName" placeholder="Password">
+
                                             </div>
                                         </div>
                                         <!--end col-->
                                     </div>
                                     <!--end row-->
                                 </div>
+
+
                                 {{-- <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-3">
@@ -180,6 +172,7 @@
                                     </div>
                                     <!--end row-->
                                 </div><!-- end card-body --> --}}
+
                             </div>
 
                         </div>
@@ -236,7 +229,9 @@
                                                 <label class="platform" onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
                                             </div>
                                             <div class="countdown-input-subscribe">
-                                                <label class="platform" data-platform="copy" id="copyButton" data-url="{{ $row->default_short_url }}" data-id-copy="{{$i}}"><i class="bi bi-clipboard-fill"></i> &nbsp; Copy</label>
+                                                <label class="platform copy-button" data-platform="copy" data-url="{{ $row->default_short_url }}" data-id-copy="{{$i}}" data-clipboard-text="{{ $row->default_short_url }}">
+                                                    <i class="bi bi-clipboard-fill"></i> &nbsp; Copy
+                                                </label>
                                             </div>
                                             <div id="successCopyAlert" class="alert alert-success mt-3" style="display: none; position: fixed; bottom: 570px; right: 433px; max-width: 500px;">
                                                 Tautan berhasil disalin ke clipboard
@@ -265,7 +260,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="visible-print text-center">
-                                            {{-- {!! QrCode::size(200)->generate($row->destination_url); !!} --}}
+                                            {!! QrCode::size(200)->generate($row->destination_url); !!}
                                             <br>
                                             <p>{{ $row->default_short_url }}</p>
 
@@ -290,8 +285,23 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex">
-                            <div class="col-3">
-                                <p style="margin-top: 10px;">{{ \Carbon\Carbon::parse($row->deactivated_at)->format('F j, Y, h:i A') }}</p>
+                            <div class="row col-3">
+                                <div>
+                                    <p style="margin-top: 10px;">{{ \Carbon\Carbon::parse($row->deactivated_at)->format('F j, Y, h:i A') }}</p>
+                                </div>
+                                <!-- Memasukkan code yang telah diberikan -->
+                                <div>
+                                    <?php
+                                    $deactivatedAt = \Carbon\Carbon::parse($row->deactivated_at);
+                                    $now = \Carbon\Carbon::now();
+
+                                    if ($deactivatedAt < $now) {
+                                        echo '<p style="margin-top: 10px;">Tautan kadaluarsa</p>';
+                                    } else {
+                                        echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
+                                    }
+                                    ?>
+                                </div>
                             </div>
                             <div class=" col-9 d-flex flex-row justify-content-end">
                                 <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Tautan berbasis waktu"><i class="fa-solid fa-clock"></i>&nbsp;Atur waktu</span></button>
@@ -339,7 +349,7 @@
                                     <h5 class="modal-title" id="zoomInModalLabel"><i class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom Tautan</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form id="ajax-form" action="{{ route('update.shortlink') }}" method="POST">
+                                {{-- <form id="ajax-form" action="{{ route('update.shortlink') }}" method="POST">
                                     @csrf
                                     <div class="modal-body">
                                         <div class="card-body d-flex" style="background-color: #D9D9D9;">
@@ -358,7 +368,7 @@
                                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
                                         <button id="ajax-form-submit" type="button" class="btn btn-primary">Simpan</button>
                                     </div>
-                                </form>
+                                </form> --}}
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
@@ -390,20 +400,6 @@
 
 @section('script')
 <script>
-    const toggleButton = document.getElementById('toggleButton');
-    const icon = toggleButton.querySelector('i.fa-solid');
-
-    toggleButton.addEventListener('click', function() {
-        if (icon.classList.contains('fa-angle-down')) {
-            icon.classList.remove('fa-angle-down');
-            icon.classList.add('fa-angle-up');
-            toggleButton.textContent = 'Tampilkan lebih sedikit ';
-        } else {
-            icon.classList.remove('fa-angle-up');
-            icon.classList.add('fa-angle-down');
-            toggleButton.textContent = 'Tampilkan lebih banyak ';
-        }
-    });
     var options = {
         series: [{
             name: "sunardi",
@@ -498,19 +494,19 @@
     // ...
 
     // Menangani klik pada tombol Copy di dalam modal
-    $("#copyButton").click(function () {
-        var linkToCopy = $(this).attr("data-clipboard-text");
+    // $("#copyButton").click(function () {
+    //     var linkToCopy = $(this).attr("data-clipboard-text");
 
-        // Salin tautan ke clipboard
-        var tempInput = $("<input>");
-        $("body").append(tempInput);
-        tempInput.val(linkToCopy).select();
-        document.execCommand("copy");
-        tempInput.remove();
+    //     // Salin tautan ke clipboard
+    //     var tempInput = $("<input>");
+    //     $("body").append(tempInput);
+    //     tempInput.val(linkToCopy).select();
+    //     document.execCommand("copy");
+    //     tempInput.remove();
 
-        // Tampilkan pesan sukses
-        $("#successCopyAlert").fadeIn().delay(1500).fadeOut();
-    });
+    //     // Tampilkan pesan sukses
+    //     $("#successCopyAlert").fadeIn().delay(1500).fadeOut();
+    // });
       // Menangani klik pada label platform dalam modal "bagikan"
       $(".platform").click(function() {
           var platform = $(this).data("platform");
@@ -569,6 +565,19 @@
 
 </script>
 <script>
+    $(document).ready(function () {
+    // Initialize Clipboard.js for all elements with the "copy-button" class
+    new ClipboardJS('.copy-button');
+
+    // Add an event listener for when the copy is successful
+    $('.copy-button').on('click', function () {
+        // Show the "Copy Success" alert related to the clicked button
+        $(this).next(".alert").fadeIn().delay(1500).fadeOut();
+    });
+});
+
+</script>
+<script>
     function archive() {
         message = confirm('Apakah Anda Ingin Mengarsip Tautan?');
         if (message) {
@@ -611,29 +620,60 @@
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const ajaxForm = document.getElementById("ajax-form");
-        const ajaxFormSubmitButton = document.getElementById("ajax-form-submit");
+    const ajaxForm = document.getElementById("ajax-form");
+    const ajaxFormSubmitButton = document.getElementById("ajax-form-submit");
 
-        ajaxFormSubmitButton.addEventListener("click", function() {
-            // Get the URL for the route "update.shortlink"
-            const action = "{{ route('update.shortlink') }}";
+    ajaxFormSubmitButton.addEventListener("click", function() {
+        // Collect data from the form
+        const formData = new FormData(ajaxForm);
 
-            // Collect data from the form
-            const formData = new FormData(ajaxForm);
-
-            // Send data to the server using Ajax
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", action, true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Handle server response here
-                    console.log(xhr.responseText);
-                }
-            };
-            xhr.send(formData);
+        // Send data to the server using Ajax
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", ajaxForm.action, true);
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Handle server response here
+            console.log(xhr.responseText);
+        }
+        };
+        xhr.send(formData);
+    });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#toggleButton").click(function () {
+            $("#tautanberjangka").collapse('toggle');
+            var buttonText = $(this).text();
+            if (buttonText.trim() === "Tampilkan lebih banyak") {
+                $(this).html('Tampilkan lebih sedikit <i class="fa-solid fa-angle-up"></i>');
+            } else {
+                $(this).html('Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>');
+            }
         });
     });
 </script>
+<script>
+    // Mendapatkan semua tautan dengan class "access-link"
+    var links = document.querySelectorAll('.access-link');
 
+    // Loop melalui setiap tautan
+    links.forEach(function(link) {
+        // Menambahkan event listener saat tautan diklik
+        link.addEventListener('click', function(event) {
+            // Jika tautan tidak memiliki class "inactive", maka tautan masih aktif
+            if (!link.classList.contains('inactive')) {
+                // Lanjutkan ke URL tautan
+                return;
+            }
+
+            // Mencegah tautan mengarahkan ke URL
+            event.preventDefault();
+
+            // Tampilkan alert bahwa tautan sudah tidak dapat diakses
+            alert('Tautan sudah tidak dapat diakses.');
+        });
+    });
+</script>
 @endsection
 @endsection
