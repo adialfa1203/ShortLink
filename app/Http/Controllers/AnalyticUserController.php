@@ -5,6 +5,7 @@ use App\Models\ShortUrl;
 use App\Models\User;
 use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 use Carbon\Carbon;
+use Flasher\Laravel\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AnalyticUserController extends Controller
@@ -69,4 +70,5 @@ class AnalyticUserController extends Controller
         // dd($totalVisits,$countURL);
         return view('User.AnalyticUser', compact('totalVisits','countURL','count','users','links', 'dataLink'));
     }
+
 }

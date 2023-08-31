@@ -117,7 +117,9 @@ Route::get('/edit-microsite/{id}', [MicrositeController::class, 'editMicrosite']
 Route::post('/update-microsite/{id}', [MicrositeController::class, 'updateMicrosite'])->name('update.microsite');
 Route::get('/add-microsite', [MicrositeController::class, 'addMicrosite'])->name('add.microsite');
 //update key
-Route::post('update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
+Route::post('/update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
+//update tenggat
+Route::post('/update-deactivated/{keyTime}',[LinkController::class, 'updateDeactivated']);
 });
 
 //Middleware Admin

@@ -101,32 +101,18 @@
                             <div class="card-header">
                                 <i class="bx bx-star"></i> Tautan Populer
                             </div>
-                            <div class="card-body">
-                                    @php
-                                        $no = 1;
-                                    @endphp
-                                @foreach ($dataLink as $row)
-                                <div class="row ">
-                                    <div class="col number">{{ $no++ }}</div>
-                                    <div class="col name "  style="margin-right: 50%;">{{ $row->default_short_url}}  </div>
-                                    <div class="col age "  style="margin-right: 10%;">0 Pengunjung</div>
+                            @foreach ($links->sortByDesc('totalVisits') as $link)
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col number">{{ $loop->iteration }}</div>
+                                        <div class="col link">{{ $link->default_short_url }}</div>
+                                        <div class="col visitor">
+                                            {{ $link->totalVisits }} Pengunjung
+                                        </div>
+                                    </div>
+                                    <hr>
                                 </div>
-                                <hr>
-
-                                @endforeach
-                                <div class="row" >
-                                    <div class="col number">2.</div>
-                                    <div class="col name">link.id/8FCO2</div>
-                                    <div class="col age">0 Pengunjung</div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col number">3.</div>
-                                    <div class="col name">link.id/8FCO2</div>
-                                    <div class="col age">0 Pengunjung</div>
-                                </div>
-
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-lg-6">
