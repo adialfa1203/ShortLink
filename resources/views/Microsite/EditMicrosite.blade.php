@@ -1,6 +1,10 @@
 @extends('layout.user.app')
 @section('title', 'Edit Microsite')
 
+@section('style')
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+@endsection
+
 @section('content')
     <div class="page-content">
         <div class="container-fluid">
@@ -38,12 +42,9 @@
                                         <div class="mb-3">
                                             <label for="employeeName" class="form-label">Nama Profile</label>
                                             <input type="text" class="form-control" id="employeeName"
-                                                placeholder="Placeholder" required name="name">
+                                                placeholder="Nama Profile" value="{{ $microsite->name_microsite }}" name="name_microsite">
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Deskripsi Profil</label>
-                                            <input class="ckeditor-classic" required name="description">
-                                        </div>
+                                        <textarea name="description" id="editor">{{ $microsite->description }}</textarea>
                                         <div class="mb-3">
                                             <div class="card-body">
                                                 <div class="accordion" id="default-accordion-example">
@@ -69,8 +70,8 @@
                                                                                 class="form-label">{{ $data->button->name_button }}</label>
                                                                             <input type="text" class="form-control"
                                                                                 id="placeholderInput"
-                                                                                placeholder="Placeholder"
-                                                                                name="button_link[{{ $data->button->id }}]">
+                                                                                placeholder="{{ $data->button->name_button }}"
+                                                                                name="button_link[{{ $data->button->id }}]" value="{{ $buttonLink->button_link }}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -95,7 +96,8 @@
                                                                         <label for="placeholderInput"
                                                                             class="form-label">Nama Perusahaan</label>
                                                                         <input type="text" class="form-control"
-                                                                            id="placeholderInput" placeholder="Placeholder">
+                                                                            name="company_name" id="placeholderInput"
+                                                                            placeholder="Nama Perusahaan" value="{{ $microsite->company_name }}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -117,9 +119,9 @@
                                                                     <div>
                                                                         <label for="placeholderInput"
                                                                             class="form-label">Alamat Perusahaan</label>
-                                                                        <input type="text" class="form-control"
-                                                                            id="placeholderInput"
-                                                                            placeholder="Placeholder">
+                                                                        <input type="text" class="form-control" value="{{ $microsite->company_address }}"
+                                                                            id="placeholderInput" name="company_address"
+                                                                            placeholder="Alamat Perusahaan">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -139,14 +141,15 @@
                                                         <label for="address" class="form-label">Nama
                                                             Microsite</label>
                                                         <input type="text" class="form-control" id="address"
-                                                            placeholder="aqua-link" value="{{ $microsite->name }}">
+                                                            name="name" placeholder="aqua-link"
+                                                            value="{{ $microsite->name }}">
                                                     </div>
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Tautan
                                                             Microsite</label>
                                                         <div class="input-group">
                                                             <input type="text" class="form-control" id="address"
-                                                                placeholder="aqua-link" name=""
+                                                                placeholder="aqua-link" name="link_microsite"
                                                                 value="{{ $microsite->link_microsite }}">
                                                         </div>
                                                     </div>
@@ -220,6 +223,13 @@
     @endsection
 
     @section('script')
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#editor'))
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
         <!-- dropzone js -->
         <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/dropzone/dropzone-min.js') }}"></script>
 

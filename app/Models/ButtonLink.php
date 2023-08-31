@@ -14,4 +14,9 @@ class ButtonLink extends Model
         'buttons_id',
         'button_link',
     ];
+    public function button()
+{
+    return $this->belongsTo(Button::class, 'buttons_id');
+}
+
 }

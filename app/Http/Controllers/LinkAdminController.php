@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\ShortUrl;
 use App\Models\User;
 use AshAllenDesign\ShortURL\Models\ShortURLVisit;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class LinkAdminController extends Controller
 {

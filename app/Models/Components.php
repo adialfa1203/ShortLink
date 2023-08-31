@@ -14,4 +14,9 @@ class Components extends Model
     ];
 
     use HasFactory;
+    public function button()
+{
+    return $this->belongsTo(Button::class);
+}
+
 }

@@ -17,10 +17,10 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('link_microsite');
-            $table->string('description')->nullable();
-            $table->date('creation_date')->nullable();
-            $table->date('expiration_date')->nullable();
             $table->string('name_microsite')->nullable();
+            $table->string('description')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('company_address')->nullable();
             $table->string('qr_code')->nullable();
             $table->timestamps();
         });

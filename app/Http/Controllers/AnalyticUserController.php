@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\ShortUrl;
 use App\Models\User;
 use AshAllenDesign\ShortURL\Models\ShortURLVisit;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AnalyticUserController extends Controller
@@ -23,7 +22,7 @@ class AnalyticUserController extends Controller
         ])->get();
 
         $countURL = ShortURL::where('user_id', $user)->count();
-        
+
         $totalVisits = ShortURLVisit::query()
         ->whereRelation('shortURL', 'user_id', '=', $user)
         ->count();

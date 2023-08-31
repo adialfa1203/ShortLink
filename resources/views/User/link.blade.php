@@ -249,7 +249,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- end Modal bagikan-->
                                 <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal-{{ $row->id }}"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Kode QR"><i class="fa-solid fa-qrcode"></i></span></button>
                                 <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal"><span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit</span></button>
@@ -452,7 +452,7 @@
         //    alert(data)
 
          data.select();
-         data.setSelectionRange(0, 99999); 
+         data.setSelectionRange(0, 99999);
          navigator.clipboard.writeText(data.value);
 
         })
