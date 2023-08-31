@@ -107,8 +107,6 @@
                                                             <label class="form-check-label" for="remember">Ingat saya</label>
                                                         </div>
                                                     </div>
-
-
                                                     <div class="mt-4">
                                                         <button class="btn btn-primary w-100 custom-btn"
                                                             type="submit">Masuk</button>
@@ -148,7 +146,7 @@
                                 <div class="col-6 right-section m-0">
                                     <center>
                                     <div class="w-100" style="margin-top: 20%">
-                                        <img src="{{ asset('template/image/Login.png') }} " width="400"
+                                        <img src="{{ asset('template/image/Login2.png') }} " width="400"
                                             height="400">
                                     </div>
                                 </center>

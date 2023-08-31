@@ -101,7 +101,7 @@
                                     <div class="modal-header">
                                         <h1 class="modal-title" id="addAmountLabel"
                                             style="margin-left: 35%; margin-right: auto;">Buat Tautan Baru</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" 
                                             aria-label="Close"></button>
                                     </div>
 
@@ -336,18 +336,15 @@
                             </div>
                         </div>
 
-                        <div class="card border-bottom border-2 card-animate border-secondary">
-                            <div class="card-body d-flex justify-content-between align-items-center"
-                                style="background-color: rgb(13, 13, 118)">
+                        <a href="/add-microsite" class="card border-bottom border-2 card-animate border-secondary">
+                            <div class="card-body d-flex justify-content-between align-items-center" style="background-color: rgb(13, 13, 118)">
                                 <div class="wrapper d-flex align-items-center">
-                                    <i class="bi bi-card-text custom-icon-size"></i>
-                                    <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white">Buat Microsite baru
-                                    </p>
+                                    <i class="bi bi-question-circle custom-icon-size"></i>
+                                    <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white"> Buat Microsite baru</p>
                                 </div>
                                 <i class="ri-arrow-right-s-line custom-icon-size"></i>
                             </div>
-                        </div>
-
+                        </a>
 
 
                     </div><!--end col-->
@@ -369,20 +366,16 @@
                             </div>
                         </div>
 
-                        <div class="card border-bottom border-2 card-animate border-secondary">
-                            <div class="card-body d-flex justify-content-between align-items-center"
-                                style="background-color: rgb(224, 113, 34)">
+                        <a href="/HelpSupport" class="card border-bottom border-2 card-animate border-secondary">
+                            <div class="card-body d-flex justify-content-between align-items-center" style="background-color: rgb(224, 113, 34)">
                                 <div class="wrapper d-flex align-items-center">
                                     <i class="bi bi-question-circle custom-icon-size"></i>
-                                    <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white"> Bantuan & Dukungan
-                                    </p>
+                                    <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white"> Bantuan & Dukungan</p>
                                 </div>
                                 <i class="ri-arrow-right-s-line custom-icon-size"></i>
                             </div>
-                        </div>
-
-
-
+                        </a>
+                        
                     </div><!--end col-->
                 </div><!--end row-->
 

@@ -33,21 +33,32 @@
 
 <body>
     <style>
-       .custom-btn {
-        width: 100%;
-        max-width: 300px; /* Sesuaikan dengan lebar maksimum yang Anda inginkan */
-        margin: 5px; /* Sesuaikan jarak antara tombol jika diperlukan */
-    }
-    header {
-  height: 100px; /* Ganti dengan tinggi yang Anda inginkan */
-}
-header {
-  padding: 20px 0; /* Atur padding sesuai kebutuhan Anda */
-}
-.text-muted {
-    --tb-text-opacity: 1;
-    color: var(--tb-secondary-color) !important;
-}
+        .custom-btn {
+            width: 100%;
+            max-width: 300px;
+            /* Sesuaikan dengan lebar maksimum yang Anda inginkan */
+            margin: 5px;
+            /* Sesuaikan jarak antara tombol jika diperlukan */
+        }
+
+        header {
+            height: 100px;
+            /* Ganti dengan tinggi yang Anda inginkan */
+        }
+
+        header {
+            padding: 20px 0;
+            /* Atur padding sesuai kebutuhan Anda */
+        }
+
+        .text-muted {
+            --tb-text-opacity: 1;
+            color: var(--tb-secondary-color) !important;
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 
     <!-- Page-wrapper-Start -->
@@ -111,7 +122,7 @@ header {
         <!-- Banner-Section-Start -->
         <section class="banner_section mb-5" id="beranda">
             <!-- container start -->
-           
+
 
             <!-- container end -->
 
@@ -134,8 +145,8 @@ header {
             <!-- wave animation end -->
 
         </section>
-       <div class="container mb-12">
-        {{-- <div class="card mb-3">
+        <div class="container mb-12">
+            {{-- <div class="card mb-3">
             <img src="https://i.postimg.cc/85PX89YV/langit2.png">
             <form class="col-6 search-form mb-5 position-absolute top-50 start-50 translate-middle">
               <div class="input-group mx-auto">
@@ -144,61 +155,70 @@ header {
               </div>
           </form>
         </div> --}}
-        <div class="container">
-          <div class="row justify-content-between mb-3">
-              <div class="col-12 text-center">
-                  <a href="/Start" class="btn btn-outline-info custom-btn">Memulai</a>
-                  <a href="/Announcement" class="btn btn-outline-info custom-btn">Pengumuman</a>
-                  <a href="/Account" class="btn btn-outline-info custom-btn">Akun</a>
-              </div>
-          </div>
-      </div>
-      <div class="container">
-          <div class="row justify-content-between mb-5">
-              <div class="col-12 text-center">
-                <a href="/BillingSubscriptions" class="btn btn-outline-info custom-btn">Penagihan dan Langganan</a>
-                  <a href="/PlatformMicrosite" class="btn btn-outline-info custom-btn">Platform Microsite</a>
-                  <a href="/ShortLink" class="btn btn-outline-info custom-btn">Penyingkat Tautan</a>
-              </div>
-          </div>
-      </div>
-      <div class="col-xxl-12">
-        <div class="card mb-3">
-            <div class="card-header-white d-flex align-items-center">
-                <h5 class="card-title mb-0 flex-grow-1 text-center mt-2">Aktivitas Terbaru</h5>
-            </div>
-            <div class="card-body px-0">
-                <div class="card-body">
-                        <div class="d-flex align-items-start text-muted mb-4">
-                            <div class="flex-shrink-0 me-3">
-                                <img src="{{asset('template/themesbrand.com/steex/layouts/assets/images/users/avatar-2.jpg')}}" class="avatar-sm rounded" alt="..." width="50px" height="50px">
-                            </div>
-
-                            <div class="flex-grow-1">
-                                <h6 class="fs-md" style="margin-left: 1%;">Jihan Prahasti Saharani</h6>
-                                <p class="mb-1" style="margin-left: 1%;">Web ini sangat Membantu</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-start text-muted mb-4">
-                            <div class="flex-shrink-0 me-3">
-                                <img src="{{asset('template/themesbrand.com/steex/layouts/assets/images/users/avatar-2.jpg')}}" class="avatar-sm rounded" alt="..." width="50px" height="50px">
-                            </div>
-
-                            <div class="flex-grow-1">
-                                <h6 class="fs-md" style="margin-left: 1%;">Fira</h6>
-                                <p class="mb-1" style="margin-left: 1%;">Semoga Semakin Upgrade</p>
-                            </div>
-                        </div>
-                        
-                        
+            <div class="container">
+                <div class="row justify-content-between mb-3">
+                    <div class="col-12 text-center">
+                        <a href="/Start" class="btn btn-outline-info custom-btn">Memulai</a>
+                        <a href="/Announcement" class="btn btn-outline-info custom-btn">Pengumuman</a>
+                        <a href="/Account" class="btn btn-outline-info custom-btn">Akun</a>
                     </div>
-                </div><!-- end card-body -->
+                </div>
             </div>
-        </div><!--end card-->
-    </div><!--end col-->
-    
-       </div>
-       <footer>
+            <div class="container">
+                <div class="row justify-content-between mb-5">
+                    <div class="col-12 text-center">
+                        <a href="/BillingSubscriptions" class="btn btn-outline-info custom-btn">Penagihan dan
+                            Langganan</a>
+                        <a href="/PlatformMicrosite" class="btn btn-outline-info custom-btn">Platform Microsite</a>
+                        <a href="/ShortLink" class="btn btn-outline-info custom-btn">Penyingkat Tautan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-12">
+                <div class="card mb-3">
+                    <div class="card-header-white d-flex align-items-center">
+                        <h5 class="card-title mb-0 flex-grow-1 text-center mt-2">Aktivitas Terbaru</h5>
+                    </div>
+                    <div class="card-body px-0" style="height: 500px; overflow-y: scroll;">
+                        @foreach ($komentar as $key => $row)
+                            <div class="card-body">
+                                <div
+                                    class="d-flex align-items-center text-muted mb-4 comment-container{{ $key < 1 ? '' : ' hidden' }}"">
+                                    <div class="flex-shrink-0 me-3">
+                                        <img src="{{ asset($row->user->profile_picture ? 'storage/'.$row->user->profile_picture : 'storage/profile_pictures/default.jpg') }}"
+                                        class="avatar-sm rounded" alt="..." width="50px" height="50px">
+                                    </div>
+                                    <div class="flex-grow-1 d-flex flex-column">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                                @foreach ($userId as $user)
+                                                    @if ($user->id == $row->user_id)
+                                                        <h6 class="fs-md" style="margin-left:12px; font-size:14px;">
+                                                            {{ $user->name }}
+                                                        </h6>
+                                                    @endif
+                                                @endforeach
+                                            @if ($row->created_at)
+                                                <h6 style="font-size:14px;">
+                                                    {{ $row->created_at->format('d F Y H:i') }}</h6>
+                                            @else
+                                                <h6 style="font-size:14px;">Tanggal tidak tersedia</h6>
+                                            @endif
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <h6 class="mb-1 mt-2" style="margin-left:12px; font-size:14px;">
+                                                {{ $row->isikomentar }}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div><!-- end card-body -->
+                </div>
+            </div><!--end card-->
+        </div><!--end col-->
+
+    </div>
+    <footer>
         <div class="top_footer" id="kontak">
             <div class="container">
                 <div class="row">
@@ -208,15 +228,17 @@ header {
                             <div class="logo">
                                 <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
                                     style="margin-top: -27%;">
-                                    <ul style="margin-top: -16%; margin-right:40px;">
-                                        <li style="color: white; font-size:14px;">S.id adalah platform untuk orang-orang untuk menunjukkan keahlian mereka dalam membuat situs mikro dan memperpendek tautan terpendek dengan kode s.id/.</li>
-                                    </ul>
-                                </div>
+                                <ul style="margin-top: -16%; margin-right:40px;">
+                                    <li style="color: white; font-size:14px;">S.id adalah platform untuk orang-orang
+                                        untuk menunjukkan keahlian mereka dalam membuat situs mikro dan memperpendek
+                                        tautan terpendek dengan kode s.id/.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Footer Links -->
-                    
+
                     <div class="col-lg-2 col-md-6 col-12">
                         <div class="links">
                             <h3>Dukungan</h3>
@@ -268,14 +290,18 @@ header {
                             </ul>
                         </div>
                     </div>
-
                     <!-- Comment Form -->
-                    <div class="col-lg-3 col-md-6 col-12 mb-1" >
-                        <form action="javascript:void(0);" class="mt-3">
+                    <div class="col-lg-3 col-md-6 col-12 mb-1">
+                        <form action="/create/{{ $users->id }}" method="POST" enctype="multipart/form-data"
+                            class="mt-3">
+                            @csrf
                             <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
-                                placeholder="Tambahkan Komentar" style="font-size:12px ;"></textarea>
+                                placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
+                            @error('isikomentar')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="text-start mt-2">
-                                <a href="javascript:void(0);" class="btn btn-success">Kirim</a>
+                                <button type="submit" class="btn btn-success">Kirim</button>
                             </div>
                         </form>
                     </div>
@@ -300,30 +326,30 @@ header {
         </div>
     </footer>
 
-        <!-- Footer-Section end -->
+    <!-- Footer-Section end -->
 
-        <!-- VIDEO MODAL -->
-        <div class="modal fade youtube-video" id="myModal" tabindex="-1" role="dialog"
-            aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <button id="close-video" type="button" class="button btn btn-default text-right"
-                        data-dismiss="modal">
-                        <i class="icofont-close-line-circled"></i>
-                    </button>
-                    <div class="modal-body">
-                        <div id="video-container" class="video-container">
-                            <iframe id="youtubevideo" src="#" width="640" height="360" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
+    <!-- VIDEO MODAL -->
+    <div class="modal fade youtube-video" id="myModal" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button id="close-video" type="button" class="button btn btn-default text-right"
+                    data-dismiss="modal">
+                    <i class="icofont-close-line-circled"></i>
+                </button>
+                <div class="modal-body">
+                    <div id="video-container" class="video-container">
+                        <iframe id="youtubevideo" src="#" width="640" height="360" frameborder="0"
+                            allowfullscreen></iframe>
                     </div>
-                    <div class="modal-footer">
-                    </div>
+                </div>
+                <div class="modal-footer">
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="purple_backdrop"></div>
+    <div class="purple_backdrop"></div>
 
     </div>
     <!-- Page-wrapper-End -->
@@ -354,7 +380,19 @@ header {
             window.location.href = "https://www.instagram.com/nama_akun_instagram";
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var tombolLihatSelengkapnya = document.getElementById("tombolLihatSelengkapnya");
 
+            tombolLihatSelengkapnya.addEventListener("click", function() {
+                var komentarTersembunyi = document.querySelectorAll(".comment-container.hidden");
+                for (var i = 0; i < komentarTersembunyi.length; i++) {
+                    komentarTersembunyi[i].style.display = "flex"; // Tampilkan komentar yang tersembunyi
+                }
+                tombolLihatSelengkapnya.style.display = "none"; // Sembunyikan tombol "Lihat Selengkapnya"
+            });
+        });
+    </script>
 </body>
 
 

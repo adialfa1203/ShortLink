@@ -341,12 +341,16 @@ header {
                         </div>
     
                         <!-- Comment Form -->
-                        <div class="col-lg-3 col-md-6 col-12 mb-1" >
-                            <form action="javascript:void(0);" class="mt-3">
+                        <div class="col-lg-3 col-md-6 col-12 mb-1">
+                            <form id="commentForm" method="POST" enctype="multipart/form-data" class="mt-3">
+                                @csrf
                                 <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Tambahkan Komentar" style="font-size:12px ;"></textarea>
+                                    placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
+                                @error('isikomentar')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 <div class="text-start mt-2">
-                                    <a href="javascript:void(0);" class="btn btn-success">Kirim</a>
+                                    <button type="submit" class="btn btn-success">Kirim</button>
                                 </div>
                             </form>
                         </div>
@@ -425,7 +429,29 @@ header {
             window.location.href = "https://www.instagram.com/nama_akun_instagram";
         });
     </script>
-
+<script>
+    $(document).ready(function() {
+        // Handle form submission
+        $('#commentForm').submit(function(event) {
+            event.preventDefault();
+            // Check if the user is authenticated
+            @if(auth()->check())
+                // If authenticated, submit the form to /create
+                this.action = '/create';
+                this.submit();
+            @else
+                // If not authenticated, show a SweetAlert message with a link to /login
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oh Tidakkk...',
+                    text: 'Anda harus login dulu',
+                    confirmButtonText: 'Batal',
+                    footer: '<a href="/login">Login disini</a>'
+                });
+            @endif
+        });
+    });
+</script>
 </body>
 
 

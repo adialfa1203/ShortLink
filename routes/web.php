@@ -14,6 +14,7 @@ use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\SubscribeUserController;
 use App\Http\Controllers\MicrositeController;
 use App\Http\Controllers\ButtonController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 // use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -44,6 +45,8 @@ Route::get('sample', [AuthController::class, 'sendEmail']);
 Route::post('send-emails', [AuthController::class, 'sendSampleEmail'])->name('sendEmail');
 Route::get('verification', [AuthController::class, 'verification'])->name('verification');
 Route::post('verificationCode', [AuthController::class, 'verificationCode'])->name('verificationCode');
+Route::get('/', [DahsboardController::class, 'home']);
+
 Route::get('/', function () {
     return view('Landingpage.Home');
 });
@@ -57,7 +60,7 @@ Route::get('/Subscribe', function () {
     return view('Landingpage.Subscribe');
 });
 //HelpSupport
-Route::get('HelpSupport', [DahsboardController::class, 'HelpSupport']);
+
 Route::get('Start', [DahsboardController::class, 'Start']);
 Route::get('Announcement', [DahsboardController::class, 'Announcement']);
 Route::get('Account', [DahsboardController::class, 'Account']);
@@ -74,10 +77,15 @@ Route::get('ShortLink', [DahsboardController::class, 'ShortLink']);
 
 Route::middleware(['auth'])->group(function () {
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+// Route::get('HelpSupport', [DahsboardController::class, 'HelpSupport']);
 });
 
 //Middleware User
 Route::group(['middleware' => ['checkBanStatus', 'role:user']], function () {
+Route::get('HelpSupport', [DahsboardController::class, 'HelpSupport']);
+Route::post('/create/{id}', [CommentController::class, 'create'])->name('create');
+
+
 //Dashboard
 Route::get('/dashboard-user', [DahsboardController::class, 'dashboardUser'])->name('dashboard.user');
 //ShortLink
@@ -121,8 +129,8 @@ Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin
 Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
 Route::get('admin/user/{userId}/ban', [DataUserController::class, 'banUser'])->name('user.ban');
 Route::get('admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
-//link
-Route::get('/link-admin', [LinkAdminController::class, 'linkAdmin'])->name('link.admin');
+//Link Admin
+Route::get('link-admin', [LinkAdminController::class, 'linkAdmin']);
 // microsite Admin
 Route::get('/create-component', [MicrositeController::class, 'createComponent'])->name('create.component');
 Route::post('/save-component', [MicrositeController::class, 'saveComponent'])->name('save.component');
@@ -130,8 +138,6 @@ Route::post('/update-component/{id}', [MicrositeController::class, 'updateCompon
 Route::get('/edit-component/{id}', [MicrositeController::class, 'editComponent'])->name('edit.component');
 Route::get('/delete-component/{id}', [MicrositeController::class, 'deleteComponent'])->name('delete.component');
 Route::get('/view-component', [MicrositeController::class, 'viewComponent'])->name('view.component');
-//prufil
-Route::get('/profil-admin', [ProfilController::class, 'profileAdmin']);
 //Subscribe
 Route::get('/subscribe-admin', [SubscribeController::class, 'subscribe']);
 Route::get('add-subscribe', [SubscribeController::class, 'addSubscribe']);
@@ -142,4 +148,7 @@ Route::post('/update-button/{id}', [ButtonController::class, 'updateButton'])->n
 Route::get('/edit-button/{id}', [ButtonController::class, 'editButton'])->name('edit.button');
 Route::get('/delete-button/{id}', [ButtonController::class, 'deleteButton'])->name('delete.button');
 Route::get('/view-button', [ButtonController::class, 'viewButton'])->name('view.button');
+//Komentar
+Route::get('/viewkomentar', [CommentController::class, 'viewkomentar'])->name('viewkomentar');
+
 });

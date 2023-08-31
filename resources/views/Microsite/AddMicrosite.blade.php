@@ -1,5 +1,19 @@
 @extends('layout.user.app')
+
 @section('title', 'Microsite')
+@section('style')
+<style>
+    /* CSS untuk hover card */
+    .hover {
+        /* Misalnya, ubah warna latar belakang dan perbesar sedikit card ketika dihover */
+        /* border: 2px solid rgb(61, 56, 56); */
+        background-color: #f8f8f8;
+        transform: scale(1.05);
+        transition: background-color 0.3s, transform 0.3s;
+    }
+</style>
+
+@endsection
 
 @section('style')
     <style>
@@ -180,33 +194,32 @@
                                                     </div>
                                                     <div class="row">
                                                         @foreach ($button as $data)
-                                                            <div class="col-xl-4 col-sm-6 mb-4">
-                                                                <div class="card" id="{{ $data->id }}">
-                                                                    <div class="card-footer text-center ">
-                                                                        <div
-                                                                            class="d-flex align-items-center justify-content-end">
-                                                                            <label class="mb-0 me-2 ">
-                                                                                <input type="checkbox"
-                                                                                    name="selectedButtons[]"
-                                                                                    value="{{ $data->id }}"
-                                                                                    class="checkbox"
-                                                                                    style="display: none;">
-                                                                            </label>
-                                                                            <button
-                                                                                style="background-color: {{ $data->color_hex }}; color: white;"
-                                                                                type="button" name="button"
-                                                                                value="{{ $data->name_button }}"
-                                                                                class="col-xl-12 btn btn-label rounded-pill"
-                                                                                data-button-value="{{ $data->id }}"
-                                                                                onclick="toggleCardHover('{{ $data->id }}')">
-                                                                                <i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2"
-                                                                                    style="color: white;"></i>
-                                                                                {{ $data->name_button }}
-                                                                            </button>
-                                                                        </div>
+                                                        <div class="col-xl-4 col-sm-6 mb-4">
+                                                            <div class="card" id="{{ $data->id }}">
+                                                                <div class="card-footer text-center ">
+                                                                    <div class="d-flex align-items-center justify-content-end">
+                                                                        <label class="mb-0 me-2 ">
+                                                                            <input type="checkbox"
+                                                                            name="selectedButtons[]"
+                                                                            value="{{ $data->id }}"
+                                                                            class="checkbox"
+                                                                            style="display: none;">
+                                                                        </label>
+                                                                        <button
+                                                                            style="background-color: {{ $data->color_hex }}; color: white;"
+                                                                            type="button"
+                                                                            name="button" value="{{ $data->name_button }}"
+                                                                            class="col-xl-12 btn btn-label rounded-pill"
+                                                                            data-button-value="{{ $data->id }}"
+                                                                            onclick="toggleCardHover('{{ $data->id }}')">
+                                                                            <i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2"
+                                                                                style="color: white;"></i>
+                                                                            {{ $data->name_button }}
+                                                                        </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                        </div>
                                                         @endforeach
                                                     </div>
                                                     <div class="d-flex align-items-start gap-3 mt-4">
@@ -298,5 +311,11 @@
         }
     </script>
 
+<script>
+    function toggleCardHover(cardId) {
+        const card = document.getElementById(cardId);
+        card.classList.toggle('hover');
+    }
+</script>
 
 @endsection
