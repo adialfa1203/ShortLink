@@ -69,17 +69,23 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <input name="title" type="text" class="form-control"
-                                                        id="degreeName" placeholder="Judul">
+                                                    <input name="title" type="text" class="form-control" id="degreeName" placeholder="Judul">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <input type="text" class="form-control" id="degreeName" placeholder="Apabila tautan sudah kadaluarsa, pengunjung tidak dapat mengakses tautan" disabled>
+                                                    <input name="deactivated_at" type="datetime-local" class="form-control time-input" id="degreeName" placeholder="Password">
+    
                                                 </div>
                                             </div>
                                             <!--end col-->
                                         </div>
                                         <!--end row-->
                                     </div>
-                                    <div class="card-body">
+                                    {{-- <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="nav flex-column nav-pills text-center" id="v-pills-tab"
@@ -193,7 +199,7 @@
                                             </div><!--  end col -->
                                         </div>
                                         <!--end row-->
-                                    </div><!-- end card-body -->
+                                    </div><!-- end card-body --> --}}
                                 </div>
 
                             </div>
@@ -221,7 +227,13 @@
             </div>
         </div>
         <div class="row">
+            @php
+            $i = 0;
+            @endphp
             @foreach ($urlshort as $row)
+            @php
+                $i++;
+            @endphp
                 <form action="/archive/{{ $row->id }}">
                     @csrf
                     <div class="col-lg-12">
@@ -230,16 +242,39 @@
                                 <div class="d-flex">
                                     <h6 class="col-3">{{ $row->title }}</h6>
                                     <div class=" col-9 d-flex flex-row justify-content-end">
-                                        <button type="button" class="btn btn-primary me-3 btn-sm"
-                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                        <button type="button" id="button-email" class="btn btn-primary me-3 btn-sm"
+                                        data-bs-toggle="modal" data-bs-target="#bagikan{{$i}}" aria-haspopup="true" aria-expanded="false"><i
                                                 class="fa-solid fa-share-nodes"></i> &nbsp;Bagikan</button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Separated link</a>
-                                        </div>
+                                                <div class="modal fade" id="bagikan{{$i}}" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                <div class="row g-3">
+                                                                    <div class="countdown-input-subscribe">
+                                                                        <label class="platform" onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-facebook"></i> &nbsp; Facebook</label>
+                                                                    </div>
+                                                                    <div class="countdown-input-subscribe">
+                                                                        <label class="platform" onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-twitter"></i> &nbsp; Twitter</label>
+                                                                    </div>
+                                                                    <div class="countdown-input-subscribe">
+                                                                        <label class="platform" onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
+                                                                    </div>
+                                                                    <div class="countdown-input-subscribe">
+                                                                        <label class="platform copy-button" data-platform="copy" data-url="{{ $row->default_short_url }}" data-id-copy="{{$i}}" data-clipboard-text="{{ $row->default_short_url }}">
+                                                                            <i class="bi bi-clipboard-fill"></i> &nbsp; Copy
+                                                                        </label>
+                                                                    </div>
+                                                                    <div id="successCopyAlert" class="alert alert-success mt-3" style="display: none; position: fixed; bottom: 570px; right: 433px; max-width: 500px;">
+                                                                        Tautan berhasil disalin ke clipboard
+                                                                    </div>
+                                                                    <div class="countdown-input-subscribe">
+                                                                        <label class="platform" onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-qr-code"></i> &nbsp; QR Code</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#zoomInModal2"><span data-bs-toggle="tooltip"
                                                 data-bs-placement="left" title="Kode QR"><i
@@ -263,8 +298,17 @@
                             <div class="card-footer">
                                 <div class="d-flex">
                                     <div class="col-3">
-                                        <p style="margin-top: 10px;">
-                                            {{ \Carbon\Carbon::parse($row->deactivated_at)->format('F j, Y, h:i A') }}</p>
+                                        <p style="margin-top: 10px;">{{ \Carbon\Carbon::parse($row->deactivated_at)->format('F j, Y, h:i A') }}</p>
+                                            <?php
+                                            $deactivatedAt = \Carbon\Carbon::parse($row->deactivated_at);
+                                            $now = \Carbon\Carbon::now();
+        
+                                            if ($deactivatedAt < $now) {
+                                                echo '<p style="margin-top: 10px;">Tautan kadaluarsa</p>';
+                                            } else {
+                                                echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
+                                            }
+                                            ?>
                                     </div>
                                     <div class=" col-9 d-flex flex-row justify-content-end">
                                         <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal"
@@ -613,6 +657,165 @@
                 });
             });
         });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#toggleButton").click(function () {
+                $("#tautanberjangka").collapse('toggle');
+                var buttonText = $(this).text();
+                if (buttonText.trim() === "Tampilkan lebih banyak") {
+                    $(this).html('Tampilkan lebih sedikit <i class="fa-solid fa-angle-up"></i>');
+                } else {
+                    $(this).html('Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>');
+                }
+            });
+        });
+    </script>
+    <script>
+        // Mendapatkan semua tautan dengan class "access-link"
+        var links = document.querySelectorAll('.access-link');
+    
+        // Loop melalui setiap tautan
+        links.forEach(function(link) {
+            // Menambahkan event listener saat tautan diklik
+            link.addEventListener('click', function(event) {
+                // Jika tautan tidak memiliki class "inactive", maka tautan masih aktif
+                if (!link.classList.contains('inactive')) {
+                    // Lanjutkan ke URL tautan
+                    return;
+                }
+    
+                // Mencegah tautan mengarahkan ke URL
+                event.preventDefault();
+    
+                // Tampilkan alert bahwa tautan sudah tidak dapat diakses
+                alert('Tautan sudah tidak dapat diakses.');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#copyButton").click(function () {
+                let id = $(this).data('id-copy');
+                let data = $("#default_short_url" + id);
+            //    alert(data)
+    
+             data.select();
+             data.setSelectionRange(0, 99999);
+             navigator.clipboard.writeText(data.value);
+    
+            })
+            $("#resetButton").click(function() {
+                $(".password-input").val(""); // Mengosongkan input kata sandi
+            });
+            // Menangani klik pada tombol Reset untuk modal tautan berjangka
+            $("#time-reset").click(function() {
+                $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
+            });
+    
+            $('.btn-qr').click(function() {
+    
+                alert($(this).data('link'))
+                $(".demo").qrcode({
+    
+                    // 0: normal
+                    // 1: label strip
+                    // 2: label box
+                    mode: 1,
+                    label: 'jQueryScript.Net',
+                    fontname: 'sans',
+                    fontcolor: '#000'
+    
+                });
+                $('#zoomInModal2').modal({
+                    show: true
+                })
+            })
+        });
+         // Saat tombol "Bagikan" diklik
+        $("#button-email").click(function () {
+            // Dapatkan nilai tautan dari elemen h3
+            var linkToCopy = $("#link-to-copy").text();
+    
+            // Masukkan nilai tautan ke dalam modal
+            $("#default_short_url").val(linkToCopy);
+    
+            // Tambahkan atribut data-clipboard-text pada tombol "Copy"
+            $("#copyButton").attr("data-clipboard-text", linkToCopy);
+        });
+    
+        // ...
+    
+        // Menangani klik pada tombol Copy di dalam modal
+        // $("#copyButton").click(function () {
+        //     var linkToCopy = $(this).attr("data-clipboard-text");
+    
+        //     // Salin tautan ke clipboard
+        //     var tempInput = $("<input>");
+        //     $("body").append(tempInput);
+        //     tempInput.val(linkToCopy).select();
+        //     document.execCommand("copy");
+        //     tempInput.remove();
+    
+        //     // Tampilkan pesan sukses
+        //     $("#successCopyAlert").fadeIn().delay(1500).fadeOut();
+        // });
+          // Menangani klik pada label platform dalam modal "bagikan"
+          $(".platform").click(function() {
+              var platform = $(this).data("platform");
+            //   alert(platform)
+            var shortUrl = $("#default_short_url").text();
+    
+            switch (platform) {
+                case "facebook":
+                    // Tambahkan logika untuk membagikan tautan ke Facebook
+                    // Misalnya, membuka jendela baru dengan tautan Facebook Share
+                    window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shortUrl));
+                    break;
+                case "twitter":
+                    // Tambahkan logika untuk membagikan tautan ke Twitter
+                    // Misalnya, membuka jendela baru dengan tautan Twitter Share
+                    window.open("https://twitter.com/intent/tweet?url=" + encodeURIComponent(shortUrl));
+                    break;
+                case "whatsapp":
+                    // Tambahkan logika untuk membagikan tautan ke WhatsApp
+                    console.log(shortUrl)// Misalnya, membuka jendela baru dengan tautan WhatsApp Share
+                    window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shortUrl));
+                    break;
+                case "copy":
+                    var copyText = $(this).data('url')
+                    // alert(copyText)
+                    console.log()
+                    // copyText.focus();
+                    try {
+                        navigator.clipboard.writeText(copyText);
+                        console.log('Content copied to clipboard');
+                    } catch (err) {
+                        console.error('Failed to copy: ', err);
+                        alert('gagal ' + err)
+                    }
+    
+                    // navigator.clipboard.writeText(copyText)
+                    // .then(function() {
+                    // if (edit != true) {
+                    // }
+                    // })
+                    // .catch(function(err) {
+                    // console.error("Penyalinan gagal: ", err);
+                    // alert("Penyalinan gagal. Silakan salin tautan secara manual.");
+                    // });
+                    break;
+    
+                case "qr":
+                    // Tambahkan logika untuk menghasilkan  dari tautan
+                    // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
+                    window.open(" https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('default_short_url{{$i}}').innerText}" + encodeURIComponent(shortUrl));
+                    break;
+                default:
+                    break;
+            }
+        });
+    
     </script>
 @endsection
 @endsection

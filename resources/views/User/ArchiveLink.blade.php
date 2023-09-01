@@ -214,6 +214,124 @@
                             </a>
                             <a href="{{$row->destination_url}}" class="card-subtitle font-14 text-muted">{{$row->destination_url}}</a>
                         </div>
+                        
+                        <!-- end Modal bagikan-->
+                                <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal-{{ $row->id }}"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Kode QR"><i class="fa-solid fa-qrcode"></i></span></button>
+                                <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal"><span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit</span></button>
+                                <button type="submit" class="btn btn-primary me-3 btn-sm" onclick="archive({{ $row->id }})"><i class="bi bi-archive-fill"></i> Arsipkan</button>
+                            </div>
+                        </div>
+                        {{-- <div id="zoomInModal-{{ $row->id }}" class="modal fade zoomIn modal-sm" tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="zoomInModalLabel">Gambar Kode QR</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="visible-print text-center">
+                                            {!! QrCode::size(200)->generate($row->destination_url); !!}
+                                            <br>
+                                            <p>{{ $row->default_short_url }}</p>
+
+                                        </div>
+                                        <!-- <center>
+                                        <img src="{{asset('template/themesbrand.com/steex/layouts/assets/images/qr.png')}}" alt="" width="100%">
+                                    </center> -->
+                                    </div>
+                                    <center>
+                                        <button type="button" class="btn btn-danger">Download</button>
+                                        <button type="button" class="btn btn-light  me-3"><span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Ganti</span></button>
+                                    </center>
+                                    <div class="modal-footer"></div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal --> --}}
+                        <p class="d-none" id="default_short_url{{$i}}">{{$row->default_short_url}}</p>
+                        <a>
+                            <h3 class="garisbawah card-title mb-2">{{$row->default_short_url}}</h3>
+                        </a>
+                        <a href="{{$row->destination_url}}" class="card-subtitle font-14 text-muted">{{$row->destination_url}}</a>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex">
+                            <div class="col-3">
+                                <p style="margin-top: 10px;">{{ \Carbon\Carbon::parse($row->deactivated_at)->format('F j, Y, h:i A') }}</p>
+                            </div>
+                            <div class=" col-9 d-flex flex-row justify-content-end">
+                                <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Tautan berbasis waktu"><i class="fa-solid fa-clock"></i>&nbsp;Atur waktu</span></button>
+                                <button type="button" class="btn btn-light me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal1"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Tautan terlindungi"><i class="fa-solid fa-lock"></i>&nbsp;kata sandi</span></button>
+                                <button type="button" class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample112" role="button" aria-expanded="true" aria-controls="collapseExample112">
+                                    <i class="bi bi-bar-chart-line-fill"></i> statistik
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div id="zoomInModal1" class="modal fade zoomIn" tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="zoomInModalLabel"><i class="fa-solid fa-lock"></i>&nbsp;Tautan Terlindungi</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card-body d-flex" style="background-color: #D9D9D9;">
+                                        <p><i class="fa-solid fa-clock"></i></p>
+                                        &nbsp;
+                                        <p>Protected link adalah jenis link yang dapat diberikan Secret key/Passphrase sebelum dialihkan ke link aslinya. </p>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mt-3">
+                                            <input type="text" class="form-control" id="degreeName" placeholder="Password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                                    <button type="button" class="btn btn-primary ">Simpan</button>
+                                </div>
+
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+                    <div id="zoomInModal" class="modal fade zoomIn" tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="zoomInModalLabel"><i class="fa-solid fa-clock"></i>&nbsp;Tautan berbasis waktu</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card-body d-flex"style="border: 1px solid #D9D9D9; padding: 10px;">
+                                        <p><i class="fa-solid fa-clock"></i></p>
+                                        &nbsp;
+                                        <p>
+                                            Tautan berbasis waktu adalah jenis tautan yang hanya berlangsung selama periode waktu tertentu. Ketika tautan telah kedaluwarsa, maka tautan tersebut tidak dapat diakses lagi.
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-12 d-flex mtx-3">
+                                        <div class="col-lg-6 mb-3">
+                                            <label for="">Tanggal</label>
+                                            <input type="date" class="form-control" id="degreeName" placeholder="Password">
+                                        </div>
+                                        <div class="col-lg-6 mb-3">
+                                            <label for="">Waktu</label>
+                                            <input type="time" class="form-control" id="appt" name="appt" min="09:00" max="18:00">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                                    <button type="button" class="btn btn-primary ">Simpan</button>
+                                </div>
+
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    <div class="collapse" id="collapseExample112">
                         <div class="card-footer">
                             <div class="d-flex">
                                 <div class="col-3">

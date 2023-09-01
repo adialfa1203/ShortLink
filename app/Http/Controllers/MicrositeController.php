@@ -29,36 +29,40 @@ class MicrositeController extends Controller
             'name' => 'required',
             'link_microsite' => 'required',
         ]);
-
+    
         $selectedComponentId = $request->input('microsite_selection');
         $selectedButtons = $request->input('selectedButtons', []);
-
+    
+        // Cek apakah objek Components dengan ID yang dipilih ada
+        $component = Components::find($selectedComponentId);
+        if (!$component) {
+            return back()->with('error', 'Komponen yang dipilih tidak ditemukan.');
+        }
+    
         $microsite = new Microsite();
         $microsite->components_id = $selectedComponentId;
         $microsite->user_id = auth()->user()->id;
         $microsite->name = $request->input('name');
         $microsite->link_microsite = 'link.id/' . $request->input('link_microsite');
-
+    
         $microsite->save();
-
-        foreach($selectedButtons as $select){
+    
+        foreach ($selectedButtons as $select) {
             Social::create([
                 'buttons_id' => $select,
                 'microsite_id' => $microsite->id
             ]);
         }
-        // dd($request);
-
+    
         return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
     }
+    
 
     public function editMicrosite($id) {
-        $component = Components::find($id);
         $microsite = Microsite::findorFail($id);
         $social = Social::where('microsite_id', $id)->get();
         // $buttonLink = ButtonLink::findorFail($id);
-
-        return view('microsite.EditMicrosite', compact('component', 'microsite', 'id', 'social'));
+        return view('microsite.EditMicrosite', compact('microsite', 'id', 'social'));
 
 
     }

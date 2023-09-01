@@ -229,7 +229,7 @@ header {
           <!-- banner slides start -->
           <div class="col-lg-6 col-md-12"  data-aos="fade-in" data-aos-duration="1500">
             <div class="banner_image">
-              <img class="moving_animation" src="https://i.postimg.cc/pXw0jrpt/Berlangganan.png" alt="image" >
+              <img class="moving_animation" src="https://i.postimg.cc/ZqHQGxQD/Landing-Page2.png" alt="image" >
             </div>
           </div>
           <!-- banner slides end -->
@@ -423,29 +423,26 @@ header {
                 <!-- Footer Links -->
                 
                 <div class="col-lg-2 col-md-6 col-12">
-                    <div class="links">
-                        <h3>Dukungan</h3>
-                        <ul>
-                            <li><a href="/Home">Bantuan</a></li>
-                            <li><a href="#features">Laporkan</a></li>
-                            <li><a href="#kontak">Status</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-12">
-                    <div class="links">
-                        <h3>SiteMaps</h3>
-                        <ul>
-                            <li><a href="#kontak">Beranda</a></li>
-                            <li><a href="/Home">Perpendek Link</a></li>
-                            <li><a href="#features">Situs Mikro</a></li>
-                            <li><a href="#kontak">Berlanggaan</a></li>
-                            <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
-                            <li><a href="/HelpSupport">Kebijakan Privasi</a></li>
+                  <div class="links">
+                      <h3>Dukungan</h3>
+                      <ul>
+                          <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                          <li><a href="/Privacy">Kebijakan Privasi</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-md-6 col-12">
+                  <div class="links">
+                      <h3>SiteMaps</h3>
+                      <ul>
+                          <li><a href="/">Beranda</a></li>
+                          <li><a href="/Shortlink">Perpendek Link</a></li>
+                          <li><a href="/Microsite">Situs Mikro</a></li>
+                          <li><a href="/Subscribe">Berlanggaan</a></li>
 
-                        </ul>
-                    </div>
-                </div>
+                      </ul>
+                  </div>
+              </div>
 
                 <!-- Contact Information -->
                 <div class="col-lg-2 col-md-6 col-12">

@@ -380,9 +380,8 @@ header {
                             <div class="links">
                                 <h3>Dukungan</h3>
                                 <ul>
-                                    <li><a href="/Home">Bantuan</a></li>
-                                    <li><a href="#features">Laporkan</a></li>
-                                    <li><a href="#kontak">Status</a></li>
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/Privacy">Kebijakan Privasi</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -390,13 +389,11 @@ header {
                             <div class="links">
                                 <h3>SiteMaps</h3>
                                 <ul>
-                                    <li><a href="#kontak">Beranda</a></li>
-                                    <li><a href="/Home">Perpendek Link</a></li>
-                                    <li><a href="#features">Situs Mikro</a></li>
-                                    <li><a href="#kontak">Berlanggaan</a></li>
-                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
-                                    <li><a href="/HelpSupport">Kebijakan Privasi</a></li>
-
+                                    <li><a href="/">Beranda</a></li>
+                                    <li><a href="/Shortlink">Perpendek Link</a></li>
+                                    <li><a href="/Microsite">Situs Mikro</a></li>
+                                    <li><a href="/Subscribe">Berlanggaan</a></li>
+    
                                 </ul>
                             </div>
                         </div>

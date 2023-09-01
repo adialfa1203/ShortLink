@@ -67,11 +67,11 @@
                                                                     <div class="col-xxl-12">
                                                                         <div>
                                                                             <label for="placeholderInput"
-                                                                                class="form-label">{{ $data->button->name_button }}</label>
+                                                                            class="form-label">{{ $data->button->name_button }}</label>
                                                                             <input type="text" class="form-control"
-                                                                                id="placeholderInput"
-                                                                                placeholder="{{ $data->button->name_button }}"
-                                                                                name="button_link[{{ $data->button->id }}]" value="{{ $buttonLink->button_link }}">
+                                                                            id="placeholderInput"
+                                                                            placeholder="Placeholder"
+                                                                            name="button_link[{{ $data->button->id }}]">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -169,13 +169,13 @@
                     <div class="card real-estate-grid-widgets card-animate">
                         <div class="card overflow-hidden">
                             <div>
-                                <img src="{{ asset('component/' . $component->cover_img) }}" alt=""
+                                <img src="{{ asset('component/' . $microsite->component->cover_img) }}" alt=""
                                     class="card-img-top profile-wid-img object-fit-cover" style="height: 200px;">
                             </div>
                             <div class="card-body pt-0 mt-n5">
                                 <div class="text-center">
                                     <div class="profile-user position-relative d-inline-block mx-auto">
-                                        <img src="{{ asset('component/' . $component->profile_img) }}" alt=""
+                                        <img src="{{ asset('component/' . $microsite->component->profile_img) }}" alt=""
                                             class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
                                     </div>
                                     <div class="mt-3">

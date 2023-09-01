@@ -60,7 +60,7 @@
             </span>
             <span class="logo-lg">
                 <img src="{{ asset('template/image/LINKlogo.png') }}"
-                    alt="" width="130" height="35">
+                    alt="" width="120" height="35">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-3xl header-item float-end btn-vertical-sm-hover"

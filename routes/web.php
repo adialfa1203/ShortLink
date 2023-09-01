@@ -59,6 +59,9 @@ Route::get('/Microsite', function () {
 Route::get('/Subscribe', function () {
     return view('Landingpage.Subscribe');
 });
+Route::get('/Privacy', function () {
+    return view('HelpSupport.Privacy');
+});
 //HelpSupport
 
 Route::get('Start', [DahsboardController::class, 'Start']);

@@ -31,7 +31,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link id="fontsLink" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <!-- Layout config Js -->
     <!-- Bootstrap Css -->
     <link href="{{asset('template/themesbrand.com/steex/layouts/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
@@ -54,6 +55,7 @@
 header {
   padding: 20px 0; /* Atur padding sesuai kebutuhan Anda */
 }
+/* Menghapus aturan CSS yang membuat latar belakang gambar semi-transparan */
 .carousel-item::after {
     content: "";
     position: absolute;
@@ -77,6 +79,7 @@ header {
     padding: 100% 100%;
     border-radius: 5%;
 }
+
     </style>
 
     <!-- Page-wrapper-Start -->
@@ -90,6 +93,7 @@ header {
         <!-- Header Start -->
         <header>
             <!-- container start -->
+            
             <div class="container">
                 <!-- navigation bar -->
                 <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
@@ -135,6 +139,7 @@ header {
                 <!-- navigation end -->
             </div>
             <!-- container end -->
+            
         </header>
 
         <!-- Banner-Section-Start -->
@@ -146,58 +151,49 @@ header {
                                 <img src="https://i.postimg.cc/BQR0t7wR/Desain-tanpa-judul.png" class="w-100" alt="..." style="max-height: 200px;">
                             <!-- Menggunakan style untuk mengatur tinggi gambar -->
                             <div class="image-text">
-                                <p style="color: white; font-size:50px;"><b>Akun</b></p>
+                                <p style="color: white; font-size:50px;"><b>Kebijakan&nbsp;Privasi</b></p>  
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
         <div class="card">
             <div class="card-body">
                 <div class="row">
+                    {{-- <div class="p-3 mb-2 text-white text-center" style="background-color:#104898; height: 200px; margin-bottom: 10%; font-size:50px;">Memulai</div> --}}
                     {{-- <a href="/HelpSupport" class="col-1 btn btn-info btn-sm">
                         <i class="fas fa-arrow-left"></i> Kembali
                     </a> --}}
                     <p></p>
-                    <div class="col-12">
-                        <div class="accordion accordion-border-box" id="genques-accordion">
-                            <div class="accordion-item ">
-                                <h2 class="accordion-header" id="genques-headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#genques-collapseOne" aria-expanded="true" aria-controls="genques-collapseOne">
-                                        Apa yang dimaksud dengan pengunjung unik?
-                                    </button>
-                                </h2>
-                                <div id="genques-collapseOne" class="accordion-collapse collapse show" aria-labelledby="genques-headingOne" data-bs-parent="#genques-accordion">
-                                    <div class="accordion-body">
-                                        <p><strong>Pengunjung Unik</strong> (Unique Visitor) adalah istilah yang umum digunakan dalam analisis web untuk mengukur jumlah individu yang mengunjungi suatu situs web atau halaman web selama periode waktu tertentu. Konsep pengunjung unik bertujuan untuk mengidentifikasi dan menghitung setiap individu yang mengakses situs web, meskipun mereka mengunjungi situs tersebut beberapa kali dalam periode waktu yang sama.</p>
-                                    
-                                        <p><strong>Contoh:</strong></p>
-                                        
-                                        <ul>
-                                            <li>10 orang dalam 1 jaringan WIFI mengunjungi tautan atau microsite Anda, maka akan terhitung sebagai 1 <strong>pengunjung unik</strong> dan 10 pengunjung.</li>
-                                            <li>3 orang dalam koneksi yang berbeda, baik itu menggunakan selular maupun WIFI, maka akan terhitung sebagai 3 <strong>pengunjung unik</strong> dan 3 pengunjung.</li>
-                                        </ul>
-                                    
-                                        <p>Hal ini disebabkan karena jika seseorang kembali mengunjungi situs tautan atau microsite Anda, sistem akan memeriksa apakah informasi unik tersebut sudah ada. Jika iya, maka pengunjung tersebut tidak dihitung sebagai pengunjung unik baru.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="genques-headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#genques-collapseTwo" aria-expanded="false" aria-controls="genques-collapseTwo">
-                                        Apa yang dimaksud dengan pengunjung?
-                                    </button>
-                                </h2>
-                                <div id="genques-collapseTwo" class="accordion-collapse collapse" aria-labelledby="genques-headingTwo" data-bs-parent="#genques-accordion">
-                                    <div class="accordion-body">
-                                        <p><strong>Pengunjung</strong> adalah seseorang atau entitas yang mengunjungi tautan atau microsite Anda. Anda dapat melihat jumlah total pengunjung dalam periode tertentu atau yang telah ditentukan melalui statistik di dashboard S.id.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <!--end accordion-->
+                    
+                    <div class="col-xl-12">
+                        <h2><strong>Policy</strong></h2>
+                    
+                        <p>Hummasoft Technology built the Jurnal Mengajar app as a Commercial app. This SERVICE is provided by Hummasoft Technology and is intended for use as is.</p>
+                    
+                        <p>This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decides to use our Service.</p>
+                    
+                        <p>If you choose to use our Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that we collect is used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy.</p>
+                    
+                        <p>The terms used in this Privacy Policy have the same meanings as in our <a href="[Link to Terms and Conditions]">Terms and Conditions</a>, which are accessible at Jurnal Mengajar unless otherwise defined in this Privacy Policy.</p>
+                    
+                        <h3><strong></strong></h3>
+                    
+                        <p>For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to Jurnalmengajar.com. The information that we request will be retained by us and used as described in this privacy policy.</p>
+                    
+                        <p>The app does use third-party services that may collect information used to identify you.</p>
+
+                        <h3><strong>Log Data</strong></h3>
+                    
+                        <p>We want to inform you that whenever you use our Service, in case of an error in the app, we collect data and information (through third-party products) on your phone called Log Data. This Log Data may include information such as your device's Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing our Service, the time and date of your use of the Service, and other statistics.</p>
+                    
+                        <h3><strong>Cookies</strong></h3>
+                    
+                        <p>Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are</p>
+                        <p>sent to your browser from the websites that you visit</p>
+
                     </div>
                 </div><!--end row-->
             </div>
@@ -362,6 +358,7 @@ header {
 
         <!-- App js -->
         <script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/app.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 
 
