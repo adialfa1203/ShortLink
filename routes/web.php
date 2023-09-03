@@ -94,7 +94,6 @@ Route::get('/archive-link-user', [ArchiveLinkController::class, 'archiveLinkUser
 Route::get('/restore/{id}', [ArchiveLinkController::class, 'restore'])->name('restore');
 //Profile
 Route::get('/profil-user', [ProfilController::class, 'profile']);
-Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
 //analytic
 Route::get('/analytic-user', [AnalyticUserController::class, 'analyticUser'])->name('analytic.user');
 //subscribe
@@ -108,6 +107,8 @@ Route::get('/update-microsite/{id}', [MicrositeController::class, 'updateMicrosi
 Route::get('/add-microsite', [MicrositeController::class, 'addMicrosite'])->name('add.microsite');
 });
 
+Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
+Route::post('/updateAdmin', [ProfileController::class, 'updateAdmin'])->name('updateAdmin');
 //Middleware Admin
 Route::group(['middleware' => ['role:admin']], function () {
 //Dashboard Admin
@@ -115,8 +116,10 @@ Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin
 //Data User (Admin)
 Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
 Route::get('admin/user/{userId}/ban', [DataUserController::class, 'banUser'])->name('user.ban');
-Route::get('admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
 // microsite Admin
+Route::get('/profil-admin', [ProfilController::class, 'profile']);
+Route::get('admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
+
 Route::get('/create-component', [MicrositeController::class, 'createComponent'])->name('create.component');
 Route::post('/save-component', [MicrositeController::class, 'saveComponent'])->name('save.component');
 Route::post('/update-component/{id}', [MicrositeController::class, 'updateComponent'])->name('update.component');
