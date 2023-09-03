@@ -65,5 +65,16 @@ class User extends Authenticatable
     public function unban() {
         $this->update(['is_banned' => false]);
     }
+    public function Comment() {
+        return $this->belongsTo(Comment::class);
+    }
+    // Dalam model User (app/Models/User.php)
+
+public function getProfilePictureAttribute()
+{
+    // Gantilah 'profile_picture' dengan nama kolom yang sesuai di tabel pengguna.
+    return $this->attributes['profile_picture'];
+}
+
 
 }

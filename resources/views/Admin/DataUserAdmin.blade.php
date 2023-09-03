@@ -57,7 +57,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                             <thead class="text-muted table-light">
-                                                <tr  class="searchable">
+                                                <tr class="searchable">
                                                     <th>
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox" value="option" id="checkAll">
@@ -95,30 +95,10 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                                {{-- <tr>
-                                                    <th>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" name="chk_child">
-                                                            <label class="form-check-label"></label>
-                                                        </div>
-                                                    </th>
-                                                    <td class="order_id">Maharani</td>
-                                                    <td class="order_date">
-                                                        run00@gmail.com
-                                                    </td>
-                                                    <td class="products">012345678912</td>
-                                                    <td class="status"><span class="badge bg-danger-subtle text-danger">Tidak Berlangganan</span></td>
-                                                    <td>
-                                                        <ul class="d-flex gap-2 list-unstyled mb-0">
-                                                            <li>
-                                                                <a href="#deleteRecordModal" class="btn btn-subtle-danger btn-icon btn-sm me-3"><i class="fas fa-ban"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr> --}}
-
                                             </tbody><!-- end tbody -->
-                                        </table><!-- end table -->
+                                        </table>
+                                        <br><!-- end table -->
+                                        <button type="button" class="btn btn-subtle-danger"><i class="fas fa-ban me-1" ></i>Banned</button>
                                         <div class="noresult" style="display: none">
                                             <div class="text-center py-4">
                                                 <i class="ph-magnifying-glass fs-1 text-primary"></i>

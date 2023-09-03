@@ -1,6 +1,10 @@
 @extends('layout.user.app')
 @section('title', 'Edit Microsite')
 
+@section('style')
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+@endsection
+
 @section('content')
     <div class="page-content">
         <div class="container-fluid">
@@ -15,7 +19,8 @@
             </div>
             <!-- end page title -->
 
-            <form action="{{ route('update.microsite', ['id' => $row->id])) }}" method="post" class="row">
+            <form action="{{ route('update.microsite', ['id' => $id]) }}" method="post" class="row">
+                @csrf
                 <div class="col-xxl-9">
                     <div class="card">
                         <div class="card-body">
@@ -33,89 +38,47 @@
                             </ul>
                             <div class="tab-content text-muted">
                                 <div class="tab-pane active" id="animation-home" role="tabpanel">
-                                    <div action="">
+                                    <div>
                                         <div class="mb-3">
                                             <label for="employeeName" class="form-label">Nama Profile</label>
                                             <input type="text" class="form-control" id="employeeName"
-                                                placeholder="Placeholder" required name="name">
+                                                placeholder="Nama Profile" value="{{ $microsite->name_microsite }}" name="name_microsite">
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Deskripsi Profil</label>
-                                            <input class="ckeditor-classic" required name="description">
-                                        </div>
+                                        <textarea name="description" id="editor">{{ $microsite->description }}</textarea>
                                         <div class="mb-3">
                                             <div class="card-body">
                                                 <div class="accordion" id="default-accordion-example">
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="headingOne">
-                                                            <button class="accordion-button collapsed" type="button"
-                                                                data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                                aria-expanded="false" aria-controls="collapseOne">
-                                                                Link : WhatsApp
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapseOne" class="accordion-collapse collapse"
-                                                            aria-labelledby="headingOne"
-                                                            data-bs-parent="#default-accordion-example">
-                                                            <div class="accordion-body">
-                                                                <div class="col-xxl-12">
-                                                                    <div>
-                                                                        <label for="placeholderInput"
-                                                                            class="form-label">WhatsApp</label>
-                                                                        <input type="text" class="form-control"
-                                                                            id="placeholderInput" placeholder="Placeholder">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="headingTwo">
-                                                            <button class="accordion-button collapsed" type="button"
-                                                                data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                                aria-expanded="false" aria-controls="collapseTwo">
-                                                                Link : Email
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapseTwo" class="accordion-collapse collapse"
-                                                            aria-labelledby="headingTwo"
-                                                            data-bs-parent="#default-accordion-example">
-                                                            <div class="accordion-body">
-                                                                <div class="col-xxl-12">
-                                                                    <div>
-                                                                        <label for="placeholderInput"
-                                                                            class="form-label">Email</label>
-                                                                        <input type="text" class="form-control"
-                                                                            id="placeholderInput" placeholder="Placeholder">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="headingThree">
-                                                            <button class="accordion-button collapsed" type="button"
-                                                                data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                                aria-expanded="false" aria-controls="collapseThree">
-                                                                Link : Linkedin
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapseThree" class="accordion-collapse collapse"
-                                                            aria-labelledby="headingThree"
-                                                            data-bs-parent="#default-accordion-example">
-                                                            <div class="accordion-body">
-                                                                <div class="col-xxl-12">
-                                                                    <div>
-                                                                        <label for="placeholderInput"
-                                                                            class="form-label">Linkedin</label>
-                                                                        <input type="text" class="form-control"
+                                                    @foreach ($social as $data)
+                                                        <div class="accordion-item">
+                                                            <h2 class="accordion-header" id="headingOne">
+                                                                <button class="accordion-button collapsed" type="button"
+                                                                    data-bs-toggle="collapse"
+                                                                    data-bs-target="#{{ $data->button->name_button }}"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="{{ $data->button->name_button }}">
+                                                                    {{ $data->button->name_button }}
+                                                                </button>
+                                                            </h2>
+                                                            <div id="{{ $data->button->name_button }}"
+                                                                class="accordion-collapse collapse"
+                                                                aria-labelledby="headingOne"
+                                                                data-bs-parent="#default-accordion-example">
+                                                                <div class="accordion-body">
+                                                                    <div class="col-xxl-12">
+                                                                        <div>
+                                                                            <label for="placeholderInput"
+                                                                            class="form-label">{{ $data->button->name_button }}</label>
+                                                                            <input type="text" class="form-control"
                                                                             id="placeholderInput"
-                                                                            placeholder="Placeholder">
+                                                                            placeholder="Placeholder"
+                                                                            name="button_link[{{ $data->button->id }}]">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    @endforeach
+
                                                     <div class="accordion-item">
                                                         <h2 class="accordion-header" id="headingFour">
                                                             <button class="accordion-button collapsed" type="button"
@@ -133,8 +96,8 @@
                                                                         <label for="placeholderInput"
                                                                             class="form-label">Nama Perusahaan</label>
                                                                         <input type="text" class="form-control"
-                                                                            id="placeholderInput"
-                                                                            placeholder="Placeholder">
+                                                                            name="company_name" id="placeholderInput"
+                                                                            placeholder="Nama Perusahaan" value="{{ $microsite->company_name }}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -156,9 +119,9 @@
                                                                     <div>
                                                                         <label for="placeholderInput"
                                                                             class="form-label">Alamat Perusahaan</label>
-                                                                        <input type="text" class="form-control"
-                                                                            id="placeholderInput"
-                                                                            placeholder="Placeholder">
+                                                                        <input type="text" class="form-control" value="{{ $microsite->company_address }}"
+                                                                            id="placeholderInput" name="company_address"
+                                                                            placeholder="Alamat Perusahaan">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -170,30 +133,34 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="animation-profile" role="tabpanel">
-                                        <div class="d-flex">
-                                            <div class="flex-grow-1 ms-2">
-                                                <div>
-                                                    <div class="row g-3">
-                                                        <div class="col-12">
-                                                            <label for="address" class="form-label">Nama
-                                                                Microsite</label>
+                                    <div class="d-flex">
+                                        <div class="flex-grow-1 ms-2">
+                                            <div>
+                                                <div class="row g-3">
+                                                    <div class="col-12">
+                                                        <label for="address" class="form-label">Nama
+                                                            Microsite</label>
+                                                        <input type="text" class="form-control" id="address"
+                                                            name="name" placeholder="aqua-link"
+                                                            value="{{ $microsite->name }}">
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <label for="address" class="form-label">Tautan
+                                                            Microsite</label>
+                                                        <div class="input-group">
                                                             <input type="text" class="form-control" id="address"
-                                                                placeholder="aqua-link" value="{{ $microsite->name }}">
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label for="address" class="form-label">Tautan
-                                                                Microsite</label>
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control" id="address"
-                                                                    placeholder="aqua-link"
-                                                                    value="{{ $microsite->link_microsite }}">
-                                                            </div>
+                                                                placeholder="aqua-link" name="link_microsite"
+                                                                value="{{ $microsite->link_microsite }}">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="d-flex align-items-start gap-3 mt-4">
+                                <button type="submit" class="btn btn-success right ms-auto">Kirim</button>
                             </div>
                         </div><!-- end card-body -->
                     </div>
@@ -202,13 +169,13 @@
                     <div class="card real-estate-grid-widgets card-animate">
                         <div class="card overflow-hidden">
                             <div>
-                                <img src="{{ asset('component/' . $component->cover_img) }}" alt=""
+                                <img src="{{ asset('component/' . $microsite->component->cover_img) }}" alt=""
                                     class="card-img-top profile-wid-img object-fit-cover" style="height: 200px;">
                             </div>
                             <div class="card-body pt-0 mt-n5">
                                 <div class="text-center">
                                     <div class="profile-user position-relative d-inline-block mx-auto">
-                                        <img src="{{ asset('component/' . $component->profile_img) }}" alt=""
+                                        <img src="{{ asset('component/' . $microsite->component->profile_img) }}" alt=""
                                             class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
                                     </div>
                                     <div class="mt-3">
@@ -219,31 +186,24 @@
                                 </div>
                             </div>
                             <div class="card-body border-top">
-                                <div class="d-flex align-items-center text-center mb-4">
-                                    <div class="flex-grow-1">
-                                        <button type="button" class="btn ms-2 btn-subtle-success btn-icon"><i
-                                                class="bi bi-whatsapp"></i></button>
-                                        <button type="button" class="btn ms-2 btn-subtle-warning btn-icon"><i
-                                                class="bi bi-envelope"></i></button>
-                                        <button type="button" class="btn ms-2 btn-subtle-primary btn-icon"><i
-                                                class="bi bi-linkedin"></i></button>
-                                    </div>
+                                <div class="d-flex flex-wrap justify-content-center text-center mb-4">
+                                    @foreach ($social as $socialItem)
+                                        <div class="mb-2 mx-2">
+                                            <button style="background-color: {{ $socialItem->button->color_hex }};"
+                                                type="button" class="btn btn-icon"><i
+                                                    class="{{ $socialItem->button->icon }} " style="color:white;"></i>
+                                            </button>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <button type="button" class="col-12 mb-2 btn btn-success btn-label rounded-pill"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
-                                    aria-controls="collapseOne"><i
-                                        class="bi bi-whatsapp label-icon align-middle rounded-pill fs-lg me-2"></i>
-                                    WhatsApp</button>
-                                <button type="button" class="col-12 mb-2 btn btn-warning btn-label rounded-pill"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true"
-                                    aria-controls="collapseTwo"><i
-                                        class="bi bi-envelope label-icon align-middle rounded-pill fs-lg me-2"></i>
-                                    Email</button>
-                                <button type="button" class="col-12 mb-2 btn btn-primary btn-label rounded-pill"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                                    aria-controls="collapseThree"><i
-                                        class="bi bi-linkedin label-icon align-middle rounded-pill fs-lg me-2"></i>
-                                    Linkedin</button>
+                                @foreach ($social as $socialItem)
+                                    <button type="button" class="col-12 mb-2 btn btn-label rounded-pill"
+                                        style="color: white; background-color: {{ $socialItem->button->color_hex }}"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne"><i style="color: white"
+                                            class="{{ $socialItem->button->icon }} label-icon align-middle rounded-pill fs-lg me-2"></i>
+                                        {{ $socialItem->button->name_button }} </button>
+                                @endforeach
                                 <div class="card card-body text-center">
                                     <h4 type="button" class="card-title" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFour" aria-expanded="false"
@@ -253,6 +213,7 @@
                                         aria-controls="collapseFive">Alamat Perusahaan Anda </p>
                                 </div>
                             </div>
+
                         </div><!--end card-->
                     </div><!--end col-->
                 </div>
@@ -262,6 +223,13 @@
     @endsection
 
     @section('script')
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#editor'))
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
         <!-- dropzone js -->
         <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/dropzone/dropzone-min.js') }}"></script>
 

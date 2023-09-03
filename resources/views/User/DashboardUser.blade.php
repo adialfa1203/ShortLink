@@ -101,7 +101,7 @@
                                     <div class="modal-header">
                                         <h1 class="modal-title" id="addAmountLabel"
                                             style="margin-left: 35%; margin-right: auto;">Buat Tautan Baru</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" 
                                             aria-label="Close"></button>
                                     </div>
 
@@ -169,6 +169,7 @@
                                                     </div>
                                                 </div> --}}
                                                 {{-- end modal panjang --}}
+                                                <br>
                                                 {{-- modal panjang tautan berjangka --}}
                                                 <div class="container-fluid">
                                                     <div class="card">
@@ -262,30 +263,11 @@
                                                             Tautan berhasil disalin ke clipboard
                                                         </div>
                                                         {{-- end salin --}}
-                                                         <div class="wrapper end-0 position-absolute" style="z-index: 5">
-                                                            <button class="btn btn-transparent btn-sm m-0 p-1"  type="button"
-                                                            data-bs-toggle="collapse" data-bs-target="#edit" id="editclose" onclick="statusEdit()">
-                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                            </button>
+                                                         <div class="wrapper end-0 position-absolute" style="z-index: 5">                                                            
                                                             <button type="button" id="button-email" data-bs-toggle="modal" data-bs-target="#bagikan" class="btn btn-danger btn-sm m-1"><i class="fa-solid fa-square-share-nodes"></i> Bagikan</button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{-- modal edit --}}
-                                                <div class="collapse" id="edit">
-                                                    <div class="card card-body">
-                                                        <div class="container">
-                                                            <button type="button" class="btn btn-success me-2" id="simpanButton" style="font-size: 13px; padding: 5px 10px; display: flex; align-items: center; justify-content: flex-end; float: right;">
-                                                                <i class="bi bi-check mr-2"></i> Simpan <!-- Tambahkan margin kanan (mr-2) untuk tombol pertama -->
-                                                            </button>
-
-                                                        <button type="button" class="btn btn-danger me-2" id="keluarButton" style="font-size: 13px; padding: 5px 10px; display: flex; align-items: center; justify-content: flex-end; float: right;">
-                                                            <i class="bi bi-x mr-2"></i> Keluar <!-- Tambahkan margin kiri (ml-2) untuk tombol kedua -->
-                                                        </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {{-- end modal edit --}}
 
                                                 <div class="col-lg-12">
                                                     <div class="countdown-input-subscribe">
@@ -354,18 +336,15 @@
                             </div>
                         </div>
 
-                        <div class="card border-bottom border-2 card-animate border-secondary">
-                            <div class="card-body d-flex justify-content-between align-items-center"
-                                style="background-color: rgb(13, 13, 118)">
+                        <a href="/add-microsite" class="card border-bottom border-2 card-animate border-secondary">
+                            <div class="card-body d-flex justify-content-between align-items-center" style="background-color: rgb(13, 13, 118)">
                                 <div class="wrapper d-flex align-items-center">
-                                    <i class="bi bi-card-text custom-icon-size"></i>
-                                    <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white">Buat Microsite baru
-                                    </p>
+                                    <i class="bi bi-question-circle custom-icon-size"></i>
+                                    <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white"> Buat Microsite baru</p>
                                 </div>
                                 <i class="ri-arrow-right-s-line custom-icon-size"></i>
                             </div>
-                        </div>
-
+                        </a>
 
 
                     </div><!--end col-->
@@ -387,20 +366,16 @@
                             </div>
                         </div>
 
-                        <div class="card border-bottom border-2 card-animate border-secondary">
-                            <div class="card-body d-flex justify-content-between align-items-center"
-                                style="background-color: rgb(224, 113, 34)">
+                        <a href="/HelpSupport" class="card border-bottom border-2 card-animate border-secondary">
+                            <div class="card-body d-flex justify-content-between align-items-center" style="background-color: rgb(224, 113, 34)">
                                 <div class="wrapper d-flex align-items-center">
                                     <i class="bi bi-question-circle custom-icon-size"></i>
-                                    <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white"> Bantuan & Dukungan
-                                    </p>
+                                    <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white"> Bantuan & Dukungan</p>
                                 </div>
                                 <i class="ri-arrow-right-s-line custom-icon-size"></i>
                             </div>
-                        </div>
-
-
-
+                        </a>
+                        
                     </div><!--end col-->
                 </div><!--end row-->
 
@@ -475,7 +450,7 @@
                                 </div>
 
                             </div>
-                            <div class="progress" data-bs-toggle="tooltip" data-bs-title="$234.95 Paid Amount">
+                            <div class="progress" data-bs-toggle="tooltip" data-bs-title="{{ $countURL }} Tautan">
                                 <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated"
                                      role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
                             </div>
@@ -487,7 +462,7 @@
                                     data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
                             </h6>
 
-                            <div class="progress" data-bs-toggle="tooltip" data-bs-title="$234.95 Paid Amount">
+                            <div class="progress" data-bs-toggle="tooltip" data-bs-title="{{ $countURL }}">
                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
 
@@ -584,9 +559,9 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" style="width: 100%;">
+                                            <a href="/subscribe-product-user" type="button" class="btn btn-danger" style="width: 100%;">
                                                 Langganan untuk mendapatkan kuota
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
 
@@ -716,7 +691,7 @@
             case "qr":
                 // Tambahkan logika untuk menghasilkan QR Code dari tautan
                 // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
-                window.open("https://www.qr-code-generator.com/?url=" + encodeURIComponent(shortUrl));
+                window.open(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${ encodeURIComponent(shortUrl)}`);
                 break;
             default:
                 break;
@@ -755,6 +730,9 @@
         // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
         // resetEditModal();
     });
+    // $("#simpanButton").click(function() {
+    //     alert('');
+    // });
     $("#copyButton").click(function() {
         // Lakukan aksi penyimpanan data di sini (misalnya, pengiriman data ke server).
 
@@ -769,8 +747,6 @@
         // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
         resetEditModal();
     });
-
-
      });
     </script>
     <!-- apexcharts -->
@@ -833,5 +809,7 @@
             modalEdit.classList.remove("show");
         });
     </script>
+
+
 
 @endsection

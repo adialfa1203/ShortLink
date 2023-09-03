@@ -96,14 +96,14 @@
             @foreach ($data as $row)
                 <div class="col-12">
                     <div class="card card-body">
-                        <div class="wrapper d-flex align-items-center">
+                        <div class="wrapper row  align-items-center">
                             <div class="avatar-md col-1">
-                                <div class="avatar-title bg-success-subtle text-success fs-xl rounded mx-3">
+                                <div class="avatar-title">
                                     <img src="https://i.postimg.cc/tR5pMsYz/orang-gtg.jpg"
-                                        style="width: 150%; height: 100%;" alt="Gambar">
+                                        style="width: 160%; height: 100%;" alt="Gambar">
                                 </div>
                             </div>
-                            <div class="wrapper mx-5 col-8">
+                            <div class="wrapper col-8">
                                 <h5 class="card-title">{{ Auth()->user()->name }}</h5>
                                 <p type="button" class="link-primary link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover card-text text-muted" id="copyText{{ $loop->index }}"
                                     onclick="copyTextToClipboard('{{ $row->link_microsite }}', 'copyText{{ $loop->index }}')">
@@ -112,15 +112,16 @@
                                 <div id="customAlert" class="custom-alert">
                                     <span class="alert-text"></span>
                                 </div>
-
                             </div>
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div class="ml-auto">
-                                    <a href="#" class="btn btn-primary btn-xs"><i class="bi bi-bar-chart-fill"></i>
-                                        Statistik</a>
-                                    <a href="{{ route('edit.microsite', ['id' => $row->id]) }}" class="btn btn-primary btn-xs"><i class="bi bi-pencil-square"></i>
-                                        Edit</a>
-                                    <a href="#" class="btn btn-primary btn-xs"><i class="bi bi-share-fill"></i></a>
+                            <div class="wrapper col-3">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="ml-auto">
+                                        <a href="#" class="btn btn-primary btn-xs"><i class="bi bi-bar-chart-fill"></i>
+                                            Statistik</a>
+                                        <a href="{{ route('edit.microsite', ['id' => $row->id]) }}" class="btn btn-primary btn-xs"><i class="bi bi-pencil-square"></i>
+                                            Edit</a>
+                                        <a href="#" class="btn btn-primary btn-xs"><i class="bi bi-share-fill"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

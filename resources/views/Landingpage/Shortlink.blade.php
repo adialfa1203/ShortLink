@@ -292,9 +292,8 @@ header {
                             <div class="links">
                                 <h3>Dukungan</h3>
                                 <ul>
-                                    <li><a href="/Home">Bantuan</a></li>
-                                    <li><a href="#features">Laporkan</a></li>
-                                    <li><a href="#kontak">Status</a></li>
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/Privacy">Kebijakan Privasi</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -302,13 +301,11 @@ header {
                             <div class="links">
                                 <h3>SiteMaps</h3>
                                 <ul>
-                                    <li><a href="#kontak">Beranda</a></li>
-                                    <li><a href="/Home">Perpendek Link</a></li>
-                                    <li><a href="#features">Situs Mikro</a></li>
-                                    <li><a href="#kontak">Berlanggaan</a></li>
-                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
-                                    <li><a href="/HelpSupport">Kebijakan Privasi</a></li>
-
+                                    <li><a href="/">Beranda</a></li>
+                                    <li><a href="/Shortlink">Perpendek Link</a></li>
+                                    <li><a href="/Microsite">Situs Mikro</a></li>
+                                    <li><a href="/Subscribe">Berlanggaan</a></li>
+    
                                 </ul>
                             </div>
                         </div>
@@ -341,12 +338,16 @@ header {
                         </div>
     
                         <!-- Comment Form -->
-                        <div class="col-lg-3 col-md-6 col-12 mb-1" >
-                            <form action="javascript:void(0);" class="mt-3">
+                        <div class="col-lg-3 col-md-6 col-12 mb-1">
+                            <form id="commentForm" method="POST" enctype="multipart/form-data" class="mt-3">
+                                @csrf
                                 <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Tambahkan Komentar" style="font-size:12px ;"></textarea>
+                                    placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
+                                @error('isikomentar')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 <div class="text-start mt-2">
-                                    <a href="javascript:void(0);" class="btn btn-success">Kirim</a>
+                                    <button type="submit" class="btn btn-success">Kirim</button>
                                 </div>
                             </form>
                         </div>
@@ -425,7 +426,29 @@ header {
             window.location.href = "https://www.instagram.com/nama_akun_instagram";
         });
     </script>
-
+<script>
+    $(document).ready(function() {
+        // Handle form submission
+        $('#commentForm').submit(function(event) {
+            event.preventDefault();
+            // Check if the user is authenticated
+            @if(auth()->check())
+                // If authenticated, submit the form to /create
+                this.action = '/create';
+                this.submit();
+            @else
+                // If not authenticated, show a SweetAlert message with a link to /login
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oh Tidakkk...',
+                    text: 'Anda harus login dulu',
+                    confirmButtonText: 'Batal',
+                    footer: '<a href="/login">Login disini</a>'
+                });
+            @endif
+        });
+    });
+</script>
 </body>
 
 

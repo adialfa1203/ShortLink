@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <!-- Mirrored from kalanidhithemes.com/live-preview/landing-page/apper/all-demo/03-app-landing-page-wave-animation/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 May 2023 08:10:18 GMT -->
 
 <head>
@@ -183,7 +182,7 @@ header {
                     <!-- banner slides start -->
                     <div class="col-lg-6 col-md-12" data-aos="fade-in" data-aos-duration="1500">
                         <div class="banner_image">
-                            <img class="moving_animation" src="https://i.postimg.cc/259N2CWw/microsite.png"
+                            <img class="moving_animation" src="{{ asset('template/image/situs mikro.png') }}"
                                 alt="image">
                         </div>
                     </div>
@@ -236,8 +235,8 @@ header {
                         <div class="col-lg-6 offset-xl-1">
                             <div class="mt-lg-0 mt-5 d-flex justify-content-start">
                                 <!-- Tambahkan kelas text-lg-start untuk memposisikan ke kiri pada layar lebar -->
-                                <img src="https://i.postimg.cc/DfrnK332/micro.png" alt="home04"
-                                    class="home-img">
+                                <img src="https://i.postimg.cc/ZqHQGxQD/Landing-Page2.png" alt="home04"
+                                    class="home-img" width="500" height="400">
                             </div>
                         </div>
 
@@ -253,8 +252,8 @@ header {
                     <div class="row align-items-center">
                         <div class="col-xl-5 col-lg-6">
                             <div class="mt-lg-0 mt-5 d-flex justify-content-start">
-                                <img src="{{ asset('landingpage/images/microsite2.png') }}" alt="home04"
-                                    class="home-img">
+                                <img src="{{ asset('template/image/situs mikro.png') }}" alt="home04"
+                                    class="home-img"  width="500" height="400">
                             </div>
                         </div>
                         <div class="col-lg-6 offset-xl-1">
@@ -381,9 +380,8 @@ header {
                             <div class="links">
                                 <h3>Dukungan</h3>
                                 <ul>
-                                    <li><a href="/Home">Bantuan</a></li>
-                                    <li><a href="#features">Laporkan</a></li>
-                                    <li><a href="#kontak">Status</a></li>
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/Privacy">Kebijakan Privasi</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -391,13 +389,11 @@ header {
                             <div class="links">
                                 <h3>SiteMaps</h3>
                                 <ul>
-                                    <li><a href="#kontak">Beranda</a></li>
-                                    <li><a href="/Home">Perpendek Link</a></li>
-                                    <li><a href="#features">Situs Mikro</a></li>
-                                    <li><a href="#kontak">Berlanggaan</a></li>
-                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
-                                    <li><a href="/HelpSupport">Kebijakan Privasi</a></li>
-
+                                    <li><a href="/">Beranda</a></li>
+                                    <li><a href="/Shortlink">Perpendek Link</a></li>
+                                    <li><a href="/Microsite">Situs Mikro</a></li>
+                                    <li><a href="/Subscribe">Berlanggaan</a></li>
+    
                                 </ul>
                             </div>
                         </div>
@@ -430,12 +426,16 @@ header {
                         </div>
     
                         <!-- Comment Form -->
-                        <div class="col-lg-3 col-md-6 col-12 mb-1" >
-                            <form action="javascript:void(0);" class="mt-3">
+                        <div class="col-lg-3 col-md-6 col-12 mb-1">
+                            <form id="commentForm" method="POST" enctype="multipart/form-data" class="mt-3">
+                                @csrf
                                 <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Tambahkan Komentar" style="font-size:12px ;"></textarea>
+                                    placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
+                                @error('isikomentar')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 <div class="text-start mt-2">
-                                    <a href="javascript:void(0);" class="btn btn-success">Kirim</a>
+                                    <button type="submit" class="btn btn-success">Kirim</button>
                                 </div>
                             </form>
                         </div>
@@ -514,7 +514,29 @@ header {
             window.location.href = "https://www.instagram.com/nama_akun_instagram";
         });
     </script>
-
+<script>
+    $(document).ready(function() {
+        // Handle form submission
+        $('#commentForm').submit(function(event) {
+            event.preventDefault();
+            // Check if the user is authenticated
+            @if(auth()->check())
+                // If authenticated, submit the form to /create
+                this.action = '/create';
+                this.submit();
+            @else
+                // If not authenticated, show a SweetAlert message with a link to /login
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oh Tidakkk...',
+                    text: 'Anda harus login dulu',
+                    confirmButtonText: 'Batal',
+                    footer: '<a href="/login">Login disini</a>'
+                });
+            @endif
+        });
+    });
+</script>
 </body>
 
 

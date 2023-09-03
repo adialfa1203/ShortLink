@@ -5,19 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\ShortUrl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request as HttpRequest;
 
 class LinkController extends Controller
 {
     
-    public function Link()
+    public function showLink($shortCode)
     {
         $urlshort = ShortUrl::orderBy('created_at', 'desc')->paginate(5);
-        return view('User.Link', compact('urlshort'));
+        return view('User.Link', compact('urlshort', 'shortCode'));
     }
 
     public function archive($id)
     {
-        $link = ShortUrl::find($id);
+        $link = ShortUrl::findOrFail($id);
         $link->delete();
         return redirect()->back()->with('success', 'Link telah diarsipkan');
     }
@@ -50,28 +51,45 @@ class LinkController extends Controller
 
         return redirect()->back()->with('success', 'link berhasil terpotong');
     }
-    public function archiveLink(Request $request)
+    // public function archiveLink(Request $request)
+    // {
+
+    //     $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
+    //     $shortURLObject = $builder->destinationUrl($request->destination_url)
+    //                     ->make();
+    //     $shortURL = $shortURLObject->default_short_url;
+
+    //     $find = ShortUrl::query()->where('url_key', $shortURLObject->url_key)->first();
+
+    //     $find->update([
+    //         'user_id' => auth()->id(),
+    //         'default_short_url' => $shortURL,
+    //         'password' => Hash::make($request->password),
+    //         'active' => '1',
+    //         'deleted_add' => $request->deleted_add,
+    //         'click_count' => $request->click_count,
+    //         'qr_code' => $request->qr_code,
+    //         'title' => $request->title,
+    //         'deactivated_at' => $request->deactivated_at
+    //     ]);
+
+    //     return redirect()->back()->with('success', 'link berhasil terpotong');
+    // }
+
+    public function updateDeactivated(HttpRequest $request, $keyTime)
     {
+        $updateUrl = ShortUrl::where('url_key', $keyTime);
 
-        $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
-        $shortURLObject = $builder->destinationUrl($request->destination_url)
-                        ->make();
-        $shortURL = $shortURLObject->default_short_url;
+        if (!$updateUrl->exists()) {
+            return response()->json(['error' => 'Short link not found'], 404);
+        }
 
-        $find = ShortUrl::query()->where('url_key', $shortURLObject->url_key)->first();
-
-        $find->update([
-            'user_id' => auth()->id(),
-            'default_short_url' => $shortURL,
-            'password' => Hash::make($request->password),
-            'active' => '1',
-            'deleted_add' => $request->deleted_add,
-            'click_count' => $request->click_count,
-            'qr_code' => $request->qr_code,
-            'title' => $request->title,
-            'deactivated_at' => $request->deactivated_at
+        // Memperbarui kolom deactivated_at
+        $updateUrl->update([
+            'deactivated_at' => $request->newTime,
         ]);
 
-        return redirect()->back()->with('success', 'link berhasil terpotong');
+        // Mengirimkan respon ke JavaScript
+        return response()->json(['message' => 'Deactivation status updated successfully']);
     }
 }

@@ -15,9 +15,11 @@ class CreateShortUrlsTable extends Migration
     {
         Schema::create('short_urls', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('destination_url');
+            $table->text('destination_url')->nullable();
             $table->string('url_key')->unique();
             $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('microsite_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            // $table->boolean('link_type')->default(0);/
             $table->string('title')->nullable();
             $table->string('password')->nullable();
             $table->string('qr_code')->nullable();

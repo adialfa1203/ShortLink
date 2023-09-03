@@ -4,7 +4,7 @@
 
 @section('content')
 <form action="{{ route ('updateProfile')}}" method="POST" enctype="multipart/form-data">
-    @csrf            
+    @csrf
     <div class="page-content">
         <div class="container-fluid">
 
@@ -62,12 +62,12 @@
                                     </div>
                                 </div>
                                 <div class="mt-3">
-                                    <h5>{{$user->name}}<i class="bi bi-patch-check-fill align-baseline text-info ms-1"></i></h5>                                              
+                                    <h5>{{$user->name}}<i class="bi bi-patch-check-fill align-baseline text-info ms-1"></i></h5>
                                     <p class="text-muted">Web Developer</p>
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div class="card-body border-top">
                             <div class="card-body">
                                 <div class="row">
@@ -134,7 +134,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-lg-12">
                                         <div class="hstack gap-2 justify-content-end">
                                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -145,12 +145,6 @@
                                 <!--end row-->
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <a type="submit" class="btn btn-primary" href="logout">
-                            <i class="bi bi-box-arrow-left"></i>
-                            <span style="margin-left: 5px;"> Logout</span>
-                        </a>
                     </div>
                 </div>
             </div>

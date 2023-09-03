@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('icon');
             $table->string('color_hex');
             $table->timestamps();
-        });
+        }); 
     }
 
     /**

@@ -43,24 +43,24 @@
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="index.html" class="logo logo-dark">
+        <a href="#" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/logo-sm.png') }}" alt=""
+                <img src="{{ asset('template/image/LINKlogo.png') }}" alt=""
                     height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/logo-dark.png') }}"
+                <img src="{{ asset('template/image/LINKlogo.png') }}"
                     alt="" height="22">
             </span>
         </a>
-        <a href="index.html" class="logo logo-light">
+        <a href="#" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/logo-sm.png') }}"
-                    alt="" height="22">
+                <img src="{{ asset('template/image/LINKlogo.png') }}"
+                    alt="" width="50" height="20">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/logo-light.png') }}"
-                    alt="" height="22">
+                <img src="{{ asset('template/image/LINKlogo.png') }}"
+                    alt="" width="120" height="35">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-3xl header-item float-end btn-vertical-sm-hover"
@@ -154,7 +154,20 @@
                         <span data-key="t-email">Tautan</span> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
+                    <a href="{{ url ('view-component')}}" class="nav-link menu-link"><i class="bi bi-grid"></i>
+                        <span data-key="t-email">Komponen</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url ('view-button')}}" class="nav-link menu-link"><i class="bi bi-back"></i>
+                        <span data-key="t-email">Button</span> </a>
+                </li>
+                <li class="nav-item">
+                    
+                    <a href="{{ url ('view-komentar')}}" class="nav-link menu-link"><i class="bi bi-chat-right-text-fill"></i>
+                        <span data-key="t-email">Komentar</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url ('profil-admin')}}" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
                             data-key="t-chat">Profil</span> </a>
                 </li>
 

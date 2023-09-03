@@ -63,4 +63,27 @@ class ShortLinkController extends Controller
             'parameterValue' => $parameterValue,
         ]);
     }
+    public function updateShortLink(Request $request, $shortCode)
+    {
+        $updateUrl = ShortUrl::where('url_key', $shortCode);
+
+        if (!$updateUrl->exists()) {
+            return response()->json(['error' => 'Short link not found'], 404);
+        }
+
+        // Mengambil data dari permintaan Ajax
+        $newUrlKey = $request->newUrlKey;
+        // dd($request);
+        // return response()->json(['output' => $newUrlKey]);
+
+        // Memperbarui URL key dan default short URL
+        $updateUrl->update([
+            'url_key' => $newUrlKey,
+            'default_short_url' => "http://127.0.0.1:8000/link.id/" . $newUrlKey,
+        ]);
+
+        // Mengirimkan respon ke JavaScript
+        return response()->json(['message' => 'URL key updated successfully']);
+    }
+
 }

@@ -25,4 +25,9 @@ class ShortUrl extends Model
     {
         return $this->hasMany(ShortURLVisit::class);
     }
+
+    public function Microsite()
+    {
+        return $this->hasOne(Microsite::class);
+    }
 }
