@@ -136,6 +136,7 @@
     var chart = new ApexCharts(document.querySelector("#chart1"), options);
     chart.render();
 </script> --}}
+
 <!-- apexcharts -->
 <script src="{{ asset ('template/themesbrand.com/steex/layouts/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
 
