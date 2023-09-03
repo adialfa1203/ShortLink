@@ -123,6 +123,8 @@ Route::get('/add-microsite', [MicrositeController::class, 'addMicrosite'])->name
 Route::post('/update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
 //update tenggat
 Route::post('/update-deactivated/{keyTime}',[LinkController::class, 'updateDeactivated']);
+//Microsite Link
+Route::post('/url-microsite', [MicrositeController::class, 'urlMicrosite'])->name('url.microsite');
 });
 
 //Middleware Admin

@@ -20,10 +20,12 @@ class Microsite extends Model
         {
             return $this->BelongsTo(Components::class, 'components_id');
         }
-    
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+    public function shortUrl()
+    {
+        return $this->hasMany(ShortUrl::class);
     }
 }

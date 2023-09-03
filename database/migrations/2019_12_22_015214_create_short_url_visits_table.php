@@ -18,7 +18,6 @@ class CreateShortUrlVisitsTable extends Migration
             $table->unsignedBigInteger('short_url_id');
             $table->foreignId('user_id')->nullable()->constrained();
             $table->string('ip_address')->nullable();
-            $table->foreignId('user_id')->nullable()->constrained();
             $table->string('operating_system')->nullable();
             $table->string('operating_system_version')->nullable();
             $table->string('browser')->nullable();

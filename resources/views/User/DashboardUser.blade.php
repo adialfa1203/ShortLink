@@ -101,7 +101,7 @@
                                     <div class="modal-header">
                                         <h1 class="modal-title" id="addAmountLabel"
                                             style="margin-left: 35%; margin-right: auto;">Buat Tautan Baru</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" 
                                             aria-label="Close"></button>
                                     </div>
 
@@ -188,7 +188,7 @@
                                                                         <div class="col-lg-12">
                                                                             <div class="position-relative auth-pass-inputgroup mb-3">
                                                                                 <label for="old_password" class="form-label">Tanggal dan Waktu</label>
-                                                                                <input name="deactivated_at" type="datetime-local" id="old_password" class="form-control pe-5 time-input"  min="">
+                                                                                <input name="deactivated_at" type="datetime-local" id="old_password" class="form-control pe-5 time-input">
                                                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon">
                                                                                 </button>
                                                                             </div>
@@ -263,7 +263,7 @@
                                                             Tautan berhasil disalin ke clipboard
                                                         </div>
                                                         {{-- end salin --}}
-                                                         <div class="wrapper end-0 position-absolute" style="z-index: 5">
+                                                         <div class="wrapper end-0 position-absolute" style="z-index: 5">                                                            
                                                             <button type="button" id="button-email" data-bs-toggle="modal" data-bs-target="#bagikan" class="btn btn-danger btn-sm m-1"><i class="fa-solid fa-square-share-nodes"></i> Bagikan</button>
                                                         </div>
                                                     </div>
@@ -375,7 +375,7 @@
                                 <i class="ri-arrow-right-s-line custom-icon-size"></i>
                             </div>
                         </a>
-
+                        
                     </div><!--end col-->
                 </div><!--end row-->
 
@@ -809,34 +809,6 @@
             modalEdit.classList.remove("show");
         });
     </script>
-    <script>
-        $(document).ready(function () {
-            $("#toggleButton").click(function () {
-                $("#tautanberjangka").collapse('toggle');
-                var buttonText = $(this).text();
-                if (buttonText.trim() === "Tampilkan lebih banyak") {
-                    $(this).html('Tampilkan lebih sedikit <i class="fa-solid fa-angle-up"></i>');
-                } else {
-                    $(this).html('Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>');
-                }
-            });
-        });
-    </script>
-   <script>
-    // Mendapatkan elemen input
-    var inputTanggal = document.getElementById('old_password');
-
-    // Mendapatkan tanggal hari ini dalam format yang sesuai dengan datetime-local
-    var today = new Date();
-    var year = today.getFullYear();
-    var month = String(today.getMonth() + 1).padStart(2, '0'); // Bulan dimulai dari 0
-    var day = String(today.getDate()).padStart(2, '0');
-    var waktuHariIni = year + '-' + month + '-' + day + 'T00:00';
-
-    // Mengatur atribut "min" pada elemen input
-    inputTanggal.setAttribute('min', waktuHariIni);
-  </script>
-
 
 
 

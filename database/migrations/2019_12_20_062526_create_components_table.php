@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('component_name');
             $table->string('cover_img');
             $table->string('profile_img');
+            $table->string('link_component')->nullable();
             $table->timestamps();
         });
     }
