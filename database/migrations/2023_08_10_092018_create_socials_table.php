@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('socials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('microsite_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('microsite_id')->references('id')->on('microsites')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('buttons_id')->references('id')->on('buttons')->onUpdate('cascade')->onDelete('cascade')->nullable();
+            $table->string('button_link')->nullable();
             $table->timestamps();
         });
     }

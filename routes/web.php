@@ -95,6 +95,7 @@ Route::get('/dashboard-user', [DahsboardController::class, 'dashboardUser'])->na
 Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
 //AccessLink
 Route::post('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
+Route::post('/microsite/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.link');
 //ActiveLink
 Route::get('/link/{shortCode}', [LinkController::class, 'showLink'])->name('link.show');
 Route::get('/archive/{id}', [LinkController::class, 'archive'])->name('archive');
@@ -114,18 +115,19 @@ Route::get('/subscribe-product-user', [SubscribeUserController::class, 'subscrib
 Route::get('/microsite-user', [MicrositeController::class, 'microsite'])->name('microsite');
 Route::post('/create-microsite', [MicrositeController::class, 'createMicrosite'])->name('create.microsite');
 Route::get('/edit-microsite/{id}', [MicrositeController::class, 'editMicrosite'])->name('edit.microsite');
-Route::post('/update-microsite/{id}', [MicrositeController::class, 'updateMicrosite'])->name('update.microsite');
+Route::post('/update-microsite/{id}', [MicrositeController::class, 'micrositeUpdate'])->name('update.microsite');
 Route::get('/add-microsite', [MicrositeController::class, 'addMicrosite'])->name('add.microsite');
+// Route::post('/update-microsite/{id}', [MicrositeController::class, 'micrositeUpdate'])->name('microsite-update');
 //update key
-Route::post('/update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
-//update tenggat
-Route::post('/update-deactivated/{keyTime}',[LinkController::class, 'updateDeactivated']);
-//Microsite Link
+// Route::post('update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
+// Route::post('update-microsite-link/{micrositeLink}', [ShortLinkController::class, 'updateMicrositeLink'])->name('update.micrositelink');
 Route::post('/url-microsite', [MicrositeController::class, 'urlMicrosite'])->name('url.microsite');
+
 });
+Route::get('/microsite-link', [MicrositeController::class, 'micrositeLink'])->name('microsite.short.link');
 
 Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
-Route::post('/updateAdmin', [ProfileController::class, 'updateAdmin'])->name('updateAdmin');
+Route::post('/updateAdmin', [ProfilController::class, 'updateAdmin'])->name('updateAdmin');
 //Middleware Admin
 Route::group(['middleware' => ['role:admin']], function () {
 //Dashboard Admin

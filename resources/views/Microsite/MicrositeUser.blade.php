@@ -105,7 +105,9 @@
                             </div>
                             <div class="wrapper col-8">
                                 <h5 class="card-title">{{ Auth()->user()->name }}</h5>
-                                <p type="button" class="link-primary link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover card-text text-muted" id="copyText{{ $loop->index }}"
+                                <p type="button"
+                                    class="link-primary link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover card-text text-muted"
+                                    id="copyText{{ $loop->index }}"
                                     onclick="copyTextToClipboard('{{ $row->link_microsite }}', 'copyText{{ $loop->index }}')">
                                     {{ $row->link_microsite }}
                                 </p>
@@ -129,11 +131,46 @@
                 </div><!-- end col -->
             @endforeach
         </div>
-        <!-- container-fluid -->
     </div>
 @endsection
 
 @section('script')
+    <script>
+        $(document).ready(function() {
+            var selectId = $('#new_url_key').val();
+            console.log(selectId);
+            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+            $('#submitKustom').click(function() {
+                var newUrlKey = $('#new_url_key').val();
+                // alert('masuk')
+                $.ajax({
+                    headers: {
+                        'X-CSRF-Token': csrfToken,
+                    },
+                    url: "/update-microsite-link/" + $('#new_url_key').data("original"),
+                    method: 'POST',
+                    data: {
+                        newUrlKey: newUrlKey
+                    },
+                    dataType: 'JSON',
+                    success: function(e) {
+                        alert(e.message)
+                        location.reload()
+                    }
+                })
+            });
+        });
+
+        $('.edit-link').click(function() {
+            var link = $(this).data('link');
+
+            // Mengisi nilai input dengan link yang dipilih
+            $('#new_url_key').val(link);
+            $('#new_url_key').attr("data-original", link);
+
+        });
+    </script>
     <script>
         function copyTextToClipboard(text, elementId) {
             var textElement = document.getElementById(elementId);

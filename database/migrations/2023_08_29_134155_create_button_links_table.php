@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('microsite_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('buttons_id')->references('id')->on('buttons')->onUpdate('cascade')->onDelete('cascade')->nullable();
-            $table->string('button_link');
+            $table->string('button_link')->nullable();
             $table->timestamps();
         });
     }

@@ -9,11 +9,7 @@ class ButtonLink extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'microsite_id',
-        'buttons_id',
-        'button_link',
-    ];
+    protected $fillable = ['microsite_id', 'button_id', 'button_link'];
     public function button()
 {
     return $this->belongsTo(Button::class, 'buttons_id');
