@@ -8,28 +8,33 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use AshAllenDesign\ShortURL\Classes\Builder;
 use Carbon\Carbon;
+use Yoeunes\Toastr\Toastr;
 
 class ShortLinkController extends Controller
 {
-    public function shortLink(Request $request)
+    public function shortLink(Request $request, Toastr $toastr)
     {
-        // $Visits = \AshAllenDesign\ShortURL\Models\ShortURL::find(1);
-        // $visits = $Visits->visits;
+        $user = auth()->user();
 
+        if ($user->subscribe == 'yes') {
+        } else {
+            $shortLinkTotal = $user->shortUrls()->count();
+            if ($shortLinkTotal >= 100) {
+                return response()->json(['message' => 'Anda telah mencapai batasan pembuatan tautan baru. Untuk dapat membuat lebih banyak tautan baru, pertimbangkan untuk meningkatkan akun Anda ke versi premium. Dengan berlangganan, Anda akan mendapatkan akses ke fitur-fitur tambahan dan batasan yang lebih tinggi. ', 'status' => 'gagal']);
+            }
+        }
         $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
         $shortURLObject = $builder
-                        ->destinationUrl($request->destination_url)
-                        ->when(
-                            $request->date('activation'),
-                            function (Builder $builder) use($request) : Builder  {
-                                return $builder
-                                    ->activateAt(now())
-                                    ->deactivateAt(Carbon::parse($request->deactivated_at));
-                            },
-                        )
-                        ->make();
-
-        // dd($shortURLObject);
+            ->destinationUrl($request->destination_url)
+            ->when(
+                $request->date('activation'),
+                function (Builder $builder) use ($request): Builder {
+                    return $builder
+                        ->activateAt(now())
+                        ->deactivateAt(Carbon::parse($request->deactivated_at));
+                },
+            )
+            ->make();
 
         $find = ShortUrl::query()->where('url_key', $shortURLObject->url_key)->first();
 
@@ -85,5 +90,4 @@ class ShortLinkController extends Controller
         // Mengirimkan respon ke JavaScript
         return response()->json(['message' => 'URL key updated successfully']);
     }
-
 }

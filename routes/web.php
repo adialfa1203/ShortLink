@@ -97,10 +97,8 @@ Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('short
 Route::post('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
 //ActiveLink
 Route::get('/link/{shortCode}', [LinkController::class, 'showLink'])->name('link.show');
-Route::post('active-link', [LinkController::class,'activeLink'])->name('active.link');
 Route::get('/archive/{id}', [LinkController::class, 'archive'])->name('archive');
 //ArchiveLink
-Route::post('archive-link', [LinkController::class,'archiveLink'])->name('archive.link');
 Route::get('/archive-link-user', [ArchiveLinkController::class, 'archiveLinkUser'])->name('archive.link.user');
 Route::get('/restore/{id}', [ArchiveLinkController::class, 'restore'])->name('restore');
 //Profile

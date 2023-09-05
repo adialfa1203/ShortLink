@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('number');
             $table->string('email')->unique();
             $table->datetime('email_verified_at')->nullable();
+            $table->enum('subscribe', ['yes', 'no'])->default('no');
             $table->string('password');
             $table->string('profile_picture')->nullable();
             $table->string('verification_code')->nullable();

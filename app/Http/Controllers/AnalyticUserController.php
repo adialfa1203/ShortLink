@@ -43,7 +43,9 @@ class AnalyticUserController extends Controller
                     $query->where('user_id', $user);
                 });
             }
-        ])->get();
+        ])->orderBy('totalVisits', 'desc')
+        ->take(3)
+        ->get();
 
         $countURL = ShortURL::where('user_id', $user)->count();
 

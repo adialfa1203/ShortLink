@@ -191,13 +191,16 @@
 
                                                         </div>
                                                     </div>
+                                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#tautanberjangka" aria-expanded="false"
+                                                        aria-controls="collapseExample" id="toggleButton"
+                                                        style="background-color: rgb(13, 13, 118)">
+                                                        Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>
+                                                    </button>
                                                 </div>
-                                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#tautanberjangka" aria-expanded="false" aria-controls="collapseExample" id="toggleButton" style="background-color: rgb(13, 13, 118)">
-                                                    Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>
-                                                </button>
                                             </div>
+                                            {{-- end modal tautan berjangka --}}
                                         </div>
-                                        {{-- end modal tautan berjangka --}}
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -532,257 +535,266 @@
 @endsection
 
 @section('script')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    let edit = false;
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        let edit = false;
 
-    function statusEdit() {
-        edit = !edit;
-        console.log(edit);
-    }
-    $(document).ready(function() {
-        $("#shortlinkSubmit").submit(function(event) {
-            event.preventDefault(); // Mencegah form submission bawaan
+        function statusEdit() {
+            edit = !edit;
+            console.log(edit);
+        }
+        $(document).ready(function() {
+            $("#shortlinkSubmit").submit(function(event) {
+                event.preventDefault(); // Mencegah form submission bawaan
 
-            var formData = $(this).serialize(); // Mengambil data form
-            $.ajax({
-                type: "POST",
-                url: "short-link", // Ganti dengan URL endpoint Anda
-                data: formData,
-                success: function(response) {
-                    // Tangani respons dari server
-                    console.log(response.default_short_url);
-                    var defaultShort = response.default_short_url;
-                    var title = response.title;
-                    var url = response.destination_url;
+                var formData = $(this).serialize(); // Mengambil data form
+                $.ajax({
+                    type: "POST",
+                    url: "short-link", // Ganti dengan URL endpoint Anda
+                    data: formData,
+                    success: function(response) {
+                        if (response.status == 'gagal') {
+                            Swal.fire({
+                                title: 'Kesalahan...',
+                                icon: 'error',
+                                html: response.message +
+                                    'Klik di <a href="#">sini</a> ' +
+                                    'untuk info lebih lanjut tentang langganan premium.',                                
+                            })
+                        }
+                        // Tangani respons dari server
+                        console.log(response.default_short_url);
+                        var defaultShort = response.default_short_url;
+                        var title = response.title;
+                        var url = response.destination_url;
 
-                    // Tampilkan data yang dipotong di dalam input
-                    $("#default_short_url").val(defaultShort);
-                    $("#title").val(title);
-                    $('#destination_url').val(url);
+                        // Tampilkan data yang dipotong di dalam input
+                        $("#default_short_url").val(defaultShort);
+                        $("#title").val(title);
+                        $('#destination_url').val(url);
 
-                    // Menampilkan tombol Copy
-                    $("#copyButton").show();
+                        // Menampilkan tombol Copy
+                        $("#copyButton").show();
 
-                    // Mengosongkan nilai-nilai input di dalam modal
-                    $("#AmountInput").val(""); // Mengosongkan input tautan panjang
-                    $("#cardNumber").val(""); // Mengosongkan input judul
-                    $(".password-input").val(""); // Mengosongkan input kata sandi
-                    $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
-                    $(".close-edit").val(""); // Mengosongkan button edit
+                        // Mengosongkan nilai-nilai input di dalam modal
+                        $("#AmountInput").val(""); // Mengosongkan input tautan panjang
+                        $("#cardNumber").val(""); // Mengosongkan input judul
+                        $(".password-input").val(""); // Mengosongkan input kata sandi
+                        $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
+                        $(".close-edit").val(""); // Mengosongkan button edit
 
-                    // Menutup modal saat ini (jika perlu)
-                    $("#addAmount").modal("hide");
-                },
-                error: function(error) {
-                    console.error("Error:", error);
+                        // Menutup modal saat ini (jika perlu)
+                        $("#addAmount").modal("hide");
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                    }
+                });
+            });
+            // Menangani klik pada tombol mata
+            $("#password-addon").click(function() {
+                var passwordInput = $(".password-input");
+                var passwordAddon = $("#password-addon");
+
+                if (passwordInput.attr("type") === "password") {
+                    passwordInput.attr("type", "text");
+                    passwordAddon.html('<i class="ri-eye-off-fill align-middle"></i>');
+                } else {
+                    passwordInput.attr("type", "password");
+                    passwordAddon.html('<i class="ri-eye-fill align-middle"></i>');
                 }
             });
-        });
-        // Menangani klik pada tombol mata
-        $("#password-addon").click(function() {
-            var passwordInput = $(".password-input");
-            var passwordAddon = $("#password-addon");
+            // Menangani klik pada tombol Copy
+            $("#copyButton").click(function() {
+                var copyText = document.getElementById("default_short_url");
+                copyText.select();
+                document.execCommand("copy");
+                // Anda bisa menambahkan logika lain untuk memberi tahu pengguna bahwa tautan telah disalin
+            });
+            // Menangani klik pada tombol Reset untuk modal tautan terproteksi
+            $("#resetButton").click(function() {
+                $(".password-input").val(""); // Mengosongkan input kata sandi
+            });
+            // Menangani klik pada tombol Reset untuk modal tautan berjangka
+            $("#time-reset").click(function() {
+                $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
+            });
+            $('#singkatkan').on('hidden.bs.modal', function () {
+            // Lakukan refresh halaman
+            location.reload();
+            });
+            // Menangani klik pada label platform dalam modal "bagikan"
+            $(".platform").click(function() {
+                var platform = $(this).data("platform");
+                var shortUrl = $("#default_short_url").val();
 
-            if (passwordInput.attr("type") === "password") {
-                passwordInput.attr("type", "text");
-                passwordAddon.html('<i class="ri-eye-off-fill align-middle"></i>');
-            } else {
-                passwordInput.attr("type", "password");
-                passwordAddon.html('<i class="ri-eye-fill align-middle"></i>');
-            }
-        });
-        // Menangani klik pada tombol Copy
-        $("#copyButton").click(function() {
-            var copyText = document.getElementById("default_short_url");
-            copyText.select();
-            document.execCommand("copy");
-            // Anda bisa menambahkan logika lain untuk memberi tahu pengguna bahwa tautan telah disalin
-        });
-        // Menangani klik pada tombol Reset untuk modal tautan terproteksi
-        $("#resetButton").click(function() {
-            $(".password-input").val(""); // Mengosongkan input kata sandi
-        });
-        // Menangani klik pada tombol Reset untuk modal tautan berjangka
-        $("#time-reset").click(function() {
-            $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
-        });
-        // Menangani klik pada label platform dalam modal "bagikan"
-        $(".platform").click(function() {
-            var platform = $(this).data("platform");
-            var shortUrl = $("#default_short_url").val();
+                switch (platform) {
+                    case "facebook":
+                        // Tambahkan logika untuk membagikan tautan ke Facebook
+                        // Misalnya, membuka jendela baru dengan tautan Facebook Share
+                        window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(
+                            shortUrl));
+                        break;
+                    case "twitter":
+                        // Tambahkan logika untuk membagikan tautan ke Twitter
+                        // Misalnya, membuka jendela baru dengan tautan Twitter Share
+                        window.open("https://twitter.com/intent/tweet?url=" + encodeURIComponent(shortUrl));
+                        break;
+                    case "whatsapp":
+                        // Tambahkan logika untuk membagikan tautan ke WhatsApp
+                        // Misalnya, membuka jendela baru dengan tautan WhatsApp Share
+                        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shortUrl));
+                        break;
+                    case "copy":
+                        var copyText = document.getElementById("default_short_url");
+                        copyText.select();
 
-            switch (platform) {
-                case "facebook":
-                    // Tambahkan logika untuk membagikan tautan ke Facebook
-                    // Misalnya, membuka jendela baru dengan tautan Facebook Share
-                    window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shortUrl));
-                    break;
-                case "twitter":
-                    // Tambahkan logika untuk membagikan tautan ke Twitter
-                    // Misalnya, membuka jendela baru dengan tautan Twitter Share
-                    window.open("https://twitter.com/intent/tweet?url=" + encodeURIComponent(shortUrl));
-                    break;
-                case "whatsapp":
-                    // Tambahkan logika untuk membagikan tautan ke WhatsApp
-                    // Misalnya, membuka jendela baru dengan tautan WhatsApp Share
-                    window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shortUrl));
-                    break;
-                case "copy":
-                    var copyText = document.getElementById("default_short_url");
-                    copyText.select();
+                        navigator.clipboard.writeText(copyText.value)
+                            .then(function() {
+                                if (edit != true) {}
+                            })
+                            .catch(function(err) {
+                                console.error("Penyalinan gagal: ", err);
+                                alert("Penyalinan gagal. Silakan salin tautan secara manual.");
+                            });
+                        break;
 
-                    navigator.clipboard.writeText(copyText.value)
-                        .then(function() {
-                            if (edit != true) {}
-                        })
-                        .catch(function(err) {
-                            console.error("Penyalinan gagal: ", err);
-                            alert("Penyalinan gagal. Silakan salin tautan secara manual.");
-                        });
-                    break;
+                    case "qr":
+                        // Tambahkan logika untuk menghasilkan QR Code dari tautan
+                        // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
+                        window.open(
+                            `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${ encodeURIComponent(shortUrl)}`
+                            );
+                        break;
+                    default:
+                        break;
+                }
+            });
+            $("#default_short_url").click(function() {
+                var copyText = document.getElementById("default_short_url");
+                copyText.select();
+                document.execCommand("copy");
+                if (edit != true) {
+                    // Menambahkan pesan atau tindakan lain sesuai kebutuhan
+                    // alert("Tautan telah disalin ke clipboardsdfg.");
+                    // Setelah data berhasil disimpan, tampilkan pemberitahuan
+                    $("#successCopy").fadeIn();
 
-                case "qr":
-                    // Tambahkan logika untuk menghasilkan QR Code dari tautan
-                    // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
-                    window.open(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${ encodeURIComponent(shortUrl)}`);
-                    break;
-                default:
-                    break;
-            }
-        });
-        $("#default_short_url").click(function() {
-            var copyText = document.getElementById("default_short_url");
-            copyText.select();
-            document.execCommand("copy");
-            if (edit != true) {
-                // Menambahkan pesan atau tindakan lain sesuai kebutuhan
-                // alert("Tautan telah disalin ke clipboardsdfg.");
+                    // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
+                    setTimeout(function() {
+                        $("#successCopy").fadeOut();
+                    },
+                    3000); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
+
+
+                }
+            });
+            // Menangani klik pada tombol "Simpan"
+            $("#simpanButton").click(function() {
+                // Lakukan aksi penyimpanan data di sini (misalnya, pengiriman data ke server).
+
                 // Setelah data berhasil disimpan, tampilkan pemberitahuan
-                $("#successCopy").fadeIn();
+                $("#successAlert").fadeIn();
 
                 // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
                 setTimeout(function() {
-                    $("#successCopy").fadeOut();
+                    $("#successAlert").fadeOut();
                 }, 3000); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
 
+                // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
+                // resetEditModal();
+            });
+            // $("#simpanButton").click(function() {
+            //     alert('');
+            // });
+            $("#copyButton").click(function() {
+                // Lakukan aksi penyimpanan data di sini (misalnya, pengiriman data ke server).
 
-            }
+                // Setelah data berhasil disimpan, tampilkan pemberitahuan
+                $("#successCopyAlert").fadeIn();
+
+                // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
+                setTimeout(function() {
+                    $("#successCopyAlert").fadeOut();
+                }, 3000); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
+
+                // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
+                resetEditModal();
+            });
         });
-        // Menangani klik pada tombol "Simpan"
-        $("#simpanButton").click(function() {
-            // Lakukan aksi penyimpanan data di sini (misalnya, pengiriman data ke server).
+    </script>
+    <!-- apexcharts -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
-            // Setelah data berhasil disimpan, tampilkan pemberitahuan
-            $("#successAlert").fadeIn();
+    <!-- Echarts -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/echarts/echarts.min.js') }}"></script>
 
-            // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
-            setTimeout(function() {
-                $("#successAlert").fadeOut();
-            }, 3000); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
+    <!-- Vector map-->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/jsvectormap/js/jsvectormap.min.js') }}">
+    </script>
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/jsvectormap/maps/world-merc.js') }}">
+    </script>
 
-            // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
-            // resetEditModal();
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/list.js/list.min.js') }}"></script>
+
+    <!-- dashboard-analytics init js -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/dashboard-analytics.init.js') }}">
+    </script>
+
+    <!-- App js -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/app.js') }}"></script>
+    <!-- profile-setting init js -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/profile-setting.init.js') }}"></script>
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
+        var countData = {{ $countURL }}; // Contoh nilai statiskeluar
+
+        // Ubah lebar bar progres sesuai dengan data yang diperoleh
+        var progressBar = document.getElementById("progress-bar");
+        var progressBarWidth = (countData / 100) * 100; // Ubah 100 menjadi nilai maksimum yang sesuai
+        progressBar.style.width = progressBarWidth + "%";
+        progressBar.setAttribute("aria-valuenow", countData);
+    </script>
+    <script>
+        // Get the value from the server-side variable {{ $countURL }}
+        var countURLValue = {{ $countURL }};
+
+        // Calculate the percentage
+        var percentage = (countURLValue / 100) * 100; // Assuming 100 is the total
+
+        // Update the progress bar width
+        var progressBar = document.querySelector('.progress-bar');
+        progressBar.style.width = percentage + '%';
+        progressBar.setAttribute('aria-valuenow', countURLValue);
+
+        // Update the text
+        var progressText = document.querySelector('.text-muted.mb-0 b');
+        progressText.textContent = countURLValue + ' dari 100';
+    </script>
+    <script>
+        // Temukan tombol "Keluar" berdasarkan ID
+        var keluarButton = document.getElementById("keluarButton");
+
+        // Temukan modal edit berdasarkan ID
+        var modalEdit = document.getElementById("edit");
+
+        // Tambahkan event listener untuk tombol "Keluar"
+        keluarButton.addEventListener("click", function() {
+            // Tutup modal edit
+            modalEdit.classList.remove("show");
         });
-        // $("#simpanButton").click(function() {
-        //     alert('');
-        // });
-        $("#copyButton").click(function() {
-            // Lakukan aksi penyimpanan data di sini (misalnya, pengiriman data ke server).
-
-            // Setelah data berhasil disimpan, tampilkan pemberitahuan
-            $("#successCopyAlert").fadeIn();
-
-            // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
-            setTimeout(function() {
-                $("#successCopyAlert").fadeOut();
-            }, 3000); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
-
-            // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
-            resetEditModal();
-        });
-    });
-</script>
-<!-- apexcharts -->
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-
-<!-- Echarts -->
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/echarts/echarts.min.js') }}"></script>
-
-<!-- Vector map-->
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/jsvectormap/maps/world-merc.js') }}"></script>
-
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/list.js/list.min.js') }}"></script>
-
-<!-- dashboard-analytics init js -->
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/dashboard-analytics.init.js') }}"></script>
-
-<!-- App js -->
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/app.js') }}"></script>
-<!-- profile-setting init js -->
-<script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/pages/profile-setting.init.js')}}"></script>
-<script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js')}}"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    // Ambil data dari {{$countURL}} (misalnya menggunakan AJAX)
-    var countData = {
-        {
-            $countURL
-        }
-    }; // Contoh nilai statiskeluar
-
-    // Ubah lebar bar progres sesuai dengan data yang diperoleh
-    var progressBar = document.getElementById("progress-bar");
-    var progressBarWidth = (countData / 100) * 100; // Ubah 100 menjadi nilai maksimum yang sesuai
-    progressBar.style.width = progressBarWidth + "%";
-    progressBar.setAttribute("aria-valuenow", countData);
-</script>
-<script>
-  const clickCountElement = document.getElementById("clickCount");
-
-  // Mengambil data jumlah klik dari localStorage
-  let clickCount = localStorage.getItem("clickCount");
-
-  if (clickCount !== null) {
-    // Jika ada data jumlah klik yang tersimpan, tampilkan pada halaman
-    clickCountElement.textContent = clickCount + " ";
-  }
-</script>
-<script>
-    // Get the value from the server-side variable {{$countURL}}
-    var countURLValue = {
-        {
-            $countURL
-        }
-    };
-
-    // Calculate the percentage
-    var percentage = (countURLValue / 100) * 100; // Assuming 100 is the total
-
-    // Update the progress bar width
-    var progressBar = document.querySelector('.progress-bar');
-    progressBar.style.width = percentage + '%';
-    progressBar.setAttribute('aria-valuenow', countURLValue);
-
-    // Update the text
-    var progressText = document.querySelector('.text-muted.mb-0 b');
-    progressText.textContent = countURLValue + ' dari 100';
-</script>
-<script>
-    // Temukan tombol "Keluar" berdasarkan ID
-    var keluarButton = document.getElementById("keluarButton");
-
-    // Temukan modal edit berdasarkan ID
-    var modalEdit = document.getElementById("edit");
-
-    // Tambahkan event listener untuk tombol "Keluar"
-    keluarButton.addEventListener("click", function() {
-        // Tutup modal edit
-        modalEdit.classList.remove("show");
-    });
-</script>
-
-
-
+    </script>
+    <script src="{{ asset('vendor/yoeunes/toastr/toastr.min.js') }}"></script>
+    <script>
+        @if (session('toastr'))
+            {!! session('toastr') !!}
+        @endif
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection

@@ -51,7 +51,7 @@ class ProfilController extends Controller
         }
 
         $user->save(); // Menyimpan perubahan pada data pengguna
-        return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
+        return redirect()->back()->with('success', 'Data berhasil diperbarui.');
     }
     public function profileAdmin()
     {
@@ -94,7 +94,7 @@ class ProfilController extends Controller
         }
 
         $admin->save(); // Menyimpan perubahan pada data pengguna
-        return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
+        return redirect()->back()->with('success', 'Data berhasil diperbarui.');
     }
 
 
