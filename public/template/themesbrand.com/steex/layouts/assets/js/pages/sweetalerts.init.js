@@ -45,7 +45,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         showCloseButton: !0
     })
 }), document.addEventListener('DOMContentLoaded', function () {
-    const banUserButtons = document.querySelectorAll('.btn-subtle-danger');
+    const banUserButtons = document.querySelectorAll('.btn-subtle-danger, .btn-subtle-success');
 
     banUserButtons.forEach(button => {
         button.addEventListener('click', function (event) {
@@ -53,21 +53,22 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
             const userId = this.getAttribute('data-user-id');
             const isBanned = this.getAttribute('data-is-banned') === '1';
 
-            let confirmationText, actionText;
+            let confirmationText, actionText, confirmButtonColor;
             if (isBanned) {
                 confirmationText = "Yakin ingin membatalkan pencekalan pengguna ini?";
                 actionText = "Unbanned";
+                confirmButtonColor = "#00cc00";
             } else {
                 confirmationText = "Apakah Anda yakin ingin mencekal pengguna ini?";
                 actionText = "Banned";
+                confirmButtonColor = "#d33";
             }
-
             Swal.fire({
                 title: "Konfirmasi",
                 text: confirmationText,
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#d33",
+                confirmButtonColor: confirmButtonColor,
                 cancelButtonColor: "#3085d6",
                 confirmButtonText: `Ya, ${actionText} user Ini!`,
             }).then((result) => {

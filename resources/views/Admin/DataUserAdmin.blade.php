@@ -106,7 +106,11 @@
                                                     <ul class="d-flex gap-2 list-unstyled mb-0">
                                                         <li>
                                                             <a href="#"
-                                                                class="btn btn-subtle-danger btn-icon btn-sm me-3"
+                                                            @if ($row->is_banned == 1)
+                                                            class="btn btn-subtle-success btn-icon btn-sm me-3"
+                                                            @else
+                                                            class="btn btn-subtle-danger btn-icon btn-sm me-3"
+                                                            @endif
                                                                 data-bs-toggle="modal" data-user-id="{{ $row->id }}"
                                                                 data-is-banned="{{ $row->is_banned }}">
                                                                 <i class="fas fa-ban"></i>
