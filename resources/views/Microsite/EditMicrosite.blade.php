@@ -71,7 +71,7 @@
                                                                             <input type="text" class="form-control"
                                                                             id="placeholderInput"
                                                                             placeholder="Placeholder"
-                                                                            name="button_link[{{ $data->button->id }}]">
+                                                                            name="button_link[{{ $data->button->id }}]" value="{{ $data->button_link }}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
