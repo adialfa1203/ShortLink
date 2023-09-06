@@ -68,25 +68,38 @@ class MicrositeController extends Controller
 
     public function micrositeUpdate(Request $request, $id)
     {
-        $component = Components::find($id);
-        $microsite = Microsite::find($id);
-        $data = Microsite::all();
+        $component = Components::FindOrFail($id);
+        $microsite = Microsite::FindOrFail($id);
         $buttonLinks = $request->input('button_link');
-
-        foreach ($buttonLinks as $socialId => $buttonLink) {
-            $button = Button::findOrFail($socialId);
-
-            $socialData = [
-                'microsite_id' => $id,
-                'buttons_id' => $socialId,
-                'button_link' => $buttonLink,
-            ];
-            Social::create($socialData);
+        $socials = Social::where('microsite_id',$id)->get();
+        $request->validate([
+            'name_microsite' => 'nullable|string',
+            'description' => 'nullable|string',
+            'company_name' => 'nullable|string',
+            'company_address' => 'nullable|string',
+        ]);
+        if ($request->has('name_microsite')) {
+            $microsite->name_microsite = $request->input('name_microsite');
+        }
+        if ($request->has('description')) {
+            $microsite->description = $request->input('description');
+        }
+        if ($request->has('company_name')) {
+            $microsite->company_name = $request->input('company_name');
+        }
+        if ($request->has('company_address')) {
+            $microsite->company_address = $request->input('company_address');
+        }
+        $microsite->save();
+        foreach($socials as $index => $social)
+        {
+            $social->update([
+                'button_link' => $buttonLinks[$index],
+            ]);
         }
 
-        return redirect()->route('microsite', compact('data'))->with('success', 'Button links added successfully.');
+        return redirect()->route('microsite')->with('success', 'Button links added successfully.');
     }
-
 
     public function createComponent(){
         return view('Microsite.CreateComponent');
