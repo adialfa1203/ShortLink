@@ -38,6 +38,7 @@
             display: flex;
             justify-content: space-between;
         }
+
     </style>
 @endsection
 <div class="app-menu navbar-menu">
@@ -104,8 +105,11 @@
                     </button> --}}
                     <button class="nav-link bg-transparent text-white" type="button" role="button" aria-expanded="false" data-bs-toggle="dropdown"
                         aria-controls="sidebarDashboards">
-                        <img class="header-profile-user"
-                            src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/32/avatar-1.jpg') }}" alt="Header Avatar">
+                        <div>
+                            <img src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}"
+                            alt="Avatar"
+                            style="object-fit: cover; object-position: center center; width: 50px; height: 50px; border-radius:50%">
+                        </div>
                             <div class="text-start ms-xl-2">
                                 <span><b>Hi! {{ Auth::user()->name }}</b></span>
 
