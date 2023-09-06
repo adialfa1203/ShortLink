@@ -84,37 +84,37 @@
                                             aria-haspopup="true" aria-expanded="false"><i
                                                 class="fa-solid fa-share-nodes"></i> &nbsp;Bagikan</button>
 
-                                       <!-- Modal bagikan -->
-                        <div class="modal fade" id="bagikan{{$i}}" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <div class="row g-3">
-                                            <div class="countdown-input-subscribe">
-                                                <label class="platform" onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-facebook"></i> &nbsp; Facebook</label>
+                                                        <!-- Modal bagikan -->
+                                            <div class="modal fade" id="bagikan{{$i}}" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                            <div class="row g-3">
+                                                                <div class="countdown-input-subscribe">
+                                                                    <label class="platform" onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-facebook"></i> &nbsp; Facebook</label>
+                                                                </div>
+                                                                <div class="countdown-input-subscribe">
+                                                                    <label class="platform" onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-twitter"></i> &nbsp; Twitter</label>
+                                                                </div>
+                                                                <div class="countdown-input-subscribe">
+                                                                    <label class="platform" onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
+                                                                </div>
+                                                                <div class="countdown-input-subscribe">
+                                                                    <label class="platform" data-platform="copy" id="copyButton" data-url="{{ $row->default_short_url }}" data-id-copy="{{$i}}"><i class="bi bi-clipboard-fill"></i> &nbsp; Copy</label>
+                                                                </div>
+                                                                <div id="successCopyAlert" class="alert alert-success mt-3" style="display: none; position: fixed; bottom: 570px; right: 433px; max-width: 500px;">
+                                                                    Tautan berhasil disalin ke clipboard
+                                                                </div>
+                                                                <div class="countdown-input-subscribe">
+                                                                    <label class="platform" onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-qr-code"></i> &nbsp; QR Code</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="countdown-input-subscribe">
-                                                <label class="platform" onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-twitter"></i> &nbsp; Twitter</label>
-                                            </div>
-                                            <div class="countdown-input-subscribe">
-                                                <label class="platform" onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
-                                            </div>
-                                            <div class="countdown-input-subscribe">
-                                                <label class="platform" data-platform="copy" id="copyButton" data-url="{{ $row->default_short_url }}" data-id-copy="{{$i}}"><i class="bi bi-clipboard-fill"></i> &nbsp; Copy</label>
-                                            </div>
-                                            <div id="successCopyAlert" class="alert alert-success mt-3" style="display: none; position: fixed; bottom: 570px; right: 433px; max-width: 500px;">
-                                                Tautan berhasil disalin ke clipboard
-                                            </div>
-                                            <div class="countdown-input-subscribe">
-                                                <label class="platform" onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('default_short_url{{$i}}').innerText}`)"><i class="bi bi-qr-code"></i> &nbsp; QR Code</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- end Modal bagikan-->
+                                            <!-- end Modal bagikan-->
                                         <button id="clickButton" type="button" class="btn btn-light me-3 btn-sm clickButton" data-bs-toggle="modal" data-bs-target="#zoomInModal-{{ $row->id }}">
                                             <span data-bs-toggle="tooltip" data-bs-placement="left" title="Kode QR"><i class="fa-solid fa-qrcode"></i></span>
                                         </button>
@@ -635,29 +635,14 @@
                     newUrlKey: newUrlKey
                 },
                 dataType: 'JSON',
+                error: function(e) {
+                console.log(e.responseJSON)
+                   alert(e.responseJSON.newUrlKey[0])
+                },
                 success: function(e) {
                     location.reload()
                 }
             })
-            // console.log(newUrlKey);
-
-            // Lakukan permintaan AJAX untuk mengirim data ke server
-            // var xhr = new XMLHttpRequest();
-            // xhr.open('POST', '/update-short-link/'+newUrlKey, true);
-            // xhr.setRequestHeader('Content-Type', 'application/json');
-            // xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken); // Menambahkan header CSRF token
-            // xhr.onreadystatechange = function() {
-            //     if (xhr.readyState === 4 && xhr.status === 200) {
-            //         // Tanggapan sukses dari server
-            //         var response = JSON.parse(xhr.responseText);
-            //         // Lakukan tindakan sesuai dengan respons dari server
-            //         console.log(response);
-            //     }
-            // };
-            // var data = JSON.stringify({
-            //     newUrlKey: newUrlKey
-            // });
-            // xhr.send(data);
         });
     });
 

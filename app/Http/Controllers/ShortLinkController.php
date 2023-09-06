@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use AshAllenDesign\ShortURL\Classes\Builder;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 use Yoeunes\Toastr\Toastr;
 
 class ShortLinkController extends Controller
@@ -19,7 +20,7 @@ class ShortLinkController extends Controller
         if ($user->subscribe == 'yes') {
         } else {
             $shortLinkTotal = $user->shortUrls()->count();
-            if ($shortLinkTotal >= 3) {
+            if ($shortLinkTotal >= 100) {
                 return response()->json(['message' => 'Anda telah mencapai batasan pembuatan tautan baru. Untuk dapat membuat lebih banyak tautan baru, pertimbangkan untuk meningkatkan akun Anda ke versi premium. Dengan berlangganan, Anda akan mendapatkan akses ke fitur-fitur tambahan dan batasan yang lebih tinggi. ', 'status' => 'gagal']);
             }
         }
@@ -76,6 +77,16 @@ class ShortLinkController extends Controller
             return response()->json(['error' => 'Short link not found'], 404);
         }
 
+        $validator = Validator::make($request->all(), [
+            'newUrlKey' => 'required|unique:short_urls,url_key'
+        ],[
+            'newUrlKey.required' => 'Kolom harus diisi',
+            'newUrlKey.unique' => 'Nama sudah digunakan'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 404);
+        }
         // Mengambil data dari permintaan Ajax
         $newUrlKey = $request->newUrlKey;
         // dd($request);

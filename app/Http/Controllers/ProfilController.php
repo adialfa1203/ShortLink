@@ -13,7 +13,20 @@ class ProfilController extends Controller
     public function profile()
     {
         $user = Auth::user();
-        return view('User.ProfilUser',compact('user'));
+
+        if ($user) {
+            $subscribe = $user->subscribe;
+
+            if ($subscribe == 'no') {
+                $accountStatus = 'Akun non Premium';
+            } elseif ($subscribe == 'yes') {
+                $accountStatus = 'Akun Premium';
+            } else {
+                $accountStatus = 'Status tidak valid';
+            }
+        }
+
+        return view('User.ProfilUser', compact('user', 'accountStatus'));
     }
 
     public function updateProfile(Request $request)

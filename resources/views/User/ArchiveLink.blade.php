@@ -69,12 +69,11 @@
                 <div class="card" style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;">
                     <div class="card-body">
                         <div class="d-flex">
-                            <h6 class="col-6">{{$row->title}}</h6>
-                            <!-- Rounded Buttons -->
-                            <button style="margin-left: 39%" type="button" class="btn btn-primary btn-sm" data-bs-target="#arsip{{$row->id}}" data-bs-toggle="modal"><i class="bi bi-archive-fill"></i> Buka Arsipan</button>
-
-                                {{-- <button type="button" class="btn btn-outline-light col-2">Kembalikan Tautan</button> --}}
+                            <h6 class="col-3">{{ $row->title }}</h6>
+                            <div class=" col-9 d-flex flex-row justify-content-end">
+                                <button type="button" class="btn btn-primary me-3 btn-sm" data-bs-target="#arsip{{$row->id}}" data-bs-toggle="modal"><i class="bi bi-archive-fill"></i> Buka Arsipan</button>
                             </div>
+                        </div>
                             <a>
                                 <h3 class="garisbawah card-title mb-2"><span style="color: red;">Link</span>{{$row->default_short_url}}</h3>
                             </a>
