@@ -29,8 +29,8 @@ class MicrositeController extends Controller
     {
         $request->validate([
             'microsite_selection' => 'required',
-            'name' => 'required',
-            'link_microsite' => 'required',
+            'name' => 'required|string|max:10',
+            'link_microsite' => 'required|unique:microsites,link_microsite,id',
         ]);
         $data = [
             'components_id' => $request->microsite_selection,
@@ -83,12 +83,17 @@ class MicrositeController extends Controller
         $buttonLinks = $request->input('button_link');
         $socials = Social::where('microsite_id',$id)->get();
         // dd($buttonLinks);
-        $request->validate([
-            'name_microsite' => 'nullable|string',
-            'description' => 'nullable|string',
-            'company_name' => 'nullable|string',
-            'company_address' => 'nullable|string',
+        $validator = Validator::make($request->all(), [
+            'name_microsite' => 'nullable|string|max:10',
+            'description' => 'nullable|string|max:115',
+            'company_name' => 'nullable|string|max:15',
+            'company_address' => 'nullable|string|max:35',
         ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         if ($request->has('name_microsite')) {
             $microsite->name_microsite = $request->input('name_microsite');
         }
@@ -102,6 +107,7 @@ class MicrositeController extends Controller
             $microsite->company_address = $request->input('company_address');
         }
         $microsite->save();
+
         foreach($socials as $index => $social)
         {
             $social->update([
@@ -109,7 +115,7 @@ class MicrositeController extends Controller
             ]);
         }
 
-        return redirect()->route('microsite')->with('success', 'Button links added successfully.');
+        return redirect()->route('microsite', compact('component'))->with('success', 'Button links added successfully.');
     }
 
     public function createComponent(){
@@ -118,12 +124,14 @@ class MicrositeController extends Controller
 
     public function saveComponent(Request $request){
         $validator = Validator::make($request->all(), [
-            'component_name' => 'required',
+            'component_name' => 'required|string|max:12',
             'cover_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'profile_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
         $coverImage = $request->file('cover_img');
         $profileImage = $request->file('profile_img');
@@ -219,34 +227,11 @@ class MicrositeController extends Controller
         // $social = Social::where('microsite_id', $id)->get();
         return view('Microsite.MicrositeLink');
     }
-    // public function nameMicrosite(Request $request, $microsite)
-    // {
-    //     $updateMicrosite = ShortUrl::where('url_key', $microsite);
-
-    //     if (!$updateMicrosite->exists()) {
-    //         return response()->json(['error' => 'Short link not found'], 404);
-    //     }
-
-    //     $newMicrositeKey = $request->newMicrositeKey;
-
-    //     $updateMicrosite->update([
-    //         'url_key' => $newMicrositeKey,
-    //         'default_short_url' => "http://127.0.0.1:8000/link.id/" . $newMicrositeKey,
-    //     ]);
-
-    //     return response()->json(['message' => 'URL key updated successfully']);
-    // }
     public function search(Request $request)
-{
-    $query = $request->input('name'); // Mengubah 'query' menjadi 'name'
+    {
+        $query = $request->input('name');
+        $results = Microsite::where('field', 'like', '%' . $query . '%')->get();
 
-    // Lakukan logika pencarian Anda di sini, misalnya:
-    $results = Microsite::where('field', 'like', '%' . $query . '%')->get();
-
-    return response()->json(['results' => $results]);
-}
-
-
-
-
+        return response()->json(['results' => $results]);
+    }
 }

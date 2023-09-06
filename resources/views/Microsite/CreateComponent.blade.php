@@ -26,9 +26,10 @@
                                     <label for="validationCustom01" class="form-label">Nama Komponen</label>
                                     <input type="text" class="form-control" id="validationCustom01"
                                         placeholder="Designation" name="component_name" required>
-                                    <div class="invalid-feedback">
-                                        Harap isi kolom ini sebelum melanjutkan proses.
-                                    </div>
+
+                                    @if ($errors->has('component_name'))
+                                        <span class="text-danger">{{ $errors->first('component_name') }}</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -41,6 +42,9 @@
                                         <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/small/img-7.jpg') }}"
                                             alt="" class="card-img-top profile-wid-img object-fit-cover"
                                             style="height: 200px;">
+                                        @if ($errors->has('cover_img'))
+                                            <span class="text-danger">{{ $errors->first('cover_img') }}</span>
+                                        @endif
                                         <div>
                                             <input id="profile-foreground-img-file-input" type="file"
                                                 class="profile-foreground-img-file-input d-none" name="cover_img" required>
@@ -71,6 +75,11 @@
                                                     </label>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            @if ($errors->has('profile_img'))
+                                                <span class="text-danger">{{ $errors->first('profile_img') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

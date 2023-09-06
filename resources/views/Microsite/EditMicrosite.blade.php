@@ -44,8 +44,18 @@
                                             <input type="text" class="form-control" id="employeeName"
                                                 placeholder="Nama Profile" value="{{ $microsite->name_microsite }}"
                                                 name="name_microsite">
+                                            <div>
+                                                @if ($errors->has('name_microsite'))
+                                                    <span class="text-danger">{{ $errors->first('name_microsite') }}</span>
+                                                @endif
+                                            </div>
                                         </div>
                                         <textarea name="description" id="editor">{{ $microsite->description }}</textarea>
+                                        <div>
+                                            @if ($errors->has('description'))
+                                                <span class="text-danger">{{ $errors->first('description') }}</span>
+                                            @endif
+                                        </div>
                                         <div class="mb-3">
                                             <div class="card-body">
                                                 <div class="accordion" id="default-accordion-example">
@@ -74,6 +84,12 @@
                                                                                 placeholder="Placeholder"
                                                                                 name="button_link[{{ $data->button->id }}]"
                                                                                 value="{{ $data->button_link }}">
+                                                                            <div>
+                                                                                @if ($errors->has('button_link'))
+                                                                                    <span
+                                                                                        class="text-danger">{{ $errors->first('button_link') }}</span>
+                                                                                @endif
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -101,6 +117,12 @@
                                                                             name="company_name" id="placeholderInput"
                                                                             placeholder="Nama Perusahaan"
                                                                             value="{{ $microsite->company_name }}">
+                                                                        <div>
+                                                                            @if ($errors->has('company_name'))
+                                                                                <span
+                                                                                    class="text-danger">{{ $errors->first('company_name') }}</span>
+                                                                            @endif
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -126,6 +148,12 @@
                                                                             value="{{ $microsite->company_address }}"
                                                                             id="placeholderInput" name="company_address"
                                                                             placeholder="Alamat Perusahaan">
+                                                                        <div>
+                                                                            @if ($errors->has('company_address'))
+                                                                                <span
+                                                                                    class="text-danger">{{ $errors->first('company_address') }}</span>
+                                                                            @endif
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -147,6 +175,12 @@
                                                         <input type="text" class="form-control" id="address"
                                                             name="name" placeholder="aqua-link"
                                                             value="{{ $microsite->name }}">
+                                                        <div>
+                                                            @if ($errors->has('name'))
+                                                                <span
+                                                                    class="text-danger">{{ $errors->first('name') }}</span>
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Tautan
@@ -155,6 +189,12 @@
                                                             <input type="text" class="form-control" id="address"
                                                                 placeholder="aqua-link" name="default_short_url"
                                                                 value="{{ $short_url->default_short_url }}">
+                                                            <div>
+                                                                @if ($errors->has('default_short_url'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('default_short_url') }}</span>
+                                                                @endif
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -246,7 +286,8 @@
         <script
             src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/%40ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}">
         </script>
-
+        <!-- profile-setting init js -->
+        <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/profile-setting.init.js') }}"></script>
         <!-- init js -->
         <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-editor.init.js') }}"></script>
 
