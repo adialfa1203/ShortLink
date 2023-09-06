@@ -71,7 +71,7 @@
                         <div class="d-flex">
                             <h6 class="col-6">{{$row->title}}</h6>
                             <!-- Rounded Buttons -->
-                            <button style="margin-left: 39%" type="submit" class="btn btn-primary btn-sm" onclick="restore({{ $row->id }})"><i class="bi bi-archive-fill"></i> Buka Arsipan</button>
+                            <button style="margin-left: 39%" type="button" class="btn btn-primary btn-sm" onclick="restore({{ $row->id }})"><i class="bi bi-archive-fill"></i> Buka Arsipan</button>
 
                                 {{-- <button type="button" class="btn btn-outline-light col-2">Kembalikan Tautan</button> --}}
                             </div>

@@ -2,17 +2,16 @@
 
 @section('title', 'Microsite')
 @section('style')
-    <style>
-        /* CSS untuk hover card */
-        .hover {
-            67
-            /* Misalnya, ubah warna latar belakang dan perbesar sedikit card ketika dihover */
-            /* border: 2px solid rgb(61, 56, 56); */
-            background-color: #f8f8f8;
-            transform: scale(1.05);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-    </style>
+<style>
+    /* CSS untuk hover card */
+    .hover {
+        /* Misalnya, ubah warna latar belakang dan perbesar sedikit card ketika dihover */
+        /* border: 2px solid rgb(61, 56, 56); */
+        background-color: #f8f8f8;
+        transform: scale(1.05);
+        transition: background-color 0.3s, transform 0.3s;
+    }
+</style>
 
 @endsection
 
@@ -85,186 +84,177 @@
                                         </div>
                                         <!-- end nav -->
                                     </div> <!-- end col-->
-                                    <form id="micrositeUrl">
-                                        <div class="col-lg-9">
-                                            <div class="px-lg-4">
-                                                <div class="tab-content">
-                                                    <div class="tab-pane fade show active" id="v-pills-bill-info"
-                                                        role="tabpanel" aria-labelledby="v-pills-bill-info-tab">
-                                                        <div>
-                                                            <h5>Jenis Microsite</h5>
-                                                            <p class="text-muted">Pilih jenis microsite yang cocok dengan
-                                                                kebutuhan Anda!</p>
-                                                        </div>
-                                                        <div class="row">
-                                                            @foreach ($data as $microsite)
-                                                                <div class="col-xl-4 col-sm-6 mb-4">
-                                                                    <div class="card">
+
+                                    <div class="col-lg-9">
+                                        <div class="px-lg-4">
+                                            <div class="tab-content">
+                                                <div class="tab-pane fade show active" id="v-pills-bill-info"
+                                                    role="tabpanel" aria-labelledby="v-pills-bill-info-tab">
+                                                    <div>
+                                                        <h5>Jenis Microsite</h5>
+                                                        <p class="text-muted">Pilih jenis microsite yang cocok dengan
+                                                            kebutuhan Anda!</p>
+                                                    </div>
+                                                    <div class="row">
+                                                        @foreach ($data as $microsite)
+                                                            <div class="col-xl-4 col-sm-6 mb-4">
+                                                                <div class="card">
+                                                                    <div class="text-center">
+                                                                        <div class="dropdown float-end">
+                                                                            <a class="text-reset dropdown-btn"
+                                                                                href="#" data-bs-toggle="dropdown"
+                                                                                aria-haspopup="true" aria-expanded="false">
+                                                                            </a>
+                                                                        </div>
+                                                                        <strong
+                                                                            class="fs-md text-muted mb-0">{{ $microsite->name }}</strong>
+                                                                    </div>
+                                                                    <div>
+                                                                        <img src="{{ asset('component/' . $microsite->cover_img) }}"
+                                                                            alt=""
+                                                                            class="card-img-top profile-wid-img object-fit-cover"
+                                                                            style="height: 200px;">
+                                                                    </div>
+                                                                    <div class="card-body pt-0 mt-n5">
                                                                         <div class="text-center">
-                                                                            <div class="dropdown float-end">
-                                                                                <a class="text-reset dropdown-btn"
-                                                                                    href="#" data-bs-toggle="dropdown"
-                                                                                    aria-haspopup="true"
-                                                                                    aria-expanded="false">
-                                                                                </a>
-                                                                            </div>
-                                                                            <strong
-                                                                                class="fs-md text-muted mb-0">{{ $microsite->name }}</strong>
-                                                                        </div>
-                                                                        <div>
-                                                                            <img src="{{ asset('component/' . $microsite->cover_img) }}"
-                                                                                alt=""
-                                                                                class="card-img-top profile-wid-img object-fit-cover"
-                                                                                style="height: 200px;">
-                                                                        </div>
-                                                                        <div class="card-body pt-0 mt-n5">
-                                                                            <div class="text-center">
-                                                                                <div
-                                                                                    class="profile-user position-relative d-inline-block mx-auto">
-                                                                                    <img src="{{ asset('component/' . $microsite->profile_img) }}"
-                                                                                        alt=""
-                                                                                        class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="text-center mt-3">
-                                                                                <label class="form-check-label">
-                                                                                    <input type="radio"
-                                                                                        id="microsite_selection"
-                                                                                        name="microsite_selection"
-                                                                                        value="{{ $microsite->id }}"
-                                                                                        class="form-check-input">
-                                                                                    Pilih jenis microsite
-                                                                                    {{ $microsite->name }}
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                        <div class="d-flex align-items-start gap-3 mt-4">
-                                                            <button type="button"
-                                                                class="btn btn-success btn-label right ms-auto nexttab nexttab"
-                                                                data-nexttab="v-pills-bill-address-tab" id="createUrl"><i
-                                                                    class="ri-arrow-right-line label-icon align-middle fs-lg ms-2"></i>Selanjutnya</button>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end tab pane -->
-                                                    <div class="tab-pane fade" id="v-pills-bill-address" role="tabpanel"
-                                                        aria-labelledby="v-pills-bill-address-tab">
-                                                        <div>
-                                                            <h5>Pilih Nama</h5>
-                                                            <p class="text-muted">Buat nama dan link sesuai keinginan Anda!
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <div class="row g-2">
-                                                                <div class="col-12">
-                                                                    <label for="address" class="form-label">Nama
-                                                                        Microsite</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="name" placeholder="aqua-link">
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <label for="address" class="form-label">Tautan
-                                                                        Microsite</label>
-                                                                    <div class="input-group">
-                                                                        <button type="button"
-                                                                            class="btn btn-danger bg-gradient">link.id/</button>
-                                                                        <input type="text" class="form-control"
-                                                                            placeholder="aqua-link" name="link_microsite">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-start gap-3 mt-4">
-                                                            <button type="button"
-                                                                class="btn btn-light btn-label previestab"
-                                                                data-previous="v-pills-bill-info-tab"><i
-                                                                    class="ri-arrow-left-line label-icon align-middle fs-lg me-2"></i>
-                                                                Sebelumnya</button>
-                                                            <button type="button"
-                                                                class="btn btn-success btn-label right ms-auto nexttab nexttab"
-                                                                data-nexttab="v-pills-payment-tab"><i
-                                                                    class="ri-arrow-right-line label-icon align-middle fs-lg ms-2"></i>Selanjutnya</button>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end tab pane -->
-                                                    <div class="tab-pane fade" id="v-pills-payment" role="tabpanel"
-                                                        aria-labelledby="v-pills-payment-tab">
-                                                        <div>
-                                                            <h5>Sosial Media</h5>
-                                                            <p class="text-muted">Pilih sosial media yang sering anda
-                                                                gunakan!
-                                                            </p>
-                                                        </div>
-                                                        <div class="row">
-                                                            @foreach ($button as $data)
-                                                                <div class="col-xl-4 col-sm-6 mb-4">
-                                                                    <div class="card" id="{{ $data->id }}">
-                                                                        <div class="card-footer text-center ">
                                                                             <div
-                                                                                class="d-flex align-items-center justify-content-end">
-                                                                                <label class="mb-0 me-2 ">
-                                                                                    <input type="checkbox"
-                                                                                        name="selectedButtons[]"
-                                                                                        value="{{ $data->id }}"
-                                                                                        class="checkbox"
-                                                                                        style="display: none;">
-                                                                                </label>
-                                                                                <button
-                                                                                    style="background-color: {{ $data->color_hex }}; color: white;"
-                                                                                    type="button" name="button"
-                                                                                    value="{{ $data->name_button }}"
-                                                                                    class="col-xl-12 btn btn-label rounded-pill"
-                                                                                    data-button-value="{{ $data->id }}"
-                                                                                    onclick="toggleCardHover('{{ $data->id }}')">
-                                                                                    <i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2"
-                                                                                        style="color: white;"></i>
-                                                                                    {{ $data->name_button }}
-                                                                                </button>
+                                                                                class="profile-user position-relative d-inline-block mx-auto">
+                                                                                <img src="{{ asset('component/' . $microsite->profile_img) }}"
+                                                                                    alt=""
+                                                                                    class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
                                                                             </div>
+                                                                        </div>
+                                                                        <div class="text-center mt-3">
+                                                                            <label class="form-check-label">
+                                                                                <input type="radio"
+                                                                                    id="tema"
+                                                                                    name="microsite_selection"
+                                                                                    value="{{ $microsite->id }}"
+                                                                                    class="form-check-input">
+                                                                                Pilih jenis microsite {{ $microsite->name }}
+                                                                            </label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            @endforeach
-                                                        </div>
-                                                        <div class="d-flex align-items-start gap-3 mt-4">
-                                                            <button type="button"
-                                                                class="btn btn-light btn-label previestab"
-                                                                data-previous="v-pills-bill-address-tab"><i
-                                                                    class="ri-arrow-left-line label-icon align-middle fs-lg me-2"></i>
-                                                                Sebelumnya</button>
-                                                            <button type="submit"
-                                                                class="btn btn-success btn-label right ms-auto nexttab nexttab"
-                                                                data-nexttab="v-pills-finish-tab"><i
-                                                                    class="ri-arrow-right-line label-icon align-middle fs-lg ms-2"></i>
-                                                                Submit</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane fade" id="v-pills-finish" role="tabpanel"
-                                                        aria-labelledby="v-pills-finish-tab">
-                                                        <div class="text-center pt-4 pb-2">
-
-                                                            <div class="mb-4">
-                                                                <lord-icon src="https://cdn.lordicon.com/lupuorrc.json"
-                                                                    trigger="loop"
-                                                                    colors="primary:#0ab39c,secondary:#405189"
-                                                                    style="width:120px;height:120px"></lord-icon>
                                                             </div>
-                                                            <h5>Your Order is Completed !</h5>
-                                                            <p class="text-muted">You Will receive an order confirmation
-                                                                email
-                                                                with details of your order.</p>
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="d-flex align-items-start gap-3 mt-4">
+                                                        <button type="button"
+                                                            class="btn btn-success btn-label right ms-auto nexttab nexttab"
+                                                            data-nexttab="v-pills-bill-address-tab"><i
+                                                                class="ri-arrow-right-line label-icon align-middle fs-lg ms-2"></i>Selanjutnya</button>
+                                                    </div>
+                                                </div>
+                                                <!-- end tab pane -->
+                                                <div class="tab-pane fade" id="v-pills-bill-address" role="tabpanel"
+                                                    aria-labelledby="v-pills-bill-address-tab">
+                                                    <div>
+                                                        <h5>Pilih Nama</h5>
+                                                        <p class="text-muted">Buat nama dan link sesuai keinginan Anda!</p>
+                                                    </div>
+                                                    <div>
+                                                        <div class="row g-2">
+                                                            <div class="col-12">
+                                                                <label for="address" class="form-label">Nama
+                                                                    Microsite</label>
+                                                                <input type="text" class="form-control" id="address"
+                                                                    name="name" placeholder="aqua-link">
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <label for="address" class="form-label">Tautan
+                                                                    Microsite</label>
+                                                                <div class="input-group">
+                                                                    <button type="button"
+                                                                        class="btn btn-danger bg-gradient">link.id/</button>
+                                                                    <input type="text" class="form-control"
+                                                                        id="address" placeholder="aqua-link"
+                                                                        name="link_microsite">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <!-- end tab pane -->
+                                                    <div class="d-flex align-items-start gap-3 mt-4">
+                                                        <button type="button" class="btn btn-light btn-label previestab"
+                                                            data-previous="v-pills-bill-info-tab"><i
+                                                                class="ri-arrow-left-line label-icon align-middle fs-lg me-2"></i>
+                                                            Sebelumnya</button>
+                                                        <button type="button"
+                                                            class="btn btn-success btn-label right ms-auto nexttab nexttab"
+                                                            data-nexttab="v-pills-payment-tab"><i
+                                                                class="ri-arrow-right-line label-icon align-middle fs-lg ms-2"></i>Selanjutnya</button>
+                                                    </div>
                                                 </div>
-                                                <!-- end tab content -->
-                                            </div>
+                                                <!-- end tab pane -->
+                                                <div class="tab-pane fade" id="v-pills-payment" role="tabpanel"
+                                                    aria-labelledby="v-pills-payment-tab">
+                                                    <div>
+                                                        <h5>Sosial Media</h5>
+                                                        <p class="text-muted">Pilih sosial media yang sering anda gunakan!
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        @foreach ($button as $data)
+                                                        <div class="col-xl-4 col-sm-6 mb-4">
+                                                            <div class="card" id="{{ $data->id }}">
+                                                                <div class="card-footer text-center ">
+                                                                    <div class="d-flex align-items-center justify-content-end">
+                                                                        <label class="mb-0 me-2 ">
+                                                                            <input type="checkbox"
+                                                                            name="selectedButtons[]"
+                                                                            value="{{ $data->id }}"
+                                                                            class="checkbox"
+                                                                            style="display: none;">
+                                                                        </label>
+                                                                        <button
+                                                                            style="background-color: {{ $data->color_hex }}; color: white;"
+                                                                            type="button"
+                                                                            name="button" value="{{ $data->name_button }}"
+                                                                            class="col-xl-12 btn btn-label rounded-pill"
+                                                                            data-button-value="{{ $data->id }}"
+                                                                            onclick="toggleCardHover('{{ $data->id }}')">
+                                                                            <i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2"
+                                                                                style="color: white;"></i>
+                                                                            {{ $data->name_button }}
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="d-flex align-items-start gap-3 mt-4">
+                                                        <button type="button" class="btn btn-light btn-label previestab"
+                                                            data-previous="v-pills-bill-address-tab"><i
+                                                                class="ri-arrow-left-line label-icon align-middle fs-lg me-2"></i>
+                                                            Sebelumnya</button>
+                                                        <button type="submit"
+                                                            class="btn btn-success btn-label right ms-auto nexttab nexttab"
+                                                            data-nexttab="v-pills-finish-tab" onclick="return validateForm();"><i
+                                                                class="ri-arrow-right-line label-icon align-middle fs-lg ms-2"></i>
+                                                            Submit</button>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="v-pills-finish" role="tabpanel"
+                                                    aria-labelledby="v-pills-finish-tab">
+                                                    <div class="text-center pt-4 pb-2">
 
+                                                        <div class="mb-4">
+                                                            <lord-icon src="https://cdn.lordicon.com/lupuorrc.json"
+                                                                trigger="loop" colors="primary:#0ab39c,secondary:#405189"
+                                                                style="width:120px;height:120px"></lord-icon>
+                                                        </div>
+                                                        <h5>Your Order is Completed !</h5>
+                                                        <p class="text-muted">You Will receive an order confirmation email
+                                                            with details of your order.</p>
+                                                    </div>
+                                                </div>
+                                                <!-- end tab pane -->
+                                            </div>
+                                            <!-- end tab content -->
                                         </div>
-                                    </form>
+
+                                    </div>
                                     <!-- end row -->
                             </form>
                         </div>
@@ -322,44 +312,51 @@
         }
     </script>
 
-    <script>
-        function toggleCardHover(cardId) {
-            const card = document.getElementById(cardId);
-            card.classList.toggle('hover');
+<script>
+    function toggleCardHover(cardId) {
+        const card = document.getElementById(cardId);
+        card.classList.toggle('hover');
+    }
+</script>
+
+<script>
+    // Fungsi untuk melakukan validasi sebelum submit
+function validateForm() {
+    var activeTab = $('.tab-pane.active'); // Dapatkan tab yang sedang aktif
+    var inputs = activeTab.find('input[type="text"], input[type="radio"], input[type="checkbox"], select'); // Dapatkan semua input dalam tab yang aktif
+
+    // Periksa apakah ada input yang belum diisi
+    var invalidInputs = inputs.filter(function() {
+        // Periksa input radio yang dipilih
+        if ($(this).attr('type') == 'radio') {
+            var groupName = $(this).attr('name');
+            return $('input[name="' + groupName + '"]:checked').length === 0;
         }
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#createUrl').click(function() {
-                // Ambil CSRF token dari meta tag Laravel
-                var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-                // Buat objek FormData dari formulir Anda
-                var formData = new FormData($('#micrositeUrl')[0]);
+        // Periksa input checkbox yang dipilih
+        if ($(this).attr('type') == 'checkbox') {
+            return !$(this).is(':checked');
+        }
 
-                // Tambahkan CSRF token ke dalam data permintaan
-                formData.append('_token', csrfToken);
+        // Periksa input teks yang kosong
+        if ($(this).is('select')) {
+            return $(this).val() === null;
+        }
 
-                $.ajax({
-                    headers: {
-                        'X-CSRF-Token': csrfToken
-                    },
-                    type: 'POST',
-                    url: '{{ route('url.microsite') }}', // Sesuaikan dengan URL route yang sesuai
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        // Handle response dari server di sini, misalnya menampilkan pesan sukses atau mengambil data kembali
-                        console.log(response);
-                    },
-                    error: function(xhr, textStatus, errorThrown) {
-                        // Handle error jika terjadi kesalahan
-                        console.error(xhr.responseText);
-                    }
-                });
-            });
-        });
-    </script>
+        return $.trim($(this).val()) === '';
+    });
+
+    // Jika ada input yang belum diisi, tampilkan alert
+    if (invalidInputs.length > 0) {
+        alert('Silakan isi semua data yang diperlukan sebelum melanjutkan.');
+        // Aktifkan tab pertama
+        $('.nav-link:first').tab('show');
+        return false; // Mencegah pengiriman form
+    }
+
+    return true; // Submit form jika semua input telah diisi
+}
+
+</script>
 
 @endsection

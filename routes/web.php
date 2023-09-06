@@ -160,6 +160,9 @@ Route::get('/edit-button/{id}', [ButtonController::class, 'editButton'])->name('
 Route::get('/delete-button/{id}', [ButtonController::class, 'deleteButton'])->name('delete.button');
 Route::get('/view-button', [ButtonController::class, 'viewButton'])->name('view.button');
 //Komentar
-Route::get('/viewkomentar', [CommentController::class, 'viewkomentar'])->name('viewkomentar');
+Route::get('/view-komentar', [CommentController::class, 'viewkomentar'])->name('viewkomentar');
 
+});
+Route::get('/ngetes', function () {
+    return view('welcome');   
 });
