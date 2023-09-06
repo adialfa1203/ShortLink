@@ -53,14 +53,14 @@
         <div class="col-4">
             <h5>Tautan yang Diarsip</h5>
                 </div>
-        <div class="col-8 col-sm mb-3">
-            <div class="d-flex justify-content-sm-end">
-                <div class="search-box ms-2">
-                    <input type="text" class="form-control search" placeholder="Search...">
-                    <i class="ri-search-line search-icon"></i>
+                <div class=" col-8 col-sm mb-3">
+                    <div class="d-flex justify-content-sm-end">
+                        <div class="search-box ms-2">
+                            <input type="text" class="form-control search" placeholder="Search...">
+                            <i class="ri-search-line search-icon"></i>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
     </div>
     <div class="row">
         @foreach ($data as $row)
@@ -88,7 +88,7 @@
                                 <div class=" col-9 d-flex flex-row justify-content-end">
                                     <button disabled type="button" class="btn disable btn-light me-3 btn-sm"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Tautan berbasis waktu"><i class="fa-solid fa-clock"></i>&nbsp;Atur waktu</span></button>
                                     <button disabled type="button" class="btn disable btn-light me-3 btn-sm"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Tautan terlindungi"><i class="fa-solid fa-lock"></i>&nbsp;kata sandi</span></button>
-                                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample112" role="button" aria-expanded="true" aria-controls="collapseExample112">
+                                    <button disabled ="button" class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample112" role="button" aria-expanded="true" aria-controls="collapseExample112">
                                         <i class="bi bi-bar-chart-line-fill"></i> statistik
                                     </button>
                                 </div>
@@ -116,44 +116,44 @@
         <!-- container-fluid -->
     </div>
     @section('script')
-<script>
-    var options = {
-          series: [{
-            name: "sunardi",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }],
-          chart: {
-          height: 350,
-          type: 'line',
-          zoom: {
+    <script>
+        var options = {
+            series: [{
+                name: "sunardi",
+                data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+            }],
+            chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+                enabled: false
+            }
+            },
+            dataLabels: {
             enabled: false
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: 'straight'
-        },
-        title: {
-          text: 'Product Trends by Month',
-          align: 'left'
-        },
-        grid: {
-          row: {
-            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-            opacity: 0.5
-          },
-        },
-        xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-        }
-        };
+            },
+            stroke: {
+            curve: 'straight'
+            },
+            title: {
+            text: 'Product Trends by Month',
+            align: 'left'
+            },
+            grid: {
+            row: {
+                colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                opacity: 0.5
+            },
+            },
+            xaxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+            }
+            };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
+            var chart = new ApexCharts(document.querySelector("#chart"), options);
+            chart.render();
 
-</script>
+    </script>
 <script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -188,6 +188,20 @@
         });
     });
 </script>
-
+<script>
+    $(document).ready(function() {
+        $('.search').keyup(function() {
+            var searchText = $(this).val().toLowerCase();
+            $('.card').each(function() {
+                var cardText = $(this).text().toLowerCase();
+                if (cardText.includes(searchText)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
 @endsection
 @endsection

@@ -162,45 +162,47 @@
                                                 </div> --}}
                                         {{-- end modal panjang --}}
                                         <br>
-                                        {{-- modal panjang tautan berjangka --}}
-                                        <div class="container-fluid">
-                                            <div class="card">
-                                                <button type="button" style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; width: 100%; text-align: left;">
-                                                    <i class="bi bi-clock" style="font-size: 12px; margin-right: 5px;"></i>Tautan
+                                       {{-- modal panjang tautan berjangka --}}
+                                       <div class="container-fluid">
+                                        <div class="card">
+                                                <button type="button"
+                                                    style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; width: 100%; text-align: left;">
+                                                    <i class="bi bi-clock"
+                                                        style="font-size: 12px; margin-right: 5px;"></i>Tautan
                                                     Berjangka
                                                 </button>
-                                                <div class="collapse" id="tautanberjangka">
-                                                    <div class="card card-body">
-                                                        <div class="container">
+                                            <div class="collapse" id="tautanberjangka">
+                                                <div class="card card-body">
+                                                    <div class="container">
+
+                                                        <div class="col-lg-12">
 
                                                             <div class="col-lg-12">
-
-                                                                <div class="col-lg-12">
-                                                                    <div class="position-relative auth-pass-inputgroup mb-3">
-                                                                        <label for="old_password" class="form-label">Tanggal dan Waktu</label>
-                                                                        <input name="deactivated_at" type="datetime-local" id="old_password" class="form-control pe-5 time-input">
-                                                                        <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon">
-                                                                        </button>
-                                                                    </div>
-                                                                    <button type="button" id="time-reset" style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; justify-content: flex-end; float: right;">
-                                                                        <span class="bi bi-arrow-clockwise"> Reset</span>
+                                                                <div class="position-relative auth-pass-inputgroup mb-3">
+                                                                    <label for="old_password" class="form-label">Tanggal dan Waktu</label>
+                                                                    <input name="deactivated_at" type="datetime-local" id="old_password" class="form-control pe-5 time-input"  min="">
+                                                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon">
                                                                     </button>
                                                                 </div>
-
+                                                                <button type="button" id="time-reset" style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; justify-content: flex-end; float: right;">
+                                                                    <span class="bi bi-arrow-clockwise"> Reset</span>
+                                                                </button>
                                                             </div>
 
                                                         </div>
+
                                                     </div>
-                                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-                                                        data-bs-target="#tautanberjangka" aria-expanded="false"
-                                                        aria-controls="collapseExample" id="toggleButton"
-                                                        style="background-color: rgb(13, 13, 118)">
-                                                        Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>
-                                                    </button>
                                                 </div>
                                             </div>
-                                            {{-- end modal tautan berjangka --}}
+                                            <button class="btn btn-primary" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#tautanberjangka"
+                                                aria-expanded="false" aria-controls="collapseExample"
+                                                id="toggleButton" style="background-color: rgb(13, 13, 118)">
+                                                Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>
+                                            </button>
                                         </div>
+                                    </div>
+                                    {{-- end modal tautan berjangka --}}
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -559,7 +561,7 @@
                                 icon: 'error',
                                 html: response.message +
                                     'Klik di <a href="#">sini</a> ' +
-                                    'untuk info lebih lanjut tentang langganan premium.',                                
+                                    'untuk info lebih lanjut tentang langganan premium.',
                             })
                         }
                         // Tangani respons dari server
@@ -758,6 +760,17 @@
         progressBar.setAttribute("aria-valuenow", countData);
     </script>
     <script>
+  const clickCountElement = document.getElementById("clickCount");
+
+  // Mengambil data jumlah klik dari localStorage
+  let clickCount = localStorage.getItem("clickCount");
+
+  if (clickCount !== null) {
+    // Jika ada data jumlah klik yang tersimpan, tampilkan pada halaman
+    clickCountElement.textContent = clickCount + "";
+  }
+</script>
+    <script>
         // Get the value from the server-side variable {{ $countURL }}
         var countURLValue = {{ $countURL }};
 
@@ -773,6 +786,7 @@
         var progressText = document.querySelector('.text-muted.mb-0 b');
         progressText.textContent = countURLValue + ' dari 100';
     </script>
+
     <script>
         // Temukan tombol "Keluar" berdasarkan ID
         var keluarButton = document.getElementById("keluarButton");
@@ -797,4 +811,31 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="sweetalert2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function () {
+            $("#toggleButton").click(function () {
+                $("#tautanberjangka").collapse('toggle');
+                var buttonText = $(this).text();
+                if (buttonText.trim() === "Tampilkan lebih banyak") {
+                    $(this).html('Tampilkan lebih sedikit <i class="fa-solid fa-angle-up"></i>');
+                } else {
+                    $(this).html('Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>');
+                }
+            });
+        });
+    </script>
+    <script>
+        // Mendapatkan elemen input
+        var inputTanggal = document.getElementById('old_password');
+    
+        // Mendapatkan tanggal hari ini dalam format yang sesuai dengan datetime-local
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = String(today.getMonth() + 1).padStart(2, '0'); // Bulan dimulai dari 0
+        var day = String(today.getDate()).padStart(2, '0');
+        var waktuHariIni = year + '-' + month + '-' + day + 'T00:00';
+    
+        // Mengatur atribut "min" pada elemen input
+        inputTanggal.setAttribute('min', waktuHariIni);
+    </script>
 @endsection

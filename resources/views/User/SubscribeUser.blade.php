@@ -11,12 +11,12 @@
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                 <h4 class="mb-sm-0">Berlangganan</h4>
 
-                                <div class="page-title-right">
+                                {{-- <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
                                         <li class="breadcrumb-item active">Products</li>
                                     </ol>
-                                </div>
+                                </div> --}}
 
                             </div>
                         </div>
@@ -29,19 +29,15 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="wrapper d-flex align-items-center">
-                                            {{-- <div class="avatar-md">
-                                                <div class="avatar-title bg-success-subtle text-success fs-xl rounded mx-3">
-                                                    <img class="card-img-top img-fluid" src="{{ asset('plugin/cat-berlangganan.jpg') }}" style="display: block; margin: 0 auto; width: 80%;" alt="Card image cap">
-                                                </div>
-                                            </div> --}}
-                                            <img class="card-img-top img-fluid" src="{{ asset('plugin/cat-free.jpg') }}" style="width: 15%;" alt="Card image cap">
-
-                                            <div style="margin-left: 2%;">
-                                                <h6 class="card-title long-text">link.id - Layanan Gratis (Selamanya)</h6>
-                                                <p class="card-text text-muted long-text">Anda menggunakan layanan gratis dari link.id</p>
+                                            <div class="col-2">
+                                                <img class="card-img-top img-fluid" src="{{ asset('plugin/cat-free.jpg') }}" style="width: 100%;" alt="Card image cap">
                                             </div>
-                                            <div style="margin-left:30%;"  >
-                                                <a href="/subscribe-product-user" type="button" class="btn btn-outline-danger">Berlangganan Sekarang</a>
+                                            <div class="col-7">
+                                                    <h6 class="card-title long-text">link.id - Layanan Gratis (Selamanya)</h6>
+                                                    <p class="card-text text-muted long-text">Anda menggunakan layanan gratis dari link.id</p>
+                                            </div>
+                                            <div class="col-3 col-sm-1 col-md-3">
+                                                    <a href="/subscribe-product-user" type="button" class="btn btn-outline-danger" style="width: auto">Berlangganan Sekarang</a>
                                             </div>
                                         </div>
                                     </div>
