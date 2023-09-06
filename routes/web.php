@@ -11,6 +11,7 @@ use App\Http\Controllers\DahsboardController;
 use App\Http\Controllers\ArchiveLinkController;
 use App\Http\Controllers\AnalyticUserController;
 use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SubscribeUserController;
 use App\Http\Controllers\MicrositeController;
 use App\Http\Controllers\ButtonController;
@@ -46,6 +47,7 @@ Route::post('send-emails', [AuthController::class, 'sendSampleEmail'])->name('se
 Route::get('verification', [AuthController::class, 'verification'])->name('verification');
 Route::post('verificationCode', [AuthController::class, 'verificationCode'])->name('verificationCode');
 Route::get('/', [DahsboardController::class, 'home']);
+});
 
 Route::get('/', function () {
     return view('Landingpage.Home');
@@ -70,7 +72,8 @@ Route::get('Account', [DahsboardController::class, 'Account']);
 Route::get('BillingSubscriptions', [DahsboardController::class, 'BillingSubscriptions']);
 Route::get('PlatformMicrosite', [DahsboardController::class, 'PlatformMicrosite']);
 Route::get('ShortLink', [DahsboardController::class, 'ShortLink']);
-});
+Route::get('HelpSupport', [DahsboardController::class, 'HelpSupport']);
+Route::post('/create/{id}', [CommentController::class, 'create'])->name('create');
 // Route::get('/qr', function()
 // {
 // 	return QrCode::size(250)
@@ -85,9 +88,8 @@ Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
 //Middleware User
 Route::group(['middleware' => ['checkBanStatus', 'role:user']], function () {
-Route::get('HelpSupport', [DahsboardController::class, 'HelpSupport']);
-Route::post('/create/{id}', [CommentController::class, 'create'])->name('create');
-
+//search
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 //Dashboard
 Route::get('/dashboard-user', [DahsboardController::class, 'dashboardUser'])->name('dashboard.user');
@@ -97,9 +99,13 @@ Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('short
 Route::post('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
 Route::post('/microsite/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.link');
 //ActiveLink
+// Route::get('/link-chart', [LinkController::class, 'LinkUsersChart'])->name('link.users.chart');
+Route::get('/link-chart', [LinkController::class, 'LinkUsersChart'])->name('link.users.chart');
 Route::get('/link/{shortCode}', [LinkController::class, 'showLink'])->name('link.show');
+Route::post('active-link', [LinkController::class,'activeLink'])->name('active.link');
 Route::get('/archive/{id}', [LinkController::class, 'archive'])->name('archive');
 //ArchiveLink
+Route::post('archive-link', [LinkController::class,'archiveLink'])->name('archive.link');
 Route::get('/archive-link-user', [ArchiveLinkController::class, 'archiveLinkUser'])->name('archive.link.user');
 Route::get('/restore/{id}', [ArchiveLinkController::class, 'restore'])->name('restore');
 //Profile
@@ -159,7 +165,16 @@ Route::post('/update-button/{id}', [ButtonController::class, 'updateButton'])->n
 Route::get('/edit-button/{id}', [ButtonController::class, 'editButton'])->name('edit.button');
 Route::get('/delete-button/{id}', [ButtonController::class, 'deleteButton'])->name('delete.button');
 Route::get('/view-button', [ButtonController::class, 'viewButton'])->name('view.button');
+
+//profile
+Route::get('/profil-admin', [ProfilController::class, 'profileAdmin']);
 //Komentar
 Route::get('/view-komentar', [CommentController::class, 'viewkomentar'])->name('viewkomentar');
 
+//Banned
+Route::get('/blokir', [CommentController::class, 'blokir'])->name('blokir');
+
+});
+Route::get('/ngetes', function () {
+    return view('welcome');   
 });

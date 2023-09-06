@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
+use App\Models\User;
 
 
 
@@ -34,4 +35,9 @@ class CommentController extends Controller
         return redirect()->back()->with('success', 'Komentar ditambahkan');
     }    
 
+    public function blokir(){
+        // $data = User::all();
+        $data = User::where('is_banned', 1)->get();
+        return view('Banned.view-banned', compact('data'));
+    }
 }

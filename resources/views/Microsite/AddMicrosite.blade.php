@@ -20,8 +20,16 @@
         .hover {
             border: 0.5px solid black;
         }
-    </style>
+        /* Untuk mengurangi jarak antara ikon panah dan teks */
+.btn.btn-label.previetab {
+    padding-right: 1px; /* Sesuaikan padding kanan sesuai kebutuhan */
+}
 
+.btn.btn-label.nexttab {
+    padding-left: 5px; /* Sesuaikan padding kiri sesuai kebutuhan */
+}
+
+    </style>
 @endsection
 
 
@@ -52,12 +60,12 @@
                                         <div class="nav flex-column custom-nav nav-pills" role="tablist"
                                             aria-orientation="vertical">
                                             <button class="nav-link active" id="v-pills-bill-info-tab" data-bs-toggle="pill"
-                                                data-bs-target="#v-pills-bill-info" type="button" role="tab"
-                                                aria-controls="v-pills-bill-info" aria-selected="true">
-                                                <span class="step-title me-2">
-                                                    <i class="ri-close-circle-fill step-icon me-2"></i> Tentukann jenis
-                                                    microsite anda!
-                                                </span>
+                                            data-bs-target="#v-pills-bill-info" type="button" role="tab"
+                                            aria-controls="v-pills-bill-info" aria-selected="true" data-tab-id="v-pills-bill-info">
+                                            <span class="step-title me-2">
+                                                <i class="ri-close-circle-fill step-icon me-2"></i> Tentukann jenis
+                                                microsite anda!
+                                            </span>
                                             </button>
                                             <button class="nav-link" id="v-pills-bill-address-tab" data-bs-toggle="pill"
                                                 data-bs-target="#v-pills-bill-address" type="button" role="tab"
@@ -256,6 +264,7 @@
 
                                     </div>
                                     <!-- end row -->
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -304,7 +313,7 @@
                 }
             });
         });
-    </script>
+    </>
     <script>
         function toggleCardHover(cardId) {
             const card = document.getElementById(cardId);

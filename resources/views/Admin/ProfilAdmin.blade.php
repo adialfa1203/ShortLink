@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-xl-12 ">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <h4 class="mb-sm-0">Profil Pengguna</h4>
+                            <h4 class="mb-sm-0">Profil Admin</h4>
 
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -52,7 +52,7 @@
                             <div class="card-body pt-0 mt-n5">
                                 <div class="text-center">
                                     <div class="profile-user position-relative d-inline-block mx-auto">
-                                        <img src=""
+                                        <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/user-dummy-img.jpg') }}"
                                             class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
                                         <div
                                             class="avatar-xs p-0 rounded-circle profile-photo-edit position-absolute end-0 bottom-0">

@@ -16,9 +16,16 @@ use Illuminate\Support\Facades\Hash;
 class MicrositeController extends Controller
 {
     public function microsite(){
-        $user_id = auth()->user()->id;
+        $user = auth()->user(); // Mengambil objek User saat ini
+        $user_id = $user->id;
+        $microsite = Microsite::all();
         $data = Microsite::where('user_id', $user_id)->get();
-        return view('Microsite.MicrositeUser', compact('data'));
+        return view('Microsite.MicrositeUser', compact('data', 'user', 'microsite'));
+    
+        // $user_id = auth()->user()->id;
+        // $microsite = Microsite::all();
+        // $data = Microsite::where('user_id', $user_id)->get();
+        // return view('Microsite.MicrositeUser', compact('data','user_id','microsite'));
     }
 
     public function addMicrosite(){
@@ -206,4 +213,34 @@ class MicrositeController extends Controller
         // $social = Social::where('microsite_id', $id)->get();
         return view('Microsite.MicrositeLink');
     }
+    // public function nameMicrosite(Request $request, $microsite)
+    // {
+    //     $updateMicrosite = ShortUrl::where('url_key', $microsite);
+
+    //     if (!$updateMicrosite->exists()) {
+    //         return response()->json(['error' => 'Short link not found'], 404);
+    //     }
+
+    //     $newMicrositeKey = $request->newMicrositeKey;
+
+    //     $updateMicrosite->update([
+    //         'url_key' => $newMicrositeKey,
+    //         'default_short_url' => "http://127.0.0.1:8000/link.id/" . $newMicrositeKey,
+    //     ]);
+
+    //     return response()->json(['message' => 'URL key updated successfully']);
+    // }
+    public function search(Request $request)
+{
+    $query = $request->input('name'); // Mengubah 'query' menjadi 'name'
+
+    // Lakukan logika pencarian Anda di sini, misalnya:
+    $results = Microsite::where('field', 'like', '%' . $query . '%')->get();
+
+    return response()->json(['results' => $results]);
+}
+
+    
+    
+
 }
