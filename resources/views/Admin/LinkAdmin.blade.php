@@ -115,7 +115,7 @@
                                 <tr>
                                     <th>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="chk_child">
+                                            <input class="form-check-input" type="checkbox" name="chk_child" id="childCheckbox">
                                             <label class="form-check-label"></label>
                                         </div>
                                     </th>
@@ -138,6 +138,8 @@
                             @endforeach
                             </tbody><!-- end tbody -->
                         </table><!-- end table -->
+                        <br><!-- end table -->
+                        <button type="button" class="btn btn-subtle-danger"><i class="fas fa-ban me-1" ></i>Banned</button>
                         <div class="noresult" style="display: none">
                             <div class="text-center py-4">
                                 <i class="ph-magnifying-glass fs-1 text-primary"></i>
@@ -210,6 +212,21 @@
                     $(".list tr").filter(function() {
                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
+                });
+            });
+        </script>
+        <script>
+            // Ambil elemen checkbox pertama
+            var checkAllCheckbox = document.getElementById("checkAll");
+
+            // Ambil semua checkbox child
+            var childCheckboxes = document.querySelectorAll('input[name="chk_child"]');
+
+            // Tambahkan event listener untuk checkbox pertama
+            checkAllCheckbox.addEventListener("change", function() {
+                // Set status semua checkbox child sesuai dengan status checkbox pertama
+                childCheckboxes.forEach(function(childCheckbox) {
+                    childCheckbox.checked = checkAllCheckbox.checked;
                 });
             });
         </script>

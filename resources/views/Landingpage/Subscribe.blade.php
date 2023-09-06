@@ -32,19 +32,19 @@
 
 <body>
 <style>
-input, textarea { 
+input, textarea {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  outline: none; 
+  outline: none;
 }
 
 blockquote, q { quotes: none; }
 blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
-strong, b { font-weight: bold; } 
+strong, b { font-weight: bold; }
 
 table { border-collapse: collapse; border-spacing: 0; }
 img { border: 0; max-width: 100%; }
@@ -54,8 +54,8 @@ img { border: 0; max-width: 100%; }
 /** page structure **/
 #wrapper {
   display: block;
-  width: 850px;
-  background: #fff;
+  width: ;
+  background: #104898;
   margin: 0 auto;
   padding: 10px 17px;
   -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
@@ -72,12 +72,12 @@ img { border: 0; max-width: 100%; }
   cursor: pointer;
   background: #c9dff0;
 }
-#keywords thead tr th { 
+#keywords thead tr th {
   font-weight: bold;
   padding: 12px 30px;
   padding-left: 42px;
 }
-#keywords thead tr th span { 
+#keywords thead tr th span {
   padding-right: 20px;
   background-repeat: no-repeat;
   background-position: 100% 100%;
@@ -95,7 +95,7 @@ img { border: 0; max-width: 100%; }
 }
 
 
-#keywords tbody tr { 
+#keywords tbody tr {
   color: #555;
 }
 #keywords tbody tr td {
@@ -121,19 +121,22 @@ img { border: 0; max-width: 100%; }
             border-radius: 10px 0 0 10px;
         }
 
-        .btn {
+        /* .btn {
             padding: 10px 20px;
-            background-color: #fff;
+            background-color: #2cff44;
             color: #000000;
             border: none;
             border-radius: 10px 10px 10px 10px;
             cursor: pointer;
             border: 1px solid black;
-        }
+        } */
 
         .btn-primary {
             background-color: #fff;
         }
+        /* .btn-success {
+            background-color: #74fb3b;
+        } */
         .button_wrapper {
             margin-block-end: 2%;
         }
@@ -143,6 +146,9 @@ img { border: 0; max-width: 100%; }
 header {
   padding: 20px 0; /* Atur padding sesuai kebutuhan Anda */
 }
+/* tbody tr td {
+    color: #fff;
+} */
 
 </style>
 
@@ -178,7 +184,7 @@ header {
               <!-- secondery menu start -->
               <li class="nav-item has_dropdown">
                 <a class="nav-link active" href="/">Beranda</a>
-              </li>              
+              </li>
 
               <!-- secondery menu start -->
               <li class="nav-item has_dropdown">
@@ -227,7 +233,7 @@ header {
             <!-- users -->
       </div>
           <!-- banner slides start -->
-          <div class="col-lg-6 col-md-12"  data-aos="fade-in" data-aos-duration="1500">
+          <div class="col-lg-6 col-md-12 aos-init aos-animate d-flex justify-content-start" data-aos="fade-in" data-aos-duration="1500">
             <div class="banner_image">
               <img class="moving_animation" src="https://i.postimg.cc/ZqHQGxQD/Landing-Page2.png" alt="image" >
             </div>
@@ -308,26 +314,26 @@ header {
           <div class="row d-flex justify-content-md-center" style="margin-top: 2%;">
               <div class="col-12" style="margin-bottom: 2%;">
                 <div class="tabel_box" data-aos="fade-up" data-aos-duration="1500">
-                  <div id="wrapper">
-                      <table id="keywords">
+                  <div id="wrapper" class="table-responsive">
+                      <table id="keywords" style="width: 80%">
                         <div class="row">
-                          <div class="col-lg-10 button_wrapper  d-flex justify-content-end" data-aos="fade-up" data-aos-duration="1500">
+                          {{-- <div class="col-lg-10 button_wrapper  d-flex justify-content-end" data-aos="fade-up" data-aos-duration="1500">
                             <a href="#" class="btn btn-white white-button">Gratis</a>
-                          </div> 
+                          </div>
                           <div class="col-1 button_wrapper" data-aos="fade-up" data-aos-duration="1500">
                             <a href="#" class="btn btn-white white-button">Premium</a>
-                          </div>
-                        </div>                            
+                          </div> --}}
+                        </div>
                           <thead class="text-center">
                               <tr style="font-size: 12px;">
-                                  <th><span>Batasan Pengunjung Tautan Link.id</span></th>
-                                  <th>Tanpa Batas</th>
-                                  <th>Tanpa Batas</th>
+                                  <th><span >Batasan Pengunjung Tautan Link.id</span></th>
+                                  <th>Gratis</th>
+                                  <th>Premium</th>
                               </tr>
                           </thead>
-                          <tbody style="font-size: 12px;">
+                          <tbody style="font-size: 12px; background-color: white" >
                                <tr>
-                                   <td class="lalign"><b>Menyingkat Tautan</b></td>
+                                    <td class="lalign"><b>Menyingkat Tautan</b></td>
                                   <td>100/bln</td>
                                   <td>Tanpa batas</td>
                               </tr>
@@ -402,7 +408,7 @@ header {
           </div>
       </div>
   </section>
-  
+
   <footer>
     <div class="top_footer" id="kontak">
         <div class="container">
@@ -412,8 +418,8 @@ header {
                     <div class="abt_side">
                         <div class="logo">
                             <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
-                                style="margin-top: -27%;">
-                                <ul style="margin-top: -16%; margin-right:40px;">
+                                style="margin-top: -20%;">
+                                <ul style="margin-top: -10%; margin-right:10px;">
                                     <li style="color: white; font-size:14px;">S.id adalah platform untuk orang-orang untuk menunjukkan keahlian mereka dalam membuat situs mikro dan memperpendek tautan terpendek dengan kode s.id/.</li>
                                 </ul>
                             </div>
@@ -421,7 +427,7 @@ header {
                 </div>
 
                 <!-- Footer Links -->
-                
+
                 <div class="col-lg-2 col-md-6 col-12">
                   <div class="links">
                       <h3>Dukungan</h3>
@@ -556,11 +562,11 @@ header {
     document.getElementById("instagram-link").addEventListener("click", function() {
         window.location.href = "https://www.instagram.com/nama_akun_instagram";
     });
-   
+
 </script>
 <script>
   $(function(){
-  $('#keywords').tablesorter(); 
+  $('#keywords').tablesorter();
 });
 </script>
 <script>
