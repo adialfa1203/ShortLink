@@ -1,4 +1,4 @@
-@extends('layout.admin.app')
+    @extends('layout.admin.app')
 
 @section('title', 'Link')
 @section('style')
@@ -31,7 +31,7 @@
                                 <h3 class="mb-4" style="float: right;"><span class="counter-value"
                                         data-target="{{ $totalUser }}">0</span>
                                 </h3>
-                            </div>
+                            </div>kojfdgo
                         </div>
                     </div>
                 </div>

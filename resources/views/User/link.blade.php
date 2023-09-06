@@ -162,8 +162,8 @@
                                                 data-bs-placement="left" title="Tautan terlindungi"><i
                                                     class="fa-solid fa-lock"></i>&nbsp;kata sandi</span></button>
                                         <button type="button" class="btn btn-light btn-sm" data-bs-toggle="collapse"
-                                            href="#collapseExample112" role="button" aria-expanded="true"
-                                            aria-controls="collapseExample112">
+                                            href="#collapseExample{{ $row->id }}" role="button" aria-expanded="true"
+                                            aria-controls="collapseExample{{ $row->id }}">
                                             <i class="bi bi-bar-chart-line-fill"></i> statistik
                                         </button>
                                     </div>
@@ -309,7 +309,7 @@
                                     </div><!-- /.modal-dialog -->
                                 </div><!-- /.modal -->
                             </form>
-                            <div class="collapse" id="collapseExample112">
+                            <div class="collapse" id="collapseExample{{ $row->id }}">
                                 <div class="card-footer">
                                     <div class="d-flex">
                                         <div class="col-10">
@@ -323,7 +323,7 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
-                                        <div id="chart"></div>
+                                        <div id="chart{{ $row->id }}"></div>
                                     </div><!-- end card-body -->
                                 </div><!-- end card -->
                             </div>
@@ -339,11 +339,12 @@
 </div>
 
 @section('script')
+@foreach ($urlshort as $row)
 <script>
     var options = {
           series: [{
-            name: "sunardi",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+            name: "{{$row->title}}",
+            data:["{{ $row->visits_count }}"],
         }],
           chart: {
           height: 350,
@@ -369,14 +370,14 @@
           },
         },
         xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+          categories: ['Jan','feb','Jan','Jan','Jan','Jan','Jan','Jan'],
         }
         };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
+        var chart = new ApexCharts(document.querySelector("#chart{{ $row->id }}"), options).render();
 
 </script>
+@endforeach
 <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js') }}"></script>
 <script type="text/javascript" src="./jquery.qrcode.js"></script>
 <script type="text/javascript" src="./qrcode.js"></script>

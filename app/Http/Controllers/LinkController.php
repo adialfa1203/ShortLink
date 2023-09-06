@@ -9,10 +9,10 @@ use Illuminate\Http\Request as HttpRequest;
 
 class LinkController extends Controller
 {
-    
+
     public function showLink($shortCode)
     {
-        $urlshort = ShortUrl::orderBy('created_at', 'desc')->paginate(5);
+        $urlshort = ShortUrl::withCount('visits')->orderBy('created_at', 'desc')->paginate(5);
         return view('User.Link', compact('urlshort', 'shortCode'));
     }
 

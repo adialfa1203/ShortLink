@@ -944,6 +944,7 @@
     <!-- Dashboard init -->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/dashboard-ecommerce.init.js') }}">
     </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- apexcharts -->
     <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
