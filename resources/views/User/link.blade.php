@@ -147,7 +147,7 @@
                                           <h4 style="font-size: 19px">Yakin Ingin Mengarsip Data?</h4>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-secondary btn-xs hover-red">Batal</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                             <button type="submit" class="btn btn-primary btn-xs form-control1">Arsip</button>
                                         </div>
                                     </form>
@@ -177,10 +177,10 @@
                                                 data-bs-toggle="tooltip" data-bs-placement="left"
                                                 title="Tautan berbasis waktu"><i class="fa-solid fa-clock"></i>&nbsp;Atur
                                                 waktu</span></button>
-                                        <button type="button" class="btn btn-light me-3 btn-sm" data-bs-toggle="modal"
+                                        {{-- <button type="button" class="btn btn-light me-3 btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#zoomInModal1"><span data-bs-toggle="tooltip"
                                                 data-bs-placement="left" title="Tautan terlindungi"><i
-                                                    class="fa-solid fa-lock"></i>&nbsp;kata sandi</span></button>
+                                                    class="fa-solid fa-lock"></i>&nbsp;kata sandi</span></button> --}}
                                         <button type="button" class="btn btn-light btn-sm" data-bs-toggle="collapse"
                                             href="#collapseExample{{ $row->id }}" role="button" aria-expanded="true"
                                             aria-controls="collapseExample{{ $row->id }}">
@@ -638,7 +638,8 @@
                 dataType: 'JSON',
                 error: function(e) {
                 console.log(e.responseJSON)
-                   alert(e.responseJSON.newUrlKey[0])
+                //    alert(e.responseJSON.newUrlKey[0])
+                   Swal.fire(e.responseJSON.newUrlKey[0])
                 },
                 success: function(e) {
                     location.reload()
@@ -667,7 +668,7 @@
            var key = $(this).data('key');
            var newTime = $('#deactivated_at-' + id).val();
            if(newTime == null || newTime == "") {
-               alert('data harus di isi')
+            Swal.fire('Isi Data Terlebih Dahulu')
                return
            }
 

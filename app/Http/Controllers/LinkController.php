@@ -15,8 +15,10 @@ class LinkController extends Controller
 
     public function showLink($shortCode)
     {
-        $urlshort = ShortUrl::withCount('visits')->orderBy('created_at', 'desc')->paginate(5);
-        return view('User.Link', compact('urlshort', 'shortCode'));
+        $user = auth()->user(); // Mengambil objek User saat ini
+        $user_id = $user->id;
+        $urlshort = ShortUrl::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(5);
+        return view('User.Link', compact('user','urlshort', 'shortCode'));
     }
 
     public function archive($id)

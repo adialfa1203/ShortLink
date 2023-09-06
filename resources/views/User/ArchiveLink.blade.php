@@ -94,8 +94,8 @@
                                       <h4 style="font-size: 19px">Yakin Ingin Membuka Arsip?</h4>
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-secondary btn-xs hover-red">Batal</button>
-                                        <button type="submit" class="btn btn-primary btn-xs form-control1">Buka</button>
+                                        <button type="button" class="btn btn-secondary btn-xs hover-red" data-bs-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-primary btn-xs form-control1">Ya</button>
                                     </div>
                                 </form>
                                 </div>

@@ -1,4 +1,4 @@
-@extends('layout.user.app')
+@extends('layout.admin.app')
 @section('title', 'Komponen Baru')
 
 @section('content')
