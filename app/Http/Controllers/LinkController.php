@@ -12,7 +12,7 @@ use Illuminate\Http\Request as HttpRequest;
 
 class LinkController extends Controller
 {
-    
+
     public function showLink($shortCode)
     {
         $urlshort = ShortUrl::orderBy('created_at', 'desc')->paginate(5);
@@ -21,7 +21,7 @@ class LinkController extends Controller
 
     public function archive($id)
     {
-        $link = ShortUrl::findOrFail($id);
+        $link = ShortUrl::find($id);
         $link->delete();
         return redirect()->back()->with('success', 'Link telah diarsipkan');
     }

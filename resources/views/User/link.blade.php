@@ -123,9 +123,7 @@
                                             data-link="{{ $row->url_key }}">
                                             <span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
                                         </button>
-                                        <button type="button" class="btn btn-primary me-3 btn-sm"
-                                            onclick="archive({{ $row->id }})"><i class="bi bi-archive-fill"></i>
-                                            Arsipkan</button>
+                                        <button type="button" class="btn btn-primary me-3 btn-sm" data-bs-target="#arsip{{$row->id}}" data-bs-toggle="modal"><i class="bi bi-archive-fill"></i> Arsipkan</button>
                                     </div>
                                 </div>
                                 <a>
@@ -133,6 +131,28 @@
                                 </a>
                                 <a href="{{ $row->destination_url }}"
                                     class="card-subtitle font-14 text-muted">{{ $row->destination_url }}</a>
+                            </div>
+                            {{-- modal hapus --}}
+                            <div class="modal fade" id="arsip{{$row->id}}">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <form action="/archive/{{$row->id}}" method="GET">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title"></h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                            </button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                          <h4 style="font-size: 19px">Yakin Ingin Mengarsip Data?</h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary btn-xs hover-red">Batal</button>
+                                            <button type="submit" class="btn btn-primary btn-xs form-control1">Arsip</button>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex">
@@ -331,6 +351,22 @@
                     </div>
                 </form>
             @endforeach
+            <div class="row align-items-center mb-4 justify-content-between text-center text-sm-start" id="pagination-element">
+                <div class="col-sm">
+                    <div class="text-muted">
+                        Showing <span class="fw-semibold">{{ $urlshort->firstItem() }}</span>
+                        to <span class="fw-semibold">{{ $urlshort->lastItem() }}</span>
+                        of <span class="fw-semibold">{{ $urlshort->total() }}</span> Results
+                    </div>
+                </div>
+                <div class="col-sm-auto mt-3 mt-sm-0">
+                    <div class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
+                        <div class="page-item">
+                            {{ $urlshort->links('pagination::bootstrap-5') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- end col -->
         </div>
         <!-- container-fluid -->
@@ -381,6 +417,12 @@
 <script type="text/javascript" src="./jquery.qrcode.js"></script>
 <script type="text/javascript" src="./qrcode.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Sweet Alerts js -->
+<script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+
+<!-- Sweet alert init js-->
+<script src="{{ asset('assets/js/pages/sweetalerts.init.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready(function() {
         $("#copyButton").click(function() {
@@ -546,14 +588,32 @@
 </script>
 
 
-<script>
-    function archive() {
+{{-- <script>
+    function archive()
+    {
+        Swal.fire({
+            title: 'Anda yakin ingin mengarsip?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Arsipkan!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Arsip!',
+                'Data Berhasil Diarsip',
+                'success'
+                )
+            }
+            })
         message = confirm('Apakah Anda Ingin Mengarsip Tautan?');
         if (message) {
             window.location.reload();
         }
     }
-</script>
+</script> --}}
 <script>
     $(document).ready(function() {
         var selectId = $('#new_url_key').val();
