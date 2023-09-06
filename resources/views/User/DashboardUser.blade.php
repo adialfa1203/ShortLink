@@ -559,7 +559,7 @@
                                 icon: 'error',
                                 html: response.message +
                                     'Klik di <a href="#">sini</a> ' +
-                                    'untuk info lebih lanjut tentang langganan premium.',                                
+                                    'untuk info lebih lanjut tentang langganan premium.',
                             })
                         }
                         // Tangani respons dari server
@@ -758,6 +758,17 @@
         progressBar.setAttribute("aria-valuenow", countData);
     </script>
     <script>
+  const clickCountElement = document.getElementById("clickCount");
+
+  // Mengambil data jumlah klik dari localStorage
+  let clickCount = localStorage.getItem("clickCount");
+
+  if (clickCount !== null) {
+    // Jika ada data jumlah klik yang tersimpan, tampilkan pada halaman
+    clickCountElement.textContent = clickCount + "";
+  }
+</script>
+    <script>
         // Get the value from the server-side variable {{ $countURL }}
         var countURLValue = {{ $countURL }};
 
@@ -773,6 +784,7 @@
         var progressText = document.querySelector('.text-muted.mb-0 b');
         progressText.textContent = countURLValue + ' dari 100';
     </script>
+
     <script>
         // Temukan tombol "Keluar" berdasarkan ID
         var keluarButton = document.getElementById("keluarButton");

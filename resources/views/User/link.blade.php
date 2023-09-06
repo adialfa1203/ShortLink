@@ -322,7 +322,7 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
-                                        <div id="chart1"></div>
+                                        <div id="chart"></div>
                                     </div><!-- end card-body -->
                                 </div><!-- end card -->
                             </div>
@@ -339,55 +339,42 @@
 
 @section('script')
 <script>
-    const toggleButton = document.getElementById('toggleButton');
-    const icon = toggleButton.querySelector('i.fa-solid');
-
-    toggleButton.addEventListener('click', function() {
-        if (icon.classList.contains('fa-angle-down')) {
-            icon.classList.remove('fa-angle-down');
-            icon.classList.add('fa-angle-up');
-            toggleButton.textContent = 'Tampilkan lebih sedikit ';
-        } else {
-            icon.classList.remove('fa-angle-up');
-            icon.classList.add('fa-angle-down');
-            toggleButton.textContent = 'Tampilkan lebih banyak ';
-        }
-    });
     var options = {
-        series: [{
+          series: [{
             name: "sunardi",
             data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
         }],
-        chart: {
-            height: 350,
-            type: 'line',
-            zoom: {
-                enabled: false
-            }
+          chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
+            enabled: false
+          }
         },
         dataLabels: {
-            enabled: false
+          enabled: false
         },
         stroke: {
-            curve: 'straight'
+          curve: 'straight'
         },
         title: {
-            text: '',
-            align: 'left'
+          text: 'Product Trends by Month',
+          align: 'left'
         },
         grid: {
-            row: {
-                colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-                opacity: 0.5
-            },
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
         },
         xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
         }
-    };
+        };
 
-    var chart = new ApexCharts(document.querySelector("#chart1"), options);
-    chart.render();
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
 </script>
 <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js') }}"></script>
 <script type="text/javascript" src="./jquery.qrcode.js"></script>
@@ -587,7 +574,6 @@
                 },
                 dataType: 'JSON',
                 success: function(e) {
-                    alert(e.message)
                     location.reload()
                 }
             })
@@ -729,6 +715,6 @@
             });
         });
     </script>
-   
+
 @endsection
 @endsection
