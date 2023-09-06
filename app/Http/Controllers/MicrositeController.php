@@ -4,28 +4,19 @@ namespace App\Http\Controllers;
 use App\Models\Button;
 use App\Models\Social;
 use App\Models\Microsite;
-use App\Models\ButtonLink;
 use App\Models\Components;
 use App\Models\ShortUrl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use AshAllenDesign\ShortURL\Classes\Builder;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Hash;
 
 class MicrositeController extends Controller
 {
-    public function microsite(){
-        $user = auth()->user(); // Mengambil objek User saat ini
-        $user_id = $user->id;
-        $microsite = Microsite::all();
+    public function microsite()
+    {
+        $user_id = auth()->user()->id;
         $data = Microsite::where('user_id', $user_id)->get();
-        return view('Microsite.MicrositeUser', compact('data', 'user', 'microsite'));
-    
-        // $user_id = auth()->user()->id;
-        // $microsite = Microsite::all();
-        // $data = Microsite::where('user_id', $user_id)->get();
-        // return view('Microsite.MicrositeUser', compact('data','user_id','microsite'));
+        $short_urls = ShortUrl::whereIn('microsite_id', $data->pluck('id'))->get();
+        return view('Microsite.MicrositeUser', compact('data', 'short_urls'));
     }
 
     public function addMicrosite(){
@@ -41,17 +32,28 @@ class MicrositeController extends Controller
             'name' => 'required',
             'link_microsite' => 'required',
         ]);
+        $data = [
+            'components_id' => $request->microsite_selection,
+            'user_id' => auth()->user()->id,
+            'name' => $request->name,
+            'link_microsite' => $request->link_microsite,
+        ];
 
         $selectedComponentId = $request->input('microsite_selection');
         $selectedButtons = $request->input('selectedButtons', []);
 
-        $microsite = new Microsite();
-        $microsite->components_id = $selectedComponentId;
-        $microsite->user_id = auth()->user()->id;
-        $microsite->name = $request->input('name');
-        $microsite->link_microsite = 'link.id/' . $request->input('link_microsite');
-
-        $microsite->save();
+        $microsite = Microsite::create($data);
+        $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
+        $micrositeObject = $builder->destinationUrl('https://www.youtube.com/')->make();
+        ShortUrl::where('url_key', $micrositeObject->url_key)->update([
+            'user_id' => auth()->id(),
+            'microsite_id' => $microsite->id,
+        ]);
+        $short_id = ShortUrl::where('url_key', $micrositeObject->url_key)->first()->id;
+        ShortUrl::findOrFail($short_id)->update([
+            'url_key' => $request->link_microsite,
+            'default_short_url' => "http://127.0.0.1:8000/link.id/" . $request->link_microsite,
+        ]);
 
         foreach ($selectedButtons as $select) {
             $socialData = [
@@ -62,15 +64,16 @@ class MicrositeController extends Controller
             Social::create($socialData);
         }
 
-        return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
+        return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
     }
 
 
     public function editMicrosite($id) {
         $microsite = Microsite::findorFail($id);
         $social = Social::where('microsite_id', $id)->get();
+        $short_url = ShortUrl::where('microsite_id', $id)->first();
         // $buttonLink = ButtonLink::findorFail($id);
-        return view('microsite.EditMicrosite', compact('microsite', 'id', 'social'));
+        return view('microsite.EditMicrosite', compact('microsite', 'id', 'social', 'short_url'));
     }
 
     public function micrositeUpdate(Request $request, $id)
@@ -79,6 +82,7 @@ class MicrositeController extends Controller
         $microsite = Microsite::FindOrFail($id);
         $buttonLinks = $request->input('button_link');
         $socials = Social::where('microsite_id',$id)->get();
+        // dd($buttonLinks);
         $request->validate([
             'name_microsite' => 'nullable|string',
             'description' => 'nullable|string',
@@ -101,7 +105,7 @@ class MicrositeController extends Controller
         foreach($socials as $index => $social)
         {
             $social->update([
-                'button_link' => $buttonLinks[$index],
+                'button_link' => $buttonLinks[$index+1],
             ]);
         }
 
@@ -145,13 +149,15 @@ class MicrositeController extends Controller
 
     public function updateComponent(Request $request, $id){
         $validator = Validator::make($request->all(), [
-            'component_name' => 'required',
+            'component_name' => 'required|max:10',
             'cover_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'profile_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $component = Components::findOrFail($id);
@@ -240,7 +246,7 @@ class MicrositeController extends Controller
     return response()->json(['results' => $results]);
 }
 
-    
-    
+
+
 
 }

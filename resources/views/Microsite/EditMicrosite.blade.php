@@ -42,7 +42,8 @@
                                         <div class="mb-3">
                                             <label for="employeeName" class="form-label">Nama Profile</label>
                                             <input type="text" class="form-control" id="employeeName"
-                                                placeholder="Nama Profile" value="{{ $microsite->name_microsite }}" name="name_microsite">
+                                                placeholder="Nama Profile" value="{{ $microsite->name_microsite }}"
+                                                name="name_microsite">
                                         </div>
                                         <textarea name="description" id="editor">{{ $microsite->description }}</textarea>
                                         <div class="mb-3">
@@ -67,11 +68,12 @@
                                                                     <div class="col-xxl-12">
                                                                         <div>
                                                                             <label for="placeholderInput"
-                                                                            class="form-label">{{ $data->button->name_button }}</label>
+                                                                                class="form-label">{{ $data->button->name_button }}</label>
                                                                             <input type="text" class="form-control"
-                                                                            id="placeholderInput"
-                                                                            placeholder="Placeholder"
-                                                                            name="button_link[{{ $data->button->id }}]" value="{{ $data->button_link }}">
+                                                                                id="placeholderInput"
+                                                                                placeholder="Placeholder"
+                                                                                name="button_link[{{ $data->button->id }}]"
+                                                                                value="{{ $data->button_link }}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -97,7 +99,8 @@
                                                                             class="form-label">Nama Perusahaan</label>
                                                                         <input type="text" class="form-control"
                                                                             name="company_name" id="placeholderInput"
-                                                                            placeholder="Nama Perusahaan" value="{{ $microsite->company_name }}">
+                                                                            placeholder="Nama Perusahaan"
+                                                                            value="{{ $microsite->company_name }}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -119,7 +122,8 @@
                                                                     <div>
                                                                         <label for="placeholderInput"
                                                                             class="form-label">Alamat Perusahaan</label>
-                                                                        <input type="text" class="form-control" value="{{ $microsite->company_address }}"
+                                                                        <input type="text" class="form-control"
+                                                                            value="{{ $microsite->company_address }}"
                                                                             id="placeholderInput" name="company_address"
                                                                             placeholder="Alamat Perusahaan">
                                                                     </div>
@@ -149,8 +153,8 @@
                                                             Microsite</label>
                                                         <div class="input-group">
                                                             <input type="text" class="form-control" id="address"
-                                                                placeholder="aqua-link" name="link_microsite"
-                                                                value="{{ $microsite->link_microsite }}">
+                                                                placeholder="aqua-link" name="default_short_url"
+                                                                value="{{ $short_url->default_short_url }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -175,7 +179,8 @@
                             <div class="card-body pt-0 mt-n5">
                                 <div class="text-center">
                                     <div class="profile-user position-relative d-inline-block mx-auto">
-                                        <img src="{{ asset('component/' . $microsite->component->profile_img) }}" alt=""
+                                        <img src="{{ asset('component/' . $microsite->component->profile_img) }}"
+                                            alt=""
                                             class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
                                     </div>
                                     <div class="mt-3">
