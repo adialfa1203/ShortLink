@@ -195,7 +195,7 @@
                                 mempersingkat URL yang Anda mau!</span>
 
                         </div>
-                        <div class="col-12 mt-3" style="margin-right: 100%;">
+                        {{-- <div class="col-12 mt-3" style="margin-right: 100%;">
                             <div class="input-group align-items-center rounded" style="background: #E9EEF5">
                                 <input class="form-control" type="text"
                                     placeholder="Https://Domain-mu/yang-ingin kau">
@@ -204,17 +204,17 @@
                                         Singkatkan</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- app buttons -->
 
                         <!-- users -->
                     </div>
                     <!-- banner slides start -->
-                    <div class="col-lg-6 col-md-12" data-aos="fade-in" data-aos-duration="1500">
+                    <div class="col-lg-6 col-md-12 aos-init aos-animate d-flex justify-content-start" data-aos="fade-in" data-aos-duration="1500">
                         <div class="banner_image">
                             <img class="moving_animation" src="https://i.postimg.cc/ydmKZzJW/Landing-Page.png"
-                                alt="image" height="500" width="100">
+                                alt="image">
                         </div>
                     </div>
                     <!-- banner slides end -->
@@ -460,8 +460,8 @@
                             <div class="abt_side">
                                 <div class="logo">
                                     <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
-                                        style="margin-top: -27%;">
-                                    <ul style="margin-top: -16%; margin-right:40px;">
+                                        style="margin-top: -20%;">
+                                    <ul style="margin-top: -10%; margin-right:10px;">
                                         <li style="color: white; font-size:14px;">S.id adalah platform untuk orang-orang
                                             untuk menunjukkan keahlian mereka dalam membuat situs mikro dan memperpendek
                                             tautan terpendek dengan kode s.id/.</li>
@@ -469,9 +469,9 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <!-- Footer Links -->
-    
+
                         <div class="col-lg-2 col-md-6 col-12">
                             <div class="links">
                                 <h3>Dukungan</h3>
@@ -485,15 +485,17 @@
                             <div class="links">
                                 <h3>SiteMaps</h3>
                                 <ul>
-                                    <li><a href="/">Beranda</a></li>
-                                    <li><a href="/Shortlink">Perpendek Link</a></li>
-                                    <li><a href="/Microsite">Situs Mikro</a></li>
-                                    <li><a href="/Subscribe">Berlanggaan</a></li>
-    
+                                    <li><a href="#kontak">Beranda</a></li>
+                                    <li><a href="/Home">Perpendek Link</a></li>
+                                    <li><a href="#features">Situs Mikro</a></li>
+                                    <li><a href="#kontak">Berlanggaan</a></li>
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/HelpSupport">Kebijakan Privasi</a></li>
+
                                 </ul>
                             </div>
                         </div>
-    
+
                         <!-- Contact Information -->
                         <div class="col-lg-2 col-md-6 col-12">
                             <div class="links">
@@ -537,7 +539,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <!-- Bottom Footer -->
             <div class="bottom_footer">
                 <div class="container">
@@ -548,7 +550,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <!-- Go Top Button -->
             <div class="go_top">
                 <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>

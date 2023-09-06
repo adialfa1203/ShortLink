@@ -119,6 +119,7 @@ Route::post('/update-microsite/{id}', [MicrositeController::class, 'micrositeUpd
 Route::get('/add-microsite', [MicrositeController::class, 'addMicrosite'])->name('add.microsite');
 // Route::post('/update-microsite/{id}', [MicrositeController::class, 'micrositeUpdate'])->name('microsite-update');
 //update key
+Route::post('/update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
 // Route::post('update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
 // Route::post('update-microsite-link/{micrositeLink}', [ShortLinkController::class, 'updateMicrositeLink'])->name('update.micrositelink');
 Route::post('/url-microsite', [MicrositeController::class, 'urlMicrosite'])->name('url.microsite');

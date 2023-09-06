@@ -145,7 +145,7 @@ header {
                         <!-- users -->
                     </div>
                     <!-- banner slides start -->
-                    <div class="col-lg-6 col-md-12" data-aos="fade-in" data-aos-duration="1500">
+                    <div class="col-lg-6 col-md-12 aos-init aos-animate d-flex justify-content-start" data-aos="fade-in" data-aos-duration="1500">
                         <div class="banner_image">
                             <img class="moving_animation" src="https://i.postimg.cc/ZqHQGxQD/Landing-Page2.png"
                                 alt="image">
@@ -191,13 +191,13 @@ header {
                     <div class="col-md-4" style="margin-bottom: 2%;">
                         <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
                             <svg xmlns="http://www.w3.org/2000/svg"width="80" height="80" viewBox="0 0 448 512" style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                <path fill="#104898" d="M0 80C0 53.5 21.5 32 48 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80zM64 
-                                96v64h64V96H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 
+                                <path fill="#104898" d="M0 80C0 53.5 21.5 32 48 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80zM64
+                                96v64h64V96H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48
                                  48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336zm64 16v64h64V352H64zM304
-                                 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H304c-26.5 0-48-21.5-48-48V80c0-26.5 
+                                 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H304c-26.5 0-48-21.5-48-48V80c0-26.5
                                  21.5-48 48-48zm80 64H320v64h64V96zM256 304c0-8.8 7.2-16 16-16h64c8.8 0 16 7.2 16 16s7.2 16 16
                                  16h32c8.8 0 16-7.2 16-16s7.2-16 16-16s16 7.2 16 16v96c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-
-                                 16s-7.2-16-16-16s-16 7.2-16 16v64c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V304zM368 480a16 16 
+                                 16s-7.2-16-16-16s-16 7.2-16 16v64c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V304zM368 480a16 16
                                  0 1 1 0-32 16 16 0 1 1 0 32zm64 0a16 16 0 1 1 0-32 16 16 0 1 1 0 32z"/></svg>
                             <div class="story_text">
                                 <h6 class="mb-3 fs-17">Kode QR</h6>
@@ -278,16 +278,16 @@ header {
                             <div class="abt_side">
                                 <div class="logo">
                                     <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
-                                        style="margin-top: -27%;">
-                                        <ul style="margin-top: -16%; margin-right:40px;">
+                                        style="margin-top: -20%;">
+                                        <ul style="margin-top: -10%; margin-right:10px;">
                                             <li style="color: white; font-size:14px;">S.id adalah platform untuk orang-orang untuk menunjukkan keahlian mereka dalam membuat situs mikro dan memperpendek tautan terpendek dengan kode s.id/.</li>
                                         </ul>
                                     </div>
                             </div>
                         </div>
-    
+
                         <!-- Footer Links -->
-                        
+
                         <div class="col-lg-2 col-md-6 col-12">
                             <div class="links">
                                 <h3>Dukungan</h3>
@@ -309,7 +309,7 @@ header {
                                 </ul>
                             </div>
                         </div>
-    
+
                         <!-- Contact Information -->
                         <div class="col-lg-2 col-md-6 col-12">
                             <div class="links">
@@ -336,7 +336,7 @@ header {
                                 </ul>
                             </div>
                         </div>
-    
+
                         <!-- Comment Form -->
                         <div class="col-lg-3 col-md-6 col-12 mb-1">
                             <form id="commentForm" method="POST" enctype="multipart/form-data" class="mt-3">
@@ -354,7 +354,7 @@ header {
                     </div>
                 </div>
             </div>
-    
+
             <!-- Bottom Footer -->
             <div class="bottom_footer">
                 <div class="container">
@@ -365,7 +365,7 @@ header {
                     </div>
                 </div>
             </div>
-    
+
             <!-- Go Top Button -->
             <div class="go_top">
                 <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>

@@ -587,7 +587,6 @@
                 },
                 dataType: 'JSON',
                 success: function(e) {
-                    alert(e.message)
                     location.reload()
                 }
             })
@@ -729,6 +728,5 @@
             });
         });
     </script>
-   
 @endsection
 @endsection

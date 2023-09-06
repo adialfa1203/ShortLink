@@ -119,20 +119,20 @@ header {
                     </div>
                   </span>
                 </button>
-      
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
                     <!-- secondery menu start -->
                     <li class="nav-item has_dropdown">
                       <a class="nav-link active" href="/">Beranda</a>
-                    </li>              
-      
+                    </li>
+
                     <!-- secondery menu start -->
                     <li class="nav-item has_dropdown">
                       <a class="nav-link" href="/Shortlink">Perpendek Link</a>
                     </li>
                     <!-- secondery menu end -->
-      
+
                     <li class="nav-item has_dropdown">
                       <a class="nav-link" href="/Microsite">Situs Mikro</a>
                     </li>
@@ -180,8 +180,8 @@ header {
                         <!-- users -->
                     </div>
                     <!-- banner slides start -->
-                    <div class="col-lg-6 col-md-12" data-aos="fade-in" data-aos-duration="1500">
-                        <div class="banner_image">
+                    <div class="col-lg-6 col-md-12 aos-init aos-animate d-flex justify-content-start" data-aos="fade-in" data-aos-duration="1500">
+                        <div class="banner_image m-0">
                             <img class="moving_animation" src="{{ asset('template/image/situs mikro.png') }}"
                                 alt="image">
                         </div>
@@ -220,7 +220,7 @@ header {
             <div class="container">
                 <div class="position-relative" style="z-index: 1;">
                     <div class="row align-items-center">
-                        <div class="col-xl-5 col-lg-6">
+                        <div class="col-xl-8 col-lg-6">
                             <div>
                                 {{-- <h6 class="home-subtitle text-primary mb-4">Awesome</h6> --}}
                                 <h1 style="color: #1B5A6F;">Gak cuma untuk Bio-
@@ -232,11 +232,11 @@ header {
                             </div>
                         </div>
                         <!--end col-->
-                        <div class="col-lg-6 offset-xl-1">
-                            <div class="mt-lg-0 mt-5 d-flex justify-content-start">
+                        <div class="col-lg-1 offset-xl-1" style="margin-left:">
+                            <div class="mt-lg-0 mt-5 d-flex justify-content-center">
                                 <!-- Tambahkan kelas text-lg-start untuk memposisikan ke kiri pada layar lebar -->
                                 <img src="https://i.postimg.cc/ZqHQGxQD/Landing-Page2.png" alt="home04"
-                                    class="home-img" width="500" height="400">
+                                    class="home-img" width="300" height="200">
                             </div>
                         </div>
 
@@ -251,9 +251,9 @@ header {
                 <div class="position-relative" style="z-index: 1;">
                     <div class="row align-items-center">
                         <div class="col-xl-5 col-lg-6">
-                            <div class="mt-lg-0 mt-5 d-flex justify-content-start">
+                            <div class="mt-lg-0 mt-5 d-flex justify-content-center">
                                 <img src="{{ asset('template/image/situs mikro.png') }}" alt="home04"
-                                    class="home-img"  width="500" height="400">
+                                    class="home-img d-flex justify-content-start"  width="350" height="200">
                             </div>
                         </div>
                         <div class="col-lg-6 offset-xl-1">
@@ -366,16 +366,17 @@ header {
                             <div class="abt_side">
                                 <div class="logo">
                                     <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
-                                        style="margin-top: -27%;">
-                                        <ul style="margin-top: -16%; margin-right:40px;">
+                                        style="margin-top: -20%;">
+                                        <ul style="margin-top: -10%; margin-right:10
+                                        px;">
                                             <li style="color: white; font-size:14px;">S.id adalah platform untuk orang-orang untuk menunjukkan keahlian mereka dalam membuat situs mikro dan memperpendek tautan terpendek dengan kode s.id/.</li>
                                         </ul>
                                     </div>
                             </div>
                         </div>
-    
+
                         <!-- Footer Links -->
-                        
+
                         <div class="col-lg-2 col-md-6 col-12">
                             <div class="links">
                                 <h3>Dukungan</h3>
@@ -397,7 +398,7 @@ header {
                                 </ul>
                             </div>
                         </div>
-    
+
                         <!-- Contact Information -->
                         <div class="col-lg-2 col-md-6 col-12">
                             <div class="links">
@@ -424,7 +425,7 @@ header {
                                 </ul>
                             </div>
                         </div>
-    
+
                         <!-- Comment Form -->
                         <div class="col-lg-3 col-md-6 col-12 mb-1">
                             <form id="commentForm" method="POST" enctype="multipart/form-data" class="mt-3">
@@ -442,7 +443,7 @@ header {
                     </div>
                 </div>
             </div>
-    
+
             <!-- Bottom Footer -->
             <div class="bottom_footer">
                 <div class="container">
@@ -453,7 +454,7 @@ header {
                     </div>
                 </div>
             </div>
-    
+
             <!-- Go Top Button -->
             <div class="go_top">
                 <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
