@@ -120,7 +120,7 @@
                                         <button type="button" class="btn btn-light me-3 btn-sm edit-link"
                                             data-bs-toggle="modal" data-bs-target="#zoomInModal"
                                             data-link="{{ $row->url_key }}">
-                                            <span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit</span>
+                                            <span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
                                         </button>
                                         <button type="button" class="btn btn-primary me-3 btn-sm"
                                             onclick="archive({{ $row->id }})"><i class="bi bi-archive-fill"></i>

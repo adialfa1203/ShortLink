@@ -117,12 +117,11 @@ Route::post('/create-microsite', [MicrositeController::class, 'createMicrosite']
 Route::get('/edit-microsite/{id}', [MicrositeController::class, 'editMicrosite'])->name('edit.microsite');
 Route::post('/update-microsite/{id}', [MicrositeController::class, 'micrositeUpdate'])->name('update.microsite');
 Route::get('/add-microsite', [MicrositeController::class, 'addMicrosite'])->name('add.microsite');
-// Route::post('/update-microsite/{id}', [MicrositeController::class, 'micrositeUpdate'])->name('microsite-update');
+Route::post('/url-microsite', [MicrositeController::class, 'urlMicrosite'])->name('url.microsite');
 //update key
 Route::post('/update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
-// Route::post('update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
-// Route::post('update-microsite-link/{micrositeLink}', [ShortLinkController::class, 'updateMicrositeLink'])->name('update.micrositelink');
-Route::post('/url-microsite', [MicrositeController::class, 'urlMicrosite'])->name('url.microsite');
+//update tenggat
+Route::post('/update-deactivated/{keyTime}',[LinkController::class, 'updateDeactivated']);
 
 });
 Route::get('/microsite-link', [MicrositeController::class, 'micrositeLink'])->name('microsite.short.link');
@@ -163,7 +162,4 @@ Route::get('/view-button', [ButtonController::class, 'viewButton'])->name('view.
 //Komentar
 Route::get('/view-komentar', [CommentController::class, 'viewkomentar'])->name('viewkomentar');
 
-});
-Route::get('/ngetes', function () {
-    return view('welcome');   
 });
