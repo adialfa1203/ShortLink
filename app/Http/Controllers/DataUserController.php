@@ -6,9 +6,10 @@ use App\Models\User;
 class DataUserController extends Controller
 {
     public function dataUser() {
-        $data = User::role('user')->get();
+        $data = User::where('is_banned', 0)->role('user')->get();
         return view('Admin.DataUserAdmin', compact('data'));
     }
+    
 
     public function banUser($userId) {
         $user = User::findOrFail($userId);

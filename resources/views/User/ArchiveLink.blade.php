@@ -69,16 +69,37 @@
                 <div class="card" style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;">
                     <div class="card-body">
                         <div class="d-flex">
-                            <h6 class="col-6">{{$row->title}}</h6>
-                            <!-- Rounded Buttons -->
-                            <button style="margin-left: 39%" type="button" class="btn btn-primary btn-sm" onclick="restore({{ $row->id }})"><i class="bi bi-archive-fill"></i> Buka Arsipan</button>
-
-                                {{-- <button type="button" class="btn btn-outline-light col-2">Kembalikan Tautan</button> --}}
+                            <h6 class="col-3">{{ $row->title }}</h6>
+                            <div class=" col-9 d-flex flex-row justify-content-end">
+                                <button type="button" class="btn btn-primary me-3 btn-sm" data-bs-target="#arsip{{$row->id}}" data-bs-toggle="modal"><i class="bi bi-archive-fill"></i> Buka Arsipan</button>
                             </div>
+                        </div>
                             <a>
                                 <h3 class="garisbawah card-title mb-2"><span style="color: red;">Link</span>{{$row->default_short_url}}</h3>
                             </a>
                             <a href="{{$row->destination_url}}" class="card-subtitle font-14 text-muted">{{$row->destination_url}}</a>
+                        </div>
+                        {{-- modal hapus --}}
+                        <div class="modal fade" id="arsip{{$row->id}}">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <form action="/restore/{{$row->id}}" method="GET">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                      <h4 style="font-size: 19px">Yakin Ingin Membuka Arsip?</h4>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary btn-xs hover-red">Batal</button>
+                                        <button type="submit" class="btn btn-primary btn-xs form-control1">Buka</button>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-footer">
                             <div class="d-flex">
@@ -111,6 +132,22 @@
                 </div>
             </form>
             @endforeach
+            <div class="row align-items-center mb-4 justify-content-between text-center text-sm-start" id="pagination-element">
+                <div class="col-sm">
+                    <div class="text-muted">
+                        Showing <span class="fw-semibold">{{ $data->firstItem() }}</span>
+                        to <span class="fw-semibold">{{ $data->lastItem() }}</span>
+                        of <span class="fw-semibold">{{ $data->total() }}</span> Results
+                    </div>
+                </div>
+                <div class="col-sm-auto mt-3 mt-sm-0">
+                    <div class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
+                        <div class="page-item">
+                            {{ $data->links('pagination::bootstrap-5') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- end col -->
         </div>
         <!-- container-fluid -->
@@ -167,14 +204,14 @@
         });
     });
 </script>
-+<script>
+{{-- <script>
     function restore() {
         message = confirm('Apakah Anda Ingin Memulihkan Tautan?');
         if(message){
             window.location.reload();
         }
     }
-</script>
+</script> --}}
 <script>
     $(document).ready(function () {
         $("#toggleButton").click(function () {

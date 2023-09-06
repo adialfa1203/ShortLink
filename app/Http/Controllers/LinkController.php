@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\ShortUrl;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request as HttpRequest;
 
 class LinkController extends Controller
@@ -18,7 +21,7 @@ class LinkController extends Controller
 
     public function archive($id)
     {
-        $link = ShortUrl::findOrFail($id);
+        $link = ShortUrl::find($id);
         $link->delete();
         return redirect()->back()->with('success', 'Link telah diarsipkan');
     }
@@ -39,4 +42,44 @@ class LinkController extends Controller
         // Mengirimkan respon ke JavaScript
         return response()->json(['message' => 'Deactivation status updated successfully']);
     }
+
+    // public function LinkUsersChart()
+    // {
+    //     $user = Auth::user()->id;
+
+    //     $startDate = Carbon::now()->subDays(7);
+
+    //     $totalVisits = ShortURLVisit::query()
+    //     ->whereRelation('shortURL', 'user_id', '=', $user)
+    //     ->selectRaw('DATE(created_at) as date, COUNT(*) as totalVisits')
+    //     ->groupBy('date')
+    //     ->orderBy('date')
+    //     ->get();
+
+    //     return response()->json(compact('startDate', 'user','totalVisits'));
+    // }
+
+    public function LinkUsersChart(Request $request)
+{
+    $urlKey= $request->id;
+    // Ambil data link berdasarkan url_key
+    $shortURL = ShortURL::where('url_key', $urlKey)->first();
+
+    if (!$shortURL) {
+        // Handle jika link tidak ditemukan
+        return response()->json(['message' => 'Link not found'], 404);
+    }
+
+    $startDate = Carbon::now()->subDays(7);
+
+    $totalVisits = ShortURLVisit::query()
+        ->where('short_url_id', $shortURL->id) // Filter berdasarkan ID link
+        ->selectRaw('DATE(created_at) as date, COUNT(*) as totalVisits')
+        ->where('created_at', '>=', $startDate)
+        ->groupBy('date')
+        ->orderBy('date')
+        ->get();
+
+    return response()->json(compact('startDate', 'urlKey', 'totalVisits'));
+}
 }

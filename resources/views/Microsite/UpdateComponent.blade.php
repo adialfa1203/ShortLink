@@ -3,7 +3,7 @@
 
 @section('content')
     <form action="{{ route('update.component', ['id' => $component->id]) }}" method="POST" enctype="multipart/form-data"
-        class="page-content">
+        class="page-content needs-validation" novalidate>
         @csrf
         <div class="container-fluid">
             <!-- start page title -->
@@ -23,7 +23,12 @@
                                 <div class="mb-3">
                                     <label for="designationInput" class="form-label">Nama Komponen</label>
                                     <input type="text" class="form-control" id="designationInput"
-                                        placeholder="Designation" name="name" value="{{ $component->component_name }}">
+                                        placeholder="Designation" name="component_name"
+                                        value="{{ old('component_name', $component->component_name) }}">
+
+                                    @if ($errors->has('component_name'))
+                                        <span class="text-danger">{{ $errors->first('component_name') }}</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -33,8 +38,11 @@
                             <div class="col-xxl-12">
                                 <div class="card overflow-hidden">
                                     <div>
-                                        <img src="{{ asset('component/' . $component->cover_img) }}" alt=""
+                                        <img src="{{ asset('component/' . old('cover_img', $component->cover_img)) }}" alt=""
                                             class="card-img-top profile-wid-img object-fit-cover" style="height: 200px;">
+                                        @if ($errors->has('cover_img'))
+                                            <span class="text-danger">{{ $errors->first('cover_img') }}</span>
+                                        @endif
                                         <div>
                                             <input id="profile-foreground-img-file-input" type="file"
                                                 class="profile-foreground-img-file-input d-none" name="cover_img">
@@ -47,7 +55,7 @@
                                     <div class="card-body pt-0 mt-n5">
                                         <div class="text-center">
                                             <div class="profile-user position-relative d-inline-block mx-auto">
-                                                <img src="{{ asset('component/' . $component->profile_img) }}"
+                                                <img src="{{ asset('component/' . old('profile_img', $component->profile_img)) }}"
                                                     alt=""
                                                     class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
                                                 <div
@@ -63,8 +71,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="d-flex justify-content-center">
+                                            @if ($errors->has('profile_img'))
+                                                <span class="text-danger">{{ $errors->first('profile_img') }}</span>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="d-flex align-items-start gap-3 mt-4">
                                 <button type="submit" class="btn btn-success right ms-auto">Simpan Perubahan</button>
@@ -77,6 +91,7 @@
     </form>
 @endsection
 @section('script')
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-validation.init.js') }}"></script>
     <!-- password-create init -->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/passowrd-create.init.js') }}"></script>
 

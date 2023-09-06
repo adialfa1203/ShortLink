@@ -93,7 +93,7 @@
                 </div>
             </div><!--end card-->
 
-            @foreach ($data as $row)
+            @foreach ($data as $index => $row)
                 <div class="col-12">
                     <div class="card card-body">
                         <div class="wrapper row  align-items-center">
@@ -104,13 +104,12 @@
                                 </div>
                             </div>
                             <div class="wrapper col-8">
-                                <h5 class="card-title">{{ Auth()->user()->name }}</h5>
-                                <p type="button"
-                                    class="link-primary link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover card-text text-muted"
-                                    id="copyText{{ $loop->index }}"
-                                    onclick="copyTextToClipboard('{{ $row->link_microsite }}', 'copyText{{ $loop->index }}')">
-                                    {{ $row->link_microsite }}
-                                </p>
+                                <h5 class="card-title">{{ $row->name }}</h5>
+                                <p type="button" class="link-primary link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover card-text text-muted"
+                                id="copyText{{ $index }}"
+                                onclick="copyTextToClipboard('{{ $row->link_microsite }}', 'copyText{{ $index }}')">
+                                {{ $short_urls[$index]->default_short_url }}
+                            </p>
                                 <div id="customAlert" class="custom-alert">
                                     <span class="alert-text"></span>
                                 </div>

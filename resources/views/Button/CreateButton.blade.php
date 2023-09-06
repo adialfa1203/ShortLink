@@ -28,9 +28,6 @@
                                 <div class="invalid-feedback">
                                     Harap isi kolom ini sebelum melanjutkan proses.
                                 </div>
-                                <div class="valid-feedback">
-                                    Kolom telah diisi dengan benar. Terima kasih.
-                                </div>
                             </div>
                         </div>
                         <div class="col-xxl-12 mt-2 col-md-12">
@@ -50,9 +47,6 @@
                                 <div class="invalid-feedback">
                                     Harap isi kolom ini sebelum melanjutkan proses.
                                 </div>
-                                <div class="valid-feedback">
-                                    Kolom telah diisi dengan benar. Terima kasih.
-                                </div>
                             </div>
                         </div>
                         <div class="col-xxl-12 mt-2 col-md-6">
@@ -61,9 +55,6 @@
                                 <input type="color" class="form-control form-control-color w-100" id="colorPicker" name="color_hex" required>
                                 <div class="invalid-feedback">
                                     Harap isi kolom ini sebelum melanjutkan proses.
-                                </div>
-                                <div class="valid-feedback">
-                                    Kolom telah diisi dengan benar. Terima kasih.
                                 </div>
                             </div>
                         </div>

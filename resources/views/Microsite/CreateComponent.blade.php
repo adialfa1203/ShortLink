@@ -29,9 +29,6 @@
                                     <div class="invalid-feedback">
                                         Harap isi kolom ini sebelum melanjutkan proses.
                                     </div>
-                                    <div class="valid-feedback">
-                                        Kolom telah diisi dengan benar. Terima kasih.
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -49,9 +46,6 @@
                                                 class="profile-foreground-img-file-input d-none" name="cover_img" required>
                                             <div class="invalid-feedback">
                                                 Harap isi cover dan profil sebelum melanjutkan proses.
-                                            </div>
-                                            <div class="valid-feedback">
-                                                Kolom telah diisi dengan benar. Terima kasih.
                                             </div>
                                             <label for="profile-foreground-img-file-input"
                                                 class="profile-photo-edit btn btn-light btn-sm position-absolute end-0 top-0 m-3">

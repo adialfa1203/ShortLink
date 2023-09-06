@@ -45,7 +45,7 @@
                                 {{-- <input id="profile-foreground-img-file-input" type="file" class="profile-foreground-img-file-input d-none"> --}}
                                 {{-- <label for="profile-foreground-img-file-input" class="profile-photo-edit btn btn-light btn-sm position-absolute end-0 top-0 m-3"> --}}
                                     {{-- <i class="ri-image-edit-line align-bottom me-1"></i> Edit Cover Images --}}
-                                </label>
+                                {{-- </label> --}}
                             </div>
                         </div>
                         <div class="card-body pt-0 mt-n5">
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="mt-3">
                                     <h5>{{$user->name}}<i class="bi bi-patch-check-fill align-baseline text-info ms-1"></i></h5>
-                                    <p class="text-muted">Web Developer</p>
+                                    <p class="text-muted">{{ $accountStatus }}</p>
                                 </div>
                             </div>
                         </div>

@@ -38,6 +38,7 @@
             display: flex;
             justify-content: space-between;
         }
+
     </style>
 @endsection
 <div class="app-menu navbar-menu">
@@ -104,8 +105,11 @@
                     </button> --}}
                     <button class="nav-link bg-transparent text-white" type="button" role="button" aria-expanded="false" data-bs-toggle="dropdown"
                         aria-controls="sidebarDashboards">
-                        <img class="header-profile-user"
-                            src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/32/avatar-1.jpg') }}" alt="Header Avatar">
+                        <div>
+                            <img src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}"
+                            alt="Avatar"
+                            style="object-fit: cover; object-position: center center; width: 50px; height: 50px; border-radius:50%">
+                        </div>
                             <div class="text-start ms-xl-2">
                                 <span><b>Hi! {{ Auth::user()->name }}</b></span>
 
@@ -162,9 +166,12 @@
                         <span data-key="t-email">Button</span> </a>
                 </li>
                 <li class="nav-item">
-                    
-                    <a href="{{ url ('view-komentar')}}" class="nav-link menu-link"><i class="bi bi-chat-right-text-fill"></i>
+                    <a href="{{ url ('viewkomentar')}}" class="nav-link menu-link"><i class="bi bi-chat-right-text-fill"></i>
                         <span data-key="t-email">Komentar</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url ('blokir')}}" class="nav-link menu-link"><i class="fa fa-ban"></i>
+                        <span data-key="t-email">Akun Di Blokir</span> </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url ('profil-admin')}}" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span

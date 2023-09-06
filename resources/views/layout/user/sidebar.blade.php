@@ -106,8 +106,11 @@
                     </button> --}}
                         <button class="nav-link bg-transparent text-white" type="button" role="button" aria-expanded="false" data-bs-toggle="dropdown"
                             aria-controls="sidebarDashboards">
-                            <img class="header-profile-user"
-                                src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="Header Avatar">
+                            <div>
+                                <img src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}"
+                                alt="Avatar"
+                                style="object-fit: cover; object-position: center center; width: 50px; height: 50px; border-radius:50%">
+                            </div>
                                 <div class="text-start ms-xl-2">
                                     <span><b>Hi! {{ Auth::user()->name }}</b></span>
 
@@ -160,7 +163,7 @@
                     <div class="collapse menu-dropdown" id="sidebarEcommerce">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url ('link/{shortCode}')}}" class="nav-link" data-key="t-products">Tutan
+                                <a href="{{ url ('link/{shortCode}')}}" class="nav-link" data-key="t-products">Tautan
                                     Aktif</a>
                             </li>
                             <li class="nav-item">

@@ -1,5 +1,5 @@
 @extends('layout.admin.app')
-@section('title', 'Data Pengguna')
+@section('title', 'Komentar')
 
 @section('content')
             <div class="page-content">
@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0">Data Pengguna</h4>
+                                <h4 class="mb-sm-0">Komentar</h4>
 
                                 {{-- <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
@@ -64,9 +64,9 @@
                                                             <label class="form-check-label" for="checkAll"></label>
                                                         </div>
                                                     </th>
+                                                    <th scope="col" class="sort cursor-pointer" data-sort="order_id">Email</th>
                                                     <th scope="col" class="sort cursor-pointer" data-sort="order_id">Nama Pengguna</th>
                                                     <th scope="col" class="sort cursor-pointer" data-sort="order_date">Isi Komentar</th>
-                                                    <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="list form-check-all">
@@ -78,6 +78,13 @@
                                                                 <label class="form-check-label"></label>
                                                             </div>
                                                         </th>
+                                                        <td class="products">
+                                                            @if ($row->user)
+                                                                {{ $row->user->email }}
+                                                            @else
+                                                                Email Tidak Ditemukan
+                                                            @endif
+                                                        </td>
                                                         <td>
                                                             @if ($row->user)
                                                                 {{ $row->user->name }}
@@ -89,6 +96,7 @@
                                                     </tr>
                                                 @endforeach
                                             </tbody>
+                                            
                                             
                                         </table><!-- end table -->
                                         <div class="noresult" style="display: none">

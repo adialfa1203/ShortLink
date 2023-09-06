@@ -560,8 +560,8 @@
                                 title: 'Kesalahan...',
                                 icon: 'error',
                                 html: response.message +
-                                    'Klik di <a href="#">sini</a> ' +
-                                    'untuk info lebih lanjut tentang langganan premium.',
+                                    'Klik di <a href="/BillingSubscriptions">sini</a> ' +
+                                    'untuk info lebih lanjut tentang langganan premium.',                                
                             })
                         }
                         // Tangani respons dari server

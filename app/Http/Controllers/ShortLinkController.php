@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use AshAllenDesign\ShortURL\Classes\Builder;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 use Yoeunes\Toastr\Toastr;
 
 class ShortLinkController extends Controller
@@ -76,6 +77,16 @@ class ShortLinkController extends Controller
             return response()->json(['error' => 'Short link not found'], 404);
         }
 
+        $validator = Validator::make($request->all(), [
+            'newUrlKey' => 'required|unique:short_urls,url_key'
+        ],[
+            'newUrlKey.required' => 'Kolom harus diisi',
+            'newUrlKey.unique' => 'Nama sudah digunakan'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 404);
+        }
         // Mengambil data dari permintaan Ajax
         $newUrlKey = $request->newUrlKey;
         // dd($request);

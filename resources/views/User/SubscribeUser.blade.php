@@ -1,6 +1,33 @@
 @extends('layout.user.app')
 @section('title', 'Berlangganan')
+@section('style')
 
+<style>
+
+    /* Untuk layar kecil (misalnya, ponsel) */
+//card dan gambarnya
+@media (max-width: 576px) {
+    .card-img-top {
+        width: 50%;
+    }
+    .col-lg-7 {
+        width: 50%;
+    }
+    .col-lg-3 {
+        width: 100%;
+        margin-top: 10px; /* Tambahkan margin jika diperlukan */
+    }
+}
+//text
+@media (max-width: 576px) {
+    .col-lg-7 {
+        width: 100%; /* Kolom akan mengisi seluruh lebar layar ponsel */
+    }
+}
+
+</style>
+
+@endsection
 @section('content')
             <div class="page-content">
                 <div class="container-fluid">
@@ -28,22 +55,22 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="wrapper d-flex align-items-center">
-                                            <div class="col-2">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-2">
                                                 <img class="card-img-top img-fluid" src="{{ asset('plugin/cat-free.jpg') }}" style="width: 100%;" alt="Card image cap">
                                             </div>
-                                            <div class="col-7">
-                                                    <h6 class="card-title long-text">link.id - Layanan Gratis (Selamanya)</h6>
-                                                    <p class="card-text text-muted long-text">Anda menggunakan layanan gratis dari link.id</p>
+                                            <div class="col-lg-7">
+                                                <h6 class="card-title long-text">link.id - Layanan Gratis (Selamanya)</h6>
+                                                <p class="card-text text-muted long-text">Anda menggunakan layanan gratis dari link.id</p>
                                             </div>
-                                            <div class="col-3 col-sm-1 col-md-3">
-                                                    <a href="/subscribe-product-user" type="button" class="btn btn-outline-danger" style="width: auto">Berlangganan Sekarang</a>
+                                            <div class="col-lg-3 text-center">
+                                                <a href="/subscribe-product-user" type="button" class="btn btn-outline-danger">Berlangganan Sekarang</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div><!--end col-->
-                        </div><!--end row-->
+                            </div>
+                        </div>                        
                         <div>
 
                             <a href="/subscribe-product-user">Lihat semua layanan kami di sini!</a>
@@ -71,12 +98,11 @@
                                                         <th class="sort cursor-pointer" data-sort="category">Layanan</th>
                                                         <th class="sort cursor-pointer" data-sort="stock">Metode</th>
                                                         <th class="sort cursor-pointer" data-sort="price">Harga</th>
-
                                                     </tr>
                                                 </thead>
-
+                                                <!-- ... Isi tabel di sini ... -->
                                             </table>
-                                        </div><!--end table-responsive-->
+                                        </div>                                        
 
                                         <div class="noresult" style="display: none">
                                             <div class="text-center py-4">
