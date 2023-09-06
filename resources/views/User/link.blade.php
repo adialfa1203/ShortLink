@@ -52,6 +52,7 @@
         <div class="d-flex">
             <div class="col-4">
                 <h5>Tautan yang Dihasilkan Terbaru</h5>
+                <p id="clickCount">0 klik</p>
             </div>
             <div class=" col-8 col-sm mb-3">
                 <div class="d-flex justify-content-sm-end">
@@ -114,7 +115,7 @@
                         </div>
 
                         <!-- end Modal bagikan-->
-                                        <button id="clickButton" type="button" class="btn btn-light me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal-{{ $row->id }}">
+                                        <button id="clickButton" type="button" class="btn btn-light me-3 btn-sm clickButton" data-bs-toggle="modal" data-bs-target="#zoomInModal-{{ $row->id }}">
                                             <span data-bs-toggle="tooltip" data-bs-placement="left" title="Kode QR"><i class="fa-solid fa-qrcode"></i></span>
                                         </button>
                                         <button type="button" class="btn btn-light me-3 btn-sm edit-link"
@@ -517,7 +518,6 @@
     });
 </script>
 <script>
-  const clickButton = document.getElementById("clickButton");
   const clickCountElement = document.getElementById("clickCount");
 
   // Mengecek apakah ada data jumlah klik yang sudah tersimpan di localStorage
@@ -526,21 +526,23 @@
   if (clickCount === null) {
     // Jika tidak ada data jumlah klik yang tersimpan, inisialisasi dengan 0
     clickCount = 0;
+  } else {
+    // Mengubah data yang diambil dari localStorage menjadi angka
+    clickCount = parseInt(clickCount);
   }
 
   // Menampilkan jumlah klik saat halaman pertama dimuat
   clickCountElement.textContent = clickCount + " klik";
 
-  // Menambahkan event listener untuk tombol
-  clickButton.addEventListener("click", () => {
+  $('.clickButton').click(function(){
     clickCount++;
 
     // Menyimpan jumlah klik yang baru di localStorage
-    localStorage.setItem("clickCount", clickCount);
+    localStorage.setItem("clickCount", clickCount.toString());
 
     // Memperbarui tampilan di halaman
     clickCountElement.textContent = clickCount + " klik";
-  });
+  })
 </script>
 
 
