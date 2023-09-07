@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="d-flex align-items-start gap-3 mt-4">
-                    <a class="btn btn-success btn-label right" href="{{ route('create.component') }}" role="button">
+                    <a class="btn btn-success btn-label" href="{{ route('create.component') }}" role="button">
                         <i class="ri-add-line label-icon align-middle fs-lg ms-2"></i>Tambah Komponen
                     </a>
                 </div>
@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <strong class="fs-md text-muted mb-0">{{ $item->component_name }}</strong>
-                                </div>  
+                                </div>
                                 <div>
                                     <img src="{{ asset('component/' . $item->cover_img) }}" alt=""
                                         class="card-img-top profile-wid-img object-fit-cover" style="height: 200px;">

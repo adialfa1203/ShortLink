@@ -97,233 +97,225 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="card" id="agenciesList">
-                            <div class="card-header">
-                                <i class="bx bx-star"></i> Tautan Populer
+                        <div class="card" data-simplebar
+                        style="max-height: 320px;" id="agenciesList">
+                            <div class="card-header fw-bold">
+                                Tautan Populer
                             </div>
-                            @foreach ($links->sortByDesc('totalVisits') as $link)
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col number">{{ $loop->iteration }}</div>
-                                        <div class="col link">{{ $link->default_short_url }}</div>
-                                        <div class="col visitor">
-                                            {{ $link->totalVisits }} Pengunjung
-                                        </div>
-                                    </div>
-                                    <hr>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-borderless table-nowrap" >
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Tautan</th>
+                                                <th scope="col">Pengunjung</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($links->sortByDesc('totalVisits') as $link)
+                                                <tr>
+                                                    <th scope="row">{{ $loop->iteration }}</th>
+                                                    <td>{{ $link->default_short_url }}</td>
+                                                    <td>{{ $link->totalVisits }} Pengunjung</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
-                            @endforeach
+                            </div>
                         </div>
                     </div>
+
+
                     <div class="col-lg-6">
                         <div class="card" id="agenciesList">
-                            <div class="card-header">
-                                <i class="bx bx-heart"></i> Microsite Populer
+                            <div class="card-header fw-bold">
+                                Microsite Populer
                             </div>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col number">1.</div>
-                                    <div class="col name">link.id/8FCO2</div>
-                                    <div class="col age">0 Pengunjung</div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col number">2.</div>
-                                    <div class="col name">link.id/8FCO2</div>
-                                    <div class="col age">0 Pengunjung</div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col number">3.</div>
-                                    <div class="col name">link.id/8FCO2</div>
-                                    <div class="col age">0 Pengunjung</div>
-                                </div>
-
+                                <table class="table table-borderless table-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Tautan</th>
+                                            <th scope="col">Pengunjung</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>link.id/8FCO2</td>
+                                            <td>0 Pengunjung</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>link.id/8FCO2</td>
+                                            <td>0 Pengunjung</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>link.id/8FCO2</td>
+                                            <td>0 Pengunjung</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div><!--end col-->
+
                     <div class="col-lg-6">
                         <div class="card" id="agenciesList">
-                            <div class="card-header">
-                                <i class="bi bi-qr-code-scan"></i> Pengunjung Kode QR
+                            <div class="card-header fw-bold">
+                                Microsite Populer
                             </div>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col number">1.</div>
-                                    <div class="col name">link.id/8FCO2</div>
-                                    <div class="col age">0 Pengunjung</div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col number">2.</div>
-                                    <div class="col name">link.id/8FCO2</div>
-                                    <div class="col age">0 Pengunjung</div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col number">3.</div>
-                                    <div class="col name">link.id/8FCO2</div>
-                                    <div class="col age">0 Pengunjung</div>
-                                </div>
-
+                                <table class="table table-borderless table-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Tautan</th>
+                                            <th scope="col">Pengunjung</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>link.id/8FCO2</td>
+                                            <td>0 Pengunjung</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>link.id/8FCO2</td>
+                                            <td>0 Pengunjung</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>link.id/8FCO2</td>
+                                            <td>0 Pengunjung</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </div><!--end col-->
+                    </div><!-- end col -->
                 </div><!--end row-->
-
-
-                    {{-- <div class="row">
-                {{-- <div class="row">
-                        <div class="col-lg-6">
-                            <div class="card" id="agenciesList">
-                                <div class="card-header">
-                                    <i class="bx bx-star"></i> Tautan Populer
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col number">1.</div>
-                                        <div class="col name">link.id/8FCO2</div>
-                                        <div class="col age">0 Pengunjung</div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="card" id="agenciesList">
-                                <div class="card-header">
-                                    <i class="bx bx-heart"></i> Microsite Populer
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col number">1.</div>
-                                        <div class="col name">link.id/8FCO2</div>
-                                        <div class="col age">0 Pengunjung</div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div><!--end col-->
-                    </div> --}}
-
             </div>
             <!-- container-fluid -->
         </div>
     @endsection
     @section('script')
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function updateChart() {
-            $.ajax({
-                url: "{{ route('analytic.users.chart') }}",
-                method: "GET",
-                success: function(data) {
-                    console.log(data);
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            function updateChart() {
+                $.ajax({
+                    url: "{{ route('analytic.users.chart') }}",
+                    method: "GET",
+                    success: function(data) {
+                        console.log(data);
 
-                    var totalUrlData = data.totalUrl.map(item => [new Date(item.date).getTime(), item
-                        .totalUrl
-                    ]);
-                    var totalVisitsData = data.totalVisits.map(item => [new Date(item.date).getTime(), item
-                    .totalVisits]);
+                        var totalUrlData = data.totalUrl.map(item => [new Date(item.date).getTime(), item
+                            .totalUrl
+                        ]);
+                        var totalVisitsData = data.totalVisits.map(item => [new Date(item.date).getTime(), item
+                            .totalVisits
+                        ]);
 
-                    var options = {
-                        chart: {
-                            height: 350,
-                            type: "line",
-                            stacked: false
-                        },
-                        dataLabels: {
-                            enabled: false
-                        },
-                        colors: ["#6C757D", "#1E88E5"],
-                        series: [
-                            {
-                                name: "Jumlah Tautan",
-                                data: totalUrlData
+                        var options = {
+                            chart: {
+                                height: 350,
+                                type: "line",
+                                stacked: false
                             },
-                            {
-                                name: "Pengunjung",
-                                data: totalVisitsData
-                            }
-                        ],
-                        stroke: {
-                            width: [4, 4]
-                        },
-                        plotOptions: {
-                            bar: {
-                                columnWidth: "20%"
-                            }
-                        },
-                        xaxis: {
-                            type: 'datetime'
-                        },
-                        yaxis: [
-                            {
-                                axisTicks: {
-                                    show: true
+                            dataLabels: {
+                                enabled: false
+                            },
+                            colors: ["#6C757D", "#1E88E5"],
+                            series: [{
+                                    name: "Jumlah Tautan",
+                                    data: totalUrlData
                                 },
-                                axisBorder: {
-                                    show: true,
-                                    color: "#FF1654"
-                                },
-                                labels: {
-                                    style: {
-                                        colors: "#FF1654"
-                                    }
-                                },
-                                title: {
-                                    text: "Pengunjung",
-                                    style: {
+                                {
+                                    name: "Pengunjung",
+                                    data: totalVisitsData
+                                }
+                            ],
+                            stroke: {
+                                width: [4, 4]
+                            },
+                            plotOptions: {
+                                bar: {
+                                    columnWidth: "20%"
+                                }
+                            },
+                            xaxis: {
+                                type: 'datetime'
+                            },
+                            yaxis: [{
+                                    axisTicks: {
+                                        show: true
+                                    },
+                                    axisBorder: {
+                                        show: true,
                                         color: "#FF1654"
+                                    },
+                                    labels: {
+                                        style: {
+                                            colors: "#FF1654"
+                                        }
+                                    },
+                                    title: {
+                                        text: "Pengunjung",
+                                        style: {
+                                            color: "#FF1654"
+                                        }
                                     }
+                                },
+                                {
+                                    opposite: true,
+                                    axisTicks: {
+                                        show: true
+                                    },
+                                    axisBorder: {
+                                        show: true,
+                                        color: "#1E88E5"
+                                    },
+                                    labels: {
+                                        style: {
+                                            colors: "#1E88E5"
+                                        }
+                                    },
+                                    title: {
+                                        text: "Total Visits",
+                                        style: {
+                                            color: "#1E88E5"
+                                        }
+                                    }
+                                }
+                            ],
+                            tooltip: {
+                                shared: true,
+                                intersect: false,
+                                x: {
+                                    show: false
                                 }
                             },
-                            {
-                                opposite: true,
-                                axisTicks: {
-                                    show: true
-                                },
-                                axisBorder: {
-                                    show: true,
-                                    color: "#1E88E5"
-                                },
-                                labels: {
-                                    style: {
-                                        colors: "#1E88E5"
-                                    }
-                                },
-                                title: {
-                                    text: "Total Visits",
-                                    style: {
-                                        color: "#1E88E5"
-                                    }
-                                }
+                            legend: {
+                                horizontalAlign: "left",
+                                offsetX: 40
                             }
-                        ],
-                        tooltip: {
-                            shared: true,
-                            intersect: false,
-                            x: {
-                                show: false
-                            }
-                        },
-                        legend: {
-                            horizontalAlign: "left",
-                            offsetX: 40
-                        }
-                    };
+                        };
 
-                    var chart = new ApexCharts(document.querySelector("#chartDataAnalytic"), options);
-                    chart.render();
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
-        }
+                        var chart = new ApexCharts(document.querySelector("#chartDataAnalytic"), options);
+                        chart.render();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
 
-        updateChart();
-
-    </script>
+            updateChart();
+        </script>
     @endsection

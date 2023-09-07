@@ -74,8 +74,8 @@
                 <div class="card-body">
                     <div class="row align-items-center g-2">
                         <div class="col-lg-3 me-auto">
-                            <a href="{{ route('add.microsite') }}" type="button" class="btn btn-success"><i
-                                    class="bi bi-plus-circle align-baseline me-1"></i> Buat Baru</a>
+                            <a href="{{ route('add.microsite') }}" type="button" class="btn btn-success btn-label"><i
+                                    class="ri-add-line label-icon align-middle fs-lg"></i> Buat Baru</a>
                         </div>
                         <div class="col-lg-auto">
                             <div class="hstack gap-2">
