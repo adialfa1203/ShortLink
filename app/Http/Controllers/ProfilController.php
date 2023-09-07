@@ -36,20 +36,16 @@ class ProfilController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'number' => 'required', // Sesuaikan dengan kebutuhan Anda
-            'old_password' => 'required_with:new_password', // Memerlukan old_password hanya jika new_password diisi
+            'number' => 'required',
+            'old_password' => 'required_with:new_password',
             'new_password' => 'nullable|min:8|confirmed',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
-        ],);
+        ]);
 
-
-        // dd($request);
-        // Mengisi data pengguna dengan data yang diinputkan oleh pengguna
         $user->name = $request->name;
         $user->email = $request->email;
         $user->number = $request->number;
 
-        // Memeriksa dan mengupdate kata sandi jika diinputkan
         if ($request->filled('new_password')) {
             if (!Hash::check($request->old_password, $user->password)) {
                 return redirect()->back()->withErrors(['old_password' => 'Kata sandi lama tidak cocok.']);
@@ -57,15 +53,24 @@ class ProfilController extends Controller
             $user->password = Hash::make($request->new_password);
         }
 
-        // Upload dan simpan gambar profil jika ada
         if ($request->hasFile('profile_picture')) {
-            $profilePicturePath = $request->file('profile_picture')->store('profile_pictures', 'public');
-            $user->profile_picture = $profilePicturePath;
-        }
+            $oldProfilePicture = $user->profile_picture;
+            if ($oldProfilePicture) {
+                $oldProfilePath = public_path('profile_pictures/' . $oldProfilePicture);
+                if (file_exists($oldProfilePath)) {
+                    unlink($oldProfilePath);
+                }
+            }
 
-        $user->save(); // Menyimpan perubahan pada data pengguna
+            $profilePicturePath = $request->file('profile_picture')->move(public_path('profile_pictures'), $user->id . '.jpg');
+            $user->profile_picture = 'profile_pictures/' . $user->id . '.jpg';
+        }
+        // dd('profile_picture');
+        $user->update();
+
         return redirect()->back()->with('success', 'Data berhasil diperbarui.');
     }
+
     public function profileAdmin()
     {
         $admin = Auth::user();
@@ -77,22 +82,17 @@ class ProfilController extends Controller
         $admin = Auth::user();
         $request->validate([
             'name' => 'required',
-            // 'email' => 'required|email|unique:users,email,' . $admin->id,
-            'number' => 'required', // Sesuaikan dengan kebutuhan Anda
-            'old_password' => 'required_with:new_password', // Memerlukan old_password hanya jika new_password diisi
+            'number' => 'required',
+            'old_password' => 'required_with:new_password',
             'new_password' => 'nullable|min:8|confirmed',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
         ],);
 
-
-// dd($request);
-        // Mengisi data pengguna dengan data yang diinputkan oleh pengguna
         $admin->name = $request->name;
         $admin->email = $request->email;
 
         $admin->number = $request->number;
 
-// Memeriksa dan mengupdate kata sandi jika diinputkan
         if ($request->filled('new_password')) {
             if (!Hash::check($request->old_password, $admin->password)) {
                 return redirect()->back()->withErrors(['old_password' => 'Kata sandi lama tidak cocok.']);
@@ -100,13 +100,19 @@ class ProfilController extends Controller
             $admin->password = Hash::make($request->new_password);
         }
 
-// Upload dan simpan gambar profil jika ada
         if ($request->hasFile('profile_picture')) {
-            $profilePicturePath = $request->file('profile_picture')->store('profile_pictures', 'public');
-            $admin->profile_picture = $profilePicturePath;
-        }
+            $oldProfilePicture = $admin->profile_picture;
+            if ($oldProfilePicture) {
+                $oldProfilePath = public_path('profile_pictures/' . $oldProfilePicture);
+                if (file_exists($oldProfilePath)) {
+                    unlink($oldProfilePath);
+                }
+            }
 
-        $admin->save(); // Menyimpan perubahan pada data pengguna
+            $profilePicturePath = $request->file('profile_picture')->move(public_path('profile_pictures'), $admin->id . '.jpg');
+            $admin->profile_picture = 'profile_pictures/' . $admin->id . '.jpg';
+        }
+        $admin->update();
         return redirect()->back()->with('success', 'Data berhasil diperbarui.');
     }
 
