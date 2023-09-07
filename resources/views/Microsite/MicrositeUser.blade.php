@@ -70,10 +70,12 @@
                         <h4 class="mb-sm-0">Microsite</h4>
                     </div>
                 </div>
-                <div class="col-3 mb-3">
-                    <div class="search-box">
-                        <input type="text" class="form-control search" placeholder="Cari...">
-                        <i class="ri-search-line search-icon"></i>
+                <div class=" col-8 col-sm mb-3">
+                    <div class="d-flex justify-content-sm-end">
+                        <div class="search-box ms-2">
+                            <input type="text" class="form-control search" placeholder="Search...">
+                            <i class="ri-search-line search-icon"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -233,6 +235,21 @@
 
             return true; // Submit form jika semua input telah diisi
         }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.search').keyup(function() {
+                var searchText = $(this).val().toLowerCase();
+                $('.card').each(function() {
+                    var cardText = $(this).text().toLowerCase();
+                    if (cardText.includes(searchText)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
     </script>
 
 @endsection

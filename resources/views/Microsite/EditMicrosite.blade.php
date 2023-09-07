@@ -3,6 +3,16 @@
 
 @section('style')
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+    <style>
+        /* Contoh aturan media queries untuk mengatur ulang tampilan pada layar kecil */
+@media (max-width: 768px) {
+    /* Aturan CSS untuk tampilan pada layar kecil di sini */
+    /* Misalnya, mengurangi font size atau mengubah jumlah kolom grid */
+}
+
+/* Aturan media queries lainnya sesuai kebutuhan */
+
+    </style>
 @endsection
 
 @section('content')
