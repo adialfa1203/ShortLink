@@ -17,9 +17,9 @@ class Microsite extends Model
         return $this->hasMany(Social::class);
     }
     public function component(): BelongsTo
-        {
-            return $this->BelongsTo(Components::class, 'components_id');
-        }
+    {
+        return $this->BelongsTo(Components::class, 'components_id');
+    }
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

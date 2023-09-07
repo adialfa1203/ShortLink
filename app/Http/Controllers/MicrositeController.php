@@ -79,10 +79,9 @@ class MicrositeController extends Controller
 
     public function micrositeUpdate(Request $request, $id)
     {
-        $component = Components::FindOrFail($id);
         $microsite = Microsite::FindOrFail($id);
+        $socials = Social::where('microsite_id', 'button_id', $id)->get();
         $buttonLinks = $request->input('button_link');
-        $socials = Social::where('microsite_id',$id)->get();
         // dd($buttonLinks);
         $validator = Validator::make($request->all(), [
             'name_microsite' => 'nullable|string|max:10',
@@ -116,7 +115,7 @@ class MicrositeController extends Controller
             ]);
         }
 
-        return redirect()->route('microsite', compact('component'))->with('success', 'Button links added successfully.');
+        return redirect()->route('microsite')->with('success', 'Button links added successfully.');
     }
 
     public function createComponent(){
