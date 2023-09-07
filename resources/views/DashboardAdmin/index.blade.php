@@ -13,7 +13,6 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="fs-md text-muted mb-0">Pengguna</h5>
-
                     <div class="row mt-3">
                         <div class="col-2">
                             <i class="fa-solid fa-user" style="font-size: 30px;"></i>

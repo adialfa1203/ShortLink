@@ -38,7 +38,33 @@
             display: flex;
             justify-content: space-between;
         }
+/* CSS untuk sidebar */
+#scrollbar {
+    /* Atur lebar sidebar saat layar besar */
+    width: 250px;
+    /* Tambahkan gaya lain yang Anda butuhkan */
+    /* ... */
+}
 
+/* CSS untuk menu item */
+#navbar-nav li {
+    /* Atur padding, margin, dan lain-lain */
+    /* ... */
+}
+
+/* Media query untuk layar kecil */
+@media (max-width: 768px) {
+    #scrollbar {
+        /* Ubah lebar sidebar saat layar kecil */
+        width: 100%;
+    }
+    
+    /* Atur tampilan menu item untuk layar kecil */
+    #navbar-nav li {
+        /* ... */
+    }
+}
+    
     </style>
 @endsection
 <div class="app-menu navbar-menu">
@@ -104,25 +130,22 @@
                         </span>
                     </button> --}}
                     <button class="nav-link bg-transparent text-white" type="button" role="button" aria-expanded="false" data-bs-toggle="dropdown"
-                        aria-controls="sidebarDashboards">
-                        <div>
-                            <img src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}"
-                            alt="Avatar"
-                            style="object-fit: cover; object-position: center center; width: 50px; height: 50px; border-radius:50%">
+                    aria-controls="sidebarDashboards">
+                    <img class="header-profile-user"
+                        src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="Header Avatar">
+                        <div class="text-start ms-xl-2">
+                            <span><b>Hi! {{ Auth::user()->name }}</b></span>
+
+                            @php
+                            $email = Auth::user()->email;
+                            @endphp
+
+
+                                <span data-key="t-hot">
+                                    {{ $email }}
+                                </span>
                         </div>
-                            <div class="text-start ms-xl-2">
-                                <span><b>Hi! {{ Auth::user()->name }}</b></span>
-
-                                @php
-                                $email = Auth::user()->email;
-                                @endphp
-
-
-                                    <span data-key="t-hot">
-                                        {{ $email }}
-                                    </span>
-                            </div>
-                    </button>
+                </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
                         <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}!</h6>

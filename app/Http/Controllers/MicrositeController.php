@@ -14,7 +14,8 @@ class MicrositeController extends Controller
     public function microsite()
     {
         $user_id = auth()->user()->id;
-        $data = Microsite::where('user_id', $user_id)->get();
+        $data = Microsite::where('user_id', $user_id)->orderBy('created_at', 'desc')
+        ->get();    
         $short_urls = ShortUrl::whereIn('microsite_id', $data->pluck('id'))->get();
         $urlshort = ShortUrl::withCount('visits')->where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
         return view('Microsite.MicrositeUser', compact('data', 'short_urls','urlshort'));
@@ -65,7 +66,7 @@ class MicrositeController extends Controller
             Social::create($socialData);
         }
 
-        return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
+        return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
     }
 
 
@@ -126,7 +127,7 @@ class MicrositeController extends Controller
         $validator = Validator::make($request->all(), [
             'component_name' => 'required|string|max:12',
             'cover_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'profile_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            // 'profile_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
         if ($validator->fails()) {
             return redirect()->back()
@@ -134,18 +135,18 @@ class MicrositeController extends Controller
                 ->withInput();
         }
         $coverImage = $request->file('cover_img');
-        $profileImage = $request->file('profile_img');
+        // $profileImage = $request->file('profile_img');
 
         $coverImageName = time() . '_cover.' . $coverImage->getClientOriginalExtension();
         $coverImage->move(public_path('component'), $coverImageName);
 
-        $profileImageName = time() . '_profile.' . $profileImage->getClientOriginalExtension();
-        $profileImage->move(public_path('component'), $profileImageName);
+        // $profileImageName = time() . '_profile.' . $profileImage->getClientOriginalExtension();
+        // $profileImage->move(public_path('component'), $profileImageName);
 
         $component = Components::create([
             'component_name' => $request->component_name,
             'cover_img' => $coverImageName,
-            'profile_img' => $profileImageName,
+            // 'profile_img' => $profileImageName,
         ]);
         return redirect()->route('view.component')->with('success', 'Component berhasil disimpan.');
     }

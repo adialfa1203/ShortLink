@@ -219,9 +219,10 @@
                             <div class="card-body pt-0 mt-n5">
                                 <div class="text-center">
                                     <div class="profile-user position-relative d-inline-block mx-auto">
-                                        <img src="{{ asset('component/' . $microsite->component->profile_img) }}"
-                                            alt=""
-                                            class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
+                                        <img src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="{{ Auth::user()->name }}"
+                                        alt=""
+                                        class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
+
                                     </div>
                                     <div class="mt-3">
                                         <h5>Nama Profil<i class="align-baseline text-info ms-1"></i>

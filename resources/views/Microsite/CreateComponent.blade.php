@@ -60,10 +60,11 @@
                                     <div class="card-body pt-0 mt-n5">
                                         <div class="text-center">
                                             <div class="profile-user position-relative d-inline-block mx-auto">
-                                                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/avatar-1.jpg') }}"
+                                                <img src="
+                                                {{ asset('template/themesbrand.com/steex/layouts/assets/images/users/default.jpg') }}"
                                                     alt=""
                                                     class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
-                                                <div
+                                                {{-- <div
                                                     class="avatar-xs p-0 rounded-circle profile-photo-edit position-absolute end-0 bottom-0">
                                                     <input id="profile-img-file-input" type="file"
                                                         class="profile-img-file-input d-none" name="profile_img" required>
@@ -73,14 +74,14 @@
                                                             <i class="bi bi-camera"></i>
                                                         </span>
                                                     </label>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-center">
+                                        {{-- <div class="d-flex justify-content-center">
                                             @if ($errors->has('profile_img'))
                                                 <span class="text-danger">{{ $errors->first('profile_img') }}</span>
                                             @endif
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
