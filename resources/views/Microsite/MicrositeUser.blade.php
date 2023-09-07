@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- end page title -->
 
             <div class="card mt-1">
@@ -93,7 +93,7 @@
                                 <a href="" class="btn rounded-pill btn-secondary"> Terakhir Diperbarui</a>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div><!--end card-->
@@ -122,8 +122,11 @@
                             <div class="wrapper col-3">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div class="ml-auto">
-                                        <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-bar-chart-fill"></i>
-                                            Statistik</a>
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse"
+                                            href="#collapseExample{{ $row->id }}" role="button" aria-expanded="true"
+                                            aria-controls="collapseExample{{ $row->id }}">
+                                            <i class="bi bi-bar-chart-fill"></i> statistik
+                                        </button>
                                         <a href="{{ route('edit.microsite', ['id' => $row->id]) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>
                                             Edit</a>
                                         <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-share-fill"></i></a>
@@ -131,6 +134,24 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="collapse" id="collapseExample{{ $row->id }}">
+                                <div class="card-footer">
+                                    <div class="d-flex">
+                                        <div class="col-10">
+                                            <h5><i class="bi bi-bar-chart-line-fill"></i> statistik</h5>
+                                        </div>
+                                        <div class="col-2 d-flex flex-row justify-content-end">
+                                            <button type="button" class="btn btn-light "><span>Lihat
+                                                    Detail</span>&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="chart{{ $row->id }}"></div>
+                                    </div><!-- end card-body -->
+                                </div><!-- end card -->
+                            </div>
                     </div>
                 </div><!-- end col -->
             @endforeach
@@ -142,6 +163,45 @@
 @endsection
 
 @section('script')
+@foreach ($urlshort as $row)
+<script>
+    var options = {
+          series: [{
+            name: "{{$row->title}}",
+            data:["{{ $row->visits_count }}"],
+        }],
+          chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
+            enabled: false
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        title: {
+          text: 'Product Trends by Month',
+          align: 'left'
+        },
+        grid: {
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        xaxis: {
+          categories: ['Jan','feb','Jan','Jan','Jan','Jan','Jan','Jan'],
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart{{ $row->id }}"), options).render();
+
+</script>
+@endforeach
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-wizard.init.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
