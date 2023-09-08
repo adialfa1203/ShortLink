@@ -16,8 +16,12 @@ class MicrositeController extends Controller
         $user_id = auth()->user()->id;
         $data = Microsite::where('user_id', $user_id)->get();
         $short_urls = ShortUrl::whereIn('microsite_id', $data->pluck('id'))->get();
-
-        return view('Microsite.MicrositeUser', compact('data', 'short_urls'));
+        $urlshort = ShortUrl::withCount('visits')
+        ->selectRaw('MONTH(created_at) as month')
+        ->where('user_id', $user_id)
+        ->orderBy('month', 'desc')
+        ->get();
+        return view('Microsite.MicrositeUser', compact('data', 'short_urls','urlshort'));
     }
 
     public function addMicrosite(){
