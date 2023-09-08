@@ -10,6 +10,7 @@
         }
     </style>
 @endsection
+
 <div class="page-content">
     <div class="container-fluid">
         <div class="card-body">
@@ -24,7 +25,7 @@
             <div class="row">
                 <div class="d-flex justify-content-center col-12">
                     <div class="page-title fw-bold d-sm-flex align-items-center">
-                        <h4 class="mb-sm-0">Data Pengguna</h4>
+                        <h4 class="mb-sm-0">{{$accessMicrosite->name}}</h4>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center col-12">
@@ -125,9 +126,8 @@
             </a>
         </div>
     </div>
-</div>
-<div class="modal fade" id="addInstructor" tabindex="-1" aria-labelledby="addInstructorModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal fade" id="addInstructor" tabindex="-1" aria-labelledby="addInstructorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
         <div class="modal-content border-0">
             <div class="modal-header">
                 <h1 class="modal-title fw-semibold fs-2" id="addInstructorModalLabel">Share Microsite</h1>
@@ -184,3 +184,4 @@
         <!-- modal-content -->
     </div>
 </div><!--end modal-->
+</div>

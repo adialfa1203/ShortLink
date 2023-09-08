@@ -31,7 +31,7 @@
                                 <h3 class="mb-4" style="float: right;"><span class="counter-value"
                                         data-target="{{ $totalUser }}">0</span>
                                 </h3>
-                            </div>kojfdgo
+                            </div>
                         </div>
                     </div>
                 </div>

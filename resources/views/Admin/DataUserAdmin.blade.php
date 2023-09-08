@@ -6,29 +6,76 @@
 @endsection
 
 @section('content')
-    <div class="page-content">
+<div class="page-content">
         <div class="container-fluid">
 
             <!-- start page title -->
             <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Data Pengguna</h4>
-
-                                {{-- <div class="page-title-right">
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                        <li class="breadcrumb-item active">Orders</li>
-                                    </ol>
-                                </div> --}}
-
+                <div class="col-xl-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="fs-md text-muted mb-0">Pengguna</h5>
+        
+                            <div class="row mt-3">
+                                <div class="col-2">
+                                    <i class="fa-solid fa-user" style="font-size: 30px;"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalUser)}}">0</span> </h3>
+                                </div>
                             </div>
                         </div>
-
                     </div>
+                </div><!--end col-->
+                <div class="col-xl-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="fs-md text-muted mb-0">Tautan</h5>
+        
+                            <div class="row mt-3">
+                                <div class="col-2">
+                                    <i class="fa-solid fa-link" style="font-size: 30px;"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalUrl)}}">0</span> </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end col-->
+                <div class="col-xl-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="fs-md text-muted mb-0">Microsite</h5>
+                            <div class="row mt-3">
+                                <div class="col-2">
+                                    <i class="fa-solid fa-link" style="font-size: 30px;"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalMicrosite)}}">0</span> </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end col-->
+                <div class="col-xl-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="fs-md text-muted mb-0">Pengunjung</h5>
+                            <div class="row mt-3">
+                                <div class="col-2">
+                                    <i class="fa-solid fa-user" style="font-size: 30px;"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalVisits)}}">0</span> </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
                 </div>
-            </div>
-            <!-- end page title -->
+                <!-- end page title -->
 
             <div class="row">
                 <div class="col-lg-12">
@@ -40,27 +87,6 @@
                                         <input type="text" class="form-control search" id="searchInput"
                                             placeholder="Cari...">
                                         <i class="ri-search-line search-icon"></i>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-auto ms-md-auto">
-                                    <div class="d-flex flex-wrap align-items-center gap-2">
-                                        <button class="btn btn-subtle-danger d-none" id="remove-actions"
-                                            onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
-                                        <div class="dropdown card-header-dropdown sortble-dropdown flex-shrink-0">
-                                            <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <span class="text-muted dropdown-title">Order Date</span> <i
-                                                    class="mdi mdi-chevron-down ms-1"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <button class="dropdown-item sort" data-sort="order_date">Order
-                                                    Date</button>
-                                                <button class="dropdown-item sort" data-sort="order_id">Order ID</button>
-                                                <button class="dropdown-item sort" data-sort="amount">Amount</button>
-                                                <button class="dropdown-item sort" data-sort="status">Status</button>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +129,7 @@
                                                 </td>
                                                 <td class="products">{{ $row->number }}</td>
                                                 <td class="status"><span
-                                                        class="badge bg-primary-subtle text-primary">Berlangganan</span>
+                                                    class="badge bg-primary-subtle text-primary">Berlangganan</span>
                                                 </td>
                                                 <td>
                                                     <ul class="d-flex gap-2 list-unstyled mb-0">
@@ -160,9 +186,10 @@
         <!-- container-fluid -->
     </div>
 
+</div>
 @endsection
 @section('script')
-    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/sweetalerts.init.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

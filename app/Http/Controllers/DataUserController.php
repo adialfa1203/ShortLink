@@ -1,13 +1,33 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\ShortUrl;
 use App\Models\User;
+use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 
 class DataUserController extends Controller
 {
     public function dataUser() {
         $data = User::where('is_banned', 0)->role('user')->get();
-        return view('Admin.DataUserAdmin', compact('data'));
+
+        $totalUser = User::where('email', '!=', 'admin@gmail.com')->count();
+
+        $totalUrl = ShortUrl::count();
+
+        $totalMicrosite = ShortUrl::where('microsite_id')->get()->count();
+
+        $totalVisits = ShortURLVisit::query()->count();
+
+        $users = User::where('email', '!=', 'admin@gmail.com')->get();
+        $count = [];
+        foreach ($users as $user) {
+            $count[$user->id] = ShortUrl::where('user_id', $user->id)->count();
+        }
+
+        // Mengurutkan data berdasarkan jumlah pengunjung
+        arsort($count);
+        return view('Admin.DataUserAdmin', compact('data','totalUser', 'totalUrl', 'totalVisits', 'users', 'count','totalMicrosite'));
     }
     
 

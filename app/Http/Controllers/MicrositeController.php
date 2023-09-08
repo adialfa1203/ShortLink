@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Button;
 use App\Models\Social;
 use App\Models\Microsite;
@@ -20,13 +21,14 @@ class MicrositeController extends Controller
         return view('Microsite.MicrositeUser', compact('data', 'short_urls'));
     }
 
-    public function addMicrosite(){
+    public function addMicrosite()
+    {
         $data = Components::all();
         $button = Button::all();
-        return view('microsite.AddMicrosite',compact('data', 'button'));
+        return view('microsite.AddMicrosite', compact('data', 'button'));
     }
 
-    public function createMicrosite(Request $request)
+    public function createMicrosite(Request $request, Microsite $microsite)
     {
         $request->validate([
             'microsite_selection' => 'required',
@@ -45,7 +47,7 @@ class MicrositeController extends Controller
 
         $microsite = Microsite::create($data);
         $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
-        $micrositeObject = $builder->destinationUrl('https://www.youtube.com/')->make();
+        $micrositeObject = $builder->destinationUrl(route('microsite.short.link', $microsite->link_microsite))->make();
         ShortUrl::where('url_key', $micrositeObject->url_key)->update([
             'user_id' => auth()->id(),
             'microsite_id' => $microsite->id,
@@ -65,11 +67,11 @@ class MicrositeController extends Controller
             Social::create($socialData);
         }
 
-        return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
+        return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
     }
 
-
-    public function editMicrosite($id) {
+    public function editMicrosite($id)
+    {
         $microsite = Microsite::findorFail($id);
         $social = Social::where('microsite_id', $id)->get();
         $short_url = ShortUrl::where('microsite_id', $id)->first();
@@ -126,11 +128,13 @@ class MicrositeController extends Controller
         return redirect()->route('microsite')->with('success', 'Button links added successfully.');
     }
 
-    public function createComponent(){
+    public function createComponent()
+    {
         return view('Microsite.CreateComponent');
     }
 
-    public function saveComponent(Request $request){
+    public function saveComponent(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'component_name' => 'required|string|max:12',
             'cover_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -158,12 +162,14 @@ class MicrositeController extends Controller
         return redirect()->route('view.component')->with('success', 'Component berhasil disimpan.');
     }
 
-    public function editComponent($id){
+    public function editComponent($id)
+    {
         $component = Components::findOrFail($id);
         return view('Microsite.UpdateComponent', compact('component'));
     }
 
-    public function updateComponent(Request $request, $id){
+    public function updateComponent(Request $request, $id)
+    {
         $validator = Validator::make($request->all(), [
             'component_name' => 'required|max:10',
             'cover_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -225,21 +231,23 @@ class MicrositeController extends Controller
         return redirect()->back()->with('success', 'Component berhasil dihapus.');
     }
 
-    public function viewComponent(){
+    public function viewComponent()
+    {
         $component = Components::all();
         return view('Microsite.ViewComponent', compact('component'));
     }
 
-    public function micrositeLink(){
-        // $microsite = Microsite::findorFail($id);
-        // $social = Social::where('microsite_id', $id)->get();
-        return view('Microsite.MicrositeLink');
-    }
     public function search(Request $request)
     {
         $query = $request->input('name');
         $results = Microsite::where('field', 'like', '%' . $query . '%')->get();
 
         return response()->json(['results' => $results]);
+    }
+
+    public function micrositeLink($microsite)
+    {
+        $accessMicrosite = Microsite::where('link_microsite', $microsite)->first();
+        return view('Microsite.MicrositeLink', compact('accessMicrosite'));
     }
 }
