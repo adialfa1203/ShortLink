@@ -51,7 +51,7 @@
                         <div class="card-body pt-0 mt-n5">
                             <div class="text-center">
                                 <div class="profile-user position-relative d-inline-block mx-auto">
-                                    <img src="{{ asset($user->profile_picture ? 'storage/' . $user->profile_picture : 'profile_pictures/default.jpg') }}" alt="{{ $user->name }}" class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
+                                    <img src="{{ asset($user->profile_picture ? $user->profile_picture : 'profile_pictures/default.jpg') }}" alt="{{ $user->name }}" class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
                                     <div class="avatar-xs p-0 rounded-circle profile-photo-edit position-absolute end-0 bottom-0">
                                         <input id="profile-img-file-input" name="profile_picture" type="file" class="profile-img-file-input d-none">
                                         <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">

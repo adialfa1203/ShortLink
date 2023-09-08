@@ -14,11 +14,10 @@ class MicrositeController extends Controller
     public function microsite()
     {
         $user_id = auth()->user()->id;
-        $data = Microsite::where('user_id', $user_id)->orderBy('created_at', 'desc')
-        ->get();    
+        $data = Microsite::where('user_id', $user_id)->get();
         $short_urls = ShortUrl::whereIn('microsite_id', $data->pluck('id'))->get();
-        $urlshort = ShortUrl::withCount('visits')->where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
-        return view('Microsite.MicrositeUser', compact('data', 'short_urls','urlshort'));
+
+        return view('Microsite.MicrositeUser', compact('data', 'short_urls'));
     }
 
     public function addMicrosite(){
@@ -66,7 +65,7 @@ class MicrositeController extends Controller
             Social::create($socialData);
         }
 
-        return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
+        return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
     }
 
 
@@ -81,10 +80,11 @@ class MicrositeController extends Controller
     public function micrositeUpdate(Request $request, $id)
     {
         $microsite = Microsite::FindOrFail($id);
-        $socials = Social::where('microsite_id', 'button_id', $id)->get();
+        $socials = Social::where('microsite_id', $id)->get();
         $buttonLinks = $request->input('button_link');
-        // dd($buttonLinks);
+
         $validator = Validator::make($request->all(), [
+            'name' => 'nullable|string|max:10',
             'name_microsite' => 'nullable|string|max:10',
             'description' => 'nullable|string|max:115',
             'company_name' => 'nullable|string|max:15',
@@ -94,6 +94,9 @@ class MicrositeController extends Controller
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
+        }
+        if ($request->has('name')) {
+            $microsite->name = $request->input('name');
         }
         if ($request->has('name_microsite')) {
             $microsite->name_microsite = $request->input('name_microsite');
@@ -109,13 +112,17 @@ class MicrositeController extends Controller
         }
         $microsite->save();
 
-        foreach($socials as $index => $social)
-        {
-            $social->update([
-                'button_link' => $buttonLinks[$index+1],
-            ]);
-        }
+        foreach ($buttonLinks as $index => $buttonLink) {
+            $social = Social::where('microsite_id', $id)
+            ->where('buttons_id', $index)->first();
 
+            if ($social) {
+                $social->update([
+                    'button_link' => $buttonLink,
+                ]);
+            }
+        }
+        // dd($buttonLinks);
         return redirect()->route('microsite')->with('success', 'Button links added successfully.');
     }
 
@@ -135,7 +142,7 @@ class MicrositeController extends Controller
                 ->withInput();
         }
         $coverImage = $request->file('cover_img');
-        // $profileImage = $request->file('profile_img');
+        $profileImage = $request->file('profile_img');
 
         $coverImageName = time() . '_cover.' . $coverImage->getClientOriginalExtension();
         $coverImage->move(public_path('component'), $coverImageName);
@@ -177,11 +184,11 @@ class MicrositeController extends Controller
             }
         }
 
-        if ($request->hasFile('profile_img')) {
-            if (file_exists(public_path('component/' . $component->profile_img))) {
-                unlink(public_path('component/' . $component->profile_img));
-            }
-        }
+        // if ($request->hasFile('profile_img')) {
+        //     if (file_exists(public_path('component/' . $component->profile_img))) {
+        //         unlink(public_path('component/' . $component->profile_img));
+        //     }
+        // }
 
         if ($request->hasFile('cover_img')) {
             $coverImage = $request->file('cover_img');
@@ -190,12 +197,12 @@ class MicrositeController extends Controller
             $component->cover_img = $coverImageName;
         }
 
-        if ($request->hasFile('profile_img')) {
-            $profileImage = $request->file('profile_img');
-            $profileImageName = time() . '_profile.' . $profileImage->getClientOriginalExtension();
-            $profileImage->move(public_path('component'), $profileImageName);
-            $component->profile_img = $profileImageName;
-        }
+        // if ($request->hasFile('profile_img')) {
+        //     $profileImage = $request->file('profile_img');
+        //     $profileImageName = time() . '_profile.' . $profileImage->getClientOriginalExtension();
+        //     $profileImage->move(public_path('component'), $profileImageName);
+        //     $component->profile_img = $profileImageName;
+        // }
         $component->component_name = $request->component_name;
         $component->save();
         // dd($request);
@@ -210,9 +217,9 @@ class MicrositeController extends Controller
         if (file_exists(public_path('component/' . $component->cover_img))) {
             unlink(public_path('component/' . $component->cover_img));
         }
-        if (file_exists(public_path('component/' . $component->profile_img))) {
-            unlink(public_path('component/' . $component->profile_img));
-        }
+        // if (file_exists(public_path('component/' . $component->profile_img))) {
+        //     unlink(public_path('component/' . $component->profile_img));
+        // }
         $component->delete();
 
         return redirect()->back()->with('success', 'Component berhasil dihapus.');

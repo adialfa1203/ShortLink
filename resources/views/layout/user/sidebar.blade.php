@@ -3,6 +3,7 @@
         [data-theme=default][data-topbar=dark] .text-light {
             color: #EEF0F7 !important;
         }
+
         .marquee {
             width: 100%;
             overflow: hidden;
@@ -38,6 +39,7 @@
             display: flex;
             justify-content: space-between;
         }
+
         .sidebar-hidden {
             display: none;
         }
@@ -48,22 +50,18 @@
     <div class="navbar-brand-box">
         <a href="index.html" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('template/image/LINKlogo.png') }}" alt=""
-                    height="22">
+                <img src="{{ asset('template/image/LINKlogo.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('template/image/LINKlogo.png') }}"
-                    alt="" height="22">
+                <img src="{{ asset('template/image/LINKlogo.png') }}" alt="" height="22">
             </span>
         </a>
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('template/image/LINKlogo.png') }}"
-                    alt="" width="50" height="20">
+                <img src="{{ asset('template/image/LINKlogo.png') }}" alt="" width="50" height="20">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('template/image/LINKlogo.png') }}"
-                    alt="" width="120" height="35">
+                <img src="{{ asset('template/image/LINKlogo.png') }}" alt="" width="120" height="35">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-3xl header-item float-end btn-vertical-sm-hover"
@@ -104,30 +102,31 @@
                             </div>
                         </span>
                     </button> --}}
-                    <button class="nav-link bg-transparent text-white" type="button" role="button" aria-expanded="false" data-bs-toggle="dropdown"
-                    aria-controls="sidebarDashboards">
-                    <img class="header-profile-user"
-                        src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="Header Avatar">
+                    <button class="nav-link bg-transparent text-white" type="button" role="button"
+                        aria-expanded="false" data-bs-toggle="dropdown" aria-controls="sidebarDashboards">
+                        <img class="header-profile-user"
+                            src="{{ Auth::user()->profile_picture ? asset(Auth::user()->profile_picture) : asset('profile_pictures/default.jpg') }}"
+                            alt="Header Avatar">
                         <div class="text-start ms-xl-2">
                             <span><b>Hi! {{ Auth::user()->name }}</b></span>
 
                             @php
-                            $email = Auth::user()->email;
+                                $email = Auth::user()->email;
                             @endphp
 
 
-                                <span data-key="t-hot">
-                                    {{ $email }}
-                                </span>
+                            <span data-key="t-hot">
+                                {{ $email }}
+                            </span>
                         </div>
-                </button>
+                    </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome {{Auth::user()->name}}!</h6>
-                        <a class="dropdown-item" href="{{ url ('profil-user')}}"><i
+                        <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}!</h6>
+                        <a class="dropdown-item" href="{{ url('profil-user') }}"><i
                                 class="mdi mdi-account-circle text-muted fs-lg align-middle me-1"></i> <span
                                 class="align-middle">Profile</span></a>
-                        <a class="dropdown-item" href="{{ url ('logout')}}"><i
+                        <a class="dropdown-item" href="{{ url('logout') }}"><i
                                 class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i> <span
                                 class="align-middle" data-key="t-logout">Logout</span></a>
                     </div>
@@ -141,14 +140,15 @@
 
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link " href="{{ url ('dashboard-user')}}" role="button" aria-expanded="false"
-                        aria-controls="sidebarDashboards">
+                    <a class="nav-link menu-link " href="{{ url('dashboard-user') }}" role="button"
+                        aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class="bi bi-house-fill"></i> <span data-key="t-dashboards">Dasbor</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url ('analytic-user')}}" class="nav-link menu-link"> <i class="bi bi-bar-chart-line-fill"></i>
+                    <a href="{{ url('analytic-user') }}" class="nav-link menu-link"> <i
+                            class="bi bi-bar-chart-line-fill"></i>
                         <span data-key="t-email">Analitik</span> </a>
                 </li>
 
@@ -160,11 +160,11 @@
                     <div class="collapse menu-dropdown" id="sidebarEcommerce">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url ('link/{shortCode}')}}" class="nav-link" data-key="t-products">Tautan
+                                <a href="{{ url('link/{shortCode}') }}" class="nav-link" data-key="t-products">Tautan
                                     Aktif</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url ('archive-link-user')}}" class="nav-link"
+                                <a href="{{ url('archive-link-user') }}" class="nav-link"
                                     data-key="t-products-grid">Tautan Diarsip</a>
                             </li>
                         </ul>
@@ -172,18 +172,19 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url ('microsite-user')}}" class="nav-link menu-link"> <i class="bi bi-person-badge-fill"></i>
+                    <a href="{{ url('microsite-user') }}" class="nav-link menu-link"> <i
+                            class="bi bi-person-badge-fill"></i>
                         <span data-key="t-file-manager">Microsite</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ url ('subscribe-user')}}">
+                    <a class="nav-link menu-link" href="{{ url('subscribe-user') }}">
                         <i class="bi bi-fire"></i> <span data-key="t-widgets">Berlangganan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url ('profil-user')}}" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
-                            data-key="t-chat">Profil</span> </a>
+                    <a href="{{ url('profil-user') }}" class="nav-link menu-link"> <i
+                            class="bi bi-person-fill"></i> <span data-key="t-chat">Profil</span> </a>
                 </li>
             </ul>
         </div>
@@ -192,4 +193,3 @@
 
     <div class="sidebar-background"></div>
 </div>
-

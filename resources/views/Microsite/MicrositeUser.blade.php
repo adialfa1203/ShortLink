@@ -2,44 +2,44 @@
 @section('title', 'Microsite')
 
 @section('style')
-<style>
-    .custom-alert {
-        display: none;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 15px;
-        background-color: #f1f1f1;
-        color: #333;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        z-index: 1000;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        animation: fade-in 0.3s ease-in-out;
-    }
-
-    @keyframes fade-in {
-        0% {
-            opacity: 0;
+    <style>
+        .custom-alert {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px;
+            background-color: #f1f1f1;
+            color: #333;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            z-index: 1000;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            animation: fade-in 0.3s ease-in-out;
         }
 
-        100% {
-            opacity: 1;
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
-    }
 
-    .alert-text {
-        display: block;
-        text-align: center;
-    }
+        .alert-text {
+            display: block;
+            text-align: center;
+        }
 
-    .alert-success {
-        font-family: 'Poppins';
-        background-color: #2DCB73;
-        color: #ffffff;
-        border-color: #2DCB73;
-    }
+        .alert-success {
+            font-family: 'Poppins';
+            background-color: #2DCB73;
+            color: #ffffff;
+            border-color: #2DCB73;
+        }
 
     .alert-error {
         background-color: #f8d7da;
@@ -85,40 +85,40 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- end page title -->
+            <!-- end page title -->
 
-        <div class="card mt-1">
-            <div class="card-body">
-                <div class="row align-items-center g-2">
-                    <div class="col-lg-3 me-auto">
-                        <a href="{{ route('add.microsite') }}" type="button" class="btn btn-success"><i class="bi bi-plus-circle align-baseline me-1"></i> Buat Baru</a>
-                    </div>
-                    <div class="col-lg-auto">
-                        <div class="hstack gap-2">
-                            <a href="" class="btn rounded-pill btn-danger"> Semua</a>
-                            <a href="" class="btn rounded-pill btn-secondary"> Terakhir Diperbarui</a>
+            <div class="card mt-1">
+                <div class="card-body">
+                    <div class="row align-items-center g-2">
+                        <div class="col-lg-3 me-auto">
+                            <a href="{{ route('add.microsite') }}" type="button" class="btn btn-success btn-label"><i
+                                    class="ri-add-line label-icon align-middle fs-lg"></i> Buat Baru</a>
                         </div>
-                    </div>
+                        <div class="col-lg-auto">
+                            <div class="hstack gap-2">
+                                <a href="" class="btn rounded-pill btn-danger"> Semua</a>
+                                <a href="" class="btn rounded-pill btn-secondary"> Terakhir Diperbarui</a>
+                            </div>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
-        </div><!--end card-->
+            </div><!--end card-->
 
-        @foreach ($data as $row)
-        <div class="col-12">
-            <div class="card card-body" id="searchResults">
-                <div class="wrapper row  align-items-center">
-                    <div class="avatar-md col-1">
-                        <div class="avatar-title">
-                            <img src="{{asset('template/themesbrand.com/steex/layouts/assets/images/sidebar/img-1.jpg')}}" style="width: 180%; height: 70%;" alt="Gambar">
-                            <div class="initials">{{ $row ->name[0] }}</div>
-                        </div>
-                    </div>
-
-                    <div class="wrapper col-11">
-                    <div class="d-flex">
+            @foreach ($data as $row)
+                <div class="col-12">
+                    <div class="card card-body" id="searchResults">
+                        <div class="wrapper row  align-items-center">
+                            <div class="avatar-md col-1">
+                                <div class="avatar-title">
+                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/sidebar/img-1.jpg') }}"
+                                        style="width: 180%; height: 70%;" alt="Gambar">
+                                    <div class="initials">{{ $row->name[0] }}</div>
+                                </div>
+                            </div>
+                            <div class="wrapper col-11">
+                                <div class="d-flex">
                             <h5 class="card-title col-3">{{ $row ->name }}</h5>
                             <div class="wrapper col-9 d-flex flex-row justify-content-end">
                                 <div class="ml-auto">
@@ -131,49 +131,53 @@
                                 </div>
                             </div>
                         </div>
-
-                        <p type="button" class="link-primary link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover card-text text-muted" id="copyText{{ $loop->index }}" onclick="copyTextToClipboard('{{ $row->link_microsite }}', 'copyText{{ $loop->index }}')">
-                            {{ $row->link_microsite }}
-                        </p>
-                        <div id="customAlert" class="custom-alert">
-                            <span class="alert-text"></span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="collapse" id="collapseExample{{ $row->id }}">
-                    <div class="card-footer">
-                        <div class="d-flex">
-                            <div class="col-10">
-                                <h5><i class="bi bi-bar-chart-line-fill"></i> statistik</h5>
-                            </div>
-                            <div class="col-2 d-flex flex-row justify-content-end">
-                                <button type="button" class="btn btn-light "><span>Lihat
-                                        Detail</span>&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+                                <p type="button"
+                                    class="link-primary link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover card-text text-muted"
+                                    id="copyText{{ $row->id }}"
+                                    onclick="copyTextToClipboard('{{ $row->link_microsite }}', 'copyText{{ $row->id }}')">
+                                    {{ $short_urls->where('microsite_id', $row->id)->first()->default_short_url }}
+                                </p>
+                                <div id="customAlert" class="custom-alert">
+                                    <span class="alert-text"></span>
+                                </div>
                             </div>
                         </div>
+                        <div class="collapse" id="collapseExample{{ $row->id }}">
+                            <div class="card-footer">
+                                <div class="d-flex">
+                                    <div class="col-10">
+                                        <h5><i class="bi bi-bar-chart-line-fill"></i> statistik</h5>
+                                    </div>
+                                    <div class="col-2 d-flex flex-row justify-content-end">
+                                        <button type="button" class="btn btn-light "><span>Lihat
+                                                Detail</span>&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div id="chart{{ $row->id }}"></div>
+                                </div><!-- end card-body -->
+                            </div><!-- end card -->
+                        </div>
                     </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <div id="chart{{ $row->id }}"></div>
-                        </div><!-- end card-body -->
-                    </div><!-- end card -->
-                </div>
-            </div>
-        </div><!-- end col -->
-        @endforeach
-        <div></div>
+                </div><!-- end col -->
+            @endforeach
+
+            <div></div>
+        </div>
+
+        <!-- end page title -->
+
+
     </div>
-    <!-- container-fluid -->
-</div>
-</div>
 @endsection
 
 @php
 use \Carbon\Carbon;
 @endphp
 @section('script')
-@foreach ($urlshort as $row)
+ @foreach ($urlshort as $row)
 <script>
     var options = {
         series: [{
@@ -211,25 +215,70 @@ use \Carbon\Carbon;
     var chart = new ApexCharts(document.querySelector("#chart{{ $row->id }}"), options);
     chart.render();
 </script>
-@endforeach
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-wizard.init.js') }}"></script>
+@endforeach --}}
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-wizard.init.js') }}"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("button.btn").click(function() {
-            var buttonId = $(this).attr("id");
-            $.ajax({
-                type: "POST",
-                url: "{{ route('create.microsite') }}",
-                data: {
-                    button_id: buttonId
-                },
-                success: function(response) {
-                    console.log(response);
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function copyTextToClipboard(text, elementId) {
+            var textElement = document.getElementById(elementId);
+            var text = textElement.textContent;
+
+            var dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+
+            showCustomAlert("Teks berhasil disalin!", "alert-success");
+        }
+
+        function showCustomAlert(message, alertType) {
+            var customAlert = document.getElementById("customAlert");
+            var alertText = customAlert.querySelector(".alert-text");
+
+            alertText.textContent = message;
+            customAlert.classList.add(alertType);
+            customAlert.style.display = "block";
+
+            setTimeout(function() {
+                customAlert.style.display = "none";
+                customAlert.classList.remove(alertType);
+            }, 3000);
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("button.btn").click(function() {
+                var buttonId = $(this).attr("id");
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('create.microsite') }}",
+                    data: {
+                        button_id: buttonId
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".btn").click(function() {
+                var buttonValue = $(this).attr("data-button-value");
+
+                var checkbox = $("input[type='checkbox'][value='" + buttonValue + "']");
+
+                if (checkbox.is(":checked")) {
+                    checkbox.prop("checked", false);
+                } else {
+                    checkbox.prop("checked", true);
                 }
             });
         });
@@ -256,6 +305,15 @@ use \Carbon\Carbon;
         card.classList.toggle('hover');
     }
 </script>
+    <script>
+        // Fungsi untuk melakukan validasi sebelum submit
+        function validateForm() {
+            var activeTab = $('.tab-pane.active'); // Dapatkan tab yang sedang aktif
+            var inputs = activeTab.find(
+                'input[type="text"], input[type="radio"], input[type="checkbox"], select'
+            ); // Dapatkan semua input dalam tab yang aktif}
+        }
+        </script>
 
 <script>
     function toggleCardHover(cardId) {

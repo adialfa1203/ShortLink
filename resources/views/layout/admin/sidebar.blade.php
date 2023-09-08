@@ -3,6 +3,7 @@
         [data-theme=default][data-topbar=dark] .text-light {
             color: #EEF0F7 !important;
         }
+
         .marquee {
             width: 100%;
             overflow: hidden;
@@ -38,33 +39,33 @@
             display: flex;
             justify-content: space-between;
         }
-/* CSS untuk sidebar */
-#scrollbar {
-    /* Atur lebar sidebar saat layar besar */
-    width: 250px;
-    /* Tambahkan gaya lain yang Anda butuhkan */
-    /* ... */
-}
 
-/* CSS untuk menu item */
-#navbar-nav li {
-    /* Atur padding, margin, dan lain-lain */
-    /* ... */
-}
+        /* CSS untuk sidebar */
+        #scrollbar {
+            /* Atur lebar sidebar saat layar besar */
+            width: 250px;
+            /* Tambahkan gaya lain yang Anda butuhkan */
+            /* ... */
+        }
 
-/* Media query untuk layar kecil */
-@media (max-width: 768px) {
-    #scrollbar {
-        /* Ubah lebar sidebar saat layar kecil */
-        width: 100%;
-    }
-    
-    /* Atur tampilan menu item untuk layar kecil */
-    #navbar-nav li {
-        /* ... */
-    }
-}
-    
+        /* CSS untuk menu item */
+        #navbar-nav li {
+            /* Atur padding, margin, dan lain-lain */
+            /* ... */
+        }
+
+        /* Media query untuk layar kecil */
+        @media (max-width: 768px) {
+            #scrollbar {
+                /* Ubah lebar sidebar saat layar kecil */
+                width: 100%;
+            }
+
+            /* Atur tampilan menu item untuk layar kecil */
+            #navbar-nav li {
+                /* ... */
+            }
+        }
     </style>
 @endsection
 <div class="app-menu navbar-menu">
@@ -72,22 +73,18 @@
     <div class="navbar-brand-box">
         <a href="#" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('template/image/LINKlogo.png') }}" alt=""
-                    height="22">
+                <img src="{{ asset('template/image/LINKlogo.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('template/image/LINKlogo.png') }}"
-                    alt="" height="22">
+                <img src="{{ asset('template/image/LINKlogo.png') }}" alt="" height="22">
             </span>
         </a>
         <a href="#" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('template/image/LINKlogo.png') }}"
-                    alt="" width="50" height="20">
+                <img src="{{ asset('template/image/LINKlogo.png') }}" alt="" width="50" height="20">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('template/image/LINKlogo.png') }}"
-                    alt="" width="120" height="35">
+                <img src="{{ asset('template/image/LINKlogo.png') }}" alt="" width="120" height="35">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-3xl header-item float-end btn-vertical-sm-hover"
@@ -129,30 +126,31 @@
                             </div>
                         </span>
                     </button> --}}
-                    <button class="nav-link bg-transparent text-white" type="button" role="button" aria-expanded="false" data-bs-toggle="dropdown"
-                    aria-controls="sidebarDashboards">
-                    <img class="header-profile-user"
-                        src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="Header Avatar">
+                    <button class="nav-link bg-transparent text-white" type="button" role="button"
+                        aria-expanded="false" data-bs-toggle="dropdown" aria-controls="sidebarDashboards">
+                        <img class="header-profile-user"
+                            src="{{ Auth::user()->profile_picture ? asset(Auth::user()->profile_picture) : asset('profile_pictures/default.jpg') }}"
+                            alt="Header Avatar">
                         <div class="text-start ms-xl-2">
                             <span><b>Hi! {{ Auth::user()->name }}</b></span>
 
                             @php
-                            $email = Auth::user()->email;
+                                $email = Auth::user()->email;
                             @endphp
 
 
-                                <span data-key="t-hot">
-                                    {{ $email }}
-                                </span>
+                            <span data-key="t-hot">
+                                {{ $email }}
+                            </span>
                         </div>
-                </button>
+                    </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
                         <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}!</h6>
                         <a class="dropdown-item" href="pages-profile.html"><i
                                 class="mdi mdi-account-circle text-muted fs-lg align-middle me-1"></i> <span
                                 class="align-middle">Profile</span></a>
-                        <a class="dropdown-item" href="{{url('logout')}}"><i
+                        <a class="dropdown-item" href="{{ url('logout') }}"><i
                                 class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i> <span
                                 class="align-middle" data-key="t-logout">Logout</span></a>
                     </div>
@@ -161,44 +159,45 @@
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link " href="{{ url ('dashboard-admin')}}" role="button" aria-expanded="false"
-                        aria-controls="sidebarDashboards">
+                    <a class="nav-link menu-link " href="{{ url('dashboard-admin') }}" role="button"
+                        aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class="bi bi-house-fill"></i> <span data-key="t-dashboards">Dasbor</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ url ('subscribe-admin')}}">
+                    <a class="nav-link menu-link" href="{{ url('subscribe-admin') }}">
                         <i class="bi bi-fire"></i> <span data-key="t-widgets">Berlangganan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url ('data-user')}}" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
-                            data-key="t-chat">Pengguna</span> </a>
+                    <a href="{{ url('data-user') }}" class="nav-link menu-link"> <i class="bi bi-person-fill"></i>
+                        <span data-key="t-chat">Pengguna</span> </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url ('link-admin')}}" class="nav-link menu-link"><i class="bi bi-link-45deg"></i>
+                    <a href="{{ url('link-admin') }}" class="nav-link menu-link"><i class="bi bi-link-45deg"></i>
                         <span data-key="t-email">Tautan</span> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url ('view-component')}}" class="nav-link menu-link"><i class="bi bi-grid"></i>
-                        <span data-key="t-email">Komponen</span> </a>
+                    <a href="{{ url('view-component') }}" class="nav-link menu-link"><i class="bi bi-grid"></i>
+                        <span data-key="t-email">Kategori</span> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url ('view-button')}}" class="nav-link menu-link"><i class="bi bi-back"></i>
-                        <span data-key="t-email">Button</span> </a>
+                    <a href="{{ url('view-button') }}" class="nav-link menu-link"><i class="bi bi-back"></i>
+                        <span data-key="t-email">Sosial</span> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url ('view-komentar')}}" class="nav-link menu-link"><i class="bi bi-chat-right-text-fill"></i>
+                    <a href="{{ url('view-komentar') }}" class="nav-link menu-link"><i
+                            class="bi bi-chat-right-text-fill"></i>
                         <span data-key="t-email">Komentar</span> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url ('blokir')}}" class="nav-link menu-link"><i class="fa fa-ban"></i>
+                    <a href="{{ url('blokir') }}" class="nav-link menu-link"><i class="fa fa-ban"></i>
                         <span data-key="t-email">Akun Di Blokir</span> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url ('profil-admin')}}" class="nav-link menu-link"> <i class="bi bi-person-fill"></i> <span
-                            data-key="t-chat">Profil</span> </a>
+                    <a href="{{ url('profil-admin') }}" class="nav-link menu-link"> <i
+                            class="bi bi-person-fill"></i> <span data-key="t-chat">Profil</span> </a>
                 </li>
 
             </ul>
