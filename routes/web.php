@@ -97,7 +97,7 @@ Route::get('/dashboard-user', [DahsboardController::class, 'dashboardUser'])->na
 Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
 //AccessLink
 Route::post('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
-Route::post('/microsite/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.link');
+// Route::post('/microsite/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.link');
 //ActiveLink
 // Route::get('/link-chart', [LinkController::class, 'LinkUsersChart'])->name('link.users.chart');
 Route::get('/link-chart', [LinkController::class, 'LinkUsersChart'])->name('link.users.chart');
@@ -179,5 +179,5 @@ Route::get('/blokir', [CommentController::class, 'blokir'])->name('blokir');
 
 });
 Route::get('/ngetes', function () {
-    return view('welcome');   
+    return view('welcome');
 });
