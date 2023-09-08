@@ -52,7 +52,7 @@
         <div class="d-flex">
             <div class="col-4">
                 <h5>Tautan yang Dihasilkan Terbaru</h5>
-                <p id="clickCount">0 klik</p>
+                <p id="clickCount" hidden>0 klik</p>
             </div>
             <div class=" col-8 col-sm mb-3">
                 <div class="d-flex justify-content-sm-end">
@@ -373,45 +373,47 @@
     </div>
     <!-- container-fluid -->
 </div>
-
+@php
+    use \Carbon\Carbon;
+@endphp
 @section('script')
 @foreach ($urlshort as $row)
 <script>
     var options = {
-          series: [{
-            name: "{{$row->title}}",
-            data:["{{ $row->visits_count }}"],
+        series: [{
+            name: "{{ $row->title }}",
+            data: ["{{ $row->visits_count }}"],
         }],
-          chart: {
-          height: 350,
-          type: 'line',
-          zoom: {
-            enabled: false
-          }
+        chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+                enabled: false
+            }
         },
         dataLabels: {
-          enabled: false
+            enabled: false
         },
         stroke: {
-          curve: 'straight'
+            curve: 'straight'
         },
         title: {
-          text: 'Product Trends by Month',
-          align: 'left'
+            text: 'Product Trends by Month',
+            align: 'left'
         },
         grid: {
-          row: {
-            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-            opacity: 0.5
-          },
+            row: {
+                colors: ['#f3f3f3', 'transparent'],
+                opacity: 0.5
+            },
         },
         xaxis: {
-          categories: ['Jan','feb','Jan','Jan','Jan','Jan','Jan','Jan'],
+            categories: ["{{ Carbon::create(null, $row->month, null)->format('F') }}"],
         }
-        };
+    };
 
-        var chart = new ApexCharts(document.querySelector("#chart{{ $row->id }}"), options).render();
-
+    var chart = new ApexCharts(document.querySelector("#chart{{ $row->id }}"), options);
+    chart.render();
 </script>
 @endforeach
 <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js') }}"></script>

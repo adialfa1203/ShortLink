@@ -17,7 +17,12 @@ class LinkController extends Controller
     {
         $user = auth()->user(); // Mengambil objek User saat ini
         $user_id = $user->id;
-        $urlshort = ShortUrl::withCount('visits')->where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(5);
+        $urlshort = ShortUrl::withCount('visits')
+        ->selectRaw('MONTH(created_at) as month')
+        ->where('user_id', $user_id)
+        ->orderBy('month', 'desc')
+        ->paginate(5);
+        // dd($urlshort);
         return view('User.Link', compact('user','urlshort', 'shortCode'));
     }
 
