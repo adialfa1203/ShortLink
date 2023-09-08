@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ButtonController extends Controller
 {
     public function viewButton(){
-        $button = Button::all();
+        $button = Button::paginate(1);
         return view('Button.ViewButton', compact('button'));
     }
 

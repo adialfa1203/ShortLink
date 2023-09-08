@@ -45,7 +45,8 @@
                             <h4 class="card-title mb-0">Buat Microsite Baru</h4>
                         </div><!-- end card header -->
                         <div class="card-body form-steps">
-                            <form action="{{ route('create.microsite') }}" class="vertical-navs-step needs-validation" novalidate method="POST">
+                            <form action="{{ route('create.microsite') }}" class="vertical-navs-step needs-validation"
+                                novalidate method="POST">
                                 @csrf
                                 <div class="row gy-5">
                                     <div class="col-lg-3">
@@ -137,6 +138,48 @@
                                                                 </div>
                                                             </div>
                                                         @endforeach
+                                                        <div class="pagination-wrap hstack justify-content-center gap-2">
+                                                            <a class="page-item pagination-prev {{ $data->previousPageUrl() ? '' : 'disabled' }}"
+                                                                href="{{ $data->previousPageUrl() ? $data->previousPageUrl() : '#' }}">
+                                                                Previous
+                                                            </a>
+                                                            <ul class="pagination listjs-pagination mb-0">
+                                                                @if ($data->currentPage() > 2)
+                                                                    <li>
+                                                                        <a class="page" href="{{ $data->url(1) }}">1</a>
+                                                                    </li>
+                                                                    @if ($data->currentPage() > 3)
+                                                                        <li class="ellipsis">
+                                                                            <span>...</span>
+                                                                        </li>
+                                                                    @endif
+                                                                @endif
+
+                                                                @for ($i = max(1, $data->currentPage() - 1); $i <= min($data->lastPage(), $data->currentPage() + 1); $i++)
+                                                                    <li
+                                                                        class="{{ $i == $data->currentPage() ? 'active' : '' }}">
+                                                                        <a class="page" href="{{ $data->url($i) }}"
+                                                                            data-i="{{ $i }}">{{ $i }}</a>
+                                                                    </li>
+                                                                @endfor
+
+                                                                @if ($data->currentPage() < $data->lastPage() - 1)
+                                                                    @if ($data->currentPage() < $data->lastPage() - 2)
+                                                                        <li class="ellipsis">
+                                                                            <span>...</span>
+                                                                        </li>
+                                                                    @endif
+                                                                    <li>
+                                                                        <a class="page"
+                                                                            href="{{ $data->url($data->lastPage()) }}">{{ $data->lastPage() }}</a>
+                                                                    </li>
+                                                                @endif
+                                                            </ul>
+                                                            <a class="page-item pagination-next {{ $data->nextPageUrl() ? '' : 'disabled' }}"
+                                                                href="{{ $data->nextPageUrl() ? $data->nextPageUrl() : '#' }}">
+                                                                Next
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                     <div class="d-flex align-items-start gap-3 mt-4">
                                                         <button type="button"
@@ -234,6 +277,49 @@
                                                                 </div>
                                                             </div>
                                                         @endforeach
+                                                        <div class="pagination-wrap hstack justify-content-center gap-2">
+                                                            <a class="page-item pagination-prev {{ $button->previousPageUrl() ? '' : 'disabled' }}"
+                                                                href="{{ $button->previousPageUrl() ? $button->previousPageUrl() : '#' }}">
+                                                                Previous
+                                                            </a>
+                                                            <ul class="pagination listjs-pagination mb-0">
+                                                                @if ($button->currentPage() > 2)
+                                                                    <li>
+                                                                        <a class="page"
+                                                                            href="{{ $button->url(1) }}">1</a>
+                                                                    </li>
+                                                                    @if ($button->currentPage() > 3)
+                                                                        <li class="ellipsis">
+                                                                            <span>...</span>
+                                                                        </li>
+                                                                    @endif
+                                                                @endif
+
+                                                                @for ($i = max(1, $button->currentPage() - 1); $i <= min($button->lastPage(), $button->currentPage() + 1); $i++)
+                                                                    <li
+                                                                        class="{{ $i == $button->currentPage() ? 'active' : '' }}">
+                                                                        <a class="page" href="{{ $button->url($i) }}"
+                                                                            data-i="{{ $i }}">{{ $i }}</a>
+                                                                    </li>
+                                                                @endfor
+
+                                                                @if ($button->currentPage() < $button->lastPage() - 1)
+                                                                    @if ($button->currentPage() < $button->lastPage() - 2)
+                                                                        <li class="ellipsis">
+                                                                            <span>...</span>
+                                                                        </li>
+                                                                    @endif
+                                                                    <li>
+                                                                        <a class="page"
+                                                                            href="{{ $button->url($button->lastPage()) }}">{{ $button->lastPage() }}</a>
+                                                                    </li>
+                                                                @endif
+                                                            </ul>
+                                                            <a class="page-item pagination-next {{ $button->nextPageUrl() ? '' : 'disabled' }}"
+                                                                href="{{ $button->nextPageUrl() ? $button->nextPageUrl() : '#' }}">
+                                                                Next
+                                                                </a>
+                                                        </div>
                                                     </div>
                                                     <div class="d-flex align-items-start gap-3 mt-4">
                                                         <button type="button" class="btn btn-light btn-label previestab"
@@ -338,7 +424,7 @@
             var activeTab = $('.tab-pane.active'); // Dapatkan tab yang sedang aktif
             var inputs = activeTab.find(
                 'input[type="text"], input[type="radio"], input[type="checkbox"], select'
-                ); // Dapatkan semua input dalam tab yang aktif
+            ); // Dapatkan semua input dalam tab yang aktif
 
             // Periksa apakah ada input yang belum diisi
             var invalidInputs = inputs.filter(function() {

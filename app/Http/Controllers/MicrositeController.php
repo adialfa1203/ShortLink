@@ -15,7 +15,7 @@ class MicrositeController extends Controller
     public function microsite()
     {
         $user_id = auth()->user()->id;
-        $data = Microsite::where('user_id', $user_id)->get();
+        $data = Microsite::where('user_id', $user_id)->paginate(1);
         $short_urls = ShortUrl::whereIn('microsite_id', $data->pluck('id'))->get();
         $urlshort = ShortUrl::withCount('visits')
         ->selectRaw('MONTH(created_at) as month')
@@ -27,8 +27,8 @@ class MicrositeController extends Controller
 
     public function addMicrosite()
     {
-        $data = Components::all();
-        $button = Button::all();
+        $data = Components::paginate(3);
+        $button = Button::paginate(3);
         return view('microsite.AddMicrosite', compact('data', 'button'));
     }
 
@@ -237,7 +237,7 @@ class MicrositeController extends Controller
 
     public function viewComponent()
     {
-        $component = Components::all();
+        $component = Components::paginate(1);
         return view('Microsite.ViewComponent', compact('component'));
     }
 
