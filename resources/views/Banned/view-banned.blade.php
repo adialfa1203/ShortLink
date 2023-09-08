@@ -174,8 +174,7 @@
                                         <tr class="searchable">
                                             <th>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="option"
-                                                        id="checkAll">
+                                                    <input class="form-check-input" type="checkbox" value="option" id="checkAll">
                                                     <label class="form-check-label" for="checkAll"></label>
                                                 </div>
                                             </th>
@@ -195,7 +194,7 @@
                                             <tr>
                                                 <th>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="chk_child">
+                                                        <input class="form-check-input child-checkbox" type="checkbox" name="chk_child">
                                                         <label class="form-check-label"></label>
                                                     </div>
                                                 </th>
@@ -228,8 +227,8 @@
                                     </tbody><!-- end tbody -->
                                 </table>
                                 <br><!-- end table -->
-                                <button type="button" class="btn btn-subtle-danger"><i
-                                        class="fas fa-ban me-1"></i>Banned</button>
+                                <button type="button" class="btn btn-subtle-success"><i
+                                        class="fas fa-ban me-1"></i>UnBanned</button>
                                 <div class="noresult" style="display: none">
                                     <div class="text-center py-4">
                                         <i class="ph-magnifying-glass fs-1 text-primary"></i>
@@ -275,6 +274,19 @@
                 $(".list tr").filter(function() {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
+            });
+        });
+    </script>
+    <script>
+        // Mendapatkan referensi elemen checkbox utama dan semua checkbox anak dengan class yang sama
+        var checkAllCheckbox = document.getElementById("checkAll");
+        var childCheckboxes = document.querySelectorAll('.child-checkbox');
+    
+        // Menambahkan event listener ke checkbox utama
+        checkAllCheckbox.addEventListener("change", function() {
+            // Mengatur status semua checkbox anak sesuai dengan status checkbox utama
+            childCheckboxes.forEach(function(checkbox) {
+                checkbox.checked = checkAllCheckbox.checked;
             });
         });
     </script>

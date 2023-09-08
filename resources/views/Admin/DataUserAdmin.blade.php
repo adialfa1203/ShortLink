@@ -8,79 +8,19 @@
 @section('content')
 <div class="page-content">
         <div class="container-fluid">
-
-            <!-- start page title -->
-            <div class="row">
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="fs-md text-muted mb-0">Pengguna</h5>
-        
-                            <div class="row mt-3">
-                                <div class="col-2">
-                                    <i class="fa-solid fa-user" style="font-size: 30px;"></i>
-                                </div>
-                                <div class="col-10">
-                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalUser)}}">0</span> </h3>
-                                </div>
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">Data Pengguna</h4>
                             </div>
                         </div>
                     </div>
-                </div><!--end col-->
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="fs-md text-muted mb-0">Tautan</h5>
-        
-                            <div class="row mt-3">
-                                <div class="col-2">
-                                    <i class="fa-solid fa-link" style="font-size: 30px;"></i>
-                                </div>
-                                <div class="col-10">
-                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalUrl)}}">0</span> </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="fs-md text-muted mb-0">Microsite</h5>
-                            <div class="row mt-3">
-                                <div class="col-2">
-                                    <i class="fa-solid fa-link" style="font-size: 30px;"></i>
-                                </div>
-                                <div class="col-10">
-                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalMicrosite)}}">0</span> </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="fs-md text-muted mb-0">Pengunjung</h5>
-                            <div class="row mt-3">
-                                <div class="col-2">
-                                    <i class="fa-solid fa-user" style="font-size: 30px;"></i>
-                                </div>
-                                <div class="col-10">
-                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalVisits)}}">0</span> </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
-                </div>
-                <!-- end page title -->
-
-            <div class="row">
+            <!-- end page title -->
+            <div class="row mb-3">
                 <div class="col-lg-12">
                     <div class="card" id="orderList">
-                        <div class="card-header">
+                        <div class="card-header mt-3">
                             <div class="row align-items-center gy-3">
                                 <div class="col-lg-3 col-md-6">
                                     <div class="search-box">
@@ -98,8 +38,7 @@
                                         <tr class="searchable">
                                             <th>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="option"
-                                                        id="checkAll">
+                                                    <input class="form-check-input" type="checkbox" value="option" id="checkAll">
                                                     <label class="form-check-label" for="checkAll"></label>
                                                 </div>
                                             </th>
@@ -119,9 +58,9 @@
                                             <tr>
                                                 <th>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="chk_child">
+                                                        <input class="form-check-input child-checkbox" type="checkbox" name="chk_child">
                                                         <label class="form-check-label"></label>
-                                                    </div>
+                                                    </div>                                                    
                                                 </th>
                                                 <td class="order_id">{{ $row->name }}</td>
                                                 <td class="order_date">
@@ -182,8 +121,8 @@
             </div>
             <!-- end row -->
 
+            <!-- container-fluid -->
         </div>
-        <!-- container-fluid -->
     </div>
 
 </div>
@@ -216,5 +155,6 @@
         });
     });
 </script>
+
         @endsection
 

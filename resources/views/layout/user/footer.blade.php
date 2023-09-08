@@ -4,11 +4,11 @@
             <div class="col-sm-6">
                 <script>
                     document.write(new Date().getFullYear())
-                </script> © Kalopsia.
+                </script> © LINK.ID.
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by Kalopsia-Design
+                    Design & Develop by LINK.ID-Design
                 </div>
             </div>
         </div>

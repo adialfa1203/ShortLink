@@ -31,7 +31,7 @@
 
             <form action="{{ route('update.microsite', ['id' => $id]) }}" method="post" class="row">
                 @csrf
-                <div class="col-xxl-9">
+                <div class="col-lg-9">
                     <div class="card">
                         <div class="card-body">
                             <ul class="nav nav-pills animation-nav nav-justified gap-2 mb-3" role="tablist">

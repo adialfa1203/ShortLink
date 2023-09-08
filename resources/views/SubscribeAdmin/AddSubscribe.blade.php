@@ -36,10 +36,13 @@
         <div class="col-6">
             <div class="mb-3">
                 <label for="username" class="form-label">Deskripsi Langganan <span class="text-danger">*</span></label>
-                <div class="position-relative ">
-                    <input type="textarea" class="form-control  password-input" id="username" placeholder="Paket Dasar untuk memulai perjalanan Anda bersama kami" required>
+                <div class="position-relative" >
+                    <textarea class="form-control" id="editor" name="isi" cols="30"
+                rows="10"></textarea>
                 </div>
             </div>
+            <div id="editor"></div>        
+            
         </div>
         <div class="col-6">
             <div class="mb-3">
@@ -52,8 +55,13 @@
     </div>
 </div>
 @section('script')
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
 <script>
-
+	ClassicEditor
+		.create( document.querySelector( '#editor' ) )
+		.catch( error => {
+			console.error( error );
+		} );
 </script>
 @endsection
 @endsection

@@ -28,7 +28,7 @@ class LinkAdminController extends Controller
         foreach ($users as $user) {
             $count[$user->id] = ShortUrl::where('user_id', $user->id)->count();
         }
-
+        $data = User::where('is_banned', 0)->role('user')->get();
         // Mengurutkan data berdasarkan jumlah pengunjung
         arsort($count);
         return view('Admin.LinkAdmin', compact('totalUser', 'totalUrl', 'totalVisits', 'users', 'count'));
