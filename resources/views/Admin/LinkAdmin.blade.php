@@ -68,23 +68,6 @@
                                 <i class="ri-search-line search-icon"></i>
                             </div>
                         </div>
-
-                        <div class="col-md-auto ms-md-auto">
-                            <div class="d-flex flex-wrap align-items-center gap-2">
-                                <button class="btn btn-subtle-danger d-none" id="remove-actions" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
-                                <div class="dropdown card-header-dropdown sortble-dropdown flex-shrink-0">
-                                    <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="text-muted dropdown-title">Order Date</span> <i class="mdi mdi-chevron-down ms-1"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <button class="dropdown-item sort" data-sort="order_date">Order Date</button>
-                                        <button class="dropdown-item sort" data-sort="order_id">Order ID</button>
-                                        <button class="dropdown-item sort" data-sort="amount">Amount</button>
-                                        <button class="dropdown-item sort" data-sort="status">Status</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="card-body">

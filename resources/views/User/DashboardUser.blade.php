@@ -621,10 +621,6 @@
             $("#time-reset").click(function() {
                 $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
             });
-            $('#singkatkan').on('hidden.bs.modal', function () {
-            // Lakukan refresh halaman
-            location.reload();
-            });
             // Menangani klik pada label platform dalam modal "bagikan"
             $(".platform").click(function() {
                 var platform = $(this).data("platform");

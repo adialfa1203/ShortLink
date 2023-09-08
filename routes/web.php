@@ -130,10 +130,13 @@ Route::post('/update-short-link/{shortCode}', [ShortLinkController::class, 'upda
 Route::post('/update-deactivated/{keyTime}',[LinkController::class, 'updateDeactivated']);
 
 });
-Route::get('/microsite-link', [MicrositeController::class, 'micrositeLink'])->name('microsite.short.link');
+//access microsite
+Route::get('/microsite-link/{microsite}', [MicrositeController::class, 'micrositeLink'])->name('microsite.short.link');
 
 Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/updateAdmin', [ProfilController::class, 'updateAdmin'])->name('updateAdmin');
+
+
 //Middleware Admin
 Route::group(['middleware' => ['role:admin']], function () {
 //Dashboard Admin
