@@ -394,7 +394,9 @@ header {
                                     <li><a href="/Shortlink">Perpendek Link</a></li>
                                     <li><a href="/Microsite">Situs Mikro</a></li>
                                     <li><a href="/Subscribe">Berlanggaan</a></li>
-    
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/Privacy">Kebijakan Privasi</a></li>
+
                                 </ul>
                             </div>
                         </div>

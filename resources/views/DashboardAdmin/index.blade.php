@@ -25,7 +25,7 @@
             </div>
         </div><!--end col-->
         <div class="col-xl-3 col-sm-6">
-            <div class="card">
+            <div class="card border-bottom border-2 card-animate border-secondary">
                 <div class="card-body">
                     <h5 class="fs-md text-muted mb-0">Tautan</h5>
 
