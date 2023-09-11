@@ -11,13 +11,49 @@
 
             <!-- start page title -->
             <div class="row">
-                <div class="col-xl-6 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="fs-md text-muted mb-0">Pengguna</h5>
-                            <div class="row mt-3">
-                                <div class="col-2">
-                                    <i class="fa-solid fa-user" style="font-size: 30px;"></i>
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">Data Pengguna</h4>
+
+                        {{-- <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                                <li class="breadcrumb-item active">Orders</li>
+                            </ol>
+                        </div> --}}
+
+                    </div>
+                    <!-- end page title -->
+
+                    {{-- <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card" id="orderList">
+                                <div class="card-header">
+                                    <div class="row align-items-center gy-3">
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="search-box">
+                                                <input type="text" class="form-control search" id="searchInput" placeholder="Cari...">
+                                                <i class="ri-search-line search-icon"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-auto ms-md-auto">
+                                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                                <button class="btn btn-subtle-danger d-none" id="remove-actions" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
+                                                <div class="dropdown card-header-dropdown sortble-dropdown flex-shrink-0">
+                                                    <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="text-muted dropdown-title">Order Date</span> <i class="mdi mdi-chevron-down ms-1"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        <button class="dropdown-item sort" data-sort="order_date">Order Date</button>
+                                                        <button class="dropdown-item sort" data-sort="order_id">Order ID</button>
+                                                        <button class="dropdown-item sort" data-sort="amount">Amount</button>
+                                                        <button class="dropdown-item sort" data-sort="status">Status</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-10">
                                     <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="">0</span> </h3>
@@ -30,7 +66,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="fs-md text-muted mb-0">Pengguna diblokir</h5>
-        
+
                             <div class="row mt-3">
                                 <div class="col-2">
                                     <i class="fa-solid fa-user" style="font-size: 30px;"></i>
@@ -63,6 +99,27 @@
                                         <i class="ri-search-line search-icon"></i>
                                     </div>
                                 </div>
+
+                                {{-- <div class="col-md-auto ms-md-auto">
+                                    <div class="d-flex flex-wrap align-items-center gap-2">
+                                        <button class="btn btn-subtle-danger d-none" id="remove-actions"
+                                            onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
+                                        <div class="dropdown card-header-dropdown sortble-dropdown flex-shrink-0">
+                                            <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                                <span class="text-muted dropdown-title">Order Date</span> <i
+                                                    class="mdi mdi-chevron-down ms-1"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <button class="dropdown-item sort" data-sort="order_date">Order
+                                                    Date</button>
+                                                <button class="dropdown-item sort" data-sort="order_id">Order ID</button>
+                                                <button class="dropdown-item sort" data-sort="amount">Amount</button>
+                                                <button class="dropdown-item sort" data-sort="status">Status</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="card-body">
@@ -117,7 +174,7 @@
                                                                 data-is-banned="{{ $row->is_banned }}">
                                                                 <i class="fas fa-ban"></i>
                                                             </a>
-                                                        </li> 
+                                                        </li>
                                                     </ul>
                                                 </td>
                                             </tr>
@@ -177,7 +234,7 @@
         // Mendapatkan referensi elemen checkbox utama dan semua checkbox anak dengan class yang sama
         var checkAllCheckbox = document.getElementById("checkAll");
         var childCheckboxes = document.querySelectorAll('.child-checkbox');
-    
+
         // Menambahkan event listener ke checkbox utama
         checkAllCheckbox.addEventListener("change", function() {
             // Mengatur status semua checkbox anak sesuai dengan status checkbox utama

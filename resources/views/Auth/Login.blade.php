@@ -54,6 +54,29 @@
         }
 
     </style>
+   <style>
+    @media (max-width: 768px) {
+        .img {
+            display: none; /* Hide the element with class "img" for screens up to 768px wide (tablet) */
+        }
+        .col-lg-6 {
+            width: 100%; /* Make the column full-width on tablets */
+        }
+    }
+</style>
+
+<script>
+    window.addEventListener('resize', function() {
+        var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if (screenWidth <= 768) { // Adjusted to 768px to match the tablet width
+            var imgElement = document.querySelector('.img');
+            if (imgElement) {
+                imgElement.remove(); // Remove the element with class "img" on tablet screens
+            }
+        }
+    });
+</script>
+
 
 </head>
 
@@ -65,9 +88,9 @@
                 <div class="col-lg-11">
                     <div class="card mb-0 p-0 d-flex justify-content-between">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-lg-6 col-md-9 col-sm-10 col-lg-6">
                                     <div class="card mb-0 border-0 shadow-none mb-0">
-                                        <div class="card-body p-sm-5 m-lg-4">
+                                        <div class="card-body p-sm-4 m-lg-3">
                                             <div class="text-center mt-5">
                                                 <h5 class="fs-3xl" style="color: #104898">MASUK</h5>
                                                 <p class="text-muted">Masuk untuk melanjutkan ke LINK.ID</p>
@@ -143,9 +166,9 @@
                                         </div><!-- end card body -->
                                     </div><!-- end card -->
                                 </div>
-                                <div class="col-6 right-section m-0">
+                                <div class="col-6 right-section img col-lg-6">
                                     <center>
-                                    <div class="w-100" style="margin-top: 20%">
+                                    <div class="w-100" style="margin-top: 20% ">
                                         <img src="{{ asset('template/image/Login2.png') }} " width="400"
                                             height="400">
                                     </div>

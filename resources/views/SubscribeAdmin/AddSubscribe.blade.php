@@ -1,6 +1,6 @@
 @extends('layout.admin.app')
 
-@section('title','Link')
+@section('title','Berlangganan')
 @section('style')
 <style>
 

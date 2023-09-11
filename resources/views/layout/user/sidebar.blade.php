@@ -43,7 +43,37 @@
         .sidebar-hidden {
             display: none;
         }
+        /* Tombol aktif */
+.nav-item .nav-link.active {
+    background-color: #007bff; /* Warna latar belakang tombol aktif */
+    color: #fff; /* Warna teks tombol aktif */
+}
+
+/* Hover pada tombol yang aktif */
+.nav-item .nav-link.active:hover {
+    background-color: #007bff; /* Warna latar belakang hover tombol aktif (sama dengan tombol aktif) */
+    color: #fff; /* Warna teks hover tombol aktif (sama dengan tombol aktif) */
+}
+
     </style>
+    <script>
+        // Ambil semua elemen tombol dengan kelas "nav-link"
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Iterasi melalui setiap tombol dan tambahkan event listener
+        navLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                // Hapus kelas "active" dari semua tombol
+                navLinks.forEach((otherLink) => {
+                    otherLink.classList.remove('active');
+                });
+
+                // Tambahkan kelas "active" pada tombol yang sedang diklik
+                link.classList.add('active');
+            });
+        });
+    </script>
+
 @endsection
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
@@ -140,14 +170,14 @@
 
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link " href="{{ url('dashboard-user') }}" role="button"
+                    <a class="nav-link menu-link {{ request()->routeIs('dashboard.user') ? 'active' : '' }}" href="{{ url('dashboard-user') }}" role="button"
                         aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="bi bi-house-fill"></i> <span data-key="t-dashboards">Dasbor</span>
+                        <i class="bi bi-house-fill"></i> <span data-key="t-dashboards">Beranda</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('analytic-user') }}" class="nav-link menu-link"> <i
+                    <a class="nav-link menu-link {{ request()->routeIs('analytic.user') ? 'active' : '' }}" href="{{ url('analytic-user') }}" class="nav-link menu-link"> <i
                             class="bi bi-bar-chart-line-fill"></i>
                         <span data-key="t-email">Analitik</span> </a>
                 </li>
@@ -172,18 +202,17 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('microsite-user') }}" class="nav-link menu-link"> <i
-                            class="bi bi-person-badge-fill"></i>
+                    <a class="nav-link menu-link {{ request()->routeIs('microsite') ? 'active' : '' }} {{ request()->routeIs('add.microsite') ? 'active' : '' }}" href="{{ url('microsite-user')}}"><i class="bi bi-person-badge-fill"></i>
                         <span data-key="t-file-manager">Microsite</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ url('subscribe-user') }}">
+                    <a class="nav-link menu-link {{ request()->routeIs('subscribe.user') ? 'active' : '' }}" href="{{ url('subscribe-user') }}">
                         <i class="bi bi-fire"></i> <span data-key="t-widgets">Berlangganan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('profil-user') }}" class="nav-link menu-link"> <i
+                    <a class="nav-link menu-link {{ request()->routeIs('profile') ? 'active' : '' }}" href="{{ url('profil-user') }}" class="nav-link menu-link"> <i
                             class="bi bi-person-fill"></i> <span data-key="t-chat">Profil</span> </a>
                 </li>
             </ul>

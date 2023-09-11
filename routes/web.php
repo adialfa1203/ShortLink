@@ -109,7 +109,7 @@ Route::post('archive-link', [LinkController::class,'archiveLink'])->name('archiv
 Route::get('/archive-link-user', [ArchiveLinkController::class, 'archiveLinkUser'])->name('archive.link.user');
 Route::get('/restore/{id}', [ArchiveLinkController::class, 'restore'])->name('restore');
 //Profile
-Route::get('/profil-user', [ProfilController::class, 'profile']);
+Route::get('/profil-user', [ProfilController::class, 'profile'])->name('profile');
 //analytic
 Route::get('/analytic-user', [AnalyticUserController::class, 'analyticUser'])->name('analytic.user');
 Route::get('/analytic-chart', [AnalyticUserController::class, 'AnalyticUsersChart'])->name('analytic.users.chart');
@@ -147,9 +147,9 @@ Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.us
 Route::get('admin/user/{userId}/ban', [DataUserController::class, 'banUser'])->name('user.ban');
 Route::get('admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
 //Link Admin
-Route::get('link-admin', [LinkAdminController::class, 'linkAdmin']);
+Route::get('link-admin', [LinkAdminController::class, 'linkAdmin'])->name('linkAdmin');
 // microsite Admin
-Route::get('/profil-admin', [ProfilController::class, 'profile']);
+Route::get('/profil-admin', [ProfilController::class, 'profile'])->name('profile');
 Route::get('admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
 
 Route::get('/create-component', [MicrositeController::class, 'createComponent'])->name('create.component');
@@ -159,8 +159,8 @@ Route::get('/edit-component/{id}', [MicrositeController::class, 'editComponent']
 Route::get('/delete-component/{id}', [MicrositeController::class, 'deleteComponent'])->name('delete.component');
 Route::get('/view-component', [MicrositeController::class, 'viewComponent'])->name('view.component');
 //Subscribe
-Route::get('/subscribe-admin', [SubscribeController::class, 'subscribe']);
-Route::get('add-subscribe', [SubscribeController::class, 'addSubscribe']);
+Route::get('/subscribe-admin', [SubscribeController::class, 'subscribe'])->name ('subscribe');
+Route::get('add-subscribe', [SubscribeController::class, 'addSubscribe'])->name ('addSubscribe');
 // button
 Route::get('/create-button', [ButtonController::class, 'createButton'])->name('create.button');
 Route::post('/save-button', [ButtonController::class, 'saveButton'])->name('save.button');
@@ -170,7 +170,7 @@ Route::get('/delete-button/{id}', [ButtonController::class, 'deleteButton'])->na
 Route::get('/view-button', [ButtonController::class, 'viewButton'])->name('view.button');
 
 //profile
-Route::get('/profil-admin', [ProfilController::class, 'profileAdmin']);
+Route::get('/profil-admin', [ProfilController::class, 'profileAdmin'])->name('profileAdmin');
 //Komentar
 Route::get('/view-komentar', [CommentController::class, 'viewkomentar'])->name('viewkomentar');
 

@@ -1,5 +1,5 @@
 @extends('layout.admin.app')
-@section('title', 'Microsite')
+@section('title', 'Sosial')
 
 @section('content')
     <div class="page-content">
