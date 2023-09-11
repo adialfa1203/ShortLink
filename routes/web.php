@@ -130,13 +130,10 @@ Route::post('/update-short-link/{shortCode}', [ShortLinkController::class, 'upda
 Route::post('/update-deactivated/{keyTime}',[LinkController::class, 'updateDeactivated']);
 
 });
-//access microsite
-Route::get('/microsite-link/{microsite}', [MicrositeController::class, 'micrositeLink'])->name('microsite.short.link');
+Route::get('/microsite-link', [MicrositeController::class, 'micrositeLink'])->name('microsite.short.link');
 
 Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/updateAdmin', [ProfilController::class, 'updateAdmin'])->name('updateAdmin');
-
-
 //Middleware Admin
 Route::group(['middleware' => ['role:admin']], function () {
 //Dashboard Admin
@@ -144,6 +141,7 @@ Route::get('/dashboard-chart', [DashboardAdminController::class, 'dashboardChart
 Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin'])->name('dashboard.admin');
 //Data User (Admin)
 Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
+Route::get('/selected-banned', [DataUserController::class, 'banned'])->name('data.banned');
 Route::get('admin/user/{userId}/ban', [DataUserController::class, 'banUser'])->name('user.ban');
 Route::get('admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
 //Link Admin

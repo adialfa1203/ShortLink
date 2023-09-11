@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<div class="page-content">
+    <div class="page-content">
         <div class="container-fluid">
 
             <!-- start page title -->
@@ -119,9 +119,11 @@
                                             <tr>
                                                 <th>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="chk_child">
+                                                        <input class="form-check-input child-checkbox" type="checkbox"
+                                                            name="chk_child">
                                                         <label class="form-check-label"></label>
                                                     </div>
+
                                                 </th>
                                                 <td class="order_id">{{ $row->name }}</td>
                                                 <td class="order_date">
@@ -139,16 +141,14 @@
                                                     <ul class="d-flex gap-2 list-unstyled mb-0">
                                                         <li>
                                                             <a href="#"
-                                                            @if ($row->is_banned == 1)
-                                                            class="btn btn-subtle-success btn-icon btn-sm me-3"
+                                                                @if ($row->is_banned == 1) class="btn btn-subtle-success btn-icon btn-sm me-3"
                                                             @else
-                                                            class="btn btn-subtle-danger btn-icon btn-sm me-3"
-                                                            @endif
+                                                            class="btn btn-subtle-danger btn-icon btn-sm me-3" @endif
                                                                 data-bs-toggle="modal" data-user-id="{{ $row->id }}"
                                                                 data-is-banned="{{ $row->is_banned }}">
                                                                 <i class="fas fa-ban"></i>
                                                             </a>
-                                                        </li> 
+                                                        </li>
                                                     </ul>
                                                 </td>
                                             </tr>
@@ -188,10 +188,9 @@
         <!-- container-fluid -->
     </div>
 
-</div>
 @endsection
 @section('script')
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/sweetalerts.init.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -203,20 +202,48 @@
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
-            });
-        </script>
-       <script>
-    // Mendapatkan referensi elemen checkbox utama dan semua checkbox anak dengan class yang sama
-    var checkAllCheckbox = document.getElementById("checkAll");
-    var childCheckboxes = document.querySelectorAll('.child-checkbox');
-
-    // Menambahkan event listener ke checkbox utama
-    checkAllCheckbox.addEventListener("change", function() {
-        // Mengatur status semua checkbox anak sesuai dengan status checkbox utama
-        childCheckboxes.forEach(function(checkbox) {
-            checkbox.checked = checkAllCheckbox.checked;
         });
-    });
-</script>
-        @endsection
+    </script>
+    <script>
+        // Mendapatkan referensi elemen checkbox utama dan semua checkbox anak dengan class yang sama
+        var checkAllCheckbox = document.getElementById("checkAll");
+        var childCheckboxes = document.querySelectorAll('.child-checkbox');
 
+        // Menambahkan event listener ke checkbox utama
+        checkAllCheckbox.addEventListener("change", function() {
+            // Mengatur status semua checkbox anak sesuai dengan status checkbox utama
+            childCheckboxes.forEach(function(checkbox) {
+                checkbox.checked = checkAllCheckbox.checked;
+            });
+        });
+    </script>
+    <script>
+        $(function(e){
+            $("#select_all_ids").click(function(){
+              $('.checkbox_ids').prop('checked',$(this).prop('checked'));
+            });
+            $('#deleteAllSelectedRecord').click(function(e){
+                e.preventDefault();
+                var all_ids = [];
+                $('input:checkbox[name=ids]:checked').each(function(){
+                    all_ids.push($(this).val());
+                });
+            
+                $.ajax({
+                    url:"{{ route('data.banned')}}",
+                    type:"POST",
+                    data:{
+                        ids:all_ids,
+                        _token:'{{csrf_token()}}'
+                    },
+                    success:function(response){
+                        $.each(all_ids,function(key,val)){
+                            $('#banned_ids'+val).remove();
+                        }
+                    }
+                })
+
+            });
+        });
+    </script>
+@endsection

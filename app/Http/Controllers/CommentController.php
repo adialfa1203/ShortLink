@@ -40,4 +40,13 @@ class CommentController extends Controller
         $data = User::where('is_banned', 1)->get();
         return view('Banned.view-banned', compact('data'));
     }
+    public function banned(Request $request, $id)
+    {
+        $ids = $request->ids;
+        $data = User::where('id', $id)->update([
+            'is_banned' => 1,
+            'pesan' => $request->pesan,
+        ]);
+        return redirect('/selected-banned')->with('success', 'Promo Berhasi Ditolak');
+    }
 }
