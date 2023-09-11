@@ -15,7 +15,7 @@ class DataUserController extends Controller
 
         $totalUrl = ShortUrl::count();
 
-        $totalMicrosite = ShortUrl::where('microsite_id')->get()->count();
+        $totalMicrosite = ShortUrl::whereNotNull('microsite_id')->count();
 
         $totalVisits = ShortURLVisit::query()->count();
 

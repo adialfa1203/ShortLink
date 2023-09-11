@@ -9,8 +9,8 @@
 @section('content')
 <div class="page-content">
     <div class="row">
-        <div class="col-xl-4 col-sm-6">
-            <div class="card border-bottom border-2 card-animate border-secondary">
+        <div class="col-xl-3 col-sm-6">
+            <div class="card">
                 <div class="card-body">
                     <h5 class="fs-md text-muted mb-0">Pengguna</h5>
 
@@ -25,8 +25,8 @@
                 </div>
             </div>
         </div><!--end col-->
-        <div class="col-xl-4 col-sm-6">
-            <div class="card border-bottom border-2 card-animate border-primary">
+        <div class="col-xl-3 col-sm-6">
+            <div class="card">
                 <div class="card-body">
                     <h5 class="fs-md text-muted mb-0">Tautan</h5>
 
@@ -41,8 +41,23 @@
                 </div>
             </div>
         </div><!--end col-->
-        <div class="col-xl-4 col-sm-6">
-            <div class="card border-bottom border-2 card-animate border-warning">
+        <div class="col-xl-3 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="fs-md text-muted mb-0">Microsite</h5>
+                    <div class="row mt-3">
+                        <div class="col-2">
+                            <i class="fa-solid fa-link" style="font-size: 30px;"></i>
+                        </div>
+                        <div class="col-10">
+                            <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalMicrosite)}}">0</span> </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--end col-->
+        <div class="col-xl-3 col-sm-6">
+            <div class="card">
                 <div class="card-body">
                     <h5 class="fs-md text-muted mb-0">Pengunjung</h5>
                     <div class="row mt-3">
@@ -91,38 +106,50 @@
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                @foreach ($count as $userId => $urlCount)
-                                @php
-                                    $user = $users->find($userId);
-                                @endphp
-                                <tr>
-                                    <th>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="chk_child" id="childCheckbox">
-                                            <label class="form-check-label"></label>
-                                        </div>
-                                    </th>
-                                    <td class="order_id">{{ $loop->iteration }}</td>
-                                    <td class="order_date">
-                                        {{ $user->name }}
-                                    </td>
-                                    <td class="products">{{ $urlCount }}</td>
-                                    <td class="status"><span class="badge bg-primary-subtle text-primary">https://link.id/1Sd9P</span></td>
-                                    <td class="products">{{ $urlCount }}</td>
-                                    <td class="status"><span class="badge bg-primary-subtle text-primary">https://link.id/1Sd9P</span></td>
-                                    <td>
-                                        <ul class="d-flex gap-2 list-unstyled mb-0">
-                                            <li>
-                                                <a href="#deleteRecordModal" class="btn btn-subtle-danger btn-icon btn-sm me-3"><i class="fas fa-ban"></i></a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                @foreach ($userData as $userId => $data)
+                                    @php
+                                        $user = $users->find($userId);
+                                        $popularLinks = $data['popular_links'];
+                                        $popularMicrosites = $data['popular_microsites'];
+                                    @endphp
+                                    <tr>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="chk_child" id="childCheckbox">
+                                                <label class="form-check-label"></label>
+                                            </div>
+                                        </th>
+                                        <td class="order_id">{{ $loop->iteration }}</td>
+                                        <td class="order_date">
+                                            {{ $user->name }}
+                                        </td>
+                                        <td class="products">{{ $data['total_links'] }}</td>
+                                        <td class="status">
+                                        @if ($popularLinks)
+                                        <span class="badge bg-primary-subtle text-primary">{{ $popularLinks->default_short_url }}</span>
+                                        @else
+                                        <span class="badge bg-danger-subtle text-danger">Tidak ada link populer</span>
+                                        @endif</td>
+                                        <td class="products">{{ $data['total_microsites'] }}</td>
+                                        <td class="status">
+                                        @if ($popularMicrosites)
+                                        <span class="badge bg-primary-subtle text-primary">{{ $popularMicrosites->default_short_url }}</span>
+                                        @else
+                                        <span class="badge bg-danger-subtle text-danger">Tidak ada microsite populer</span>
+                                        @endif</td>
+                                        <td>
+                                            <ul class="d-flex gap-2 list-unstyled mb-0">
+                                                <li>
+                                                    <a href="#deleteRecordModal" class="btn btn-subtle-danger btn-icon btn-sm me-3"><i class="fas fa-ban"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody><!-- end tbody -->
+                            
                         </table><!-- end table -->
                         <br><!-- end table -->
-                        <button type="button" class="btn btn-subtle-danger"><i class="fas fa-ban me-1" ></i>Banned</button>
                         <div class="noresult" style="display: none">
                             <div class="text-center py-4">
                                 <i class="ph-magnifying-glass fs-1 text-primary"></i>

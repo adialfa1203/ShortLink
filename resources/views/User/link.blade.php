@@ -280,6 +280,11 @@
                                                     <input type="text" class="form-control" name="new_url_key"
                                                         id="new_url_key" placeholder="Kustom nama">
                                                 </div>
+                                                <div class="col-lg-12 mb-3">
+                                                    <label for="new_url_key"></label>
+                                                    <input type="hidden" class="form-control" name="custom_name"
+                                                        id="new_url_key" placeholder="Kustom nama">
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-light"

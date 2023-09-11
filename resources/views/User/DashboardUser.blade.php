@@ -432,7 +432,7 @@
                             </div>
 
                         </div>
-                        <div class="progress" data-bs-toggle="tooltip" data-bs-title="{{ $countURL }} Tautan">
+                        <div class="progress" data-bs-toggle="tooltip" data-bs-title="{{ $countURL }} Tautan dibuat">
                             <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
                         </div>
                         <p class="text-muted mb-0"><b>{{$countURL}} dari 100</p>
@@ -440,12 +440,10 @@
                         <br>
                         <h6 class="card-title">Nama yang telah diubah/bulan <i class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip" data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
                         </h6>
-
-                        <div class="progress" data-bs-toggle="tooltip" data-bs-title="{{ $countURL }}">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
-
+                        <div class="progress" data-bs-toggle="tooltip" data-bs-title="{{ $countNameChanged }} Nama diubah">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" id="name-changed" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
                         </div>
-                        <p class="text-muted mb-0"><b>25 dari 100</p>
+                        <p class="text-muted mb-0" id="name-changed-text"><b>{{$countNameChanged}} dari 100</p>
                     </div>
                     <div class="d-flex justify-content-end pe-3" data-bs-toggle="modal" data-bs-target="#lihatlebihbanyak">
                         <p><a href="#" class="link-primary link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover">Lihat
@@ -480,11 +478,11 @@
                                             <h3 class="card-title">Nama yang telah diubah/bulan <i class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip" data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
                                             </h3>
 
-                                            <div class="progress" data-bs-toggle="tooltip" data-bs-title="$234.95 Paid Amount">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{$countNameChanged}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$countNameChanged}}%;"></div>
 
                                             </div>
-                                            <p class="text-muted mb-0"><b>25 dari 100</p>
+                                            <p class="text-muted mb-0"><b>{{$countNameChanged}} dari 100</p>
                                         </div>
                                         <div class="card-body">
                                             <div class="col-lg-12">
@@ -756,6 +754,16 @@
         progressBar.setAttribute("aria-valuenow", countData);
     </script>
     <script>
+        // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
+        var countData = {{ $countNameChanged }}; // Contoh nilai statiskeluar
+
+        // Ubah lebar bar progres sesuai dengan data yang diperoleh
+        var progressBar = document.getElementById("progress-bar");
+        var progressBarWidth = (countData / 100) * 100; // Ubah 100 menjadi nilai maksimum yang sesuai
+        progressBar.style.width = progressBarWidth + "%";
+        progressBar.setAttribute("aria-valuenow", countData);
+    </script>
+    <script>
   const clickCountElement = document.getElementById("clickCount");
 
   // Mengambil data jumlah klik dari localStorage
@@ -780,6 +788,22 @@
 
         // Update the text
         var progressText = document.querySelector('.text-muted.mb-0 b');
+        progressText.textContent = countURLValue + ' dari 100';
+    </script>
+    <script>
+        // Get the value from the server-side variable {{ $countURL }}
+        var countURLValue = {{ $countNameChanged }};
+
+        // Calculate the percentage
+        var percentage = (countURLValue / 100) * 100; // Assuming 100 is the total
+
+        // Update the progress bar width
+        var progressBar = document.querySelector('#name-changed');
+        progressBar.style.width = percentage + '%';
+        progressBar.setAttribute('aria-valuenow', countURLValue);
+
+        // Update the text
+        var progressText = document.querySelector('#name-changed-text');
         progressText.textContent = countURLValue + ' dari 100';
     </script>
 
