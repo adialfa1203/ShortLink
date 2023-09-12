@@ -56,12 +56,13 @@ class DashboardAdminController extends Controller
     {
         $footer = Footer::first();
         $validator = Validator::make($request->all(), [
-            'description' => 'string',
-            'whatsapp' => 'string',
+            'description' => 'string|max:225',
+            'whatsapp' => 'string|integer',
             'instagram' => 'string',
             'twitter' => 'string',
             'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        
         if ($request->hasFile('logo')) {
             $oldProfilePicture = $footer->logo;
             if ($oldProfilePicture) {

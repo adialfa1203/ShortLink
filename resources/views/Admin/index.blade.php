@@ -29,8 +29,8 @@
     <div class="page-content">
         <div class="row">
             <div class="col-xl-3 col-sm-6">
-                <div class="card border-bottom border-2 card-animate border-secondary">
-                    <div class="card-body"style="background-color: #910000">
+                <div class="card border-bottom border-2 card-animate">
+                    <div class="card-body bg-success">
                         <h5 class="fs-md text-muted mb-0 text-white">Pengguna</h5>
 
                         <div class="row mt-3">
@@ -47,8 +47,8 @@
                 </div>
             </div><!--end col-->
             <div class="col-xl-3 col-sm-6">
-                <div class="card border-bottom border-2 card-animate border-secondary">
-                    <div class="card-body" style="background-color: rgb(13, 13, 118)">
+                <div class="card border-bottom border-2 card-animate">
+                    <div class="card-body bg-primary">
                         <h5 class="fs-md text-muted mb-0 text-white">Tautan</h5>
 
                         <div class="row mt-3">
@@ -65,8 +65,8 @@
                 </div>
             </div><!--end col-->
             <div class="col-xl-3 col-sm-6">
-                <div class="card border-bottom border-2 card-animate border-secondary">
-                    <div class="card-body"style="background-color: rgb(224, 113, 34)">
+                <div class="card border-bottom border-2 card-animate">
+                    <div class="card-body bg-warning">
                         <h5 class="fs-md text-muted mb-0 text-white">Pengunjung</h5>
 
                         <div class="row mt-3">
@@ -83,8 +83,8 @@
                 </div>
             </div><!--end col-->
             <div class="col-xl-3 col-sm-6">
-                <div class="card border-bottom border-2 card-animate border-secondary">
-                    <div class="card-body" style="background-color: rgb(6, 117, 48)" >
+                <div class="card border-bottom border-2 card-animate">
+                    <div class="card-body" style="background-color : #FF6C6C" >
                         <h5 class="fs-md text-muted mb-0 text-white">Subscription</h5>
 
                         <div class="row mt-3">
@@ -144,17 +144,17 @@
                         dataLabels: {
                             enabled: false
                         },
-                        colors: ["#E53935", "#1E88E5", "#FDD835"],
+                        colors: ["#2DCB73", "#3762EA", "#F6B749"],
                         series: [{
-                                name: "Series A",
+                                name: "Data Total User",
                                 data: totalUserData
                             },
                             {
-                                name: "Series B",
+                                name: "Data Total URL",
                                 data: totalUrlData
                             },
                             {
-                                name: "Series C",
+                                name: "Data Total Pengunjung",
                                 data: totalVisitsData
                             }
                         ],

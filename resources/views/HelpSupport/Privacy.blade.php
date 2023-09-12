@@ -384,6 +384,27 @@
             window.location.href = "https://www.instagram.com/nama_akun_instagram";
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Include SweetAlert library -->
+
+    <script>
+        $(document).ready(function() {
+            $('#commentForm').submit(function(event) {
+                event.preventDefault();
+                @if (auth()->check())
+                    this.action = '/create';
+                    this.submit();
+                @else
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oh Tidakkk...',
+                        text: 'Anda harus login dulu',
+                        confirmButtonText: '<a href="/login">Login disini</a>',
+                    });
+                @endif
+            });
+        });
+    </script>
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}">
     </script>
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/simplebar/simplebar.min.js') }}"></script>

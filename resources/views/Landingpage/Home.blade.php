@@ -32,6 +32,11 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Bootstrap Css -->
+    <style>
+        .swal-confirm-button {
+            color: white !important;
+        }
+    </style>
 
 </head>
 
@@ -622,22 +627,17 @@
 
     <script>
         $(document).ready(function() {
-            // Handle form submission
             $('#commentForm').submit(function(event) {
                 event.preventDefault();
-                // Check if the user is authenticated
                 @if (auth()->check())
-                    // If authenticated, submit the form to /create
                     this.action = '/create';
                     this.submit();
                 @else
-                    // If not authenticated, show a SweetAlert message with a link to /login
                     Swal.fire({
                         icon: 'error',
                         title: 'Oh Tidakkk...',
                         text: 'Anda harus login dulu',
-                        confirmButtonText: 'Batal',
-                        footer: '<a href="/login">Login disini</a>'
+                        confirmButtonText: '<a href="/login">Login disini</a>',
                     });
                 @endif
             });

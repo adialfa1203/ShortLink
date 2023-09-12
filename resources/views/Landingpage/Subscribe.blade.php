@@ -625,24 +625,22 @@
             $('#keywords').tablesorter();
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Include SweetAlert library -->
+
     <script>
         $(document).ready(function() {
-            // Handle form submission
             $('#commentForm').submit(function(event) {
                 event.preventDefault();
-                // Check if the user is authenticated
                 @if (auth()->check())
-                    // If authenticated, submit the form to /create
                     this.action = '/create';
                     this.submit();
                 @else
-                    // If not authenticated, show a SweetAlert message with a link to /login
                     Swal.fire({
                         icon: 'error',
                         title: 'Oh Tidakkk...',
                         text: 'Anda harus login dulu',
-                        confirmButtonText: 'Batal',
-                        footer: '<a href="/login">Login disini</a>'
+                        confirmButtonText: '<a href="/login">Login disini</a>',
                     });
                 @endif
             });

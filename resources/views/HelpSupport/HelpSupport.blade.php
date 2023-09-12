@@ -133,7 +133,7 @@
                     <defs>
                         <path id="gentle-wave"
                             d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                    </defs> 
+                    </defs>
                     <g class="parallax">
                         <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
                         <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
@@ -291,8 +291,7 @@
                     </div>
                     <!-- Comment Form -->
                     <div class="col-lg-3 col-md-6 col-12 mb-1">
-                        <form action="/create/{{ $users->id }}" method="POST" enctype="multipart/form-data"
-                            class="mt-3">
+                        <form id="commentForm" method="POST" enctype="multipart/form-data" class="mt-3">
                             @csrf
                             <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
                                 placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
@@ -389,6 +388,30 @@
                     komentarTersembunyi[i].style.display = "flex"; // Tampilkan komentar yang tersembunyi
                 }
                 tombolLihatSelengkapnya.style.display = "none"; // Sembunyikan tombol "Lihat Selengkapnya"
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Include SweetAlert library -->
+    <script>
+        $(document).ready(function() {
+            // Handle form submission
+            $('#commentForm').submit(function(event) {
+                event.preventDefault();
+                // Check if the user is authenticated
+                @if (auth()->check())
+                    // If authenticated, submit the form to /create
+                    this.action = '/create';
+                    this.submit();
+                @else
+                    // If not authenticated, show a SweetAlert message with a link to /login
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oh Tidakkk...',
+                        text: 'Anda harus login dulu',
+                        confirmButtonText: '<a href="/login">Login disini</a>'
+                    });
+                @endif
             });
         });
     </script>

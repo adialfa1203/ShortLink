@@ -205,7 +205,7 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('view.footer') ? 'active' : '' }}"
                         href="{{ url('view-footer') }}" class="nav-link menu-link"> <i
-                            class="bi bi-person-fill"></i> <span data-key="t-chat">Footer</span> </a>
+                            class="bi bi-exclude"></i> <span data-key="t-chat">Footer</span> </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('profileAdmin') ? 'active' : '' }}"
