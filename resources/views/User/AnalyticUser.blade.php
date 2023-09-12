@@ -141,7 +141,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($microsites->sortByDesc('totalVisits') as $microsite)                                            
+                                        @foreach ($microsites->sortByDesc('totalVisits') as $microsite)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $microsite->default_short_url }}</td>

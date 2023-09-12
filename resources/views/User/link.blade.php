@@ -222,7 +222,8 @@
 
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
+                            </div>
+                            <!-- /.modal -->
                             <div id="zoomInModal-{{ $row->id }}" class="modal fade zoomIn modal-sm" tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -774,14 +775,14 @@
      <script>
         // Mendapatkan elemen input berdasarkan ID yang sesuai
         var inputTanggal = document.querySelector('input[name="deactivated_at"]');
-    
+
         // Mendapatkan tanggal hari ini dalam format yang sesuai dengan datetime-local
         var today = new Date();
         var year = today.getFullYear();
         var month = String(today.getMonth() + 1).padStart(2, '0'); // Bulan dimulai dari 0
         var day = String(today.getDate()).padStart(2, '0');
         var waktuHariIni = year + '-' + month + '-' + day + 'T00:00';
-    
+
         // Mengatur atribut "min" pada elemen input
         inputTanggal.setAttribute('min', waktuHariIni);
     </script>
