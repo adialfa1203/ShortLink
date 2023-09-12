@@ -20,7 +20,8 @@
                                     <div class="row align-items-center gy-3">
                                         <div class="col-lg-3 col-md-6">
                                             <div class="search-box">
-                                                <input type="text" class="form-control search" id="searchInput" placeholder="Cari...">
+                                                <input type="text" class="form-control search" id="searchInput"
+                                                    placeholder="Cari...">
                                                 <i class="ri-search-line search-icon"></i>
                                             </div>
                                         </div>
@@ -31,26 +32,16 @@
                                         <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                             <thead class="text-muted table-light">
                                                 <tr  class="searchable">
-                                                    <th>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="option" id="checkAll">
-                                                            <label class="form-check-label" for="checkAll"></label>
-                                                        </div>
-                                                    </th>
-                                                    <th scope="col" class="sort cursor-pointer" data-sort="order_id">Email</th>
-                                                    <th scope="col" class="sort cursor-pointer" data-sort="order_id">Nama Pengguna</th>
-                                                    <th scope="col" class="sort cursor-pointer" data-sort="order_date">Isi Komentar</th>
+                                                    <th scope="col" data-sort="order_id">#</th>
+                                                    <th scope="col" data-sort="order_id">Email</th>
+                                                    <th scope="col" data-sort="order_id">Nama Pengguna</th>
+                                                    <th scope="col" data-sort="order_date">Isi Komentar</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="list form-check-all">
                                                 @foreach ($komentar as $row)
                                                     <tr>
-                                                        <th>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input child-checkbox" type="checkbox" name="chk_child">
-                                                                <label class="form-check-label"></label>
-                                                            </div>
-                                                        </th>
+                                                        <td>{{$loop->iteration}}</td>
                                                         <td class="products">
                                                             @if ($row->user)
                                                                 {{ $row->user->email }}
@@ -69,14 +60,14 @@
                                                     </tr>
                                                 @endforeach
                                             </tbody>
-                                            
-                                            
-                                        </table><!-- end table -->
+                                        </table>
+                                        <br><!-- end table -->
                                         <div class="noresult" style="display: none">
                                             <div class="text-center py-4">
                                                 <i class="ph-magnifying-glass fs-1 text-primary"></i>
                                                 <h5 class="mt-2">Sorry! No Result Found</h5>
-                                                <p class="text-muted mb-0">We've searched more than 150+ orders We did not find any orders for you search.</p>
+                                                <p class="text-muted mb-0">We've searched more than 150+ orders We did not find any
+                                                    orders for you search.</p>
                                             </div>
                                         </div>
                                     </div>

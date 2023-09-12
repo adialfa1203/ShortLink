@@ -96,18 +96,14 @@
                                 <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                     <thead class="text-muted table-light">
                                         <tr class="searchable">
-                                            <th scope="col" class="sort cursor-pointer" data-sort="order_id">#</th>
-                                            <th scope="col" class="sort cursor-pointer" data-sort="order_id">Nama
-                                                Pengguna</th>
-                                            <th scope="col" class="sort cursor-pointer" data-sort="order_date">E-mail
-                                            </th>
-                                            <th scope="col" class="sort cursor-pointer" data-sort="delivery_date">No
-                                                Telepon</th>
-                                            <th scope="col" class="sort cursor-pointer" data-sort="status">Berlangganan
-                                            </th>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nama Pengguna</th>
+                                            <th scope="col">E-mail</th>
+                                            <th scope="col">No Telepon</th>
+                                            <th scope="col">Berlangganan</th>
                                             <th scope="col">Action</th>
                                         </tr>
-                                    </thead>
+                                    </thead>                                    
                                     <tbody class="list form-check-all">
                                         @foreach ($data as $row)
                                             <tr id="user_{{ $row->id }}">
@@ -179,7 +175,7 @@
 @section('script')
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/sweetalerts.init.js') }}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.0/list.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -235,5 +231,13 @@
             });
         });
         </script>        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var options = {
+                    valueNames: ['order_id', 'order_date', 'delivery_date', 'status']
+                };
         
+                var userList = new List('your-table-id', options);
+            });
+        </script>        
 @endsection
