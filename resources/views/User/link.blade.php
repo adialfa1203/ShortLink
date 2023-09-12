@@ -320,6 +320,9 @@
                                                 <div class="col-lg-12 mb-3">
                                                     <label for="deactivated_at">Ubah Tanggal</label>
                                                     <input type="datetime-local" class="form-control" name="deactivated_at"
+                                                    @if (!is_null($row->deactivated_at))
+                                                        value="{{ \Carbon\Carbon::parse($row->deactivated_at)->format('Y-m-d\TH:i') }}"
+                                                    @endif
                                                      data-id="{{$row->id}}" id="deactivated_at-{{$row->id}}"
                                                      data-key="{{ $row->url_key }}" min="">
                                                 </div>

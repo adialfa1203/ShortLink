@@ -37,13 +37,6 @@ class MicrositeController extends Controller
         return view('Microsite.MicrositeUser', compact('data', 'short_urls', 'urlshort'));
     }
 
-    public function lastUpdated()
-    {
-        $data = Microsite::orderBy('updated_at', 'desc')->get();
-
-        return view('Microsite.MicrositeUser', compact('data'));
-    }
-
     public function addMicrosite()
     {
         $data = Components::paginate(3);

@@ -156,8 +156,8 @@
                                                                                 <input type="radio" id="tema{{ $microsite->id }}"
                                                                                     name="microsite_selection"
                                                                                     value="{{ $microsite->id }}"
-                                                                                    class="form-check-input">
-                                                                                Pilih jenis microsite {{ $microsite->name }}
+                                                                                    class="form-check-input">&nbsp;
+                                                                                {{ $microsite->component_name }}
                                                                             </label>
                                                                         </div>
                                                                     </div>
