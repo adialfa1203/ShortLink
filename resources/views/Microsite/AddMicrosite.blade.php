@@ -5,8 +5,6 @@
     <style>
         /* CSS untuk hover card */
         .hover {
-            /* Misalnya, ubah warna latar belakang dan perbesar sedikit card ketika dihover */
-            /* border: 2px solid rgb(61, 56, 56); */
             background-color: #f8f8f8;
             transform: scale(1.05);
             transition: background-color 0.3s, transform 0.3s;

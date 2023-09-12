@@ -16,6 +16,7 @@ use App\Http\Controllers\SubscribeUserController;
 use App\Http\Controllers\MicrositeController;
 use App\Http\Controllers\ButtonController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 // use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -49,22 +50,12 @@ Route::post('verificationCode', [AuthController::class, 'verificationCode'])->na
 Route::get('/', [DahsboardController::class, 'home']);
 });
 
-Route::get('/', function () {
-    return view('Landingpage.Home');
-});
-Route::get('/Shortlink', function () {
-    return view('Landingpage.Shortlink');
-});
-Route::get('/Microsite', function () {
-    return view('Landingpage.Microsite');
-});
-Route::get('/Subscribe', function () {
-    return view('Landingpage.Subscribe');
-});
-Route::get('/Privacy', function () {
-    return view('HelpSupport.Privacy');
-});
-//HelpSupport
+Route::get('/', [LandingPageController::class, 'landingPage'])->name('landing.page');
+Route::get('/Shortlink', [LandingPageController::class, 'shortLink'])->name('short.link');
+Route::get('/Microsite', [LandingPageController::class, 'micrositePage'])->name('microsite.page');
+Route::get('/Subscribe', [LandingPageController::class, 'subscribePage'])->name('subscribe.page');
+Route::get('/Privacy', [LandingPageController::class, 'privacyPage'])->name('privacy.page');
+Route::get('/footer-landingpage', [LandingPageController::class, 'footerPage'])->name('footer.page');
 
 Route::get('Start', [DahsboardController::class, 'Start']);
 Route::get('Announcement', [DahsboardController::class, 'Announcement']);
@@ -166,6 +157,9 @@ Route::post('/update-button/{id}', [ButtonController::class, 'updateButton'])->n
 Route::get('/edit-button/{id}', [ButtonController::class, 'editButton'])->name('edit.button');
 Route::get('/delete-button/{id}', [ButtonController::class, 'deleteButton'])->name('delete.button');
 Route::get('/view-button', [ButtonController::class, 'viewButton'])->name('view.button');
+
+Route::get('view-footer', [DashboardAdminController::class, 'viewFooter'])->name('view.footer');
+Route::put('edit-footer', [DashboardAdminController::class, 'editFooter'])->name('edit.footer');
 
 //profile
 Route::get('/profil-admin', [ProfilController::class, 'profileAdmin'])->name('profileAdmin');
