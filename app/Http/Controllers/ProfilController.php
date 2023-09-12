@@ -90,7 +90,6 @@ class ProfilController extends Controller
 
         $admin->name = $request->name;
         $admin->email = $request->email;
-
         $admin->number = $request->number;
 
         if ($request->filled('new_password')) {
@@ -115,6 +114,4 @@ class ProfilController extends Controller
         $admin->update();
         return redirect()->back()->with('success', 'Data berhasil diperbarui.');
     }
-
-
 }

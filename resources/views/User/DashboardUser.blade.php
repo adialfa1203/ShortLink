@@ -80,7 +80,7 @@
                         </div>
                     </div>
 
-                    <div class="card border-bottom border-2 card-animate border-secondary" data-bs-toggle="modal" data-bs-target="#addAmount">
+                    <div class="card border-bottom border-2 card-animate" data-bs-toggle="modal" data-bs-target="#addAmount">
                         <div class="card-body d-flex justify-content-between align-items-center" style="background-color: #910000">
                             <div class="wrapper d-flex align-items-center">
                                 <i class="bi bi-link-45deg custom-icon-size"></i>
@@ -325,7 +325,7 @@
                         </div>
                     </div>
 
-                    <a href="/add-microsite" class="card border-bottom border-2 card-animate border-secondary">
+                    <a href="/add-microsite" class="card border-bottom border-2 card-animate">
                         <div class="card-body d-flex justify-content-between align-items-center" style="background-color: rgb(13, 13, 118)">
                             <div class="wrapper d-flex align-items-center">
                                 <i class="bi bi-question-circle custom-icon-size"></i>
@@ -354,7 +354,7 @@
                         </div>
                     </div>
 
-                    <a href="/HelpSupport" class="card border-bottom border-2 card-animate border-secondary">
+                    <a href="/HelpSupport" class="card border-bottom border-2 card-animate">
                         <div class="card-body d-flex justify-content-between align-items-center" style="background-color: rgb(224, 113, 34)">
                             <div class="wrapper d-flex align-items-center">
                                 <i class="bi bi-question-circle custom-icon-size"></i>
@@ -559,7 +559,7 @@
                                 icon: 'error',
                                 html: response.message +
                                     'Klik di <a href="/BillingSubscriptions">sini</a> ' +
-                                    'untuk info lebih lanjut tentang langganan premium.',                                
+                                    'untuk info lebih lanjut tentang langganan premium.',
                             })
                         }
                         // Tangani respons dari server
@@ -847,14 +847,14 @@
     <script>
         // Mendapatkan elemen input
         var inputTanggal = document.getElementById('old_password');
-    
+
         // Mendapatkan tanggal hari ini dalam format yang sesuai dengan datetime-local
         var today = new Date();
         var year = today.getFullYear();
         var month = String(today.getMonth() + 1).padStart(2, '0'); // Bulan dimulai dari 0
         var day = String(today.getDate()).padStart(2, '0');
         var waktuHariIni = year + '-' + month + '-' + day + 'T00:00';
-    
+
         // Mengatur atribut "min" pada elemen input
         inputTanggal.setAttribute('min', waktuHariIni);
     </script>
