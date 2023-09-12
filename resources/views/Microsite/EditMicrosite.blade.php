@@ -229,7 +229,7 @@
                             <div class="card-body pt-0 mt-n5">
                                 <div class="text-center">
                                     <div class="profile-user position-relative d-inline-block mx-auto">
-                                        <img src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="{{ Auth::user()->name }}"
+                                        <img src="{{ Auth::user()->profile_picture ? asset(Auth::user()->profile_picture) : asset('profile_pictures/default.jpg') }}" alt="{{ Auth::user()->name }}"
                                         alt=""
                                         class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
 
