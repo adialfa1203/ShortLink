@@ -12,17 +12,36 @@ use Illuminate\Support\Facades\Validator;
 
 class MicrositeController extends Controller
 {
-    public function microsite()
+    public function microsite(Request $request)
     {
         $user_id = auth()->user()->id;
-        $data = Microsite::where('user_id', $user_id)->paginate(1);
+
+        // Filter berdasarkan tombol "Terakhir Diperbarui"
+        if ($request->has('filter') && $request->filter == 'terakhir_diperbarui') {
+            $data = Microsite::where('user_id', $user_id)
+                ->orderBy('updated_at', 'desc')
+                ->paginate(5);
+        }
+        // Default: Tampilkan semua data
+        else {
+            $data = Microsite::where('user_id', $user_id)->paginate(5);
+        }
+
         $short_urls = ShortUrl::whereIn('microsite_id', $data->pluck('id'))->get();
         $urlshort = ShortUrl::withCount('visits')
-        ->selectRaw('MONTH(created_at) as month')
-        ->where('user_id', $user_id)
-        ->orderBy('month', 'desc')
-        ->get();
-        return view('Microsite.MicrositeUser', compact('data', 'short_urls','urlshort'));
+            ->selectRaw('MONTH(created_at) as month')
+            ->where('user_id', $user_id)
+            ->orderBy('month', 'desc')
+            ->get();
+
+        return view('Microsite.MicrositeUser', compact('data', 'short_urls', 'urlshort'));
+    }
+
+    public function lastUpdated()
+    {
+        $data = Microsite::orderBy('updated_at', 'desc')->get();
+
+        return view('Microsite.MicrositeUser', compact('data'));
     }
 
     public function addMicrosite()
