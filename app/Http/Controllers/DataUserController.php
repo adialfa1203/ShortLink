@@ -19,7 +19,10 @@ class DataUserController extends Controller
 
         $totalVisits = ShortURLVisit::query()->count();
 
+        $totaldiblokir = User::where('is_banned', 1)->count();
+
         $users = User::where('email', '!=', 'admin@gmail.com')->get();
+        $totalUser -= 1;
         $count = [];
         foreach ($users as $user) {
             $count[$user->id] = ShortUrl::where('user_id', $user->id)->count();
@@ -27,7 +30,7 @@ class DataUserController extends Controller
 
         // Mengurutkan data berdasarkan jumlah pengunjung
         arsort($count);
-        return view('Admin.DataUserAdmin', compact('data','totalUser', 'totalUrl', 'totalVisits', 'users', 'count','totalMicrosite'));
+        return view('Admin.DataUserAdmin', compact('data','totalUser', 'totalUrl', 'totalVisits', 'users', 'count','totalMicrosite','totaldiblokir'));
     }
     
 
