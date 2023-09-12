@@ -11,14 +11,14 @@
 
             <!-- start page title -->
             <div class="row">
-                <div class="col-xl-6 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="fs-md text-muted mb-0">Pengguna</h5>
         
                             <div class="row mt-3">
                                 <div class="col-2">
-                                    <i class="bi bi-person-fill-check" style="font-size: 30px;"></i>
+                                    <i class="fa-solid fa-user" style="font-size: 30px;"></i>
                                 </div>
                                 <div class="col-10">
                                     <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalUser)}}">0</span> </h3>
@@ -27,22 +27,53 @@
                         </div>
                     </div>
                 </div><!--end col-->
-                <div class="col-xl-6 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="fs-md text-muted mb-0">Pengguna Di Blokir</h5>
+                            <h5 class="fs-md text-muted mb-0">Tautan</h5>
         
                             <div class="row mt-3">
                                 <div class="col-2">
-                                    <i class="bi bi-person-fill-slash" style="font-size: 30px;"></i>
+                                    <i class="fa-solid fa-link" style="font-size: 30px;"></i>
                                 </div>
                                 <div class="col-10">
-                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totaldiblokir)}}">0</span> </h3>
+                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalUrl)}}">0</span> </h3>
                                 </div>
                             </div>
                         </div>
                     </div>
-            </div>
+                </div><!--end col-->
+                <div class="col-xl-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="fs-md text-muted mb-0">Microsite</h5>
+                            <div class="row mt-3">
+                                <div class="col-2">
+                                    <i class="fa-solid fa-link" style="font-size: 30px;"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalMicrosite)}}">0</span> </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end col-->
+                <div class="col-xl-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="fs-md text-muted mb-0">Pengunjung</h5>
+                            <div class="row mt-3">
+                                <div class="col-2">
+                                    <i class="fa-solid fa-user" style="font-size: 30px;"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalVisits)}}">0</span> </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
                 </div>
                 <!-- end page title -->
 

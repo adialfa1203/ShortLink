@@ -23,7 +23,6 @@ class LinkController extends Controller
         ->whereNull('microsite_id')
         ->orderBy('month', 'desc')
         ->paginate(5);
-        // dd($urlshort);
         return view('User.Link', compact('user','urlshort', 'shortCode'));
     }
 
