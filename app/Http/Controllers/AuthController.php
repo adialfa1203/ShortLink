@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Mail\SampleMail;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
-use App\Mail\SampleMail;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -46,10 +48,10 @@ class AuthController extends Controller
 
     public function registerUser(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:15',
             'email' => 'required|email|unique:users',
-            'number' => 'required',
+            'number' => 'required|integer',
             'password' => 'required|min:8',
             'password_confirmation' => 'required_with:password|same:password'
         ], [
@@ -62,8 +64,11 @@ class AuthController extends Controller
             'password.required' => 'Kata sandi harus diisi.',
             'password.min' => 'Kata sandi minimal terdiri dari 8 karakter.'
         ]);
-
-
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+            }
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

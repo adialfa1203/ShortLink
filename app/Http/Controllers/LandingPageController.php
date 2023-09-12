@@ -8,20 +8,23 @@ class LandingPageController extends Controller
 {
     public function landingPage(){
         $data = Footer::first();
-
         return view('Landingpage.Home',compact('data'));
     }
     public function shortLink(){
-        return view('Landingpage.Shortlink');
+        $data = Footer::first();
+        return view('Landingpage.Shortlink', compact('data'));
     }
     public function micrositePage(){
-        return view('Landingpage.Microsite');
+        $data = Footer::first();
+        return view('Landingpage.Microsite', compact('data'));
     }
     public function subscribePage(){
-        return view('Landingpage.Subscribe');
+        $data = Footer::first();
+        return view('Landingpage.Subscribe', compact('data'));
     }
     public function privacyPage(){
-        return view('HelpSupport.Privacy');
+        $data = Footer::first();
+        return view('HelpSupport.Privacy', compact('data'));
     }
-    
+
 }

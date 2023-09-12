@@ -279,10 +279,10 @@ header {
                                 <div class="logo">
                                     <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
                                         style="margin-top: -20%;">
-                                        <ul style="margin-top: -10%; margin-right:10px;">
-                                            <li style="color: white; font-size:14px;">S.id adalah platform untuk orang-orang untuk menunjukkan keahlian mereka dalam membuat situs mikro dan memperpendek tautan terpendek dengan kode s.id/.</li>
-                                        </ul>
-                                    </div>
+                                    <ul style="margin-top: -10%; margin-right:10px;">
+                                        <li style="color: white; font-size:14px;">{{ $data->description }}</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
@@ -320,25 +320,24 @@ header {
                                     <li>
                                         <a href="https://wa.me/085606270454">
                                             <i class="fab fa-whatsapp"></i>
-                                            085606270454
+                                            {{ $data->whatsapp }}
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#features">
                                             <i class="fab fa-instagram"></i>
-                                            @link.id
+                                            {{ $data->instagram }}
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#features">
                                             <i class="fab fa-twitter"></i>
-                                            @link.id
+                                            {{ $data->twitter }}
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-
                         <!-- Comment Form -->
                         <div class="col-lg-3 col-md-6 col-12 mb-1">
                             <form id="commentForm" method="POST" enctype="multipart/form-data" class="mt-3">
