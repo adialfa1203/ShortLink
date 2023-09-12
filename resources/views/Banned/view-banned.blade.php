@@ -3,6 +3,18 @@
 @section('style')
     <link href="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/sweetalert2/sweetalert2.min.css') }}"
         rel="stylesheet" type="text/css">
+
+        <style>
+                .custom-icon-size {
+        font-size: 30px;
+        /* Ubah ukuran font sesuai kebutuhan Anda */
+        color: #fafafa;
+        /* Warna merah muda */
+    }
+    .text-white {
+        color: white !important;
+    }
+        </style>
 @endsection
 
 @section('content')
@@ -12,32 +24,31 @@
             <!-- start page title -->
             <div class="row">
                     <div class="col-xl-6 col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="fs-md text-muted mb-0">Pengguna</h5>
-            
+                        <div class="card border-bottom border-2 card-animate border-secondary">
+                            <div class="card-body" style="background-color: rgb(224, 113, 34)">
+                                <h5 class="fs-md text-muted mb-0 text-white">Pengguna</h5>
                                 <div class="row mt-3">
                                     <div class="col-2">
-                                        <i class="bi bi-person-fill-check" style="font-size: 30px;"></i>
+                                        <i class="bi bi-person-fill-check custom-icon-size" style="font-size: 30px;"></i>
                                     </div>
                                     <div class="col-10">
-                                        <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totalUser)}}">0</span> </h3>
+                                        <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value" data-target="{{($totalUser)}}">0</span> </h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div><!--end col-->
                     <div class="col-xl-6 col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="fs-md text-muted mb-0">Pengguna Di Blokir</h5>
+                        <div class="card border-bottom border-2 card-animate border-secondary">
+                            <div class="card-body" style="background-color: #910000">
+                                <h5 class="fs-md text-muted mb-0 text-white">Pengguna Di Blokir</h5>
             
                                 <div class="row mt-3">
                                     <div class="col-2">
-                                        <i class="bi bi-person-fill-slash" style="font-size: 30px;"></i>
+                                        <i class="bi bi-person-fill-slash custom-icon-size" style="font-size: 30px;"></i>
                                     </div>
                                     <div class="col-10">
-                                        <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="{{($totaldiblokir)}}">0</span> </h3>
+                                        <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value" data-target="{{($totaldiblokir)}}">0</span> </h3>
                                     </div>
                                 </div>
                             </div>
