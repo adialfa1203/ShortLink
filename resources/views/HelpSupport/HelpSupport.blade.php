@@ -108,9 +108,9 @@
                             <li class="nav-item has_dropdown">
                                 <a class="nav-link" href="/Subscribe">Berlangganan</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link dark_btn" href="/login">Login / Register</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </nav>
