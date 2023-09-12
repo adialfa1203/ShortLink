@@ -96,13 +96,7 @@
                                 <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                     <thead class="text-muted table-light">
                                         <tr class="searchable">
-                                            <th>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="option"
-                                                        id="checkAll">
-                                                    <label class="form-check-label" for="checkAll"></label>
-                                                </div>
-                                            </th>
+                                            <th scope="col" class="sort cursor-pointer" data-sort="order_id">#</th>
                                             <th scope="col" class="sort cursor-pointer" data-sort="order_id">Nama
                                                 Pengguna</th>
                                             <th scope="col" class="sort cursor-pointer" data-sort="order_date">E-mail
@@ -116,15 +110,8 @@
                                     </thead>
                                     <tbody class="list form-check-all">
                                         @foreach ($data as $row)
-                                            <tr>
-                                                <th>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input child-checkbox" type="checkbox"
-                                                            name="chk_child">
-                                                        <label class="form-check-label"></label>
-                                                    </div>
-
-                                                </th>
+                                            <tr id="user_{{ $row->id }}">
+                                                <th class="order_id">{{$loop->iteration}}</th>
                                                 <td class="order_id">{{ $row->name }}</td>
                                                 <td class="order_date">
                                                     {{ $row->email }}
@@ -218,32 +205,35 @@
         });
     </script>
     <script>
-        $(function(e){
-            $("#select_all_ids").click(function(){
-              $('.checkbox_ids').prop('checked',$(this).prop('checked'));
+        $(document).ready(function () {
+            $("#checkAll").change(function () {
+                $(".child-checkbox").prop('checked', $(this).prop('checked'));
             });
-            $('#deleteAllSelectedRecord').click(function(e){
+        
+            $('#deleteAllSelectedRecord').click(function (e) {
                 e.preventDefault();
-                var all_ids = [];
-                $('input:checkbox[name=ids]:checked').each(function(){
-                    all_ids.push($(this).val());
+                var selectedIds = [];
+        
+                $(".child-checkbox:checked").each(function () {
+                    selectedIds.push($(this).val()); // Mengambil nilai ID dari checkbox yang dipilih
                 });
-            
+        
                 $.ajax({
-                    url:"{{ route('data.banned')}}",
-                    type:"POST",
-                    data:{
-                        ids:all_ids,
-                        _token:'{{csrf_token()}}'
+                    url: "{{ route('data.banned')}}",
+                    type: "POST",
+                    data: {
+                        ids: selectedIds, // Mengirim semua ID yang dipilih ke server
+                        _token: '{{ csrf_token() }}'
                     },
-                    success:function(response){
-                        $.each(all_ids,function(key,val)){
-                            $('#banned_ids'+val).remove();
-                        }
+                    success: function (response) {
+                        // Hapus baris akun yang dipilih dari tampilan
+                        $.each(selectedIds, function (index, id) {
+                            $("#user_" + id).remove();
+                        });
                     }
-                })
-
+                });
             });
         });
-    </script>
+        </script>        
+        
 @endsection

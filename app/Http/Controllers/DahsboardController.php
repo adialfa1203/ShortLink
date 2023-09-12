@@ -14,15 +14,15 @@ class DahsboardController extends Controller
     {
         $user = Auth::user();
 
-        $totalVisits = ShortURLVisit::query('user_id', $user)->count();
         if ($user) {
             $userId = $user->id;
-
-        // Menghitung total kunjungan berdasarkan user ID
+            $totalVisits = ShortURLVisit::where('user_id', $userId)->count();        
+        }if ($user) {
+            $userId = $user->id;
         $countURL = ShortURL::where('user_id', $userId)
                             ->whereNull('microsite_id')
                             ->count();
-        } if($user) {
+        }if($user) {
             $userId = $user->id;
         $countNameChanged = ShortUrl::where('user_id', $userId)
                                     ->where('custom_name', 'yes')

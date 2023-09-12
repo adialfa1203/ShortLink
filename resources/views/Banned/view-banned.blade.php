@@ -11,83 +11,6 @@
 
             <!-- start page title -->
             <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Data Pengguna</h4>
-
-                        {{-- <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                <li class="breadcrumb-item active">Orders</li>
-                            </ol>
-                        </div> --}}
-
-                    </div>
-                    <!-- end page title -->
-
-                    {{-- <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card" id="orderList">
-                                <div class="card-header">
-                                    <div class="row align-items-center gy-3">
-                                        <div class="col-lg-3 col-md-6">
-                                            <div class="search-box">
-                                                <input type="text" class="form-control search" id="searchInput" placeholder="Cari...">
-                                                <i class="ri-search-line search-icon"></i>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-auto ms-md-auto">
-                                            <div class="d-flex flex-wrap align-items-center gap-2">
-                                                <button class="btn btn-subtle-danger d-none" id="remove-actions" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
-                                                <div class="dropdown card-header-dropdown sortble-dropdown flex-shrink-0">
-                                                    <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <span class="text-muted dropdown-title">Order Date</span> <i class="mdi mdi-chevron-down ms-1"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <button class="dropdown-item sort" data-sort="order_date">Order Date</button>
-                                                        <button class="dropdown-item sort" data-sort="order_id">Order ID</button>
-                                                        <button class="dropdown-item sort" data-sort="amount">Amount</button>
-                                                        <button class="dropdown-item sort" data-sort="status">Status</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-10">
-                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="">0</span> </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-                <div class="col-xl-6 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="fs-md text-muted mb-0">Pengguna diblokir</h5>
-
-                            <div class="row mt-3">
-                                <div class="col-2">
-                                    <i class="fa-solid fa-user" style="font-size: 30px;"></i>
-                                </div>
-                                <div class="col-10">
-                                    <h3 class="mb-4" style="float: right;"><span class="counter-value" data-target="">0</span> </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-                <div class="col-12">
-                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Pengguna Diblokir</h4>
-                    </div>
-
-                </div>
-            </div>
-            <!-- end page title -->
-
-            <div class="row">
                 <div class="col-lg-12">
                     <div class="card" id="orderList">
                         <div class="card-header">
@@ -99,27 +22,6 @@
                                         <i class="ri-search-line search-icon"></i>
                                     </div>
                                 </div>
-
-                                {{-- <div class="col-md-auto ms-md-auto">
-                                    <div class="d-flex flex-wrap align-items-center gap-2">
-                                        <button class="btn btn-subtle-danger d-none" id="remove-actions"
-                                            onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
-                                        <div class="dropdown card-header-dropdown sortble-dropdown flex-shrink-0">
-                                            <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <span class="text-muted dropdown-title">Order Date</span> <i
-                                                    class="mdi mdi-chevron-down ms-1"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <button class="dropdown-item sort" data-sort="order_date">Order
-                                                    Date</button>
-                                                <button class="dropdown-item sort" data-sort="order_id">Order ID</button>
-                                                <button class="dropdown-item sort" data-sort="amount">Amount</button>
-                                                <button class="dropdown-item sort" data-sort="status">Status</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
                             </div>
                         </div>
                         <div class="card-body">
@@ -127,12 +29,7 @@
                                 <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                     <thead class="text-muted table-light">
                                         <tr class="searchable">
-                                            <th>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="option" id="checkAll">
-                                                    <label class="form-check-label" for="checkAll"></label>
-                                                </div>
-                                            </th>
+                                            <th scope="col" class="sort cursor-pointer" data-sort="order_id">#</th>
                                             <th scope="col" class="sort cursor-pointer" data-sort="order_id">Nama
                                                 Pengguna</th>
                                             <th scope="col" class="sort cursor-pointer" data-sort="order_date">E-mail
@@ -146,30 +43,27 @@
                                     </thead>
                                     <tbody class="list form-check-all">
                                         @foreach ($data as $row)
-                                            <tr>
-                                                <th>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input child-checkbox" type="checkbox" name="chk_child">
-                                                        <label class="form-check-label"></label>
-                                                    </div>
-                                                </th>
+                                            <tr id="user_{{ $row->id }}">
+                                                <th class="order_id">{{$loop->iteration}}</th>
                                                 <td class="order_id">{{ $row->name }}</td>
                                                 <td class="order_date">
                                                     {{ $row->email }}
                                                 </td>
                                                 <td class="products">{{ $row->number }}</td>
-                                                <td class="status"><span
-                                                        class="badge bg-primary-subtle text-primary">Berlangganan</span>
-                                                </td>
+                                                <td class="status">
+                                                    @if ($row->subscribe === 'yes')
+                                                        <span class="badge bg-primary-subtle text-primary">Berlangganan</span>
+                                                    @elseif ($row->subscribe === 'no')
+                                                        <span class="badge bg-danger-subtle text-danger">Tidak Berlangganan</span>
+                                                    @endif
+                                                </td>                                                
                                                 <td>
                                                     <ul class="d-flex gap-2 list-unstyled mb-0">
                                                         <li>
                                                             <a href="#"
-                                                            @if ($row->is_banned == 1)
-                                                            class="btn btn-subtle-success btn-icon btn-sm me-3"
+                                                                @if ($row->is_banned == 1) class="btn btn-subtle-success btn-icon btn-sm me-3"
                                                             @else
-                                                            class="btn btn-subtle-danger btn-icon btn-sm me-3"
-                                                            @endif
+                                                            class="btn btn-subtle-danger btn-icon btn-sm me-3" @endif
                                                                 data-bs-toggle="modal" data-user-id="{{ $row->id }}"
                                                                 data-is-banned="{{ $row->is_banned }}">
                                                                 <i class="fas fa-ban"></i>
@@ -208,7 +102,6 @@
                 </div>
                 <!-- end col -->
             </div>
-            <!-- end row -->
 
         </div>
         <!-- container-fluid -->

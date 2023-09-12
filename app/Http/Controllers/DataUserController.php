@@ -34,13 +34,13 @@ class DataUserController extends Controller
     public function banUser($userId) {
         $user = User::findOrFail($userId);
         $user->ban();
-        return redirect()->back()->with('success', 'Anda telah mengBanned user ini');
+        return redirect()->back()->with('success', 'Akun berhasil di blokir');
     }
 
     public function unbanUser($userId) {
         $user = User::findOrFail($userId);
         $user->unban();
-        return redirect()->back()->with('success', 'Anda telah mengUnbanned user ini');
+        return redirect()->back()->with('success', 'Akun berhasil dilepaskan dari blokir');
     }
 
 }
