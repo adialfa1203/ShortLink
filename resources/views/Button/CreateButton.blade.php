@@ -1,5 +1,5 @@
 @extends('layout.admin.app')
-@section('title', 'Microsite')
+@section('title', 'Sosial')
 @section('style')
     <!-- One of the following themes -->
     <link rel="stylesheet"
@@ -34,7 +34,7 @@
                             <div class="mt-2">
                                 <label for="icon" class="form-label">Options</label>
                                 <select name="icon" class="form-select" id="icon" required>
-                                    <option value="" disabled selected>Choose...</option>
+                                    <option value="" disabled selected>Pilih Sosial Media...</option>
                                     <option value="bi bi-facebook">Facebook</option>
                                     <option value="bi bi-twitter">Twitter</option>
                                     <option value="bi bi-telephone-fill">Telephone</option>
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xxl-12 mt-2 col-md-6">
+                        <div class="col-xl-12 mt-2 col-md-6">
                             <div>
                                 <label for="colorPicker" class="form-label">Color Picker</label>
                                 <input type="color" class="form-control form-control-color w-100" id="colorPicker" name="color_hex" required>

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subscribe;
 use Illuminate\Http\Request;
 
 class SubscribeUserController extends Controller
 {
     public function subscribeUser()
     {
-
-        return view('User.SubscribeUser');
+        $data = Subscribe::paginate(5);
+        return view('User.SubscribeUser', compact('data'));
     }
 
     public function subscribeProductUser()

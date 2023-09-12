@@ -1,5 +1,5 @@
 @extends('layout.admin.app')
-@section('title', 'Microsite')
+@section('title', 'Sosial')
 @section('style')
     <!-- One of the following themes -->
     <link rel="stylesheet"
@@ -55,15 +55,15 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xxl-12 col-md-6">
+                            <div class="col-xl-12 col-md-6">
                                 <div>
                                     <label for="colorPicker" class="form-label">Color Picker</label>
                                     <input type="color" class="form-control form-control-color w-100" id="colorPicker"
                                         name="color_hex" value="{{ $button->color_hex }}">
                                 </div>
                             </div>
-                            <div class="mt-3">
-                                <button type="submit" class="btn btn-success">Simpan</button>
+                            <div class="d-flex align-items-start gap-3 mt-4">
+                                <button type="submit" class="btn btn-success right ms-auto">Simpan</button>
                             </div>
                         </form>
                     </div>

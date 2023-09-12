@@ -19,7 +19,7 @@ class CreateShortUrlsTable extends Migration
             $table->string('url_key')->unique();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('microsite_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            // $table->boolean('link_type')->default(0);/
+            $table->enum('custom_name', ['yes', 'no'])->default('no');
             $table->string('title')->nullable();
             $table->string('password')->nullable();
             $table->string('qr_code')->nullable();

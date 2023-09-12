@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Footer;
 use App\Models\ShortUrl;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 
 
@@ -43,4 +46,43 @@ class DashboardAdminController extends Controller
 
     return view('Admin.index', compact('totalUser','totalUrl','totalVisits'));
     }
+
+    public function viewFooter(){
+        $data = Footer::first();
+        return view('Admin.Footer', compact('data'));
+    }
+
+    public function editFooter(Request $request)
+    {
+        $footer = Footer::first();
+        $validator = Validator::make($request->all(), [
+            'description' => 'string|max:225',
+            'whatsapp' => 'string|integer',
+            'instagram' => 'string',
+            'twitter' => 'string',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        
+        if ($request->hasFile('logo')) {
+            $oldProfilePicture = $footer->logo;
+            if ($oldProfilePicture) {
+                $oldProfilePath = public_path('logos/' . $oldProfilePicture);
+                if (file_exists($oldProfilePath)) {
+                    unlink($oldProfilePath);
+                }
+            }
+
+            $oldProfilePicture = $request->file('logo')->move(public_path('logos'), $footer->id . '.jpg');
+            $footer->logo = 'logos/' . $footer->id . '.jpg';
+        }
+
+        $footer->description = $request->description;
+        $footer->whatsapp = $request->whatsapp;
+        $footer->instagram = $request->instagram;
+        $footer->twitter = $request->twitter;
+        $footer->save();
+
+        return redirect()->back()->with('success', 'Data berhasil diperbarui.');
+    }
+
 }

@@ -14,15 +14,24 @@ class DahsboardController extends Controller
     {
         $user = Auth::user();
 
-        $totalVisits = ShortURLVisit::query('user_id', $user)->count();
         if ($user) {
             $userId = $user->id;
-
-            // Menghitung total kunjungan berdasarkan user ID
-            $countURL = ShortURL::where('user_id', $userId)->count();
+            $totalVisits = ShortURLVisit::where('user_id', $userId)->count();        
+        }if ($user) {
+            $userId = $user->id;
+        $countURL = ShortURL::where('user_id', $userId)
+                            ->whereNull('microsite_id')
+                            ->count();
+        }if($user) {
+            $userId = $user->id;
+        $countNameChanged = ShortUrl::where('user_id', $userId)
+                                    ->where('custom_name', 'yes')
+                                    ->whereNull('microsite_id')
+                                    ->count();
         }
         $ShortLink = ShortUrl::all();
-        return view('User.DashboardUser',compact('ShortLink','countURL','totalVisits'));
+
+        return view('User.DashboardUser',compact('ShortLink','countURL','totalVisits','countNameChanged'));
     }
     public function HelpSupport() {
         $komentar = Comment::orderBy('created_at', 'desc')->get();

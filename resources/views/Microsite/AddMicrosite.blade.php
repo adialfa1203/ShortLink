@@ -5,8 +5,6 @@
     <style>
         /* CSS untuk hover card */
         .hover {
-            /* Misalnya, ubah warna latar belakang dan perbesar sedikit card ketika dihover */
-            /* border: 2px solid rgb(61, 56, 56); */
             background-color: #f8f8f8;
             transform: scale(1.05);
             transition: background-color 0.3s, transform 0.3s;
@@ -20,8 +18,37 @@
         .hover {
             border: 0.5px solid black;
         }
-    </style>
+        /* Untuk mengurangi jarak antara ikon panah dan teks */
+.btn.btn-label.previetab {
+    padding-right: 1px; /* Sesuaikan padding kanan sesuai kebutuhan */
+}
 
+.btn.btn-label.nexttab {
+    padding-left: 5px; /* Sesuaikan padding kiri sesuai kebutuhan */
+}
+
+.hover {
+    background-color: lightgray;
+}
+
+.hide-radio {
+    display: none;
+}
+
+.radio-button {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.hidden-radio:checked + .radio-button {
+    background-color: #ccc;
+}
+</style>
 @endsection
 
 
@@ -98,7 +125,7 @@
                                                     <div class="row">
                                                         @foreach ($data as $microsite)
                                                             <div class="col-xl-4 col-sm-6 mb-4">
-                                                                <div class="card">
+                                                                <div class="card clickable-card" data-microsite-id="{{ $microsite->id }}">
                                                                     <div class="text-center">
                                                                         <div class="dropdown float-end">
                                                                             <a class="text-reset dropdown-btn"
@@ -126,11 +153,11 @@
                                                                         </div>
                                                                         <div class="text-center mt-3">
                                                                             <label class="form-check-label">
-                                                                                <input type="radio" id="tema"
+                                                                                <input type="radio" id="tema{{ $microsite->id }}"
                                                                                     name="microsite_selection"
                                                                                     value="{{ $microsite->id }}"
-                                                                                    class="form-check-input">
-                                                                                Pilih jenis microsite {{ $microsite->name }}
+                                                                                    class="form-check-input">&nbsp;
+                                                                                {{ $microsite->component_name }}
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -159,12 +186,6 @@
                                                                     Microsite</label>
                                                                 <input type="text" class="form-control" id="address"
                                                                     name="name" placeholder="aqua-link">
-                                                                <div>
-                                                                    @if ($errors->has('name'))
-                                                                        <span
-                                                                            class="text-danger">{{ $errors->first('name') }}</span>
-                                                                    @endif
-                                                                </div>
                                                             </div>
                                                             <div class="col-12">
                                                                 <label for="address" class="form-label">Tautan
@@ -175,12 +196,6 @@
                                                                     <input type="text" class="form-control"
                                                                         id="address" placeholder="aqua-link"
                                                                         name="link_microsite">
-                                                                    <div>
-                                                                        @if ($errors->has('link_microsite'))
-                                                                            <span
-                                                                                class="text-danger">{{ $errors->first('link_microsite') }}</span>
-                                                                        @endif
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -206,33 +221,32 @@
                                                     </div>
                                                     <div class="row">
                                                         @foreach ($button as $data)
-                                                            <div class="col-xl-4 col-sm-6 mb-4">
-                                                                <div class="card" id="{{ $data->id }}">
-                                                                    <div class="card-footer text-center ">
-                                                                        <div
-                                                                            class="d-flex align-items-center justify-content-end">
-                                                                            <label class="mb-0 me-2 ">
-                                                                                <input type="checkbox"
-                                                                                    name="selectedButtons[]"
-                                                                                    value="{{ $data->id }}"
-                                                                                    class="checkbox"
-                                                                                    style="display: none;">
-                                                                            </label>
-                                                                            <button
-                                                                                style="background-color: {{ $data->color_hex }}; color: white;"
-                                                                                type="button" name="button"
-                                                                                value="{{ $data->name_button }}"
-                                                                                class="col-xl-12 btn btn-label rounded-pill"
-                                                                                data-button-value="{{ $data->id }}"
-                                                                                onclick="toggleCardHover('{{ $data->id }}')">
-                                                                                <i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2"
-                                                                                    style="color: white;"></i>
-                                                                                {{ $data->name_button }}
-                                                                            </button>
-                                                                        </div>
+                                                        <div class="col-xl-4 col-sm-6 mb-4">
+                                                            <div class="card" id="{{ $data->id }}">
+                                                                <div class="card-footer text-center ">
+                                                                    <div class="d-flex align-items-center justify-content-end">
+                                                                        <label class="mb-0 me-2 ">
+                                                                            <input id="selectedButton" type="checkbox"
+                                                                            name="selectedButtons[]"
+                                                                            value="{{ $data->id }}"
+                                                                            class="checkbox"
+                                                                            style="display: none;">
+                                                                        </label>
+                                                                        <button
+                                                                            style="background-color: {{ $data->color_hex }}; color: white;"
+                                                                            type="button"
+                                                                            name="button" value="{{ $data->name_button }}"
+                                                                            class="col-xl-12 btn btn-label rounded-pill"
+                                                                            data-button-value="{{ $data->id }}"
+                                                                            onclick="toggleCardHover('{{ $data->id }}')">
+                                                                            <i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2"
+                                                                                style="color: white;"></i>
+                                                                            {{ $data->name_button }}
+                                                                        </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                        </div>
                                                         @endforeach
                                                     </div>
                                                     <div class="d-flex align-items-start gap-3 mt-4">
@@ -242,8 +256,7 @@
                                                             Sebelumnya</button>
                                                         <button type="submit"
                                                             class="btn btn-success btn-label right ms-auto nexttab nexttab"
-                                                            data-nexttab="v-pills-finish-tab"
-                                                            onclick="return validateForm();"><i
+                                                            data-nexttab="v-pills-finish-tab" onclick="return validateForm();"><i
                                                                 class="ri-arrow-right-line label-icon align-middle fs-lg ms-2"></i>
                                                             Submit</button>
                                                     </div>
@@ -283,6 +296,38 @@
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-wizard.init.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script>
+    // Ambil semua elemen card
+    const cards = document.querySelectorAll('.card');
+
+    // Tambahkan event listener untuk setiap card
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Dapatkan ID microsite dari atribut data-kustom
+            const micrositeId = this.getAttribute('data-microsite-id');
+
+            // Dapatkan elemen radio button yang sesuai dengan ID microsite
+            const radio = document.querySelector(`#tema${micrositeId}`);
+
+            // Periksa apakah radio button sudah dipilih atau belum
+            const isChecked = radio.checked;
+
+            // Hapus efek hover dari card-card yang lain
+            cards.forEach(otherCard => {
+                if (otherCard !== this) {
+                    otherCard.classList.remove('hover');
+                }
+            });
+
+            // Toggle status radio button saat card diklik
+            radio.checked = !isChecked;
+
+            // Tambahkan atau hapus class 'hover' saat card diklik
+            this.classList.toggle('hover');
+        });
+    });
+</script>
+
     <script>
         $(document).ready(function() {
             $("button.btn").click(function() {
@@ -331,46 +376,68 @@
             card.classList.toggle('hover');
         }
     </script>
-
-    <script>
-        // Fungsi untuk melakukan validasi sebelum submit
-        function validateForm() {
-            var activeTab = $('.tab-pane.active'); // Dapatkan tab yang sedang aktif
-            var inputs = activeTab.find(
-                'input[type="text"], input[type="radio"], input[type="checkbox"], select'
-                ); // Dapatkan semua input dalam tab yang aktif
-
-            // Periksa apakah ada input yang belum diisi
-            var invalidInputs = inputs.filter(function() {
-                // Periksa input radio yang dipilih
-                if ($(this).attr('type') == 'radio') {
-                    var groupName = $(this).attr('name');
-                    return $('input[name="' + groupName + '"]:checked').length === 0;
-                }
-
-                // Periksa input checkbox yang dipilih
-                if ($(this).attr('type') == 'checkbox') {
-                    return !$(this).is(':checked');
-                }
-
-                // Periksa input teks yang kosong
-                if ($(this).is('select')) {
-                    return $(this).val() === null;
-                }
-
-                return $.trim($(this).val()) === '';
-            });
-
-            // Jika ada input yang belum diisi, tampilkan alert
-            if (invalidInputs.length > 0) {
-                alert('Silakan isi semua data yang diperlukan sebelum melanjutkan.');
-                // Aktifkan tab pertama
-                $('.nav-link:first').tab('show');
-                return false; // Mencegah pengiriman form
-            }
-
-            return true; // Submit form jika semua input telah diisi
+<script src="sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function validateForm() {
+    // Validasi langkah pertama
+    var micrositeSelection = document.querySelector('input[name="microsite_selection"]:checked');
+    if (!micrositeSelection) {
+        alert("Anda belum memilih pilihan microsite. Silakan pilih terlebih dahulu.");
+      Swal.fire({
+        text: 'Silakan pilih jenis microsite yang cocok dengan kebutuhan Anda!',
+        onClose: function () {
+          // Mengarahkan kembali ke halaman awal tab
+          document.getElementById('v-pills-bill-info-tab').click();
         }
-    </script>
+      }).then(function () {
+        setTimeout(function () {
+          location.reload(); // Memuat ulang halaman setelah pengguna menekan "OK"
+        }, 0);
+      });
+      return false;
+    }
+
+    // Validasi langkah kedua
+    var micrositeName = document.getElementById("address").value;
+    var micrositeLink = document.getElementById("address").value;
+    if (micrositeName.trim() === "" || micrositeLink.trim() === "") {
+      Swal.fire({
+        text: 'Silakan isi nama dan tautan microsite sesuai keinginan Anda!',
+        onClose: function () {
+          // Mengarahkan kembali ke halaman awal tab
+          document.getElementById('v-pills-bill-info-tab').click();
+        }
+      }).then(function () {
+        setTimeout(function () {
+          location.reload(); // Memuat ulang halaman setelah pengguna menekan "OK"
+        }, 0);
+      });
+      return false;
+    }
+
+    // Validasi langkah ketiga
+    var selectedButtons = document.querySelectorAll('input[name="selectedButtons[]"]:checked');
+    if (selectedButtons.length === 0) {
+      Swal.fire({
+        text: 'Silakan pilih setidaknya satu sosial media!',
+        onClose: function () {
+          // Mengarahkan kembali ke halaman awal tab
+          document.getElementById('v-pills-bill-info-tab').click();
+        }
+      }).then(function () {
+        setTimeout(function () {
+          location.reload(); // Memuat ulang halaman setelah pengguna menekan "OK"
+        }, 0);
+      });
+      return false;
+    }
+
+    // Semua input telah valid, lanjutkan dengan menyimpan data
+    // ...
+
+    return true;
+  }
+</script>
 
 @endsection

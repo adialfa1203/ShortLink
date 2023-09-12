@@ -222,7 +222,8 @@
 
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
+                            </div>
+                            <!-- /.modal -->
                             <div id="zoomInModal-{{ $row->id }}" class="modal fade zoomIn modal-sm" tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -280,6 +281,11 @@
                                                     <input type="text" class="form-control" name="new_url_key"
                                                         id="new_url_key" placeholder="Kustom nama">
                                                 </div>
+                                                <div class="col-lg-12 mb-3">
+                                                    <label for="new_url_key"></label>
+                                                    <input type="hidden" class="form-control" name="custom_name"
+                                                        id="new_url_key" placeholder="Kustom nama">
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-light"
@@ -314,6 +320,9 @@
                                                 <div class="col-lg-12 mb-3">
                                                     <label for="deactivated_at">Ubah Tanggal</label>
                                                     <input type="datetime-local" class="form-control" name="deactivated_at"
+                                                    @if (!is_null($row->deactivated_at))
+                                                        value="{{ \Carbon\Carbon::parse($row->deactivated_at)->format('Y-m-d\TH:i') }}"
+                                                    @endif
                                                      data-id="{{$row->id}}" id="deactivated_at-{{$row->id}}"
                                                      data-key="{{ $row->url_key }}" min="">
                                                 </div>
@@ -769,14 +778,14 @@
      <script>
         // Mendapatkan elemen input berdasarkan ID yang sesuai
         var inputTanggal = document.querySelector('input[name="deactivated_at"]');
-    
+
         // Mendapatkan tanggal hari ini dalam format yang sesuai dengan datetime-local
         var today = new Date();
         var year = today.getFullYear();
         var month = String(today.getMonth() + 1).padStart(2, '0'); // Bulan dimulai dari 0
         var day = String(today.getDate()).padStart(2, '0');
         var waktuHariIni = year + '-' + month + '-' + day + 'T00:00';
-    
+
         // Mengatur atribut "min" pada elemen input
         inputTanggal.setAttribute('min', waktuHariIni);
     </script>

@@ -30,12 +30,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link id="fontsLink" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link id="fontsLink"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <!-- Layout config Js -->
     <!-- Bootstrap Css -->
-    <link href="{{asset('template/themesbrand.com/steex/layouts/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('template/themesbrand.com/steex/layouts/assets/css/bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css">
     <!-- Icons Css -->
     <!-- App Css-->
     <!-- custom Css-->
@@ -44,42 +48,48 @@
 
 <body>
     <style>
-       .custom-btn {
-        width: 100%;
-        max-width: 300px; /* Sesuaikan dengan lebar maksimum yang Anda inginkan */
-        margin: 5px; /* Sesuaikan jarak antara tombol jika diperlukan */
-    }
-    header {
-  height: 100px; /* Ganti dengan tinggi yang Anda inginkan */
-}
-header {
-  padding: 20px 0; /* Atur padding sesuai kebutuhan Anda */
-}
-/* Menghapus aturan CSS yang membuat latar belakang gambar semi-transparan */
-.carousel-item::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background-color: #104898; */
-    /* opacity: 0.7; */
-    z-index: 1;
-}
+        .custom-btn {
+            width: 100%;
+            max-width: 300px;
+            /* Sesuaikan dengan lebar maksimum yang Anda inginkan */
+            margin: 5px;
+            /* Sesuaikan jarak antara tombol jika diperlukan */
+        }
 
-/* Mengatur teks "Memulai" menjadi putih */
-.image-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 100% 100%;
-    border-radius: 5%;
-}
+        header {
+            height: 100px;
+            /* Ganti dengan tinggi yang Anda inginkan */
+        }
 
+        header {
+            padding: 20px 0;
+            /* Atur padding sesuai kebutuhan Anda */
+        }
+
+        /* Menghapus aturan CSS yang membuat latar belakang gambar semi-transparan */
+        .carousel-item::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background-color: #104898; */
+            /* opacity: 0.7; */
+            z-index: 1;
+        }
+
+        /* Mengatur teks "Memulai" menjadi putih */
+        .image-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 100% 100%;
+            border-radius: 5%;
+        }
     </style>
 
     <!-- Page-wrapper-Start -->
@@ -93,7 +103,7 @@ header {
         <!-- Header Start -->
         <header>
             <!-- container start -->
-            
+
             <div class="container">
                 <!-- navigation bar -->
                 <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
@@ -139,7 +149,7 @@ header {
                 <!-- navigation end -->
             </div>
             <!-- container end -->
-            
+
         </header>
 
         <!-- Banner-Section-Start -->
@@ -148,17 +158,18 @@ header {
                 <div id="carouselExampleFade" class="carousel slide carousel-fade">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                                <img src="https://i.postimg.cc/BQR0t7wR/Desain-tanpa-judul.png" class="w-100" alt="..." style="max-height: 200px;">
+                            <img src="https://i.postimg.cc/BQR0t7wR/Desain-tanpa-judul.png" class="w-100"
+                                alt="..." style="max-height: 200px;">
                             <!-- Menggunakan style untuk mengatur tinggi gambar -->
                             <div class="image-text">
-                                <p style="color: white; font-size:50px;"><b>Kebijakan&nbsp;Privasi</b></p>  
+                                <p style="color: white; font-size:50px;"><b>Kebijakan&nbsp;Privasi</b></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -167,39 +178,55 @@ header {
                         <i class="fas fa-arrow-left"></i> Kembali
                     </a> --}}
                     <p></p>
-                    
+
                     <div class="col-xl-12">
                         <h2><strong>Policy</strong></h2>
-                    
-                        <p>Hummasoft Technology built the Jurnal Mengajar app as a Commercial app. This SERVICE is provided by Hummasoft Technology and is intended for use as is.</p>
-                    
-                        <p>This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decides to use our Service.</p>
-                    
-                        <p>If you choose to use our Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that we collect is used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy.</p>
-                    
-                        <p>The terms used in this Privacy Policy have the same meanings as in our <a href="[Link to Terms and Conditions]">Terms and Conditions</a>, which are accessible at Jurnal Mengajar unless otherwise defined in this Privacy Policy.</p>
-                    
+
+                        <p>Hummasoft Technology built the Jurnal Mengajar app as a Commercial app. This SERVICE is
+                            provided by Hummasoft Technology and is intended for use as is.</p>
+
+                        <p>This page is used to inform visitors regarding our policies with the collection, use, and
+                            disclosure of Personal Information if anyone decides to use our Service.</p>
+
+                        <p>If you choose to use our Service, then you agree to the collection and use of information in
+                            relation to this policy. The Personal Information that we collect is used for providing and
+                            improving the Service. We will not use or share your information with anyone except as
+                            described in this Privacy Policy.</p>
+
+                        <p>The terms used in this Privacy Policy have the same meanings as in our <a
+                                href="[Link to Terms and Conditions]">Terms and Conditions</a>, which are accessible at
+                            Jurnal Mengajar unless otherwise defined in this Privacy Policy.</p>
+
                         <h3><strong></strong></h3>
-                    
-                        <p>For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to Jurnalmengajar.com. The information that we request will be retained by us and used as described in this privacy policy.</p>
-                    
+
+                        <p>For a better experience, while using our Service, we may require you to provide us with
+                            certain personally identifiable information, including but not limited to
+                            Jurnalmengajar.com. The information that we request will be retained by us and used as
+                            described in this privacy policy.</p>
+
                         <p>The app does use third-party services that may collect information used to identify you.</p>
 
                         <h3><strong>Log Data</strong></h3>
-                    
-                        <p>We want to inform you that whenever you use our Service, in case of an error in the app, we collect data and information (through third-party products) on your phone called Log Data. This Log Data may include information such as your device's Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing our Service, the time and date of your use of the Service, and other statistics.</p>
-                    
+
+                        <p>We want to inform you that whenever you use our Service, in case of an error in the app, we
+                            collect data and information (through third-party products) on your phone called Log Data.
+                            This Log Data may include information such as your device's Internet Protocol (“IP”)
+                            address, device name, operating system version, the configuration of the app when utilizing
+                            our Service, the time and date of your use of the Service, and other statistics.</p>
+
                         <h3><strong>Cookies</strong></h3>
-                    
-                        <p>Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are</p>
+
+                        <p>Cookies are files with a small amount of data that are commonly used as anonymous unique
+                            identifiers. These are</p>
                         <p>sent to your browser from the websites that you visit</p>
 
                     </div>
                 </div><!--end row-->
             </div>
         </div>
-       </div>
-       <footer>
+    </div>
+    x
+    <footer>
         <div class="top_footer" id="kontak">
             <div class="container">
                 <div class="row">
@@ -208,16 +235,16 @@ header {
                         <div class="abt_side">
                             <div class="logo">
                                 <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
-                                    style="margin-top: -27%;">
-                                    <ul style="margin-top: -16%; margin-right:40px;">
-                                        <li style="color: white; font-size:14px;">S.id adalah platform untuk orang-orang untuk menunjukkan keahlian mereka dalam membuat situs mikro dan memperpendek tautan terpendek dengan kode s.id/.</li>
-                                    </ul>
-                                </div>
+                                    style="margin-top: -20%;">
+                                <ul style="margin-top: -10%; margin-right:10px;">
+                                    <li style="color: white; font-size:14px;">{{ $data->description }}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Footer Links -->
-                    
+
                     <div class="col-lg-2 col-md-6 col-12">
                         <div class="links">
                             <h3>Dukungan</h3>
@@ -245,37 +272,40 @@ header {
                     <!-- Contact Information -->
                     <div class="col-lg-2 col-md-6 col-12">
                         <div class="links">
-                            <h3 style="margin-left: 30px;">Hubungi Kami</h3>
+                            <h3>Hubungi Kami</h3>
                             <ul style="text-align: justify;">
                                 <li>
                                     <a href="https://wa.me/085606270454">
                                         <i class="fab fa-whatsapp"></i>
-                                        085606270454
+                                        {{ $data->whatsapp }}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#features">
                                         <i class="fab fa-instagram"></i>
-                                        @link.id
+                                        {{ $data->instagram }}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#features">
                                         <i class="fab fa-twitter"></i>
-                                        @link.id
+                                        {{ $data->twitter }}
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-
                     <!-- Comment Form -->
-                    <div class="col-lg-3 col-md-6 col-12 mb-1" >
-                        <form action="javascript:void(0);" class="mt-3">
+                    <div class="col-lg-3 col-md-6 col-12 mb-1">
+                        <form id="commentForm" method="POST" enctype="multipart/form-data" class="mt-3">
+                            @csrf
                             <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
-                                placeholder="Tambahkan Komentar" style="font-size:12px ;"></textarea>
+                                placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
+                            @error('isikomentar')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="text-start mt-2">
-                                <a href="javascript:void(0);" class="btn btn-success">Kirim</a>
+                                <button type="submit" class="btn btn-success">Kirim</button>
                             </div>
                         </form>
                     </div>
@@ -300,30 +330,30 @@ header {
         </div>
     </footer>
 
-        <!-- Footer-Section end -->
+    <!-- Footer-Section end -->
 
-        <!-- VIDEO MODAL -->
-        <div class="modal fade youtube-video" id="myModal" tabindex="-1" role="dialog"
-            aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <button id="close-video" type="button" class="button btn btn-default text-right"
-                        data-dismiss="modal">
-                        <i class="icofont-close-line-circled"></i>
-                    </button>
-                    <div class="modal-body">
-                        <div id="video-container" class="video-container">
-                            <iframe id="youtubevideo" src="#" width="640" height="360" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
+    <!-- VIDEO MODAL -->
+    <div class="modal fade youtube-video" id="myModal" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button id="close-video" type="button" class="button btn btn-default text-right"
+                    data-dismiss="modal">
+                    <i class="icofont-close-line-circled"></i>
+                </button>
+                <div class="modal-body">
+                    <div id="video-container" class="video-container">
+                        <iframe id="youtubevideo" src="#" width="640" height="360" frameborder="0"
+                            allowfullscreen></iframe>
                     </div>
-                    <div class="modal-footer">
-                    </div>
+                </div>
+                <div class="modal-footer">
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="purple_backdrop"></div>
+    <div class="purple_backdrop"></div>
 
     </div>
     <!-- Page-wrapper-End -->
@@ -354,13 +384,37 @@ header {
             window.location.href = "https://www.instagram.com/nama_akun_instagram";
         });
     </script>
-        <script src="{{asset('template/themesbrand.com/steex/layouts/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('template/themesbrand.com/steex/layouts/assets/libs/simplebar/simplebar.min.js')}}"></script>
-        <script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/plugins.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Include SweetAlert library -->
 
-        <!-- App js -->
-        <script src="{{asset('template/themesbrand.com/steex/layouts/assets/js/app.js')}}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('#commentForm').submit(function(event) {
+                event.preventDefault();
+                @if (auth()->check())
+                    this.action = '/create';
+                    this.submit();
+                @else
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oh Tidakkk...',
+                        text: 'Anda harus login dulu',
+                        confirmButtonText: '<a href="/login">Login disini</a>',
+                    });
+                @endif
+            });
+        });
+    </script>
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}">
+    </script>
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/plugins.js') }}"></script>
+
+    <!-- App js -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+    </script>
 </body>
 
 

@@ -126,8 +126,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="col-lg-6">
                         <div class="card" id="agenciesList">
                             <div class="card-header fw-bold">
@@ -143,62 +141,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($microsites->sortByDesc('totalVisits') as $microsite)
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>link.id/8FCO2</td>
-                                            <td>0 Pengunjung</td>
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $microsite->default_short_url }}</td>
+                                            <td>{{ $microsite->totalVisits }}</td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>link.id/8FCO2</td>
-                                            <td>0 Pengunjung</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>link.id/8FCO2</td>
-                                            <td>0 Pengunjung</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div><!--end col-->
-
-                    <div class="col-lg-6">
-                        <div class="card" id="agenciesList">
-                            <div class="card-header fw-bold">
-                                Microsite Populer
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-borderless table-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Tautan</th>
-                                            <th scope="col">Pengunjung</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>link.id/8FCO2</td>
-                                            <td>0 Pengunjung</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>link.id/8FCO2</td>
-                                            <td>0 Pengunjung</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>link.id/8FCO2</td>
-                                            <td>0 Pengunjung</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div><!-- end col -->
                 </div><!--end row-->
             </div>
             <!-- container-fluid -->

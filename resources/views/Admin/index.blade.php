@@ -13,22 +13,32 @@
             max-width: 650px;
             margin: 35px auto;
         }
+        .custom-icon-size {
+        font-size: 30px;
+        /* Ubah ukuran font sesuai kebutuhan Anda */
+        color: #fafafa;
+        /* Warna merah muda */
+    }
+    .text-white {
+        color: white !important;
+    }
+
     </style>
 @endsection
 @section('content')
     <div class="page-content">
         <div class="row">
             <div class="col-xl-3 col-sm-6">
-                <div class="card border-bottom border-2 card-animate border-secondary">
-                    <div class="card-body">
-                        <h5 class="fs-md text-muted mb-0">Pengguna</h5>
+                <div class="card border-bottom border-2 card-animate">
+                    <div class="card-body bg-success">
+                        <h5 class="fs-md text-muted mb-0 text-white">Pengguna</h5>
 
                         <div class="row mt-3">
                             <div class="col-2">
-                                <i class="fa-solid fa-user" style="font-size: 30px;"></i>
+                                <i class="fa-solid fa-user custom-icon-size" style="font-size: 30px;"></i>
                             </div>
                             <div class="col-10">
-                                <h3 class="mb-4" style="float: right;"><span class="counter-value"
+                                <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value"
                                         data-target="{{ $totalUser }}">0</span>
                                 </h3>
                             </div>
@@ -37,16 +47,16 @@
                 </div>
             </div><!--end col-->
             <div class="col-xl-3 col-sm-6">
-                <div class="card border-bottom border-2 card-animate border-primary">
-                    <div class="card-body">
-                        <h5 class="fs-md text-muted mb-0">Tautan</h5>
+                <div class="card border-bottom border-2 card-animate">
+                    <div class="card-body bg-primary">
+                        <h5 class="fs-md text-muted mb-0 text-white">Tautan</h5>
 
                         <div class="row mt-3">
                             <div class="col-2">
-                                <i class="fa-solid fa-link" style="font-size: 30px;"></i>
+                                <i class="fa-solid fa-link custom-icon-size" style="font-size: 30px;"></i>
                             </div>
                             <div class="col-10">
-                                <h3 class="mb-4" style="float: right;"><span class="counter-value"
+                                <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value"
                                         data-target="{{ $totalUrl }}">0</span>
                                 </h3>
                             </div>
@@ -55,16 +65,16 @@
                 </div>
             </div><!--end col-->
             <div class="col-xl-3 col-sm-6">
-                <div class="card border-bottom border-2 card-animate border-warning">
-                    <div class="card-body">
-                        <h5 class="fs-md text-muted mb-0">Pengunjung</h5>
+                <div class="card border-bottom border-2 card-animate">
+                    <div class="card-body bg-warning">
+                        <h5 class="fs-md text-muted mb-0 text-white">Pengunjung</h5>
 
                         <div class="row mt-3">
                             <div class="col-2">
-                                <i class="fa-solid fa-user" style="font-size: 30px;"></i>
+                                <i class="fa-solid fa-user custom-icon-size" style="font-size: 30px;"></i>
                             </div>
                             <div class="col-10">
-                                <h3 class="mb-4" style="float: right;"><span class="counter-value"
+                                <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value"
                                         data-target="{{ $totalVisits }}">0</span>
                                 </h3>
                             </div>
@@ -73,16 +83,16 @@
                 </div>
             </div><!--end col-->
             <div class="col-xl-3 col-sm-6">
-                <div class="card border-bottom border-2 card-animate border-danger">
-                    <div class="card-body">
-                        <h5 class="fs-md text-muted mb-0">Subscription</h5>
+                <div class="card border-bottom border-2 card-animate">
+                    <div class="card-body" style="background-color : #FF6C6C" >
+                        <h5 class="fs-md text-muted mb-0 text-white">Subscription</h5>
 
                         <div class="row mt-3">
                             <div class="col-2">
-                                <i class="fa-solid fa-thumbs-up" style="font-size: 30px;"></i>
+                                <i class="fa-solid fa-thumbs-up custom-icon-size" style="font-size: 30px;"></i>
                             </div>
                             <div class="col-10">
-                                <h3 class="mb-4" style="float: right;"><span class="counter-value"
+                                <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value"
                                         data-target="0">0</span> </h3>
                             </div>
                         </div>
@@ -134,17 +144,17 @@
                         dataLabels: {
                             enabled: false
                         },
-                        colors: ["#E53935", "#1E88E5", "#FDD835"],
+                        colors: ["#2DCB73", "#3762EA", "#F6B749"],
                         series: [{
-                                name: "Series A",
+                                name: "Data Total User",
                                 data: totalUserData
                             },
                             {
-                                name: "Series B",
+                                name: "Data Total URL",
                                 data: totalUrlData
                             },
                             {
-                                name: "Series C",
+                                name: "Data Total Pengunjung",
                                 data: totalVisitsData
                             }
                         ],

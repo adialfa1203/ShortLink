@@ -16,7 +16,7 @@ class AnalyticUserController extends Controller
 
         $startDate = Carbon::now()->subDays(7);
 
-        $totalUrl = ShortURL::where('created_at', '>=', $startDate)
+        $totalUrl = ShortURL::where('created_at', '>=', $startDate)        
         ->selectRaw('DATE(created_at) as date, COUNT(*) as totalUrl')
         ->groupBy('date')
         ->orderBy('date')
@@ -43,11 +43,28 @@ class AnalyticUserController extends Controller
                     $query->where('user_id', $user);
                 });
             }
-        ])->orderBy('totalVisits', 'desc')
+        ])
+        ->whereNull('microsite_id')
+        ->orderBy('totalVisits', 'desc')
         ->take(3)
         ->get();
 
-        $countURL = ShortURL::where('user_id', $user)->count();
+        $microsites = ShortUrl::withCount([
+            'visits AS totalVisits' => function ($query) use ($user) {
+                $query->whereHas('shortUrl', function ($query) use ($user) {
+                    $query->where('user_id', $user);
+                });
+            }
+        ])
+        ->whereNotNull('microsite_id')
+        ->orderBy('totalVisits', 'desc')
+        ->take(3)
+        ->get();
+
+        $countURL = ShortURL::where('user_id', $user)
+                            ->whereNull('microsite_id')
+                            ->count();
+        $countMicrosite = ShortUrl::where('microsite_id', $user)->count();
 
         $dataLink = SHortURL::all();
 
@@ -70,7 +87,7 @@ class AnalyticUserController extends Controller
         // $visits = count($shortURL->visits) ;
 
         // dd($totalVisits,$countURL);
-        return view('User.AnalyticUser', compact('totalVisits','countURL','count','users','links', 'dataLink'));
+        return view('User.AnalyticUser', compact('totalVisits','countURL','count','users','links', 'dataLink', 'countMicrosite', 'microsites'));
     }
 
 }

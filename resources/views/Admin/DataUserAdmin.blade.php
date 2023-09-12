@@ -3,24 +3,95 @@
 @section('style')
     <link href="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/sweetalert2/sweetalert2.min.css') }}"
         rel="stylesheet" type="text/css">
+        <style>
+                .custom-icon-size {
+        font-size: 30px;
+        /* Ubah ukuran font sesuai kebutuhan Anda */
+        color: #fafafa;
+        /* Warna merah muda */
+    }
+    .text-white {
+        color: white !important;
+    }
+        </style>
 @endsection
 
 @section('content')
-<div class="page-content">
+    <div class="page-content">
         <div class="container-fluid">
-                    <!-- start page title -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0">Data Pengguna</h4>
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-xl-3 col-sm-6">
+                    <div class="card border-bottom border-2 card-animate border-secondary">
+                        <div class="card-body" style="background-color: #910000">
+                            <h5 class="fs-md text-muted mb-0 text-white">Pengguna</h5>
+        
+                            <div class="row mt-3">
+                                <div class="col-2">
+                                    <i class="fa-solid fa-user custom-icon-size " style="font-size: 30px;"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h3 class="mb-4 custom-icon-size " style="float: right;"><span class="counter-value" data-target="{{($totalUser)}}">0</span> </h3>
+                                </div>
                             </div>
                         </div>
                     </div>
-            <!-- end page title -->
-            <div class="row mb-3">
+                </div><!--end col-->
+                <div class="col-xl-3 col-sm-6">
+                    <div class="card border-bottom border-2 card-animate border-secondary">
+                        <div class="card-body" style="background-color: rgb(13, 13, 118)">
+                            <h5 class="fs-md text-muted mb-0 text-white">Tautan</h5>
+        
+                            <div class="row mt-3">
+                                <div class="col-2">
+                                    <i class="fa-solid fa-link custom-icon-size " style="font-size: 30px;"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h3 class="mb-4 custom-icon-size " style="float: right;"><span class="counter-value" data-target="{{($totalUrl)}}">0</span> </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end col-->
+                <div class="col-xl-3 col-sm-6">
+                    <div class="card border-bottom border-2 card-animate border-secondary">
+                        <div class="card-body" style="background-color: rgb(224, 113, 34)">
+                            <h5 class="fs-md text-muted mb-0 text-white">Pengunjung</h5>
+                            <div class="row mt-3">
+                                <div class="col-2">
+                                    <i class="fa-solid fa-link custom-icon-size" style="font-size: 30px;"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value" data-target="{{($totalVisits)}}">0</span> </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end col-->
+                <div class="col-xl-3 col-sm-6">
+                    <div class="card border-bottom border-2 card-animate border-secondary">
+                        <div class="card-body" style="background-color: rgb(6, 117, 48)">
+                            <h5 class="fs-md text-muted mb-0 text-white">Microsite</h5>
+                            <div class="row mt-3">
+                                <div class="col-2">
+                                    <i class="fa-solid fa-user custom-icon-size" style="font-size: 30px;"></i>
+                                </div>
+                                <div class="col-10">
+                                    <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value" data-target=" {{($totalMicrosite)}}">0</span> </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+                </div>
+                <!-- end page title -->
+
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="card" id="orderList">
-                        <div class="card-header mt-3">
+                        <div class="card-header">
                             <div class="row align-items-center gy-3">
                                 <div class="col-lg-3 col-md-6">
                                     <div class="search-box">
@@ -36,12 +107,7 @@
                                 <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                     <thead class="text-muted table-light">
                                         <tr class="searchable">
-                                            <th>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="option" id="checkAll">
-                                                    <label class="form-check-label" for="checkAll"></label>
-                                                </div>
-                                            </th>
+                                            <th scope="col" class="sort cursor-pointer" data-sort="order_id">No</th>
                                             <th scope="col" class="sort cursor-pointer" data-sort="order_id">Nama
                                                 Pengguna</th>
                                             <th scope="col" class="sort cursor-pointer" data-sort="order_date">E-mail
@@ -52,38 +118,35 @@
                                             </th>
                                             <th scope="col">Action</th>
                                         </tr>
-                                    </thead>
+                                    </thead>                                    
                                     <tbody class="list form-check-all">
                                         @foreach ($data as $row)
-                                            <tr>
-                                                <th>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input child-checkbox" type="checkbox" name="chk_child">
-                                                        <label class="form-check-label"></label>
-                                                    </div>                                                    
-                                                </th>
+                                            <tr id="user_{{ $row->id }}">
+                                                <th class="order_id">{{$loop->iteration}}</th>
                                                 <td class="order_id">{{ $row->name }}</td>
                                                 <td class="order_date">
                                                     {{ $row->email }}
                                                 </td>
                                                 <td class="products">{{ $row->number }}</td>
-                                                <td class="status"><span
-                                                    class="badge bg-primary-subtle text-primary">Berlangganan</span>
-                                                </td>
+                                                <td class="status">
+                                                    @if ($row->subscribe === 'yes')
+                                                        <span class="badge bg-primary-subtle text-primary">Berlangganan</span>
+                                                    @elseif ($row->subscribe === 'no')
+                                                        <span class="badge bg-danger-subtle text-danger">Tidak Berlangganan</span>
+                                                    @endif
+                                                </td>                                                
                                                 <td>
                                                     <ul class="d-flex gap-2 list-unstyled mb-0">
                                                         <li>
                                                             <a href="#"
-                                                            @if ($row->is_banned == 1)
-                                                            class="btn btn-subtle-success btn-icon btn-sm me-3"
+                                                                @if ($row->is_banned == 1) class="btn btn-subtle-success btn-icon btn-sm me-3"
                                                             @else
-                                                            class="btn btn-subtle-danger btn-icon btn-sm me-3"
-                                                            @endif
+                                                            class="btn btn-subtle-danger btn-icon btn-sm me-3" @endif
                                                                 data-bs-toggle="modal" data-user-id="{{ $row->id }}"
                                                                 data-is-banned="{{ $row->is_banned }}">
                                                                 <i class="fas fa-ban"></i>
                                                             </a>
-                                                        </li> 
+                                                        </li>
                                                     </ul>
                                                 </td>
                                             </tr>
@@ -91,8 +154,6 @@
                                     </tbody><!-- end tbody -->
                                 </table>
                                 <br><!-- end table -->
-                                <button type="button" class="btn btn-subtle-danger"><i
-                                        class="fas fa-ban me-1"></i>Banned</button>
                                 <div class="noresult" style="display: none">
                                     <div class="text-center py-4">
                                         <i class="ph-magnifying-glass fs-1 text-primary"></i>
@@ -121,16 +182,15 @@
             </div>
             <!-- end row -->
 
-            <!-- container-fluid -->
         </div>
+        <!-- container-fluid -->
     </div>
 
-</div>
 @endsection
 @section('script')
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/sweetalerts.init.js') }}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.0/list.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -140,21 +200,59 @@
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
-            });
-        </script>
-       <script>
-    // Mendapatkan referensi elemen checkbox utama dan semua checkbox anak dengan class yang sama
-    var checkAllCheckbox = document.getElementById("checkAll");
-    var childCheckboxes = document.querySelectorAll('.child-checkbox');
-
-    // Menambahkan event listener ke checkbox utama
-    checkAllCheckbox.addEventListener("change", function() {
-        // Mengatur status semua checkbox anak sesuai dengan status checkbox utama
-        childCheckboxes.forEach(function(checkbox) {
-            checkbox.checked = checkAllCheckbox.checked;
         });
-    });
-</script>
+    </script>
+    <script>
+        // Mendapatkan referensi elemen checkbox utama dan semua checkbox anak dengan class yang sama
+        var checkAllCheckbox = document.getElementById("checkAll");
+        var childCheckboxes = document.querySelectorAll('.child-checkbox');
 
-        @endsection
-
+        // Menambahkan event listener ke checkbox utama
+        checkAllCheckbox.addEventListener("change", function() {
+            // Mengatur status semua checkbox anak sesuai dengan status checkbox utama
+            childCheckboxes.forEach(function(checkbox) {
+                checkbox.checked = checkAllCheckbox.checked;
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#checkAll").change(function () {
+                $(".child-checkbox").prop('checked', $(this).prop('checked'));
+            });
+        
+            $('#deleteAllSelectedRecord').click(function (e) {
+                e.preventDefault();
+                var selectedIds = [];
+        
+                $(".child-checkbox:checked").each(function () {
+                    selectedIds.push($(this).val()); // Mengambil nilai ID dari checkbox yang dipilih
+                });
+        
+                $.ajax({
+                    url: "{{ route('data.banned')}}",
+                    type: "POST",
+                    data: {
+                        ids: selectedIds, // Mengirim semua ID yang dipilih ke server
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function (response) {
+                        // Hapus baris akun yang dipilih dari tampilan
+                        $.each(selectedIds, function (index, id) {
+                            $("#user_" + id).remove();
+                        });
+                    }
+                });
+            });
+        });
+        </script>        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var options = {
+                    valueNames: ['order_id', 'order_date', 'delivery_date', 'status']
+                };
+        
+                var userList = new List('your-table-id', options);
+            });
+        </script>        
+@endsection

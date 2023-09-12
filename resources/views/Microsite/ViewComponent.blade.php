@@ -45,6 +45,43 @@
                             </div>
                         </div>
                     @endforeach
+                    <div class="pagination-wrap hstack justify-content-center gap-2">
+                        <a class="page-item pagination-prev {{ $component->previousPageUrl() ? '' : 'disabled' }}" href="{{ $component->previousPageUrl() ? $component->previousPageUrl() : '#' }}">
+                            Previous
+                        </a>
+                        <ul class="pagination listjs-pagination mb-0">
+                            @if($component->currentPage() > 2)
+                                <li>
+                                    <a class="page" href="{{ $component->url(1) }}">1</a>
+                                </li>
+                                @if($component->currentPage() > 3)
+                                    <li class="ellipsis">
+                                        <span>...</span>
+                                    </li>
+                                @endif
+                            @endif
+
+                            @for($i = max(1, $component->currentPage() - 1); $i <= min($component->lastPage(), $component->currentPage() + 1); $i++)
+                                <li class="{{ $i == $component->currentPage() ? 'active' : '' }}">
+                                    <a class="page" href="{{ $component->url($i) }}" data-i="{{ $i }}">{{ $i }}</a>
+                                </li>
+                            @endfor
+
+                            @if($component->currentPage() < $component->lastPage() - 1)
+                                @if($component->currentPage() < $component->lastPage() - 2)
+                                    <li class="ellipsis">
+                                        <span>...</span>
+                                    </li>
+                                @endif
+                                <li>
+                                    <a class="page" href="{{ $component->url($component->lastPage()) }}">{{ $component->lastPage() }}</a>
+                                </li>
+                            @endif
+                        </ul>
+                        <a class="page-item pagination-next {{ $component->nextPageUrl() ? '' : 'disabled' }}" href="{{ $component->nextPageUrl() ? $component->nextPageUrl() : '#' }}">
+                            Next
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

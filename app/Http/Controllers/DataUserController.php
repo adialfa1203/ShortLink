@@ -15,9 +15,11 @@ class DataUserController extends Controller
 
         $totalUrl = ShortUrl::count();
 
-        $totalMicrosite = ShortUrl::where('microsite_id')->get()->count();
+        $totalMicrosite = ShortUrl::whereNotNull('microsite_id')->count();
 
         $totalVisits = ShortURLVisit::query()->count();
+
+        $totaldiblokir = User::where('is_banned', 1)->count();
 
         $users = User::where('email', '!=', 'admin@gmail.com')->get();
         $count = [];
@@ -27,20 +29,20 @@ class DataUserController extends Controller
 
         // Mengurutkan data berdasarkan jumlah pengunjung
         arsort($count);
-        return view('Admin.DataUserAdmin', compact('data','totalUser', 'totalUrl', 'totalVisits', 'users', 'count','totalMicrosite'));
+        return view('Admin.DataUserAdmin', compact('data','totalUser', 'totalUrl', 'totalVisits', 'users', 'count','totalMicrosite', 'totaldiblokir'));
     }
     
 
     public function banUser($userId) {
         $user = User::findOrFail($userId);
         $user->ban();
-        return redirect()->back()->with('success', 'Anda telah mengBanned user ini');
+        return redirect()->back()->with('success', 'Akun berhasil di blokir');
     }
 
     public function unbanUser($userId) {
         $user = User::findOrFail($userId);
         $user->unban();
-        return redirect()->back()->with('success', 'Anda telah mengUnbanned user ini');
+        return redirect()->back()->with('success', 'Akun berhasil dilepaskan dari blokir');
     }
 
 }

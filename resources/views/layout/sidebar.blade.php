@@ -38,7 +38,26 @@
             display: flex;
             justify-content: space-between;
         }
+
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const navItems = document.querySelectorAll(".nav-item");
+
+          navItems.forEach((item) => {
+            item.addEventListener("click", function () {
+              // Hapus kelas "active" dari semua elemen
+              navItems.forEach((navItem) => {
+                navItem.classList.remove("active");
+              });
+
+              // Tambahkan kelas "active" ke elemen yang diklik
+              item.classList.add("active");
+            });
+          });
+        });
+      </script>
+
 @endsection
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
@@ -119,7 +138,7 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link " href="#sidebarDashboards" role="button" aria-expanded="false"
                         aria-controls="sidebarDashboards">
-                        <i class="bi bi-house-fill"></i> <span data-key="t-dashboards">Dasbor</span>
+                        <i class="bi bi-house-fill"></i> <span data-key="t-dashboards">Beranda</span>
                     </a>
                 </li>
 

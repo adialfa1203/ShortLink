@@ -96,6 +96,7 @@ class ShortLinkController extends Controller
         $updateUrl->update([
             'url_key' => $newUrlKey,
             'default_short_url' => "http://127.0.0.1:8000/link.id/" . $newUrlKey,
+            'custom_name' => 'yes',
         ]);
 
         // Mengirimkan respon ke JavaScript

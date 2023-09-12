@@ -1,6 +1,6 @@
 @extends('layout.admin.app')
 
-@section('title','Link')
+@section('title','Berlangganan')
 @section('style')
 <style>
 
@@ -35,23 +35,24 @@
         </div>
         <div class="col-6">
             <div class="mb-3">
-                <label for="username" class="form-label">Deskripsi Langganan <span class="text-danger">*</span></label>
-                <div class="position-relative" >
-                    <textarea class="form-control" id="editor" name="isi" cols="30"
-                rows="10"></textarea>
-                </div>
-            </div>
-            <div id="editor"></div>        
-            
-        </div>
-        <div class="col-6">
-            <div class="mb-3">
                 <label for="username" class="form-label">Tambah Foto <span class="text-danger">*</span></label>
                 <div class="position-relative ">
                     <input type="file" class="form-control  password-input" id="username" placeholder="Paket Dasar untuk memulai perjalanan Anda bersama kami" required>
                 </div>
             </div>
         </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="username" class="form-label">Deskripsi Langganan <span class="text-danger">*</span></label>
+                <div class="position-relative" >
+                    <textarea class="form-control" id="editor" name="isi" cols="30"
+                rows="10"></textarea>
+                </div>
+            </div>
+            <div id="editor"></div>
+
+        </div>
+
     </div>
 </div>
 @section('script')
