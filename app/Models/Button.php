@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Button extends Model
 {
@@ -15,13 +16,13 @@ class Button extends Model
     ];
 
     use HasFactory;
-    // public function socials()
-    // {
-    //     return $this->hasMany(Social::class, 'button_id', 'buttons_id');
-    // }
-    public function buttonLinks()
+    public function socials() :HasMany
+    {
+        return $this->hasMany(Social::class,'buttons_id');
+    }
+    public function buttonLinks(): HasMany
     {
         return $this->hasMany(ButtonLinks::class, 'buttons_id');
     }
-    
+
 }

@@ -1,132 +1,58 @@
 @extends('layout.guest.app')
 @section('title', 'Example Microsite Name')
 @section('style')
-    <style>
-        .body {
-            background-color: #e7e7e7 !important;
-        }
-        .card-body {
-            padding: 0 !important;
-        }
-    </style>
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+<style>
+    .body {
+        background-color: #e7e7e7 !important;
+    }
+
+    .card-body {
+        padding: 0 !important;
+    }
+</style>
 @endsection
 
 <div class="page-content">
     <div class="container-fluid">
-        <div class="card-body">
-            <div class="card-body">
-                <div class="mt-n5 text-center mb-4">
-                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/avatar-5.jpg') }}"
-                        alt="" class="avatar-xl rounded-circle p-1 mt-n3 mx-auto">
-                </div>
-            </div>
-
-            <!-- start page title -->
-            <div class="row">
-                <div class="d-flex justify-content-center col-12">
-                    <div class="page-title fw-bold d-sm-flex align-items-center">
-                        <h4 class="mb-sm-0">{{$accessMicrosite->name}}</h4>
+        <center>
+            <div class="card real-estate-grid-widgets card-animate" style="width: 50%; ">
+                <div class="card overflow-hidden">
+                    <div>
+                        <img src="{{ asset('component/' . $accessMicrosite->component->cover_img) }}" alt="" class="card-img-top profile-wid-img object-fit-cover" style="height: 200px;">
                     </div>
-                </div>
-                <div class="d-flex justify-content-center col-12">
-                    <p class="text-muted mb-4">Welcome to my own microsite</p>
-                </div>
-            </div>
-            <!-- end page title -->
-
-            <a href="https://myanimelist.net/anime/48316/Kage_no_Jitsuryokusha_ni_Naritakute">
-                <div class="row">
-                    <div align="center">
-                        <div class="col-md-4 mb-3">
-                            <a href="https://myanimelist.net/anime/48316/Kage_no_Jitsuryokusha_ni_Naritakute"
-                                target="_blank">
-                                <div class="card card-animate">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-2">
-                                                <div class="position-relative d-inline-block">
-                                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/avatar-6.jpg') }}"
-                                                        alt="" class="avatar-md rounded">
-                                                </div>
-                                            </div>
-                                            <div style="margin-left: 5%" class="col-8">
-                                                <div class="d-flex align-items-center">
-                                                    <h6 class="fs-md my-2">Example Name 1</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <a href="https://myanimelist.net/anime/48316/Kage_no_Jitsuryokusha_ni_Naritakute"
-                                target="_blank">
-                                <div class="card card-animate">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-2">
-                                                <div class="position-relative d-inline-block">
-                                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/avatar-3.jpg') }}"
-                                                        alt="" class="avatar-md rounded">
-                                                </div>
-                                            </div>
-                                            <div style="margin-left: 5%" class="col-8">
-                                                <div class="d-flex align-items-center">
-                                                    <h6 class="fs-md my-2">Example Name 2</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <a href="https://myanimelist.net/anime/48316/Kage_no_Jitsuryokusha_ni_Naritakute"
-                                target="_blank">
-                                <div class="card card-animate">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-2">
-                                                <div class="position-relative d-inline-block">
-                                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/avatar-7.jpg') }}"
-                                                        alt="" class="avatar-md rounded">
-                                                </div>
-                                            </div>
-                                            <div style="margin-left: 5%" class="col-8">
-                                                <div class="d-flex align-items-center">
-                                                    <h6 class="fs-md my-2">Example Name 3</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xxl-4">
-                            <div class="card-body d-flex justify-content-center">
-                                <ul class="d-flex align-items-center gap-2 list-unstyled mt-4">
-                                    <li class="mb-3">
-                                        <a href="#!" class="btn btn-subtle-success btn-icon btn-lg"><i
-                                                class="bi bi-whatsapp fs-2"></i></a>
-                                    </li>
-                                    <li class="mb-3">
-                                        <a href="#!" class="btn btn-subtle-primary btn-icon btn-lg"><i
-                                                class="bi bi-facebook fs-2"></i></a>
-                                    </li>
-                                    <li class="mb-3">
-                                        <a href="#addInstructor" class="btn btn-subtle-secondary btn-icon btn-lg" data-bs-toggle="modal" data-share-id="9"><i
-                                                class="bi bi-share-fill fs-2"></i></a>
-                                    </li>
-                                </ul>
+                    <div class="card-body pt-0 mt-n5">
+                        <div class="text-center">
+                            <div class="profile-user position-relative d-inline-block mx-auto">
+                                <img src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="{{ Auth::user()->name }}" alt="" class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
+                            </div>
+                            <div class="mt-3">
+                                <h5>{{$accessMicrosite->name}}<i class="align-baseline text-info ms-1"></i>
+                                </h5>
+                                <p class="text-muted">{!! $accessMicrosite->description !!}</p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                    <div class="card-body border-top">
+                        <div class="d-flex flex-wrap justify-content-center text-center mb-4">
+                            <div class="mb-2 mx-2">
+                                <button style="background-color: {{ $social->button->color_hex }};" type="button" class="btn btn-icon"><i class="{{ $social->button->icon }} " style="color:white;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="col-12 mb-2 btn btn-label rounded-pill" style="color: white; background-color: {{ $social->button->color_hex }}" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i style="color: white" class="{{ $social->button->icon }} label-icon align-middle rounded-pill fs-lg me-2"></i>
+                            {{ $social->button->name_button }} </button>
+                        <div class="card card-body text-center">
+                            <h4 type="button" class="card-title" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">{{ $accessMicrosite->company_name }}</h4>
+                            <p type="button" class="card-text text-muted" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">{{ $accessMicrosite->company_address }} </p>
+                        </div>
+                    </div>
+
+                </div><!--end card-->
+            </div><!--end col-->
+        </center>
     </div>
-    <div class="modal fade" id="addInstructor" tabindex="-1" aria-labelledby="addInstructorModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="addInstructor" tabindex="-1" aria-labelledby="addInstructorModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content border-0">
             <div class="modal-header">
@@ -181,7 +107,32 @@
                     </div>
             </form>
         </div>
-        <!-- modal-content -->
-    </div>
+        <!-- modal-content --
+    </div> -->
 </div><!--end modal-->
 </div>
+@section('script')
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+<!-- dropzone js -->
+<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/dropzone/dropzone-min.js') }}"></script>
+
+<!--real estate list init js -->
+<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/real-estate-add-property.init.js') }}">
+</script>
+
+<!-- ckeditor -->
+<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/%40ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}">
+</script>
+<!-- profile-setting init js -->
+<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/profile-setting.init.js') }}"></script>
+<!-- init js -->
+<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-editor.init.js') }}"></script>
+
+<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/app.js') }}"></script>
+@endsection

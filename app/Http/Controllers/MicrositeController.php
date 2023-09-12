@@ -251,7 +251,14 @@ class MicrositeController extends Controller
 
     public function micrositeLink($microsite)
     {
+        // dd($microsite);
         $accessMicrosite = Microsite::where('link_microsite', $microsite)->first();
-        return view('Microsite.MicrositeLink', compact('accessMicrosite'));
+        $social = Social::where('button_link',$microsite)->first();
+
+
+        // dd($social, $microsite);
+        // dd($social);
+        $short_url = ShortUrl::where('microsite_id', $microsite)->first();
+        return view('Microsite.MicrositeLink', compact('accessMicrosite','social','short_url'));
     }
 }
