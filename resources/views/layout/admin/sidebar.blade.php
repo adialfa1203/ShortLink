@@ -182,8 +182,7 @@
                         <span data-key="t-email">Tautan</span> </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ request()->routeIs('view.component') ? 'active' : '' }} {{ request()->routeIs('create.component') ? 'active' : '' }}"
-                        href="{{ url('view-component') }}" class="nav-link menu-link"><i class="bi bi-grid"></i>
+                    <a class="nav-link menu-link {{ request()->routeIs('view.component') ? 'active' : '' }} {{ request()->routeIs('create.component') ? 'active' : '' }} {{ request()->routeIs('edit.component') ? 'active' : '' }}" href="{{ url('view-component') }}" class="nav-link menu-link"><i class="bi bi-grid"></i>
                         <span data-key="t-email">Kategori</span> </a>
                 </li>
                 <li class="nav-item">

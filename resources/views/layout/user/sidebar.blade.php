@@ -202,12 +202,12 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ request()->routeIs('microsite') ? 'active' : '' }} {{ request()->routeIs('add.microsite') ? 'active' : '' }}" href="{{ url('microsite-user')}}"><i class="bi bi-person-badge-fill"></i>
+                    <a class="nav-link menu-link {{ request()->routeIs('microsite') ? 'active' : '' }} {{ request()->routeIs('add.microsite') ? 'active' : '' }} {{ request()->routeIs('edit.microsite') ? 'active' : '' }}" href="{{ url('microsite-user')}}"><i class="bi bi-person-badge-fill"></i>
                         <span data-key="t-file-manager">Microsite</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ request()->routeIs('subscribe.user') ? 'active' : '' }}" href="{{ url('subscribe-user') }}">
+                    <a class="nav-link menu-link {{ request()->routeIs('subscribe.user') ? 'active' : '' }} {{ request()->routeIs('subscribe.product.user') ? 'active' : '' }}"  href="{{ url('subscribe-user') }}">
                         <i class="bi bi-fire"></i> <span data-key="t-widgets">Berlangganan</span>
                     </a>
                 </li>
