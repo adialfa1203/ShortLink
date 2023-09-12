@@ -23,6 +23,9 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="mb-3">
+                        <div>
+                            <label for="lastnameInput" class="form-label fw-semibold">Logo</label>
+                        </div>
                         <div class="profile-user position-relative d-inline-block mx-auto">
                             <img src="{{ asset($data->logo ? $data->logo : 'logo/default.jpg') }}" alt=""
                             class="avatar-lg rounded object-fit-cover border-0 img-thumbnail user-profile-image"
@@ -41,7 +44,7 @@
                 </div>
                 <div class="col-lg-10">
                     <div class="mb-3">
-                        <label for="lastnameInput" class="form-label fw-semibold">Nomor Telepon</label>
+                        <label for="lastnameInput" class="form-label fw-semibold">Deskripsi</label>
                         <textarea name="description" id="editor">{{ $data->description }}</textarea>
                     </div>
                 </div>
