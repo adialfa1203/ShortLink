@@ -31,7 +31,7 @@ class DahsboardController extends Controller
             $userId = $user->id;
         $countURL = ShortURL::where('user_id', $userId)
                             ->whereNull('microsite_id')
-                            ->whereRelation('shortURL', 'archive', '!=', 'yes')
+                            ->whereNotNull('archive', '!=', 0)
                             ->count();
         }if($user) {
             $userId = $user->id;
