@@ -81,7 +81,7 @@
                     </div>
 
                     <div class="card border-bottom border-2 card-animate" data-bs-toggle="modal" data-bs-target="#addAmount">
-                        <div class="card-body d-flex justify-content-between align-items-center" style="background-color: #910000">
+                        <div class="card-body d-flex justify-content-between align-items-center" style="background-color: #FF6C6C">
                             <div class="wrapper d-flex align-items-center">
                                 <i class="bi bi-link-45deg custom-icon-size"></i>
                                 <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white">Buat Tautan Baru</p>
@@ -326,7 +326,7 @@
                     </div>
 
                     <a href="/add-microsite" class="card border-bottom border-2 card-animate">
-                        <div class="card-body d-flex justify-content-between align-items-center" style="background-color: rgb(13, 13, 118)">
+                        <div class="card-body d-flex justify-content-between align-items-center bg-primary">
                             <div class="wrapper d-flex align-items-center">
                                 <i class="bi bi-question-circle custom-icon-size"></i>
                                 <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white"> Buat Microsite baru</p>
@@ -355,7 +355,7 @@
                     </div>
 
                     <a href="/HelpSupport" class="card border-bottom border-2 card-animate">
-                        <div class="card-body d-flex justify-content-between align-items-center" style="background-color: rgb(224, 113, 34)">
+                        <div class="card-body d-flex justify-content-between align-items-center bg-warning">
                             <div class="wrapper d-flex align-items-center">
                                 <i class="bi bi-question-circle custom-icon-size"></i>
                                 <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white"> Bantuan & Dukungan</p>
