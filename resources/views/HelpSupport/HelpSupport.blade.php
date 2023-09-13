@@ -185,7 +185,7 @@
                                 <div
                                     class="d-flex align-items-center text-muted mb-4 comment-container{{ $key < 1 ? '' : ' hidden' }}"">
                                     <div class="flex-shrink-0 me-3">
-                                        <img src="{{ Auth::user()->profile_picture ? asset(Auth::user()->profile_picture) : asset('profile_pictures/default.jpg') }}"
+                                        <img src="{{ $row->user->profile_picture ? asset($row->user->profile_picture) : asset('profile_pictures/default.jpg') }}"
                                         class="avatar-sm rounded" alt="..." width="50px" height="50px">
                                     </div>
                                     <div class="flex-grow-1 d-flex flex-column">
