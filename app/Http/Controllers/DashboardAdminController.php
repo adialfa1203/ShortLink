@@ -26,12 +26,14 @@ class DashboardAdminController extends Controller
 
         $totalUrl = ShortUrl::where('created_at', '>=', $startDate)
             ->selectRaw('DATE(created_at) as date, COUNT(*) as totalUrl')
+            ->where('archive', '!=', 'yes')
             ->groupBy('date')
             ->orderBy('date')
             ->get();
 
         $totalVisits = ShortURLVisit::where('created_at', '>=', $startDate)
             ->selectRaw('DATE(created_at) as date, COUNT(*) as totalVisits')
+            ->whereRelation('shortURL', 'archive', '!=', 'yes')
             ->groupBy('date')
             ->orderBy('date')
             ->get();
@@ -40,9 +42,13 @@ class DashboardAdminController extends Controller
     }
 
     public function dashboardAdmin(){
-        $totalUser = User::where('email', '!=', 'admin@gmail.com')->count();
-        $totalUrl = ShortUrl::count();
-        $totalVisits = ShortURLVisit::query()->count();
+        $totalUser = User::where('email', '!=', 'admin@gmail.com')
+                    ->where('is_banned', '!=', '0')
+                    ->count();
+        $totalUrl = ShortUrl::where('archive', '!=', 'yes')->count();
+        $totalVisits = ShortURLVisit::query()
+                        ->whereRelation('shortURL', 'archive', '!=', 'yes')
+                        ->count();
 
     return view('Admin.index', compact('totalUser','totalUrl','totalVisits'));
     }

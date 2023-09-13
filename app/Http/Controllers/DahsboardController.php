@@ -16,11 +16,22 @@ class DahsboardController extends Controller
 
         if ($user) {
             $userId = $user->id;
-            $totalVisits = ShortURLVisit::where('user_id', $userId)->count();        
-        }if ($user) {
+            $totalVisits = ShortURLVisit::query()
+            ->whereRelation('shortURL', 'user_id', '=', $userId)
+            ->whereRelation('shortURL', 'microsite_id', null)
+            ->whereRelation('shortURL', 'archive', '!=', 'yes')
+            ->count();
+        } if($user) {
+            $userId = $user->id;
+            $totalVisitsMicrosite = ShortURLVisit::query()
+            ->whereRelation('shortURL', 'user_id', '=', $userId)
+            ->whereRelation('shortURL', 'microsite_id', '!=', null)
+            ->count();
+        } if ($user) {
             $userId = $user->id;
         $countURL = ShortURL::where('user_id', $userId)
                             ->whereNull('microsite_id')
+                            ->whereRelation('shortURL', 'archive', '!=', 'yes')
                             ->count();
         }if($user) {
             $userId = $user->id;
@@ -31,7 +42,7 @@ class DahsboardController extends Controller
         }
         $ShortLink = ShortUrl::all();
 
-        return view('User.DashboardUser',compact('ShortLink','countURL','totalVisits','countNameChanged'));
+        return view('User.DashboardUser',compact('ShortLink','countURL','totalVisits','countNameChanged', 'totalVisitsMicrosite'));
     }
     public function HelpSupport() {
         $komentar = Comment::orderBy('created_at', 'desc')->get();

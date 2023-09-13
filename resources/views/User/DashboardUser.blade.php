@@ -207,7 +207,8 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="modal-footer">
-                                        <button type="submit" class="border border-0 text-white" style="background-color : #FF6C6C; border-radius: 5px;" data-bs-toggle="modal" data-bs-target="#singkatkan">
+                                        <button type="submit" class="btn btn-danger" style="width: 100%;"
+                                            data-bs-toggle="modal" data-bs-target="#singkatkan">
                                             <i class="bi bi-link-45deg"></i> Singkatkan!
                                         </button>
                                     </div>
@@ -392,8 +393,8 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <div class="d-flex flex-column h-100">
-                                        <p class="fs-md text-muted mb-4">Pengunjung Unik</p>
-                                        <h3 class="mb-0 mt-auto"><span class="counter-value" data-target="">0</span></h3>
+                                        <p class="fs-md text-muted mb-4">Pengunjung Microsite</p>
+                                        <h3 class="mb-0 mt-auto"><span class="counter-value" data-target="{{$totalVisitsMicrosite}}">0</span></h3>
                                     </div>
                                 </div>
                                 <div class="flex-shrink-0">
@@ -516,7 +517,8 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="modal-footer">
-                                        <a href="/subscribe-product-user" type="button" style="background-color : #FF6C6C" style="width: 100%;">
+                                        <a href="/subscribe-product-user" type="button" class="btn btn-danger"
+                                            style="width: 100%;">
                                             Langganan untuk mendapatkan kuota
                                         </a>
                                     </div>

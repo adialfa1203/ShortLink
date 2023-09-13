@@ -29,6 +29,10 @@ class LinkController extends Controller
     public function archive($id)
     {
         $link = ShortUrl::find($id);
+        $link->update([
+            'deactivated_at' => now(),
+            'archive' => 'yes'
+        ]);
         $link->delete();
         return redirect()->back()->with('success', 'Link telah diarsipkan');
     }

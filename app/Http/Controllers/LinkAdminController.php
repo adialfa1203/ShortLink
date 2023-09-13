@@ -12,11 +12,15 @@ class LinkAdminController extends Controller
     {
         $data = User::where('is_banned', 0)->role('user')->get();
         //Menghitung total user
-        $totalUser = User::where('email', '!=', 'admin@gmail.com')->count();
+        $totalUser = User::where('email', '!=', 'admin@gmail.com')
+                    ->where('is_banned', '!=', '0')
+                    ->count();
         //Menghitung total url
-        $totalUrl = ShortUrl::count();
+        $totalUrl = ShortUrl::where('archive', '!=', 'yes')->count();
         //Menghitung total pengunjung
-        $totalVisits = ShortURLVisit::query()->count();
+        $totalVisits = ShortURLVisit::query()
+                        ->whereRelation('shortURL', 'archive', '!=', 'yes')
+                        ->count();
 
         $totalMicrosite = ShortUrl::whereNotNull('microsite_id')->count();
 

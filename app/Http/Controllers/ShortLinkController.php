@@ -43,7 +43,7 @@ class ShortLinkController extends Controller
             'user_id' => auth()->id(),
             'default_short_url' => $shortURLObject->default_short_url,
             'password' => Hash::make($request->password),
-            'active' => $request->active,
+            'archive' => 'no',
             'deleted_add' => $request->deleted_add,
             'click_count' => $request->click_count,
             'qr_code' => $request->qr_code,

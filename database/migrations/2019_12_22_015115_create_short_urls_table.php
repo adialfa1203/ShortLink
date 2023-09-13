@@ -27,7 +27,7 @@ class CreateShortUrlsTable extends Migration
             $table->string('default_short_url');
             $table->boolean('single_use');
             $table->bigInteger('click_count')->nullable();
-            $table->boolean('active')->nullable();
+            $table->enum('archive', ['yes', 'no'])->default('no');
             $table->boolean('track_visits');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

@@ -75,7 +75,7 @@
                             </div>
                         </div>
                             <a>
-                                <h3 class="garisbawah card-title mb-2"><span style="color: red;">Link</span>{{$row->default_short_url}}</h3>
+                                <h3 class="garisbawah card-title mb-2">{{$row->default_short_url}}</h3>
                             </a>
                             <a href="{{$row->destination_url}}" class="card-subtitle font-14 text-muted">{{$row->destination_url}}</a>
                         </div>
