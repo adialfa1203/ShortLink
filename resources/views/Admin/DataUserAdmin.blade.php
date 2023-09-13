@@ -107,14 +107,14 @@
                                 <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                     <thead class="text-muted table-light">
                                         <tr class="searchable">
-                                            <th scope="col" class="sort cursor-pointer" data-sort="order_id">No</th>
-                                            <th scope="col" class="sort cursor-pointer" data-sort="order_id">Nama
+                                            <th scope="col" data-sort="order_id">#</th>
+                                            <th scope="col" data-sort="order_id">Nama
                                                 Pengguna</th>
-                                            <th scope="col" class="sort cursor-pointer" data-sort="order_date">E-mail
+                                            <th scope="col" data-sort="order_date">E-mail
                                             </th>
-                                            <th scope="col" class="sort cursor-pointer" data-sort="delivery_date">No
+                                            <th scope="col" data-sort="delivery_date">No
                                                 Telepon</th>
-                                            <th scope="col" class="sort cursor-pointer" data-sort="status">Berlangganan
+                                            <th scope="col" data-sort="status">Berlangganan
                                             </th>
                                             <th scope="col">Action</th>
                                         </tr>

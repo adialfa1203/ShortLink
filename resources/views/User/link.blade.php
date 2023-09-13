@@ -160,16 +160,21 @@
                                         <p style="margin-top: 10px;">
                                             {{ \Carbon\Carbon::parse($row->deactivated_at)->format('F j, Y, h:i A') }}</p>
                                             &nbsp
-                                        <?php
-                                        $deactivatedAt = \Carbon\Carbon::parse($row->deactivated_at);
-                                        $now = \Carbon\Carbon::now();
-
-                                        if ($deactivatedAt < $now) {
-                                            echo '<p class="text-danger" style="margin-top: 10px;">Tautan kadaluarsa</p>';
-                                        } else {
-                                            echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
-                                        }
-                                        ?>
+                                            <?php
+                                            $deactivatedAt = \Carbon\Carbon::parse($row->deactivated_at);
+                                            $now = \Carbon\Carbon::now();
+                                            
+                                            if ($row->deactivated_at === null) {
+                                                // Kolom deactivated_at kosong, tampilkan pesan "Aktif"
+                                                echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
+                                            } elseif ($deactivatedAt < $now) {
+                                                // Tautan telah kadaluarsa
+                                                echo '<p class="text-danger" style="margin-top: 10px;">Tautan kadaluarsa</p>';
+                                            } else {
+                                                // Tautan masih aktif
+                                                echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
+                                            }
+                                            ?>
                                     </div>
                                     <div class=" col-7 d-flex flex-row justify-content-end">
                                         <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal"

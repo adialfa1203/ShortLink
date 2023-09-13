@@ -98,12 +98,12 @@
                         <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                             <thead class="text-muted table-light">
                                 <tr class="searchable">
-                                    <th scope="col" class="sort cursor-pointer" data-sort="order_id">No</th>
-                                    <th scope="col" class="sort cursor-pointer" data-sort="order_date">Nama</th>
-                                    <th scope="col" class="sort cursor-pointer" data-sort="delivery_date">Tautan</th>
-                                    <th scope="col" class="sort cursor-pointer" data-sort="status">Tautan Populer</th>
-                                    <th scope="col" class="sort cursor-pointer" data-sort="status">Microsite</th>
-                                    <th scope="col" class="sort cursor-pointer" data-sort="status">Microsite Populer</th>
+                                    <th scope="col" data-sort="order_id">#</th>
+                                    <th scope="col" data-sort="order_date">Nama</th>
+                                    <th scope="col" data-sort="delivery_date">Tautan</th>
+                                    <th scope="col" data-sort="status">Tautan Populer</th>
+                                    <th scope="col" data-sort="status">Microsite</th>
+                                    <th scope="col" data-sort="status">Microsite Populer</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>

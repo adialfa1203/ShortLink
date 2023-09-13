@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BlokirEmail;
 use App\Models\ShortUrl;
 use App\Models\User;
 use AshAllenDesign\ShortURL\Models\ShortURLVisit;
+use Illuminate\Support\Facades\Mail;
 
 class DataUserController extends Controller
 {
@@ -35,10 +37,16 @@ class DataUserController extends Controller
 
     public function banUser($userId) {
         $user = User::findOrFail($userId);
-        $user->ban();
-        return redirect()->back()->with('success', 'Akun berhasil di blokir');
+        if (!$user->ban()) {
+            // Proses pemblokiran berhasil, kirim email
+            Mail::to($user->email)->send(new BlokirEmail());
+            return redirect()->back()->with('success', 'Akun berhasil di blokir');
+        } else {
+            // Proses pemblokiran gagal, berikan pesan kesalahan
+            return redirect()->back()->with('error', 'Gagal memblokir akun');
+        }
     }
-
+    
     public function unbanUser($userId) {
         $user = User::findOrFail($userId);
         $user->unban();

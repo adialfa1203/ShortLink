@@ -15,8 +15,11 @@ class Components extends Model
 
     use HasFactory;
     public function button()
-{
-    return $this->belongsTo(Button::class);
-}
-
+    {
+        return $this->belongsTo(Button::class);
+    }
+    public function microsite()
+    {
+        return $this->hasMany(Microsite::class);
+    }
 }

@@ -50,9 +50,9 @@
                         <div class="card border-bottom border-2 card-animate bg-warning">
                             <div class="card-body">
                                 <span class="badge bg-success-subtle text-success float-end"></span>
-                                <h4 class="mb-4"><span class="counter-value text-white" data-target="0">0</span></h4>
+                                <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisitsMicrosite }}">0</span></h4>
 
-                                <p class="text-white fw-medium text-uppercase mb-0">Pengunjung Unik</p>
+                                <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Microsite</p>
                             </div>
                         </div>
                     </div>
