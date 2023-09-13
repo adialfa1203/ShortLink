@@ -86,6 +86,8 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/dashboard-user', [DahsboardController::class, 'dashboardUser'])->name('dashboard.user');
 //ShortLink
 Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
+Route::post('qr', [ShortLinkController::class,'qr'])->name('qr');
+
 //AccessLink
 Route::post('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
 // Route::post('/microsite/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.link');

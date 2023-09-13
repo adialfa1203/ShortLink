@@ -16,7 +16,7 @@ class AnalyticUserController extends Controller
 
         $startDate = Carbon::now()->subDays(7);
 
-        $totalUrl = ShortURL::where('created_at', '>=', $startDate)        
+        $totalUrl = ShortURL::where('created_at', '>=', $startDate)
         ->selectRaw('DATE(created_at) as date, COUNT(*) as totalUrl')
         ->groupBy('date')
         ->orderBy('date')

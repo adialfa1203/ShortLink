@@ -265,7 +265,7 @@ class MicrositeController extends Controller
     {
         // dd($microsite);
         $accessMicrosite = Microsite::where('link_microsite', $microsite)->first();
-        $social = Social::where('button_link',$microsite)->first();
+        $social = Social::where('button_link', $microsite)->first();
 
 
         // dd($social, $microsite);

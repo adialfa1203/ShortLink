@@ -410,7 +410,7 @@
                                 <div class="flex-grow-1">
                                     <div class="d-flex flex-column h-100">
                                         <p class="fs-md text-muted mb-4">Pengunjung Kode QR</p>
-                                        <h3 class="mb-0 mt-auto"><span class="counter-value" id="clickCount">0</span></h3>
+                                        <h3 class="mb-0 mt-auto"><span class="counter-value" >{{$qr}}</span></h3>
                                     </div>
                                 </div>
                                 <div class="flex-shrink-0">

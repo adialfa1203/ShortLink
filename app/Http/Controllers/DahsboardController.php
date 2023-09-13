@@ -16,7 +16,7 @@ class DahsboardController extends Controller
 
         if ($user) {
             $userId = $user->id;
-            $totalVisits = ShortURLVisit::where('user_id', $userId)->count();        
+            $totalVisits = ShortURLVisit::where('user_id', $userId)->count();
         }if ($user) {
             $userId = $user->id;
         $countURL = ShortURL::where('user_id', $userId)
@@ -30,8 +30,10 @@ class DahsboardController extends Controller
                                     ->count();
         }
         $ShortLink = ShortUrl::all();
+        $qr = ShortUrl::get()->sum('qr_code');
+        // dd($ShortLink);
 
-        return view('User.DashboardUser',compact('ShortLink','countURL','totalVisits','countNameChanged'));
+        return view('User.DashboardUser',compact('ShortLink','countURL','totalVisits','countNameChanged','qr'));
     }
     public function HelpSupport() {
         $komentar = Comment::orderBy('created_at', 'desc')->get();
