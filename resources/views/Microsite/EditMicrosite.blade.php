@@ -91,7 +91,7 @@
                                                                                 class="form-label">{{ $data->button->name_button }}</label>
                                                                             <input type="text" class="form-control"
                                                                                 id="placeholderInput"
-                                                                                placeholder="Placeholder"
+                                                                                placeholder="Isi Link {{$data->button->name_button}} Anda "
                                                                                 name="button_link[{{ $data->button->id }}]"
                                                                                 value="{{ $data->button_link }}">
                                                                             <div>
