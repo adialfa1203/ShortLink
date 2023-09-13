@@ -249,7 +249,7 @@ class MicrositeController extends Controller
 
     public function viewComponent()
     {
-        $component = Components::paginate(1);
+        $component = Components::paginate(6);
         return view('Microsite.ViewComponent', compact('component'));
     }
 

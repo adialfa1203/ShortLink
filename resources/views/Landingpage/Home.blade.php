@@ -154,7 +154,7 @@
                         <ul class="navbar-nav ml-auto">
                             <!-- secondery menu start -->
                             <li class="nav-item has_dropdown">
-                                <a class="nav-link active" href="/">Beranda</a>
+                            <a class="nav-link active" href="/">Beranda</a>
                             </li>
 
                             <!-- secondery menu start -->
