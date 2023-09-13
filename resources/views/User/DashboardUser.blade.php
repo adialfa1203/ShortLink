@@ -163,10 +163,10 @@
                                         {{-- end modal panjang --}}
                                         <br>
                                        {{-- modal panjang tautan berjangka --}}
-                                       <div class="container-fluid">
+                                       <div class="container-fluid mt-3">
                                         <div class="card">
-                                                <button type="button"
-                                                    style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; width: 100%; text-align: left;">
+                                                <button type="button" class="bg-primary border border-0"
+                                                    style="color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; width: 100%; text-align: left;">
                                                     <i class="bi bi-clock"
                                                         style="font-size: 12px; margin-right: 5px;"></i>Tautan
                                                     Berjangka
@@ -184,7 +184,7 @@
                                                                     <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon">
                                                                     </button>
                                                                 </div>
-                                                                <button type="button" id="time-reset" style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; justify-content: flex-end; float: right;">
+                                                                <button class="bg-primary border border-0" type="button" id="time-reset" style="color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; justify-content: flex-end; float: right;">
                                                                     <span class="bi bi-arrow-clockwise"> Reset</span>
                                                                 </button>
                                                             </div>
@@ -194,10 +194,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-primary" type="button"
+                                            <button class="btn btn-primary bg-primary" style="margin-top: 1px;" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#tautanberjangka"
                                                 aria-expanded="false" aria-controls="collapseExample"
-                                                id="toggleButton" style="background-color: rgb(13, 13, 118)">
+                                                id="toggleButton">
                                                 Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>
                                             </button>
                                         </div>
@@ -207,7 +207,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-danger" style="width: 100%;" data-bs-toggle="modal" data-bs-target="#singkatkan">
+                                        <button type="submit" class="border border-0 text-white" style="background-color : #FF6C6C; border-radius: 5px;" data-bs-toggle="modal" data-bs-target="#singkatkan">
                                             <i class="bi bi-link-45deg"></i> Singkatkan!
                                         </button>
                                     </div>
@@ -254,7 +254,7 @@
                                                 </div>
                                                 {{-- end salin --}}
                                                 <div class="wrapper end-0 position-absolute" style="z-index: 5">
-                                                    <button type="button" id="button-email" data-bs-toggle="modal" data-bs-target="#bagikan" class="btn btn-danger btn-sm m-1"><i class="fa-solid fa-square-share-nodes"></i> Bagikan</button>
+                                                    <button type="button" id="button-email" data-bs-toggle="modal" data-bs-target="#bagikan" style="background-color : #FF6C6C" class="btn btn-sm text-white m-1"><i class="fa-solid fa-square-share-nodes"></i> Bagikan</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -516,7 +516,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="modal-footer">
-                                        <a href="/subscribe-product-user" type="button" class="btn btn-danger" style="width: 100%;">
+                                        <a href="/subscribe-product-user" type="button" style="background-color : #FF6C6C" style="width: 100%;">
                                             Langganan untuk mendapatkan kuota
                                         </a>
                                     </div>
