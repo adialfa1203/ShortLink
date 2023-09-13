@@ -16,25 +16,30 @@ class MicrositeController extends Controller
     {
         $user_id = auth()->user()->id;
 
-        // Filter berdasarkan tombol "Terakhir Diperbarui"
         if ($request->has('filter') && $request->filter == 'terakhir_diperbarui') {
             $data = Microsite::where('user_id', $user_id)
                 ->orderBy('updated_at', 'desc')
                 ->paginate(5);
         }
-        // Default: Tampilkan semua data
         else {
             $data = Microsite::where('user_id', $user_id)->paginate(5);
         }
+        $micrositeIds = $data->pluck('id');
 
-        $short_urls = ShortUrl::whereIn('microsite_id', $data->pluck('id'))->get();
+        $short_urls = ShortUrl::whereIn('microsite_id', $micrositeIds)->get();
+
+        $mergedData = $data->map(function ($microsite) use ($short_urls) {
+            $microsite->short_url = $short_urls->where('microsite_id', $microsite->id)->first();
+            return $microsite;
+        });
+
         $urlshort = ShortUrl::withCount('visits')
             ->selectRaw('MONTH(created_at) as month')
             ->where('user_id', $user_id)
             ->orderBy('month', 'desc')
             ->get();
 
-        return view('Microsite.MicrositeUser', compact('data', 'short_urls', 'urlshort'));
+        return view('Microsite.MicrositeUser', compact('data', 'short_urls','mergedData', 'urlshort'));
     }
 
     public function addMicrosite()
@@ -92,6 +97,7 @@ class MicrositeController extends Controller
         $social = Social::where('microsite_id', $id)->get();
         $short_url = ShortUrl::where('microsite_id', $id)->first();
         // $buttonLink = ButtonLink::findorFail($id);
+        // dd($social);
         return view('microsite.EditMicrosite', compact('microsite', 'id', 'social', 'short_url'));
     }
 
@@ -259,18 +265,5 @@ class MicrositeController extends Controller
         $results = Microsite::where('field', 'like', '%' . $query . '%')->get();
 
         return response()->json(['results' => $results]);
-    }
-
-    public function micrositeLink($microsite)
-    {
-        // dd($microsite);
-        $accessMicrosite = Microsite::where('link_microsite', $microsite)->first();
-        $social = Social::where('button_link',$microsite)->first();
-
-
-        // dd($social, $microsite);
-        // dd($social);
-        $short_url = ShortUrl::where('microsite_id', $microsite)->first();
-        return view('Microsite.MicrositeLink', compact('accessMicrosite','social','short_url'));
     }
 }
