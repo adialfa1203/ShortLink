@@ -33,7 +33,8 @@
 
 <body>
     <style>
-        <style>body {
+        <style>
+            body {
             margin: 0;
             /* Reset margin body */
         }
@@ -317,53 +318,6 @@
                                     tentang tautan, Anda juga dapat
                                     menempatkan beberapa gambar
                                     di dalamnya.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="margin-bottom: 2%;">
-                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
-                                viewBox="0 0 320 512"
-                                style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                <path fill="#104898"
-                                    d="M16 144a144 144 0 1 1 288 0A144 144 0 1 1 16 144zM160 80c8.8 0 16-7.2 16-16s-7.2-16-16-16c-53 0-96 43-96 96c0 8.8 7.2 16 16 16s16-7.2 16-16c0-35.3 28.7-64 64-64zM128 480V317.1c10.4 1.9 21.1 2.9 32 2.9s21.6-1 32-2.9V480c0 17.7-14.3 32-32 32s-32-14.3-32-32z" />
-                            </svg>
-                            <div class="story_text">
-                                <h6 class="mb-3 fs-17">Sematkan Media</h6>
-                                <p class="text-muted">Sematkan media di platform
-                                    populer tepat di microsite Anda.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="margin-bottom: 2%;">
-                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
-                                viewBox="0 0 512 512"
-                                style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                <path fill="#104898"
-                                    d="M57.7 193l9.4 16.4c8.3 14.5 21.9 25.2 38 29.8L163 255.7c17.2 4.9 29 20.6 29 38.5v39.9c0 11 6.2 21 16 25.9s16 14.9 16 25.9v39c0 15.6 14.9 26.9 29.9 22.6c16.1-4.6 28.6-17.5 32.7-33.8l2.8-11.2c4.2-16.9 15.2-31.4 30.3-40l8.1-4.6c15-8.5 24.2-24.5 24.2-41.7v-8.3c0-12.7-5.1-24.9-14.1-33.9l-3.9-3.9c-9-9-21.2-14.1-33.9-14.1H257c-11.1 0-22.1-2.9-31.8-8.4l-34.5-19.7c-4.3-2.5-7.6-6.5-9.2-11.2c-3.2-9.6 1.1-20 10.2-24.5l5.9-3c6.6-3.3 14.3-3.9 21.3-1.5l23.2 7.7c8.2 2.7 17.2-.4 21.9-7.5c4.7-7 4.2-16.3-1.2-22.8l-13.6-16.3c-10-12-9.9-29.5 .3-41.3l15.7-18.3c8.8-10.3 10.2-25 3.5-36.7l-2.4-4.2c-3.5-.2-6.9-.3-10.4-.3C163.1 48 84.4 108.9 57.7 193zM464 256c0-36.8-9.6-71.4-26.4-101.5L412 164.8c-15.7 6.3-23.8 23.8-18.5 39.8l16.9 50.7c3.5 10.4 12 18.3 22.6 20.9l29.1 7.3c1.2-9 1.8-18.2 1.8-27.5zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
-                            </svg>
-                            <div class="story_text">
-                                <h6 class="mb-3 fs-17">Peta</h6>
-                                <p class="text-muted">Tempatkan dan bagikan lokasi di
-                                    microsite Anda.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="margin-bottom: 2%;">
-                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
-                                viewBox="0 0 512 512"
-                                style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                <path fill="#104898"
-                                    d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
-                            </svg>
-                            <div class="story_text">
-                                <h6 class="mb-3 fs-17">Hitung Mundur</h6>
-                                <p class="text-muted">Buat hitungan mundur dan
-                                    masukkan ke microsite Anda, ini
-                                    juga merupakan praktik terbaik
-                                    jika Anda memiliki acara.</p>
                             </div>
                         </div>
                     </div>

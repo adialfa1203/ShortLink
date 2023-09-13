@@ -151,7 +151,7 @@
             border-radius: 10px 0 0 10px;
         }
 
-        /* .btn {
+        .btn {
             padding: 10px 20px;
             background-color: #2cff44;
             color: #000000;
@@ -159,15 +159,15 @@
             border-radius: 10px 10px 10px 10px;
             cursor: pointer;
             border: 1px solid black;
-        } */
+        }
 
         .btn-primary {
             background-color: #fff;
         }
 
-        /* .btn-success {
+        .btn-success {
             background-color: #74fb3b;
-        } */
+        }
         .button_wrapper {
             margin-block-end: 2%;
         }

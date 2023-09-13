@@ -90,6 +90,7 @@
             padding: 100% 100%;
             border-radius: 5%;
         }
+        
     </style>
 
     <!-- Page-wrapper-Start -->
@@ -179,53 +180,52 @@
                     </a> --}}
                     <p></p>
 
-                    <div class="col-xl-12">
-                        <h2><strong>Policy</strong></h2>
+                    <div kelas="col-xl-12">
+                        <h2><strong>Kebijakan</strong></h2>
 
-                        <p>Hummasoft Technology built the Jurnal Mengajar app as a Commercial app. This SERVICE is
-                            provided by Hummasoft Technology and is intended for use as is.</p>
+                        <p>Hummasoft Technology membangun aplikasi LinkID sebagai aplikasi Komersial. LAYANAN ini adalah
+                            disediakan oleh Hummasoft Technology dan dimaksudkan untuk digunakan sebagaimana adanya.</p>
 
-                        <p>This page is used to inform visitors regarding our policies with the collection, use, and
-                            disclosure of Personal Information if anyone decides to use our Service.</p>
+                        <p>Halaman ini digunakan untuk memberi tahu pengunjung mengenai kebijakan kami terkait pengumpulan, penggunaan, dan
+                            pengungkapan Informasi Pribadi jika ada yang memutuskan untuk menggunakan Layanan kami.</p>
 
-                        <p>If you choose to use our Service, then you agree to the collection and use of information in
-                            relation to this policy. The Personal Information that we collect is used for providing and
-                            improving the Service. We will not use or share your information with anyone except as
-                            described in this Privacy Policy.</p>
+                        <p>Jika Anda memilih untuk menggunakan Layanan kami, maka Anda menyetujui pengumpulan dan penggunaan informasi di
+                            kaitannya dengan kebijakan ini. Informasi Pribadi yang kami kumpulkan digunakan untuk menyediakan dan
+                            meningkatkan Layanan. Kami tidak akan menggunakan atau membagikan informasi Anda kepada siapa pun kecuali sebagai
+                            dijelaskan dalam Kebijakan Privasi ini.</p>
 
-                        <p>The terms used in this Privacy Policy have the same meanings as in our <a
-                                href="[Link to Terms and Conditions]">Terms and Conditions</a>, which are accessible at
-                            Jurnal Mengajar unless otherwise defined in this Privacy Policy.</p>
+                        <p>Istilah yang digunakan dalam Kebijakan Privasi ini memiliki arti yang sama dengan <a
+                                href="/Privasi">Syarat dan Ketentuan</a>, yang dapat diakses di
+                            LinkID kecuali ditentukan lain dalam Kebijakan Privasi ini.</p>
 
-                        <h3><strong></strong></h3>
+                        <h3><kuat></strong></h3>
 
-                        <p>For a better experience, while using our Service, we may require you to provide us with
-                            certain personally identifiable information, including but not limited to
-                            Jurnalmengajar.com. The information that we request will be retained by us and used as
-                            described in this privacy policy.</p>
+                        <p>Untuk pengalaman yang lebih baik, saat menggunakan Layanan kami, kami mungkin meminta Anda untuk memberikannya kepada kami
+                            informasi pengenal pribadi tertentu, termasuk namun tidak terbatas pada
+                            LinkID.com. Informasi yang kami minta akan kami simpan dan gunakan sebagai
+                            dijelaskan dalam kebijakan privasi ini.</p>
 
-                        <p>The app does use third-party services that may collect information used to identify you.</p>
+                        <p>Aplikasi ini menggunakan layanan pihak ketiga yang mungkin mengumpulkan informasi yang digunakan untuk mengidentifikasi Anda.</p>
 
-                        <h3><strong>Log Data</strong></h3>
+                        <h3><strong>Data Log</strong></h3>
 
-                        <p>We want to inform you that whenever you use our Service, in case of an error in the app, we
-                            collect data and information (through third-party products) on your phone called Log Data.
-                            This Log Data may include information such as your device's Internet Protocol (“IP”)
-                            address, device name, operating system version, the configuration of the app when utilizing
-                            our Service, the time and date of your use of the Service, and other statistics.</p>
+                        <p>Kami ingin memberi tahu Anda bahwa setiap kali Anda menggunakan Layanan kami, jika terjadi kesalahan pada aplikasi, kami
+                            mengumpulkan data dan informasi (melalui produk pihak ketiga) di ponsel Anda yang disebut Data Log.
+                            Data Log ini mungkin mencakup informasi seperti Protokol Internet (“IP”) perangkat Anda
+                            alamat, nama perangkat, versi sistem operasi, konfigurasi aplikasi saat digunakan
+                            Layanan kami, waktu dan tanggal penggunaan Layanan oleh Anda, dan statistik lainnya.</p>
 
-                        <h3><strong>Cookies</strong></h3>
+                        <h3><strong>Cookie</strong></h3>
 
-                        <p>Cookies are files with a small amount of data that are commonly used as anonymous unique
-                            identifiers. These are</p>
-                        <p>sent to your browser from the websites that you visit</p>
+                        <p>Cookie adalah file dengan sejumlah kecil data yang biasanya digunakan sebagai unik anonim
+                            pengidentifikasi. Ini adalah</p>
+                        <p>dikirim ke browser Anda dari situs web yang Anda kunjungi</p>
 
                     </div>
                 </div><!--end row-->
             </div>
         </div>
     </div>
-    x
     <footer>
         <div class="top_footer" id="kontak">
             <div class="container">
@@ -235,9 +235,11 @@
                         <div class="abt_side">
                             <div class="logo">
                                 <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
-                                    style="margin-top: -20%;">
-                                <ul style="margin-top: -10%; margin-right:10px;">
-                                    <li style="color: white; font-size:14px;">{{ $data->description }}</li>
+                                    style="margin-top: -27%;">
+                                <ul style="margin-top: -16%; margin-right:40px;">
+                                    <li style="color: white; font-size:14px;">S.id adalah platform untuk orang-orang
+                                        untuk menunjukkan keahlian mereka dalam membuat situs mikro dan memperpendek
+                                        tautan terpendek dengan kode s.id/.</li>
                                 </ul>
                             </div>
                         </div>
@@ -277,19 +279,19 @@
                                 <li>
                                     <a href="https://wa.me/085606270454">
                                         <i class="fab fa-whatsapp"></i>
-                                        {{ $data->whatsapp }}
+                                        085606270454
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#features">
                                         <i class="fab fa-instagram"></i>
-                                        {{ $data->instagram }}
+                                        @link.id
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#features">
                                         <i class="fab fa-twitter"></i>
-                                        {{ $data->twitter }}
+                                        @link.id
                                     </a>
                                 </li>
                             </ul>
