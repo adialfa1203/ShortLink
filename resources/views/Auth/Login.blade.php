@@ -125,10 +125,40 @@
                                                         <div class="float-end">
                                                             <a href="{{ url('send-email')}}" class="text-muted">Lupa kata sandi?</a>
                                                         </div>
-                                                        <div class="k">
-                                                            <input class="form-check-input" type="checkbox" name="remember" id="remember">
-                                                            <label class="form-check-label" for="remember">Ingat saya</label>
+                                                        <div>
+                                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" required>
+                                                            <label class="form-check-label" for="remember">Saya setuju dengan <a href="#" data-bs-target="#myModal" data-bs-toggle="modal" id="privacyLink">Kebijakan Privasi</a></label>
                                                         </div>
+                                                        <div id="requiredAlert" style="display: none; color: red;">Anda harus menyetujui Kebijakan Privasi.</div>
+                                                        <!-- Default Modals -->
+                                                        <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="myModalLabel">Kebijakan Privasi</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p>Hummasoft Technology membangun aplikasi LinkID sebagai aplikasi Komersial. LAYANAN ini adalah
+                                                                            disediakan oleh Hummasoft Technology dan dimaksudkan untuk digunakan sebagaimana adanya.</p>
+                                                
+                                                                        <p>Halaman ini digunakan untuk memberi tahu pengunjung mengenai kebijakan kami terkait pengumpulan, penggunaan, dan
+                                                                            pengungkapan Informasi Pribadi jika ada yang memutuskan untuk menggunakan Layanan kami.</p>
+                                                
+                                                                        <p>Jika Anda memilih untuk menggunakan Layanan kami, maka Anda menyetujui pengumpulan dan penggunaan informasi di
+                                                                            kaitannya dengan kebijakan ini. Informasi Pribadi yang kami kumpulkan digunakan untuk menyediakan dan
+                                                                            meningkatkan Layanan. Kami tidak akan menggunakan atau membagikan informasi Anda kepada siapa pun kecuali sebagai
+                                                                            dijelaskan dalam Kebijakan Privasi ini.</p>
+                                                
+                                                                        <p>Istilah yang digunakan dalam Kebijakan Privasi ini memiliki arti yang sama dengan <a
+                                                                                href="/Privasi">Syarat dan Ketentuan</a>, yang dapat diakses di
+                                                                            LinkID kecuali ditentukan lain dalam Kebijakan Privasi ini.</p>
+                                                
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
                                                     </div>
                                                     <div class="mt-4">
                                                         <button class="btn btn-primary w-100 custom-btn"
@@ -154,7 +184,7 @@
                                                                     class="ri-twitter-fill fs-lg"></i></button>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                </form>                                                                                               
 
                                                 <div class="text-center mt-5">
                                                     <p class="mb-0">Tidak mempunyai akun ? <a
@@ -202,7 +232,37 @@
 
     <!-- swiper.init js -->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/swiper.init.js') }}"></script>
+    <script>
+        // Fungsi untuk menampilkan atau menyembunyikan pesan kesalahan
+        function toggleRequiredAlert(show) {
+            var requiredAlert = document.getElementById('requiredAlert');
+            requiredAlert.style.display = show ? 'block' : 'none';
+        }
 
+        // Fungsi untuk memvalidasi formulir sebelum pengiriman
+        function validateForm(event) {
+            var rememberCheckbox = document.getElementById('remember');
+
+            if (!rememberCheckbox.checked) {
+                toggleRequiredAlert(true);
+                event.preventDefault(); // Mencegah pengiriman formulir
+            } else {
+                toggleRequiredAlert(false);
+            }
+        }
+
+        // Tambahkan event listener untuk tautan kebijakan privasi
+        var privacyLink = document.getElementById('privacyLink');
+        privacyLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Mencegah tautan dari mengarahkan ke halaman lain
+            // Tampilkan atau sembunyikan modal kebijakan privasi di sini jika diperlukan
+        });
+
+        // Tambahkan event listener untuk validasi sebelum pengiriman formulir
+        var loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', validateForm);
+    </script>
+      
 </body>
 
 
