@@ -83,6 +83,7 @@ class ProfilController extends Controller
         $request->validate([
             'name' => 'required',
             'number' => 'required',
+            'email' => 'email|unique:users,email,' . $admin->id,
             'old_password' => 'required_with:new_password',
             'new_password' => 'nullable|min:8|confirmed',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',

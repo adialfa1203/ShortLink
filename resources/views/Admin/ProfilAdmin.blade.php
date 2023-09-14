@@ -82,6 +82,11 @@
                                                 <input type="text" name="name" class="form-control"
                                                     value="{{ $admin->name }}">
                                             </div>
+                                            <div>
+                                                @if ($errors->has('name'))
+                                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                @endif
+                                            </div>
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-6">
@@ -97,9 +102,12 @@
                                                         <i class="ri-eye-fill align-middle"></i>
                                                     </button>
                                                 </div>
-                                                @error('old_password')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
+                                                <div>
+                                                    @if ($errors->has('old_password'))
+                                                        <span
+                                                            class="text-danger">{{ $errors->first('old_password') }}</span>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
                                         <!--end col-->
@@ -108,6 +116,11 @@
                                                 <label for="lastnameInput" class="form-label">Nomor Telepon</label>
                                                 <input type="number" name="number" class="form-control"
                                                     value="{{ $admin->number }}">
+                                            </div>
+                                            <div>
+                                                @if ($errors->has('number'))
+                                                    <span class="text-danger">{{ $errors->first('number') }}</span>
+                                                @endif
                                             </div>
                                         </div>
                                         <!--end col-->
@@ -124,9 +137,12 @@
                                                         <i class="ri-eye-fill align-middle"></i>
                                                     </button>
                                                 </div>
-                                                @error('new_password')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
+                                                <div>
+                                                    @if ($errors->has('new_password'))
+                                                        <span
+                                                            class="text-danger">{{ $errors->first('new_password') }}</span>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -134,6 +150,11 @@
                                                 <label for="lastnameInput" class="form-label">E-mail</label>
                                                 <input type="text" name="email" class="form-control"
                                                     value="{{ $admin->email }}">
+                                            </div>
+                                            <div>
+                                                @if ($errors->has('email'))
+                                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -150,9 +171,12 @@
                                                         <i class="ri-eye-fill align-middle"></i>
                                                     </button>
                                                 </div>
-                                                @error('new_password_confirmation')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
+                                                <div>
+                                                    @if ($errors->has('new_password_confirmation'))
+                                                        <span
+                                                            class="text-danger">{{ $errors->first('new_password_confirmation') }}</span>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
 
