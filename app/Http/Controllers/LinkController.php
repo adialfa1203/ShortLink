@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DateHelper;
 use App\Models\ShortUrl;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -18,12 +19,29 @@ class LinkController extends Controller
         $user = auth()->user(); // Mengambil objek User saat ini
         $user_id = $user->id;
         $urlshort = ShortUrl::withCount('visits')
-        ->selectRaw('MONTH(created_at) as month')
+        ->selectRaw('MONTH(created_at) as created_at')
         ->where('user_id', $user_id)
         ->whereNull('microsite_id')
-        ->orderBy('month', 'desc')
+        ->orderBy('created_at', 'desc')
         ->paginate(5);
-        return view('User.Link', compact('user','urlshort', 'shortCode'));
+        $result = [
+            'labels' => DateHelper::getAllMonths(5),
+            'series' => [0, 0, 0, 0, 0, 0]
+        ];
+
+        $startDate = DateHelper::getSomeMonthsAgoFromNow(5)->format('Y-m-d H:i:s');
+        $endDate = DateHelper::getCurrentTimestamp('Y-m-d H:i:s');
+
+
+        foreach ($urlshort as $data) {
+            $parse = Carbon::parse($data->created_at);
+            $date = $parse->shortMonthName . ' ' . $parse->year;
+            $index = array_search($date, array_values($result['labels']));
+            $result['series'][$index] = (int)$data->visits_count;
+        }
+
+        // dd($result);
+        return view('User.Link', compact('user','urlshort', 'shortCode','result'));
     }
 
     public function archive($id)
@@ -40,21 +58,21 @@ class LinkController extends Controller
     public function updateDeactivated(HttpRequest $request, $keyTime)
     {
         $updateUrl = ShortUrl::where('url_key', $keyTime);
-         
+
         if (!$updateUrl->exists()) {
             return response()->json(['error' => 'Short link not found'], 404);
         }
 
         // Memperbarui kolom deactivated_at
         $updateUrl->update([
-            'deactivated_at' => $request->newTime,            
+            'deactivated_at' => $request->newTime,
         ]);
 
         // Mengirimkan respon ke JavaScript
         return response()->json(['message' => 'Deactivation status updated successfully']);
     }
 
-    // public function LinkUsersChart()         
+    // public function LinkUsersChart()
     // {
     //     $user = Auth::user()->id;
 
