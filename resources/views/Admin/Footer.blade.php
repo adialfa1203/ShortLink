@@ -21,7 +21,7 @@
         <!-- end page title -->
         <div class="card-body">
             <div class="row">
-                <div class="col-lg-2">
+                {{-- <div class="col-lg-2">
                     <div class="mb-3">
                         <div>
                             <label for="lastnameInput" class="form-label fw-semibold">Logo</label>
@@ -41,8 +41,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-10">
+                </div> --}}
+                <div class="col-lg-12">
                     <div class="mb-3">
                         <label for="lastnameInput" class="form-label fw-semibold">Deskripsi</label>
                         <textarea name="description" id="editor">{{ $data->description }}</textarea>

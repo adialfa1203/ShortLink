@@ -475,7 +475,7 @@
                                     <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
                                         style="margin-top: -20%;">
                                     <ul style="margin-top: -10%; margin-right:10px;">
-                                        <li style="color: white; font-size:14px;">{{ $data->description }}</li>
+                                        <li style="color: white; font-size:14px;">{!! $data->description !!}</li>
                                     </ul>
                                 </div>
                             </div>
