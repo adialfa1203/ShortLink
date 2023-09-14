@@ -3,11 +3,28 @@
     @section('title', 'Analitik')
 
     @section('style')
-        <style>
-            .bg-custom {
-                background-color: #CDF0EA;
-            }
-        </style>
+    <style>
+        .bg-custom {
+            background-color: #CDF0EA;
+        }
+    </style>
+    <style>
+        .btn.btn-subtle-primary {
+          background-color: transparent;
+          color: #007bff; /* Warna teks default */
+        }
+      
+        /* Hover style */
+        .btn.btn-subtle-primary:hover {
+          background-color: #007bff; /* Warna latar belakang saat dihover */
+          color: #fff; /* Warna teks saat dihover */
+        }
+        /* Gaya untuk tombol yang aktif */
+        .btn.btn-subtle-primary.active-hover {
+          background-color: #007bff; /* Warna latar belakang saat aktif */
+          color: #fff; /* Warna teks saat aktif */
+        }
+      </style>
 
     @endsection
 
@@ -113,8 +130,8 @@
                     </div><!--end col-->
                 </div><!--end row-->
                 <div>
-                    <button type="button" class="btn btn-subtle-primary" id="showPopularData">Data Populer</button>
-                    <button type="button" class="btn btn-subtle-primary" id="showAdditionalData">Data Tambahan</button>
+                    <button type="button" class="btn btn-subtle-primary active-hover" id="showPopularData" onclick="toggleHover('showPopularData')">Data Populer</button>
+                    <button type="button" class="btn btn-subtle-primary" id="showAdditionalData" onclick="toggleHover('showAdditionalData')">Data Tambahan</button>
                 </div>
                 <br>
                 <div class="row">
@@ -387,4 +404,18 @@
                 popularDataContainer.classList.remove('d-none');
             });
         </script>
+        <script>
+  function toggleHover(buttonId) {
+    const buttons = document.querySelectorAll('.btn.btn-subtle-primary');
+
+    buttons.forEach(button => {
+      if (button.id === buttonId) {
+        button.classList.add('active-hover'); // Tambahkan kelas untuk mengaktifkan efek hover
+      } else {
+        button.classList.remove('active-hover'); // Hapus kelas dari tombol yang tidak diklik
+      }
+    });
+  }
+</script>
+
     @endsection

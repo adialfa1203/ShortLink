@@ -121,54 +121,98 @@
                                     <div class="initials">{{ $row->name[0] }}</div>
                                 </div>
                             </div>
-                            <div class="wrapper col-11">
-                                <div class="d-flex">
-                                    <h5 class="card-title col-3">{{ $row->name }}</h5>
-                                    <div class="wrapper col-9 d-flex flex-row justify-content-end">
-                                        <div class="ml-auto">
-                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse" href="#collapseExample{{ $row->id }}" role="button" aria-expanded="true" aria-controls="collapseExample{{ $row->id }}">
-                                                <i class="bi bi-bar-chart-fill"></i> statistik
-                                            </button>
-                                            <a href="{{ route('edit.microsite', ['id' => $row->id]) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>
-                                                Edit</a>
-                                            <button type="button" id="button-email" class="btn btn-primary me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#bagikan{{ $i }}" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-share-nodes"></i>
-                                                &nbsp;Bagikan</button>
-                                            <!-- Modal bagikan -->
-                                            <div class="modal fade" id="bagikan{{ $i }}" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-body">
-                                                            <div class="row g-3">
-                                                                <div class="countdown-input-subscribe">
-                                                                    <label class="platform" onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i class="bi bi-facebook"></i> &nbsp;
-                                                                        Facebook</label>
-                                                                </div>
-                                                                <div class="countdown-input-subscribe">
-                                                                    <label class="platform" onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i class="bi bi-twitter"></i> &nbsp;
-                                                                        Twitter</label>
-                                                                </div>
-                                                                <div class="countdown-input-subscribe">
-                                                                    <label class="platform" onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i class="bi bi-whatsapp"></i> &nbsp;
-                                                                        WhatsApp</label>
-                                                                </div>
-                                                                <div class="countdown-input-subscribe">
-                                                                    <label class="platform" data-platform="copy" id="copyButton" @if (!empty($row->short_url)) data-url="{{ $row->short_url->destination_url }}"
-                                                                        data-id-microsite="{{ $row->id }}"
-                                                                        @else
-                                                                        data-url=""
-                                                                        data-id-microsite="" @endif
-                                                                        data-id-alert="{{ $i }}">
-                                                                        <i class="bi bi-clipboard-fill"></i>
-                                                                        &nbsp;
-                                                                        Copy
-                                                                    </label>
-                                                                </div>
-                                                                <div id="successCopyAlert{{ $row->id }}" class="alert alert-success mt-3 d-flex justify-content-center" style="display: none; position: fixed; bottom: 570px; right: 433px; max-width: 500px;">
-                                                                    Tautan berhasil disalin ke clipboard
-                                                                </div>
-                                                                <div class="countdown-input-subscribe">
-                                                                    <label class="platform" onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i class="bi bi-qr-code"></i> &nbsp; QR
-                                                                        Code</label>
+
+                        </div>
+                    </div>
+                </div><!--end card-->
+                @php
+                    $i = 0;
+                @endphp
+                <div id="microsite-container">
+                    @foreach ($data as $row)
+                        @php
+                            $i++;
+                        @endphp
+                        <div class="col-12">
+                            <div class="card card-body" id="searchResults">
+                                <div class="wrapper row  align-items-center">
+                                    <div class="avatar-md col-1">
+                                        <div class="avatar-title">
+                                            <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/sidebar/img-1.jpg') }}"
+                                                style="width: 180%; height: 70%;" alt="Gambar">
+                                            <div class="initials">{{ $row->name[0] }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="wrapper col-11">
+                                        <div class="d-flex">
+                                            <h5 class="card-title col-3">{{ $row->name }}</h5>
+                                            <div class="wrapper col-9 d-flex flex-row justify-content-end">
+                                                <div class="ml-auto">
+                                                    <button type="button" class="btn btn-primary btn-sm"
+                                                        data-bs-toggle="collapse" href="#collapseExample{{ $row->id }}"
+                                                        role="button" aria-expanded="true"
+                                                        aria-controls="collapseExample{{ $row->id }}">
+                                                        <i class="bi bi-bar-chart-fill"></i> statistik
+                                                    </button>
+                                                    <a href="{{ route('edit.microsite', ['id' => $row->id]) }}"
+                                                        class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>
+                                                        Edit</a>
+                                                    <button type="button" id="button-email"
+                                                        class="btn btn-primary me-3 btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#bagikan{{ $i }}" aria-haspopup="true"
+                                                        aria-expanded="false"><i class="fa-solid fa-share-nodes"></i>
+                                                        &nbsp;Bagikan</button>
+                                                    <!-- Modal bagikan -->
+                                                    <div class="modal fade" id="bagikan{{ $i }}" tabindex="-1"
+                                                        aria-labelledby="addAmountLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="row g-3">
+                                                                        <div class="countdown-input-subscribe">
+                                                                            <label class="platform"
+                                                                                onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
+                                                                                    class="bi bi-facebook"></i> &nbsp;
+                                                                                Facebook</label>
+                                                                        </div>
+                                                                        <div class="countdown-input-subscribe">
+                                                                            <label class="platform"
+                                                                                onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
+                                                                                    class="bi bi-twitter"></i> &nbsp;
+                                                                                Twitter</label>
+                                                                        </div>
+                                                                        <div class="countdown-input-subscribe">
+                                                                            <label class="platform"
+                                                                                onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
+                                                                                    class="bi bi-whatsapp"></i> &nbsp;
+                                                                                WhatsApp</label>
+                                                                        </div>
+                                                                        <div class="countdown-input-subscribe">
+                                                                            <label class="platform" data-platform="copy"
+                                                                                id="copyButton"
+                                                                                @if (!empty($row->short_url)) data-url="{{ $row->short_url->destination_url }}"
+                                                                                    data-id-microsite="{{ $row->id }}"
+                                                                                @else
+                                                                                    data-url=""
+                                                                                    data-id-microsite="" @endif
+                                                                                data-id-alert="{{ $i }}">
+                                                                                <i class="bi bi-clipboard-fill"></i>
+                                                                                &nbsp;
+                                                                                Copy
+                                                                            </label>
+                                                                        </div>
+                                                                        <div id="successCopyAlert"
+                                                                            class="alert alert-success mt-3  justify-content-center "
+                                                                            style=" display:none ;position: fixed; bottom: 570px; right: 433px; max-width: 500px;">
+                                                                            Tautan berhasil disalin ke clipboard
+                                                                        </div>
+                                                                        <div class="countdown-input-subscribe">
+                                                                            <label class="platform"
+                                                                                onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
+                                                                                    class="bi bi-qr-code"></i> &nbsp; QR
+                                                                                Code</label>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -269,18 +313,171 @@
     use Carbon\Carbon;
     @endphp
     @section('script')
-    @foreach ($data as $row)
-    <script>
-        var options = {
-            series: [{
-                name: "{{ $row->title }}",
-                data: ["{{ $row->visits_count }}"],
-            }],
-            chart: {
-                height: 350,
-                type: 'line',
-                zoom: {
-                    enabled: false
+        @foreach ($data as $row)
+            <script>
+                var options = {
+                    series: [{
+                        name: "{{ $row->title }}",
+                        data: ["{{ $row->visits_count }}"],
+                    }],
+                    chart: {
+                        height: 350,
+                        type: 'line',
+                        zoom: {
+                            enabled: false
+                        }
+                    },
+                    dataLabels: {
+                        enabled: false
+                    },
+                    stroke: {
+                        curve: 'straight'
+                    },
+                    title: {
+                        text: 'Product Trends by Month',
+                        align: 'left'
+                    },
+                    grid: {
+                        row: {
+                            colors: ['#f3f3f3', 'transparent'],
+                            opacity: 0.5
+                        },
+                    },
+                    xaxis: {
+                        categories: ["{{ Carbon::create(null, $row->month, null)->format('F') }}"],
+                    }
+                };
+
+                var chart = new ApexCharts(document.querySelector("#chart{{ $row->id }}"), options);
+                chart.render();
+            </script>
+        @endforeach
+        <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-wizard.init.js') }}"></script>
+        <script type="text/javascript" src="./jquery.qrcode.js"></script>
+        <script type="text/javascript" src="./qrcode.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#copyButton").click(function() {
+                    let id = $(this).data('id-copy');
+                    let data = $("#link_microsite" + id);
+                    //    alert(data)
+                    // $('successCopyAlert').addClass('d-flex');
+
+                    
+                    data.select();
+                    data.setSelectionRange(0, 99999);
+                    navigator.clipboard.writeText(data.value);
+
+                })
+                $("#resetButton").click(function() {
+                    $(".password-input").val("");
+                });
+                $("#time-reset").click(function() {
+                    $(".time-input").val("");
+                });
+
+                $('.btn-qr').click(function() {
+
+                    alert($(this).data('link'))
+                    $(".demo").qrcode({
+                        mode: 1,
+                        label: 'jQueryScript.Net',
+                        fontname: 'sans',
+                        fontcolor: '#000'
+
+                    });
+                    $('#zoomInModal2').modal({
+                        show: true
+                    })
+                })
+            });
+            // Saat tombol "Bagikan" diklik
+            $("#button-email").click(function() {
+                // Dapatkan nilai tautan dari elemen h3
+                var linkToCopy = $("#link-to-copy").text();
+
+                // Masukkan nilai tautan ke dalam modal
+                $("#link_microsite").val(linkToCopy);
+
+                // Tambahkan atribut data-clipboard-text pada tombol "Copy"
+                $("#copyButton").attr("data-clipboard-text", linkToCopy);
+            });
+
+            // ...
+
+            // Menangani klik pada tombol Copy di dalam modal
+            $("body").on("click", ".platform[data-platform='copy']", function() {
+                var linkToCopy = $(this).data("url");
+                var idMicrosite = $(this).data("id-copy");
+
+                // Salin tautan ke clipboard
+                var tempInput = $("<input>");
+                $("body").append(tempInput);
+                tempInput.val(linkToCopy).select();
+                document.execCommand("copy");
+                tempInput.remove();
+
+                // Tampilkan pesan sukses dengan ID yang sesuai
+                var successAlert = $("#successCopyAlert");
+                successAlert.fadeIn().delay(1500).fadeOut();
+            });
+
+            // Menangani klik pada label platform dalam modal "bagikan"
+            $(".platform").click(function() {
+                var platform = $(this).data("platform");
+                //   alert(platform)
+                var shortUrl = $("#link_microsite").text();
+
+                switch (platform) {
+                    case "facebook":
+                        // Tambahkan logika untuk membagikan tautan ke Facebook
+                        // Misalnya, membuka jendela baru dengan tautan Facebook Share
+                        window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shortUrl));
+                        break;
+                    case "twitter":
+                        // Tambahkan logika untuk membagikan tautan ke Twitter
+                        // Misalnya, membuka jendela baru dengan tautan Twitter Share
+                        window.open("https://twitter.com/intent/tweet?url=" + encodeURIComponent(shortUrl));
+                        break;
+                    case "whatsapp":
+                        // Tambahkan logika untuk membagikan tautan ke WhatsApp
+                        console.log(shortUrl) // Misalnya, membuka jendela baru dengan tautan WhatsApp Share
+                        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shortUrl));
+                        break;
+                    case "copy":
+                        var copyText = $(this).data('url')
+                        // alert(copyText)
+                        console.log()
+                        // copyText.focus();
+                        try {
+                            navigator.clipboard.writeText(copyText);
+                            console.log('Content copied to clipboard');
+                        } catch (err) {
+                            console.error('Failed to copy: ', err);
+                            alert('gagal ' + err)
+                        }
+
+                        // navigator.clipboard.writeText(copyText)
+                        // .then(function() {
+                        // if (edit != true) {
+                        // }
+                        // })
+                        // .catch(function(err) {
+                        // console.error("Penyalinan gagal: ", err);
+                        // alert("Penyalinan gagal. Silakan salin tautan secara manual.");
+                        // });
+                        break;
+
+                    case "qr":
+                        // Tambahkan logika untuk menghasilkan  dari tautan
+                        // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
+                        window.open(
+                            " https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('link_microsite{{ $i }}').innerText}" +
+                            encodeURIComponent(shortUrl));
+                        break;
+                    default:
+                        break;
                 }
             },
             dataLabels: {
