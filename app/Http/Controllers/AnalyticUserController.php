@@ -21,23 +21,40 @@ class AnalyticUserController extends Controller
 
         $totalUrlData = [];
         $totalVisitsData = [];
+        $totalVisitsMicrositeData = [];
+        $countMicrositeData = [];
 
         foreach ($dateRange as $date) {
             $dateString = $date->format('Y-m-d');
 
-            $totalUrl = ShortURL::whereDate('created_at', $dateString)
-                ->where('user_id', $user)
+            $countURL = ShortURL::where('user_id', $user)
+                ->whereNull('microsite_id')
+                ->whereDate('created_at', $dateString)
+                ->count();
+
+            $countMicrosite = ShortUrl::where('microsite_id', $user)
+                ->whereDate('created_at', $dateString)
                 ->count();
 
             $totalVisits = ShortURLVisit::whereHas('shortURL', function ($query) use ($user) {
                     $query->where('user_id', $user)
+                        ->whereNull('microsite_id')
                         ->where('archive', '!=', 'yes');
                 })
                 ->whereDate('created_at', $dateString)
                 ->count();
 
-            $totalUrlData[] = ['date' => $dateString, 'totalUrl' => $totalUrl];
+            $totalVisitsMicrosite = ShortURLVisit::whereHas('shortURL', function ($query) use ($user) {
+                    $query->where('user_id', $user)
+                        ->whereNotNull('microsite_id');
+                })
+                ->whereDate('created_at', $dateString)
+                ->count();
+
+            $totalUrlData[] = ['date' => $dateString, 'totalUrl' => $countURL];
             $totalVisitsData[] = ['date' => $dateString, 'totalVisits' => $totalVisits];
+            $totalVisitsMicrositeData[] = ['date' => $dateString, 'totalVisitsMicrosite' => $totalVisitsMicrosite];
+            $countMicrositeData[] = ['date' => $dateString, 'countMicrosite' => $countMicrosite];
         }
 
         if (count($totalUrlData) < 7) {
@@ -49,10 +66,19 @@ class AnalyticUserController extends Controller
                 $dateString = $date->format('Y-m-d');
                 $totalUrlData[] = ['date' => $dateString, 'totalUrl' => 0];
                 $totalVisitsData[] = ['date' => $dateString, 'totalVisits' => 0];
+                $totalVisitsMicrositeData[] = ['date' => $dateString, 'totalVisitsMicrosite' => 0];
+                $countMicrositeData[] = ['date' => $dateString, 'countMicrosite' => 0];
             }
         }
 
-        return response()->json(['startDate' => $startDate, 'user' => $user, 'totalUrlData' => $totalUrlData, 'totalVisitsData' => $totalVisitsData]);
+        return response()->json([
+            'startDate' => $startDate,
+            'user' => $user,
+            'totalUrlData' => $totalUrlData,
+            'totalVisitsData' => $totalVisitsData,
+            'totalVisitsMicrositeData' => $totalVisitsMicrositeData,
+            'countMicrositeData' => $countMicrositeData
+        ]);
     }
 
 

@@ -13,7 +13,7 @@
           background-color: transparent;
           color: #007bff; /* Warna teks default */
         }
-      
+
         /* Hover style */
         .btn.btn-subtle-primary:hover {
           background-color: #007bff; /* Warna latar belakang saat dihover */
@@ -73,22 +73,22 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-sm-6">
-                        <div class="card border-bottom border-2 card-animate border-danger">
+                        <div class="card border-bottom border-2 card-animate border-warning">
                             <div class="card-body">
                                 <span class="badge bg-success-subtle text-success float-end"></span>
                                 <h4 class="mb-4"><span class="counter-value"
-                                        data-target="{{ $totalVisitsMicrosite }}">0</span></h4>
-                                <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Microsite</p>
+                                        data-target="{{ $countMicrosite }}">0</span></h4>
+                                <p class="text-muted fw-medium text-uppercase mb-0">Jumlah Microsite</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-sm-6">
-                        <div class="card border-bottom border-2 card-animate border-warning">
+                        <div class="card border-bottom border-2 card-animate border-danger">
                             <div class="card-body">
                                 <span class="badge bg-success-subtle text-success float-end"></span>
-                                <h4 class="mb-4"><span class="counter-value" data-target="{{$qr}}">0</span></h4>
+                                <h4 class="mb-4"><span class="counter-value" data-target="{{$totalVisitsMicrosite}}">0</span></h4>
 
-                                <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Kode QR</p>
+                                <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Microsite</p>
                             </div>
                         </div>
                     </div>
@@ -239,7 +239,11 @@
                             data.totalUrlData &&
                             data.totalUrlData.length > 0 &&
                             data.totalVisitsData &&
-                            data.totalVisitsData.length > 0
+                            data.totalVisitsData.length > 0 &&
+                            data.totalVisitsMicrositeData &&
+                            data.totalVisitsMicrositeData.length > 0 &&
+                            data.countMicrositeData &&
+                            data.countMicrositeData.length > 0
                         ) {
                             var totalUrlData = data.totalUrlData.map((item) => ({
                                 x: new Date(item.date).getTime(),
@@ -249,6 +253,14 @@
                                 x: new Date(item.date).getTime(),
                                 y: item.totalVisits,
                             }));
+                            var totalVisitsMicrositeData = data.totalVisitsMicrositeData.map((item) => ({
+                                x: new Date(item.date).getTime(),
+                                y: item.totalVisitsMicrosite,
+                            }));
+                            var countMicrositeData = data.countMicrositeData.map((item) => ({
+                                x: new Date(item.date).getTime(),
+                                y: item.countMicrosite,
+                            }));
 
                             var options = {
                                 series: [{
@@ -257,6 +269,12 @@
                                 }, {
                                     name: 'Pengunjung',
                                     data: totalVisitsData
+                                }, {
+                                    name: 'Jumlah Microsite',
+                                    data: countMicrositeData
+                                }, {
+                                    name: 'Pengunjung Microsite',
+                                    data: totalVisitsMicrositeData
                                 }],
                                 chart: {
                                     type: 'bar',

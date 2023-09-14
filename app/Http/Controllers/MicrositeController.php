@@ -16,15 +16,13 @@ class MicrositeController extends Controller
     {
         $user_id = auth()->user()->id;
 
-        // Filter berdasarkan tombol "Terakhir Diperbarui"
         if ($request->has('filter') && $request->filter == 'terakhir_diperbarui') {
             $data = Microsite::where('user_id', $user_id)
                 ->orderBy('updated_at', 'desc')
-                ->paginate(5);
+                ->get();
         }
-        // Default: Tampilkan semua data
         else {
-            $data = Microsite::where('user_id', $user_id)->paginate(5);
+            $data = Microsite::where('user_id', $user_id)->get();
         }
 
         $short_urls = ShortUrl::whereIn('microsite_id', $data->pluck('id'))->get();
@@ -36,6 +34,7 @@ class MicrositeController extends Controller
 
         return view('Microsite.MicrositeUser', compact('data', 'short_urls', 'urlshort'));
     }
+
 
     public function addMicrosite()
     {
