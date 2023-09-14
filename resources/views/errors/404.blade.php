@@ -19,7 +19,7 @@
                 <p class="lead">
                     Tautan yang anda akses telah dirubah atau kadaluarsa.
                   </p>
-                  <a href="{{route('dashboard.user')}}" class="btn btn-primary">Kembali Ke Dashboard</a>
+                  <a href="{{route('dashboard.user')}}" class="btn btn-primary text-white">Kembali Ke Dashboard</a>
             </div>
         </div>
     </body>
