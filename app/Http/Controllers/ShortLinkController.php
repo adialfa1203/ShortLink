@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Social;
 use App\Models\ShortUrl;
+use App\Models\Microsite;
+use Yoeunes\Toastr\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
-use AshAllenDesign\ShortURL\Classes\Builder;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
-use Yoeunes\Toastr\Toastr;
+use AshAllenDesign\ShortURL\Classes\Builder;
 
 class ShortLinkController extends Controller
 {
@@ -44,7 +46,7 @@ class ShortLinkController extends Controller
             'user_id' => auth()->id(),
             'default_short_url' => $shortURLObject->default_short_url,
             'password' => Hash::make($request->password),
-            'active' => $request->active,
+            'archive' => 'no',
             'deleted_add' => $request->deleted_add,
             'click_count' => $request->click_count,
             'qr_code' => $request->qr_code,
@@ -105,7 +107,7 @@ class ShortLinkController extends Controller
         // Lakukan apa pun yang diperlukan dengan $parameterValue atau $response.
         // Misalnya, tampilkan tautan asli dan parameter di view.
         return view('shortlink', [
-            'originalLink' => $response->body(), // asumsi bahwa tautan asli dikembalikan dalam body response.
+            'originalLink' => $response->body(),
             'parameterValue' => $parameterValue,
         ]);
     }
@@ -127,7 +129,6 @@ class ShortLinkController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 404);
         }
-        // Mengambil data dari permintaan Ajax
         $newUrlKey = $request->newUrlKey;
         // dd($request);
         // return response()->json(['output' => $newUrlKey]);
@@ -139,7 +140,15 @@ class ShortLinkController extends Controller
             'custom_name' => 'yes',
         ]);
 
-        // Mengirimkan respon ke JavaScript
         return response()->json(['message' => 'URL key updated successfully']);
     }
+    public function micrositeLink($micrositeLink)
+    {
+        $accessMicrosite = Microsite::where('link_microsite', $micrositeLink)->first();
+        $social = Social::where('button_link', $micrositeLink)->first();
+        $short_url = ShortUrl::where('microsite_id', $micrositeLink)->first();
+
+        return view('Microsite.MicrositeLink', compact('accessMicrosite', 'social', 'short_url'));
+    }
+
 }

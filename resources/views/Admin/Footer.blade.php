@@ -30,11 +30,11 @@
                             <img src="{{ asset($data->logo ? $data->logo : 'logo/default.jpg') }}" alt=""
                             class="avatar-lg rounded object-fit-cover border-0 img-thumbnail user-profile-image"
                             style="width: 100%; height: 100%;">
-                            <div class="avatar-xs p-0 rounded-circle profile-photo-edit position-absolute end-0 bottom-0">
+                            <div class="avatar-xs p-0 rounded profile-photo-edit position-absolute end-0 bottom-0">
                                 <input id="profile-img-file-input" type="file" class="profile-img-file-input d-none"
                                     name="logo">
                                 <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
-                                    <span class="avatar-title rounded-circle bg-light text-body">
+                                    <span class="avatar-title rounded bg-light text-body">
                                         <i class="bi bi-camera"></i>
                                     </span>
                                 </label>

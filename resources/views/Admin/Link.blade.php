@@ -18,8 +18,8 @@
 <div class="page-content">
     <div class="row">
         <div class="col-xl-3 col-sm-6">
-            <div class="card border-bottom border-2 card-animate border-secondary">
-                <div class="card-body" style="background-color: #910000">
+            <div class="card border-bottom border-2 card-animate">
+                <div class="card-body bg-success">
                     <h5 class="fs-md text-muted mb-0 text-white">Pengguna</h5>
 
                     <div class="row mt-3">
@@ -34,8 +34,8 @@
             </div>
         </div><!--end col-->
         <div class="col-xl-3 col-sm-6">
-            <div class="card border-bottom border-2 card-animate border-secondary">
-                <div class="card-body" style="background-color: rgb(13, 13, 118)">
+            <div class="card border-bottom border-2 card-animate">
+                <div class="card-body bg-primary">
                     <h5 class="fs-md text-muted mb-0 text-white">Tautan</h5>
 
                     <div class="row mt-3">
@@ -50,8 +50,8 @@
             </div>
         </div><!--end col-->
         <div class="col-xl-3 col-sm-6">
-            <div class="card border-bottom border-2 card-animate border-secondary">
-                <div class="card-body" style="background-color: rgb(224, 113, 34)">
+            <div class="card border-bottom border-2 card-animate">
+                <div class="card-body bg-warning">
                     <h5 class="fs-md text-muted mb-0 text-white">Pengunjung</h5>
                     <div class="row mt-3">
                         <div class="col-2">
@@ -65,8 +65,8 @@
             </div>
         </div><!--end col-->
         <div class="col-xl-3 col-sm-6">
-            <div class="card border-bottom border-2 card-animate border-secondary">
-                <div class="card-body" style="background-color: rgb(6, 117, 48)">
+            <div class="card border-bottom border-2 card-animate">
+                <div class="card-body" style="background-color : #FF6C6C">
                     <h5 class="fs-md text-muted mb-0 text-white">Microsite</h5>
                     <div class="row mt-3">
                         <div class="col-2">
@@ -98,12 +98,12 @@
                         <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                             <thead class="text-muted table-light">
                                 <tr class="searchable">
-                                    <th scope="col" class="sort cursor-pointer" data-sort="order_id">No</th>
-                                    <th scope="col" class="sort cursor-pointer" data-sort="order_date">Nama</th>
-                                    <th scope="col" class="sort cursor-pointer" data-sort="delivery_date">Tautan</th>
-                                    <th scope="col" class="sort cursor-pointer" data-sort="status">Tautan Populer</th>
-                                    <th scope="col" class="sort cursor-pointer" data-sort="status">Microsite</th>
-                                    <th scope="col" class="sort cursor-pointer" data-sort="status">Microsite Populer</th>
+                                    <th scope="col" data-sort="order_id">#</th>
+                                    <th scope="col" data-sort="order_date">Nama</th>
+                                    <th scope="col" data-sort="delivery_date">Tautan</th>
+                                    <th scope="col" data-sort="status">Tautan Populer</th>
+                                    <th scope="col" data-sort="status">Microsite</th>
+                                    <th scope="col" data-sort="status">Microsite Populer</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -143,7 +143,7 @@
                                     </tr>
                                 @endforeach
                             </tbody><!-- end tbody -->
-                            
+
                         </table><!-- end table -->
                         <br><!-- end table -->
                         <div class="noresult" style="display: none">

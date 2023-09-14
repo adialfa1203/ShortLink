@@ -14,7 +14,7 @@ class FooterSeeder extends Seeder
     public function run(): void
     {
         $footer = Footer::create([
-            'logo' => null,
+            'logo' => 'logos/1.jpg',
             'description' => null,
             'whatsapp' => null,
             'instagram' => null,

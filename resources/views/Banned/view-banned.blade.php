@@ -24,8 +24,8 @@
             <!-- start page title -->
             <div class="row">
                     <div class="col-xl-6 col-sm-6">
-                        <div class="card border-bottom border-2 card-animate border-secondary">
-                            <div class="card-body" style="background-color: rgb(224, 113, 34)">
+                        <div class="card border-bottom border-2 card-animate">
+                            <div class="card-body bg-warning">
                                 <h5 class="fs-md text-muted mb-0 text-white">Pengguna</h5>
                                 <div class="row mt-3">
                                     <div class="col-2">
@@ -39,10 +39,10 @@
                         </div>
                     </div><!--end col-->
                     <div class="col-xl-6 col-sm-6">
-                        <div class="card border-bottom border-2 card-animate border-secondary">
-                            <div class="card-body" style="background-color: #910000">
+                        <div class="card border-bottom border-2 card-animate">
+                            <div class="card-body" style="background-color: #FF6C6C">
                                 <h5 class="fs-md text-muted mb-0 text-white">Pengguna Di Blokir</h5>
-            
+
                                 <div class="row mt-3">
                                     <div class="col-2">
                                         <i class="bi bi-person-fill-slash custom-icon-size" style="font-size: 30px;"></i>
@@ -99,7 +99,7 @@
                                                     @elseif ($row->subscribe === 'no')
                                                         <span class="badge bg-danger-subtle text-danger">Tidak Berlangganan</span>
                                                     @endif
-                                                </td>                                                
+                                                </td>
                                                 <td>
                                                     <ul class="d-flex gap-2 list-unstyled mb-0">
                                                         <li>

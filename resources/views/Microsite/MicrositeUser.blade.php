@@ -97,8 +97,10 @@
                             </div>
                             <div class="col-lg-auto">
                                 <div class="hstack gap-2">
-                                    <button type="button" class="btn rounded-pill btn-danger" id="semuaButton">Semua</button>
-                                    <button type="button" class="btn rounded-pill btn-secondary" onclick="filterTerakhirDiperbarui()">Terakhir Diperbarui</button>
+                                    <button type="button" class="btn rounded-pill btn-danger"
+                                        id="semuaButton">Semua</button>
+                                    <button type="button" class="btn rounded-pill btn-secondary"
+                                        onclick="filterTerakhirDiperbarui()">Terakhir Diperbarui</button>
                                 </div>
                             </div>
 
@@ -106,114 +108,141 @@
                     </div>
                 </div><!--end card-->
                 @php
-                $i = 0;
-            @endphp
+                    $i = 0;
+                @endphp
                 <div id="microsite-container">
-                @foreach ($data as $row)
-                    @php
-                        $i++;
-                    @endphp
-                    <div class="col-12">
-                        <div class="card card-body" id="searchResults">
-                            <div class="wrapper row  align-items-center">
-                                <div class="avatar-md col-1">
-                                    <div class="avatar-title">
-                                        <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/sidebar/img-1.jpg') }}"
-                                            style="width: 180%; height: 70%;" alt="Gambar">
-                                        <div class="initials">{{ $row->name[0] }}</div>
+                    @foreach ($data as $row)
+                        @php
+                            $i++;
+                        @endphp
+                        <div class="col-12">
+                            <div class="card card-body" id="searchResults">
+                                <div class="wrapper row  align-items-center">
+                                    <div class="avatar-md col-1">
+                                        <div class="avatar-title">
+                                            <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/sidebar/img-1.jpg') }}"
+                                                style="width: 180%; height: 70%;" alt="Gambar">
+                                            <div class="initials">{{ $row->name[0] }}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="wrapper col-11">
-                                    <div class="d-flex">
-                                        <h5 class="card-title col-3">{{ $row->name }}</h5>
-                                        <div class="wrapper col-9 d-flex flex-row justify-content-end">
-                                            <div class="ml-auto">
-                                                <button type="button" class="btn btn-primary btn-sm"
-                                                    data-bs-toggle="collapse" href="#collapseExample{{ $row->id }}"
-                                                    role="button" aria-expanded="true"
-                                                    aria-controls="collapseExample{{ $row->id }}">
-                                                    <i class="bi bi-bar-chart-fill"></i> statistik
-                                                </button>
-                                                <a href="{{ route('edit.microsite', ['id' => $row->id]) }}"
-                                                    class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>
-                                                    Edit</a>
-                                                    <button type="button" id="button-email" class="btn btn-primary me-3 btn-sm"
-                                            data-bs-toggle="modal" data-bs-target="#bagikan{{ $i }}"
-                                            aria-haspopup="true" aria-expanded="false"><i
-                                                class="fa-solid fa-share-nodes"></i> &nbsp;Bagikan</button>
-                                                 <!-- Modal bagikan -->
-                                         <div class="modal fade" id="bagikan{{$i}}" tabindex="-1" aria-labelledby="addAmountLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                 <div class="modal-content">
-                                                    <div class="modal-body">
-                                                    <div class="row g-3">
-                                                    <div class="countdown-input-subscribe">
-                                                        <label class="platform" onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('link_microsite{{$i}}').innerText}`)"><i class="bi bi-facebook"></i> &nbsp; Facebook</label>
+                                    <div class="wrapper col-11">
+                                        <div class="d-flex">
+                                            <h5 class="card-title col-3">{{ $row->name }}</h5>
+                                            <div class="wrapper col-9 d-flex flex-row justify-content-end">
+                                                <div class="ml-auto">
+                                                    <button type="button" class="btn btn-primary btn-sm"
+                                                        data-bs-toggle="collapse" href="#collapseExample{{ $row->id }}"
+                                                        role="button" aria-expanded="true"
+                                                        aria-controls="collapseExample{{ $row->id }}">
+                                                        <i class="bi bi-bar-chart-fill"></i> statistik
+                                                    </button>
+                                                    <a href="{{ route('edit.microsite', ['id' => $row->id]) }}"
+                                                        class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>
+                                                        Edit</a>
+                                                    <button type="button" id="button-email"
+                                                        class="btn btn-primary me-3 btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#bagikan{{ $i }}" aria-haspopup="true"
+                                                        aria-expanded="false"><i class="fa-solid fa-share-nodes"></i>
+                                                        &nbsp;Bagikan</button>
+                                                    <!-- Modal bagikan -->
+                                                    <div class="modal fade" id="bagikan{{ $i }}" tabindex="-1"
+                                                        aria-labelledby="addAmountLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="row g-3">
+                                                                        <div class="countdown-input-subscribe">
+                                                                            <label class="platform"
+                                                                                onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
+                                                                                    class="bi bi-facebook"></i> &nbsp;
+                                                                                Facebook</label>
+                                                                        </div>
+                                                                        <div class="countdown-input-subscribe">
+                                                                            <label class="platform"
+                                                                                onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
+                                                                                    class="bi bi-twitter"></i> &nbsp;
+                                                                                Twitter</label>
+                                                                        </div>
+                                                                        <div class="countdown-input-subscribe">
+                                                                            <label class="platform"
+                                                                                onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
+                                                                                    class="bi bi-whatsapp"></i> &nbsp;
+                                                                                WhatsApp</label>
+                                                                        </div>
+                                                                        <div class="countdown-input-subscribe">
+                                                                            <label class="platform" data-platform="copy"
+                                                                                id="copyButton"
+                                                                                @if (!empty($row->short_url)) data-url="{{ $row->short_url->destination_url }}"
+                                                                                    data-id-microsite="{{ $row->id }}"
+                                                                                @else
+                                                                                    data-url=""
+                                                                                    data-id-microsite="" @endif
+                                                                                data-id-alert="{{ $i }}">
+                                                                                <i class="bi bi-clipboard-fill"></i>
+                                                                                &nbsp;
+                                                                                Copy
+                                                                            </label>
+                                                                        </div>
+                                                                        <div id="successCopyAlert{{ $row->id }}"
+                                                                            class="alert alert-success mt-3 d-flex justify-content-center"
+                                                                            style="display: none; position: fixed; bottom: 570px; right: 433px; max-width: 500px;">
+                                                                            Tautan berhasil disalin ke clipboard
+                                                                        </div>
+                                                                        <div class="countdown-input-subscribe">
+                                                                            <label class="platform"
+                                                                                onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
+                                                                                    class="bi bi-qr-code"></i> &nbsp; QR
+                                                                                Code</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
-                                                    <div class="countdown-input-subscribe">
-                                                        <label class="platform" onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('link_microsite{{$i}}').innerText}`)"><i class="bi bi-twitter"></i> &nbsp; Twitter</label>
-                                                    </div>
-                                                    <div class="countdown-input-subscribe">
-                                                        <label class="platform" onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('link_microsite{{$i}}').innerText}`)"><i class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
-                                                    </div>
-                                                    <div class="countdown-input-subscribe">
-                                                        <label class="platform" data-platform="copy" id="copyButton" data-url="{{ $row->link_microsite }}" data-id-copy="{{$i}}"><i class="bi bi-clipboard-fill"></i> &nbsp; Copy</label>
-                                                    </div>
-                                                    <div id="successCopyAlert" class="alert alert-success mt-3" style="display: none; position: fixed; bottom: 570px; right: 433px; max-width: 500px;">
-                                                     Tautan berhasil disalin ke clipboard
-                                                    </div>
-                                                    <div class="countdown-input-subscribe">
-                                                        <label class="platform" onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('link_microsite{{$i}}').innerText}`)"><i class="bi bi-qr-code"></i> &nbsp; QR Code</label>
+                                                    <!-- end Modal bagikan-->
                                                 </div>
                                             </div>
+
                                         </div>
-                                     </div>
-                                </div>
-
-                            </div>
-                            <!-- end Modal bagikan-->
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <a>
-                                        <h3 class="garisbawah card-title mb-2">{{ $short_urls->where('microsite_id', $row->id)->first()->default_short_url }}</h3>
-                                    </a>
-
-                                    {{-- <p type="button"
+                                        <a>
+                                            <h3 class="garisbawah card-title mb-2">
+                                                {{ $short_urls->where('microsite_id', $row->id)->first()->default_short_url }}
+                                            </h3>
+                                        </a>
+                                        {{-- <p type="button"
                                         class="link-primary link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover card-text text-muted"
                                         id="copyText{{ $row->id }}"
                                         onclick="copyTextToClipboard('{{ $row->link_microsite }}', 'copyText{{ $row->id }}')">
                                         {{ $short_urls->where('microsite_id', $row->id)->first()->link_microsite }}
                                     </p> --}}
-                                    <div id="customAlert" class="custom-alert">
-                                        <span class="alert-text"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="d-none" id="link_microsite{{$i}}">{{$row->link_microsite}}</p>
-                            <div class="collapse" id="collapseExample{{ $row->id }}">
-                                <div class="card-footer">
-                                    <div class="d-flex">
-                                        <div class="col-10">
-                                            <h5><i class="bi bi-bar-chart-line-fill"></i> statistik</h5>
-                                        </div>
-                                        <div class="col-2 d-flex flex-row justify-content-end">
-                                            <button type="button" class="btn btn-light "><span>Lihat
-                                                    Detail</span>&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+                                        <div id="customAlert" class="custom-alert">
+                                            <span class="alert-text"></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div id="chart{{ $row->id }}"></div>
-                                    </div><!-- end card-body -->
-                                </div><!-- end card -->
+                                <p class="d-none" id="link_microsite{{ $i }}">{{ $row->link_microsite }}</p>
+                                <div class="collapse" id="collapseExample{{ $row->id }}">
+                                    <div class="card-footer">
+                                        <div class="d-flex">
+                                            <div class="col-10">
+                                                <h5><i class="bi bi-bar-chart-line-fill"></i> statistik</h5>
+                                            </div>
+                                            <div class="col-2 d-flex flex-row justify-content-end">
+                                                <button type="button" class="btn btn-light "><span>Lihat
+                                                        Detail</span>&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div id="chart{{ $row->id }}"></div>
+                                        </div><!-- end card-body -->
+                                    </div><!-- end card -->
+                                </div>
                             </div>
-                        </div>
-                    </div><!-- end col -->
-
-                @endforeach
+                        </div><!-- end col -->
+                    @endforeach
                 </div>
                 <div class="pagination-wrap hstack justify-content-center gap-2">
                     <a class="page-item pagination-prev {{ $data->previousPageUrl() ? '' : 'disabled' }}"
@@ -246,15 +275,14 @@
                                 </li>
                             @endif
                             <li>
-                                <a class="page"
-                                    href="{{ $data->url($data->lastPage()) }}">{{ $data->lastPage() }}</a>
+                                <a class="page" href="{{ $data->url($data->lastPage()) }}">{{ $data->lastPage() }}</a>
                             </li>
                         @endif
                     </ul>
                     <a class="page-item pagination-next {{ $data->nextPageUrl() ? '' : 'disabled' }}"
                         href="{{ $data->nextPageUrl() ? $data->nextPageUrl() : '#' }}">
                         Next
-                        </a>
+                    </a>
                 </div>
             </div>
 
@@ -306,136 +334,134 @@
                 var chart = new ApexCharts(document.querySelector("#chart{{ $row->id }}"), options);
                 chart.render();
             </script>
-        @endforeach --}}
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-wizard.init.js') }}"></script>
-<script type="text/javascript" src="./jquery.qrcode.js"></script>
-<script type="text/javascript" src="./qrcode.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("#copyButton").click(function() {
-            let id = $(this).data('id-copy');
-            let data = $("#link_microsite" + id);
-            //    alert(data)
+        @endforeach
+        <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-wizard.init.js') }}"></script>
+        <script type="text/javascript" src="./jquery.qrcode.js"></script>
+        <script type="text/javascript" src="./qrcode.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#copyButton").click(function() {
+                    let id = $(this).data('id-copy');
+                    let data = $("#link_microsite" + id);
+                    //    alert(data)
 
-            data.select();
-            data.setSelectionRange(0, 99999);
-            navigator.clipboard.writeText(data.value);
+                    data.select();
+                    data.setSelectionRange(0, 99999);
+                    navigator.clipboard.writeText(data.value);
 
-        })
-        $("#resetButton").click(function() {
-            $(".password-input").val(""); // Mengosongkan input kata sandi
-        });
-        // Menangani klik pada tombol Reset untuk modal tautan berjangka
-        $("#time-reset").click(function() {
-            $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
-        });
+                })
+                $("#resetButton").click(function() {
+                    $(".password-input").val("");
+                });
+                $("#time-reset").click(function() {
+                    $(".time-input").val("");
+                });
 
-        $('.btn-qr').click(function() {
+                $('.btn-qr').click(function() {
 
-            alert($(this).data('link'))
-            $(".demo").qrcode({
+                    alert($(this).data('link'))
+                    $(".demo").qrcode({
+                        mode: 1,
+                        label: 'jQueryScript.Net',
+                        fontname: 'sans',
+                        fontcolor: '#000'
 
-                // 0: normal
-                // 1: label strip
-                // 2: label box
-                mode: 1,
-                label: 'jQueryScript.Net',
-                fontname: 'sans',
-                fontcolor: '#000'
-
+                    });
+                    $('#zoomInModal2').modal({
+                        show: true
+                    })
+                })
             });
-            $('#zoomInModal2').modal({
-                show: true
-            })
-        })
-    });
-    // Saat tombol "Bagikan" diklik
-    $("#button-email").click(function() {
-        // Dapatkan nilai tautan dari elemen h3
-        var linkToCopy = $("#link-to-copy").text();
+            // Saat tombol "Bagikan" diklik
+            $("#button-email").click(function() {
+                // Dapatkan nilai tautan dari elemen h3
+                var linkToCopy = $("#link-to-copy").text();
 
-        // Masukkan nilai tautan ke dalam modal
-        $("#link_microsite").val(linkToCopy);
+                // Masukkan nilai tautan ke dalam modal
+                $("#link_microsite").val(linkToCopy);
 
-        // Tambahkan atribut data-clipboard-text pada tombol "Copy"
-        $("#copyButton").attr("data-clipboard-text", linkToCopy);
-    });
+                // Tambahkan atribut data-clipboard-text pada tombol "Copy"
+                $("#copyButton").attr("data-clipboard-text", linkToCopy);
+            });
 
-    // ...
+            // ...
 
-    // Menangani klik pada tombol Copy di dalam modal
-    $("#copyButton").click(function () {
-        var linkToCopy = $(this).attr("data-clipboard-text");
+            // Menangani klik pada tombol Copy di dalam modal
+            $("body").on("click", ".platform[data-platform='copy']", function() {
+                var linkToCopy = $(this).data("url");
+                var idMicrosite = $(this).data("id-copy");
 
-        // Salin tautan ke clipboard
-        var tempInput = $("<input>");
-        $("body").append(tempInput);
-        tempInput.val(linkToCopy).select();
-        document.execCommand("copy");
-        tempInput.remove();
+                // Salin tautan ke clipboard
+                var tempInput = $("<input>");
+                $("body").append(tempInput);
+                tempInput.val(linkToCopy).select();
+                document.execCommand("copy");
+                tempInput.remove();
 
-        // Tampilkan pesan sukses
-        $("#successCopyAlert").fadeIn().delay(1500).fadeOut();
-    });
-    // Menangani klik pada label platform dalam modal "bagikan"
-    $(".platform").click(function() {
-        var platform = $(this).data("platform");
-        //   alert(platform)
-        var shortUrl = $("#link_microsite").text();
+                // Tampilkan pesan sukses dengan ID yang sesuai
+                var successAlert = $("#successCopyAlert" + idMicrosite);
+                successAlert.fadeIn().delay(1500).fadeOut();
+            });
 
-        switch (platform) {
-            case "facebook":
-                // Tambahkan logika untuk membagikan tautan ke Facebook
-                // Misalnya, membuka jendela baru dengan tautan Facebook Share
-                window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shortUrl));
-                break;
-            case "twitter":
-                // Tambahkan logika untuk membagikan tautan ke Twitter
-                // Misalnya, membuka jendela baru dengan tautan Twitter Share
-                window.open("https://twitter.com/intent/tweet?url=" + encodeURIComponent(shortUrl));
-                break;
-            case "whatsapp":
-                // Tambahkan logika untuk membagikan tautan ke WhatsApp
-                console.log(shortUrl) // Misalnya, membuka jendela baru dengan tautan WhatsApp Share
-                window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shortUrl));
-                break;
-            case "copy":
-                var copyText = $(this).data('url')
-                // alert(copyText)
-                console.log()
-                // copyText.focus();
-                try {
-                    navigator.clipboard.writeText(copyText);
-                    console.log('Content copied to clipboard');
-                } catch (err) {
-                    console.error('Failed to copy: ', err);
-                    alert('gagal ' + err)
+            // Menangani klik pada label platform dalam modal "bagikan"
+            $(".platform").click(function() {
+                var platform = $(this).data("platform");
+                //   alert(platform)
+                var shortUrl = $("#link_microsite").text();
+
+                switch (platform) {
+                    case "facebook":
+                        // Tambahkan logika untuk membagikan tautan ke Facebook
+                        // Misalnya, membuka jendela baru dengan tautan Facebook Share
+                        window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shortUrl));
+                        break;
+                    case "twitter":
+                        // Tambahkan logika untuk membagikan tautan ke Twitter
+                        // Misalnya, membuka jendela baru dengan tautan Twitter Share
+                        window.open("https://twitter.com/intent/tweet?url=" + encodeURIComponent(shortUrl));
+                        break;
+                    case "whatsapp":
+                        // Tambahkan logika untuk membagikan tautan ke WhatsApp
+                        console.log(shortUrl) // Misalnya, membuka jendela baru dengan tautan WhatsApp Share
+                        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shortUrl));
+                        break;
+                    case "copy":
+                        var copyText = $(this).data('url')
+                        // alert(copyText)
+                        console.log()
+                        // copyText.focus();
+                        try {
+                            navigator.clipboard.writeText(copyText);
+                            console.log('Content copied to clipboard');
+                        } catch (err) {
+                            console.error('Failed to copy: ', err);
+                            alert('gagal ' + err)
+                        }
+
+                        // navigator.clipboard.writeText(copyText)
+                        // .then(function() {
+                        // if (edit != true) {
+                        // }
+                        // })
+                        // .catch(function(err) {
+                        // console.error("Penyalinan gagal: ", err);
+                        // alert("Penyalinan gagal. Silakan salin tautan secara manual.");
+                        // });
+                        break;
+
+                    case "qr":
+                        // Tambahkan logika untuk menghasilkan  dari tautan
+                        // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
+                        window.open(
+                            " https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('link_microsite{{ $i }}').innerText}" +
+                            encodeURIComponent(shortUrl));
+                        break;
+                    default:
+                        break;
                 }
-
-                // navigator.clipboard.writeText(copyText)
-                // .then(function() {
-                // if (edit != true) {
-                // }
-                // })
-                // .catch(function(err) {
-                // console.error("Penyalinan gagal: ", err);
-                // alert("Penyalinan gagal. Silakan salin tautan secara manual.");
-                // });
-                break;
-
-            case "qr":
-                // Tambahkan logika untuk menghasilkan  dari tautan
-                // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
-                window.open(
-                    " https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('link_microsite{{ $i }}').innerText}" +
-                    encodeURIComponent(shortUrl));
-                break;
-            default:
-                break;
-        }
-    });
-</script>
+            });
+        </script>
         <script>
             function copyTextToClipboard(text, elementId) {
                 var textElement = document.getElementById(elementId);
@@ -497,7 +523,6 @@
                 } else {
                     checkbox.prop("checked", true);
                 }
-            });
             });
             });
         </script>

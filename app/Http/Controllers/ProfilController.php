@@ -86,7 +86,9 @@ class ProfilController extends Controller
             'old_password' => 'required_with:new_password',
             'new_password' => 'nullable|min:8|confirmed',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
-        ],);
+        ],[
+            'new_password' => 'Konfirmasi kata sandi baru tidak cocok.',
+        ]);
 
         $admin->name = $request->name;
         $admin->email = $request->email;

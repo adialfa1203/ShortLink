@@ -13,7 +13,7 @@
                 <div class="col-xl-12 ">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                         <h4 class="mb-sm-0">Profil Pengguna</h4>
-                        @if ($errors->any())
+                        {{-- @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
                                     @foreach ($errors->all() as $error)
@@ -21,7 +21,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif
+                        @endif --}}
 
                         {{-- <div class="page-title-right">
                             <ol class="breadcrumb m-0">
@@ -129,7 +129,7 @@
                                                     <i class="ri-eye-fill align-middle"></i>
                                                 </button>
                                             </div>
-                                            @error('new_password_confirmation')
+                                            @error('new_password')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>

@@ -55,18 +55,18 @@
                                     <div class="card-body pt-0 mt-n5">
                                         <div class="text-center">
                                             <div class="profile-user position-relative d-inline-block mx-auto">
-                                                <img src="{{ asset('component/' . old('profile_img', $component->profile_img)) }}"
-                                                    alt=""
+                                                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/default.jpg') }}" alt=""
                                                     class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
+                                            </div>
                                                 <div
                                                     class="avatar-xs p-0 rounded-circle profile-photo-edit position-absolute end-0 bottom-0">
                                                     <input id="profile-img-file-input" type="file"
                                                         class="profile-img-file-input d-none" name="profile_img">
                                                     <label for="profile-img-file-input"
                                                         class="profile-photo-edit avatar-xs">
-                                                        <span class="avatar-title rounded-circle bg-light text-body">
+                                                        {{-- <span class="avatar-title rounded-circle bg-light text-body">
                                                             <i class="bi bi-camera"></i>
-                                                        </span>
+                                                        </span> --}}
                                                     </label>
                                                 </div>
                                             </div>

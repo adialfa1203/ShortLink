@@ -182,12 +182,12 @@
                                     colors: "#FF1654"
                                 }
                             },
-                            title: {
-                                text: "Series A",
-                                style: {
-                                    color: "#FF1654"
-                                }
-                            }
+                            // title: {
+                            //     text: "Series A",
+                            //     style: {
+                            //         color: "#FF1654"
+                            //     }
+                            // }
                         }],
                         tooltip: {
                             shared: true,

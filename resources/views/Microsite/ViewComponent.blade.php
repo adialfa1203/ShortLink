@@ -12,7 +12,7 @@
                 </div>
                 <div class="row mt-4">
                     @foreach ($component as $item)
-                        <div class="col-xl-3 col-sm-6 mb-4">
+                        <div class="col-xl-4 col-sm-6 mb-4">
                             <div class="card">
                                 <div class="card-footer text-center">
                                     <div class="dropdown float-end">

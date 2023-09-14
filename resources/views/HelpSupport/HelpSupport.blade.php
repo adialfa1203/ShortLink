@@ -185,7 +185,7 @@
                                 <div
                                     class="d-flex align-items-center text-muted mb-4 comment-container{{ $key < 1 ? '' : ' hidden' }}"">
                                     <div class="flex-shrink-0 me-3">
-                                        <img src="{{ asset($row->user->profile_picture ? 'storage/'.$row->user->profile_picture : 'storage/profile_pictures/default.jpg') }}"
+                                        <img src="{{ $row->user->profile_picture ? asset($row->user->profile_picture) : asset('profile_pictures/default.jpg') }}"
                                         class="avatar-sm rounded" alt="..." width="50px" height="50px">
                                     </div>
                                     <div class="flex-grow-1 d-flex flex-column">
@@ -291,7 +291,7 @@
                     </div>
                     <!-- Comment Form -->
                     <div class="col-lg-3 col-md-6 col-12 mb-1">
-                        <form id="commentForm" method="POST" enctype="multipart/form-data" class="mt-3">
+                        <form action="/create/{{ $users->id }}" id="commentForm" method="POST" enctype="multipart/form-data" class="mt-3">
                             @csrf
                             <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
                                 placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
@@ -398,10 +398,12 @@
             // Handle form submission
             $('#commentForm').submit(function(event) {
                 event.preventDefault();
+    
                 // Check if the user is authenticated
                 @if (auth()->check())
                     // If authenticated, submit the form to /create
-                    this.action = '/create';
+                    var userId = "{{ $users->id }}";
+                    this.action = '/create/' + userId;
                     this.submit();
                 @else
                     // If not authenticated, show a SweetAlert message with a link to /login
@@ -409,12 +411,19 @@
                         icon: 'error',
                         title: 'Oh Tidakkk...',
                         text: 'Anda harus login dulu',
-                        confirmButtonText: '<a href="/login">Login disini</a>'
+                        confirmButtonText: 'Login disini',
+                        onBeforeOpen: () => {
+                            const link = document.createElement('a');
+                            link.href = '/login';
+                            link.target = '_self';
+                            Swal.getConfirmButton().appendChild(link);
+                        }
                     });
                 @endif
             });
         });
     </script>
+    
 </body>
 
 

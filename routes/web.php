@@ -123,7 +123,7 @@ Route::post('/update-short-link/{shortCode}', [ShortLinkController::class, 'upda
 Route::post('/update-deactivated/{keyTime}',[LinkController::class, 'updateDeactivated']);
 
 });
-Route::get('/microsite-link', [MicrositeController::class, 'micrositeLink'])->name('microsite.short.link');
+Route::get('/microsite-link/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.short.link');
 
 Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/updateAdmin', [ProfilController::class, 'updateAdmin'])->name('updateAdmin');
