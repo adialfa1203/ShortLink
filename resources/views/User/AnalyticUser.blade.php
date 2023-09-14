@@ -3,11 +3,11 @@
     @section('title', 'Analitik')
 
     @section('style')
-    <style>
-        .bg-custom {
-            background-color: #CDF0EA;
-        }
-    </style>
+        <style>
+            .bg-custom {
+                background-color: #CDF0EA;
+            }
+        </style>
 
     @endsection
 
@@ -35,7 +35,7 @@
 
                 <div class="row row-cols-xxl-4 row-cols-lg-3 row-cols-md-2 row-cols-1">
                     <div class="col-xl-3 col-sm-6">
-                        <div class="card border-bottom border-2 card-animate border-secondary">
+                        <div class="card border-bottom border-2 card-animate border-primary">
                             <div class="card-body">
                                 <span class="badge bg-success-subtle text-success float-end"></span>
                                 <h4 class="mb-4"><span class="counter-value" data-target="{{ $countURL }}">0</span>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-sm-6">
-                        <div class="card border-bottom border-2 card-animate border-primary">
+                        <div class="card border-bottom border-2 card-animate border-success">
                             <div class="card-body">
                                 <span class="badge bg-success-subtle text-success float-end"></span>
                                 <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisits }}">0</span>
@@ -56,17 +56,17 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-sm-6">
-                        <div class="card border-bottom border-2 card-animate border-warning">
+                        <div class="card border-bottom border-2 card-animate border-danger">
                             <div class="card-body">
                                 <span class="badge bg-success-subtle text-success float-end"></span>
-                                <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisitsMicrosite }}">0</span></h4>
-
+                                <h4 class="mb-4"><span class="counter-value"
+                                        data-target="{{ $totalVisitsMicrosite }}">0</span></h4>
                                 <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Microsite</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-sm-6">
-                        <div class="card border-bottom border-2 card-animate border-success">
+                        <div class="card border-bottom border-2 card-animate border-warning">
                             <div class="card-body">
                                 <span class="badge bg-success-subtle text-success float-end"></span>
                                 <h4 class="mb-4"><span class="counter-value" data-target="0">0</span></h4>
@@ -106,14 +106,13 @@
                 <div class="row">
                     <div id="popularDataContainer" class="row">
                         <div class="col-lg-6">
-                            <div class="card" data-simplebar
-                            style="max-height: 320px;" id="agenciesList">
+                            <div class="card" data-simplebar style="max-height: 320px;" id="agenciesList">
                                 <div class="card-header fw-bold">
                                     Tautan Populer
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-borderless table-nowrap" >
+                                        <table class="table table-borderless table-nowrap">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
@@ -151,11 +150,11 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($microsites->sortByDesc('totalVisits') as $microsite)
-                                            <tr>
-                                                <th scope="row">{{ $loop->iteration }}</th>
-                                                <td>{{ $microsite->default_short_url }}</td>
-                                                <td>{{ $microsite->totalVisits }}</td>
-                                            </tr>
+                                                <tr>
+                                                    <th scope="row">{{ $loop->iteration }}</th>
+                                                    <td>{{ $microsite->default_short_url }}</td>
+                                                    <td>{{ $microsite->totalVisits }}</td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -169,14 +168,15 @@
                                 <div class="card-header fw-bold">
                                     <div class="avatar-sm mx-auto mb-3">
                                         <div class="avatar-title bg-custom text-primary fs-xl rounded">
-                                           <i class="fa-solid fa-lock"></i>
+                                            <i class="fa-solid fa-lock"></i>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body text-center">
 
                                     <h4 class="card-title">Anda Tidak Bisa Mengakses Fitur Ini!</h4>
-                                    <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan Untuk Bisa Menikmati Fitur Ini</p>
+                                    <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan Untuk Bisa Menikmati
+                                        Fitur Ini</p>
                                 </div>
                                 <div class="card-footer text-center">
                                     <a href="/subscribe-product-user"> Mulai Berlangganan? </a>
@@ -188,14 +188,15 @@
                                 <div class="card-header fw-bold">
                                     <div class="avatar-sm mx-auto mb-3">
                                         <div class="avatar-title bg-custom text-primary fs-xl rounded">
-                                           <i class="fa-solid fa-lock"></i>
+                                            <i class="fa-solid fa-lock"></i>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body text-center">
 
                                     <h4 class="card-title">Anda Tidak Bisa Mengakses Fitur Ini!</h4>
-                                    <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan Untuk Bisa Menikmati Fitur Ini</p>
+                                    <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan Untuk Bisa Menikmati
+                                        Fitur Ini</p>
                                 </div>
                                 <div class="card-footer text-center">
                                     <a href="/subscribe-product-user"> Mulai Berlangganan? </a>
@@ -203,6 +204,33 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6">
+                        <div class="card" id="agenciesList">
+                            <div class="card-header fw-bold">
+                                Microsite Populer
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-borderless table-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Tautan</th>
+                                            <th scope="col">Pengunjung</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($microsites->sortByDesc('totalVisits') as $microsite)
+                                            <tr>
+                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                <td>{{ $microsite->default_short_url }}</td>
+                                                <td>{{ $microsite->totalVisits }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div><!--end col-->
                 </div><!--end row-->
             </div>
             <!-- container-fluid -->
@@ -212,138 +240,95 @@
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            // Ambil elemen-elemen yang diperlukan
-            const showPopularDataButton = document.getElementById('showPopularData');
-            const showAdditionalDataButton = document.getElementById('showAdditionalData');
-            const popularDataContainer = document.getElementById('popularDataContainer');
-            const additionalDataContainer = document.getElementById('additionalDataContainer');
-
-            // Tambahkan event listener untuk tombol "Data Tambahan"
-            showAdditionalDataButton.addEventListener('click', () => {
-                // Sembunyikan kartu "Tautan Populer" dan "Microsite Populer"
-                popularDataContainer.classList.add('d-none');
-                // Tampilkan kartu "Anda harus beralih ke berlangganan terlebih dahulu"
-                additionalDataContainer.classList.remove('d-none');
-            });
-
-            // Tambahkan event listener untuk tombol "Data Populer"
-            showPopularDataButton.addEventListener('click', () => {
-                // Sembunyikan kartu "Anda harus beralih ke berlangganan terlebih dahulu"
-                additionalDataContainer.classList.add('d-none');
-                // Tampilkan kartu "Tautan Populer" dan "Microsite Populer"
-                popularDataContainer.classList.remove('d-none');
-            });
-        </script>
-
-        <script>
             function updateChart() {
                 $.ajax({
                     url: "{{ route('analytic.users.chart') }}",
                     method: "GET",
                     success: function(data) {
-                        console.log(data);
+                        if (
+                            data.totalUrlData &&
+                            data.totalUrlData.length > 0 &&
+                            data.totalVisitsData &&
+                            data.totalVisitsData.length > 0
+                        ) {
+                            var totalUrlData = data.totalUrlData.map((item) => ({
+                                x: new Date(item.date).getTime(),
+                                y: item.totalUrl,
+                            }));
+                            var totalVisitsData = data.totalVisitsData.map((item) => ({
+                                x: new Date(item.date).getTime(),
+                                y: item.totalVisits,
+                            }));
 
-                        var totalUrlData = data.totalUrl.map(item => [new Date(item.date).getTime(), item
-                            .totalUrl
-                        ]);
-                        var totalVisitsData = data.totalVisits.map(item => [new Date(item.date).getTime(), item
-                            .totalVisits
-                        ]);
-
-                        var options = {
-                            chart: {
-                                height: 350,
-                                type: "line",
-                                stacked: false
-                            },
-                            dataLabels: {
-                                enabled: false
-                            },
-                            colors: ["#6C757D", "#1E88E5"],
-                            series: [{
-                                    name: "Jumlah Tautan",
+                            var options = {
+                                series: [{
+                                    name: 'Jumlah Tautan',
                                     data: totalUrlData
-                                },
-                                {
-                                    name: "Pengunjung",
+                                }, {
+                                    name: 'Pengunjung',
                                     data: totalVisitsData
-                                }
-                            ],
-                            stroke: {
-                                width: [4, 4]
-                            },
-                            plotOptions: {
-                                bar: {
-                                    columnWidth: "20%"
-                                }
-                            },
-                            xaxis: {
-                                type: 'datetime'
-                            },
-                            yaxis: [{
-                                    axisTicks: {
-                                        show: true
-                                    },
-                                    axisBorder: {
-                                        show: true,
-                                        color: "#FF1654"
-                                    },
-                                    labels: {
-                                        style: {
-                                            colors: "#FF1654"
-                                        }
-                                    },
-                                    title: {
-                                        text: "Pengunjung",
-                                        style: {
-                                            color: "#FF1654"
-                                        }
-                                    }
+                                }],
+                                chart: {
+                                    type: 'bar',
+                                    height: 350
                                 },
-                                {
-                                    opposite: true,
-                                    axisTicks: {
-                                        show: true
+                                plotOptions: {
+                                    bar: {
+                                        horizontal: false,
+                                        columnWidth: '55%',
+                                        endingShape: 'rounded'
                                     },
-                                    axisBorder: {
-                                        show: true,
-                                        color: "#1E88E5"
-                                    },
+                                },
+                                dataLabels: {
+                                    enabled: false
+                                },
+                                stroke: {
+                                    show: true,
+                                    width: 2,
+                                    colors: ['transparent']
+                                },
+                                xaxis: {
+                                    type: "datetime",
                                     labels: {
                                         style: {
-                                            colors: "#1E88E5"
-                                        }
+                                            fontSize: "12px",
+                                        },
                                     },
-                                    title: {
-                                        text: "Total Visits",
-                                        style: {
-                                            color: "#1E88E5"
-                                        }
-                                    }
-                                }
-                            ],
-                            tooltip: {
-                                shared: true,
-                                intersect: false,
-                                x: {
-                                    show: false
-                                }
-                            },
-                            legend: {
-                                horizontalAlign: "left",
-                                offsetX: 40
-                            }
-                        };
+                                },
+                                fill: {
+                                    opacity: 1
+                                },
+                            };
 
-                        var chart = new ApexCharts(document.querySelector("#chartDataAnalytic"), options);
-                        chart.render();
+                            var chart = new ApexCharts(document.querySelector("#chartDataAnalytic"), options);
+                            chart.render();
+                        } else {
+                            console.log("Data tidak tersedia.");
+                        }
                     },
                     error: function(xhr, status, error) {
                         console.error(error);
-                    }
+                    },
                 });
             }
 
             updateChart();
+        </script>
+
+        <script>
+            const showPopularDataButton = document.getElementById('showPopularData');
+            const showAdditionalDataButton = document.getElementById('showAdditionalData');
+            const popularDataContainer = document.getElementById('popularDataContainer');
+            const additionalDataContainer = document.getElementById('additionalDataContainer');
+
+            showAdditionalDataButton.addEventListener('click', () => {
+                popularDataContainer.classList.add('d-none');
+                additionalDataContainer.classList.remove('d-none');
+            });
+
+            showPopularDataButton.addEventListener('click', () => {
+                additionalDataContainer.classList.add('d-none');
+                popularDataContainer.classList.remove('d-none');
+            });
         </script>
     @endsection
