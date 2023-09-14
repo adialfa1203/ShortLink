@@ -44,7 +44,7 @@ class DahsboardController extends Controller
         $qr = ShortUrl::get()->sum('qr_code');
         // dd($ShortLink);
 
-        return view('User.DashboardUser',compact('ShortLink','countURL','totalVisits','countNameChanged', 'totalVisitsMicrosite'));
+        return view('User.DashboardUser',compact('ShortLink','countURL','totalVisits','countNameChanged', 'qr', 'totalVisitsMicrosite'));
     }
     public function HelpSupport() {
         $komentar = Comment::orderBy('created_at', 'desc')->get();

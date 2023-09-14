@@ -355,12 +355,19 @@
 use \Carbon\Carbon;
 @endphp
 @section('script')
-@foreach ($urlshort as $row)
 <script>
+    var visitsData = @json($visits); // Mengonversi data PHP ke JSON
+
+    if (!Array.isArray(visitsData)) {
+        visitsData = [visitsData]; // Ubah menjadi array jika bukan array
+    }
+
     var options = {
         series: [{
-            name: "{{ $row->title }}",
-            data: ["{{ $row->visits_count }}"],
+            name: "Visits",
+            data: visitsData.map(function(item) {
+                return item.visits_count;
+            })
         }],
         chart: {
             height: 350,
@@ -376,7 +383,7 @@ use \Carbon\Carbon;
             curve: 'straight'
         },
         title: {
-            text: 'Product Trends by Month',
+            text: 'Visits by Month',
             align: 'left'
         },
         grid: {
@@ -386,14 +393,16 @@ use \Carbon\Carbon;
             },
         },
         xaxis: {
-            categories: ["{{ Carbon::create(null, $row->month, null)->format('F') }}"],
+            categories: visitsData.map(function(item) {
+                return item.month;
+            }),
         }
     };
 
     var chart = new ApexCharts(document.querySelector("#chart{{ $row->id }}"), options);
     chart.render();
 </script>
-@endforeach
+
 <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js') }}"></script>
 <script type="text/javascript" src="./jquery.qrcode.js"></script>
 <script type="text/javascript" src="./qrcode.js"></script>
@@ -543,49 +552,49 @@ use \Carbon\Carbon;
 <script>
     // Fungsi untuk membuka modal
     function bukaModal() {
-    var modal = document.getElementById("modal");
-    modal.style.display = "block";
-}
-
-// Event listener untuk tombol modal
-// Deklarasikan variabel qrcodeSrc di luar fungsi click event handler
-// Inisialisasi qrcodeSrc sesuai kebutuhan, dalam contoh ini saya biarkan 1
-var qrcodeSrc = 1; // Inisialisasi qrcodeSrc di luar event handler
-
-var tombolModal = document.getElementById("tombol-modal");
-
-function tombolmodal(id){
-    console.log(id);
-    var qrcodeSrcString = qrcodeSrc.toString();
-
-    // Periksa apakah qrcodeSrc tidak null atau undefined
-    if (qrcodeSrcString !== null && qrcodeSrcString !== undefined) {
-        var dataToSend = {
-            id: id,
-            qrcodeSrc: qrcodeSrcString,
-            _token: $('meta[name="csrf-token"]').attr('content')
-        };
-        $.ajax({
-            url: "/qr",
-            type: "POST",
-            dataType: "json",
-            data: dataToSend,
-            success: function(response) {
-                // Di sini Anda dapat menangani respons dari server jika diperlukan
-                // Jika perlu, Anda juga dapat memperbarui nilai qrcodeSrc di sini.
-                qrcodeSrc++; // Memperbarui nilai qrcodeSrc setelah request AJAX selesai
-            },
-            error: function(response) {
-                console.log(response)
-            }
-        });
+        var modal = document.getElementById("modal");
+        modal.style.display = "block";
     }
-}
-tombolModal.addEventListener("click", function() {
 
-    // Menggunakan toString() untuk mengubah qrcodeSrc menjadi string
+    // Event listener untuk tombol modal
+    // Deklarasikan variabel qrcodeSrc di luar fungsi click event handler
+    // Inisialisasi qrcodeSrc sesuai kebutuhan, dalam contoh ini saya biarkan 1
+    var qrcodeSrc = 1; // Inisialisasi qrcodeSrc di luar event handler
 
-});
+    var tombolModal = document.getElementById("tombol-modal");
+
+    function tombolmodal(id) {
+        console.log(id);
+        var qrcodeSrcString = qrcodeSrc.toString();
+
+        // Periksa apakah qrcodeSrc tidak null atau undefined
+        if (qrcodeSrcString !== null && qrcodeSrcString !== undefined) {
+            var dataToSend = {
+                id: id,
+                qrcodeSrc: qrcodeSrcString,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            };
+            $.ajax({
+                url: "/qr",
+                type: "POST",
+                dataType: "json",
+                data: dataToSend,
+                success: function(response) {
+                    // Di sini Anda dapat menangani respons dari server jika diperlukan
+                    // Jika perlu, Anda juga dapat memperbarui nilai qrcodeSrc di sini.
+                    qrcodeSrc++; // Memperbarui nilai qrcodeSrc setelah request AJAX selesai
+                },
+                error: function(response) {
+                    console.log(response)
+                }
+            });
+        }
+    }
+    tombolModal.addEventListener("click", function() {
+
+        // Menggunakan toString() untuk mengubah qrcodeSrc menjadi string
+
+    });
 
 
 
