@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\ShortUrl;
-use App\Models\User;
-use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 use Carbon\Carbon;
-use Flasher\Laravel\Http\Request;
+use App\Models\User;
+use App\Models\ShortUrl;
+use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Auth;
+use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 
 class AnalyticUserController extends Controller
 {
@@ -14,22 +14,50 @@ class AnalyticUserController extends Controller
     {
         $user = Auth::user()->id;
 
-        $startDate = Carbon::now()->subDays(7);
+        $endDate = Carbon::now();
+        $startDate = $endDate->copy()->subDays(6);
 
         $totalUrl = ShortURL::where('created_at', '>=', $startDate)
         ->selectRaw('DATE(created_at) as date, COUNT(*) as totalUrl')
         ->groupBy('date')
         ->orderBy('date')
         ->get();
+        $dateRange = CarbonPeriod::create($startDate, '1 day', $endDate);
 
-        $totalVisits = ShortURLVisit::query()
-        ->whereRelation('shortURL', 'user_id', '=', $user)
-        ->selectRaw('DATE(created_at) as date, COUNT(*) as totalVisits')
-        ->groupBy('date')
-        ->orderBy('date')
-        ->get();
+        $totalUrlData = [];
+        $totalVisitsData = [];
 
-        return response()->json(compact('startDate', 'user', 'totalUrl', 'totalVisits'));
+        foreach ($dateRange as $date) {
+            $dateString = $date->format('Y-m-d');
+
+            $totalUrl = ShortURL::whereDate('created_at', $dateString)
+                ->where('user_id', $user)
+                ->count();
+
+            $totalVisits = ShortURLVisit::whereHas('shortURL', function ($query) use ($user) {
+                    $query->where('user_id', $user)
+                        ->where('archive', '!=', 'yes');
+                })
+                ->whereDate('created_at', $dateString)
+                ->count();
+
+            $totalUrlData[] = ['date' => $dateString, 'totalUrl' => $totalUrl];
+            $totalVisitsData[] = ['date' => $dateString, 'totalVisits' => $totalVisits];
+        }
+
+        if (count($totalUrlData) < 7) {
+            $missingDays = 7 - count($totalUrlData);
+            $missingStartDate = $startDate->copy()->subDays($missingDays);
+            $missingDateRange = CarbonPeriod::create($missingStartDate, '1 day', $startDate->copy()->subDay());
+
+            foreach ($missingDateRange as $date) {
+                $dateString = $date->format('Y-m-d');
+                $totalUrlData[] = ['date' => $dateString, 'totalUrl' => 0];
+                $totalVisitsData[] = ['date' => $dateString, 'totalVisits' => 0];
+            }
+        }
+
+        return response()->json(['startDate' => $startDate, 'user' => $user, 'totalUrlData' => $totalUrlData, 'totalVisitsData' => $totalVisitsData]);
     }
 
 
