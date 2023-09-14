@@ -30,6 +30,9 @@
                                     @if ($errors->has('component_name'))
                                         <span class="text-danger">{{ $errors->first('component_name') }}</span>
                                     @endif
+                                    <div class="invalid-feedback">
+                                        Harap Isi Nama Sebelum Melanjutkan Proses.
+                                    </div>
                                 </div>
                             </div>
                         </div>

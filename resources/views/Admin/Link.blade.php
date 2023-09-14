@@ -104,7 +104,7 @@
                                     <th scope="col" data-sort="status">Tautan Populer</th>
                                     <th scope="col" data-sort="status">Microsite</th>
                                     <th scope="col" data-sort="status">Microsite Populer</th>
-                                    <th scope="col">Aksi</th>
+                                    {{-- <th scope="col">Aksi</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -133,13 +133,13 @@
                                         @else
                                         <span class="badge bg-danger-subtle text-danger">Tidak ada microsite populer</span>
                                         @endif</td>
-                                        <td>
+                                        {{-- <td>
                                             <ul class="d-flex gap-2 list-unstyled mb-0">
                                                 <li>
                                                     <a href="#deleteRecordModal" class="btn btn-subtle-danger btn-icon btn-sm me-3"><i class="fas fa-ban"></i></a>
                                                 </li>
                                             </ul>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody><!-- end tbody -->
