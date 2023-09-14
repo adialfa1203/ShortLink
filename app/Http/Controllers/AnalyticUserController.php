@@ -11,75 +11,63 @@ use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 class AnalyticUserController extends Controller
 {
     public function AnalyticUsersChart()
-    {
-        $user = Auth::user()->id;
+{
+    $user = Auth::user()->id;
 
-        $endDate = Carbon::now();
-        $startDate = $endDate->copy()->subDays(6);
+    $endDate = Carbon::now();
+    $startDate = $endDate->copy()->startOfMonth();
 
-        $dateRange = CarbonPeriod::create($startDate, '1 day', $endDate);
+    $dateRange = CarbonPeriod::create($startDate, '1 month', $endDate);
 
-        $totalUrlData = [];
-        $totalVisitsData = [];
-        $totalVisitsMicrositeData = [];
-        $countMicrositeData = [];
+    $totalUrlData = [];
+    $totalVisitsData = [];
+    $totalVisitsMicrositeData = [];
+    $countMicrositeData = [];
 
-        foreach ($dateRange as $date) {
-            $dateString = $date->format('Y-m-d');
+    foreach ($dateRange as $date) {
+        $startDateOfMonth = $date->startOfMonth()->format('Y-m-d');
+        $endDateOfMonth = $date->endOfMonth()->format('Y-m-d');
 
-            $countURL = ShortURL::where('user_id', $user)
-                ->whereNull('microsite_id')
-                ->whereDate('created_at', $dateString)
-                ->count();
+        $countURL = ShortURL::where('user_id', $user)
+            ->whereNull('microsite_id')
+            ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
+            ->count();
 
-            $countMicrosite = ShortUrl::where('microsite_id', $user)
-                ->whereDate('created_at', $dateString)
-                ->count();
+        $countMicrosite = ShortURL::where('microsite_id', $user)
+            ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
+            ->count();
 
-            $totalVisits = ShortURLVisit::whereHas('shortURL', function ($query) use ($user) {
-                    $query->where('user_id', $user)
-                        ->whereNull('microsite_id')
-                        ->where('archive', '!=', 'yes');
-                })
-                ->whereDate('created_at', $dateString)
-                ->count();
+        $totalVisits = ShortURLVisit::whereHas('shortURL', function ($query) use ($user) {
+                $query->where('user_id', $user)
+                    ->whereNull('microsite_id')
+                    ->where('archive', '!=', 'yes');
+            })
+            ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
+            ->count();
 
-            $totalVisitsMicrosite = ShortURLVisit::whereHas('shortURL', function ($query) use ($user) {
-                    $query->where('user_id', $user)
-                        ->whereNotNull('microsite_id');
-                })
-                ->whereDate('created_at', $dateString)
-                ->count();
+        $totalVisitsMicrosite = ShortURLVisit::whereHas('shortURL', function ($query) use ($user) {
+                $query->where('user_id', $user)
+                    ->whereNotNull('microsite_id');
+            })
+            ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
+            ->count();
 
-            $totalUrlData[] = ['date' => $dateString, 'totalUrl' => $countURL];
-            $totalVisitsData[] = ['date' => $dateString, 'totalVisits' => $totalVisits];
-            $totalVisitsMicrositeData[] = ['date' => $dateString, 'totalVisitsMicrosite' => $totalVisitsMicrosite];
-            $countMicrositeData[] = ['date' => $dateString, 'countMicrosite' => $countMicrosite];
-        }
-
-        if (count($totalUrlData) < 7) {
-            $missingDays = 7 - count($totalUrlData);
-            $missingStartDate = $startDate->copy()->subDays($missingDays);
-            $missingDateRange = CarbonPeriod::create($missingStartDate, '1 day', $startDate->copy()->subDay());
-
-            foreach ($missingDateRange as $date) {
-                $dateString = $date->format('Y-m-d');
-                $totalUrlData[] = ['date' => $dateString, 'totalUrl' => 0];
-                $totalVisitsData[] = ['date' => $dateString, 'totalVisits' => 0];
-                $totalVisitsMicrositeData[] = ['date' => $dateString, 'totalVisitsMicrosite' => 0];
-                $countMicrositeData[] = ['date' => $dateString, 'countMicrosite' => 0];
-            }
-        }
-
-        return response()->json([
-            'startDate' => $startDate,
-            'user' => $user,
-            'totalUrlData' => $totalUrlData,
-            'totalVisitsData' => $totalVisitsData,
-            'totalVisitsMicrositeData' => $totalVisitsMicrositeData,
-            'countMicrositeData' => $countMicrositeData
-        ]);
+        $totalUrlData[] = ['date' => $startDateOfMonth, 'totalUrl' => $countURL];
+        $totalVisitsData[] = ['date' => $startDateOfMonth, 'totalVisits' => $totalVisits];
+        $totalVisitsMicrositeData[] = ['date' => $startDateOfMonth, 'totalVisitsMicrosite' => $totalVisitsMicrosite];
+        $countMicrositeData[] = ['date' => $startDateOfMonth, 'countMicrosite' => $countMicrosite];
     }
+
+    return response()->json([
+        'startDate' => $startDate,
+        'user' => $user,
+        'totalUrlData' => $totalUrlData,
+        'totalVisitsData' => $totalVisitsData,
+        'totalVisitsMicrositeData' => $totalVisitsMicrositeData,
+        'countMicrositeData' => $countMicrositeData
+    ]);
+}
+
 
 
     public function analyticUser()

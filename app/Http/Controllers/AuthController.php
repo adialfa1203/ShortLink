@@ -15,13 +15,25 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    public function login(){
+    public function login(Request $request){
         return view('Auth\Login');
     }
 
     public function loginUser(Request $request){
         $credentials = $request->only('email', 'password');
-        $remember = $request->has('remember');
+        $remember = $request->input('remember'); 
+
+        $validator = Validator::make($request->all(), [
+            'remember' => 'required|string|max:15'
+        ], [
+            'remember.required' => 'Anda harus menyetujui Kebijakan Privasi.'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         if (Auth::attempt($credentials, $remember)) {
             $user = Auth::user();
@@ -36,8 +48,10 @@ class AuthController extends Controller
                 }
             }
         }
+
         return redirect()->route('login')->with('error', 'Email atau Password Yang Anda Masukkan Salah');
     }
+
 
 
 

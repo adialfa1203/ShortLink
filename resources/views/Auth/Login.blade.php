@@ -52,30 +52,33 @@
         .custom-btn {
             background-color: #0B7EFF;
         }
-
     </style>
-   <style>
-    @media (max-width: 768px) {
-        .img {
-            display: none; /* Hide the element with class "img" for screens up to 768px wide (tablet) */
-        }
-        .col-lg-6 {
-            width: 100%; /* Make the column full-width on tablets */
-        }
-    }
-</style>
+    <style>
+        @media (max-width: 768px) {
+            .img {
+                display: none;
+                /* Hide the element with class "img" for screens up to 768px wide (tablet) */
+            }
 
-<script>
-    window.addEventListener('resize', function() {
-        var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        if (screenWidth <= 768) { // Adjusted to 768px to match the tablet width
-            var imgElement = document.querySelector('.img');
-            if (imgElement) {
-                imgElement.remove(); // Remove the element with class "img" on tablet screens
+            .col-lg-6 {
+                width: 100%;
+                /* Make the column full-width on tablets */
             }
         }
-    });
-</script>
+    </style>
+
+    <script>
+        window.addEventListener('resize', function() {
+            var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body
+            .clientWidth;
+            if (screenWidth <= 768) { // Adjusted to 768px to match the tablet width
+                var imgElement = document.querySelector('.img');
+                if (imgElement) {
+                    imgElement.remove(); // Remove the element with class "img" on tablet screens
+                }
+            }
+        });
+    </script>
 
 
 </head>
@@ -87,125 +90,153 @@
             <div class="row justify-content-center">
                 <div class="col-lg-11">
                     <div class="card mb-0 p-0 d-flex justify-content-between">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-9 col-sm-10 col-lg-6">
-                                    <div class="card mb-0 border-0 shadow-none mb-0">
-                                        <div class="card-body p-sm-4 m-lg-3">
-                                            <div class="text-center mt-5">
-                                                <h5 class="fs-3xl" style="color: #104898">MASUK</h5>
-                                                <p class="text-muted">Masuk untuk melanjutkan ke LINK.ID</p>
-                                            </div>
-                                            <div class="p-2 mt-5">
-                                                <form action="{{ route('login.user') }}" method="">
-                                                    @csrf
-                                                    <div class="mb-3">
-                                                        <label for="username" class="form-label">Email</label>
-                                                        <div class="position-relative ">
-                                                            <input type="text" class="form-control password-input"
-                                                                name="email" id="username" placeholder="Masukkan Email"
-                                                                required>
-                                                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-9 col-sm-10 col-lg-6">
+                                <div class="card mb-0 border-0 shadow-none mb-0">
+                                    <div class="card-body p-sm-4 m-lg-3">
+                                        <div class="text-center mt-5">
+                                            <h5 class="fs-3xl" style="color: #104898">MASUK</h5>
+                                            <p class="text-muted">Masuk untuk melanjutkan ke LINK.ID</p>
+                                        </div>
+                                        <div class="p-2 mt-5">
+                                            <form action="{{ route('login.user') }}" method="">
+                                                @csrf
+                                                <div class="mb-3">
+                                                    <label for="username" class="form-label">Email</label>
+                                                    <div class="position-relative ">
+                                                        <input type="text" class="form-control password-input"
+                                                            name="email" id="username" placeholder="Masukkan Email"
+                                                            required>
                                                     </div>
+                                                </div>
 
-                                                    <div class="mb-3">
-                                                        {{-- <div class="float-end">
+                                                <div class="mb-3">
+                                                    {{-- <div class="float-end">
                                                             <a href="{{ url('send-email')}}" class="text-muted">Lupa kata sandi?</a>
                                                         </div> --}}
-                                                        <label class="form-label" for="password-input">Kata Sandi</label>
-                                                        <div class="position-relative auth-pass-inputgroup mb-3">
-                                                            <input type="password"
-                                                                class="form-control pe-5 password-input" name="password"
-                                                                placeholder="Kata Sandi" id="password-input"
-                                                                required>
-                                                            <button
-                                                                class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
-                                                                type="button" id="password-addon"><i
-                                                                    class="ri-eye-fill align-middle"></i></button>
-                                                        </div>
-                                                        <div class="float-end">
-                                                            <a href="{{ url('send-email')}}" class="text-muted">Lupa kata sandi?</a>
-                                                        </div>
-                                                        <div>
-                                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" required>
-                                                            <label class="form-check-label" for="remember">Saya setuju dengan <a href="#" data-bs-target="#myModal" data-bs-toggle="modal" id="privacyLink">Kebijakan Privasi</a></label>
-                                                        </div>
-                                                        <div id="requiredAlert" style="display: none; color: red;">Anda harus menyetujui Kebijakan Privasi.</div>
-                                                        <!-- Default Modals -->
-                                                        <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="myModalLabel">Kebijakan Privasi</h5>
-                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <p>Hummasoft Technology membangun aplikasi LinkID sebagai aplikasi Komersial. LAYANAN ini adalah
-                                                                            disediakan oleh Hummasoft Technology dan dimaksudkan untuk digunakan sebagaimana adanya.</p>
-                                                
-                                                                        <p>Halaman ini digunakan untuk memberi tahu pengunjung mengenai kebijakan kami terkait pengumpulan, penggunaan, dan
-                                                                            pengungkapan Informasi Pribadi jika ada yang memutuskan untuk menggunakan Layanan kami.</p>
-                                                
-                                                                        <p>Jika Anda memilih untuk menggunakan Layanan kami, maka Anda menyetujui pengumpulan dan penggunaan informasi di
-                                                                            kaitannya dengan kebijakan ini. Informasi Pribadi yang kami kumpulkan digunakan untuk menyediakan dan
-                                                                            meningkatkan Layanan. Kami tidak akan menggunakan atau membagikan informasi Anda kepada siapa pun kecuali sebagai
-                                                                            dijelaskan dalam Kebijakan Privasi ini.</p>
-                                                
-                                                                        <p>Istilah yang digunakan dalam Kebijakan Privasi ini memiliki arti yang sama dengan <a
-                                                                                href="/Privasi">Syarat dan Ketentuan</a>, yang dapat diakses di
-                                                                            LinkID kecuali ditentukan lain dalam Kebijakan Privasi ini.</p>
-                                                
-                                                                    </div>
+                                                    <label class="form-label" for="password-input">Kata Sandi</label>
+                                                    <div class="position-relative auth-pass-inputgroup mb-3">
+                                                        <input type="password" class="form-control pe-5 password-input"
+                                                            name="password" placeholder="Kata Sandi" id="password-input"
+                                                            required>
+                                                        <button
+                                                            class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
+                                                            type="button" id="password-addon"><i
+                                                                class="ri-eye-fill align-middle"></i></button>
+                                                    </div>
+                                                    <div class="float-end">
+                                                        <a href="{{ url('send-email') }}" class="text-muted">Lupa kata
+                                                            sandi?</a>
+                                                    </div>
+                                                    <div>
+                                                        <input class="form-check-input" type="checkbox" name="remember"
+                                                            id="remember">
+                                                        <label class="form-check-label" for="remember">Saya setuju
+                                                            dengan <a href="#" data-bs-target="#myModal"
+                                                                data-bs-toggle="modal" id="privacyLink">Kebijakan
+                                                                Privasi</a></label>
+                                                    </div>
+                                                    <div>
+                                                        @if ($errors->has('remember'))
+                                                            <span
+                                                                class="text-danger">{{ $errors->first('remember') }}</span>
+                                                        @endif
+                                                    </div>
+                                                    {{-- <div id="requiredAlert" style="display: none; color: red;">Anda harus menyetujui Kebijakan Privasi.</div> --}}
+                                                    <!-- Default Modals -->
+                                                    <div id="myModal" class="modal fade" tabindex="-1"
+                                                        aria-labelledby="myModalLabel" aria-hidden="true"
+                                                        style="display: none;">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="myModalLabel">Kebijakan
+                                                                        Privasi</h5>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Hummasoft Technology membangun aplikasi LinkID
+                                                                        sebagai aplikasi Komersial. LAYANAN ini adalah
+                                                                        disediakan oleh Hummasoft Technology dan
+                                                                        dimaksudkan untuk digunakan sebagaimana adanya.
+                                                                    </p>
+
+                                                                    <p>Halaman ini digunakan untuk memberi tahu
+                                                                        pengunjung mengenai kebijakan kami terkait
+                                                                        pengumpulan, penggunaan, dan
+                                                                        pengungkapan Informasi Pribadi jika ada yang
+                                                                        memutuskan untuk menggunakan Layanan kami.</p>
+
+                                                                    <p>Jika Anda memilih untuk menggunakan Layanan kami,
+                                                                        maka Anda menyetujui pengumpulan dan penggunaan
+                                                                        informasi di
+                                                                        kaitannya dengan kebijakan ini. Informasi
+                                                                        Pribadi yang kami kumpulkan digunakan untuk
+                                                                        menyediakan dan
+                                                                        meningkatkan Layanan. Kami tidak akan
+                                                                        menggunakan atau membagikan informasi Anda
+                                                                        kepada siapa pun kecuali sebagai
+                                                                        dijelaskan dalam Kebijakan Privasi ini.</p>
+
+                                                                    <p>Istilah yang digunakan dalam Kebijakan Privasi
+                                                                        ini memiliki arti yang sama dengan <a
+                                                                            href="/Privasi">Syarat dan Ketentuan</a>,
+                                                                        yang dapat diakses di
+                                                                        LinkID kecuali ditentukan lain dalam Kebijakan
+                                                                        Privasi ini.</p>
+
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        
-                                                    </div>
-                                                    <div class="mt-4">
-                                                        <button class="btn btn-primary w-100 custom-btn"
-                                                            type="submit">Masuk</button>
                                                     </div>
 
-                                                    <div class="mt-4 pt-2 text-center">
-                                                        <div class="signin-other-title position-relative">
-                                                            <h5 class="fs-sm mb-4 title">Daftar Dengan</h5>
-                                                        </div>
-                                                        <div class="pt-2 hstack gap-2 justify-content-center">
-                                                            <button type="button"
-                                                                class="btn btn-subtle-primary btn-icon"><i
-                                                                    class="ri-facebook-fill fs-lg"></i></button>
-                                                            <button type="button"
-                                                                class="btn btn-subtle-danger btn-icon"><i
-                                                                    class="ri-google-fill fs-lg"></i></button>
-                                                            <button type="button"
-                                                                class="btn btn-subtle-dark btn-icon"><i
-                                                                    class="ri-github-fill fs-lg"></i></button>
-                                                            <button type="button"
-                                                                class="btn btn-subtle-info btn-icon"><i
-                                                                    class="ri-twitter-fill fs-lg"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </form>                                                                                               
-
-                                                <div class="text-center mt-5">
-                                                    <p class="mb-0">Tidak mempunyai akun ? <a
-                                                            href="{{url('register')}}"
-                                                            class="fw-semibold text-secondary text-decoration-underline">
-                                                            Daftar</a> </p>
                                                 </div>
+                                                <div class="mt-4">
+                                                    <button class="btn btn-primary w-100 custom-btn"
+                                                        type="submit">Masuk</button>
+                                                </div>
+
+                                                <div class="mt-4 pt-2 text-center">
+                                                    <div class="signin-other-title position-relative">
+                                                        <h5 class="fs-sm mb-4 title">Daftar Dengan</h5>
+                                                    </div>
+                                                    <div class="pt-2 hstack gap-2 justify-content-center">
+                                                        <button type="button"
+                                                            class="btn btn-subtle-primary btn-icon"><i
+                                                                class="ri-facebook-fill fs-lg"></i></button>
+                                                        <button type="button"
+                                                            class="btn btn-subtle-danger btn-icon"><i
+                                                                class="ri-google-fill fs-lg"></i></button>
+                                                        <button type="button" class="btn btn-subtle-dark btn-icon"><i
+                                                                class="ri-github-fill fs-lg"></i></button>
+                                                        <button type="button" class="btn btn-subtle-info btn-icon"><i
+                                                                class="ri-twitter-fill fs-lg"></i></button>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                            <div class="text-center mt-5">
+                                                <p class="mb-0">Tidak mempunyai akun ? <a
+                                                        href="{{ url('register') }}"
+                                                        class="fw-semibold text-secondary text-decoration-underline">
+                                                        Daftar</a> </p>
                                             </div>
-                                        </div><!-- end card body -->
-                                    </div><!-- end card -->
-                                </div>
-                                <div class="col-6 right-section img col-lg-6">
-                                    <center>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div>
+                            <div class="col-6 right-section img col-lg-6">
+                                <center>
                                     <div class="w-100" style="margin-top: 20% ">
                                         <img src="{{ asset('template/image/Login2.png') }} " width="400"
                                             height="400">
                                     </div>
                                 </center>
-                                </div>
                             </div>
-                            <!--end col-->
+                        </div>
+                        <!--end col-->
                         <!--end row-->
                     </div>
                 </div>
@@ -262,7 +293,7 @@
         var loginForm = document.getElementById('loginForm');
         loginForm.addEventListener('submit', validateForm);
     </script>
-      
+
 </body>
 
 
