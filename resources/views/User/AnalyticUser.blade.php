@@ -2,6 +2,15 @@
 
     @section('title', 'Analitik')
 
+    @section('style')
+    <style>
+        .bg-custom {
+            background-color: #CDF0EA;
+        }
+    </style>
+
+    @endsection
+
     @section('content')
         <div class="page-content">
             <div class="container-fluid">
@@ -89,22 +98,50 @@
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
-
                 <div>
-                    <button type="button" class="btn btn-primary bg-gradient">Data Populer</button>
-                    <button disabled type="button" class="btn btn-primary bg-gradient">Data Tambahan</button>
+                    <button type="button" class="btn btn-subtle-primary" id="showPopularData">Data Populer</button>
+                    <button type="button" class="btn btn-subtle-primary" id="showAdditionalData">Data Tambahan</button>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card" data-simplebar
-                        style="max-height: 320px;" id="agenciesList">
-                            <div class="card-header fw-bold">
-                                Tautan Populer
+                    <div id="popularDataContainer" class="row">
+                        <div class="col-lg-6">
+                            <div class="card" data-simplebar
+                            style="max-height: 320px;" id="agenciesList">
+                                <div class="card-header fw-bold">
+                                    Tautan Populer
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless table-nowrap" >
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Tautan</th>
+                                                    <th scope="col">Pengunjung</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($links->sortByDesc('totalVisits') as $link)
+                                                    <tr>
+                                                        <th scope="row">{{ $loop->iteration }}</th>
+                                                        <td>{{ $link->default_short_url }}</td>
+                                                        <td>{{ $link->totalVisits }} Pengunjung</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-borderless table-nowrap" >
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card" id="agenciesList">
+                                <div class="card-header fw-bold">
+                                    Microsite Populer
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-borderless table-nowrap">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
@@ -113,46 +150,59 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($links->sortByDesc('totalVisits') as $link)
-                                                <tr>
-                                                    <th scope="row">{{ $loop->iteration }}</th>
-                                                    <td>{{ $link->default_short_url }}</td>
-                                                    <td>{{ $link->totalVisits }} Pengunjung</td>
-                                                </tr>
+                                            @foreach ($microsites->sortByDesc('totalVisits') as $microsite)
+                                            <tr>
+                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                <td>{{ $microsite->default_short_url }}</td>
+                                                <td>{{ $microsite->totalVisits }}</td>
+                                            </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+                        </div><!--end col-->
+                    </div>
+                    <div id="additionalDataContainer" class="row d-none">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header fw-bold">
+                                    <div class="avatar-sm mx-auto mb-3">
+                                        <div class="avatar-title bg-custom text-primary fs-xl rounded">
+                                           <i class="fa-solid fa-lock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body text-center">
+
+                                    <h4 class="card-title">Anda Tidak Bisa Mengakses Fitur Ini!</h4>
+                                    <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan Untuk Bisa Menikmati Fitur Ini</p>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="/subscribe-product-user"> Mulai Berlangganan? </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header fw-bold">
+                                    <div class="avatar-sm mx-auto mb-3">
+                                        <div class="avatar-title bg-custom text-primary fs-xl rounded">
+                                           <i class="fa-solid fa-lock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body text-center">
+
+                                    <h4 class="card-title">Anda Tidak Bisa Mengakses Fitur Ini!</h4>
+                                    <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan Untuk Bisa Menikmati Fitur Ini</p>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="/subscribe-product-user"> Mulai Berlangganan? </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="card" id="agenciesList">
-                            <div class="card-header fw-bold">
-                                Microsite Populer
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-borderless table-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Tautan</th>
-                                            <th scope="col">Pengunjung</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($microsites->sortByDesc('totalVisits') as $microsite)
-                                        <tr>
-                                            <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $microsite->default_short_url }}</td>
-                                            <td>{{ $microsite->totalVisits }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div><!--end col-->
                 </div><!--end row-->
             </div>
             <!-- container-fluid -->
@@ -161,6 +211,30 @@
     @section('script')
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            // Ambil elemen-elemen yang diperlukan
+            const showPopularDataButton = document.getElementById('showPopularData');
+            const showAdditionalDataButton = document.getElementById('showAdditionalData');
+            const popularDataContainer = document.getElementById('popularDataContainer');
+            const additionalDataContainer = document.getElementById('additionalDataContainer');
+
+            // Tambahkan event listener untuk tombol "Data Tambahan"
+            showAdditionalDataButton.addEventListener('click', () => {
+                // Sembunyikan kartu "Tautan Populer" dan "Microsite Populer"
+                popularDataContainer.classList.add('d-none');
+                // Tampilkan kartu "Anda harus beralih ke berlangganan terlebih dahulu"
+                additionalDataContainer.classList.remove('d-none');
+            });
+
+            // Tambahkan event listener untuk tombol "Data Populer"
+            showPopularDataButton.addEventListener('click', () => {
+                // Sembunyikan kartu "Anda harus beralih ke berlangganan terlebih dahulu"
+                additionalDataContainer.classList.add('d-none');
+                // Tampilkan kartu "Tautan Populer" dan "Microsite Populer"
+                popularDataContainer.classList.remove('d-none');
+            });
+        </script>
+
         <script>
             function updateChart() {
                 $.ajax({
