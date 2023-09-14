@@ -1,4 +1,4 @@
-    @extends('layout.user.app')
+@extends('layout.user.app')
 
     @section('title', 'Analitik')
 
@@ -29,36 +29,22 @@
     @endsection
 
     @section('content')
-    <div class="page-content">
-        <div class="container-fluid">
+        <div class="page-content">
+            <div class="container-fluid">
 
-            <!-- start page title -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Analitik</h4>
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0">Analitik</h4>
 
-                        {{-- <div class="page-title-right">
+                            {{-- <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Real Estate</a></li>
                                     <li class="breadcrumb-item active">Earnings</li>
                                 </ol>
                             </div> --}}
 
-                    </div>
-                </div>
-            </div>
-            <!-- end page title -->
-
-            <div class="row row-cols-xxl-4 row-cols-lg-3 row-cols-md-2 row-cols-1">
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card border-bottom border-2 card-animate border-secondary">
-                        <div class="card-body">
-                            <span class="badge bg-success-subtle text-success float-end"></span>
-                            <h4 class="mb-4"><span class="counter-value" data-target="{{ $countURL }}">0</span>
-                            </h4>
-
-                            <p class="text-muted fw-medium text-uppercase mb-0">Jumlah tautan</p>
                         </div>
                     </div>
                 </div>
@@ -100,7 +86,7 @@
                         <div class="card border-bottom border-2 card-animate border-warning">
                             <div class="card-body">
                                 <span class="badge bg-success-subtle text-success float-end"></span>
-                                <h4 class="mb-4"><span class="counter-value" data-target="0">0</span></h4>
+                                <h4 class="mb-4"><span class="counter-value" data-target="{{$qr}}">0</span></h4>
 
                                 <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Kode QR</p>
                             </div>
@@ -234,80 +220,11 @@
                                 </div>
                             </div>
                         </div>
-                        <br>
-                        <div class="card-body pt-0 mt-4 mt-md-0">
-                            <div id="chart"></div>
-                        </div>
                     </div>
-                </div><!--end col-->
-            </div><!--end row-->
-
-            <div>
-                <button type="button" class="btn btn-primary bg-gradient">Data Populer</button>
-                <button disabled type="button" class="btn btn-primary bg-gradient">Data Tambahan</button>
+                </div><!--end row-->
             </div>
-            <br>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="card" data-simplebar style="max-height: 320px;" id="agenciesList">
-                        <div class="card-header fw-bold">
-                            Tautan Populer
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-borderless table-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Tautan</th>
-                                            <th scope="col">Pengunjung</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($microsites->sortByDesc('totalVisits') as $microsite)
-                                            <tr>
-                                                <th scope="row">{{ $loop->iteration }}</th>
-                                                <td>{{ $microsite->default_short_url }}</td>
-                                                <td>{{ $microsite->totalVisits }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card" id="agenciesList">
-                        <div class="card-header fw-bold">
-                            Microsite Populer
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-borderless table-nowrap">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Tautan</th>
-                                        <th scope="col">Pengunjung</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($microsites->sortByDesc('totalVisits') as $microsite)
-                                    <tr>
-                                        <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $microsite->default_short_url }}</td>
-                                        <td>{{ $microsite->totalVisits }}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
+            <!-- container-fluid -->
         </div>
-        <!-- container-fluid -->
-    </div>
     @endsection
     @section('script')
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

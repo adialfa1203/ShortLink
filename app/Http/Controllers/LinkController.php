@@ -17,15 +17,13 @@ class LinkController extends Controller
     {
         $user = auth()->user(); // Mengambil objek User saat ini
         $user_id = $user->id;
-        $urlshort = ShortUrl::paginate(5);
-        $visits = ShortUrl::withCount('visits')
+        $urlshort = ShortUrl::withCount('visits')
         ->selectRaw('MONTH(created_at) as month')
         ->where('user_id', $user_id)
         ->whereNull('microsite_id')
         ->orderBy('month', 'desc')
         ->paginate(5);
-        // dd($visits);
-        return view('User.Link', compact('user','visits','urlshort', 'shortCode'));
+        return view('User.Link', compact('user','urlshort', 'shortCode'));
     }
 
     public function archive($id)
@@ -42,21 +40,21 @@ class LinkController extends Controller
     public function updateDeactivated(HttpRequest $request, $keyTime)
     {
         $updateUrl = ShortUrl::where('url_key', $keyTime);
-
+         
         if (!$updateUrl->exists()) {
             return response()->json(['error' => 'Short link not found'], 404);
         }
 
         // Memperbarui kolom deactivated_at
         $updateUrl->update([
-            'deactivated_at' => $request->newTime,
+            'deactivated_at' => $request->newTime,            
         ]);
 
         // Mengirimkan respon ke JavaScript
         return response()->json(['message' => 'Deactivation status updated successfully']);
     }
 
-    // public function LinkUsersChart()
+    // public function LinkUsersChart()         
     // {
     //     $user = Auth::user()->id;
 

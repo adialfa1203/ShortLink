@@ -411,7 +411,7 @@
                                 <div class="flex-grow-1">
                                     <div class="d-flex flex-column h-100">
                                         <p class="fs-md text-muted mb-4">Pengunjung Kode QR</p>
-                                        <h3 class="mb-0 mt-auto"><span class="counter-value" >{{$qr}}</span></h3>
+                                        <h3 class="mb-0 mt-auto"><span class="counter-value" data-target="{{$qr}}" >0</span></h3>
                                     </div>
                                 </div>
                                 <div class="flex-shrink-0">
@@ -434,17 +434,26 @@
 
                         </div>
                         <div class="progress" data-bs-toggle="tooltip" data-bs-title="{{ $countURL }} Tautan dibuat">
-                            <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                            <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($countURL / 100) * 100 }}%"></div>
                         </div>
                         <p class="text-muted mb-0"><b>{{$countURL}} dari 100</p>
 
                         <br>
+                        <h6 class="card-title">Microsite dibuat/bulan <i class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip" data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
+                        </h6>
+                        <div class="progress" data-bs-toggle="tooltip" data-bs-title="{{ $countMIcrosite }} Nama diubah">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" id="total-microsite" role="progressbar" aria-valuenow="{{ $countMIcrosite }}" aria-valuemin="0" aria-valuemax="10" style="width: {{ ($countMIcrosite / 10) * 100 }}%"></div>
+                        </div>
+                        <p class="text-muted mb-0" id="microsite-total"><b>{{ $countMIcrosite }} dari 10</b></p>
+
+                        <br>
+
                         <h6 class="card-title">Nama yang telah diubah/bulan <i class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip" data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
                         </h6>
                         <div class="progress" data-bs-toggle="tooltip" data-bs-title="{{ $countNameChanged }} Nama diubah">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" id="name-changed" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" id="name-changed" role="progressbar" aria-valuenow="{{ $countNameChanged }}" aria-valuemin="0" aria-valuemax="5" style="width: {{ ($countNameChanged / 5) * 100 }}%;"></div>
                         </div>
-                        <p class="text-muted mb-0" id="name-changed-text"><b>{{$countNameChanged}} dari 100</p>
+                        <p class="text-muted mb-0" id="name-changed-text"><b>{{ $countNameChanged }} dari 5</b></p>
                     </div>
                     <div class="d-flex justify-content-end pe-3" data-bs-toggle="modal" data-bs-target="#lihatlebihbanyak">
                         <p><a href="#" class="link-primary link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover">Lihat
@@ -470,20 +479,29 @@
 
                                             {{-- </div> --}}
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{$countURL}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$countURL}}%;">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{$countURL}}" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($countURL / 100) * 100 }}%;">
                                                 </div>
                                             </div>
                                             <p class="text-muted mb-0"><b>{{$countURL}} dari 100</p>
+
+                                            <br>
+                                            <h3 class="card-title">Microsite dibuat/bulan <i class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip" data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
+                                            </h3>
+                                            
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress-bar" role="progressbar" aria-valuenow="{{ $countMIcrosite }}" aria-valuemin="0" aria-valuemax="10" style="width: {{ ($countMIcrosite / 10) * 100 }}%;"></div>
+                                            </div>
+                                            
+                                            <p class="text-muted mb-0"><b>{{ $countMIcrosite }} dari 10</b></p>
 
                                             <br>
                                             <h3 class="card-title">Nama yang telah diubah/bulan <i class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip" data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
                                             </h3>
 
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{$countNameChanged}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$countNameChanged}}%;"></div>
-
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress-bar" role="progressbar" aria-valuenow="{{ $countNameChanged }}" aria-valuemin="0" aria-valuemax="5" style="width: {{ ($countNameChanged / 5) * 100 }}%;"></div>
                                             </div>
-                                            <p class="text-muted mb-0"><b>{{$countNameChanged}} dari 100</p>
+                                            <p class="text-muted mb-0"><b>{{ $countNameChanged }} dari 5</b></p>
                                         </div>
                                         <div class="card-body">
                                             <div class="col-lg-12">
@@ -757,11 +775,25 @@
     </script>
     <script>
         // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
-        var countData = {{ $countNameChanged }}; // Contoh nilai statiskeluar
-
+        var countData = {{ $countNameChanged }}; // Contoh nilai statis
+    
         // Ubah lebar bar progres sesuai dengan data yang diperoleh
         var progressBar = document.getElementById("progress-bar");
-        var progressBarWidth = (countData / 100) * 100; // Ubah 100 menjadi nilai maksimum yang sesuai
+        var progressBarWidth = (countData / 5) * 100; // Maksimum adalah 5
+        progressBar.style.width = progressBarWidth + "%";
+        progressBar.setAttribute("aria-valuenow", countData);
+    
+        // Update teks
+        var progressText = document.querySelector('.text-muted.mb-0 b');
+        progressText.textContent = countData + " dari 5";
+    </script>
+    <script>
+        // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
+        var countData = {{ $countMIcrosite }}; // Contoh nilai statis
+    
+        // Ubah lebar bar progres sesuai dengan data yang diperoleh
+        var progressBar = document.getElementById("progress-bar");
+        var progressBarWidth = (countData / 10) * 100; // Maksimum adalah 10
         progressBar.style.width = progressBarWidth + "%";
         progressBar.setAttribute("aria-valuenow", countData);
     </script>
@@ -793,20 +825,31 @@
         progressText.textContent = countURLValue + ' dari 100';
     </script>
     <script>
-        // Get the value from the server-side variable {{ $countURL }}
-        var countURLValue = {{ $countNameChanged }};
+    // Get the value from the server-side variable {{ $countMIcrosite }}
+    var countURLValue = {{ $countMIcrosite }};
 
-        // Calculate the percentage
-        var percentage = (countURLValue / 100) * 100; // Assuming 100 is the total
+    // Update the progress bar width based on a maximum value of 10
+    var progressBar = document.querySelector('#total-microsite');
+    progressBar.style.width = ((countURLValue / 10) * 100) + '%';
+    progressBar.setAttribute('aria-valuenow', countURLValue);
 
-        // Update the progress bar width
-        var progressBar = document.querySelector('#name-changed');
-        progressBar.style.width = percentage + '%';
-        progressBar.setAttribute('aria-valuenow', countURLValue);
+    // Update the text
+    var progressText = document.querySelector('#microsite-total');
+    progressText.textContent = countURLValue + ' dari 10';
+    </script>
+    <script>
+    // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
+    var countData = {{ $countNameChanged }}; // Contoh nilai statis
 
-        // Update the text
-        var progressText = document.querySelector('#name-changed-text');
-        progressText.textContent = countURLValue + ' dari 100';
+    // Ubah lebar bar progres sesuai dengan data yang diperoleh
+    var progressBar = document.getElementById("name-changed");
+    var progressBarWidth = (countData / 5) * 100; // Maksimum adalah 5
+    progressBar.style.width = progressBarWidth + "%";
+    progressBar.setAttribute("aria-valuenow", countData);
+
+    // Update teks
+    var progressText = document.getElementById("name-changed-text");
+    progressText.textContent = countData + " dari 5";
     </script>
 
     <script>

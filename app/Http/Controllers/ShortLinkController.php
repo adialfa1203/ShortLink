@@ -17,7 +17,6 @@ class ShortLinkController extends Controller
 {
     public function shortLink(Request $request, Toastr $toastr)
     {
-
         $user = auth()->user();
 
         if ($user->subscribe == 'yes') {
@@ -41,7 +40,7 @@ class ShortLinkController extends Controller
             ->make();
 
         $find = ShortUrl::query()->where('url_key', $shortURLObject->url_key)->first();
-        // dd($find);
+
         $find->update([
             'user_id' => auth()->id(),
             'default_short_url' => $shortURLObject->default_short_url,
@@ -50,45 +49,6 @@ class ShortLinkController extends Controller
             'deleted_add' => $request->deleted_add,
             'click_count' => $request->click_count,
             'qr_code' => $request->qr_code,
-            'title' => $request->title,
-            'deactivated_at' => $request->deactivated_at
-        ]);
-
-        return response()->json($find);
-    }
-    public function  qr(Request $request)
-    {
-        $user = auth()->user();
-
-        // if ($user->subscribe == 'yes') {
-        // } else {
-        //     $shortLinkTotal = $user->shortUrls()->count();
-        //     if ($shortLinkTotal >= 100) {
-        //         return response()->json(['message' => 'Anda telah mencapai batasan pembuatan tautan baru. Untuk dapat membuat lebih banyak tautan baru, pertimbangkan untuk meningkatkan akun Anda ke versi premium. Dengan berlangganan, Anda akan mendapatkan akses ke fitur-fitur tambahan dan batasan yang lebih tinggi. ', 'status' => 'gagal']);
-        //     }
-        // }
-        // $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
-        // $shortURLObject = $builder
-        //     ->destinationUrl($request->destination_url)
-        //     ->when(
-        //         $request->date('activation'),
-        //         function (Builder $builder) use ($request): Builder {
-        //             return $builder
-        //                 ->activateAt(now())
-        //                 ->deactivateAt(Carbon::parse($request->deactivated_at));
-        //         },
-        //     )
-        //     ->make();
-
-        $find = ShortUrl::query()->where('id',  $request->id)->first();
-        $find->update([
-            'user_id' => auth()->id(),
-            // 'default_short_url' => $shortURLObject->default_short_url,
-            // 'password' => Hash::make($request->password),
-            // 'active' => $request->active,
-            // 'deleted_add' => $request->deleted_add,
-            'click_count' => $request->click_count,
-            'qr_code' => $request->qrcodeSrc,
             'title' => $request->title,
             'deactivated_at' => $request->deactivated_at
         ]);
@@ -121,7 +81,7 @@ class ShortLinkController extends Controller
 
         $validator = Validator::make($request->all(), [
             'newUrlKey' => 'required|unique:short_urls,url_key'
-        ], [
+        ],[
             'newUrlKey.required' => 'Kolom harus diisi',
             'newUrlKey.unique' => 'Nama sudah digunakan'
         ]);
@@ -144,8 +104,8 @@ class ShortLinkController extends Controller
     }
     public function micrositeLink($micrositeLink)
     {
-        $accessMicrosite = Microsite::where('link_microsite', $micrositeLink)->first();
-        $social = Social::where('button_link', $micrositeLink)->first();
+        $accessMicrosite = Microsite::where('id', $micrositeLink)->first();
+        $social = Social::where('microsite_id', $micrositeLink)->first();
         $short_url = ShortUrl::where('microsite_id', $micrositeLink)->first();
 
         return view('Microsite.MicrositeLink', compact('accessMicrosite', 'social', 'short_url'));

@@ -17,11 +17,6 @@ class AnalyticUserController extends Controller
         $endDate = Carbon::now();
         $startDate = $endDate->copy()->subDays(6);
 
-        $totalUrl = ShortURL::where('created_at', '>=', $startDate)
-        ->selectRaw('DATE(created_at) as date, COUNT(*) as totalUrl')
-        ->groupBy('date')
-        ->orderBy('date')
-        ->get();
         $dateRange = CarbonPeriod::create($startDate, '1 day', $endDate);
 
         $totalUrlData = [];
@@ -98,6 +93,13 @@ class AnalyticUserController extends Controller
 
         $totalVisits = ShortURLVisit::query()
         ->whereRelation('shortURL', 'user_id', '=', $user)
+        ->whereRelation('shortURL', 'microsite_id', null)
+        ->whereRelation('shortURL', 'archive', '!=', 'yes')
+        ->count();
+
+        $totalVisitsMicrosite = ShortURLVisit::query()
+        ->whereRelation('shortURL', 'user_id', '=', $user)
+        ->whereRelation('shortURL', 'microsite_id', '!=', null)
         ->count();
 
         $users = User::where('email', '!=', 'admin@gmail.com')->get();
@@ -107,6 +109,7 @@ class AnalyticUserController extends Controller
         }
         // Mengurutkan data berdasarkan jumlah pengunjung
         arsort($count);
+        $qr = ShortUrl::get()->sum('qr_code');
         // find by id
         // bentuk array / collection
         // $shortURL = \AshAllenDesign\ShortURL\Models\ShortURL::find();
@@ -115,7 +118,7 @@ class AnalyticUserController extends Controller
         // $visits = count($shortURL->visits) ;
 
         // dd($totalVisits,$countURL);
-        return view('User.AnalyticUser', compact('totalVisits','countURL','count','users','links', 'dataLink', 'countMicrosite', 'microsites'));
+        return view('User.AnalyticUser', compact('totalVisits','countURL','count','users','links', 'dataLink', 'countMicrosite', 'qr', 'microsites','totalVisitsMicrosite'));
     }
 
 }
