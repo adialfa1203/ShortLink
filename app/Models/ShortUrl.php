@@ -6,6 +6,7 @@ use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ShortUrl extends Model
 {
@@ -29,5 +30,9 @@ class ShortUrl extends Model
     public function Microsite()
     {
         return $this->hasOne(Microsite::class);
+    }
+    public function component(): BelongsTo
+    {
+        return $this->BelongsTo(Components::class, 'components_id');
     }
 }

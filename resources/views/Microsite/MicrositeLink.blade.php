@@ -22,7 +22,7 @@
         <div class="fixed top-0 left-0 right-0 bottom-0 h-full flex">
             <div class="MicrositeContainer_Container__btcXO">
                 <div class="MicrositeContainer_StyledBackgroundFilter__5pVB_"></div>
-                <div class="MicrositeContainer_StyledBackground__1ENPs bg-center bg-cover" style="background-image:url(https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg);background-color:#d1d5db">
+                <div class="MicrositeContainer_StyledBackground__1ENPs bg-center bg-cover" style="background-image:url('{{ asset('component/' . $accessMicrosite->component->cover_img )}}')">
                 </div>
             </div>
         </div>
@@ -31,12 +31,12 @@
                 <div class="flex flex-wrap -m-2 relative z-10">
                     <div id="mcomp-64cfcae6a66629863dc47840" class="w-28 mx-auto relative mb-3">
                         <div class="w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center bg-gray-200 mx-auto overflow-hidden bg-center bg-cover bg-no-repeat rounded-full">
-                            <img src="https://4.bp.blogspot.com/-IOKaFptTwvM/UgoT5wK3Z0I/AAAAAAAABfU/ubqH9KT0Ouc/s320/foto+orang+lucu+8.jpg" alt="">
+                            <img src="{{ asset(Auth::user()->profile_picture ) }}" alt="">
                         </div>
                     </div>
-                    <div id="" class="Text_Text__v_8Om Text_Text_center__40OcD Text_Text_lg__sLpoO"><span style="font-weight:bold">Saidi</span></div>
+                    <div id="" class="Text_Text__v_8Om Text_Text_center__40OcD Text_Text_lg__sLpoO"><span style="font-weight:bold">{{ $accessMicrosite->name }}</span></div>
                     <div id="" class="Text_Text__v_8Om Text_Text_center__40OcD"><span>
-                            <p>Your bio description here</p>
+                            <p>{!! $accessMicrosite->description !!}</p>
                         </span></div>
                     <div class="mt-3 w-full"></div>
                     <div class="HorizontalLink_Container__R74h3">

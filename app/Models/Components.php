@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use AshAllenDesign\ShortURL\Models\ShortURL;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,5 +22,9 @@ class Components extends Model
     public function microsite()
     {
         return $this->hasMany(Microsite::class);
+    }
+    public function urlshort()
+    {
+        return $this->hasMany(ShortURL::class);
     }
 }
