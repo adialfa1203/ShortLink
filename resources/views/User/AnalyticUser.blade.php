@@ -191,6 +191,9 @@
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-header fw-bold">
+                                <div>
+                                    Referer Teratas
+                                </div><br>
                                 <div class="avatar-sm mx-auto mb-3">
                                     <div class="avatar-title bg-custom text-primary fs-xl rounded">
                                         <i class="fa-solid fa-lock"></i>
@@ -211,6 +214,55 @@
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-header fw-bold">
+                                <div>
+                                    Top Region
+                                </div><br>
+                                <div class="avatar-sm mx-auto mb-3">
+                                    <div class="avatar-title bg-custom text-primary fs-xl rounded">
+                                        <i class="fa-solid fa-lock"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+
+                                <h4 class="card-title">Anda Tidak Bisa Mengakses Fitur Ini!</h4>
+                                <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan Untuk Bisa Menikmati
+                                    Fitur Ini</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="/subscribe-product-user"> Mulai Berlangganan? </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header fw-bold">
+                                <div>
+                                    Browser Teratas
+                                </div><br>
+                                <div class="avatar-sm mx-auto mb-3">
+                                    <div class="avatar-title bg-custom text-primary fs-xl rounded">
+                                        <i class="fa-solid fa-lock"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+
+                                <h4 class="card-title">Anda Tidak Bisa Mengakses Fitur Ini!</h4>
+                                <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan Untuk Bisa Menikmati
+                                    Fitur Ini</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="/subscribe-product-user"> Mulai Berlangganan? </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header fw-bold">
+                                <div>
+                                    Perangkat Teratas
+                                </div><br>
                                 <div class="avatar-sm mx-auto mb-3">
                                     <div class="avatar-title bg-custom text-primary fs-xl rounded">
                                         <i class="fa-solid fa-lock"></i>

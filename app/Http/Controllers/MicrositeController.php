@@ -38,8 +38,8 @@ class MicrositeController extends Controller
 
     public function addMicrosite()
     {
-        $data = Components::paginate(3);
-        $button = Button::paginate(3);
+        $data = Components::all();
+        $button = Button::all();
         return view('microsite.AddMicrosite', compact('data', 'button'));
     }
 
@@ -248,7 +248,7 @@ class MicrositeController extends Controller
 
     public function viewComponent()
     {
-        $component = Components::paginate(1);
+        $component = Components::paginate(6);
         return view('Microsite.ViewComponent', compact('component'));
     }
 
