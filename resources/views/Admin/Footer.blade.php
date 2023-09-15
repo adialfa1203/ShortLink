@@ -54,7 +54,7 @@
                             <i class="bi bi-whatsapp"></i>
                         </span>
                     </div>
-                    <input type="number" name="whatsapp" class="form-control" id="whatsapp" placeholder="Whatsapp"
+                    <input type="text" name="whatsapp" class="form-control" id="whatsapp" placeholder="Whatsapp"
                         value="{{ $data->whatsapp }}">
                 </div>
                 <div class="mb-3 d-flex">

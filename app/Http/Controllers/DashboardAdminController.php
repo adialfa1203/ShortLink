@@ -98,21 +98,21 @@ class DashboardAdminController extends Controller
             'whatsapp' => 'string|integer',
             'instagram' => 'string',
             'twitter' => 'string',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            // 'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->hasFile('logo')) {
-            $oldProfilePicture = $footer->logo;
-            if ($oldProfilePicture) {
-                $oldProfilePath = public_path('logos/' . $oldProfilePicture);
-                if (file_exists($oldProfilePath)) {
-                    unlink($oldProfilePath);
-                }
-            }
+        // if ($request->hasFile('logo')) {
+        //     $oldProfilePicture = $footer->logo;
+        //     if ($oldProfilePicture) {
+        //         $oldProfilePath = public_path('logos/' . $oldProfilePicture);
+        //         if (file_exists($oldProfilePath)) {
+        //             unlink($oldProfilePath);
+        //         }
+        //     }
 
-            $oldProfilePicture = $request->file('logo')->move(public_path('logos'), $footer->id . '.jpg');
-            $footer->logo = 'logos/' . $footer->id . '.jpg';
-        }
+        //     $oldProfilePicture = $request->file('logo')->move(public_path('logos'), $footer->id . '.jpg');
+        //     $footer->logo = 'logos/' . $footer->id . '.jpg';
+        // }
 
         $footer->description = $request->description;
         $footer->whatsapp = $request->whatsapp;

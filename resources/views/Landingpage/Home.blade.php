@@ -513,21 +513,24 @@
                                 <h3>Hubungi Kami</h3>
                                 <ul style="text-align: justify;">
                                     <li>
-                                        <a href="https://wa.me/085606270454">
+                                        <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID" target="_blank">
                                             <i class="fab fa-whatsapp"></i>
-                                            {{ $data->whatsapp }}
+                                            Whatsapp
+                                            {{-- {{ $data->whatsapp }} --}}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#features">
+                                        <a href="https://www.instagram.com/{{ $data->instagram }}" target="_blank">
                                             <i class="fab fa-instagram"></i>
-                                            {{ $data->instagram }}
+                                            Instagram
+                                            {{-- {{ $data->instagram }} --}}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#features">
+                                        <a href="https://twitter.com/{{ $data->twitter }}" target="_blank">
                                             <i class="fab fa-twitter"></i>
-                                            {{ $data->twitter }}
+                                            Twitter
+                                            {{-- {{ $data->twitter }} --}}
                                         </a>
                                     </li>
                                 </ul>
