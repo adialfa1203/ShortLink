@@ -22,9 +22,17 @@ class ButtonController extends Controller
     {
         $validatedData = $request->validate([
             'name_button' => 'required|string|max:255',
-            'icon' => ['required', Rule::in(['bi bi-whatsapp', 'bi bi-facebook', 'bi bi-twitter', 'bi bi-telephone-fill', 'bi bi-instagram', 'bi bi-linkedin', 'bi bi-telegram', 'bi bi-tiktok', 'bi bi-spotify'])],
+            'icon' => [
+                'required',
+                Rule::in(['bi bi-whatsapp', 'bi bi-facebook', 'bi bi-twitter', 'bi bi-telephone-fill', 'bi bi-instagram', 'bi bi-linkedin', 'bi bi-telegram', 'bi bi-tiktok', 'bi bi-spotify']),
+            ],
             'color_hex' => 'nullable|string|max:7',
         ]);
+        $existingButton = Button::where('icon', $request->icon)->first();
+
+        if ($existingButton) {
+            return redirect()->back()->with('error', 'Pilihan dengan ikon ini sudah ada.');
+        }
 
         $button = Button::create([
             'name_button' => $request->name_button,
@@ -33,6 +41,7 @@ class ButtonController extends Controller
         ]);
         return redirect()->route('view.button')->with('success', 'Button berhasil ditambah.');
     }
+
 
     public function editButton($id){
         $button = Button::find($id);
@@ -43,9 +52,17 @@ class ButtonController extends Controller
     {
         $validatedData = $request->validate([
             'name_button' => 'required|string|max:255',
-            'icon' => ['required', Rule::in(['bi bi-whatsapp', 'bi bi-facebook', 'bi bi-twitter', 'bi bi-telephone-fill', 'bi bi-instagram', 'bi bi-linkedin', 'bi bi-telegram', 'bi bi-tiktok', 'bi bi-spotify'])],
+            'icon' => [
+                'required',
+                Rule::in(['bi bi-whatsapp', 'bi bi-facebook', 'bi bi-twitter', 'bi bi-telephone-fill', 'bi bi-instagram', 'bi bi-linkedin', 'bi bi-telegram', 'bi bi-tiktok', 'bi bi-spotify']),
+            ],
             'color_hex' => 'nullable|string|max:7',
         ]);
+        $existingButton = Button::where('icon', $request->icon)->where('id', '<>', $id)->first();
+
+        if ($existingButton) {
+            return redirect()->back()->with('error', 'Pilihan dengan ikon ini sudah ada.');
+        }
 
         $button = Button::findOrFail($id);
 
@@ -57,6 +74,7 @@ class ButtonController extends Controller
 
         return redirect()->route('view.button')->with('success', 'Button berhasil diupdate.');
     }
+
 
     public function deleteButton($id)
     {
