@@ -7,8 +7,6 @@ use App\Models\ShortUrl;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use AshAllenDesign\ShortURL\Models\ShortURLVisit;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request as HttpRequest;
 
 class LinkController extends Controller

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Footer;
 use App\Models\ShortUrl;
+use App\Helpers\DateHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use AshAllenDesign\ShortURL\Models\ShortURLVisit;
@@ -15,7 +16,8 @@ class DashboardAdminController extends Controller
 {
     public function dashboardChart()
     {
-        $startDate = Carbon::now()->subDays(7);
+        $startDate = DateHelper::getSomeMonthsAgoFromNow(5)->format('Y-m-d H:i:s');
+        $endDate = DateHelper::getCurrentTimestamp('Y-m-d H:i:s');
 
         $totalUser = User::where('created_at', '>=', $startDate)
             ->where('email', '!=', 'admin@gmail.com')
@@ -38,7 +40,37 @@ class DashboardAdminController extends Controller
             ->orderBy('date')
             ->get();
 
-        return response()->json(compact('startDate', 'totalUser', 'totalUrl', 'totalVisits'));
+        $result = [
+            'labels' => DateHelper::getAllMonths(5),
+            'series' => [
+                'totalUser' => [0, 0, 0, 0, 0, 0],
+                'totalUrl' => [0, 0, 0, 0, 0, 0],
+                'totalVisits' => [0, 0, 0, 0, 0, 0]
+            ]
+        ];
+
+        foreach ($totalUser as $dataUser) {
+            $parse = Carbon::parse($dataUser->date);
+            $date = $parse->shortMonthName . ' ' . $parse->year;
+            $index = array_search($date, array_values($result['labels']));
+            $result['series']['totalUser'][$index] = (int)$dataUser->totalUser;
+        }
+
+        foreach ($totalUrl as $dataUrl) {
+            $parse = Carbon::parse($dataUrl->date);
+            $date = $parse->shortMonthName . ' ' . $parse->year;
+            $index = array_search($date, array_values($result['labels']));
+            $result['series']['totalUrl'][$index] = (int)$dataUrl->totalUrl;
+        }
+
+        foreach ($totalVisits as $dataVisits) {
+            $parse = Carbon::parse($dataVisits->date);
+            $date = $parse->shortMonthName . ' ' . $parse->year;
+            $index = array_search($date, array_values($result['labels']));
+            $result['series']['totalVisits'][$index] = (int)$dataVisits->totalVisits;
+        }
+
+        return response()->json(compact('startDate', 'result'));
     }
 
     public function dashboardAdmin(){
@@ -68,7 +100,7 @@ class DashboardAdminController extends Controller
             'twitter' => 'string',
             'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        
+
         if ($request->hasFile('logo')) {
             $oldProfilePicture = $footer->logo;
             if ($oldProfilePicture) {
