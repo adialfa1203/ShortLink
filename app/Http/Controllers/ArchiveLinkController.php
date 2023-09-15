@@ -18,9 +18,10 @@ class ArchiveLinkController extends Controller
 
     public function restore($id)
     {
-        $data = ShortUrl::withTrashed()->find($id)->restore();
+        ShortUrl::withTrashed()->find($id)->restore();
         ShortUrl::withTrashed()->find($id)->update([
-            'archive' => 'no'
+            'archive' => 'no',
+            'deactivated_at' => now()->addDay()
         ]);
 
         return redirect()->back()->with('success', 'Link telah dipulihkan');

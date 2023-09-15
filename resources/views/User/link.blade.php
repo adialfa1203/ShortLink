@@ -159,10 +159,15 @@
                                 <?php
                                 $deactivatedAt = \Carbon\Carbon::parse($row->deactivated_at);
                                 $now = \Carbon\Carbon::now();
-
-                                if ($deactivatedAt < $now) {
+                                            
+                                if ($row->deactivated_at === null) {
+                                // Kolom deactivated_at kosong, tampilkan pesan "Aktif"
+                                    echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
+                                } elseif ($deactivatedAt < $now) {
+                                // Tautan telah kadaluarsa
                                     echo '<p class="text-danger" style="margin-top: 10px;">Tautan kadaluarsa</p>';
                                 } else {
+                                // Tautan masih aktif
                                     echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
                                 }
                                 ?>

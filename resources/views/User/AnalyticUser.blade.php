@@ -57,7 +57,7 @@
             <!-- end page title -->
 
             <div class="row row-cols-xxl-4 row-cols-lg-3 row-cols-md-2 row-cols-1">
-                <div class="col-xl-3 col-sm-6">
+                <div class="col-xl-4 col-sm-6">
                     <div class="card border-bottom border-2 card-animate border-primary">
                         <div class="card-body">
                             <span class="badge bg-success-subtle text-success float-end"></span>
@@ -68,17 +68,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card border-bottom border-2 card-animate border-success">
-                        <div class="card-body">
-                            <span class="badge bg-success-subtle text-success float-end"></span>
-                            <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisits }}">0</span>
-                            </h4>
-                            <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
+                <div class="col-xl-4 col-sm-6">
                     <div class="card border-bottom border-2 card-animate border-warning">
                         <div class="card-body">
                             <span class="badge bg-success-subtle text-success float-end"></span>
@@ -87,17 +77,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card border-bottom border-2 card-animate border-danger">
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card border-bottom border-2 card-animate border-success">
                         <div class="card-body">
                             <span class="badge bg-success-subtle text-success float-end"></span>
-                            <h4 class="mb-4"><span class="counter-value"
-                                    data-target="{{ $totalVisitsMicrosite }}">0</span></h4>
-
-                            <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Microsite</p>
+                            <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisits }}">0</span>
+                            </h4>
+                            <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung</p>
                         </div>
                     </div>
-                </div>
+                </div>                
             </div><!---end row-->
             <div>
                 <h5 class="mb-sm-0">Lini Masa</h5>

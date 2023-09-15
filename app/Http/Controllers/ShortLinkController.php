@@ -22,7 +22,7 @@ class ShortLinkController extends Controller
         if ($user->subscribe == 'yes') {
         } else {
             $shortLinkTotal = $user->shortUrls()->count();
-            if ($shortLinkTotal >= 4) {
+            if ($shortLinkTotal >= 100) {
                 return response()->json(['message' => 'Anda telah mencapai batasan pembuatan tautan baru. Untuk dapat membuat lebih banyak tautan baru, pertimbangkan untuk meningkatkan akun Anda ke versi premium. Dengan berlangganan, Anda akan mendapatkan akses ke fitur-fitur tambahan dan batasan yang lebih tinggi. ', 'status' => 'gagal']);
             }
         }
@@ -58,27 +58,6 @@ class ShortLinkController extends Controller
     public function  qr(Request $request)
     {
         $user = auth()->user();
-
-        // if ($user->subscribe == 'yes') {
-        // } else {
-        //     $shortLinkTotal = $user->shortUrls()->count();
-        //     if ($shortLinkTotal >= 100) {
-        //         return response()->json(['message' => 'Anda telah mencapai batasan pembuatan tautan baru. Untuk dapat membuat lebih banyak tautan baru, pertimbangkan untuk meningkatkan akun Anda ke versi premium. Dengan berlangganan, Anda akan mendapatkan akses ke fitur-fitur tambahan dan batasan yang lebih tinggi. ', 'status' => 'gagal']);
-        //     }
-        // }
-        // $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
-        // $shortURLObject = $builder
-        //     ->destinationUrl($request->destination_url)
-        //     ->when(
-        //         $request->date('activation'),
-        //         function (Builder $builder) use ($request): Builder {
-        //             return $builder
-        //                 ->activateAt(now())
-        //                 ->deactivateAt(Carbon::parse($request->deactivated_at));
-        //         },
-        //     )
-        //     ->make();
-
         $find = ShortUrl::query()->where('id',  $request->id)->first();
         $find->update([
             'user_id' => auth()->id(),
