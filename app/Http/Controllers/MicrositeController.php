@@ -140,7 +140,7 @@ class MicrositeController extends Controller
             }
         }
         // dd($buttonLinks);
-        return redirect()->route('microsite')->with('success', 'Button links added successfully.');
+        return redirect()->route('microsite')->with('success', 'Miscrosite sudah berhasil ditambahkan.');
     }
 
     public function createComponent()
@@ -235,6 +235,12 @@ class MicrositeController extends Controller
     {
         $component = Components::findOrFail($id);
 
+        $micrositeCount = Microsite::where('components_id', $id)->count();
+
+        if ($micrositeCount > 0) {
+            return redirect()->back()->with('error', 'Tidak dapat menghapus komponen ini karena masih ada data terkait.');
+        }
+
         if (file_exists(public_path('component/' . $component->cover_img))) {
             unlink(public_path('component/' . $component->cover_img));
         }
@@ -245,6 +251,7 @@ class MicrositeController extends Controller
 
         return redirect()->back()->with('success', 'Component berhasil dihapus.');
     }
+
 
     public function viewComponent()
     {

@@ -106,7 +106,7 @@
                                                     <div class="position-relative ">
                                                         <input type="text" class="form-control password-input"
                                                             name="email" id="username" placeholder="Masukkan Email"
-                                                            required>
+                                                            required value="{{ old('email') }}">
                                                     </div>
                                                 </div>
 
@@ -118,7 +118,7 @@
                                                     <div class="position-relative auth-pass-inputgroup mb-3">
                                                         <input type="password" class="form-control pe-5 password-input"
                                                             name="password" placeholder="Kata Sandi" id="password-input"
-                                                            required>
+                                                            required value="{{ old('password') }}">
                                                         <button
                                                             class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
                                                             type="button" id="password-addon"><i
