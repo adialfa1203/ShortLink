@@ -240,12 +240,13 @@
                                                     <div class="row">
                                                         @foreach ($button as $data)
                                                             <div class="col-xl-4 col-sm-6 mb-4">
-                                                                <div class="card" id="{{ $data->id }}">
-                                                                    <div class="card-footer text-center ">
+                                                                <div class="card" id="{{ $data->id }}"
+                                                                    data-card-id="{{ $data->id }}">
+                                                                    <div class="card-footer text-center">
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-end">
-                                                                            <label class="mb-0 me-2 ">
-                                                                                <input id="selectedButton" type="checkbox"
+                                                                            <label class="mb-0 me-2">
+                                                                                <input type="checkbox"
                                                                                     name="selectedButtons[]"
                                                                                     value="{{ $data->id }}"
                                                                                     class="checkbox"
@@ -370,32 +371,46 @@
     </script>
     <script>
         $(document).ready(function() {
-            $(".btn").click(function() {
-                var buttonValue = $(this).attr("data-button-value");
-
-                var checkbox = $("input[type='checkbox'][value='" + buttonValue + "']");
+            $(".card").click(function() {
+                var cardId = $(this).attr("data-card-id");
+                var checkbox = $("input[type='checkbox'][value='" + cardId + "']");
 
                 if (checkbox.is(":checked")) {
                     checkbox.prop("checked", false);
                 } else {
                     checkbox.prop("checked", true);
                 }
+
+                toggleCardHover(cardId);
             });
         });
-    </script>
-    <script>
-        function toggleCardHover(cardId) {
-            const card = document.getElementById(cardId);
-            card.classList.toggle('hover');
-        }
-    </script>
 
-    <script>
+        function toggleCardHover(cardId) {
+            var card = document.getElementById(cardId);
+            card.classList.toggle('hover');
+
+            var checkbox = $("input[type='checkbox'][value='" + cardId + "']");
+            var cardElement = $(card);
+
+            if (checkbox.is(":checked")) {
+                checkbox.prop("checked", false);
+                cardElement.removeClass("selected-card hover");
+                cardElement.css("border", "none");
+                cardElement.css("border", "none");
+            } else {
+                checkbox.prop("checked", true);
+                cardElement.addClass("selected-card hover");
+                cardElement.css("border", "1px solid black");
+            }
+        }
+    </script>
+    {{-- <script>
         function toggleCardHover(cardId) {
             const card = document.getElementById(cardId);
             card.classList.toggle('hover');
-        }
-    </script>
+        }
+    </script> --}}
+
     <script src="sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
