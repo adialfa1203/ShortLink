@@ -1,136 +1,76 @@
 @extends('layout.guest.app')
 @section('title', 'Example Microsite Name')
 @section('style')
-<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-<style>
-    .body {
-        background-color: #e7e7e7 !important;
-    }
+<link href="{{ asset('template/themesbrand.com/steex/layouts/assets/css/link.css') }}" rel="stylesheet" type="text/css">
 
-    .card-body {
-        padding: 0 !important;
-    }
-</style>
-@endsection
-<div class="page-content">
-    <div class="container-fluid">
-        <center>
-            <div class="card real-estate-grid-widgets card-animate" style="width: 50%; ">
-                <div class="card overflow-hidden">
-                    <div>
-                        <img src="{{ asset('component/' . $accessMicrosite->component->cover_img) }}" alt="" class="card-img-top profile-wid-img object-fit-cover" style="height: 200px;">
-                    </div>
-                    <div class="card-body pt-0 mt-n5">
-                        <div class="text-center">
-                            {{-- <div class="profile-user position-relative d-inline-block mx-auto">
-                                <img src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'profile_pictures/default.jpg') }}" alt="{{ Auth::user()->name }}" alt="" class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
-                            </div> --}}
-                            <div class="mt-3">
-                                <h5>{{$accessMicrosite->name}}<i class="align-baseline text-info ms-1"></i>
-                                </h5>
-                                <p class="text-muted">{!! $accessMicrosite->description !!}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body border-top">
-                        <div class="d-flex flex-wrap justify-content-center text-center mb-4">
-                            <div class="mb-2 mx-2">
-                                <button style="background-color: {{ $social->button->color_hex }};" type="button" class="btn btn-icon"><i class="{{ $social->button->icon }} " style="color:white;"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <button type="button" class="col-12 mb-2 btn btn-label rounded-pill" style="color: white; background-color: {{ $social->button->color_hex }}" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i style="color: white" class="{{ $social->button->icon }} label-icon align-middle rounded-pill fs-lg me-2"></i>
-                            {{ $social->button->name_button }} </button>
-                        <div class="card card-body text-center">
-                            <h4 type="button" class="card-title" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">{{ $accessMicrosite->company_name }}</h4>
-                            <p type="button" class="card-text text-muted" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">{{ $accessMicrosite->company_address }} </p>
-                        </div>
-                    </div>
 
-                </div><!--end card-->
-            </div><!--end col-->
-        </center>
-    </div>
-    <!-- <div class="modal fade" id="addInstructor" tabindex="-1" aria-labelledby="addInstructorModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content border-0">
-            <div class="modal-header">
-                <h1 class="modal-title fw-semibold fs-2" id="addInstructorModalLabel">Share Microsite</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    id="close-addInstructorModal"></button>
+<div id="__next">
+    <section class="MicrositeContainer_Main__h7wfn MicrositeContainer_Main_isNotBuilder__R1vOP MicrositeContainer_ButtonSizeLg__WNJnp" style="background-color:rgb(209 213 219 / 1);--dark-color:#000;--light-color:#fff;--text-color:#111827;--link-color:255, 255, 255;--link-background:118, 124, 131;--link-shadow:#fff;--link-border:#fff;--divider-color:255, 255, 255">
+        <div class="fixed top-0 left-0 w-full h-full overflow-hidden">
+            <div class="bg-center bg-repeat absolute -left-10 -right-10 -bottom-10 -top-10 blur-xl bg-cover" style="background-image:url(../cdn.s.id/images/8cc9c75d-641e-4947-ad9f-42f31e408caf_1000x1500.webp.jpeg)">
             </div>
-            <form class="tablelist-form" novalidate autocomplete="off">
-                <div class="modal-body">
-                    <div id="alert-error-msg" class="d-none alert alert-danger py-2"></div>
-                    <input type="hidden" id="id-field">
-                    <input type="hidden" id="rating-field">
-                    <div class="row">
-                        <div class="col-12 mb-4 justify-content-center">
-                            <div class="mb-3">
-                                <div class="card">
-                                    <img class="w-50 h-50" style="margin-left: 25%;" src="{{ asset('landingpage/images/QR code.svg') }}" alt="">
-                                </div>
-                                <div class="mb-3">
-                                    <p class="text-muted text-center">https://link.id/SSWQF</p>
-                                </div>
-                                <div class="mb-3 text-center">
-                                    <button type="button" class="btn btn-subtle-danger btn-label "><i class="bi bi-download label-icon align-middle fs-lg me-2 "></i>Download</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="mb-3">
-                                <button type="button" class="fw-bold card-animate btn btn-light btn-label col-12"><i class="bi bi-link-45deg label-icon align-middle fs-lg me-2"></i>Buat Micrositemu sendiri</button>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="mb-3">
-                                <button type="button" class="card-animate btn btn-light btn-label col-12"><i class="bi bi-facebook label-icon align-middle fs-lg me-2"></i>Facebook</button>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="mb-3">
-                                <button type="button" class="card-animate btn btn-light btn-label col-12"><i class="bi bi-twitter label-icon align-middle fs-lg me-2"></i>Twitter</button>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="mb-3">
-                                <button type="button" class="card-animate btn btn-light btn-label col-12"><i class="bi bi-whatsapp label-icon align-middle fs-lg me-2"></i>Whatsapp</button>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="mb-3">
-                                <button type="button" class="card-animate btn btn-light btn-label col-12"><i class="bi bi-clipboard-fill label-icon align-middle fs-lg me-2"></i> Copy Url</button>
-                            </div>
+        </div>
+        <style>
+            body,
+            html {
+                overscroll-behavior-y: none;
+            }
+        </style>
+        <div class="fixed top-3 right-3 z-50"><button class="transition-all bg-white bg-opacity-80 rounded-full p-3 hover:bg-opacity-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 text-gray-900">
+                    <path fill-rule="evenodd" d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z" clip-rule="evenodd"></path>
+                </svg></button></div>
+        <div class="fixed top-0 left-0 right-0 bottom-0 h-full flex">
+            <div class="MicrositeContainer_Container__btcXO">
+                <div class="MicrositeContainer_StyledBackgroundFilter__5pVB_"></div>
+                <div class="MicrositeContainer_StyledBackground__1ENPs bg-center bg-cover" style="background-image:url(https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg);background-color:#d1d5db">
+                </div>
+            </div>
+        </div>
+        <div class="MicrositeContainer_Container__btcXO">
+            <div class="MicrositeContainer_ComponentContainer__c7L7p">
+                <div class="flex flex-wrap -m-2 relative z-10">
+                    <div id="mcomp-64cfcae6a66629863dc47840" class="w-28 mx-auto relative mb-3">
+                        <div class="w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center bg-gray-200 mx-auto overflow-hidden bg-center bg-cover bg-no-repeat rounded-full">
+                            <img src="https://4.bp.blogspot.com/-IOKaFptTwvM/UgoT5wK3Z0I/AAAAAAAABfU/ubqH9KT0Ouc/s320/foto+orang+lucu+8.jpg" alt="">
                         </div>
                     </div>
-            </form>
+                    <div id="" class="Text_Text__v_8Om Text_Text_center__40OcD Text_Text_lg__sLpoO"><span style="font-weight:bold">Saidi</span></div>
+                    <div id="" class="Text_Text__v_8Om Text_Text_center__40OcD"><span>
+                            <p>Your bio description here</p>
+                        </span></div>
+                    <div class="mt-3 w-full"></div>
+                    <div class="HorizontalLink_Container__R74h3">
+                        <a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer" class="HorizontalLink_Link__7IF9Z HorizontalLink_Link_circle__S9cau">
+                        <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        </div>
+                    <div class="Link_LinkContainer__8XFkh">
+                        <div class="Link_LinkOuter__CacTs"><a href="https://wa.me/+6283104185095" target="_blank" rel="noopener noreferrer" class="Link_Link__lcSrg Link_Variant_fullRound__IEVkw Link_Variant_fullRound_whShadow__heIK0">
+                            <div class="Link_Icon__WjzGo Link_Icon_fullRound__JzoQ1"><i class="fa-brands fa-twitter"></i></div>
+                                <div class="Link_TextOuter__i2D1Z">
+                                    <div style="font-family:&#x27;Montserrat&#x27;, sans-serif" class="Link_Text__hNUN8 Link_Text_center__ZehB9"><strong>WhatsApp</strong>
+                                    </div>
+                                </div>
+                                <div class="Link_Dummy__e6G9_"></div>
+                            </a></div>
+                    </div>
+                    <div id="" style="font-size:1em" class="Text_Text__v_8Om Text_Text_center__40OcD">
+                        <p node="[object Object]"><strong>Write Your Company Name Here!</strong></p>
+                    </div>
+                    <div id="" style="font-size:1em" class="Text_Text__v_8Om Text_Text_center__40OcD">
+                        <p node="[object Object]">Write Your Company Address Here!</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="w-full flex flex-col items-center mt-10 font-worksans">
+                    <div class="py-1.5 px-4 rounded-full mb-10 shadow-lg bg-white z-10 hover:-translate-y-1 transition-all">
+                        <div class="text-sm font-medium text-center w-full flex items-center justify-center z-10 relative">
+                            <p class="text-gray-700">Powered by</p><img src="https://microsite.s.id/images/sid-neu-logo-dark.svg" class="h-7 ml-2 mr-0.5" alt="s.id logo" /><a href="https://home.s.id/?utm_source=sid-microsite&amp;utm_medium=Gmbssss" target="_blank" rel="noopener noreferrer" class="absolute left-0 top-0 w-full h-full"><span class="link"></span></a>
+                        </div>
+                    </div>
+                </div> -->
         </div>
-    </div> -->
-</div><!--end modal-->
+    </section>
+    <div style="position:fixed;z-index:999999999;top:16px;left:16px;right:16px;bottom:16px;pointer-events:none">
+    </div>
 </div>
-@section('script')
-<script>
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-<!-- dropzone js -->
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/dropzone/dropzone-min.js') }}"></script>
-
-<!--real estate list init js -->
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/real-estate-add-property.init.js') }}">
-</script>
-
-<!-- ckeditor -->
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/%40ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}">
-</script>
-<!-- profile-setting init js -->
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/profile-setting.init.js') }}"></script>
-<!-- init js -->
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-editor.init.js') }}"></script>
-
-<script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/app.js') }}"></script>
-@endsection
