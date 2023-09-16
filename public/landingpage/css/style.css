@@ -170,12 +170,12 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--body-text-purple);
+    color: #ffff;
 }
 
 a:hover {
     text-decoration: none;
-    color: var(--body-text-purple);
+    color: #ffff;
 }
 
 ul,

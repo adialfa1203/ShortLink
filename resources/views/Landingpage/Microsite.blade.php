@@ -518,8 +518,7 @@
                 @else
                     Swal.fire({
                         icon: 'error',
-                        title: 'Oh Tidakkk...',
-                        text: 'Anda harus login dulu',
+                        title: 'Maaf, Anda harus Login Terlebih dahulu',
                         confirmButtonText: '<a href="/login">Login disini</a>',
                     });
                 @endif

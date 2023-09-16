@@ -22,7 +22,9 @@ class MicrositeController extends Controller
                 ->get();
         }
         else {
-            $data = Microsite::where('user_id', $user_id)->get();
+            $data = Microsite::where('user_id', $user_id)
+            ->orderBy('created_at', 'desc')
+            ->get();
         }
 
         $short_urls = ShortUrl::whereIn('microsite_id', $data->pluck('id'))->get();
