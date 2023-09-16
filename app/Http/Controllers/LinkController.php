@@ -17,7 +17,7 @@ class LinkController extends Controller
         $user = auth()->user(); // Mengambil objek User saat ini
         $user_id = $user->id;
         $urlshort = ShortUrl::withCount('visits')
-        ->selectRaw('MONTH(created_at) as created_at')
+        // ->selectRaw('MONTH(created_at) as created_at')
         ->where('user_id', $user_id)
         ->whereNull('microsite_id')
         ->orderBy('created_at', 'desc')
