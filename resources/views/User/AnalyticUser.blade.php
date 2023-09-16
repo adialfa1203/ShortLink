@@ -86,7 +86,7 @@
                             <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung</p>
                         </div>
                     </div>
-                </div>                
+                </div>
             </div><!---end row-->
             <div>
                 <h5 class="mb-sm-0">Lini Masa</h5>
@@ -148,30 +148,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="card" id="agenciesList">
-                            <div class="card-header fw-bold">
-                                Microsite Populer
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-borderless table-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Tautan</th>
-                                            <th scope="col">Pengunjung</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($microsites->sortByDesc('totalVisits') as $microsite)
-                                            <tr>
-                                                <th scope="row">{{ $loop->iteration }}</th>
-                                                <td>{{ $microsite->default_short_url }}</td>
-                                                <td>{{ $microsite->totalVisits }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                    {{-- modal data tambahan --}}
+                    <div id="additionalDataContainer" class="row d-none">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header fw-bold">
+                                    <div class="avatar-sm mx-auto mb-3">
+                                        <div class="avatar-title bg-custom text-primary fs-xl rounded">
+                                            <i class="fa-solid fa-lock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body text-center">
+
+                                    <h4 class="card-title">Anda Tidak Bisa Mengakses Fitur Ini!</h4>
+                                    <p class="card-te
+
+                                xt text-muted">Anda perlu Beralih ke Berlangganan Untuk Bisa Menikmati
+                                        Fitur Ini</p>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="/subscribe-product-user"> Mulai Berlangganan? </a>
+                                </div>
                             </div>
                         </div>
                     </div><!--end col-->
