@@ -38,22 +38,28 @@
                     <div id="" class="Text_Text__v_8Om Text_Text_center__40OcD"><span>
                             <p>{!! $accessMicrosite->description !!}</p>
                         </span></div>
-                    <div class="mt-3 w-full"></div>
-                    <div class="HorizontalLink_Container__R74h3">
-                        <a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer" class="HorizontalLink_Link__7IF9Z HorizontalLink_Link_circle__S9cau">
-                        <i class="fa-brands fa-twitter"></i>
+                        <div class="mt-3 w-full"></div>
+                        <div class="HorizontalLink_Container__R74h3">
+                        @foreach ($social as $row)
+                        <a href="{{ $row->button_link  }}" target="_blank" rel="noopener noreferrer" class="HorizontalLink_Link__7IF9Z HorizontalLink_Link_circle__S9cau">
+                            <i class="{{ $row->button->icon }}"></i>
                         </a>
-                        </div>
+                        @endforeach
+                    </div>
+                    @foreach ($social as $row)
                     <div class="Link_LinkContainer__8XFkh">
-                        <div class="Link_LinkOuter__CacTs"><a href="https://wa.me/+6283104185095" target="_blank" rel="noopener noreferrer" class="Link_Link__lcSrg Link_Variant_fullRound__IEVkw Link_Variant_fullRound_whShadow__heIK0">
-                            <div class="Link_Icon__WjzGo Link_Icon_fullRound__JzoQ1"><i class="fa-brands fa-twitter"></i></div>
+                        <div class="Link_LinkOuter__CacTs"><a href="{{ $row->button_link  }}" target="_blank" rel="noopener noreferrer" class="Link_Link__lcSrg Link_Variant_fullRound__IEVkw Link_Variant_fullRound_whShadow__heIK0">
+                                <div class="Link_Icon__WjzGo Link_Icon_fullRound__JzoQ1">
+                                    <i class=" {{ $row->button->icon }}"></i>
+                                </div>
                                 <div class="Link_TextOuter__i2D1Z">
-                                    <div style="font-family:&#x27;Montserrat&#x27;, sans-serif" class="Link_Text__hNUN8 Link_Text_center__ZehB9"><strong>WhatsApp</strong>
+                                    <div style="font-family:&#x27;Montserrat&#x27;, sans-serif" class="Link_Text__hNUN8 Link_Text_center__ZehB9"><strong>{{ $row->button->name_button }}</strong>
                                     </div>
                                 </div>
                                 <div class="Link_Dummy__e6G9_"></div>
                             </a></div>
                     </div>
+                    @endforeach
                     <div id="" style="font-size:1em" class="Text_Text__v_8Om Text_Text_center__40OcD">
                         <p node="[object Object]"><strong>Write Your Company Name Here!</strong></p>
                     </div>
@@ -62,6 +68,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- <div class="w-full flex flex-col items-center mt-10 font-worksans">
                     <div class="py-1.5 px-4 rounded-full mb-10 shadow-lg bg-white z-10 hover:-translate-y-1 transition-all">
                         <div class="text-sm font-medium text-center w-full flex items-center justify-center z-10 relative">

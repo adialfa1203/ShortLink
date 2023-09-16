@@ -123,8 +123,8 @@ class ShortLinkController extends Controller
     public function micrositeLink($micrositeLink)
     {
         $accessMicrosite = Microsite::with('component')->where('link_microsite', $micrositeLink)->first();
-        $social = Social::with('button')->where('buttons_id', $micrositeLink)->get();
-        dd($social);
+        $social = Social::where('microsite_id',1)->with('button')->get();
+        // dd($social);
         $short_url = ShortUrl::where('microsite_id', $micrositeLink)->first();
 
         return view('Microsite.MicrositeLink', compact('accessMicrosite', 'social', 'short_url'));
