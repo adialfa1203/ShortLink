@@ -136,6 +136,7 @@
                                                         aria-controls="collapseExample{{ $row->id }}">
                                                         <i class="bi bi-bar-chart-fill"></i> statistik
                                                     </button>
+                                                    {{-- @dd($row) --}}
                                                     <a href="{{ route('edit.microsite', ['id' => $row->id]) }}"
                                                         class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>
                                                         Edit</a>
@@ -207,7 +208,7 @@
                                         </div>
                                         <a>
                                             <h3 class="garisbawah card-title mb-2">
-                                                {{ $short_urls->where('microsite_id', $row->id)->first()->default_short_url }}
+                                                {{ $short_urls->where('microsite_uuid', $row->id)->first()->default_short_url }}
                                             </h3>
                                         </a>
                                         {{-- <p type="button"

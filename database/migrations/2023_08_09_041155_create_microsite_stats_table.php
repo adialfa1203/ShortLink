@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('microsite_stats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('microsite_id')->references('id')->on('microsites')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('microsite_uuid')->nullable();
+            $table->foreign('microsite_uuid')->references('id')->on('microsites')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('page_id')->references('id')->on('microsite_pages')->onUpdate('cascade')->onDelete('cascade');
             $table->bigInteger('click_count');
             $table->string('unique_visitors');

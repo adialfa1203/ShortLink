@@ -17,8 +17,9 @@ class CreateShortUrlsTable extends Migration
             $table->bigIncrements('id');
             $table->text('destination_url')->nullable();
             $table->string('url_key')->unique();
-            $table->foreignId('user_id')->nullable()->constrained();
-            $table->foreignId('microsite_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->string('microsite_uuid')->nullable();
+            $table->foreign('microsite_uuid')->references('id')->on('microsites')->cascadeOnUpdate()->cascadeOnDelete();
             $table->enum('custom_name', ['yes', 'no'])->default('no');
             $table->string('title')->nullable();
             $table->string('password')->nullable();
@@ -32,6 +33,7 @@ class CreateShortUrlsTable extends Migration
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
+
     }
 
     /**

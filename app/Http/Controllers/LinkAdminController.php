@@ -22,7 +22,7 @@ class LinkAdminController extends Controller
                         ->whereRelation('shortURL', 'archive', '!=', 'yes')
                         ->count();
 
-        $totalMicrosite = ShortUrl::whereNotNull('microsite_id')->count();
+        $totalMicrosite = ShortUrl::whereNotNull('microsite_uuid')->count();
 
         //Menampilkan data user di dalam tabel
         // $users = User::where('email', '!=', 'admin@gmail.com')->get();
@@ -37,13 +37,13 @@ class LinkAdminController extends Controller
         foreach ($users as $user) {
             $userData[$user->id] = [
                 'total_links' => ShortUrl::where('user_id', $user->id)->count(),
-                'total_microsites' => ShortUrl::where('user_id', $user->id)->whereNotNull('microsite_id')->count(),
+                'total_microsites' => ShortUrl::where('user_id', $user->id)->whereNotNull('microsite_uuid')->count(),
                 'popular_links' => ShortUrl::where('user_id', $user->id)
                     ->withCount('visits')
                     ->orderBy('visits_count', 'desc')
                     ->first(),
                 'popular_microsites' => ShortUrl::where('user_id', $user->id)
-                    ->whereNotNull('microsite_id')
+                    ->whereNotNull('microsite_uuid')
                     ->withCount('visits')
                     ->orderBy('visits_count', 'desc')
                     ->first(),

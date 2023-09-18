@@ -19,7 +19,7 @@ class LinkController extends Controller
         $urlshort = ShortUrl::withCount('visits')
         // ->selectRaw('MONTH(created_at) as created_at')
         ->where('user_id', $user_id)
-        ->whereNull('microsite_id')
+        ->whereNull('microsite_uuid')
         ->orderBy('created_at', 'desc')
         ->paginate(5);
         $result = [

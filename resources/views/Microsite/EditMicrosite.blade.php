@@ -5,13 +5,12 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
     <style>
         /* Contoh aturan media queries untuk mengatur ulang tampilan pada layar kecil */
-@media (max-width: 768px) {
-    /* Aturan CSS untuk tampilan pada layar kecil di sini */
-    /* Misalnya, mengurangi font size atau mengubah jumlah kolom grid */
-}
+        @media (max-width: 768px) {
+            /* Aturan CSS untuk tampilan pada layar kecil di sini */
+            /* Misalnya, mengurangi font size atau mengubah jumlah kolom grid */
+        }
 
-/* Aturan media queries lainnya sesuai kebutuhan */
-
+        /* Aturan media queries lainnya sesuai kebutuhan */
     </style>
 @endsection
 
@@ -91,7 +90,7 @@
                                                                                 class="form-label">{{ $data->button->name_button }}</label>
                                                                             <input type="text" class="form-control"
                                                                                 id="placeholderInput"
-                                                                                placeholder="Isi Link {{$data->button->name_button}} Anda "
+                                                                                placeholder="Isi Link {{ $data->button->name_button }} Anda "
                                                                                 name="button_link[{{ $data->button->id }}]"
                                                                                 value="{{ $data->button_link }}">
                                                                             <div>
@@ -229,9 +228,9 @@
                             <div class="card-body pt-0 mt-n5">
                                 <div class="text-center">
                                     <div class="profile-user position-relative d-inline-block mx-auto">
-                                        <img src="{{ Auth::user()->profile_picture ? asset(Auth::user()->profile_picture) : asset('profile_pictures/default.jpg') }}" alt="{{ Auth::user()->name }}"
-                                        alt=""
-                                        class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
+                                        <img src="{{ Auth::user()->profile_picture ? asset(Auth::user()->profile_picture) : asset('profile_pictures/default.jpg') }}"
+                                            alt="{{ Auth::user()->name }}" alt=""
+                                            class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
 
                                     </div>
                                     <div class="mt-3">

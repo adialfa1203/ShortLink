@@ -20,7 +20,7 @@ class DataUserController extends Controller
 
         $totalUrl = ShortUrl::where('archive', '!=', 'yes')->count();
 
-        $totalMicrosite = ShortUrl::whereNotNull('microsite_id')->count();
+        $totalMicrosite = ShortUrl::whereNotNull('microsite_uuid')->count();
 
         $totalVisits = ShortURLVisit::query()
                             ->whereRelation('shortURL', 'archive', '!=', 'yes')
@@ -38,7 +38,7 @@ class DataUserController extends Controller
         arsort($count);
         return view('Admin.DataUserAdmin', compact('data','totalUser', 'totalUrl', 'totalVisits', 'users', 'count','totalMicrosite', 'totaldiblokir'));
     }
-    
+
 
     public function banUser($userId)
     {
@@ -60,9 +60,8 @@ class DataUserController extends Controller
             return redirect()->back()->with('error', 'Gagal memblokir akun');
         }
     }
-    
-    public function unbanUser($userId)
-    {
+
+    public function unbanUser($userId) {
         $user = User::findOrFail($userId);
 
         if (!$user->unban()) {

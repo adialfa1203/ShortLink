@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Button;
 use App\Models\Social;
+use App\Models\ShortUrl;
 use App\Models\Microsite;
 use App\Models\Components;
-use App\Models\ShortUrl;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,7 +27,7 @@ class MicrositeController extends Controller
             ->get();
         }
 
-        $short_urls = ShortUrl::whereIn('microsite_id', $data->pluck('id'))->get();
+        $short_urls = ShortUrl::whereIn('microsite_uuid', $data->pluck('id'))->get();
         $urlshort = ShortUrl::withCount('visits')
             ->selectRaw('MONTH(created_at) as month')
             ->where('user_id', $user_id)
@@ -44,50 +45,55 @@ class MicrositeController extends Controller
         return view('microsite.AddMicrosite', compact('data', 'button'));
     }
 
-    public function createMicrosite(Request $request)
+    public function createMicrosite(Request $request, Microsite $microsite)
     {
-        $user = auth()->user();
-        
-        // Jika pengguna adalah non-premium (subscribe == 'no') dan telah mencapai batas 10 microsite
-        if ($user->subscribe === 'no' && $user->microsites()->count() >= 10) {
-            return redirect()->back()->with('error', 'Anda telah mencapai batas maksimum 10 microsite.');
-        }
-
         $request->validate([
             'microsite_selection' => 'required',
             'name' => 'required|string|regex:/^[^-+]+$/u|max:10',
             'link_microsite' => 'required|regex:/^[^-+]+$/u|unique:microsites,link_microsite,id',
         ]);
-
         $data = [
+            'id' => Str::uuid()->toString(),
             'components_id' => $request->microsite_selection,
-            'user_id' => $user->id,
+            'user_id' => auth()->user()->id,
             'name' => $request->name,
             'link_microsite' => $request->link_microsite,
         ];
 
-        // Membuat microsite
-        $microsite = Microsite::create($data);
-
+        $selectedComponentId = $request->input('microsite_selection');
         $selectedButtons = $request->input('selectedButtons', []);
+
+        $microsite = Microsite::create($data);
+        $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
+        $micrositeObject = $builder->destinationUrl(route('microsite.short.link', $microsite->link_microsite))->make();
+        ShortUrl::where('url_key', $micrositeObject->url_key)->update([
+            'user_id' => auth()->id(),
+            'microsite_uuid' => $microsite->id,
+        ]);
+        $short_id = ShortUrl::where('url_key', $micrositeObject->url_key)->first()->id;
+        ShortUrl::findOrFail($short_id)->update([
+            'url_key' => $request->link_microsite,
+            'default_short_url' => "http://127.0.0.1:8000/link.id/" . $request->link_microsite,
+        ]);
 
         foreach ($selectedButtons as $select) {
             $socialData = [
                 'buttons_id' => $select,
-                'microsite_id' => $microsite->id,
+                'microsite_uuid' => $microsite->id,
                 'button_link' => null,
             ];
             Social::create($socialData);
         }
-        
+        // dd($request);
+
         return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
     }
 
     public function editMicrosite($id)
     {
         $microsite = Microsite::findorFail($id);
-        $social = Social::where('microsite_id', $id)->get();
-        $short_url = ShortUrl::where('microsite_id', $id)->first();
+        $social = Social::where('microsite_uuid', $id)->get();
+        $short_url = ShortUrl::where('microsite_uuid', $id)->first();
         // $buttonLink = ButtonLink::findorFail($id);
         return view('microsite.EditMicrosite', compact('microsite', 'id', 'social', 'short_url'));
     }
@@ -95,7 +101,7 @@ class MicrositeController extends Controller
     public function micrositeUpdate(Request $request, $id)
     {
         $microsite = Microsite::FindOrFail($id);
-        $socials = Social::where('microsite_id', $id)->get();
+        $socials = Social::where('microsite_uuid', $id)->get();
         $buttonLinks = $request->input('button_link');
 
         $validator = Validator::make($request->all(), [
@@ -128,7 +134,7 @@ class MicrositeController extends Controller
         $microsite->save();
 
         foreach ($buttonLinks as $index => $buttonLink) {
-            $social = Social::where('microsite_id', $id)
+            $social = Social::where('microsite_uuid', $id)
             ->where('buttons_id', $index)->first();
 
             if ($social) {

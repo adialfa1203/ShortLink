@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('microsites', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->foreignId('components_id')->references('id')->on('components')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');

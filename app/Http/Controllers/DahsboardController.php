@@ -18,31 +18,31 @@ class DahsboardController extends Controller
             $userId = $user->id;
             $totalVisits = ShortURLVisit::query()
             ->whereRelation('shortURL', 'user_id', '=', $userId)
-            ->whereRelation('shortURL', 'microsite_id', null)
+            ->whereRelation('shortURL', 'microsite_uuid', null)
             ->whereRelation('shortURL', 'archive', '!=', 'yes')
             ->count();
         } if($user) {
             $userId = $user->id;
             $totalVisitsMicrosite = ShortURLVisit::query()
             ->whereRelation('shortURL', 'user_id', '=', $userId)
-            ->whereRelation('shortURL', 'microsite_id', '!=', null)
+            ->whereRelation('shortURL', 'microsite_uuid', '!=', null)
             ->count();
         } if ($user) {
             $userId = $user->id;
         $countURL = ShortURL::where('user_id', $userId)
-                            ->whereNull('microsite_id')
+                            ->whereNull('microsite_uuid')
                             ->where('archive', '!=', 0)
                             ->count();
         } if ($user) {
             $userId = $user->id;
         $countMIcrosite = ShortURL::where('user_id', $userId)
-                            ->whereNotNull('microsite_id')
-                            ->count();                               
+                            ->whereNotNull('microsite_uuid')
+                            ->count();
         }if($user) {
             $userId = $user->id;
         $countNameChanged = ShortUrl::where('user_id', $userId)
                                     ->where('custom_name', 'yes')
-                                    ->whereNull('microsite_id')
+                                    ->whereNull('microsite_uuid')
                                     ->count();
         }
         $ShortLink = ShortUrl::all();

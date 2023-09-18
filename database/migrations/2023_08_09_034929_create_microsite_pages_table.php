@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('microsite_pages', function (Blueprint $table) {
             $table->id();
             $table->string('page_order');
-            $table->foreignId('microsite_id')->references('id')->on('microsites')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('microsite_uuid')->nullable();
+            $table->foreign('microsite_uuid')->references('id')->on('microsites')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('title');
             $table->string('content');
             $table->timestamp('creation_date');

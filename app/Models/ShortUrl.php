@@ -17,6 +17,11 @@ class ShortUrl extends Model
     protected $fillable = ['destination_url','url_key','user_id','password','qr_code','deleted_add','default_short_url','activated_at','deactivated_at','click_count','archive','title','archived_at', 'custom_name'];
     public $timestamps = true;
 
+    public function shortUrls()
+    {
+        return $this->hasMany(ShortUrl::class, 'microsite_uuid', 'id');
+    }
+
     public function visits()
     {
         return $this->hasMany(ShortURLVisit::class, 'short_url_id');

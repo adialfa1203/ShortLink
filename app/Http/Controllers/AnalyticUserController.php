@@ -29,17 +29,17 @@ class AnalyticUserController extends Controller
         $endDateOfMonth = $date->endOfMonth()->format('Y-m-d');
 
         $countURL = ShortURL::where('user_id', $user)
-            ->whereNull('microsite_id')
+            ->whereNull('microsite_uuid')
             ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
             ->count();
 
-        $countMicrosite = ShortURL::where('microsite_id', $user)
+        $countMicrosite = ShortURL::where('microsite_uuid', $user)
             ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
             ->count();
 
         $totalVisits = ShortURLVisit::whereHas('shortURL', function ($query) use ($user) {
                 $query->where('user_id', $user)
-                    ->whereNull('microsite_id')
+                    ->whereNull('microsite_uuid')
                     ->where('archive', '!=', 'yes');
             })
             ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
@@ -47,7 +47,7 @@ class AnalyticUserController extends Controller
 
         $totalVisitsMicrosite = ShortURLVisit::whereHas('shortURL', function ($query) use ($user) {
                 $query->where('user_id', $user)
-                    ->whereNotNull('microsite_id');
+                    ->whereNotNull('microsite_uuid');
             })
             ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
             ->count();
@@ -81,7 +81,7 @@ class AnalyticUserController extends Controller
                 });
             }
         ])
-        ->whereNull('microsite_id')
+        ->whereNull('microsite_uuid')
         ->orderBy('totalVisits', 'desc')
         ->take(3)
         ->get();
@@ -93,16 +93,16 @@ class AnalyticUserController extends Controller
                 });
             }
         ])
-        ->whereNotNull('microsite_id')
+        ->whereNotNull('microsite_uuid')
         ->orderBy('totalVisits', 'desc')
         ->take(3)
         ->get();
 
         $countURL = ShortURL::where('user_id', $user)
-                            ->whereNull('microsite_id')
+                            ->whereNull('microsite_uuid')
                             ->count();
-                            
-        $countMicrosite = ShortUrl::where('microsite_id', $user)->count();
+
+        $countMicrosite = ShortUrl::where('microsite_uuid', $user)->count();
 
         $dataLink = SHortURL::all();
 
