@@ -110,6 +110,7 @@ class MicrositeController extends Controller
             'description' => 'nullable|string|max:115',
             'company_name' => 'nullable|string|max:15',
             'company_address' => 'nullable|string|max:35',
+            'button_link.*' => 'required|string',
         ]);
         if ($validator->fails()) {
             return redirect()->back()
@@ -134,15 +135,18 @@ class MicrositeController extends Controller
         $microsite->save();
 
         foreach ($buttonLinks as $index => $buttonLink) {
-            $social = Social::where('microsite_uuid', $id)
-            ->where('buttons_id', $index)->first();
+            if ($buttonLink !== null) {
+                $social = Social::where('microsite_uuid', $id)
+                    ->where('buttons_id', $index)->first();
 
-            if ($social) {
-                $social->update([
-                    'button_link' => $buttonLink,
-                ]);
+                if ($social) {
+                    $social->update([
+                        'button_link' => $buttonLink,
+                    ]);
+                }
             }
         }
+
         // dd($buttonLinks);
         return redirect()->route('microsite')->with('success', 'Miscrosite sudah berhasil ditambahkan.');
     }

@@ -15,6 +15,7 @@
 @endsection
 
 @section('content')
+
     <div class="page-content">
         <div class="container-fluid">
 
@@ -51,7 +52,8 @@
                                         <div class="mb-3">
                                             <label for="employeeName" class="form-label">Nama Profile</label>
                                             <input type="text" class="form-control" id="employeeName"
-                                                placeholder="Nama Profile" value="{{ $microsite->name_microsite }}"
+                                                placeholder="Nama Profile"
+                                                value="{{ old('name_microsite', $microsite->name_microsite) }}"
                                                 name="name_microsite">
                                             <div>
                                                 @if ($errors->has('name_microsite'))
@@ -59,7 +61,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <textarea name="description" id="editor">{{ $microsite->description }}</textarea>
+                                        <textarea name="description" id="editor">{{ old('description', $microsite->description) }}</textarea>
                                         <div>
                                             @if ($errors->has('description'))
                                                 <span class="text-danger">{{ $errors->first('description') }}</span>
@@ -69,6 +71,7 @@
                                             <div class="card-body">
                                                 <div class="accordion" id="default-accordion-example">
                                                     @foreach ($social as $data)
+                                                        {{-- @dd($social) --}}
                                                         <div class="accordion-item">
                                                             <h2 class="accordion-header" id="headingOne">
                                                                 <button class="accordion-button collapsed" type="button"
@@ -92,11 +95,14 @@
                                                                                 id="placeholderInput"
                                                                                 placeholder="Isi Link {{ $data->button->name_button }} Anda "
                                                                                 name="button_link[{{ $data->button->id }}]"
-                                                                                value="{{ $data->button_link }}">
+                                                                                value="{{ old('button_link.' . $data->button->id, $data->button_link) }}">
                                                                             <div>
-                                                                                @if ($errors->has('button_link'))
-                                                                                    <span
-                                                                                        class="text-danger">{{ $errors->first('button_link') }}</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                @if ($errors->has('button_link.*'))
+                                                                                    @foreach ($errors->get('button_link.*') as $error)
+                                                                                        <span class="text-danger">{{ $error[0] }}</span>
+                                                                                    @endforeach
                                                                                 @endif
                                                                             </div>
                                                                         </div>
@@ -105,7 +111,6 @@
                                                             </div>
                                                         </div>
                                                     @endforeach
-
                                                     <div class="accordion-item">
                                                         <h2 class="accordion-header" id="headingFour">
                                                             <button class="accordion-button collapsed" type="button"
@@ -125,7 +130,7 @@
                                                                         <input type="text" class="form-control"
                                                                             name="company_name" id="placeholderInput"
                                                                             placeholder="Nama Perusahaan"
-                                                                            value="{{ $microsite->company_name }}">
+                                                                            value="{{ old('company_name', $microsite->company_name) }}">
                                                                         <div>
                                                                             @if ($errors->has('company_name'))
                                                                                 <span
@@ -154,7 +159,7 @@
                                                                         <label for="placeholderInput"
                                                                             class="form-label">Alamat Perusahaan</label>
                                                                         <input type="text" class="form-control"
-                                                                            value="{{ $microsite->company_address }}"
+                                                                            value="{{ old('company_address', $microsite->company_address) }}"
                                                                             id="placeholderInput" name="company_address"
                                                                             placeholder="Alamat Perusahaan">
                                                                         <div>
@@ -179,11 +184,12 @@
                                             <div>
                                                 <div class="row g-3">
                                                     <div class="col-12">
-                                                        <label for="address" class="form-label">Nama
-                                                            Microsite</label>
+                                                        <label for="address" class="text-danger form-label">Nama
+                                                            Microsite hanya bisa diakses oleh pengguna yang
+                                                            berlangganan!</label>
                                                         <input type="text" class="form-control" id="address"
                                                             name="name" placeholder="aqua-link"
-                                                            value="{{ $microsite->name }}">
+                                                            value="{{ $microsite->name }}" disabled>
                                                         <div>
                                                             @if ($errors->has('name'))
                                                                 <span
@@ -192,12 +198,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
-                                                        <label for="address" class="form-label">Tautan
-                                                            Microsite</label>
+                                                        <label for="address" class="text-danger form-label">Tautan
+                                                            Microsite hanya bisa diakses oleh pengguna yang
+                                                            berlangganan!</label>
                                                         <div class="input-group">
                                                             <input type="text" class="form-control" id="address"
                                                                 placeholder="aqua-link" name="default_short_url"
-                                                                value="{{ $short_url->default_short_url }}">
+                                                                value="{{ $short_url->default_short_url }}" disabled>
                                                             <div>
                                                                 @if ($errors->has('default_short_url'))
                                                                     <span
