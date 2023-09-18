@@ -54,7 +54,7 @@
                             <i class="bi bi-whatsapp"></i>
                         </span>
                     </div>
-                    <input type="text" name="whatsapp" class="form-control" id="whatsapp" placeholder="Whatsapp"
+                    <input type="text" name="whatsapp" class="form-control" id="whatsapp" placeholder="+62..."
                         value="{{ $data->whatsapp }}">
                 </div>
                 <div class="mb-3 d-flex">
@@ -63,7 +63,7 @@
                             <i class="bi bi-instagram"></i>
                         </span>
                     </div>
-                    <input type="text" name="instagram" class="form-control" id="instagram" placeholder="Instagram"
+                    <input type="text" name="instagram" class="form-control" id="instagram" placeholder="Link_id"
                         value="{{ $data->instagram }}">
                 </div>
                 <div class="mb-3 d-flex">
@@ -72,7 +72,7 @@
                             <i class="bi bi-twitter"></i>
                         </span>
                     </div>
-                    <input type="text" name="twitter" class="form-control" id="twitter" placeholder="Twitter"
+                    <input type="text" name="twitter" class="form-control" id="twitter" placeholder="LinkId_"
                         value="{{ $data->twitter }}">
                 </div>
             </div>

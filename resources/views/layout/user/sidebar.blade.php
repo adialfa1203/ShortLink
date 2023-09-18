@@ -78,7 +78,7 @@
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="index.html" class="logo logo-dark">
+        <a href="" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{ asset('template/image/LINKlogo.png') }}" alt="" height="22">
             </span>
@@ -86,7 +86,7 @@
                 <img src="{{ asset('template/image/LINKlogo.png') }}" alt="" height="22">
             </span>
         </a>
-        <a href="index.html" class="logo logo-light">
+        <a href="" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{ asset('template/image/LINKlogo.png') }}" alt="" width="50" height="20">
             </span>
