@@ -239,23 +239,35 @@
                                                     </div>
                                                     <div class="row">
                                                         @foreach ($button as $data)
-                                                        <div class="col-xl-4 col-sm-6 mb-4">
-                                                            <div class="card" id="btn-{{ $data->id }}" data-card-id="{{ $data->id }}">
-                                                                <div class="card-footer text-center">
-                                                                    <div class="d-flex align-items-center justify-content-end">
-                                                                        <label class="mb-0 me-2">
-                                                                            <input type="checkbox" name="selectedButtons[]" value="{{ $data->id }}" class="checkbox" style="display: none;">
-                                                                        </label>
-                                                                        <button style="background-color: {{ $data->color_hex }}; color: white;" type="button" name="button" value="{{ $data->name_button }}" class="col-xl-12 btn btn-label rounded-pill" data-button-value="{{ $data->id }}" onclick="toggleCardHover('{{ $data->id }}')">
-                                                                            <i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2" style="color: white;"></i>
-                                                                            {{ $data->name_button }}
-                                                                        </button>
+                                                            <div class="col-xl-4 col-sm-6 mb-4">
+                                                                <div class="card" id="{{ $data->id }}"
+                                                                    data-card-id="{{ $data->id }}">
+                                                                    <div class="card-footer text-center">
+                                                                        <div
+                                                                            class="d-flex align-items-center justify-content-end">
+                                                                            <label class="mb-0 me-2">
+                                                                                <input type="checkbox"
+                                                                                    name="selectedButtons[]"
+                                                                                    value="{{ $data->id }}"
+                                                                                    class="checkbox"
+                                                                                    style="display: none;">
+                                                                            </label>
+                                                                            <button
+                                                                                style="background-color: {{ $data->color_hex }}; color: white;"
+                                                                                type="button" name="button"
+                                                                                value="{{ $data->name_button }}"
+                                                                                class="col-xl-12 btn btn-label rounded-pill"
+                                                                                data-button-value="{{ $data->id }}"
+                                                                                onclick="toggleCardHover('{{ $data->id }}')">
+                                                                                <i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2"
+                                                                                    style="color: white;"></i>
+                                                                                {{ $data->name_button }}
+                                                                            </button>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    @endforeach
-
+                                                        @endforeach
                                                     </div>
                                                     <div class="d-flex align-items-start gap-3 mt-4">
                                                         <button type="button" class="btn btn-light btn-label previestab"
@@ -305,35 +317,6 @@
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-wizard.init.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-<script>
-    var selectedButtons = [];
-
-
-    // Event listener untuk checkbox yang diubah
-    document.querySelectorAll('.checkbox').forEach(function (checkbox) {
-        checkbox.addEventListener('change', function () {
-            if (this.checked) {
-                selectedButtons.push(this.value);
-            } else {
-                selectedButtons = selectedButtons.filter(function (value) {
-                    return value !== this.value;
-                });
-            }
-        });
-    });
-</script>
-    <script>
-        // Fungsi untuk menggantikan button pertama dengan button kelima
-        function replaceFirstButton(cardId, newButtonValue) {
-            var card = document.getElementById(cardId);
-            var button = card.querySelector('[name="button"]');
-            button.value = newButtonValue;
-            button.innerHTML = '<i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2" style="color: white;"></i>' + newButtonValue;
-        }
-    </script>
-
     <script>
         // Ambil semua elemen card
         const cards = document.querySelectorAll('.card');
@@ -386,7 +369,7 @@
             });
         });
     </script>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $(".card").click(function() {
                 var cardId = $(this).attr("data-card-id");
@@ -398,13 +381,12 @@
                     checkbox.prop("checked", true);
                 }
 
-               
+                toggleCardHover(cardId);
             });
         });
-        var x = 0;
-        var idbtn = [];
+
         function toggleCardHover(cardId) {
-            var card = document.getElementById(`btn-${cardId}`);
+            var card = document.getElementById(cardId);
             card.classList.toggle('hover');
 
             var checkbox = $("input[type='checkbox'][value='" + cardId + "']");
@@ -414,25 +396,57 @@
                 checkbox.prop("checked", false);
                 cardElement.removeClass("selected-card hover");
                 cardElement.css("border", "none");
+                cardElement.css("border", "none");
             } else {
-                if (x >= 4) {
-                    Swal.fire({
-                    icon: 'error',
-                    title: 'Kesalahan',
-                    text: 'Sosial media yang dipilih tidak boleh lebih dari empat',
-                });
-                } else {
-                    console.log(x)
-                    idbtn[x] = cardId
-                    x++;
-                }
+                checkbox.prop("checked", true);
+                cardElement.addClass("selected-card hover");
+                cardElement.css("border", "1px solid black");
             }
-            checkbox.prop("checked", true);
-            cardElement.addClass("selected-card hover");
-            cardElement.css("border", "1px solid black");
+        }
+    </script> --}}
+    <script>
+        var selectedButtons = []; // Array untuk menyimpan ID sosial media yang dipilih
+
+        function toggleCardHover(cardId) {
+            var card = document.getElementById(cardId);
+            var checkbox = $("input[type='checkbox'][value='" + cardId + "']");
+            var cardElement = $(card);
+
+            if (checkbox.is(":checked")) {
+                checkbox.prop("checked", false);
+                cardElement.removeClass("selected-card hover");
+                cardElement.css("border", "none");
+
+                // Hapus ID sosial media dari array selectedButtons
+                var index = selectedButtons.indexOf(cardId);
+                if (index !== -1) {
+                    selectedButtons.splice(index, 1);
+                }
+            } else {
+                if (selectedButtons.length >= 4) {
+                    var firstSelectedButtonId = selectedButtons.shift(); // Hapus ID sosial media pertama dari array
+                    var firstSelectedButton = document.getElementById(firstSelectedButtonId);
+                    var firstSelectedCheckbox = $("input[type='checkbox'][value='" + firstSelectedButtonId + "']");
+                    firstSelectedCheckbox.prop("checked", false);
+                    $(firstSelectedButton).removeClass("selected-card hover");
+                    $(firstSelectedButton).css("border", "none");
+                }
+
+                checkbox.prop("checked", true);
+                cardElement.addClass("selected-card hover");
+                cardElement.css("border", "1px solid black");
+
+                // Tambahkan ID sosial media ke array selectedButtons
+                selectedButtons.push(cardId);
+            }
         }
     </script>
-   
+    {{-- <script>
+        function toggleCardHover(cardId) {
+            const card = document.getElementById(cardId);
+            card.classList.toggle('hover');
+        }
+    </script> --}}
 
     <script src="sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
