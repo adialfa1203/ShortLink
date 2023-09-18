@@ -45,9 +45,6 @@
         text-decoration: underline;
         /* Menambahkan garis bawah saat cursor di atasnya */
     }
-    .card-footer a {
-        color: red;
-    }
 </style>
 @endsection
 @section('content')
@@ -163,14 +160,9 @@
                                 $deactivatedAt = \Carbon\Carbon::parse($row->deactivated_at);
                                 $now = \Carbon\Carbon::now();
 
-                                if ($row->deactivated_at === null) {
-                                // Kolom deactivated_at kosong, tampilkan pesan "Aktif"
-                                    echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
-                                } elseif ($deactivatedAt < $now) {
-                                // Tautan telah kadaluarsa
+                                if ($deactivatedAt < $now) {
                                     echo '<p class="text-danger" style="margin-top: 10px;">Tautan kadaluarsa</p>';
                                 } else {
-                                // Tautan masih aktif
                                     echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
                                 }
                                 ?>
@@ -178,7 +170,7 @@
                             <div class=" col-7 d-flex flex-row justify-content-end">
                                 <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#TimeModal-{{$row->id}}" data-link="{{ $row->url_key }}"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Tautan berbasis waktu"><i class="fa-solid fa-clock"></i>&nbsp;Atur
                                         waktu</span></button>
-                                <button type="button" class="btn btn-light me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal1"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Tautan terlindungi"><i class="fa-solid fa-lock"></i>&nbsp;kata sandi</span></button>
+                                <button type="button" disabled class="btn btn-light me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#zoomInModal1"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Tautan terlindungi"><i class="fa-solid fa-lock"></i>&nbsp;kata sandi</span></button>
                                 <button type="button" class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample{{ $row->id }}" role="button" aria-expanded="true" aria-controls="collapseExample{{ $row->id }}">
                                     <i class="bi bi-bar-chart-line-fill"></i> statistik
                                 </button>
@@ -189,30 +181,32 @@
                     <div id="zoomInModal1" class="modal fade zoomIn" tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="zoomInModalLabel"><i class="fa-solid fa-lock"></i>&nbsp;Tautan Terlindungi</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card-body d-flex" style="background-color: #D9D9D9;">
+                                        <p><i class="fa-solid fa-clock"></i></p>
+                                        &nbsp;
+                                        <p>Protected link adalah jenis link yang dapat diberikan Secret
+                                            key/Passphrase sebelum dialihkan ke link aslinya. </p>
+                                    </div>
                                     <div class="col-lg-12">
-                                        <div class="card">
-                                            <div class="card-header fw-bold">
-                                                <div class="avatar-sm mx-auto mb-3">
-                                                    <div class="avatar-title bg-custom text-primary fs-xl rounded">
-                                                       <i class="fa-solid fa-lock"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body text-center">
-
-                                                <h4 class="card-title">Anda Tidak Bisa Mengakses Fitur Ini!</h4>
-                                                <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan Untuk Bisa Menikmati Fitur Ini</p>
-                                            </div>
-                                            <div class="card-footer text-center">
-                                                <a href="/subscribe-product-user" style="color: red;"> Mulai Berlangganan? </a>
-                                            </div>
-
+                                        <div class="mt-3">
+                                            <input type="text" class="form-control" id="degreeName" placeholder="Password">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                                    <button type="button" class="btn btn-primary ">Simpan</button>
+                                </div>
 
-                            </div><!-- /.modal-dialog -->
-                        </div>
-                        <!-- /. end modal kata sandi-->
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
                     <div id="tombol-modal-{{ $row->id }}" class="modal fade zoomIn modal-sm" tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
