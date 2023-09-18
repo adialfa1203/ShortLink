@@ -44,35 +44,32 @@ class MicrositeController extends Controller
         return view('microsite.AddMicrosite', compact('data', 'button'));
     }
 
-    public function createMicrosite(Request $request, Microsite $microsite)
+    public function createMicrosite(Request $request)
     {
+        $user = auth()->user();
+        
+        // Jika pengguna adalah non-premium (subscribe == 'no') dan telah mencapai batas 10 microsite
+        if ($user->subscribe === 'no' && $user->microsites()->count() >= 10) {
+            return redirect()->back()->with('error', 'Anda telah mencapai batas maksimum 10 microsite.');
+        }
+
         $request->validate([
             'microsite_selection' => 'required',
             'name' => 'required|string|regex:/^[^-+]+$/u|max:10',
             'link_microsite' => 'required|regex:/^[^-+]+$/u|unique:microsites,link_microsite,id',
         ]);
+
         $data = [
             'components_id' => $request->microsite_selection,
-            'user_id' => auth()->user()->id,
+            'user_id' => $user->id,
             'name' => $request->name,
             'link_microsite' => $request->link_microsite,
         ];
 
-        $selectedComponentId = $request->input('microsite_selection');
-        $selectedButtons = $request->input('selectedButtons', []);
-
+        // Membuat microsite
         $microsite = Microsite::create($data);
-        $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
-        $micrositeObject = $builder->destinationUrl(route('microsite.short.link', $microsite->link_microsite))->make();
-        ShortUrl::where('url_key', $micrositeObject->url_key)->update([
-            'user_id' => auth()->id(),
-            'microsite_id' => $microsite->id,
-        ]);
-        $short_id = ShortUrl::where('url_key', $micrositeObject->url_key)->first()->id;
-        ShortUrl::findOrFail($short_id)->update([
-            'url_key' => $request->link_microsite,
-            'default_short_url' => "http://127.0.0.1:8000/link.id/" . $request->link_microsite,
-        ]);
+
+        $selectedButtons = $request->input('selectedButtons', []);
 
         foreach ($selectedButtons as $select) {
             $socialData = [
@@ -82,8 +79,7 @@ class MicrositeController extends Controller
             ];
             Social::create($socialData);
         }
-        // dd($request);
-
+        
         return redirect()->route('edit.microsite', ['id' => $microsite->id])->with('success', 'Microsite berhasil dibuat');
     }
 
