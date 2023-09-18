@@ -13,7 +13,7 @@
     <meta content="Themesbrand" name="author">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('template/themesbrand.com/steex/layouts/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('template/themesbrand.com/steex/layouts/assets/images/Logo.png') }}" style="width: 200px; height: 200px;">
 
     <!-- Fonts css load -->
     <link rel="preconnect" href="{{ asset('https://fonts.googleapis.com/') }}">
