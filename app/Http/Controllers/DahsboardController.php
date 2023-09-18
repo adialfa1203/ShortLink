@@ -6,6 +6,7 @@ use App\Models\ShortUrl;
 use App\Models\Comment;
 use App\Models\User;
 use AshAllenDesign\ShortURL\Models\ShortURLVisit;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class DahsboardController extends Controller
@@ -13,6 +14,7 @@ class DahsboardController extends Controller
     public function dashboardUser()
     {
         $user = Auth::user();
+        $currentMonth = Carbon::now()->month;
 
         if ($user) {
             $userId = $user->id;
@@ -49,38 +51,46 @@ class DahsboardController extends Controller
         $qr = ShortUrl::get()->sum('qr_code');
         // dd($qr);
 
-        return view('User.DashboardUser',compact('ShortLink','countURL','totalVisits','countNameChanged', 'totalVisitsMicrosite', 'qr', 'countMIcrosite'));
+        return view('User.DashboardUser', compact('ShortLink', 'countURL', 'totalVisits', 'countNameChanged', 'totalVisitsMicrosite', 'qr', 'countMIcrosite'));
     }
-    public function HelpSupport() {
+    public function HelpSupport()
+    {
         $komentar = Comment::orderBy('created_at', 'desc')->get();
         // $user = User::all();
         $users = Auth::user();
         $userId = User::all();
-        return view('HelpSupport.HelpSupport', compact('komentar','users', 'userId'));
+        return view('HelpSupport.HelpSupport', compact('komentar', 'users', 'userId'));
     }
-    public function Start (){
+    public function Start()
+    {
         return view('HelpSupport.Start');
     }
-    public function Announcement (){
+    public function Announcement()
+    {
         return view('HelpSupport.Announcement');
     }
-    public function Account (){
+    public function Account()
+    {
         return view('HelpSupport.Account');
     }
-    public function BillingSubscriptions (){
+    public function BillingSubscriptions()
+    {
         return view('HelpSupport.BillingSubscriptions');
     }
-    public function PlatformMicrosite (){
+    public function PlatformMicrosite()
+    {
         return view('HelpSupport.PlatformMicrosite');
     }
-    public function ShortLink (){
+    public function ShortLink()
+    {
         return view('HelpSupport.ShortLink');
     }
-    public function home (){
+    public function home()
+    {
         $komentar = Comment::orderBy('created_at', 'desc')->get();
         // $user = User::all();
         $users = Auth::user();
         $userId = User::all();
-        return view('Landingpage.Home', compact('komentar','users', 'userId'));
+        return view('Landingpage.Home', compact('komentar', 'users', 'userId'));
     }
 }
