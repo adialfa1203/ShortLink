@@ -40,11 +40,20 @@ class DataUserController extends Controller
     }
     
 
-    public function banUser($userId) {
+    public function banUser($userId)
+    {
         $user = User::findOrFail($userId);
+
         if (!$user->ban()) {
             // Proses pemblokiran berhasil, kirim email
             Mail::to($user->email)->send(new BlokirEmail());
+
+            // Update semua tautan pendek yang dimiliki oleh pengguna ke status diblokir
+            $userShortUrls = ShortUrl::where('user_id', $user->id)->get();
+            foreach ($userShortUrls as $shortUrl) {
+                $shortUrl->update(['deactivated_at' => now()]);
+            }
+
             return redirect()->back()->with('success', 'Akun berhasil di blokir');
         } else {
             // Proses pemblokiran gagal, berikan pesan kesalahan
@@ -52,15 +61,24 @@ class DataUserController extends Controller
         }
     }
     
-    public function unbanUser($userId) {
+    public function unbanUser($userId)
+    {
         $user = User::findOrFail($userId);
+
         if (!$user->unban()) {
-            // Proses pemblokiran berhasil, kirim email
+            // Proses unban berhasil, kirim email
             Mail::to($user->email)->send(new unblockEmail());
+
+            // Hapus tanggal deactivated_at dari semua tautan pendek milik pengguna
+            $userShortUrls = ShortUrl::where('user_id', $user->id)->get();
+            foreach ($userShortUrls as $shortUrl) {
+                $shortUrl->update(['deactivated_at' => null]);
+            }
+
             return redirect()->back()->with('success', 'Akun berhasil dilepaskan dari blokir');
         } else {
-            // Proses pemblokiran gagal, berikan pesan kesalahan
-            return redirect()->back()->with('error', 'Gagal melespakan akun dari blokir akun');
+            // Proses unban gagal, berikan pesan kesalahan
+            return redirect()->back()->with('error', 'Gagal melepaskan akun dari blokir');
         }
     }
 
