@@ -98,10 +98,11 @@
                                                                                 value="{{ old('button_link.' . $data->button->id, $data->button_link) }}">
                                                                             <div>
                                                                             </div>
-                                                                            <div>
-                                                                                @if ($errors->has('button_link.*'))
-                                                                                    @foreach ($errors->get('button_link.*') as $error)
-                                                                                        <span class="text-danger">{{ $error[0] }}</span>
+                                                                            <div class="mt-1">
+                                                                                @if ($errors->has('button_link.name_button'))
+                                                                                    @foreach ($errors->get('button_link.name_button') as $error)
+                                                                                        <span
+                                                                                            class="text-danger">{{ str_replace(':name_button', $data->button->name_button, $error) }}</span>
                                                                                     @endforeach
                                                                                 @endif
                                                                             </div>

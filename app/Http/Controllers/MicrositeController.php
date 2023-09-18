@@ -110,12 +110,15 @@ class MicrositeController extends Controller
             'description' => 'nullable|string|max:115',
             'company_name' => 'nullable|string|max:15',
             'company_address' => 'nullable|string|max:35',
-            'button_link.*' => 'required|string',
+            'button_link.name_button' => 'required|string',
+        ],[
+            'button_link.name_button.required' => 'Kolom :name_button harus diisi!',
         ]);
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
-                ->withInput();
+                ->withInput()
+                ->with('error', 'Kesalahan, ada kolom yang belum terisi dengan benar!');
         }
         if ($request->has('name')) {
             $microsite->name = $request->input('name');
