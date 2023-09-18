@@ -513,24 +513,21 @@
                                 <h3>Hubungi Kami</h3>
                                 <ul style="text-align: justify;">
                                     <li>
-                                        <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID" target="_blank">
+                                        <a href="https://wa.me/085606270454">
                                             <i class="fab fa-whatsapp"></i>
-                                            Whatsapp
-                                            {{-- {{ $data->whatsapp }} --}}
+                                            {{ $data->whatsapp }}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://www.instagram.com/{{ $data->instagram }}" target="_blank">
+                                        <a href="#features">
                                             <i class="fab fa-instagram"></i>
-                                            Instagram
-                                            {{-- {{ $data->instagram }} --}}
+                                            {{ $data->instagram }}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://twitter.com/{{ $data->twitter }}" target="_blank">
+                                        <a href="#features">
                                             <i class="fab fa-twitter"></i>
-                                            Twitter
-                                            {{-- {{ $data->twitter }} --}}
+                                            {{ $data->twitter }}
                                         </a>
                                     </li>
                                 </ul>
@@ -638,7 +635,8 @@
                 @else
                     Swal.fire({
                         icon: 'error',
-                        title: 'Maaf, Anda harus Login Terlebih dahulu',
+                        title: 'Oh Tidakkk...',
+                        text: 'Anda harus login dulu',
                         confirmButtonText: '<a href="/login">Login disini</a>',
                     });
                 @endif
