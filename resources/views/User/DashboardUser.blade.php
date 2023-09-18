@@ -255,7 +255,7 @@
                                                 </div>
                                                 {{-- end salin --}}
                                                 <div class="wrapper end-0 position-absolute" style="z-index: 5">
-                                                    <button type="button" id="button-email" data-bs-toggle="modal" data-bs-target="#bagikan" style="background-color : #FF6C6C" class="btn btn-sm text-white m-1"><i class="fa-solid fa-square-share-nodes"></i> Bagikan</button>
+                                                    <button type="button" id="button-email" data-bs-toggle="modal" data-bs-target="#bagikan" style="background-color : #FF6C6C" class="btn btn-sm text-white m-1"><i class="bi bi-share-fill"></i> Bagikan</button>
                                                 </div>
                                             </div>
                                         </div>
