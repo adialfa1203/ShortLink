@@ -369,41 +369,6 @@
             });
         });
     </script>
-    {{-- <script>
-        $(document).ready(function() {
-            $(".card").click(function() {
-                var cardId = $(this).attr("data-card-id");
-                var checkbox = $("input[type='checkbox'][value='" + cardId + "']");
-
-                if (checkbox.is(":checked")) {
-                    checkbox.prop("checked", false);
-                } else {
-                    checkbox.prop("checked", true);
-                }
-
-                toggleCardHover(cardId);
-            });
-        });
-
-        function toggleCardHover(cardId) {
-            var card = document.getElementById(cardId);
-            card.classList.toggle('hover');
-
-            var checkbox = $("input[type='checkbox'][value='" + cardId + "']");
-            var cardElement = $(card);
-
-            if (checkbox.is(":checked")) {
-                checkbox.prop("checked", false);
-                cardElement.removeClass("selected-card hover");
-                cardElement.css("border", "none");
-                cardElement.css("border", "none");
-            } else {
-                checkbox.prop("checked", true);
-                cardElement.addClass("selected-card hover");
-                cardElement.css("border", "1px solid black");
-            }
-        }
-    </script> --}}
     <script>
         var selectedButtons = []; // Array untuk menyimpan ID sosial media yang dipilih
 
@@ -441,13 +406,6 @@
             }
         }
     </script>
-    {{-- <script>
-        function toggleCardHover(cardId) {
-            const card = document.getElementById(cardId);
-            card.classList.toggle('hover');
-        }
-    </script> --}}
-
     <script src="sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
