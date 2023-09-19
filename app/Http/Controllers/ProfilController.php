@@ -36,7 +36,7 @@ class ProfilController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'number' => 'required',
+            'number' => 'required|min:10|max:12', // Tambahkan aturan min dan max di sini
             'old_password' => 'required_with:new_password',
             'new_password' => 'nullable|min:8|confirmed',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
