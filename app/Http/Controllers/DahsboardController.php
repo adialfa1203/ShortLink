@@ -8,6 +8,7 @@ use App\Models\User;
 use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Footer;
 
 class DahsboardController extends Controller
 {
@@ -56,41 +57,42 @@ class DahsboardController extends Controller
     public function HelpSupport()
     {
         $komentar = Comment::orderBy('created_at', 'desc')->get();
+        $data = Footer::first();
         // $user = User::all();
         $users = Auth::user();
         $userId = User::all();
-        return view('HelpSupport.HelpSupport', compact('komentar', 'users', 'userId'));
+        return view('HelpSupport.HelpSupport', compact('komentar','users', 'userId','data'));
     }
-    public function Start()
-    {
-        return view('HelpSupport.Start');
+    public function Start (){
+        $data = Footer::first();
+        return view('HelpSupport.Start', compact('data'));
     }
-    public function Announcement()
-    {
-        return view('HelpSupport.Announcement');
+    public function Announcement (){
+        $data = Footer::first();
+        return view('HelpSupport.Announcement', compact('data'));
     }
-    public function Account()
-    {
-        return view('HelpSupport.Account');
+    public function Account (){
+        $data = Footer::first();
+        return view('HelpSupport.Account', compact('data'));
     }
-    public function BillingSubscriptions()
-    {
-        return view('HelpSupport.BillingSubscriptions');
+    public function BillingSubscriptions (){
+        $data = Footer::first();
+        return view('HelpSupport.BillingSubscriptions', compact('data'));
     }
-    public function PlatformMicrosite()
-    {
-        return view('HelpSupport.PlatformMicrosite');
+    public function PlatformMicrosite (){
+        $data = Footer::first();
+        return view('HelpSupport.PlatformMicrosite', compact('data'));
     }
-    public function ShortLink()
-    {
-        return view('HelpSupport.ShortLink');
+    public function ShortLink (){
+        $data = Footer::first();
+        return view('HelpSupport.ShortLink', compact('data'));
     }
-    public function home()
-    {
+    public function home (){
+        $data = Footer::first();
         $komentar = Comment::orderBy('created_at', 'desc')->get();
         // $user = User::all();
         $users = Auth::user();
         $userId = User::all();
-        return view('Landingpage.Home', compact('komentar', 'users', 'userId'));
+        return view('Landingpage.Home', compact('komentar','users', 'userId','data'));
     }
 }
