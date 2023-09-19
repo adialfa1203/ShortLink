@@ -68,7 +68,7 @@
                                         <p class="card-text text-muted long-text">Anda menggunakan layanan gratis dari
                                             link.id</p>
                                     </div>
-                                    <div class="col-lg-3 text-center">
+                                    <div class="col-lg-3 mt-3 text-center">
                                         <a href="/subscribe-product-user" type="button"
                                             class="btn btn-outline-danger">Berlangganan Sekarang</a>
                                     </div>
@@ -94,20 +94,39 @@
                                     <table class="table table-centered align-middle table-nowrap mb-0">
                                         <thead class="table-active">
                                             <tr>
-                                                <th>
+                                                {{-- <th>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" value="option"
                                                             id="checkAll">
                                                         <label class="form-check-label" for="checkAll"></label>
                                                     </div>
-                                                </th>
-                                                <th class="sort cursor-pointer" data-sort="products">Tanggal Bayar</th>
-                                                <th class="sort cursor-pointer" data-sort="category">Layanan</th>
-                                                <th class="sort cursor-pointer" data-sort="stock">Metode</th>
-                                                <th class="sort cursor-pointer" data-sort="price">Harga</th>
+                                                </th> --}}
+                                                <th class="" data-sort="products">Tanggal Bayar</th>
+                                                <th class="" data-sort="category">Layanan</th>
+                                                <th class="" data-sort="stock">Metode</th>
+                                                <th class="" data-sort="price">Harga</th>
                                             </tr>
                                         </thead>
                                         <!-- ... Isi tabel di sini ... -->
+                                        <tbody>
+                                            <!-- Baris pertama (data dummy) -->
+                                            <tr>
+                                                <td>2023-09-19</td>
+                                                <td>Layanan A</td>
+                                                <td>Metode 1</td>
+                                                <td>$100</td>
+                                            </tr>
+
+                                            <!-- Baris kedua (data dummy) -->
+                                            <tr>
+                                                <td>2023-09-20</td>
+                                                <td>Layanan B</td>
+                                                <td>Metode 2</td>
+                                                <td>$120</td>
+                                            </tr>
+
+                                            <!-- Tambahkan lebih banyak baris sesuai dengan data Anda -->
+                                        </tbody>
                                     </table>
                                 </div>
 

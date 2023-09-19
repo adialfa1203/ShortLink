@@ -33,7 +33,7 @@
                             </div>
                             <div class="card-body">
                                 <button style="background-color: {{ $data->color_hex }}; color: white;" type="button"
-                                    class="col-xl-12 btn btn-label rounded-pill" data-bs-toggle="collapse"
+                                    class="col-xl-12 col-12 btn btn-label rounded-pill" data-bs-toggle="collapse"
                                     data-bs-target="{{ $data->id }}" aria-expanded="true"
                                     aria-controls="{{ $data->id }}">
                                     <i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2"

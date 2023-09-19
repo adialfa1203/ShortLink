@@ -413,7 +413,6 @@
             // Validasi langkah pertama
             var micrositeSelection = document.querySelector('input[name="microsite_selection"]:checked');
             if (!micrositeSelection) {
-                alert("Anda belum memilih pilihan microsite. Silakan pilih terlebih dahulu.");
                 Swal.fire({
                     text: 'Silakan pilih jenis microsite yang cocok dengan kebutuhan Anda!',
                     onClose: function() {
