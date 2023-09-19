@@ -38,6 +38,6 @@ class ShortUrl extends Model
     }
     public function component(): BelongsTo
     {
-        return $this->BelongsTo(Components::class, 'components_id');
+        return $this->BelongsTo(Components::class, 'components_uuid', 'id');
     }
 }

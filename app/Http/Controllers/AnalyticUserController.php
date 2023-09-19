@@ -108,9 +108,16 @@ class AnalyticUserController extends Controller
         $dataLink = SHortURL::all();
 
         $totalVisits = ShortURLVisit::query()
-        ->whereRelation('shortURL', 'user_id', '=', $user)
-        ->whereRelation('shortURL', 'archive', '!=', 'yes')
+        ->whereHas('shortURL', function ($query) use ($user) {
+            $query->where('user_id', $user)
+                ->where('archive', '!=', 'yes')
+                ->where(function ($query) {
+                    $query->whereNull('microsite_uuid')
+                        ->orWhere('microsite_uuid', '=', '');
+                });
+        })
         ->count();
+
 
         $totalVisitsMicrosite = ShortURLVisit::query()
         ->whereRelation('shortURL', 'user_id', '=', $user)

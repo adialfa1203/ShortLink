@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('microsites', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignId('components_id')->references('id')->on('components')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('components_uuid')->nullable();
+            $table->foreign('components_uuid')->references('id')->on('components')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('link_microsite');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Button;
 use App\Models\Social;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -79,7 +80,7 @@ class ButtonController extends Controller
     public function deleteButton($id)
     {
         $button = Button::findOrFail($id);
-        $socialCount = Social::where('buttons_id', $id)->count();
+        $socialCount = Social::where('buttons_uuid', $id)->count();
 
         if ($socialCount > 0) {
             return redirect()->back()->with('error', 'Tidak dapat menghapus Sosial ini karena masih ada data terkait.');

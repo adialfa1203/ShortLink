@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('buttons', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name_button');
             $table->string('icon');
             $table->string('color_hex');
             $table->timestamps();
-        }); 
+        });
     }
 
     /**

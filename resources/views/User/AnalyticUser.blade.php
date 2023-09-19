@@ -67,20 +67,20 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="card border-bottom border-2 card-animate border-success">
+                    <div class="card-body">
+                        <span class="badge bg-success-subtle text-success float-end"></span>
+                        <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisits }}">0</span></h4>
+                        <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Tautan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card border-bottom border-2 card-animate border-warning">
                     <div class="card-body">
                         <span class="badge bg-success-subtle text-success float-end"></span>
                         <h4 class="mb-4"><span class="counter-value" data-target="{{ $countMicrosite }}">0</span></h4>
                         <p class="text-muted fw-medium text-uppercase mb-0">Jumlah Microsite</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
-                <div class="card border-bottom border-2 card-animate border-success">
-                    <div class="card-body">
-                        <span class="badge bg-success-subtle text-success float-end"></span>
-                        <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisits }}">0</span></h4>
-                        <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung</p>
                     </div>
                 </div>
             </div>
@@ -308,7 +308,7 @@
                             name: 'Jumlah Tautan',
                             data: monthData.totalUrlData
                         }, {
-                            name: 'Pengunjung',
+                            name: 'Pengunjung Tautan',
                             data: monthData.totalVisitsData
                         }, {
                             name: 'Jumlah Microsite',

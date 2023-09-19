@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('components', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('component_name');
             $table->string('cover_img');
             $table->string('profile_img')->nullable();

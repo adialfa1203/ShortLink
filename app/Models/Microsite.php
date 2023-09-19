@@ -13,25 +13,16 @@ class Microsite extends Model
     use HasFactory;
     protected $guarded=[];
 
-    public function getIncrementing()
+    protected $keyType = 'string';
+    public $incrementing = false;
+    public static function boot()
     {
-        return false;
-    }
-    public function getKeyType()
-    {
-        return 'string';
-    }
+        parent::boot();
 
-    // protected static function boot()
-    // {
-    //     parent::boot();
-
-    //     static::creating(function($model){
-    //         if($model->getKey() == null){
-    //             $model ->setAttribute($model->getKeyName(), Str::uuid()->toString());
-    //         }
-    //     });
-    // }
+        self::creating(function ($model) {
+            $model->id = \Ramsey\Uuid\Uuid::uuid4()->toString();
+        });
+    }
 
     public function social(): HasMany
     {
@@ -39,7 +30,7 @@ class Microsite extends Model
     }
     public function component(): BelongsTo
     {
-        return $this->BelongsTo(Components::class, 'components_id');
+        return $this->BelongsTo(Components::class, 'components_uuid', 'id');
     }
     public function user(): BelongsTo
     {

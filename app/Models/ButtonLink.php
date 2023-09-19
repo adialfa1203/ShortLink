@@ -12,7 +12,7 @@ class ButtonLink extends Model
     protected $fillable = ['microsite_uuid', 'button_id', 'button_link'];
     public function button()
 {
-    return $this->belongsTo(Button::class, 'buttons_id');
+    return $this->belongsTo(Button::class, 'buttons_uuid', 'id');
 }
 
 }

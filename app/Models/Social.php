@@ -15,7 +15,7 @@ class Social extends Model
 
     public function button():BelongsTo
     {
-        return $this->belongsTo(Button::class, 'buttons_id');
+        return $this->belongsTo(Button::class, 'buttons_uuid', 'id');
     }
 
 }

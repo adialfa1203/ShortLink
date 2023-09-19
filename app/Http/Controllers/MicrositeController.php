@@ -53,8 +53,7 @@ class MicrositeController extends Controller
             'link_microsite' => 'required|regex:/^[^-+]+$/u|unique:microsites,link_microsite,id',
         ]);
         $data = [
-            'id' => Str::uuid()->toString(),
-            'components_id' => $request->microsite_selection,
+            'components_uuid' => $request->microsite_selection,
             'user_id' => auth()->user()->id,
             'name' => $request->name,
             'link_microsite' => $request->link_microsite,
@@ -78,7 +77,7 @@ class MicrositeController extends Controller
 
         foreach ($selectedButtons as $select) {
             $socialData = [
-                'buttons_id' => $select,
+                'buttons_uuid' => $select,
                 'microsite_uuid' => $microsite->id,
                 'button_link' => null,
             ];
@@ -100,7 +99,7 @@ class MicrositeController extends Controller
 
     public function micrositeUpdate(Request $request, $id)
     {
-        $microsite = Microsite::FindOrFail($id);
+        $microsite = Microsite::findOrFail($id);
         $socials = Social::where('microsite_uuid', $id)->get();
         $buttonLinks = $request->input('button_link');
 
@@ -110,16 +109,17 @@ class MicrositeController extends Controller
             'description' => 'nullable|string|max:115',
             'company_name' => 'nullable|string|max:15',
             'company_address' => 'nullable|string|max:35',
-            'button_link.name_button' => 'required|string',
         ],[
             'button_link.name_button.required' => 'Kolom :name_button harus diisi!',
         ]);
+
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput()
                 ->with('error', 'Kesalahan, ada kolom yang belum terisi dengan benar!');
         }
+
         if ($request->has('name')) {
             $microsite->name = $request->input('name');
         }
@@ -139,20 +139,19 @@ class MicrositeController extends Controller
 
         foreach ($buttonLinks as $index => $buttonLink) {
             if ($buttonLink !== null) {
-                $social = Social::where('microsite_uuid', $id)
-                    ->where('buttons_id', $index)->first();
+                // Ubah 'buttons_uuid' ke 'id' jika Anda ingin mencocokkan dengan 'id' dari tabel 'buttons'
+                $social = $socials->where('buttons_uuid', $index)->first();
 
                 if ($social) {
-                    $social->update([
-                        'button_link' => $buttonLink,
-                    ]);
+                    $social->button_link = $buttonLink;
+                    $social->save();
                 }
             }
         }
 
-        // dd($buttonLinks);
-        return redirect()->route('microsite')->with('success', 'Miscrosite sudah berhasil ditambahkan.');
+        return redirect()->route('microsite')->with('success', 'Microsite sudah berhasil diperbarui.');
     }
+
 
     public function createComponent()
     {
@@ -246,7 +245,7 @@ class MicrositeController extends Controller
     {
         $component = Components::findOrFail($id);
 
-        $micrositeCount = Microsite::where('components_id', $id)->count();
+        $micrositeCount = Microsite::where('components_uuid', $id)->count();
 
         if ($micrositeCount > 0) {
             return redirect()->back()->with('error', 'Tidak dapat menghapus komponen ini karena masih ada data terkait.');
