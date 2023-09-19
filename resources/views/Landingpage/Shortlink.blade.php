@@ -102,6 +102,11 @@
                             <li class="nav-item has_dropdown">
                                 <a class="nav-link" href="/Subscribe">Berlangganan</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link dark_btn" href="/dashboard-user">
+                                    Dashboard&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

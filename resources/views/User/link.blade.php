@@ -49,20 +49,22 @@
 @endsection
 @section('content')
 <div class="page-content">
-    <div class="d-flex">
-        <div class="col-4">
-            <h5>Tautan yang Dihasilkan Terbaru</h5>
+        <div class="d-flex flex-column flex-sm-row">
+        <div class="col-12 col-sm-4">
+            <h5 class="mb-2">Tautan yang Dihasilkan Terbaru</h5>
             <p id="clickCount" hidden>0 klik</p>
         </div>
-        <div class=" col-8 col-sm mb-3">
-            <div class="d-flex justify-content-sm-end">
-                <div class="search-box ms-2">
+        <div class="col-12 col-sm-8 mb-3">
+            <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-end">
+                <div class="search-box mb-2 mb-sm-0">
                     <input type="text" class="form-control search" placeholder="Search...">
                     <i class="ri-search-line search-icon"></i>
                 </div>
             </div>
         </div>
     </div>
+
+    
     <div class="row">
         @php
         $i = 0;
@@ -78,7 +80,7 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <h6 class="col-3">{{ $row->title }}</h6>
-                            <div class=" col-9 d-flex flex-row justify-content-end">
+                            <div class=" col-9 d-flex flex-row justify-content-end" style="margin-left:20px;">
                                 <button type="button" id="button-email" class="btn btn-primary me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#bagikan{{ $i }}" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-share-nodes"></i> &nbsp;Bagikan</button>
 
                                 <!-- Modal bagikan -->

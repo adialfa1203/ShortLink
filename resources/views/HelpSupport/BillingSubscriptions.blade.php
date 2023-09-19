@@ -96,7 +96,7 @@ header {
                     <a class="navbar-brand" href="#">
                         <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image">
                     </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    {{-- <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon">
@@ -105,7 +105,7 @@ header {
                                 <span class="toggle-bar"></span>
                             </div>
                         </span>
-                    </button>
+                    </button> --}}
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
@@ -146,7 +146,7 @@ header {
                                 <img src="https://i.postimg.cc/BQR0t7wR/Desain-tanpa-judul.png" class="w-100" alt="..." style="max-height: 200px;">
                             <!-- Menggunakan style untuk mengatur tinggi gambar -->
                             <div class="image-text">
-                                <p style="color: white; font-size:50px;"><b>Penagihan&nbsp;dan&nbsp;langganan</b></p>
+                                <p style="color: white; font-size:25px;"><b>Penagihan&nbsp;dan&nbsp;langganan</b></p>
                             </div>
                         </div>
                     </div>

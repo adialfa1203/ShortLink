@@ -130,7 +130,7 @@
                         aria-expanded="false" data-bs-toggle="dropdown" aria-controls="sidebarDashboards">
                         <img class="header-profile-user"
                             src="{{ Auth::user()->profile_picture ? asset(Auth::user()->profile_picture) : asset('profile_pictures/default.jpg') }}"
-                            alt="Header Avatar">
+                            alt="Header Avatar" style="margin-right:10px;">
                         <div class="text-start ms-xl-2">
                             <span><b>Hi! {{ Auth::user()->name }}</b></span>
 
