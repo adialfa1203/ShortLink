@@ -57,7 +57,7 @@
         <!-- end page title -->
 
         <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card border-bottom border-2 card-animate border-primary">
                     <div class="card-body">
                         <span class="badge bg-success-subtle text-success float-end"></span>
@@ -66,7 +66,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card border-bottom border-2 card-animate border-warning">
                     <div class="card-body">
                         <span class="badge bg-success-subtle text-success float-end"></span>
@@ -75,12 +75,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card border-bottom border-2 card-animate border-success">
                     <div class="card-body">
                         <span class="badge bg-success-subtle text-success float-end"></span>
                         <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisits }}">0</span></h4>
                         <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="card border-bottom border-2 card-animate border-danger">
+                    <div class="card-body">
+                        <span class="badge bg-success-subtle text-success float-end"></span>
+                        <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisitsMicrosite }}">0</span></h4>
+                        <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Microsite</p>
                     </div>
                 </div>
             </div>

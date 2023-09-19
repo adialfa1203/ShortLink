@@ -112,6 +112,12 @@ class AnalyticUserController extends Controller
         ->whereRelation('shortURL', 'archive', '!=', 'yes')
         ->count();
 
+        $totalVisitsMicrosite = ShortURLVisit::query()
+        ->whereRelation('shortURL', 'user_id', '=', $user)
+        ->whereRelation('shortURL', 'microsite_uuid', '!=', null)
+        ->whereRelation('shortURL', 'archive', '!=', 'yes')
+        ->count();
+
         $users = User::where('email', '!=', 'admin@gmail.com')->get();
         $count = [];
         foreach ($users as $user) {
@@ -128,7 +134,7 @@ class AnalyticUserController extends Controller
         // $visits = count($shortURL->visits) ;
 
         // dd($totalVisits,$countURL);
-        return view('User.AnalyticUser', compact('totalVisits','countURL','count','users','links', 'dataLink', 'countMicrosite', 'qr', 'microsites'));
+        return view('User.AnalyticUser', compact('totalVisits','countURL','count','users','links', 'dataLink', 'countMicrosite', 'qr', 'microsites', 'totalVisitsMicrosite'));
     }
 
 }
