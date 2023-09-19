@@ -18,24 +18,25 @@ class MicrositeController extends Controller
         $user_id = auth()->user()->id;
 
         if ($request->has('filter') && $request->filter == 'terakhir_diperbarui') {
-            $data = Microsite::where('user_id', $user_id)
+            $data = Microsite::with('user_id', $user_id)
                 ->orderBy('updated_at', 'desc')
                 ->get();
         }
         else {
-            $data = Microsite::where('user_id', $user_id)
+            $data = Microsite::with('shortUrl')
+            ->where('user_id', $user_id)
             ->get();
         }
-
-        $short_urls = ShortUrl::whereIn('microsite_uuid', $data->pluck('id'))->get();
         $urlshort = ShortUrl::withCount('visits')
             ->selectRaw('MONTH(created_at) as month')
             ->where('user_id', $user_id)
             ->orderBy('month', 'desc')
             ->get();
 
-        return view('Microsite.MicrositeUser', compact('data', 'short_urls', 'urlshort'));
+        $short_urls = ShortUrl::whereIn('microsite_uuid', $data->pluck('id'))->get();
+        return view('Microsite.MicrositeUser', compact('data', 'urlshort', 'short_urls'));
     }
+
 
 
     public function addMicrosite()

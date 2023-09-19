@@ -34,7 +34,7 @@ class ShortUrl extends Model
 
     public function Microsite()
     {
-        return $this->hasOne(Microsite::class);
+        return $this->BelangsTo(Microsite::class);
     }
     public function component(): BelongsTo
     {
