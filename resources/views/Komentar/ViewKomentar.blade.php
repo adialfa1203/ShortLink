@@ -32,7 +32,7 @@
                                         <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                             <thead class="text-muted table-light">
                                                 <tr  class="searchable">
-                                                    <th scope="col" data-sort="order_id">#</th>
+                                                    <th scope="col" data-sort="order_id">No</th>
                                                     <th scope="col" data-sort="order_id">Email</th>
                                                     <th scope="col" data-sort="order_id">Nama Pengguna</th>
                                                     <th scope="col" data-sort="order_date">Isi Komentar</th>
