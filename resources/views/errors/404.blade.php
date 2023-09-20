@@ -19,7 +19,17 @@
                 <p class="lead">
                     Tautan yang anda akses telah dirubah atau kadaluarsa.
                   </p>
-                  <a href="{{route('dashboard.user')}}" class="btn btn-primary text-white">Kembali Ke Dashboard</a>
+                  @auth
+                @if (auth()->user()->hasRole('admin'))
+                    <a class="btn btn-primary text-white" href="{{ route('dashboard.admin') }}">Kembali</a>
+                @elseif(auth()->user()->hasRole('user'))
+                    <a class="btn btn-primary text-white" href="{{ route('dashboard.user') }}">Kembali</a>
+                @else
+                    <a class="btn btn-primary text-white" href="{{ route('login') }}">Kembali ke Login</a>
+                @endif
+            @else
+                <a class="btn btn-primary text-white" href="{{ route('login') }}">Kembali ke Login</a>
+            @endauth
             </div>
         </div>
     </body>
