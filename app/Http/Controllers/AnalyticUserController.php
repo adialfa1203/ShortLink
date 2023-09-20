@@ -33,9 +33,10 @@ class AnalyticUserController extends Controller
                 ->count();
 
             $countMicrosite = ShortUrl::where('user_id', $user)
-                ->where('microsite_uuid', '!=', null)
+                ->whereNotNull('microsite_uuid')
                 ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
-                ->count();
+                ->count();            
+
             $totalVisits = ShortURLVisit::whereHas('shortUrl', function ($query) use ($user) {
                 $query->where('user_id', $user)
                     ->whereNull('microsite_uuid')
@@ -115,7 +116,6 @@ class AnalyticUserController extends Controller
         })
         ->count();
 
-
         $totalVisitsMicrosite = ShortURLVisit::query()
         ->whereRelation('shortURL', 'user_id', '=', $user)
         ->whereRelation('shortURL', 'microsite_uuid', '!=', null)
@@ -130,6 +130,7 @@ class AnalyticUserController extends Controller
         // Mengurutkan data berdasarkan jumlah pengunjung
         arsort($count);
         $qr = ShortUrl::get()->sum('qr_code');
+
         // find by id
         // bentuk array / collection
         // $shortURL = \AshAllenDesign\ShortURL\Models\ShortURL::find();

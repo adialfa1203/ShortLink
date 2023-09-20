@@ -286,146 +286,146 @@
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        var currentMonth = new Date().getMonth();
-        var chart;
+        <script>
+            var currentMonth = new Date().getMonth();
+            var chart;
 
-        function updateChart() {
-            $.ajax({
-                url: "{{ route('analytic.users.chart') }}",
-                method: "GET",
-                success: function(data) {
-                    if (
-                        data.totalUrlData &&
-                        data.totalVisitsData &&
-                        data.totalVisitsMicrositeData &&
-                        data.countMicrositeData
-                    ) {
-                        var monthData = groupDataByMonth(data);
-                        console.log("Jumlah Tautan:", monthData.totalUrlData);
-                        console.log("Pengunjung Tautan:", monthData.totalVisitsData);
-                        console.log("Jumlah Microsite:", monthData.countMicrositeData);
-                        console.log("Pengunjung Microsite:", monthData.totalVisitsMicrositeData);
-                        console.log("Bulan:", monthData.monthLabels);
+            function updateChart() {
+                $.ajax({
+                    url: "{{ route('analytic.users.chart') }}",
+                    method: "GET",
+                    success: function(data) {
+                        if (
+                            data.totalUrlData &&
+                            data.totalVisitsData &&
+                            data.totalVisitsMicrositeData &&
+                            data.countMicrositeData
+                        ) {
+                            var monthData = groupDataByMonth(data);
+                            console.log("Jumlah Tautan:", monthData.totalUrlData);
+                            console.log("Pengunjung Tautan:", monthData.totalVisitsData);
+                            console.log("Jumlah Microsite:", monthData.countMicrositeData);
+                            console.log("Pengunjung Microsite:", monthData.totalVisitsMicrositeData);
+                            console.log("Bulan:", monthData.monthLabels);
 
-                        var options = {
-                            series: [{
-                                    name: 'Jumlah Tautan',
-                                    data: monthData.totalUrlData
-                                },
-                                {
-                                    name: 'Pengunjung Tautan',
-                                    data: monthData.totalVisitsData
-                                },
-                                {
-                                    name: 'Jumlah Microsite',
-                                    data: monthData.countMicrositeData
-                                },
-                                {
-                                    name: 'Pengunjung Microsite',
-                                    data: monthData.totalVisitsMicrositeData
-                                }
-                            ],
-                            chart: {
-                                type: 'bar',
-                                height: 350
-                            },
-                            plotOptions: {
-                                bar: {
-                                    horizontal: false,
-                                    columnWidth: '55%',
-                                    endingShape: 'rounded'
-                                }
-                            },
-                            dataLabels: {
-                                enabled: false
-                            },
-                            stroke: {
-                                show: true,
-                                width: 2,
-                                colors: ['transparent']
-                            },
-                            xaxis: {
-                                categories: monthData.monthLabels,
-                                labels: {
-                                    style: {
-                                        fontSize: "12px"
+                            var options = {
+                                series: [{
+                                        name: 'Jumlah Tautan',
+                                        data: monthData.totalUrlData
+                                    },
+                                    {
+                                        name: 'Pengunjung Tautan',
+                                        data: monthData.totalVisitsData
+                                    },
+                                    {
+                                        name: 'Jumlah Microsite',
+                                        data: monthData.countMicrositeData
+                                    },
+                                    {
+                                        name: 'Pengunjung Microsite',
+                                        data: monthData.totalVisitsMicrositeData
                                     }
+                                ],
+                                chart: {
+                                    type: 'bar',
+                                    height: 350
+                                },
+                                plotOptions: {
+                                    bar: {
+                                        horizontal: false,
+                                        columnWidth: '55%',
+                                        endingShape: 'rounded'
+                                    }
+                                },
+                                dataLabels: {
+                                    enabled: false
+                                },
+                                stroke: {
+                                    show: true,
+                                    width: 2,
+                                    colors: ['transparent']
+                                },
+                                xaxis: {
+                                    categories: monthData.monthLabels,
+                                    labels: {
+                                        style: {
+                                            fontSize: "12px"
+                                        }
+                                    }
+                                },
+                                fill: {
+                                    opacity: 1
                                 }
-                            },
-                            fill: {
-                                opacity: 1
+                            };
+
+                            if (chart) {
+                                chart.updateOptions(options);
+                            } else {
+                                chart = new ApexCharts(document.querySelector("#chartDataAnalytic"), options);
+                                chart.render();
                             }
-                        };
 
-                        if (chart) {
-                            chart.updateOptions(options);
+                            var currentMonthNew = new Date().getMonth();
+                            if (currentMonth !== currentMonthNew) {
+                                chart.updateSeries([]);
+                                currentMonth = currentMonthNew;
+                            }
                         } else {
-                            chart = new ApexCharts(document.querySelector("#chartDataAnalytic"), options);
-                            chart.render();
+                            console.log("Data tidak tersedia.");
                         }
-
-                        var currentMonthNew = new Date().getMonth();
-                        if (currentMonth !== currentMonthNew) {
-                            chart.updateSeries([]);
-                            currentMonth = currentMonthNew;
-                        }
-                    } else {
-                        console.log("Data tidak tersedia.");
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
                     }
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
-        }
+                });
+            }
 
-        function groupDataByMonth(data) {
-            var monthData = {
-                totalUrlData: [],
-                totalVisitsData: [],
-                totalVisitsMicrositeData: [],
-                countMicrositeData: [],
-                monthLabels: []
-            };
+            function groupDataByMonth(data) {
+                var monthData = {
+                    totalUrlData: [],
+                    totalVisitsData: [],
+                    totalVisitsMicrositeData: [],
+                    countMicrositeData: [],
+                    monthLabels: []
+                };
 
-            var currentMonthData = {
-                totalUrl: 0,
-                totalVisits: 0,
-                totalVisitsMicrosite: 0,
-                countMicrosite: 0
-            };
+                var currentMonthData = {
+                    totalUrl: 0,
+                    totalVisits: 0,
+                    totalVisitsMicrosite: 0,
+                    countMicrosite: 0
+                };
 
-            data.totalUrlData.forEach(function(item) {
-                var itemMonth = new Date(item.date).getMonth();
+                data.totalUrlData.forEach(function(item) {
+                    var itemMonth = new Date(item.date).getMonth();
 
-                if (itemMonth === currentMonth) {
-                    currentMonthData.totalUrl += item.totalUrl;
-                    currentMonthData.totalVisits += item.totalVisits;
-                    currentMonthData.totalVisitsMicrosite += item.totalVisitsMicrosite;
-                    currentMonthData.countMicrosite += item.countMicrosite;
-                }
-            });
+                    if (itemMonth === currentMonth) {
+                        currentMonthData.totalUrl += item.totalUrl;
+                        currentMonthData.totalVisits += item.totalVisits;
+                        currentMonthData.totalVisitsMicrosite += item.totalVisitsMicrosite;
+                        currentMonthData.countMicrosite += item.countMicrosite;
+                    }
+                });
 
-            monthData.totalUrlData.push(currentMonthData.totalUrl);
-            monthData.totalVisitsData.push(currentMonthData.totalVisits);
-            monthData.totalVisitsMicrositeData.push(currentMonthData.totalVisitsMicrosite);
-            monthData.countMicrositeData.push(currentMonthData.countMicrosite);
-            monthData.monthLabels.push(getMonthName(currentMonth));
+                monthData.totalUrlData.push(currentMonthData.totalUrl);
+                monthData.totalVisitsData.push(currentMonthData.totalVisits);
+                monthData.totalVisitsMicrositeData.push(currentMonthData.totalVisitsMicrosite);
+                monthData.countMicrositeData.push(currentMonthData.countMicrosite);
+                monthData.monthLabels.push(getMonthName(currentMonth));
 
-            return monthData;
-        }
+                return monthData;
+            }
 
-        function getMonthName(monthIndex) {
-            var monthNames = [
-                "Januari", "Februari", "Maret", "April", "Mei", "Juni",
-                "Juli", "Agustus", "September", "Oktober", "November", "Desember"
-            ];
-            return monthNames[monthIndex];
-        }
+            function getMonthName(monthIndex) {
+                var monthNames = [
+                    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+                ];
+                return monthNames[monthIndex];
+            }
 
-        updateChart();
-    </script>
+            updateChart();
+        </script>
 
     <script>
         const showPopularDataButton = document.getElementById('showPopularData');
