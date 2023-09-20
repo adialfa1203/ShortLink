@@ -27,7 +27,10 @@ class User extends Authenticatable
         'number',
         'is_banned',
         'profile_picture',
-        'verification_code'
+        'verification_code',
+        'github_id',
+        'github_token',
+        'github_refresh_token',
     ];
 
     /**

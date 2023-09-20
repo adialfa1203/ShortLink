@@ -9,7 +9,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>Ubah Kata Sandi | LINK.ID</title>
+    <title>Buat Akun | LINK.ID</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Minimal Admin & Dashboard Template" name="description">
     <meta content="Themesbrand" name="author">
@@ -67,25 +67,46 @@
                                     <div class="card mb-0 border-0 shadow-none mb-0">
                                         <div class="card-body p-sm-5 m-lg-4">
                                             <div class="text-center">
-                                                <h5 class="fs-3xl">Buat kata sandi baru</h5>
-                                                <p class="text-muted mb-5">Kata sandi baru Anda harus berbeda dari
-                                                    kata sandi yang digunakan sebelumnya.</p>
+                                                <h5 class="fs-3xl">Konfirmasi Akun Anda</h5>
+                                                <p class="text-muted mb-5">Anda perlu konfirmasi Akun Anda di halaman ini. Jika tidak, pendaftaran akun Anda akan dibatalkan.</p>
                                             </div>                                                                                       
                                             <div class="p-2">
-                                                <form action="{{ route('updatePassword') }}" method="POST">
+                                                <form action="" method="POST">
                                                     @csrf
-                                                    <input type="hidden" name="email" value="{{ $user->email }}">
+                                                    <input type="hidden" name="email" value="">
                                                     <!-- Hidden input for email -->
                                                     <div>
                                                         @error('password')
-                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                            <div class="alert alert-danger"></div>
                                                         @enderror
                                                     </div>
                                                     <div>
                                                         @error('password_confirmation')
-                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                            <div class="alert alert-danger"></div>
                                                         @enderror
                                                     </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="name-input">Nama Lengkap</label>
+                                                        <div class="position-relative auth-pass-inputgroup">
+                                                            <input name="name" type="text" class="form-control pe-5 password-input" onpaste="return false" placeholder="Masukkan Nama Lengkap" value="{{ $githubUserData['name'] }}" id="name-input">                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="number-input">Nomor Ponsel</label>
+                                                        <div class="position-relative auth-pass-inputgroup">
+                                                            <input name="number" type="number" class="form-control pe-5 number-input" onpaste="return false" placeholder="Masukkan Nomor Ponsel" id="number-input">                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="email-input">Email</label>
+                                                        <div class="position-relative auth-pass-inputgroup">
+                                                            <input name="email" type="email" class="form-control pe-5 email-input" onpaste="return false" placeholder="Masukkan Email" value="{{ $githubUserData['email'] }}" id="email-input">                                                           
+                                                        </div>
+                                                    </div>
+
                                                     <div class="mb-3">
                                                         <label class="form-label" for="password-input">Kata Sandi</label>
                                                         <div class="position-relative auth-pass-inputgroup">
@@ -124,13 +145,13 @@
 
                                                     <div class="mt-4">
                                                         <button class="btn btn-primary w-100"
-                                                            type="submit">Ubah Kata Sandi</button>
+                                                            type="submit">Lanjutkan dan Daftar</button>
                                                     </div>
 
                                                 </form>
                                             </div>
                                             <div class="mt-4 text-center">
-                                                <p class="mb-0">Tunggu, saya ingat kata sandi saya ... <a
+                                                <p class="mb-0">Tunggu, saya sudah mempunyai akun ... <a
                                                         href="{{ url('login') }}"
                                                         class="fw-semibold text-primary text-decoration-underline"> Masuk </a>
                                                 </p>

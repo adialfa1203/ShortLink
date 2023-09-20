@@ -104,7 +104,7 @@
                                                             <label class="form-label">Nomer Ponsel</label>
                                                             <div class="position-relative ">
                                                                 <input name="number" type="number"
-                                                                    class="form-control" placeholder="Masukan Nomor"
+                                                                    class="form-control" placeholder="Masukan Nomor Ponsel"
                                                                     value="{{ old('number') }}">
                                                             </div>
                                                             <div>

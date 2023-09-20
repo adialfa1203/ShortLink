@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -206,4 +207,23 @@ class AuthController extends Controller
         return redirect('/');
     }
 
+    public function registerWith()
+    {
+        // Ambil data pengguna yang berhasil login melalui GitHub
+        $githubUser = Socialite::driver('github')->user();
+
+        // Ambil alamat email dari data pengguna GitHub
+        $email = $githubUser->email;
+
+        // Cari pengguna dengan alamat email yang sesuai
+        $user = User::where('email', $email)->first();
+
+        if (!$user) {
+            // Pengguna tidak ditemukan, kembalikan pesan kesalahan
+            return redirect()->route('login')->withErrors('Terjadi Kesalahan');
+        }
+
+        // Lanjutkan ke halaman "confirmation" jika pengguna ditemukan
+        return view('Auth.RegisterWith.with');
+    }
 }
