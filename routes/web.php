@@ -47,7 +47,7 @@ Route::get('sample', [AuthController::class, 'sendEmail']);
 Route::post('send-emails', [AuthController::class, 'sendSampleEmail'])->name('sendEmail');
 Route::get('verification', [AuthController::class, 'verification'])->name('verification');
 Route::post('verificationCode', [AuthController::class, 'verificationCode'])->name('verificationCode');
-Route::get('/', [DahsboardController::class, 'home']);
+// Route::get('/', [DahsboardController::class, 'home']);
 });
 
 Route::get('/', [LandingPageController::class, 'landingPage'])->name('landing.page');

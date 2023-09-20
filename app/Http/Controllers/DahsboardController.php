@@ -90,9 +90,12 @@ class DahsboardController extends Controller
     public function home (){
         $data = Footer::first();
         $komentar = Comment::orderBy('created_at', 'desc')->get();
+        $url = ShortUrl::whereNotNull('default_short_url')->count();
+        $micrositeuuid = ShortUrl::whereNotNull('microsite_uuid')->count();
         // $user = User::all();
         $users = Auth::user();
         $userId = User::all();
-        return view('Landingpage.Home', compact('komentar','users', 'userId','data'));
+        dd($url);
+        return view('Landingpage.Home', compact('komentar','users', 'userId','data','url','micrositeuuid'));
     }
 }

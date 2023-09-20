@@ -421,40 +421,49 @@
                 <!--end row-->
 
                 <div class="row justify-content-center mt-5">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="text-center mt-3">
-                            <h3>
-                                <span class="counter_value" data-target="1499">10M</span><span>+</span>
-                            </h3>
-                            <p class="text-muted">Tautan panjang telah dipersingkat</p>
+                    <!--end col-->
+                    <div class="col-md-3" style="margin-bottom: 2%;">
+                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
+                            <div class="story_text">
+                                <h4>
+                                    <span class="counter_value" data-target="{{($url)}}">{{($url)}}</span><span>+</span>
+                                </h4>
+                                <p class="text-muted">Tautan panjang telah dipersingkat</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="margin-bottom: 2%;">
+                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
+                            <div class="story_text">
+                                <h4>
+                                    <span class="counter_value" data-target="{{( $micrositeuuid )}}">{{( $micrositeuuid )}}</span><span>+</span>
+                                </h4>
+                                <p class="text-muted">Microsite untuk bionik telah dibuat</p>
+                            </div>
                         </div>
                     </div>
                     <!--end col-->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="text-center mt-3">
-                            <h3>
-                                <span class="counter_value" data-target="1080">112K</span><span>K</span>
-                            </h3>
-                            <p class="text-muted">Microsite untuk bionik telah dibuat</p>
+                    <div class="col-md-3" style="margin-bottom: 2%;">
+                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
+                            <div class="story_text">
+                                <h4>
+                                    <h3 class="counter_value" data-target="{{ $totalVisits }}">{{ $totalVisits }}</h3>
+                                </h4>
+                                <p class="text-muted">Tautan dan Pengunjung
+                                    Situs Mikro per hari</p>
+                            </div>
                         </div>
                     </div>
                     <!--end col-->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="text-center mt-3">
-                            <h3 class="counter_value" data-target="608">8.5M</h3>
-                            <p class="text-muted">Tautan dan Pengunjung
-                                Situs Mikro per hari</p>
-                        </div>
-                    </div>
-                    <!--end col-->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="text-center mt-3">
-                            <h3 class="counter_value" data-target="252">27/7</h3>
-                            <p class="text-muted">Tautan dipantau untuk
-                                membuat aman & terjamin</p>
+                    <div class="col-md-3" style="margin-bottom: 2%;">
+                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
+                            <div class="story_text">
+                                <h4>
+                                    <h3 class="counter_value" data-target="{{ $totalVisits }}">{{ $totalVisits }}</h3>
+                                </h4>
+                                <p class="text-muted">Tautan dipantau untuk
+                                    membuat aman & terjamin</p>
+                            </div>
                         </div>
                     </div>
                     <!--end col-->
