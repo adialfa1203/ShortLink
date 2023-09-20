@@ -32,7 +32,6 @@ class MicrositeController extends Controller
             $d = $data;
              
         }
-        $url = ShortUrl::where('user_id', $user_id)->with('shortUrls')->get();
         // dd($url);
         $urlshort = ShortUrl::withCount('visits')
         ->where('user_id', $user_id)
@@ -59,7 +58,7 @@ class MicrositeController extends Controller
             }
 
         $short_urls = ShortUrl::whereIn('microsite_uuid', $data->pluck('id'))->get();
-        return view('Microsite.MicrositeUser', compact('data', 'urlshort', 'short_urls','result', 'd','url'));
+        return view('Microsite.MicrositeUser', compact('data', 'urlshort', 'short_urls','result', 'd'));
     }
 
 
