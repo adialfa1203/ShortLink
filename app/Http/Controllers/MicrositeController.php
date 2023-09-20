@@ -70,6 +70,13 @@ class MicrositeController extends Controller
 
     public function createMicrosite(Request $request, Microsite $microsite)
     {
+        $user = auth()->user();
+        
+        // Jika pengguna adalah non-premium (subscribe == 'no') dan telah mencapai batas 10 microsite
+        if ($user->subscribe === 'no' && $user->microsites()->count() >= 10) {
+            return redirect()->back()->with('error', 'Anda telah mencapai batas maksimum 10 microsite.');
+        }
+        
         $request->validate([
             'microsite_selection' => 'required',
             'name' => 'required|string|regex:/^[^-+]+$/u|max:10',
@@ -133,7 +140,7 @@ class MicrositeController extends Controller
             'company_name' => 'nullable|string|max:15',
             'company_address' => 'nullable|string|max:35',
         ],[
-            'button_link.name_button.required' => 'Kolom :name_button harus diisi!',
+            'button_link.name_button.required' => 'Kolom name_button harus diisi!',
         ]);
 
         if ($validator->fails()) {
@@ -222,6 +229,12 @@ class MicrositeController extends Controller
             'component_name' => 'required|max:10',
             'cover_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'profile_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+        ], [
+            'component_name.required' => 'Nama komponen harus diisi',
+            'component_name.max' => 'Jumlah karakter tidak boleh lebih dari 10',
+            'cover_img.image' => 'Data yang diizinkan hanya jpeg, png, jpg dan gif',
+            'cover_img.mimes' => 'Data yang diizinkan hanya jpeg, png, jpg dan gif',
+            'cover_img.max' => 'Ukuran background tidak boleh lebih dari 2048 pixel',
         ]);
 
         if ($validator->fails()) {
