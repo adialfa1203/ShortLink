@@ -79,10 +79,9 @@
                         <div class="card" style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;"
                             id="card{{ $row->id }}">
                             <div class="card-body">
-                                <div class="d-flex">
-                                    <h6 class="col-3">{{ $row->title }}</h6>
-                                    <div class=" col-9 d-flex flex-row justify-content-end" style="margin-left:20px;">
-                                        <button type="button" id="button-email" class="btn btn-primary me-3 btn-sm"
+                                <h6 class="col-lg-3 col-md-4 col-sm-12">{{ $row->title }}</h6>
+                                <div class="col-lg-12 col-md-12 col-sm-9 d-flex flex-row justify-content-end" >
+                                    <button type="button" id="button-email" class="btn btn-primary me-3 btn-sm"
                                             data-bs-toggle="modal" data-bs-target="#bagikan{{ $i }}"
                                             aria-haspopup="true" aria-expanded="false"><i
                                                 class="fa-solid fa-share-nodes"></i> &nbsp;Bagikan</button>
@@ -147,7 +146,7 @@
                                             data-bs-target="#arsip{{ $row->id }}" data-bs-toggle="modal"><i
                                                 class="bi bi-archive-fill"></i> Arsipkan</button>
                                     </div>
-                                </div>
+                                    <br>
                                 <a>
                                     <h3 class="garisbawah card-title mb-2">{{ $row->default_short_url }}</h3>
                                 </a>
@@ -179,8 +178,8 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <div class="d-flex">
-                                    <div class="d-flex col-5">
+                                <div class="d-flex flex-column flex-sm-row justify-content-between">
+                                    <div class="d-flex col-12 col-sm-5 ">
                                         <p style="margin-top: 10px;">
                                             {{ \Carbon\Carbon::parse($row->deactivated_at)->format('F j, Y, h:i A') }}
                                         </p>
@@ -198,7 +197,7 @@
                                         }
                                         ?>
                                     </div>
-                                    <div class=" col-7 d-flex flex-row justify-content-end">
+                                    <div class="col-12 col-sm-7 d-flex flex-row justify-content-end mt-2 mt-sm-0">
                                         <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#TimeModal-{{ $row->id }}"
                                             data-link="{{ $row->url_key }}"><span data-bs-toggle="tooltip"
