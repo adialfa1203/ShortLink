@@ -120,11 +120,11 @@ class ShortLinkController extends Controller
 
         return response()->json(['message' => 'URL key updated successfully']);
     }
+
     public function micrositeLink($micrositeLink)
     {
         $accessMicrosite = Microsite::with('component')->where('link_microsite', $micrositeLink)->first();
-        $social = Social::where('microsite_uuid',1)->with('button')->get();
-        // dd($social);
+        $social = Social::where('microsite_uuid', $accessMicrosite->id)->with('button')->get();
         $short_url = ShortUrl::where('microsite_uuid', $micrositeLink)->first();
 
         return view('Microsite.MicrositeLink', compact('accessMicrosite', 'social', 'short_url'));

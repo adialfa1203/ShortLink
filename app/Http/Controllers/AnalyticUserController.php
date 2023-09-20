@@ -13,7 +13,6 @@ class AnalyticUserController extends Controller
     public function AnalyticUsersChart()
     {
         $user = Auth::user()->id;
-
         $endDate = Carbon::now();
         $startDate = $endDate->copy()->startOfMonth();
 
@@ -28,28 +27,28 @@ class AnalyticUserController extends Controller
             $startDateOfMonth = $date->startOfMonth()->format('Y-m-d');
             $endDateOfMonth = $date->endOfMonth()->format('Y-m-d');
 
-        $countURL = ShortURL::where('user_id', $user)
-            ->whereNull('microsite_uuid')
-            ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
-            ->count();
+            $countURL = ShortUrl::where('user_id', $user)
+                ->whereNull('microsite_uuid')
+                ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
+                ->count();
 
-        $countMicrosite = ShortURL::where('microsite_uuid', $user)
-            ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
-            ->count();
-
-        $totalVisits = ShortURLVisit::whereHas('shortURL', function ($query) use ($user) {
+            $countMicrosite = ShortUrl::where('user_id', $user)
+                ->where('microsite_uuid', '!=', null)
+                ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
+                ->count();
+            $totalVisits = ShortURLVisit::whereHas('shortUrl', function ($query) use ($user) {
                 $query->where('user_id', $user)
                     ->whereNull('microsite_uuid')
                     ->where('archive', '!=', 'yes');
             })
-            ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
+            ->whereBetween('visited_at', [$startDateOfMonth, $endDateOfMonth])
             ->count();
 
-        $totalVisitsMicrosite = ShortURLVisit::whereHas('shortURL', function ($query) use ($user) {
+            $totalVisitsMicrosite = ShortURLVisit::whereHas('shortUrl', function ($query) use ($user) {
                 $query->where('user_id', $user)
                     ->whereNotNull('microsite_uuid');
             })
-            ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
+            ->whereBetween('visited_at', [$startDateOfMonth, $endDateOfMonth])
             ->count();
 
             $totalUrlData[] = ['date' => $startDateOfMonth, 'totalUrl' => $countURL];
@@ -67,8 +66,6 @@ class AnalyticUserController extends Controller
             'countMicrositeData' => $countMicrositeData
         ]);
     }
-
-
 
     public function analyticUser()
     {

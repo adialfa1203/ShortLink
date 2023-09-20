@@ -28,14 +28,17 @@ class Microsite extends Model
     {
         return $this->hasMany(Social::class);
     }
+
     public function component(): BelongsTo
     {
-        return $this->BelongsTo(Components::class, 'components_uuid', 'id');
+        return $this->belongsTo(Components::class, 'components_uuid', 'id');
     }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
+
     public function shortUrl()
     {
         return $this->hasMany(ShortUrl::class, 'microsite_uuid', 'id');
