@@ -255,7 +255,7 @@
                                                 </div>
                                                 {{-- end salin --}}
                                                 <div class="wrapper end-0 position-absolute" style="z-index: 5">
-                                                    <button type="button" id="button-email" data-bs-toggle="modal" data-bs-target="#bagikan" style="background-color : #FF6C6C" class="btn btn-sm text-white m-1"><i class="bi bi-share-fill"></i> Bagikan</button>
+                                                    <button type="button" id="button-email" data-bs-toggle="modal" data-bs-target="#bagikan" class="btn btn-sm btn-danger text-white m-1"><i class="bi bi-share-fill"></i> Bagikan</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -487,11 +487,11 @@
                                             <br>
                                             <h3 class="card-title">Microsite dibuat/bulan <i class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip" data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
                                             </h3>
-                                            
+
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress-bar" role="progressbar" aria-valuenow="{{ $countMIcrosite }}" aria-valuemin="0" aria-valuemax="10" style="width: {{ ($countMIcrosite / 10) * 100 }}%;"></div>
                                             </div>
-                                            
+
                                             <p class="text-muted mb-0"><b>{{ $countMIcrosite }} dari 10</b></p>
 
                                             <br>
@@ -776,13 +776,13 @@
     <script>
         // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
         var countData = {{ $countNameChanged }}; // Contoh nilai statis
-    
+
         // Ubah lebar bar progres sesuai dengan data yang diperoleh
         var progressBar = document.getElementById("progress-bar");
         var progressBarWidth = (countData / 5) * 100; // Maksimum adalah 5
         progressBar.style.width = progressBarWidth + "%";
         progressBar.setAttribute("aria-valuenow", countData);
-    
+
         // Update teks
         var progressText = document.querySelector('.text-muted.mb-0 b');
         progressText.textContent = countData + " dari 5";
@@ -790,7 +790,7 @@
     <script>
         // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
         var countData = {{ $countMIcrosite }}; // Contoh nilai statis
-    
+
         // Ubah lebar bar progres sesuai dengan data yang diperoleh
         var progressBar = document.getElementById("progress-bar");
         var progressBarWidth = (countData / 10) * 100; // Maksimum adalah 10

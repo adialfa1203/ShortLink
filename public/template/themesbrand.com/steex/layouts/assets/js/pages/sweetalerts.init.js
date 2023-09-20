@@ -1,11 +1,11 @@
-document.getElementById("sa-basic") && document.getElementById("sa-basic").addEventListener("click", function () {
+document.getElementById("sa-basic") && document.getElementById("sa-basic").addEventListener("click", function() {
     Swal.fire({
         title: "Any fool can use a computer",
         confirmButtonClass: "btn btn-primary w-xs mt-2",
         buttonsStyling: !1,
         showCloseButton: !0
     })
-}), document.getElementById("sa-title") && document.getElementById("sa-title").addEventListener("click", function () {
+}), document.getElementById("sa-title") && document.getElementById("sa-title").addEventListener("click", function() {
     Swal.fire({
         title: "The Internet?",
         text: "That thing is still around?",
@@ -14,7 +14,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         buttonsStyling: !1,
         showCloseButton: !0
     })
-}), document.getElementById("sa-success") && document.getElementById("sa-success").addEventListener("click", function () {
+}), document.getElementById("sa-success") && document.getElementById("sa-success").addEventListener("click", function() {
     Swal.fire({
         title: "Good job!",
         text: "You clicked the button!",
@@ -25,7 +25,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         buttonsStyling: !1,
         showCloseButton: !0
     })
-}), document.getElementById("sa-error") && document.getElementById("sa-error").addEventListener("click", function () {
+}), document.getElementById("sa-error") && document.getElementById("sa-error").addEventListener("click", function() {
     Swal.fire({
         title: "Oops...",
         text: "Something went wrong!",
@@ -35,7 +35,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         footer: '<a href="">Why do I have this issue?</a>',
         showCloseButton: !0
     })
-}), document.getElementById("sa-longcontent") && document.getElementById("sa-longcontent").addEventListener("click", function () {
+}), document.getElementById("sa-longcontent") && document.getElementById("sa-longcontent").addEventListener("click", function() {
     Swal.fire({
         imageUrl: "https://placeholder.pics/svg/300x1500",
         imageHeight: 1500,
@@ -44,22 +44,22 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         buttonsStyling: !1,
         showCloseButton: !0
     })
-}), document.addEventListener('DOMContentLoaded', function () {
+}), document.addEventListener('DOMContentLoaded', function() {
     const banUserButtons = document.querySelectorAll('.btn-subtle-danger, .btn-subtle-success');
 
     banUserButtons.forEach(button => {
-        button.addEventListener('click', function (event) {
+        button.addEventListener('click', function(event) {
             event.preventDefault();
             const userId = this.getAttribute('data-user-id');
             const isBanned = this.getAttribute('data-is-banned') === '1';
 
             let confirmationText, actionText, confirmButtonColor;
             if (isBanned) {
-                confirmationText = "Yakin ingin membatalkan pencekalan pengguna ini?";
+                confirmationText = "Yakin ingin memulihkan akun pengguna ini?";
                 actionText = "Unbanned";
-                confirmButtonColor = "#00cc00";
+                confirmButtonColor = "#28A745";
             } else {
-                confirmationText = "Apakah Anda yakin ingin mencekal pengguna ini?";
+                confirmationText = "Apakah Anda yakin ingin memblokir akun pengguna ini?";
                 actionText = "Banned";
                 confirmButtonColor = "#d33";
             }
@@ -79,7 +79,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
             });
         });
     });
-}), document.getElementById("sa-params") && document.getElementById("sa-params").addEventListener("click", function () {
+}), document.getElementById("sa-params") && document.getElementById("sa-params").addEventListener("click", function() {
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -91,7 +91,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         cancelButtonClass: "btn btn-danger w-xs mt-2",
         buttonsStyling: !1,
         showCloseButton: !0
-    }).then(function (t) {
+    }).then(function(t) {
         t.value ? Swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",
@@ -106,7 +106,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
             buttonsStyling: !1
         })
     })
-}), document.getElementById("sa-image") && document.getElementById("sa-image").addEventListener("click", function () {
+}), document.getElementById("sa-image") && document.getElementById("sa-image").addEventListener("click", function() {
     Swal.fire({
         title: "Sweet!",
         text: "Modal with a custom image.",
@@ -117,7 +117,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         animation: !1,
         showCloseButton: !0
     })
-}), document.getElementById("sa-close") && document.getElementById("sa-close").addEventListener("click", function () {
+}), document.getElementById("sa-close") && document.getElementById("sa-close").addEventListener("click", function() {
     var t;
     Swal.fire({
         title: "Auto close alert!",
@@ -125,19 +125,19 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         timer: 2e3,
         timerProgressBar: !0,
         showCloseButton: !0,
-        didOpen: function () {
-            Swal.showLoading(), t = setInterval(function () {
+        didOpen: function() {
+            Swal.showLoading(), t = setInterval(function() {
                 var t = Swal.getHtmlContainer();
                 t && (t = t.querySelector("b")) && (t.textContent = Swal.getTimerLeft())
             }, 100)
         },
-        onClose: function () {
+        onClose: function() {
             clearInterval(t)
         }
-    }).then(function (t) {
+    }).then(function(t) {
         t.dismiss === Swal.DismissReason.timer && console.log("I was closed by the timer")
     })
-}), document.getElementById("custom-html-alert") && document.getElementById("custom-html-alert").addEventListener("click", function () {
+}), document.getElementById("custom-html-alert") && document.getElementById("custom-html-alert").addEventListener("click", function() {
     Swal.fire({
         title: "<i>HTML</i> <u>example</u>",
         icon: "info",
@@ -150,7 +150,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         confirmButtonText: '<i class="ri-thumb-up-fill align-bottom me-1"></i> Great!',
         cancelButtonText: '<i class="ri-thumb-down-fill align-bottom"></i>'
     })
-}), document.getElementById("sa-dialog-three-btn") && document.getElementById("sa-dialog-three-btn").addEventListener("click", function () {
+}), document.getElementById("sa-dialog-three-btn") && document.getElementById("sa-dialog-three-btn").addEventListener("click", function() {
     Swal.fire({
         title: "Do you want to save the changes?",
         showDenyButton: !0,
@@ -162,7 +162,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         buttonsStyling: !1,
         denyButtonText: "Don't save",
         showCloseButton: !0
-    }).then(function (t) {
+    }).then(function(t) {
         t.isConfirmed ? Swal.fire({
             title: "Saved!",
             icon: "success",
@@ -175,7 +175,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
             buttonsStyling: !1
         })
     })
-}), document.getElementById("sa-position") && document.getElementById("sa-position").addEventListener("click", function () {
+}), document.getElementById("sa-position") && document.getElementById("sa-position").addEventListener("click", function() {
     Swal.fire({
         position: "top-end",
         icon: "success",
@@ -184,7 +184,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         timer: 1500,
         showCloseButton: !0
     })
-}), document.getElementById("custom-padding-width-alert") && document.getElementById("custom-padding-width-alert").addEventListener("click", function () {
+}), document.getElementById("custom-padding-width-alert") && document.getElementById("custom-padding-width-alert").addEventListener("click", function() {
     Swal.fire({
         title: "Custom width, padding, background.",
         width: 600,
@@ -193,7 +193,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         buttonsStyling: !1,
         background: "var(--tb-secondary-bg) url(assets/images/modal-bg.jpg)"
     })
-}), document.getElementById("ajax-alert") && document.getElementById("ajax-alert").addEventListener("click", function () {
+}), document.getElementById("ajax-alert") && document.getElementById("ajax-alert").addEventListener("click", function() {
     Swal.fire({
         title: "Submit email to run ajax request",
         input: "email",
@@ -204,15 +204,15 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         cancelButtonClass: "btn btn-danger w-xs",
         buttonsStyling: !1,
         showCloseButton: !0,
-        preConfirm: function (n) {
-            return new Promise(function (t, e) {
-                setTimeout(function () {
+        preConfirm: function(n) {
+            return new Promise(function(t, e) {
+                setTimeout(function() {
                     "taken@example.com" === n ? e("This email is already taken.") : t()
                 }, 2e3)
             })
         },
         allowOutsideClick: !1
-    }).then(function (t) {
+    }).then(function(t) {
         Swal.fire({
             icon: "success",
             title: "Ajax request finished!",
@@ -221,7 +221,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
             html: "Submitted email: " + t
         })
     })
-}), document.getElementById("custom-sa-success") && document.getElementById("custom-sa-success").addEventListener("click", function () {
+}), document.getElementById("custom-sa-success") && document.getElementById("custom-sa-success").addEventListener("click", function() {
     Swal.fire({
         html: '<div class="mt-3"><img src="assets/images/success-img.png" alt=""  height="150"></img><div class="mt-4 pt-2 fs-base"><h4>Well done !</h4><p class="text-muted mx-4 mb-0">Aww yeah, you successfully read this important message.</p></div></div>',
         showCancelButton: !0,
@@ -231,7 +231,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         buttonsStyling: !1,
         showCloseButton: !0
     })
-}), document.getElementById("custom-sa-error") && document.getElementById("custom-sa-error").addEventListener("click", function () {
+}), document.getElementById("custom-sa-error") && document.getElementById("custom-sa-error").addEventListener("click", function() {
     Swal.fire({
         html: '<div class="mt-3"><i class="bi bi-exclamation-triangle display-5 text-warning"></i><div class="mt-4 pt-2 fs-base"><h4>Oops...! Something went Wrong !</h4><p class="text-muted mx-4 mb-0">Your email Address is invalid</p></div></div>',
         showCancelButton: !0,
@@ -241,7 +241,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         buttonsStyling: !1,
         showCloseButton: !0
     })
-}), document.getElementById("custom-sa-warning") && document.getElementById("custom-sa-warning").addEventListener("click", function () {
+}), document.getElementById("custom-sa-warning") && document.getElementById("custom-sa-warning").addEventListener("click", function() {
     Swal.fire({
         html: '<div class="mt-3"><i class="bi bi-trash3 display-5 text-danger"></i><div class="mt-4 pt-2 fs-base mx-5"><h4>Are you Sure ?</h4><p class="text-muted mx-4 mb-0">Are you Sure You want to Delete this Account ?</p></div></div>',
         showCancelButton: !0,
@@ -251,7 +251,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         buttonsStyling: !1,
         showCloseButton: !0
     })
-}), document.getElementById("custom-sa-community") && document.getElementById("custom-sa-community").addEventListener("click", function () {
+}), document.getElementById("custom-sa-community") && document.getElementById("custom-sa-community").addEventListener("click", function() {
     Swal.fire({
         title: "Join Our Community",
         html: '<div class="mt-3 text-start"><label for="input-email" class="form-label fs-sm">Email</label><input type="email" class="form-control" id="input-email" placeholder="Enter Email Address"></div>',
@@ -263,7 +263,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         buttonsStyling: !1,
         showCloseButton: !0
     })
-}), document.getElementById("custom-sa-email-verify") && document.getElementById("custom-sa-email-verify").addEventListener("click", function () {
+}), document.getElementById("custom-sa-email-verify") && document.getElementById("custom-sa-email-verify").addEventListener("click", function() {
     Swal.fire({
         html: '<div class="mt-3"><div class="avatar-lg mx-auto"><div class="avatar-title bg-light text-success display-5 rounded-circle"><i class="ri-mail-send-fill"></i></div></div><div class="mt-4 pt-2 fs-base"><h4 class="fs-3xl fw-semibold">Verify Your Email</h4><p class="text-muted mb-0 mt-3">We have sent you verification email <span class="fw-medium">example@abc.com</span>, <br/> Please check it.</p></div></div>',
         showCancelButton: !1,
@@ -273,7 +273,7 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
         footer: '<p class="fs-md text-muted mb-0">Didn\'t receive an email ? <a href="#" class="fw-semibold text-decoration-underline">Resend</a></p>',
         showCloseButton: !0
     })
-}), document.getElementById("custom-sa-notification") && document.getElementById("custom-sa-notification").addEventListener("click", function () {
+}), document.getElementById("custom-sa-notification") && document.getElementById("custom-sa-notification").addEventListener("click", function() {
     Swal.fire({
         html: '<div class="mt-3"><div class="avatar-lg mx-auto"><img src="assets/images/users/avatar-2.jpg" class="rounded-circle img-thumbnail" alt="thumbnail"></div><div class="mt-4 pt-2 fs-base"><h4 class="fs-2xl fw-semibold">Welcome <span class="fw-semibold">Mike Mayer</span></h4><p class="text-muted mb-0 fs-sm">You have <span class="fw-semibold text-success">2</span> Notifications</p></div></div>',
         showCancelButton: !1,

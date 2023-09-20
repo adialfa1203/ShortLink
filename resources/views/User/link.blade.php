@@ -258,19 +258,20 @@
                                         <div class="modal-body">
                                             <div class="visible-print text-center">
                                                 {!! QrCode::size(200)->generate($row->destination_url) !!}
-                                                <br>
+                                            </div>
+                                            <br>
+                                            <div class="text-center">
                                                 <p>{{ $row->default_short_url }}</p>
-
                                             </div>
                                             <!-- <center>
                                                         <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
                                                     </center> -->
                                         </div>
-                                        <center>
+                                        {{-- <center>
                                             <button type="button" class="btn btn-danger">Download</button>
                                             <button type="button" class="btn btn-light  me-3"><span><i
                                                         class="fa-solid fa-pen-to-square"></i>&nbsp;Ganti</span></button>
-                                        </center>
+                                        </center> --}}
                                         <div class="modal-footer"></div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
