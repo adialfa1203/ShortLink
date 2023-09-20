@@ -1,10 +1,71 @@
 @extends('layout.guest.app')
-@section('title', 'Example Microsite Name')
+@section('title', $accessMicrosite->name)
 @section('style')
-<link href="{{ asset('template/themesbrand.com/steex/layouts/assets/css/link.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('template/themesbrand.com/steex/layouts/assets/css/link.css') }}" rel="stylesheet" type="text/css">
 
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-3">
+                    <div class="card real-estate-grid-widgets card-animate">
+                        <div class="card overflow-hidden">
+                            <div>
+                                <img src="{{ asset('component/' . $accessMicrosite->component->cover_img) }}" alt=""
+                                    class="card-img-top profile-wid-img object-fit-cover" style="height: 200px;">
+                            </div>
+                            <div class="card-body pt-0 mt-n5">
+                                <div class="text-center">
+                                    <div class="profile-user position-relative d-inline-block mx-auto">
+                                        <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/default.jpg') }}"
+                                            alt=""
+                                            class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
+                                    </div>
+                                    <div class="mt-3">
+                                        <h5>{{ $accessMicrosite->name }}<i class="align-baseline text-info ms-1"></i>
+                                        </h5>
+                                        <p class="text-muted">{!! $accessMicrosite->description !!}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body border-top">
+                                <div class="d-flex flex-wrap justify-content-center text-center mb-4">
+                                    @foreach ($social as $socialItem)
+                                        <div class="mb-2 mx-2">
+                                            <button style="background-color: {{ $socialItem->button->color_hex }};"
+                                                type="button" class="btn btn-icon"><i
+                                                    class="{{ $socialItem->button->icon }} " style="color:white;"></i>
+                                            </button>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                @foreach ($social as $socialItem)
+                                    <a href="{{ $socialItem->button_link }}" target="_blank" style="text-decoration: none;">
+                                        <button type="button"
+                                            class="col-12 mb-2 btn btn-label rounded-pill d-flex justify-content-center"
+                                            style="background-color: {{ $socialItem->button->color_hex }}; color: white;">
+                                            <i
+                                                class="{{ $socialItem->button->icon }} label-icon align-middle rounded-pill fs-lg me-2"></i>
+                                            <span style="margin-right: 15%">{{ $socialItem->button->name_button }}</span>
+                                        </button>
+                                    </a>
+                                @endforeach
+                                <div class="card card-body text-center">
+                                    <h4 type="button" class="card-title" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        {{ $accessMicrosite->company_name }}</h4>
+                                    <p type="button" class="card-text text-muted" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        {{ $accessMicrosite->company_address }} </p>
+                                </div>
+                            </div>
 
-<div id="__next">
+                        </div><!--end card-->
+                    </div><!--end col-->
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- <div id="__next">
     <section class="MicrositeContainer_Main__h7wfn MicrositeContainer_Main_isNotBuilder__R1vOP MicrositeContainer_ButtonSizeLg__WNJnp" style="background-color:rgb(209 213 219 / 1);--dark-color:#000;--light-color:#fff;--text-color:#111827;--link-color:255, 255, 255;--link-background:118, 124, 131;--link-shadow:#fff;--link-border:#fff;--divider-color:255, 255, 255">
         <div class="fixed top-0 left-0 w-full h-full overflow-hidden">
             <div class="bg-center bg-repeat absolute -left-10 -right-10 -bottom-10 -top-10 blur-xl bg-cover" style="background-image:url(../cdn.s.id/images/8cc9c75d-641e-4947-ad9f-42f31e408caf_1000x1500.webp.jpeg)">
@@ -80,4 +141,4 @@
     </section>
     <div style="position:fixed;z-index:999999999;top:16px;left:16px;right:16px;bottom:16px;pointer-events:none">
     </div>
-</div>
+</div> --}}
