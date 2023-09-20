@@ -36,7 +36,7 @@ class LinkAdminController extends Controller
 
         foreach ($users as $user) {
             $userData[$user->id] = [
-                'total_links' => ShortUrl::where('user_id', $user->id)->count(),
+                'total_links' => ShortUrl::where('user_id', $user->id)->whereNull('microsite_uuid')->count(),
                 'total_microsites' => ShortUrl::where('user_id', $user->id)->whereNotNull('microsite_uuid')->count(),
                 'popular_links' => ShortUrl::where('user_id', $user->id)
                     ->withCount('visits')
