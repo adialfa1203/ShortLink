@@ -47,52 +47,52 @@
             border-color: #f5c6cb;
         }
 
-        .initials {
-            position: absolute;
-            top: 13px;
-            /* Sesuaikan dengan posisi vertikal yang diinginkan */
-            left: 20px;
-            /* Sesuaikan dengan posisi horizontal yang diinginkan */
-            /* background-color: #19383d; Warna latar belakang */
-            color: #fff;
-            /* Warna teks */
-            font-size: 24px;
-            /* Ukuran huruf */
-            padding: 5px 10px;
-            /* Padding untuk ruang di sekitar huruf */
-            border-radius: 50%;
-            /* Membuat huruf menjadi lingkaran */
-        }
+    .initials {
+        position: absolute;
+        top: 13px;
+        /* Sesuaikan dengan posisi vertikal yang diinginkan */
+        left: 20px;
+        /* Sesuaikan dengan posisi horizontal yang diinginkan */
+        /* background-color: #19383d; Warna latar belakang */
+        color: #fff;
+        /* Warna teks */
+        font-size: 24px;
+        /* Ukuran huruf */
+        padding: 5px 10px;
+        /* Padding untuk ruang di sekitar huruf */
+        border-radius: 50%;
+        /* Membuat huruf menjadi lingkaran */
+    }
 
+
+/* Tampilkan teks hanya di perangkat selain seluler */
+@media (min-width: 576px) {
+    .square-button .btn-text {
+        display: inline-block;
+        margin-left: 10px; /* Atur jarak antara ikon dan teks jika diperlukan */
+    }
+}
+
+/* Sembunyikan teks di perangkat seluler */
+@media (max-width: 575px) {
+    .square-button .btn-text {
+        display: none;
+    }
         /* Tampilkan teks hanya di perangkat selain seluler */
         .square-button {
-            width: 40px;
-            /* Ubah lebar sesuai kebutuhan Anda */
-            height: 40px;
-            /* Ubah tinggi sesuai kebutuhan Anda */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            /* Tambahkan ini */
-        }
+    width: 40px; /* Ubah lebar sesuai kebutuhan Anda */
+    height: 40px; /* Ubah tinggi sesuai kebutuhan Anda */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Tambahkan ini */
+}
+}
 
-        /* Tampilkan teks hanya di perangkat selain seluler */
-        @media (min-width: 576px) {
-            .square-button .btn-text {
-                display: inline-block;
-                margin-left: 10px;
-                /* Atur jarak antara ikon dan teks jika diperlukan */
-            }
-        }
 
-        /* Sembunyikan teks di perangkat seluler */
-        @media (max-width: 575px) {
-            .square-button .btn-text {
-                display: none;
-            }
-        }
-    </style>
+
+
+</style>
 @endsection
 
 @section('content')
@@ -106,76 +106,62 @@
                         <h4 class="mb-sm-0">Microsite</h4>
                     </div>
                 </div>
-                <div class=" col-8 col-sm mb-3">
-                    <div class="d-flex justify-content-sm-end">
-                        <div class="search-box ms-2">
-                            <input type="text" class="form-control search" placeholder="Search...">
-                            <i class="ri-search-line search-icon"></i>
+            </div>
+
+            <!-- end page title -->
+
+            <div class="card mt-1">
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-2 col-2 mb-2">
+    <a href="{{ route('add.microsite') }}" type="button" class="btn btn-success btn-label square-button">
+        <i class="ri-add-line label-icon align-middle fs-lg"></i>
+        <span class="btn-text">Buat Baru</span>
+    </a>
+</div>
+
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-10 col-10 mb-2">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn rounded-pill btn-danger" id="semuaButton">Semua</button>
+                                <button type="button" class="btn rounded-pill btn-secondary" onclick="filterTerakhirDiperbarui()">Terakhir Diperbarui</button>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
-                <!-- end page title -->
-
-                <div class="card mt-1">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-2 col-2 mb-2">
-                                <a href="{{ route('add.microsite') }}" type="button"
-                                    class="btn btn-success btn-label square-button">
-                                    <i class="ri-add-line label-icon align-middle fs-lg"></i>
-                                    <span class="btn-text">Buat Baru</span>
-                                </a>
-                            </div>
-
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-10 col-10 mb-2">
-                                <div class="hstack gap-2 justify-content-end">
-                                    <button type="button" class="btn rounded-pill btn-danger"
-                                        id="semuaButton">Semua</button>
-                                    <button type="button" class="btn rounded-pill btn-secondary"
-                                        onclick="filterTerakhirDiperbarui()">Terakhir Diperbarui</button>
+            </div><!--end card-->
+            @php
+            $i = 0;
+            @endphp
+            <div id="microsite-container">
+                @foreach ($data as $row)
+                @php
+                $i++;
+                @endphp
+                <div class="">
+                    <div class="card card-body" id="searchResults">
+                        <div class="wrapper row  align-items-center">
+                            <div class="avatar-md col-xl-1 col-lg-1 col-md-1 col-sm-1 col-12">
+                                <div class="avatar-title">
+                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/sidebar/img-1.jpg') }}" style="width: 180%; height: 70%;" alt="Gambar">
+                                    <!-- <div class="initials">{{ $row->name[0] }}</div> -->
                                 </div>
                             </div>
-                        </div>
-
-                    </div>
-
-                </div><!--end card-->
-                @php
-                    $i = 0;
-                @endphp
-                <div id="microsite-container">
-                    @foreach ($data as $row)
-                        @php
-                            $i++;
-                        @endphp
-                        <div class="">
-                            <div class="card card-body" id="searchResults">
-                                <div class="wrapper row  align-items-center">
-                                    <div class="avatar-md col-xl-1 col-lg-1 col-md-1 col-sm-1 col-12">
-                                        <div class="avatar-title">
-                                            <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/sidebar/img-1.jpg') }}"
-                                                style="width: 180%; height: 70%;" alt="Gambar">
-                                            <!-- <div class="initials">{{ $row->name[0] }}</div> -->
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-7 col-lg-7 col-md-9 col-sm-3 col-9">
-                                        <h5 class="card-title ">{{ $row->name }}</h5>
-                                        <a>
-                                            <h3 class="garisbawah card-title mb-2">
-
-                                                {{ $short_urls->where('microsite_uuid', $row->id)->first()->default_short_url }}
-                                            </h3>
-                                        </a>
-                                        <div id="customAlert" class="custom-alert">
-                                            <span class="alert-text"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-12" style="float: right ;">
+                            <div class="col-xl-7 col-lg-7 col-md-9 col-sm-3 col-9">
+                                    <h5 class="card-title ">{{ $row->name }}</h5>
+                                    <a>
+                                        <h3 class="garisbawah card-title mb-2">
+                                            {{ $short_urls->where('microsite_uuid', $row->id)->first()->default_short_url }}
+                                        </h3>
+                                    </a>
+                                <div id="customAlert" class="custom-alert">
+                                    <span class="alert-text"></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-12" style="float: right ;">
                                         <div class="" style="float: right;">
-                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse"
-                                                href="#collapseExample{{ $row->id }}" role="button"
-                                                aria-expanded="true" aria-controls="collapseExample{{ $row->id }}">
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse" href="#collapseExample{{ $row->id }}" role="button" aria-expanded="true" aria-controls="collapseExample{{ $row->id }}">
                                                 <i class="bi bi-bar-chart-fill"></i> statistik
                                             </button>
                                             {{-- @dd($row) --}}
