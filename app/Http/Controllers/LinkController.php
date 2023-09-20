@@ -38,7 +38,7 @@ class LinkController extends Controller
             $result['series'][$index] = (int)$data->visits_count;
         }
 
-        // dd($result);
+        // dd($data);
         return view('User.Link', compact('user','urlshort', 'shortCode','result'));
     }
 
