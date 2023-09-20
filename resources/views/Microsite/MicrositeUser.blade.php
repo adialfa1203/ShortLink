@@ -106,6 +106,15 @@
                         <h4 class="mb-sm-0">Microsite</h4>
                     </div>
                 </div>
+                <div class=" col-8 col-sm mb-3">
+                    <div class="d-flex justify-content-sm-end">
+                        <div class="search-box ms-2">
+                            <input type="text" class="form-control search" placeholder="Cari...">
+                            <i class="ri-search-line search-icon"></i>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
             <!-- end page title -->

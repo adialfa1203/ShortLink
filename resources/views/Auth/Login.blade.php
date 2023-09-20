@@ -198,7 +198,7 @@
                                                         type="submit">Masuk</button>
                                                 </div>
 
-                                                <div class="mt-4 pt-2 text-center">
+                                                {{-- <div class="mt-4 pt-2 text-center">
                                                     <div class="signin-other-title position-relative">
                                                         <h5 class="fs-sm mb-4 title">Daftar Dengan</h5>
                                                     </div>
@@ -214,7 +214,7 @@
                                                         <button type="button" class="btn btn-subtle-info btn-icon"><i
                                                                 class="ri-twitter-fill fs-lg"></i></button>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </form>
 
                                             <div class="text-center mt-5">

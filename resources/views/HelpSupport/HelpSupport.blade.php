@@ -26,7 +26,8 @@
     <!-- waveanimation-Style-link -->
     <link rel="stylesheet" href="{{ asset('landingPage/css/wave-animation-style.css') }}">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('template/themesbrand.com/steex/layouts/assets/images/Logo.png') }}" style="width: 200px; height: 200px;">
+    <link rel="shortcut icon" href="{{ asset('template/themesbrand.com/steex/layouts/assets/images/Logo.png') }}"
+        style="width: 200px; height: 200px;">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
@@ -71,57 +72,6 @@
 
         <!-- Header Start -->
         @auth
-        <header>
-            <!-- container start -->
-            <div class="container">
-                <!-- navigation bar -->
-                <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
-                    <a class="navbar-brand" href="#">
-                        <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon">
-                            <!-- <i class="icofont-navigation-menu ico_menu"></i> -->
-                            <div class="toggle-wrap">
-                                <span class="toggle-bar"></span>
-                            </div>
-                        </span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <!-- secondery menu start -->
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link active" href="/">Beranda</a>
-                            </li>
-
-                            <!-- secondery menu start -->
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/Shortlink">Perpendek Link</a>
-                            </li>
-                            <!-- secondery menu end -->
-
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/Microsite">Situs Mikro</a>
-                            </li>
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/Subscribe">Berlangganan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link dark_btn" href="/dashboard-user">
-                                    Dashboard&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <!-- navigation end -->
-            </div>
-            <!-- container end -->
-        </header>
-            @else
             <header>
                 <!-- container start -->
                 <div class="container">
@@ -140,20 +90,71 @@
                                 </div>
                             </span>
                         </button>
-    
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <!-- secondery menu start -->
+                                <li class="nav-item has_dropdown">
+                                    <a class="nav-link" href="/">Beranda</a>
+                                </li>
+
+                                <!-- secondery menu start -->
+                                <li class="nav-item has_dropdown">
+                                    <a class="nav-link" href="/Shortlink">Perpendek Link</a>
+                                </li>
+                                <!-- secondery menu end -->
+
+                                <li class="nav-item has_dropdown">
+                                    <a class="nav-link" href="/Microsite">Situs Mikro</a>
+                                </li>
+                                <li class="nav-item has_dropdown">
+                                    <a class="nav-link" href="/Subscribe">Berlangganan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link dark_btn" href="/dashboard-user">
+                                        Dashboard&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- navigation end -->
+                </div>
+                <!-- container end -->
+            </header>
+        @else
+            <header>
+                <!-- container start -->
+                <div class="container">
+                    <!-- navigation bar -->
+                    <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
+                        <a class="navbar-brand" href="#">
+                            <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon">
+                                <!-- <i class="icofont-navigation-menu ico_menu"></i> -->
+                                <div class="toggle-wrap">
+                                    <span class="toggle-bar"></span>
+                                </div>
+                            </span>
+                        </button>
+
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto">
                                 <!-- secondery menu start -->
                                 <li class="nav-item has_dropdown">
                                     <a class="nav-link active" href="/">Beranda</a>
                                 </li>
-    
+
                                 <!-- secondery menu start -->
                                 <li class="nav-item has_dropdown">
                                     <a class="nav-link" href="/Shortlink">Perpendek Link</a>
                                 </li>
                                 <!-- secondery menu end -->
-    
+
                                 <li class="nav-item has_dropdown">
                                     <a class="nav-link" href="/Microsite">Situs Mikro</a>
                                 </li>
@@ -239,17 +240,17 @@
                                     class="d-flex align-items-center text-muted mb-4 comment-container{{ $key < 1 ? '' : ' hidden' }}"">
                                     <div class="flex-shrink-0 me-3">
                                         <img src="{{ $row->user->profile_picture ? asset($row->user->profile_picture) : asset('profile_pictures/default.jpg') }}"
-                                        class="avatar-sm rounded" alt="..." width="50px" height="50px">
+                                            class="avatar-sm rounded" alt="..." width="50px" height="50px">
                                     </div>
                                     <div class="flex-grow-1 d-flex flex-column">
                                         <div class="d-flex justify-content-between align-items-start">
-                                                @foreach ($userId as $user)
-                                                    @if ($user->id == $row->user_id)
-                                                        <h6 class="fs-md" style="margin-left:12px; font-size:14px;">
-                                                            {{ $user->name }}
-                                                        </h6>
-                                                    @endif
-                                                @endforeach
+                                            @foreach ($userId as $user)
+                                                @if ($user->id == $row->user_id)
+                                                    <h6 class="fs-md" style="margin-left:12px; font-size:14px;">
+                                                        {{ $user->name }}
+                                                    </h6>
+                                                @endif
+                                            @endforeach
                                             @if ($row->created_at)
                                                 <h6 style="font-size:14px;">
                                                     {{ $row->created_at->format('d F Y H:i') }}</h6>
@@ -265,7 +266,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        
+
                     </div><!-- end card-body -->
                 </div>
             </div><!--end card-->
@@ -273,231 +274,231 @@
 
     </div>
     @auth
-    <footer>
-        <div class="top_footer" id="kontak">
-            <div class="container">
-                <div class="row">
-                    <!-- Logo -->
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="abt_side">
-                            <div class="logo">
-                                <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
-                                    style="margin-top: -20%;">
-                                <ul style="margin-top: -10%; margin-right:10px;">
-                                    <li style="color: white; font-size:14px;">{!! $data->description !!}</li>
+        <footer>
+            <div class="top_footer" id="kontak">
+                <div class="container">
+                    <div class="row">
+                        <!-- Logo -->
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="abt_side">
+                                <div class="logo">
+                                    <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
+                                        style="margin-top: -20%;">
+                                    <ul style="margin-top: -10%; margin-right:10px;">
+                                        <li style="color: white; font-size:14px;">{!! $data->description !!}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Links -->
+
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <div class="links">
+                                <h3>Dukungan</h3>
+                                <ul>
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/Privacy">Kebijakan Privasi</a></li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <div class="links">
+                                <h3>SiteMaps</h3>
+                                <ul>
+                                    <li><a href="/">Beranda</a></li>
+                                    <li><a href="/Shortlink">Perpendek Link</a></li>
+                                    <li><a href="/Microsite">Situs Mikro</a></li>
+                                    <li><a href="/Subscribe">Berlanggaan</a></li>
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/Privacy">Kebijakan Privasi</a></li>
 
-                    <!-- Footer Links -->
-
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <div class="links">
-                            <h3>Dukungan</h3>
-                            <ul>
-                                <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
-                                <li><a href="/Privacy">Kebijakan Privasi</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <div class="links">
-                            <h3>SiteMaps</h3>
-                            <ul>
-                                <li><a href="/">Beranda</a></li>
-                                <li><a href="/Shortlink">Perpendek Link</a></li>
-                                <li><a href="/Microsite">Situs Mikro</a></li>
-                                <li><a href="/Subscribe">Berlanggaan</a></li>
-                                <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
-                                <li><a href="/Privacy">Kebijakan Privasi</a></li>
-
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Contact Information -->
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <div class="links">
-                            <h3>Hubungi Kami</h3>
-                            <ul style="text-align: justify;">
-                                <li>
-                                    <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID"
-                                        target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                        Whatsapp
-                                        {{-- {{ $data->whatsapp }} --}}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/{{ $data->instagram }}" target="_blank">
-                                        <i class="fab fa-instagram"></i>
-                                        Instagram
-                                        {{-- {{ $data->instagram }} --}}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/{{ $data->twitter }}" target="_blank">
-                                        <i class="fab fa-twitter"></i>
-                                        Twitter
-                                        {{-- {{ $data->twitter }} --}}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    @auth
-                        <!-- Comment Form -->
-                        <div class="col-lg-3 col-md-6 col-12 mb-1">
-                            <form action="/create/{{ Auth::user()->id }}" id="commentForm" method="POST"
-                                enctype="multipart/form-data" class="mt-3">
-                                @csrf
-                                <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
-                                @error('isikomentar')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                                <div class="text-start mt-2">
-                                    <button type="submit" class="btn btn-success">Kirim</button>
-                                </div>
-                            </form>
-                        </div>
-                    @endauth
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Footer -->
-        <div class="bottom_footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Go Top Button -->
-        <div class="go_top">
-            <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
-        </div>
-    </footer>
-    <!-- Footer-Section end -->
-@else
-    <footer>
-        <div class="top_footer" id="kontak">
-            <div class="container">
-                <div class="row">
-                    <!-- Logo -->
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="abt_side">
-                            <div class="logo">
-                                <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
-                                    style="margin-top: -20%;">
-                                <ul style="margin-top: -10%; margin-right:10px;">
-                                    <li style="color: white; font-size:14px;">{!! $data->description !!}</li>
                                 </ul>
                             </div>
                         </div>
+
+                        <!-- Contact Information -->
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <div class="links">
+                                <h3>Hubungi Kami</h3>
+                                <ul style="text-align: justify;">
+                                    <li>
+                                        <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID"
+                                            target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                            Whatsapp
+                                            {{-- {{ $data->whatsapp }} --}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/{{ $data->instagram }}" target="_blank">
+                                            <i class="fab fa-instagram"></i>
+                                            Instagram
+                                            {{-- {{ $data->instagram }} --}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/{{ $data->twitter }}" target="_blank">
+                                            <i class="fab fa-twitter"></i>
+                                            Twitter
+                                            {{-- {{ $data->twitter }} --}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        @auth
+                            <!-- Comment Form -->
+                            <div class="col-lg-3 col-md-6 col-12 mb-1">
+                                <form action="/create/{{ Auth::user()->id }}" id="commentForm" method="POST"
+                                    enctype="multipart/form-data" class="mt-3">
+                                    @csrf
+                                    <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
+                                        placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
+                                    @error('isikomentar')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div class="text-start mt-2">
+                                        <button type="submit" class="btn btn-success">Kirim</button>
+                                    </div>
+                                </form>
+                            </div>
+                        @endauth
                     </div>
+                </div>
+            </div>
 
-                    <!-- Footer Links -->
-
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <div class="links">
-                            <h3>Dukungan</h3>
-                            <ul>
-                                <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
-                                <li><a href="/Privacy">Kebijakan Privasi</a></li>
-                            </ul>
+            <!-- Bottom Footer -->
+            <div class="bottom_footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-12" style="margin-left: 6%;">
-                        <div class="links">
-                            <h3>SiteMaps</h3>
-                            <ul>
-                                <li><a href="/">Beranda</a></li>
-                                <li><a href="/Shortlink">Perpendek Link</a></li>
-                                <li><a href="/Microsite">Situs Mikro</a></li>
-                                <li><a href="/Subscribe">Berlanggaan</a></li>
-                                <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
-                                <li><a href="/Privacy">Kebijakan Privasi</a></li>
+                </div>
+            </div>
 
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Contact Information -->
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="links">
-                            <h3>Hubungi Kami</h3>
-                            <ul style="text-align: justify;">
-                                <li>
-                                    <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID"
-                                        target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                        Whatsapp
-                                        {{-- {{ $data->whatsapp }} --}}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/{{ $data->instagram }}" target="_blank">
-                                        <i class="fab fa-instagram"></i>
-                                        Instagram
-                                        {{-- {{ $data->instagram }} --}}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/{{ $data->twitter }}" target="_blank">
-                                        <i class="fab fa-twitter"></i>
-                                        Twitter
-                                        {{-- {{ $data->twitter }} --}}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    @auth
-                        <!-- Comment Form -->
-                        <div class="col-lg-3 col-md-6 col-12 mb-1">
-                            <form action="/create/{{ Auth::user()->id }}" id="commentForm" method="POST"
-                                enctype="multipart/form-data" class="mt-3">
-                                @csrf
-                                <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
-                                @error('isikomentar')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                                <div class="text-start mt-2">
-                                    <button type="submit" class="btn btn-success">Kirim</button>
+            <!-- Go Top Button -->
+            <div class="go_top">
+                <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
+            </div>
+        </footer>
+        <!-- Footer-Section end -->
+    @else
+        <footer>
+            <div class="top_footer" id="kontak">
+                <div class="container">
+                    <div class="row">
+                        <!-- Logo -->
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="abt_side">
+                                <div class="logo">
+                                    <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
+                                        style="margin-top: -20%;">
+                                    <ul style="margin-top: -10%; margin-right:10px;">
+                                        <li style="color: white; font-size:14px;">{!! $data->description !!}</li>
+                                    </ul>
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    @endauth
 
-                </div>
-            </div>
-        </div>
+                        <!-- Footer Links -->
 
-        <!-- Bottom Footer -->
-        <div class="bottom_footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <div class="links">
+                                <h3>Dukungan</h3>
+                                <ul>
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/Privacy">Kebijakan Privasi</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12" style="margin-left: 6%;">
+                            <div class="links">
+                                <h3>SiteMaps</h3>
+                                <ul>
+                                    <li><a href="/">Beranda</a></li>
+                                    <li><a href="/Shortlink">Perpendek Link</a></li>
+                                    <li><a href="/Microsite">Situs Mikro</a></li>
+                                    <li><a href="/Subscribe">Berlanggaan</a></li>
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/Privacy">Kebijakan Privasi</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="links">
+                                <h3>Hubungi Kami</h3>
+                                <ul style="text-align: justify;">
+                                    <li>
+                                        <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID"
+                                            target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                            Whatsapp
+                                            {{-- {{ $data->whatsapp }} --}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/{{ $data->instagram }}" target="_blank">
+                                            <i class="fab fa-instagram"></i>
+                                            Instagram
+                                            {{-- {{ $data->instagram }} --}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/{{ $data->twitter }}" target="_blank">
+                                            <i class="fab fa-twitter"></i>
+                                            Twitter
+                                            {{-- {{ $data->twitter }} --}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        @auth
+                            <!-- Comment Form -->
+                            <div class="col-lg-3 col-md-6 col-12 mb-1">
+                                <form action="/create/{{ Auth::user()->id }}" id="commentForm" method="POST"
+                                    enctype="multipart/form-data" class="mt-3">
+                                    @csrf
+                                    <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
+                                        placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
+                                    @error('isikomentar')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div class="text-start mt-2">
+                                        <button type="submit" class="btn btn-success">Kirim</button>
+                                    </div>
+                                </form>
+                            </div>
+                        @endauth
+
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Go Top Button -->
-        <div class="go_top">
-            <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
-        </div>
-    </footer>
-    <!-- Footer-Section end -->
-@endauth
+            <!-- Bottom Footer -->
+            <div class="bottom_footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Go Top Button -->
+            <div class="go_top">
+                <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
+            </div>
+        </footer>
+        <!-- Footer-Section end -->
+    @endauth
 
     <!-- Footer-Section end -->
 
@@ -573,7 +574,7 @@
         //     // Handle form submission
         //     $('#commentForm').submit(function(event) {
         //         event.preventDefault();
-    
+
         //         // Check if the user is authenticated
         //         @if (auth()->check())
         //             // If authenticated, submit the form to /create
@@ -598,7 +599,7 @@
         //     });
         // });
     </script>
-    
+
 </body>
 
 

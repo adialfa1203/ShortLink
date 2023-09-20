@@ -57,7 +57,7 @@
         <div class="col-12 col-sm-8">
             <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-end">
                 <div class="search-box mb-2 mb-sm-0">
-                    <input type="text" class="form-control search" placeholder="Search...">
+                    <input type="text" class="form-control search" placeholder="Cari...">
                     <i class="ri-search-line search-icon"></i>
                 </div>
             </div>
