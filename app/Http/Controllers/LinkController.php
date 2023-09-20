@@ -24,18 +24,22 @@ class LinkController extends Controller
         ->paginate(5);
         $result = [
             'labels' => DateHelper::getAllMonths(5),
-            'series' => [0, 0, 0, 0, 0, 0]
+            'series' => []
         ];
+
 
         $startDate = DateHelper::getSomeMonthsAgoFromNow(5)->format('Y-m-d H:i:s');
         $endDate = DateHelper::getCurrentTimestamp('Y-m-d H:i:s');
 
+        $template = [0,0,0,0,0];
 
-        foreach ($urlshort as $data) {
+        foreach ($urlshort as $i => $data) {
             $parse = Carbon::parse($data->created_at);
             $date = $parse->shortMonthName . ' ' . $parse->year;
             $index = array_search($date, array_values($result['labels']));
-            $result['series'][$index] = (int)$data->visits_count;
+            $visits = $template;
+            $visits[4] = (int)$data->visits_count;
+            $result['series'][$i] = $visits;
         }
 
         // dd($data);

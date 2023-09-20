@@ -414,12 +414,12 @@
         use Carbon\Carbon;
     @endphp
 @section('script')
-    @foreach ($urlshort as $row)
+    @foreach ($urlshort as $i => $row)
         <script>
             var options = {
                 series: [{
                     name: "jumlah data",
-                    data: {!! json_encode($result['series']) !!},
+                    data: {!! json_encode($result['series'][$i]) !!},
                 }],
                 chart: {
                     height: 350,

@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DateHelper;
 use App\Models\Button;
 use App\Models\Social;
 use App\Models\ShortUrl;
 use App\Models\Microsite;
 use App\Models\Components;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class MicrositeController extends Controller
 {
-    public function microsite(Request $request)
+    public function microsite(Request $request )
     {
         $user_id = auth()->user()->id;
 
@@ -21,20 +23,43 @@ class MicrositeController extends Controller
             $data = Microsite::with('user_id', $user_id)
                 ->orderBy('updated_at', 'desc')
                 ->get();
+            $d = $data;
         }
         else {
             $data = Microsite::with('shortUrl')
             ->where('user_id', $user_id)
             ->get();
+            $d = $data;
+             
         }
+        $url = ShortUrl::where('user_id', $user_id)->with('shortUrls')->get();
+        // dd($url);
         $urlshort = ShortUrl::withCount('visits')
-            ->selectRaw('MONTH(created_at) as month')
-            ->where('user_id', $user_id)
-            ->orderBy('month', 'desc')
+        ->where('user_id', $user_id)
+        ->orderBy('created_at', 'desc')
             ->get();
+            $result = [
+                'labels' => DateHelper::getAllMonths(5),
+                'series' => []
+            ];
+    
+    
+            $startDate = DateHelper::getSomeMonthsAgoFromNow(5)->format('Y-m-d H:i:s');
+            $endDate = DateHelper::getCurrentTimestamp('Y-m-d H:i:s');
+    
+            $template = [0,0,0,0,0];
+    
+            foreach ($urlshort as $i => $data) {
+                $parse = Carbon::parse($data->created_at);
+                $date = $parse->shortMonthName . ' ' . $parse->year;
+                $index = array_search($date, array_values($result['labels']));
+                $visits = $template;
+                $visits[4] = (int)$data->visits_count;
+                $result['series'][$i] = $visits;
+            }
 
         $short_urls = ShortUrl::whereIn('microsite_uuid', $data->pluck('id'))->get();
-        return view('Microsite.MicrositeUser', compact('data', 'urlshort', 'short_urls'));
+        return view('Microsite.MicrositeUser', compact('data', 'urlshort', 'short_urls','result', 'd','url'));
     }
 
 

@@ -144,7 +144,7 @@
             $i = 0;
             @endphp
             <div id="microsite-container">
-                @foreach ($data as $row)
+                @foreach ($d as $row)
                 @php
                 $i++;
                 @endphp
@@ -154,15 +154,16 @@
                             <div class="avatar-md col-xl-1 col-lg-1 col-md-1 col-sm-1 col-12">
                                 <div class="avatar-title">
                                     <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/sidebar/img-1.jpg') }}" style="width: 180%; height: 70%;" alt="Gambar">
-                                    <!-- <div class="initials">{{ $row->name[0] }}</div> -->
+
                                 </div>
                             </div>
                             <div class="col-xl-7 col-lg-7 col-md-9 col-sm-3 col-9">
                                     <h5 class="card-title ">{{ $row->name }}</h5>
                                     <a>
-                                        <h3 class="garisbawah card-title mb-2">
-                                            {{ $short_urls->where('microsite_uuid', $row->id)->first()->default_short_url }}
+                                               <h3 class="garisbawah card-title mb-2">
+                                        {{ $row->shortUrl[0]->default_short_url }}
                                         </h3>
+                                     
                                     </a>
                                 <div id="customAlert" class="custom-alert">
                                     <span class="alert-text"></span>
@@ -263,45 +264,45 @@
         use Carbon\Carbon;
     @endphp
     @section('script')
-        @foreach ($data as $row)
-            <script>
-                var options = {
-                    series: [{
-                        name: "{{ $row->title }}",
-                        data: ["{{ $row->visits_count }}"],
-                    }],
-                    chart: {
-                        height: 350,
-                        type: 'line',
-                        zoom: {
-                            enabled: false
-                        }
-                    },
-                    dataLabels: {
+    @foreach ($urlshort as $i => $row)
+        <script>
+            var options = {
+                series: [{
+                    name: "jumlah data",
+                    data: {!! json_encode($result['series'][$i]) !!},
+                }],
+                chart: {
+                    height: 350,
+                    type: 'line',
+                    zoom: {
                         enabled: false
-                    },
-                    stroke: {
-                        curve: 'straight'
-                    },
-                    title: {
-                        text: 'Product Trends by Month',
-                        align: 'left'
-                    },
-                    grid: {
-                        row: {
-                            colors: ['#f3f3f3', 'transparent'],
-                            opacity: 0.5
-                        },
-                    },
-                    xaxis: {
-                        categories: ["{{ Carbon::create(null, $row->month, null)->format('F') }}"],
                     }
-                };
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'straight'
+                },
+                title: {
+                    text: 'Product Trends by Month',
+                    align: 'left'
+                },
+                grid: {
+                    row: {
+                        colors: ['#f3f3f3', 'transparent'],
+                        opacity: 0.5
+                    },
+                },
+                xaxis: {
+                    categories: {!! json_encode($result['labels']) !!},
+                }
+            };
 
-                var chart = new ApexCharts(document.querySelector("#chart{{ $row->id }}"), options);
-                chart.render();
-            </script>
-        @endforeach
+            var chart = new ApexCharts(document.querySelector("#chart{{ $row->microsite_uuid }}"), options);
+            chart.render();
+        </script>
+    @endforeach
         <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-wizard.init.js') }}"></script>
         <script type="text/javascript" src="./jquery.qrcode.js"></script>
         <script type="text/javascript" src="./qrcode.js"></script>
