@@ -19,18 +19,20 @@ class MicrositeController extends Controller
     {
         $user_id = auth()->user()->id;
 
+
+        // Filter berdasarkan tombol "Terakhir Diperbarui"
         if ($request->has('filter') && $request->filter == 'terakhir_diperbarui') {
-            $data = Microsite::with('user_id', $user_id)
+            $data = Microsite::where('user_id', $user_id)
                 ->orderBy('updated_at', 'desc')
-                ->get();
-            $d = $data;
-        }    
-        else {
-            $data = Microsite::with('shortUrl')
-            ->where('user_id', $user_id)
-            ->get();
+                ->paginate(5);
             $d = $data;
         }
+        // Default: Tampilkan semua data
+        else {
+            $data = Microsite::where('user_id', $user_id)->paginate(5);
+            $d = $data;
+        }
+
         $urlshort = ShortUrl::withCount('visits')
         ->where('user_id', $user_id)
         ->orderBy('created_at', 'desc')
@@ -39,13 +41,13 @@ class MicrositeController extends Controller
                 'labels' => DateHelper::getAllMonths(5),
                 'series' => []
             ];
-    
-    
+
+
             $startDate = DateHelper::getSomeMonthsAgoFromNow(5)->format('Y-m-d H:i:s');
             $endDate = DateHelper::getCurrentTimestamp('Y-m-d H:i:s');
-    
+
             $template = [0,0,0,0,0];
-    
+
             foreach ($urlshort as $i => $data) {
                 $parse = Carbon::parse($data->created_at);
                 $date = $parse->shortMonthName . ' ' . $parse->year;
@@ -58,7 +60,7 @@ class MicrositeController extends Controller
         $short_urls = ShortUrl::whereIn('microsite_uuid', $data->pluck('id'))->get();
         return view('Microsite.MicrositeUser', compact('data', 'urlshort', 'short_urls','result', 'd'));
     }
-    
+
     public function addMicrosite()
     {
         $data = Components::all();
@@ -69,12 +71,12 @@ class MicrositeController extends Controller
     public function createMicrosite(Request $request, Microsite $microsite)
     {
         $user = auth()->user();
-        
+
         // Jika pengguna adalah non-premium (subscribe == 'no') dan telah mencapai batas 10 microsite
         if ($user->subscribe === 'no' && $user->microsites()->count() >= 10) {
             return redirect()->back()->with('error', 'Anda telah mencapai batas maksimum 10 microsite.');
         }
-        
+
         $request->validate([
             'microsite_selection' => 'required',
             'name' => 'required|string|regex:/^[^-+]+$/u|max:10',
