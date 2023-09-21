@@ -110,7 +110,7 @@
 
                                         <div class="col-lg-12">
                                             <div>
-                                                <label for="cardNumber" class="form-label">Judul(Opsional)</label>
+                                                <label for="cardNumber" class="form-label">Judul</label>
                                                 <input name="title" class="form-control" id="cardNumber" placeholder="Judul">
                                             </div>
                                         </div>

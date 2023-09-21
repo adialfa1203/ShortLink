@@ -102,7 +102,7 @@ class MicrositeController extends Controller
         $short_id = ShortUrl::where('url_key', $micrositeObject->url_key)->first()->id;
         ShortUrl::findOrFail($short_id)->update([
             'url_key' => $request->link_microsite,
-            'default_short_url' => "http://127.0.0.1:8000/link.id/" . $request->link_microsite,
+            'default_short_url' => "http://127.0.0.1:8000/go.link/" . $request->link_microsite,
         ]);
 
         foreach ($selectedButtons as $select) {
