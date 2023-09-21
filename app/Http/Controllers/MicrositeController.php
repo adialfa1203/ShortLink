@@ -139,8 +139,12 @@ class MicrositeController extends Controller
             'description' => 'nullable|string|max:115',
             'company_name' => 'nullable|string|max:15',
             'company_address' => 'nullable|string|max:35',
-        ],[
-            'button_link.name_button.required' => 'Kolom name_button harus diisi!',
+            'button_link.*' => 'required|string|url',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+        ], [
+            'image.image' => 'Kolom harus berupa gambar!',
+            'button_link.*.required' => 'Kolom ini wajib diisi!',
+            'button_link.*.url' => 'URL tidak valid.',
         ]);
 
         if ($validator->fails()) {
@@ -165,11 +169,18 @@ class MicrositeController extends Controller
         if ($request->has('company_address')) {
             $microsite->company_address = $request->input('company_address');
         }
+
+        if ($request->hasFile('image')) {
+            $coverImage = $request->file('image');
+            $coverImageName = time() . '_image.' . $coverImage->getClientOriginalExtension();
+            $coverImage->move(public_path('images'), $coverImageName);
+            $microsite->image = $coverImageName;
+        }
+        // dd($microsite->image);
         $microsite->save();
 
         foreach ($buttonLinks as $index => $buttonLink) {
             if ($buttonLink !== null) {
-                // Ubah 'buttons_uuid' ke 'id' jika Anda ingin mencocokkan dengan 'id' dari tabel 'buttons'
                 $social = $socials->where('buttons_uuid', $index)->first();
 
                 if ($social) {
@@ -181,7 +192,6 @@ class MicrositeController extends Controller
 
         return redirect()->route('microsite')->with('success', 'Microsite sudah berhasil diperbarui.');
     }
-
 
     public function createComponent()
     {

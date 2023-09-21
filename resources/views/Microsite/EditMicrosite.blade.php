@@ -29,7 +29,8 @@
             </div>
             <!-- end page title -->
 
-            <form action="{{ route('update.microsite', ['id' => $id]) }}" method="post" class="row">
+            <form action="{{ route('update.microsite', ['id' => $id]) }}" method="post" class="row"
+                enctype="multipart/form-data">
                 @csrf
                 <div class="col-lg-9">
                     <div class="card">
@@ -99,12 +100,10 @@
                                                                             <div>
                                                                             </div>
                                                                             <div class="mt-1">
-                                                                                @if ($errors->has('button_link.name_button'))
-                                                                                    @foreach ($errors->get('button_link.name_button') as $error)
-                                                                                        <span
-                                                                                            class="text-danger">{{ str_replace(':name_button', $data->button->name_button, $error) }}</span>
-                                                                                    @endforeach
-                                                                                @endif
+                                                                                @error('button_link.' . $data->button->id)
+                                                                                    <span
+                                                                                        class="text-danger">{{ $message }}</span>
+                                                                                @enderror
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -236,10 +235,25 @@
                             <div class="card-body pt-0 mt-n5">
                                 <div class="text-center">
                                     <div class="profile-user position-relative d-inline-block mx-auto">
-                                        <img src="{{ Auth::user()->profile_picture ? asset(Auth::user()->profile_picture) : asset('profile_pictures/default.jpg') }}"
-                                            alt="{{ Auth::user()->name }}" alt=""
+                                        <img src="{{ asset($microsite->image ? 'images/' . $microsite->image : 'images/default.jpg') }}"
+                                            alt=""
                                             class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
-
+                                        <div
+                                            class="avatar-xs p-0 rounded-circle profile-photo-edit position-absolute end-0 bottom-0">
+                                            <input id="profile-img-file-input" name="image" type="file"
+                                                class="profile-img-file-input d-none">
+                                            <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
+                                                <span class="avatar-title rounded-circle bg-light text-body">
+                                                    <i class="bi bi-camera"></i>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-center">
+                                        @if ($errors->has('image'))
+                                            <span
+                                                class="text-danger">{{ $errors->first('image') }}</span>
+                                        @endif
                                     </div>
                                     <div class="mt-3">
                                         <h5>Nama Profil<i class="align-baseline text-info ms-1"></i>

@@ -16,7 +16,7 @@
                             <div class="card-body pt-0 mt-n5">
                                 <div class="text-center">
                                     <div class="profile-user position-relative d-inline-block mx-auto">
-                                        <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/default.jpg') }}"
+                                        <img src="{{ asset($accessMicrosite->image ? 'images/' . $accessMicrosite->image : 'images/default.jpg') }}"
                                             alt=""
                                             class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
                                     </div>
