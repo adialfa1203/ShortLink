@@ -185,7 +185,7 @@
                                                 <div class="row g-3">
                                                     <div class="col-12">
                                                         <label for="address" class="text-danger form-label">Nama
-                                                            Microsite hanya bisa diakses oleh pengguna yang
+                                                            Microsite hanya bisa diedit oleh pengguna yang
                                                             berlangganan!</label>
                                                         <input type="text" class="form-control" id="address"
                                                             name="name" placeholder="aqua-link"
@@ -199,7 +199,7 @@
                                                     </div>
                                                     <div class="col-12">
                                                         <label for="address" class="text-danger form-label">Tautan
-                                                            Microsite hanya bisa diakses oleh pengguna yang
+                                                            Microsite hanya bisa diedit oleh pengguna yang
                                                             berlangganan!</label>
                                                         <div class="input-group">
                                                             <input type="text" class="form-control" id="address"
