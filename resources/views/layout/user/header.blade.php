@@ -58,11 +58,11 @@
                     </button>
                     <div class="dropdown-menu p-2 dropdown-menu-end" id="light-dark-mode">
                         <a href="#!" class="dropdown-item" data-mode="light"><i
-                                class="bi bi-sun align-middle me-2"></i> Default (light mode)</a>
+                                class="bi bi-sun align-middle me-2"></i> Terang</a>
                         <a href="#!" class="dropdown-item" data-mode="dark"><i
-                                class="bi bi-moon align-middle me-2"></i> Dark</a>
+                                class="bi bi-moon align-middle me-2"></i> Gelap</a>
                         <a href="#!" class="dropdown-item" data-mode="auto"><i
-                                class="bi bi-moon-stars align-middle me-2"></i> Auto (system default)</a>
+                                class="bi bi-moon-stars align-middle me-2"></i> Auto (default sistem)</a>
                     </div>
                 </div>
 
