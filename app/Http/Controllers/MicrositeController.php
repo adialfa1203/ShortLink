@@ -24,15 +24,13 @@ class MicrositeController extends Controller
                 ->orderBy('updated_at', 'desc')
                 ->get();
             $d = $data;
-        }
+        }    
         else {
             $data = Microsite::with('shortUrl')
             ->where('user_id', $user_id)
             ->get();
             $d = $data;
-             
         }
-        // dd($url);
         $urlshort = ShortUrl::withCount('visits')
         ->where('user_id', $user_id)
         ->orderBy('created_at', 'desc')

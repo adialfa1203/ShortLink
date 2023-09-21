@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Microsite extends Model
 {
     use HasFactory;
-    protected $guarded=[];
+    protected $guarded = [];
 
     protected $keyType = 'string';
     public $incrementing = false;
@@ -42,5 +43,9 @@ class Microsite extends Model
     public function shortUrl()
     {
         return $this->hasMany(ShortUrl::class, 'microsite_uuid', 'id');
+    }
+    public function oneShortUrl(): HasOne
+    {
+        return $this->hasOne(ShortUrl::class, 'microsite_uuid', 'id');
     }
 }

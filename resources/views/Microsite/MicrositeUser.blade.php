@@ -217,12 +217,12 @@
                                                             {{-- @dd( $row->shortUrl->destination_url) --}}
                                                             <div class="countdown-input-subscribe">
                                                                 <label class="platform" data-platform="copy"
-                                                                    @if ($row->short_url) data-url="{{ $row->shortUrl->destination_url }}"
-                                                                        data-id-microsite="{{ $row->shortUrl->id }}"
-                                                                        @else
-                                                                        data-url=""
-                                                                        data-id-microsite="" @endif
-                                                                    data-id-alert="{{ $i }}">
+                                                                    @if ($row->oneShortUrl) data-url="{{ $row->oneShortUrl->destination_url }}"
+                                                                        data-id-microsite="{{ $row->oneShortUrl->id }}"
+                                                                    @else
+                                                                        data-url="" data-id-microsite=""
+                                                                    @endif
+                                                                        data-id-alert="{{ $i }}">
                                                                     <i class="bi bi-clipboard-fill"></i>
                                                                     &nbsp;
                                                                     Copy
