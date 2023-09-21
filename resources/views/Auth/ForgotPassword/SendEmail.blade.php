@@ -99,7 +99,7 @@
                                                         <input type="email" name="email" class="form-control password-input" id="email" placeholder="Masukkan Email" required >
                                                     </div>
                                                     <div class="text-center mt-4">
-                                                        <button class="btn btn-primary w-100" type="submit">Kirim Tautan</button>
+                                                        <button class="btn btn-primary w-100" type="submit">Kirim Email</button>
                                                     </div>                                                    
                                                 </form><!-- end form -->
                                             </div>

@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINK.ID</title>
+    <title>Go Link</title>
 
     <!-- icofont-css-link -->
     <link rel="stylesheet" href="{{ asset('landingPage/css/icofont.min.css') }}">
@@ -238,7 +238,7 @@
                                     aria-labelledby="genques-headingOne" data-bs-parent="#genques-accordion">
                                     <div class="accordion-body">
                                         <ul>
-                                            <li>Halaman Link-in-bio S.id adalah cara yang mudah dibaca dan fleksibel
+                                            <li>Halaman Link-in-bio Go.Link adalah cara yang mudah dibaca dan fleksibel
                                                 untuk mengatur dan membagikan</li>
                                             <li>tautan terpenting Anda. Setiap tautan, dari yang Anda buat untuk halaman
                                                 Anda hingga yang ada di</li>
@@ -260,7 +260,7 @@
                                 <div id="genques-collapseTwo" class="accordion-collapse collapse"
                                     aria-labelledby="genques-headingTwo" data-bs-parent="#genques-accordion">
                                     <div class="accordion-body">
-                                        <li><strong>1. Login ke dalam akun s.id anda dan masuk ke Dashboard </strong>
+                                        <li><strong>1. Login ke dalam akun Go.Link anda dan masuk ke Dashboard </strong>
                                         </li>
                                         <li><strong>2. Pilih Microsite yang ingin anda edit dengan pilih Edit</strong>
                                         </li>
@@ -300,7 +300,7 @@
                                 <div id="genques-collapseTwo" class="accordion-collapse collapse"
                                     aria-labelledby="genques-headingTwo" data-bs-parent="#genques-accordion">
                                     <div class="accordion-body">
-                                        <li><strong>1. Di Dashboard S.id Anda Klik Microsite</strong></li>
+                                        <li><strong>1. Di Dashboard Go.Link Anda Klik Microsite</strong></li>
                                         <li><strong>2. Kemudian pilih URL Microsite yang ingin Anda bagikan</strong>
                                         </li>
                                         <li><strong>3. Klik Bagikan</strong></li>
@@ -415,7 +415,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                            <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
                 </div>
@@ -528,7 +528,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                            <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
                 </div>

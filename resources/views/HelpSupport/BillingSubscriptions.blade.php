@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINK.ID</title>
+    <title>Go Link</title>
 
     <!-- icofont-css-link -->
     <link rel="stylesheet" href="{{ asset('landingPage/css/icofont.min.css') }}">
@@ -247,7 +247,7 @@
                                             <li><strong>2. Mengganti Alamat Tujuan Shortlink</strong> - Anda dapat
                                                 mengganti alamat tujuan shortlink hingga 3 kali per bulan.</li>
                                             <li><strong>3. Mengganti Nama Microsite</strong></li>
-                                            <li><strong>4. Menyembunyikan "Powered by S.id"</strong></li>
+                                            <li><strong>4. Menyembunyikan "Powered by Go.Link"</strong></li>
                                             <li><strong>5. Menghilangkan Logo S.id di QR Code</strong></li>
                                             <li><strong>6. Kustomisasi Logo di QR Code</strong></li>
                                             <li><strong>7. Kustomisasi Warna QR Code</strong></li>
@@ -266,13 +266,13 @@
                                     <button class="accordion-button collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#genques-collapseTwo"
                                         aria-expanded="false" aria-controls="genques-collapseTwo">
-                                        Bagaimana cara berlangganan di LINK.Id?
+                                        Bagaimana cara berlangganan di Go.Link?
                                     </button>
                                 </h2>
                                 <div id="genques-collapseTwo" class="accordion-collapse collapse"
                                     aria-labelledby="genques-headingTwo" data-bs-parent="#genques-accordion">
                                     <div class="accordion-body">
-                                        <li><strong>1. Kunjungi https://home.link.id/subscription </strong></li>
+                                        <li><strong>1. Kunjungi https://home.go.link/subscription </strong></li>
                                         <li><strong>2. Silahkan Login dahulu dengan klik Masuk/Daftar sebelah kanan
                                                 atas</strong></li>
                                         <li><strong>3. Pilih paket yang kamu butuhkan</strong></li>
@@ -394,7 +394,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                            <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
                 </div>
@@ -507,7 +507,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                            <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINK.ID</title>
+    <title>Go Link</title>
 
     <!-- icofont-css-link -->
     <link rel="stylesheet" href="{{ asset('landingPage/css/icofont.min.css') }}">
@@ -238,20 +238,20 @@
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#genques-collapseOne" aria-expanded="true"
                                         aria-controls="genques-collapseOne">
-                                        Apa itu&nbsp;<b>LINK.ID</b>?
+                                        Apa itu&nbsp;<b>Go.Link</b>?
                                     </button>
                                 </h2>
                                 <div id="genques-collapseOne" class="accordion-collapse collapse show"
                                     aria-labelledby="genques-headingOne" data-bs-parent="#genques-accordion">
                                     <div class="accordion-body">
-                                        <b>LINK.ID</b> adalah platform untuk orang-orang untuk menunjukkan keahlian
+                                        <b>Go.Link</b> adalah platform untuk orang-orang untuk menunjukkan keahlian
                                         mereka dalam membuat situs mikro dan memperpendek tautan terpendek dengan kode
-                                        <b>LINK.ID/</b>. Tidak hanya aplikasi konten online, <b>LINK.ID/</b>
+                                        <b>Go.Link/</b>. Tidak hanya aplikasi konten online, <b>Go.Link/</b>
                                         juga merupakan alat pemasaran yang memudahkan masyarakat, terutama pembuat
                                         konten, influencer, brand, atau marketing perusahaan, untuk berbagi informasi,
                                         pengetahuan, keahlian, dan pengetahuan
                                         produk yang dipasarkan ke semua orang melalui fitur-fitur yang disediakan oleh
-                                        <b>LINK.ID</b>.Kami sangat senang Anda ada di sini. Anda dapat langsung masuk
+                                        <b>Go.Link</b>.Kami sangat senang Anda ada di sini. Anda dapat langsung masuk
                                         membuat microsite dan dengan mudah mempersingkat,
                                         memodifikasi, dan membagikan tautan Anda. Mari kita mulai dengan dasar-dasarnya.
                                     </div>
@@ -259,8 +259,8 @@
                                         <b>Buat Tautan Pendek</b>
                                         <p>Ubah tautan panjang Anda menjadi tautan pendek.</p>
                                         <b>Sesuaikan agar mudah diingat</b>
-                                        <p>Ubah link dari https://link.id/11SUi menjadi link seperti ini
-                                            https://link.id/nwsltr.</p>
+                                        <p>Ubah link dari https://go.link/11SUi menjadi link seperti ini
+                                            https://go.link/nwsltr.</p>
                                         <b>Buat Tautan Situs Mikro/Bio</b>
                                         <p>Microsite adalah cara untuk membagikan seluruh konten online Anda hanya
                                             menggunakan satu tautan.</p>
@@ -283,7 +283,7 @@
                                     <div class="accordion-body">
                                         Sesuaikan Penyingkat URL Anda dengan fitur yang memberi Anda pemendekan tautan
                                         berkualitas lebih baik.
-                                        <p>1. Masuk ke akun <b>LINK.ID</b> Anda yang ada.</p>
+                                        <p>1. Masuk ke akun <b>Go.Link</b> Anda yang ada.</p>
                                         <p>2. Klik Tautan di menu bilah sisi.</p>
                                         <p>3. Terdapat empat fitur yang tersedia yang dapat anda gunakan.</p>
                                         <p>4. Pertama, anda dapat menyunting tautan pendek anda..</p>
@@ -305,12 +305,12 @@
                                 <div id="genques-collapseThree" class="accordion-collapse collapse"
                                     aria-labelledby="genques-headingThree" data-bs-parent="#genques-accordion">
                                     <div class="accordion-body">
-                                        <p>Tahukah Anda bahwa sekarang Anda dapat membuat microsite <b>LINK.ID</b> untuk
+                                        <p>Tahukah Anda bahwa sekarang Anda dapat membuat microsite <b>Go.Link</b> untuk
                                             ditampilkan di bio media sosial Anda?</p>
 
                                         <p>Membuat microsite sangat mudah:</p>
                                         <ol>
-                                            <li>1. Masuk ke akun <b>LINK.ID</b> Anda yang ada.</li>
+                                            <li>1. Masuk ke akun <b>Go.Link</b> Anda yang ada.</li>
                                             <li>2. Dari menu sidebar, Klik Microsite kemudian Klik Create New.</li>
                                             <li>3. Pilih satu tema microsite dan klik Next.</li>
                                             <li>4. Masukkan Nama dan URL microsite Anda dan klik Buat.</li>
@@ -344,9 +344,8 @@
                                         <p><b>Menghemat Ruang</b></p>
                                         <p>Baik di bio profil, di Tweet, atau di kartu nama, penyingkat URL dapat
                                             menghemat ruang.</p>
-                                        <p>Mulai mempersingkat dengan S.ID hari ini!</p>
+                                        <p>Mulai mempersingkat dengan Go.Link hari ini!</p>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -456,7 +455,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                            <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
                 </div>
@@ -569,7 +568,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                            <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINK.ID</title>
+    <title>Go Link</title>
 
     <!-- icofont-css-link -->
     <link rel="stylesheet" href="{{ asset('landingPage/css/icofont.min.css') }}">
@@ -234,7 +234,7 @@
                     <div kelas="col-xl-12">
                         <h2><strong>Kebijakan</strong></h2>
 
-                        <p>Hummasoft Technology membangun aplikasi LinkID sebagai aplikasi Komersial. LAYANAN ini adalah
+                        <p>Hummasoft Technology membangun aplikasi Go.Link sebagai aplikasi Komersial. LAYANAN ini adalah
                             disediakan oleh Hummasoft Technology dan dimaksudkan untuk digunakan sebagaimana adanya.</p>
 
                         <p>Halaman ini digunakan untuk memberi tahu pengunjung mengenai kebijakan kami terkait
@@ -260,7 +260,7 @@
                         <p>Untuk pengalaman yang lebih baik, saat menggunakan Layanan kami, kami mungkin meminta Anda
                             untuk memberikannya kepada kami
                             informasi pengenal pribadi tertentu, termasuk namun tidak terbatas pada
-                            LinkID.com. Informasi yang kami minta akan kami simpan dan gunakan sebagai
+                            Go.Link Informasi yang kami minta akan kami simpan dan gunakan sebagai
                             dijelaskan dalam kebijakan privasi ini.</p>
 
                         <p>Aplikasi ini menggunakan layanan pihak ketiga yang mungkin mengumpulkan informasi yang
@@ -387,7 +387,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                            <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
                 </div>
@@ -500,7 +500,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                            <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
                 </div>

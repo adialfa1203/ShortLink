@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINK.ID</title>
+    <title>Go Link</title>
 
     <!-- icofont-css-link -->
     <link rel="stylesheet" href="{{ asset('landingPage/css/icofont.min.css') }}">
@@ -238,10 +238,10 @@
                                 <div id="genques-collapseOne" class="accordion-collapse collapse show"
                                     aria-labelledby="genques-headingOne" data-bs-parent="#genques-accordion">
                                     <div class="accordion-body">
-                                        <h1>Selamat datang di S.id - Pemberi Layanan Penyingkat Tautan dan Pembangun
+                                        <h1>Selamat datang di Go.Link - Pemberi Layanan Penyingkat Tautan dan Pembangun
                                             Microsite</h1>
 
-                                        <p>Halo Pengguna S.id,</p>
+                                        <p>Halo Pengguna Go.Link,</p>
                                         <p>Kami ingin memberi tahu Anda bahwa kami telah melakukan beberapa perbaikan
                                             dalam cara kami beroperasi dan telah memperbarui Syarat dan Ketentuan serta
                                             Kebijakan Privasi kami untuk mencerminkan perubahan ini. Perbaikan-perbaikan
@@ -252,14 +252,14 @@
                                                 fitur terbaru kami, Microsite. Fitur ini berfungsi sebagai jembatan
                                                 antara pembuat konten, pemilik bisnis, merek, pendidik, dan aktivis
                                                 media sosial dengan pengikut mereka.</li>
-                                            <li><strong>Perubahan dalam cara tautan S.id berfungsi</strong> - Kami telah
-                                                mengubah arah pengembangan S.id. Tidak hanya sebagai penyingkat tautan,
-                                                S.id sekarang juga merupakan pembangun microsite yang dapat digunakan
+                                            <li><strong>Perubahan dalam cara tautan Go.Link berfungsi</strong> - Kami telah
+                                                mengubah arah pengembangan Go.Link. Tidak hanya sebagai penyingkat tautan,
+                                                Go.Link sekarang juga merupakan pembangun microsite yang dapat digunakan
                                                 untuk membuat tautan di bio media sosial Anda lebih menarik dan
                                                 informatif.</li>
                                             <li><strong>Perbaikan Sistem Keseluruhan</strong> - Dengan memperbarui
                                                 Syarat dan Ketentuan serta Kebijakan Privasi, kami memastikan bahwa
-                                                layanan S.id digunakan dengan benar, terintegrasi dengan komunitas, dan
+                                                layanan Go.Link digunakan dengan benar, terintegrasi dengan komunitas, dan
                                                 memberikan layanan kelas dunia.</li>
                                         </ul>
 
@@ -273,10 +273,10 @@
                                             tidak akan dapat terus menggunakan layanan kami hingga Anda menerimanya.</p>
 
                                         <p>Jika Anda memerlukan bantuan lebih lanjut, jangan ragu untuk menghubungi kami
-                                            di <a href="mailto:helpdesk@S.id">helpdesk@S.id</a></p>
+                                            di <a href="mailto:helpdesk@S.id">helpdesk@Go.Link</a></p>
 
                                         <p>Terima kasih banyak,</p>
-                                        <p>S.id - Shortener Link dan Pembangun Microsite</p>
+                                        <p>Go.Link - Shortener Link dan Pembangun Microsite</p>
                                     </div>
 
                                 </div>
@@ -388,7 +388,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                            <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
                 </div>
@@ -501,7 +501,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                            <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
                 </div>
