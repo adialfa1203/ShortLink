@@ -224,7 +224,7 @@ class MicrositeController extends Controller
             'cover_img' => $coverImageName,
             // 'profile_img' => $profileImageName,
         ]);
-        return redirect()->route('view.component')->with('success', 'Component berhasil disimpan.');
+        return redirect()->route('view.component')->with('success', 'Komponen berhasil disimpan.');
     }
 
     public function editComponent($id)
@@ -283,7 +283,7 @@ class MicrositeController extends Controller
         $component->component_name = $request->component_name;
         $component->save();
         // dd($request);
-        return redirect()->route('view.component')->with('success', 'Component berhasil diupdate.');
+        return redirect()->route('view.component')->with('success', 'Komponen berhasil diupdate.');
     }
 
 
@@ -305,7 +305,7 @@ class MicrositeController extends Controller
         // }
         $component->delete();
 
-        return redirect()->back()->with('success', 'Component berhasil dihapus.');
+        return redirect()->back()->with('success', 'Komponen berhasil dihapus.');
     }
 
 

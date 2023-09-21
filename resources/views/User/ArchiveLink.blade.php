@@ -134,13 +134,13 @@
             </form>
             @endforeach
             <div class="row align-items-center mb-4 justify-content-between text-center text-sm-start" id="pagination-element">
-                <div class="col-sm">
+                {{-- <div class="col-sm">
                     <div class="text-muted">
                         Showing <span class="fw-semibold">{{ $data->firstItem() }}</span>
                         to <span class="fw-semibold">{{ $data->lastItem() }}</span>
                         of <span class="fw-semibold">{{ $data->total() }}</span> Results
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-sm-auto mt-3 mt-sm-0">
                     <div class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
                         <div class="page-item">

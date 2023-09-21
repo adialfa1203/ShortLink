@@ -107,9 +107,9 @@
                 <!-- container start -->
                 <div class="container">
                     <!-- navigation bar -->
-                    <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
+                    <nav class="navbar navbar-expand-lg" style="margin-top: -30px;">
                         <a class="navbar-brand" href="#">
-                            <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image">
+                            <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -160,7 +160,7 @@
                     <!-- navigation bar -->
                     <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
                         <a class="navbar-brand" href="#">
-                            <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image">
+                            <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -364,9 +364,9 @@
                         <div class="col-lg-3 col-md-6 col-12">
                             <div class="abt_side">
                                 <div class="logo">
-                                    <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
-                                        style="margin-top: -20%;">
-                                    <ul style="margin-top: -10%; margin-right:10px;">
+                                    <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image"
+                                        style="margin-top: -5%;">
+                                    <ul style="margin-bottom: -50%; margin-right:10px;">
                                         <li style="color: white; font-size:14px;">{!! $data->description !!}</li>
                                     </ul>
                                 </div>
@@ -476,9 +476,9 @@
                         <div class="col-lg-3 col-md-6 col-12">
                             <div class="abt_side">
                                 <div class="logo">
-                                    <img src="https://i.postimg.cc/QdZvjL3f/Logo-LINK-ID.png" alt="image"
-                                        style="margin-top: -20%;">
-                                    <ul style="margin-top: -10%; margin-right:10px;">
+                                    <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image"
+                                        style="margin-top: -10%;">
+                                    <ul style="margin-bottom: -50%; margin-right:10px;">
                                         <li style="color: white; font-size:14px;">{!! $data->description !!}</li>
                                     </ul>
                                 </div>

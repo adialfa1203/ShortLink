@@ -279,7 +279,7 @@
                                                             data-nexttab="v-pills-finish-tab"
                                                             onclick="return validateForm();"><i
                                                                 class="ri-arrow-right-line label-icon align-middle fs-lg ms-2"></i>
-                                                            Submit</button>
+                                                            Kirim</button>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="v-pills-finish" role="tabpanel"
@@ -291,9 +291,8 @@
                                                                 trigger="loop" colors="primary:#0ab39c,secondary:#405189"
                                                                 style="width:120px;height:120px"></lord-icon>
                                                         </div>
-                                                        <h5>Your Order is Completed !</h5>
-                                                        <p class="text-muted">You Will receive an order confirmation email
-                                                            with details of your order.</p>
+                                                        <h5>Microsite telah Anda Buat</h5>
+                                                        <p class="text-muted">Lanjut untuk microsite Anda!</p>
                                                     </div>
                                                 </div>
                                                 <!-- end tab pane -->
