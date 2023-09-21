@@ -262,8 +262,35 @@
 
                                         <div class="col-lg-12">
                                             <div class="countdown-input-subscribe">
-                                                <label for="cardNumber" class="form-label">URL asli</label>
-                                                <input class="form-control" id="destination_url">
+                                                <label class="platform" data-platform="facebook"><i
+                                                        class="bi bi-facebook"></i> &nbsp; Facebook</label>
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="twitter"><i
+                                                        class="bi bi-twitter"></i> &nbsp; Twitter</label>
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="whatsapp"><i
+                                                        class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="copy" id="copyButton"><i
+                                                        class="bi bi-clipboard-fill"></i> &nbsp; Copy</label>
+                                            </div>
+                                            {{-- <div class="countdown-input-subscribe">
+                                                <label class="platform copyButton" data-platform="copy"
+                                                    data-url="{{ $ShortLink->default_short_url }}"
+                                                    data-id-copy="{{ $ShortLink }}">
+                                                    <i class="bi bi-clipboard-fill"></i> &nbsp; Copy
+                                                </label>
+                                            </div> --}}
+                                            {{-- <div id="successCopyAlert" class="alert alert-success mt-3"
+                                                style="display: none; position: fixed; bottom: 570px; right: 433px; max-width: 500px;">
+                                                Tautan berhasil disalin ke clipboard
+                                            </div> --}}
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="qr"><i class="bi bi-qr-code"></i>
+                                                    &nbsp; QR Code</label>
                                             </div>
                                         </div>
                                     </div>
@@ -661,20 +688,19 @@
                         // Misalnya, membuka jendela baru dengan tautan WhatsApp Share
                         window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shortUrl));
                         break;
-                    case "copy":
-                        var copyText = document.getElementById("default_short_url");
-                        copyText.select();
+                        case "copy":
+                            var copyText = document.getElementById("default_short_url");
+                            copyText.select();
 
-                        navigator.clipboard.writeText(copyText.value)
-                            .then(function() {
-                                if (edit != true) {}
-                            })
-                            .catch(function(err) {
-                                console.error("Penyalinan gagal: ", err);
-                                alert("Penyalinan gagal. Silakan salin tautan secara manual.");
-                            });
-                        break;
-
+                            navigator.clipboard.writeText(copyText.value)
+                                .then(function() {
+                                    if (edit != true) {}
+                                })
+                                .catch(function(err) {
+                                    console.error("Penyalinan gagal: ", err);
+                                    alert("Penyalinan gagal. Silakan salin tautan secara manual.");
+                                });
+                            break;
                     case "qr":
                         // Tambahkan logika untuk menghasilkan QR Code dari tautan
                         // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
@@ -686,25 +712,26 @@
                         break;
                 }
             });
-            $("#default_short_url").click(function() {
-                var copyText = document.getElementById("default_short_url");
-                copyText.select();
-                document.execCommand("copy");
-                if (edit != true) {
-                    // Menambahkan pesan atau tindakan lain sesuai kebutuhan
-                    // alert("Tautan telah disalin ke clipboardsdfg.");
-                    // Setelah data berhasil disimpan, tampilkan pemberitahuan
-                    $("#successCopy").fadeIn();
+            // $("#default_short_url").click(function() {
+            //     var copyText = document.getElementById("default_short_url");
+            //     copyText.select();
+            //     document.execCommand("copy");
+            //     if (edit != true) {
+            //         // Menambahkan pesan atau tindakan lain sesuai kebutuhan
+            //         // alert("Tautan telah disalin ke clipboardsdfg.");
+            //         // Setelah data berhasil disimpan, tampilkan pemberitahuan
+            //         $("#successCopy").fadeIn();
 
-                    // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
-                    setTimeout(function() {
-                        $("#successCopy").fadeOut();
-                    },
-                    3000); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
+            //         // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
+            //         setTimeout(function() {
+            //                 $("#successCopy").fadeOut();
+            //             },
+            //             3000
+            //             ); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
 
 
-                }
-            });
+            //     }
+            // });
             // Menangani klik pada tombol "Simpan"
             $("#simpanButton").click(function() {
                 // Lakukan aksi penyimpanan data di sini (misalnya, pengiriman data ke server).
@@ -723,20 +750,6 @@
             // $("#simpanButton").click(function() {
             //     alert('');
             // });
-            $("#copyButton").click(function() {
-                // Lakukan aksi penyimpanan data di sini (misalnya, pengiriman data ke server).
-
-                // Setelah data berhasil disimpan, tampilkan pemberitahuan
-                $("#successCopyAlert").fadeIn();
-
-                // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
-                setTimeout(function() {
-                    $("#successCopyAlert").fadeOut();
-                }, 3000); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
-
-                // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
-                resetEditModal();
-            });
         });
     </script>
     <!-- apexcharts -->
@@ -763,6 +776,43 @@
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/profile-setting.init.js') }}"></script>
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function copyToClipboard(text) {
+            if (!navigator.clipboard) {
+                var dummy = document.createElement("textarea");
+                document.body.appendChild(dummy);
+                dummy.value = text;
+                dummy.select();
+                document.execCommand("copy");
+                document.body.removeChild(dummy);
+            } else {
+                navigator.clipboard.writeText(text)
+                    .then(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Link berhasil disalin!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    })
+                    .catch(function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Tidak dapat menyalin link.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    });
+            }
+        }
+
+        document.querySelectorAll('.platform').forEach(function(element) {
+            element.addEventListener('click', function() {
+                var dataUrl = this.getAttribute('data-url');
+                copyToClipboard(dataUrl);
+            });
+        });
+    </script>
     <script>
         // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
         var countData = {{ $countURL }}; // Contoh nilai statiskeluar

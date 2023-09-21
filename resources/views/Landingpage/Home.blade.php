@@ -176,7 +176,7 @@
                                     Dashboard&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </nav>
@@ -203,20 +203,20 @@
                                 </div>
                             </span>
                         </button>
-    
+
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto">
                                 <!-- secondery menu start -->
                                 <li class="nav-item has_dropdown">
                                     <a class="nav-link active" href="/">Beranda</a>
                                 </li>
-    
+
                                 <!-- secondery menu start -->
                                 <li class="nav-item has_dropdown">
                                     <a class="nav-link" href="/Shortlink">Perpendek Link</a>
                                 </li>
                                 <!-- secondery menu end -->
-    
+
                                 <li class="nav-item has_dropdown">
                                     <a class="nav-link" href="/Microsite">Situs Mikro</a>
                                 </li>
@@ -367,7 +367,7 @@
                             </svg>
                             <div class="story_text">
                                 <h3>Analitik</h3>
-                                <p>Untuk melacak kinerja tautan Link.id Anda,
+                                <p>Untuk melacak kinerja tautan Go.Link Anda,
                                     untuk mengidentifikasi tren dan pola
                                     dalam penggunaan tautan, dan untuk
                                     membuat keputusan yang tepat

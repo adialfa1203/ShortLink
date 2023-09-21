@@ -204,7 +204,7 @@
                                                                     Microsite</label>
                                                                 <div class="input-group">
                                                                     <button type="button"
-                                                                        class="btn btn-danger bg-gradient">link.id/</button>
+                                                                        class="btn btn-danger bg-gradient">Go.Link/</button>
                                                                     <input type="text" class="form-control"
                                                                         id="address" placeholder="aqua-link"
                                                                         name="link_microsite">

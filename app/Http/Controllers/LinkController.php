@@ -27,7 +27,6 @@ class LinkController extends Controller
             'series' => []
         ];
 
-
         $startDate = DateHelper::getSomeMonthsAgoFromNow(5)->format('Y-m-d H:i:s');
         $endDate = DateHelper::getCurrentTimestamp('Y-m-d H:i:s');
 

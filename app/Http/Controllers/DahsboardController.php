@@ -48,12 +48,11 @@ class DahsboardController extends Controller
                                     ->whereNull('microsite_uuid')
                                     ->count();
         }
-        $ShortLink = ShortUrl::all();
         $qr = ShortUrl::get()->sum('qr_code');
-        // dd($qr);
 
-        return view('User.DashboardUser', compact('ShortLink', 'countURL', 'totalVisits', 'countNameChanged', 'totalVisitsMicrosite', 'qr', 'countMIcrosite'));
+        return view('User.DashboardUser', compact( 'countURL', 'totalVisits', 'countNameChanged', 'totalVisitsMicrosite', 'qr', 'countMIcrosite'));
     }
+
     public function HelpSupport()
     {
         $komentar = Comment::orderBy('created_at', 'desc')->get();

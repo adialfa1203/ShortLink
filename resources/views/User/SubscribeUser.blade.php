@@ -64,9 +64,9 @@
                                             style="width: 100%;" alt="Card image cap">
                                     </div>
                                     <div class="col-lg-7">
-                                        <h6 class="card-title long-text">link.id - Layanan Gratis (Selamanya)</h6>
+                                        <h6 class="card-title long-text">Go.Link - Layanan Gratis (Selamanya)</h6>
                                         <p class="card-text text-muted long-text">Anda menggunakan layanan gratis dari
-                                            link.id</p>
+                                            Go.Link</p>
                                     </div>
                                     <div class="col-lg-3 mt-3 text-center">
                                         <a href="/subscribe-product-user" type="button"

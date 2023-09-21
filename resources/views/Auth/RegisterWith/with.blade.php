@@ -9,7 +9,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>Buat Akun | LINK.ID</title>
+    <title>Buat Akun | Go.Link</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Minimal Admin & Dashboard Template" name="description">
     <meta content="Themesbrand" name="author">
@@ -69,7 +69,7 @@
                                             <div class="text-center">
                                                 <h5 class="fs-3xl">Konfirmasi Akun Anda</h5>
                                                 <p class="text-muted mb-5">Anda perlu konfirmasi Akun Anda di halaman ini. Jika tidak, pendaftaran akun Anda akan dibatalkan.</p>
-                                            </div>                                                                                       
+                                            </div>
                                             <div class="p-2">
                                                 <form action="" method="POST">
                                                     @csrf
@@ -89,21 +89,21 @@
                                                     <div class="mb-3">
                                                         <label class="form-label" for="name-input">Nama Lengkap</label>
                                                         <div class="position-relative auth-pass-inputgroup">
-                                                            <input name="name" type="text" class="form-control pe-5 password-input" onpaste="return false" placeholder="Masukkan Nama Lengkap" value="{{ $githubUserData['name'] }}" id="name-input">                                                            
+                                                            <input name="name" type="text" class="form-control pe-5 password-input" onpaste="return false" placeholder="Masukkan Nama Lengkap" value="{{ $githubUserData['name'] }}" id="name-input">
                                                         </div>
                                                     </div>
 
                                                     <div class="mb-3">
                                                         <label class="form-label" for="number-input">Nomor Ponsel</label>
                                                         <div class="position-relative auth-pass-inputgroup">
-                                                            <input name="number" type="number" class="form-control pe-5 number-input" onpaste="return false" placeholder="Masukkan Nomor Ponsel" id="number-input">                                                            
+                                                            <input name="number" type="number" class="form-control pe-5 number-input" onpaste="return false" placeholder="Masukkan Nomor Ponsel" id="number-input">
                                                         </div>
                                                     </div>
 
                                                     <div class="mb-3">
                                                         <label class="form-label" for="email-input">Email</label>
                                                         <div class="position-relative auth-pass-inputgroup">
-                                                            <input name="email" type="email" class="form-control pe-5 email-input" onpaste="return false" placeholder="Masukkan Email" value="{{ $githubUserData['email'] }}" id="email-input">                                                           
+                                                            <input name="email" type="email" class="form-control pe-5 email-input" onpaste="return false" placeholder="Masukkan Email" value="{{ $githubUserData['email'] }}" id="email-input">
                                                         </div>
                                                     </div>
 
@@ -117,7 +117,7 @@
                                                             class="form-text">Kata sandi Anda harus sepanjang 8-20
                                                             karakter.</div>
                                                     </div>
-                                                    
+
                                                     <div class="mb-3">
                                                         <label class="form-label"
                                                             for="confirm-password-input">Konfirmasi Kata Sandi</label>
@@ -129,7 +129,7 @@
                                                             <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button"><i class="ri-eye-fill align-middle"></i></button>
                                                         </div>
                                                     </div>
-                                                   
+
                                                     <div id="password-contain"
                                                         class="p-3 bg-light mb-2 rounded">
                                                         <h5 class="fs-sm">Password must contain:</h5>
