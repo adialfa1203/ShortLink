@@ -166,7 +166,6 @@
                                                <h3 class="garisbawah card-title mb-2">
                                         {{ $row->shortUrl[0]->default_short_url }}
                                         </h3>
-                                     
                                     </a>
                                     <div id="customAlert" class="custom-alert">
                                         <span class="alert-text"></span>

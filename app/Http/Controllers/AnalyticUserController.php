@@ -35,7 +35,7 @@ class AnalyticUserController extends Controller
             $countMicrosite = ShortUrl::where('user_id', $user)
                 ->whereNotNull('microsite_uuid')
                 ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
-                ->count();            
+                ->count();
 
             $totalVisits = ShortURLVisit::whereHas('shortUrl', function ($query) use ($user) {
                 $query->where('user_id', $user)
