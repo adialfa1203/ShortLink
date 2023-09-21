@@ -132,7 +132,7 @@
                             src="{{ Auth::user()->profile_picture ? asset(Auth::user()->profile_picture) : asset('profile_pictures/default.jpg') }}"
                             alt="Header Avatar" style="margin-right:10px;">
                         <div class="text-start ms-xl-2">
-                            <span><b>Hi! {{ Auth::user()->name }}</b></span>
+                            <span><b>Hai! {{ Auth::user()->name }}</b></span>
 
                             @php
                                 $email = Auth::user()->email;
@@ -146,13 +146,13 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}!</h6>
+                        <h6 class="dropdown-header">Selamat Datang {{ Auth::user()->name }}!</h6>
                         <a class="dropdown-item" href="/profil-admin"><i
                                 class="mdi mdi-account-circle text-muted fs-lg align-middle me-1"></i> <span
-                                class="align-middle">Profile</span></a>
+                                class="align-middle">Profil</span></a>
                         <a class="dropdown-item" href="{{ url('logout') }}"><i
                                 class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i> <span
-                                class="align-middle" data-key="t-logout">Logout</span></a>
+                                class="align-middle" data-key="t-logout">Keluar</span></a>
                     </div>
                 </li>
 
