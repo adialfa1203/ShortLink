@@ -80,7 +80,7 @@ class MicrositeController extends Controller
         $request->validate([
             'microsite_selection' => 'required',
             'name' => 'required|string|regex:/^[^-+]+$/u|max:10',
-            'link_microsite' => 'required|regex:/^[^-+]+$/u|unique:microsites,link_microsite,id',
+            'link_microsite' => 'required|regex:/^[^+]+$/u|unique:microsites,link_microsite,id',
         ]);
         $data = [
             'components_uuid' => $request->microsite_selection,

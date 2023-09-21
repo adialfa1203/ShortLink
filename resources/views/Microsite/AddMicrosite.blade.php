@@ -200,13 +200,13 @@
                                                                 @endif
                                                             </div>
                                                             <div class="col-12">
-                                                                <label for="address" class="form-label">Tautan
+                                                                <label for="micrositeUrl" class="form-label">Tautan
                                                                     Microsite</label>
                                                                 <div class="input-group">
                                                                     <button type="button"
                                                                         class="btn btn-danger bg-gradient">Go.Link/</button>
                                                                     <input type="text" class="form-control"
-                                                                        id="address" placeholder="aqua-link"
+                                                                        id="micrositeUrl" placeholder="aqua-link"
                                                                         name="link_microsite">
                                                                 </div>
                                                                 <div>
@@ -467,5 +467,23 @@
             return true;
         }
     </script>
+    <script>
+        // Fungsi untuk mengganti spasi dengan tanda "-" hanya pada input dengan ID "address"
+        function replaceSpacesWithDash(inputField) {
+            if (inputField.id === "micrositeUrl") {
+                var value = inputField.value;
+                var modifiedValue = value.replace(/ /g, "-");
+                inputField.value = modifiedValue;
+            }
+        }
+    
+        // Menambahkan event listener untuk input field dengan ID "address"
+        var addressInput = document.getElementById("micrositeUrl");
+        if (addressInput) {
+            addressInput.addEventListener("input", function () {
+                replaceSpacesWithDash(this);
+            });
+        }
+    </script>    
 
 @endsection
