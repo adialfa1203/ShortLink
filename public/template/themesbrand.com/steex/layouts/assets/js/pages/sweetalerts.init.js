@@ -56,11 +56,11 @@ document.getElementById("sa-basic") && document.getElementById("sa-basic").addEv
             let confirmationText, actionText, confirmButtonColor;
             if (isBanned) {
                 confirmationText = "Yakin ingin memulihkan akun pengguna ini?";
-                actionText = "Unbanned";
+                actionText = "Pulihkan";
                 confirmButtonColor = "#28A745";
             } else {
                 confirmationText = "Apakah Anda yakin ingin memblokir akun pengguna ini?";
-                actionText = "Banned";
+                actionText = "Blokir";
                 confirmButtonColor = "#d33";
             }
             Swal.fire({

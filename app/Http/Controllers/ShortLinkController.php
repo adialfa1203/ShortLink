@@ -18,6 +18,12 @@ class ShortLinkController extends Controller
     public function shortLink(Request $request, Toastr $toastr)
     {
         $user = auth()->user();
+        $validator = Validator::make($request->all(), [
+            'destination_url' => 'required|url',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['message' => 'The destination URL is required and must be a valid URL.', 'status' => 'gagal']);
+        }
 
         if ($user->subscribe == 'yes') {
         } else {
