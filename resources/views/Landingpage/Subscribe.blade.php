@@ -252,20 +252,20 @@
                                 </div>
                             </span>
                         </button>
-    
+
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto">
                                 <!-- secondery menu start -->
                                 <li class="nav-item has_dropdown">
                                     <a class="nav-link active" href="/">Beranda</a>
                                 </li>
-    
+
                                 <!-- secondery menu start -->
                                 <li class="nav-item has_dropdown">
                                     <a class="nav-link" href="/Shortlink">Perpendek Link</a>
                                 </li>
                                 <!-- secondery menu end -->
-    
+
                                 <li class="nav-item has_dropdown">
                                     <a class="nav-link" href="/Microsite">Situs Mikro</a>
                                 </li>
@@ -412,7 +412,7 @@
                                 </div>
                                 <thead class="text-center">
                                     <tr style="font-size: 12px;">
-                                        <th><span>Batasan Pengunjung Tautan Link.id</span></th>
+                                        <th><span>Batasan Pengunjung Tautan Go Link</span></th>
                                         <th>Gratis</th>
                                         <th>Premium</th>
                                     </tr>
@@ -601,7 +601,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-right">
-                        <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                        <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                     </div>
                 </div>
             </div>
@@ -714,7 +714,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-right">
-                        <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                        <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                     </div>
                 </div>
             </div>
