@@ -245,7 +245,7 @@
             <!-- container start -->
             <div class="container">
                 <div class="section_title" data-aos="fade-in" data-aos-duration="1500" data-aos-delay="100">
-                    <h2>Fitur Fitur <span>LINK.ID</span> Yang Dapat <br> Membantu Anda</h2>
+                    <h2>Fitur Fitur <span>Go.Link</span> Yang Dapat <br> Membantu Anda</h2>
                 </div>
                 <!-- row start -->
                 <div class="row d-flex justify-content-md-center" style="margin-top: 2%;">
@@ -303,7 +303,7 @@
                             </svg>
                             <div class="story_text">
                                 <h6 class="mb-3 fs-17">Tautan terlindungi</h6>
-                                <p class="text-muted">Untuk melacak kinerja tautan Link.id Anda,
+                                <p class="text-muted">Untuk melacak kinerja tautan Go.Link Anda,
                                     untuk mengidentifikasi tren dan pola
                                     dalam penggunaan tautan, dan untuk
                                     membuat keputusan yang tepat
@@ -455,7 +455,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                            <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
                 </div>
@@ -568,7 +568,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                            <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
                 </div>

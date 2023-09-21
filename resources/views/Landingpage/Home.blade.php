@@ -252,7 +252,7 @@
                         <!-- banner text -->
                         <div class="banner_text">
                             <!-- h1 -->
-                            <h2 style="color: #ffffff;">Selamat datang di Link.id</h2>
+                            <h2 style="color: #ffffff;">Selamat datang di Go.Link</h2>
                             <!-- p -->
                             <p>Apakah kamu ingin mempersingkat URL sesuai dengan
                                 yang Anda inginkan?
@@ -317,7 +317,7 @@
             <!-- container start -->
             <div class="container">
                 <div class="section_title" data-aos="fade-in" data-aos-duration="1500" data-aos-delay="100">
-                    <h2>Fitur Fitur <span>LINK.ID</span> Yang Dapat <br> Membantu Anda</h2>
+                    <h2>Fitur Fitur <span>Go.Link</span> Yang Dapat <br> Membantu Anda</h2>
                 </div>
                 <!-- row start -->
                 <div class="row d-flex justify-content-md-center" style="margin-top: 2%;">
@@ -414,7 +414,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="text-center">
-                            <h3>Statistik LINK.ID</h3>
+                            <h3>Statistik Go.Link</h3>
                         </div>
                     </div>
                 </div>
@@ -628,7 +628,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                                <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                             </div>
                         </div>
                     </div>
@@ -741,7 +741,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                                <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                             </div>
                         </div>
                     </div>
