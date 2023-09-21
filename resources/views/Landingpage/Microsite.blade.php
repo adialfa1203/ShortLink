@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go.Link</title>
+    <title>Go Link</title>
 
     <!-- icofont-css-link -->
     <link rel="stylesheet" href="{{ asset('landingPage/css/icofont.min.css') }}">
@@ -108,7 +108,7 @@
 
         <!-- Header Start -->
         @include('layout.landingPage.header')
-        
+
         <!-- Banner-Section-Start -->
         <section class="banner_section" id="beranda">
             <!-- container start -->

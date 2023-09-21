@@ -42,7 +42,7 @@
                             Dashboard&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
-                    
+
                 </ul>
             </div>
         </nav>

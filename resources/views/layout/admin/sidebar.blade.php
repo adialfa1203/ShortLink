@@ -134,14 +134,14 @@
                         <div class="text-start ms-xl-2">
                             <span><b>Hai! {{ Auth::user()->name }}</b></span>
 
-                            @php
+                            {{-- @php
                                 $email = Auth::user()->email;
                             @endphp
 
 
                             <span data-key="t-hot">
                                 {{ $email }}
-                            </span>
+                            </span> --}}
                         </div>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">

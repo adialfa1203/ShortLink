@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go.Link</title>
+    <title>Go Link</title>
 
     <!-- icofont-css-link -->
     <link rel="stylesheet" href="{{ asset('landingPage/css/icofont.min.css') }}">
@@ -145,7 +145,7 @@
             <!-- container start -->
             <div class="container">
                 <div class="section_title" data-aos="fade-in" data-aos-duration="1500" data-aos-delay="100">
-                    <h2>Fitur Fitur <span>Go.Link</span> Yang Dapat <br> Membantu Anda</h2>
+                    <h2>Fitur Fitur <span>Go Link</span> Yang Dapat <br> Membantu Anda</h2>
                 </div>
                 <!-- row start -->
                 <div class="row d-flex justify-content-md-center" style="margin-top: 2%;">
@@ -203,7 +203,7 @@
                             </svg>
                             <div class="story_text">
                                 <h6 class="mb-3 fs-17">Tautan terlindungi</h6>
-                                <p class="text-muted">Untuk melacak kinerja tautan Go.Link Anda,
+                                <p class="text-muted">Untuk melacak kinerja tautan Go Link Anda,
                                     untuk mengidentifikasi tren dan pola
                                     dalam penggunaan tautan, dan untuk
                                     membuat keputusan yang tepat
@@ -329,7 +329,7 @@
         //         @endif
         //     });
         // });
-    </script>   
+    </script>
 </body>
 
 

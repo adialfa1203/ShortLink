@@ -423,7 +423,7 @@
 
                 <div class="row">
 
-                    <div class="col-xl-4 col-md-6">
+                    <div class="col-xl-6 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex">
@@ -441,7 +441,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6">
+                    <div class="col-xl-6 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex">
@@ -450,24 +450,6 @@
                                             <p class="fs-md text-muted mb-4">Pengunjung Microsite</p>
                                             <h3 class="mb-0 mt-auto"><span class="counter-value"
                                                     data-target="{{ $totalVisitsMicrosite }}">0</span></h3>
-                                        </div>
-                                    </div>
-                                    <div class="flex-shrink-0">
-                                        <div id="property_sale" data-colors='["--tb-primary"]' dir="ltr"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <div class="d-flex flex-column h-100">
-                                            <p class="fs-md text-muted mb-4">Pengunjung Kode QR</p>
-                                            <h3 class="mb-0 mt-auto"><span class="counter-value"
-                                                    data-target="{{ $qr }}">0</span></h3>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0">
