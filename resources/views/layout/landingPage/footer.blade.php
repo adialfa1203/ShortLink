@@ -98,7 +98,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                    <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                 </div>
             </div>
         </div>
@@ -211,7 +211,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <p>© LINK.ID Dikelola oleh PT. Hummatech</p>
+                    <p>© Go.Link Dikelola oleh PT. Hummatech</p>
                 </div>
             </div>
         </div>
