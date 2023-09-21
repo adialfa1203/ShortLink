@@ -370,10 +370,10 @@
                                         <div class="col-10">
                                             <h5><i class="bi bi-bar-chart-line-fill"></i> statistik</h5>
                                         </div>
-                                        <div class="col-2 d-flex flex-row justify-content-end">
+                                        {{-- <div class="col-2 d-flex flex-row justify-content-end">
                                             <button type="button" class="btn btn-light "><span>Lihat
                                                     Detail</span>&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="card">
