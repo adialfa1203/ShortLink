@@ -80,6 +80,7 @@ class AnalyticUserController extends Controller
             }
         ])
         ->whereNull('microsite_uuid')
+        ->where('user_id', $user)
         ->orderBy('totalVisits', 'desc')
         ->take(3)
         ->get();
@@ -92,6 +93,7 @@ class AnalyticUserController extends Controller
             }
         ])
         ->whereNotNull('microsite_uuid')
+        ->where('user_id', $user)
         ->orderBy('totalVisits', 'desc')
         ->take(3)
         ->get();
