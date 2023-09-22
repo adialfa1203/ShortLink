@@ -190,7 +190,7 @@
                     <div class="collapse menu-dropdown" id="sidebarEcommerce">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('link/{shortCode}') }}" class="nav-link" data-key="t-products">Tautan
+                                <a href="{{ url('Link/{shortCode}') }}" class="nav-link" data-key="t-products">Tautan
                                     Aktif</a>
                             </li>
                             <li class="nav-item">

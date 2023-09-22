@@ -18,7 +18,10 @@ class MicrositeController extends Controller
     public function microsite(Request $request )
     {
         $user_id = auth()->user()->id;
-
+        $microsite_uuid = 'fb2ee8d9-d618-4578-8f34-84cac949cf0b';
+        // dd($user_id);
+        $qr = ShortUrl::where('microsite_uuid',$microsite_uuid)->get();
+        // dd($qr);
 
         // Filter berdasarkan tombol "Terakhir Diperbarui"
         if ($request->has('filter') && $request->filter == 'terakhir_diperbarui') {
@@ -58,7 +61,8 @@ class MicrositeController extends Controller
             }
 
         $short_urls = ShortUrl::whereIn('microsite_uuid', $data->pluck('id'))->get();
-        return view('Microsite.MicrositeUser', compact('data', 'urlshort', 'short_urls','result', 'd'));
+        // dd($short_urls);
+        return view('Microsite.MicrositeUser', compact('data', 'urlshort', 'short_urls','result', 'd','qr'));
     }
 
     public function addMicrosite()
