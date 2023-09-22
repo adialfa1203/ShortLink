@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 @endforeach
-                <div class="pagination-wrap hstack justify-content-center gap-2">
+                {{-- <div class="pagination-wrap hstack justify-content-center gap-2">
                     <a class="page-item pagination-prev {{ $button->previousPageUrl() ? '' : 'disabled' }}" href="{{ $button->previousPageUrl() ? $button->previousPageUrl() : '#' }}">
                         Previous
                     </a>
@@ -80,7 +80,7 @@
                     <a class="page-item pagination-next {{ $button->nextPageUrl() ? '' : 'disabled' }}" href="{{ $button->nextPageUrl() ? $button->nextPageUrl() : '#' }}">
                         Next
                     </a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

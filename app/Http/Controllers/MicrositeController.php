@@ -65,7 +65,9 @@ class MicrositeController extends Controller
     {
         $data = Components::all();
         $button = Button::all();
-        return view('microsite.AddMicrosite', compact('data', 'button'));
+        $user = auth()->user();
+        $micrositeCount = $user->microsites()->count(); // Mendapatkan jumlah microsite pengguna
+        return view('microsite.AddMicrosite', compact('data', 'button', 'micrositeCount'));
     }
 
     public function createMicrosite(Request $request, Microsite $microsite)
@@ -74,7 +76,7 @@ class MicrositeController extends Controller
 
         // Jika pengguna adalah non-premium (subscribe == 'no') dan telah mencapai batas 10 microsite
         if ($user->subscribe === 'no' && $user->microsites()->count() >= 10) {
-            return redirect()->back()->with('error', 'Anda telah mencapai batas maksimum 10 microsite.');
+            return redirect()->back();
         }
 
         $request->validate([

@@ -274,12 +274,8 @@
                                                             data-previous="v-pills-bill-address-tab"><i
                                                                 class="ri-arrow-left-line label-icon align-middle fs-lg me-2"></i>
                                                             Sebelumnya</button>
-                                                        <button type="submit"
-                                                            class="btn btn-success btn-label right ms-auto nexttab nexttab"
-                                                            data-nexttab="v-pills-finish-tab"
-                                                            onclick="return validateForm();"><i
-                                                                class="ri-arrow-right-line label-icon align-middle fs-lg ms-2"></i>
-                                                            Kirim</button>
+                                                            <button type="submit" id="submitButton" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="v-pills-finish-tab" onclick="return validateForm();"><i class="ri-arrow-right-line label-icon align-middle fs-lg ms-2"></i>Submit</button>
+
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="v-pills-finish" role="tabpanel"
@@ -316,6 +312,34 @@
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/form-wizard.init.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    // Fungsi untuk menampilkan SweetAlert saat tombol submit ditekan
+    function showSweetAlert() {
+        var maxMicrosites = 10; // Batas maksimum microsite
+        var existingMicrosites = {{ $micrositeCount ?? 0 }}; // Menggunakan data yang telah dikirimkan dari controller
+
+        // Periksa apakah pengguna mencapai batas maksimum
+        if (existingMicrosites >= maxMicrosites) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Anda telah mencapai batas maksimum 10 microsite',
+            });
+        }
+    }
+
+    // Menambahkan penanganan klik pada tombol submit
+    document.addEventListener("DOMContentLoaded", function () {
+        var submitButton = document.getElementById("submitButton"); // Ganti "submitButton" dengan ID tombol submit Anda
+        if (submitButton) {
+            submitButton.addEventListener("click", showSweetAlert);
+        }
+    });
+</script>
+
+
+
     <script>
         // Ambil semua elemen card
         const cards = document.querySelectorAll('.card');
@@ -476,7 +500,7 @@
                 inputField.value = modifiedValue;
             }
         }
-    
+
         // Menambahkan event listener untuk input field dengan ID "address"
         var addressInput = document.getElementById("micrositeUrl");
         if (addressInput) {
@@ -484,6 +508,6 @@
                 replaceSpacesWithDash(this);
             });
         }
-    </script>    
-
+    </script>
+`
 @endsection
