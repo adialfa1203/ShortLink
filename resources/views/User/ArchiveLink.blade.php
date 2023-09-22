@@ -51,7 +51,7 @@
 <div class="page-content">
     <div class="d-flex flex-column flex-sm-row mb-3" >
         <div class="col-12 col-sm-4">
-            <h5 class="mb-2">Tautan yang Di arsip</h5>
+            <h5 class="mb-2">Riwayat Link</h5>
             <p id="clickCount" hidden>0 klik</p>
         </div>
         <div class="col-12 col-sm-8">
@@ -71,9 +71,9 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <h6 class="col-3">{{ $row->title }}</h6>
-                            <div class=" col-9 d-flex flex-row justify-content-end">
+                            {{-- <div class=" col-9 d-flex flex-row justify-content-end">
                                 <button type="button" class="btn btn-primary me-3 btn-sm" data-bs-target="#arsip{{$row->id}}" data-bs-toggle="modal"><i class="bi bi-archive-fill"></i> Buka Arsipan</button>
-                            </div>
+                            </div> --}}
                         </div>
                             <a>
                                 <h3 class="garisbawah card-title mb-2">{{$row->default_short_url}}</h3>

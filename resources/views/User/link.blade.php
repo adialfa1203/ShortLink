@@ -142,9 +142,9 @@
                                             data-link="{{ $row->url_key }}">
                                             <span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
                                         </button>
-                                        <button type="button" class="btn btn-primary me-3 btn-sm"
+                                        {{-- <button type="button" class="btn btn-primary me-3 btn-sm"
                                             data-bs-target="#arsip{{ $row->id }}" data-bs-toggle="modal"><i
-                                                class="bi bi-archive-fill"></i> Arsipkan</button>
+                                                class="bi bi-archive-fill"></i> Arsipkan</button> --}}
                                     </div>
                                     <br>
                                 <a>

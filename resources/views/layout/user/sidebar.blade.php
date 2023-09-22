@@ -195,7 +195,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ url('archive-link-user') }}" class="nav-link"
-                                    data-key="t-products-grid">Tautan Diarsip</a>
+                                    data-key="t-products-grid">Riwayat</a>
                             </li>
                         </ul>
                     </div>
