@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-xxl-12 mt-2 col-md-12">
                             <div class="mt-2">
-                                <label for="icon" class="form-label">Options</label>
+                                <label for="icon" class="form-label">Sosial Media</label>
                                 <select name="icon" class="form-select" id="icon" required>
                                     <option value="" disabled selected>Pilih Sosial Media...</option>
                                     <option value="bi bi-facebook" {{ old('icon') === 'bi bi-facebook' ? 'selected' : '' }}>Facebook</option>

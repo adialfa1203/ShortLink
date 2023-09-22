@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="mt-3">
                                         <h5>{{ $user->name }}<i
-                                                class="bi bi-patch-check-fill align-baseline text-info ms-1"></i></h5>
+                                                class=" align-baseline text-info ms-1"></i></h5>
                                         <p class="text-muted">{{ $accountStatus }}</p>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
 
                                         <div class="col-lg-12">
                                             <div class="hstack gap-2 justify-content-end">
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                                <button type="submit" class="btn btn-success">Simpan</button>
                                             </div>
                                         </div>
                                         <!--end col-->

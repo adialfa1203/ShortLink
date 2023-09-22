@@ -105,13 +105,13 @@
                                                     anda!
                                                 </span>
                                             </button>
-                                            <button class="nav-link" id="v-pills-finish-tab" data-bs-toggle="pill"
+                                            {{-- <button class="nav-link" id="v-pills-finish-tab" data-bs-toggle="pill"
                                                 data-bs-target="#v-pills-finish" type="button" role="tab"
                                                 aria-controls="v-pills-finish" aria-selected="false">
                                                 <span class="step-title me-2">
                                                     <i class="ri-close-circle-fill step-icon me-2"></i> Kirim
                                                 </span>
-                                            </button>
+                                            </button> --}}
                                         </div>
                                         <!-- end nav -->
                                     </div> <!-- end col-->
@@ -206,7 +206,7 @@
                                                                     <button type="button"
                                                                         class="btn btn-danger bg-gradient">Go.Link/</button>
                                                                     <input type="text" class="form-control"
-                                                                        id="micrositeUrl" placeholder="aqua-link"
+                                                                        id="link" placeholder="aqua-link"
                                                                         name="link_microsite">
                                                                 </div>
                                                                 <div>
@@ -278,7 +278,7 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade" id="v-pills-finish" role="tabpanel"
+                                                {{-- <div class="tab-pane fade" id="v-pills-finish" role="tabpanel"
                                                     aria-labelledby="v-pills-finish-tab">
                                                     <div class="text-center pt-4 pb-2">
 
@@ -290,7 +290,7 @@
                                                         <h5>Microsite telah Anda Buat</h5>
                                                         <p class="text-muted">Lanjut untuk microsite Anda!</p>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 <!-- end tab pane -->
                                             </div>
                                             <!-- end tab content -->
@@ -452,7 +452,7 @@
 
             // Validasi langkah kedua
             var micrositeName = document.getElementById("address").value;
-            var micrositeLink = document.getElementById("address").value;
+            var micrositeLink = document.getElementById("link").value;
             if (micrositeName.trim() === "" || micrositeLink.trim() === "") {
                 Swal.fire({
                     text: 'Silakan isi nama dan tautan microsite sesuai keinginan Anda!',

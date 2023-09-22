@@ -24,8 +24,10 @@
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <a class="dropdown-item"
                                                 href="{{ route('edit.component', ['id' => $item->id]) }}">Edit</a>
-                                            <a class="dropdown-item"
-                                                href="{{ route('delete.component', ['id' => $item->id]) }}">Hapus</a>
+                                            <button type="button" class="dropdown-item"
+                                            data-bs-target="#hapus{{ $item->id }}" data-bs-toggle="modal">Hapus</button>
+                                            {{-- <a class="dropdown-item"
+                                                href="{{ route('delete.component', ['id' => $item->id]) }}">Hapus</a> --}}
                                         </div>
                                     </div>
                                     <strong class="fs-md text-muted mb-0">{{ $item->component_name }}</strong>
@@ -40,6 +42,30 @@
                                             <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/default.jpg') }}" alt=""
                                                 class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- modal hapus --}}
+                            <div class="modal fade" id="hapus{{ $item->id }}">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <form action="/delete-component/{{ $item->id }}" method="GET">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title"></h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <h4 style="font-size: 19px">Yakin Ingin Menghapus Komponen Ini?</h4>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit"
+                                                    class="btn btn-primary btn-xs form-control1">Hapus</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

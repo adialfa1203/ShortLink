@@ -66,7 +66,7 @@
         </div>
     </div>
     {{-- <div id="__next">
-    <section class="MicrositeContainer_Main__h7wfn MicrositeContainer_Main_isNotBuilder__R1vOP MicrositeContainer_ButtonSizeLg__WNJnp" style="background-color:rgb(209 213 219 / 1);--dark-color:#000;--light-color:#fff;--text-color:#111827;--link-color:255, 255, 255;--link-background:118, 124, 131;--link-shadow:#fff;--link-border:#fff;--divider-color:255, 255, 255">
+    <section class="MicrositeContainer_Main_h7wfn MicrositeContainer_Main_isNotBuilderR1vOP MicrositeContainer_ButtonSizeLg_WNJnp" style="background-color:rgb(209 213 219 / 1);--dark-color:#000;--light-color:#fff;--text-color:#111827;--link-color:255, 255, 255;--link-background:118, 124, 131;--link-shadow:#fff;--link-border:#fff;--divider-color:255, 255, 255">
         <div class="fixed top-0 left-0 w-full h-full overflow-hidden">
             <div class="bg-center bg-repeat absolute -left-10 -right-10 -bottom-10 -top-10 blur-xl bg-cover" style="background-image:url(../cdn.s.id/images/8cc9c75d-641e-4947-ad9f-42f31e408caf_1000x1500.webp.jpeg)">
             </div>
@@ -82,7 +82,7 @@
                 </svg></button></div>
         <div class="fixed top-0 left-0 right-0 bottom-0 h-full flex">
             <div class="MicrositeContainer_Container__btcXO">
-                <div class="MicrositeContainer_StyledBackgroundFilter__5pVB_"></div>
+                <div class="MicrositeContainer_StyledBackgroundFilter_5pVB"></div>
                 <div class="MicrositeContainer_StyledBackground__1ENPs bg-center bg-cover" style="background-image:url('{{ asset('component/' . $accessMicrosite->component->cover_img )}}')">
                 </div>
             </div>
@@ -95,36 +95,36 @@
                             <img src="{{ asset(Auth::user()->profile_picture ) }}" alt="">
                         </div>
                     </div>
-                    <div id="" class="Text_Text__v_8Om Text_Text_center__40OcD Text_Text_lg__sLpoO"><span style="font-weight:bold">{{ $accessMicrosite->name }}</span></div>
-                    <div id="" class="Text_Text__v_8Om Text_Text_center__40OcD"><span>
+                    <div id="" class="Text_Text_v_8Om Text_Text_center40OcD Text_Text_lg_sLpoO"><span style="font-weight:bold">{{ $accessMicrosite->name }}</span></div>
+                    <div id="" class="Text_Text_v_8Om Text_Text_center_40OcD"><span>
                             <p>{!! $accessMicrosite->description !!}</p>
                         </span></div>
                         <div class="mt-3 w-full"></div>
                         <div class="HorizontalLink_Container__R74h3">
                         @foreach ($social as $row)
-                        <a href="{{ $row->button_link  }}" target="_blank" rel="noopener noreferrer" class="HorizontalLink_Link__7IF9Z HorizontalLink_Link_circle__S9cau">
+                        <a href="{{ $row->button_link  }}" target="blank" rel="noopener noreferrer" class="HorizontalLink_Link7IF9Z HorizontalLink_Link_circle_S9cau">
                             <i class="{{ $row->button->icon }}"></i>
                         </a>
                         @endforeach
                     </div>
                     @foreach ($social as $row)
                     <div class="Link_LinkContainer__8XFkh">
-                        <div class="Link_LinkOuter__CacTs"><a href="{{ $row->button_link  }}" target="_blank" rel="noopener noreferrer" class="Link_Link__lcSrg Link_Variant_fullRound__IEVkw Link_Variant_fullRound_whShadow__heIK0">
-                                <div class="Link_Icon__WjzGo Link_Icon_fullRound__JzoQ1">
+                        <div class="Link_LinkOuter_CacTs"><a href="{{ $row->button_link  }}" target="_blank" rel="noopener noreferrer" class="Link_LinklcSrg Link_Variant_fullRoundIEVkw Link_Variant_fullRound_whShadow_heIK0">
+                                <div class="Link_Icon_WjzGo Link_Icon_fullRound_JzoQ1">
                                     <i class=" {{ $row->button->icon }}"></i>
                                 </div>
                                 <div class="Link_TextOuter__i2D1Z">
-                                    <div style="font-family:&#x27;Montserrat&#x27;, sans-serif" class="Link_Text__hNUN8 Link_Text_center__ZehB9"><strong>{{ $row->button->name_button }}</strong>
+                                    <div style="font-family:&#x27;Montserrat&#x27;, sans-serif" class="Link_Text_hNUN8 Link_Text_center_ZehB9"><strong>{{ $row->button->name_button }}</strong>
                                     </div>
                                 </div>
-                                <div class="Link_Dummy__e6G9_"></div>
+                                <div class="Link_Dummy_e6G9"></div>
                             </a></div>
                     </div>
                     @endforeach
-                    <div id="" style="font-size:1em" class="Text_Text__v_8Om Text_Text_center__40OcD">
+                    <div id="" style="font-size:1em" class="Text_Text_v_8Om Text_Text_center_40OcD">
                         <p node="[object Object]"><strong>Write Your Company Name Here!</strong></p>
                     </div>
-                    <div id="" style="font-size:1em" class="Text_Text__v_8Om Text_Text_center__40OcD">
+                    <div id="" style="font-size:1em" class="Text_Text_v_8Om Text_Text_center_40OcD">
                         <p node="[object Object]">Write Your Company Address Here!</p>
                     </div>
                 </div>

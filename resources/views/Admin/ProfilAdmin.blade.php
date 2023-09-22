@@ -182,7 +182,7 @@
 
                                         <div class="col-lg-12">
                                             <div class="hstack gap-2 justify-content-end">
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                                <button type="submit" class="btn btn-success">Simpan</button>
                                             </div>
                                         </div>
                                         <!--end col-->

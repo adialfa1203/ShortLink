@@ -32,7 +32,7 @@ class MicrositeController extends Controller
         }
         // Default: Tampilkan semua data
         else {
-            $data = Microsite::where('user_id', $user_id)->paginate(5);
+            $data = Microsite::all();
             $d = $data;
         }
 
@@ -300,6 +300,7 @@ class MicrositeController extends Controller
         $micrositeCount = Microsite::where('components_uuid', $id)->count();
 
         if ($micrositeCount > 0) {
+            // return redirect()->back();
             return redirect()->back()->with('error', 'Tidak dapat menghapus komponen ini karena masih ada data terkait.');
         }
 
