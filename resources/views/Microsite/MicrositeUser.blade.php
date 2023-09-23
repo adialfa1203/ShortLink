@@ -239,9 +239,6 @@
                                                 <div class="text-center">
                                                     <p> {{ $row->shortUrl[0]->default_short_url }}</p>
                                                 </div>
-                                                <!-- <center>
-                                                        <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
-                                                    </center> -->
                                             </div>
                                             {{-- <center>
                                             <button type="button" class="btn btn-danger">Download</button>

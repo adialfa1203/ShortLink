@@ -496,7 +496,10 @@
                             <p class="text-muted mb-0" id="microsite-total"><b>{{ $countMIcrosite }} dari 10</b></p>
 
                             <br>
-
+                            @php
+                                $userType = Auth::user()->subscribe; // Gantilah dengan logika yang sesuai dengan aplikasi Anda
+                            @endphp
+                            @if($userType === 'yes')
                             <h6 class="card-title">Nama yang telah diubah/bulan <i
                                     class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip"
                                     data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
@@ -508,6 +511,7 @@
                                     aria-valuemax="5" style="width: {{ ($countNameChanged / 5) * 100 }}%;"></div>
                             </div>
                             <p class="text-muted mb-0" id="name-changed-text"><b>{{ $countNameChanged }} dari 5</b></p>
+                            @endif
                         </div>
                         <div class="d-flex justify-content-end pe-3" data-bs-toggle="modal"
                             data-bs-target="#lihatlebihbanyak">
