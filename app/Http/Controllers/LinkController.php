@@ -20,6 +20,13 @@ class LinkController extends Controller
         // ->selectRaw('MONTH(created_at) as created_at')
         ->where('user_id', $user_id)
         ->whereNull('microsite_uuid')
+        ->whereNull('deactivated_at')
+        ->orderBy('created_at', 'desc')
+        ->paginate(5);
+        $deactivatedUrls = ShortUrl::withCount('visits')
+        ->where('user_id', $user_id)
+        ->whereNotNull('deactivated_at')
+        ->whereNull('microsite_uuid')
         ->orderBy('created_at', 'desc')
         ->paginate(5);
         $result = [
@@ -42,7 +49,7 @@ class LinkController extends Controller
         }
 
         // dd($data);
-        return view('User.Link', compact('user','urlshort', 'shortCode','result'));
+        return view('User.Link', compact('user','urlshort', 'shortCode','result', 'deactivatedUrls'));
     }
 
     public function archive($id)

@@ -183,6 +183,13 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link menu-link {{ request()->routeIs('link.show') ? 'active' : '' }}" href="{{ url('/Link/{shortCode}') }}">
+                        <i class="bi bi-link-45deg"></i>
+                        <span data-key="t-email">Tautan</span>
+                    </a>
+                </li>
+
+                {{-- <li class="nav-item">
                     <a href="#sidebarEcommerce" class="nav-link menu-link collapsed" data-bs-toggle="collapse"
                         role="button" aria-expanded="false" aria-controls="sidebarEcommerce">
                         <i class="bi bi-link-45deg"></i> <span data-key="t-ecommerce">Tautan</span>
@@ -199,7 +206,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('microsite') ? 'active' : '' }} {{ request()->routeIs('add.microsite') ? 'active' : '' }} {{ request()->routeIs('edit.microsite') ? 'active' : '' }}" href="{{ url('microsite-user')}}"><i class="bi bi-person-badge-fill"></i>
