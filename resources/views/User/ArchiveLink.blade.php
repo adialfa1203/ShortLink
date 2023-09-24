@@ -107,13 +107,6 @@
                                 <div class="col-3">
                                     <p style="margin-top: 10px;">{{ \Carbon\Carbon::parse($row->deactivated_at)->format('F j, Y, h:i A') }}</p>
                                 </div>
-                                <div class=" col-9 d-flex flex-row justify-content-end">
-                                    <button disabled type="button" class="btn disable btn-light me-3 btn-sm"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Tautan berbasis waktu"><i class="fa-solid fa-clock"></i>&nbsp;Atur waktu</span></button>
-                                    <button disabled type="button" class="btn disable btn-light me-3 btn-sm"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Tautan terlindungi"><i class="fa-solid fa-lock"></i>&nbsp;kata sandi</span></button>
-                                    <button disabled ="button" class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample112" role="button" aria-expanded="true" aria-controls="collapseExample112">
-                                        <i class="bi bi-bar-chart-line-fill"></i> statistik
-                                    </button>
-                                </div>
                             </div>
                             <div class="collapse" id="collapseExample112">
                                 <div class="card mb-0">

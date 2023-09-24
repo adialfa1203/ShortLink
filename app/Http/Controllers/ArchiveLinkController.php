@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\ShortUrl;
 
 class ArchiveLinkController extends Controller
@@ -11,9 +12,9 @@ class ArchiveLinkController extends Controller
         // $urlshort = ShortUrl::orderBy('created_at', 'desc')->paginate(5);
         $user = auth()->user(); // Mengambil objek User saat ini
         $user_id = $user->id;
-        $data = ShortUrl::where('user_id', $user_id)
+        $data = History::where('user_id', $user_id)
         ->orderBy('created_at','desc')
-        ->onlyTrashed()->paginate(5);
+        ->paginate(5);
 
         return view('User.ArchiveLink', compact('user','data'));
     }
