@@ -152,30 +152,12 @@
                         <!-- banner text -->
                         <div class="banner_text">
                             <!-- h1 -->
-                            <h2 style="color: #ffffff;">Selamat datang di Go Link</h2>
+                            <h2 style="color: #ffffff;">Selamat datang di Go Link!</h2>
                             <!-- p -->
-                            <p>Apakah kamu ingin mempersingkat URL sesuai dengan
-                                yang Anda inginkan?
-                            </p>
-                            <span style="color: #ffffff;">Kini tersedia web yang dapat membantu untuk mempermudah anda
-                                dalam
-                                mempersingkat URL yang Anda mau!</span>
-
-                        </div>
-                        {{-- <div class="col-12 mt-3" style="margin-right: 100%;">
-                            <div class="input-group align-items-center rounded" style="background: #E9EEF5">
-                                <input class="form-control" type="text"
-                                    placeholder="Https://Domain-mu/yang-ingin kau">
-                                <div class="position-absolute ms-auto" style="margin-left: 75%;">
-                                    <button type="button" class="btn btn-danger btn-sm m-1"><i class="fas fa-link"></i>
-                                        Singkatkan</button>
-                                </div>
-                            </div>
-                        </div> --}}
-
-                        <!-- app buttons -->
-
-                        <!-- users -->
+                            <p>Ingin membuat tautan lebih singkat dan lebih mudah diingat?</p>
+                            <p>Go Link adalah solusi terbaik untuk Anda!</p>
+                            <span style="color: #ffffff;">Sekarang, Anda dapat dengan mudah mengubah tautan panjang menjadi tautan yang simpel dan mudah diingat. Dengan Go Link, mempersingkat URL sesuai dengan keinginan Anda lebih cepat dan lebih sederhana dari sebelumnya.</span>
+                        </div>                        
                     </div>
                     <!-- banner slides start -->
                     <div class="col-lg-6 col-md-12 aos-init aos-animate d-flex justify-content-start" data-aos="fade-in"
@@ -232,9 +214,9 @@
                             </svg>
                             <div class="story_text">
                                 <h3>Pemotongan URL</h3>
-                                <p>Anda dapat memotong URL
-                                    yang asli sesuai dengan keinginan
-                                    Anda</p>
+                                <p>Dengan Go Link, Anda dapat dengan mudah memotong URL yang panjang
+                                menjadi tautan yang singkat dan mudah diingat sesuai dengan keinginan
+                                Anda. Tidak perlu lagi repot dengan tautan yang terlalu panjang.</p>
                             </div>
                         </div>
                     </div>
@@ -249,9 +231,10 @@
                             </svg>
                             <div class="story_text">
                                 <h3>Pembuatan Microsite</h3>
-                                <p>Juga Disebut tautan Bio sering digunakan
-                                    di profil media sosial mereka, resume online
-                                    atau CV, dan situs web jejaring profesional.</p>
+                                <p>Buat tautan Bio Anda sendiri dengan Go Link. Seringkali digunakan
+                                di profil media sosial, resume online, CV, dan situs web jejaring
+                                profesional. Tautan Bio Anda sekarang dapat terlihat lebih menarik
+                                dan informatif.</p>
                             </div>
                         </div>
                     </div>
@@ -267,43 +250,12 @@
                             </svg>
                             <div class="story_text">
                                 <h3>Analitik</h3>
-                                <p>Untuk melacak kinerja tautan Go Link Anda,
-                                    untuk mengidentifikasi tren dan pola
-                                    dalam penggunaan tautan, dan untuk
-                                    membuat keputusan yang tepat
-                                    tentang cara mengoptimalkan kinerja tautan.</p>
+                                <p>Lacak kinerja tautan Go Link Anda dengan mudah. Identifikasi tren dan pola dalam penggunaan
+                                tautan Anda, dan buat keputusan yang tepat untuk mengoptimalkan kinerja tautan Anda. Dengan
+                                analitik Go Link, Anda dapat mengukur dampak kampanye Anda dengan lebih baik.</p>
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-md-4" style="margin-bottom: 2%;">
-              <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="#BA2D3B" class="bi bi-calendar2-check" viewBox="0 0 16 16" style="margin-top: 10%;">
-                  <path d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
-                  <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
-                </svg>
-                  <div class="story_text">
-                      <h3>Mencatat absensi karyawan</h3>
-                      <p>Informasi dan pencatatan absensi
-                        berjalan lebih optimal dan efektif
-                        dengan adanya sistem dari Kalopsia.</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4" style="margin-bottom: 2%;">
-                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" style="margin-top: 10%;"><path fill="#BA2D3B" d="m22.69 18.37l1.14-1l-1-1.73l-1.45.49a3.647 3.647 0 0 0-1.08-.63L20 14h-2l-.3 1.49a3.646 3.646 0 0 0-1.08.63l-1.45-.49l-1 1.73l1.14 1a3.337 3.337 0 0 0 0 1.26l-1.14 1l1 1.73l1.45-.49a3.645 3.645 0 0 0 1.08.63L18 24h2l.3-1.49a3.646 3.646 0 0 0 1.08-.63l1.45.49l1-1.73l-1.14-1a3.39 3.39 0 0 0 0-1.27ZM19 21a2 2 0 1 1 2-2a2.006 2.006 0 0 1-2 2Zm4-10H1V1h22ZM3 9h18V3H3Zm10-4H4v2h9Zm3 0a1 1 0 1 0 1 1a1 1 0 0 0-1-1Zm3 0a1 1 0 1 0 1 1a1 1 0 0 0-1-1Z"/><path fill="#BA2D3B" d="M12.294 21H3v-6h10.26a7.026 7.026 0 0 1 2.148-2H1v10h12.26a6.962 6.962 0 0 1-.966-2Z"/><path fill="#BA2D3B" d="M4 19h8a6.994 6.994 0 0 1 .294-2H4Z"/></svg>
-                     <div class="story_text">
-                         <h3>Kelola data karyawan lebih
-                          mudah</h3>
-                         <p>Anda dapat mengakses dan mengelola
-                          semua data karyawan dalam satu sistem
-                          sehingga memudahkan Anda dalam
-                          melakukan manajemen SDM lebih efisien</p>
-                     </div>
-                 </div>
-             </div>
-            </div> --}}
                     <!-- row end -->
                 </div>
                 <!-- container end -->
@@ -323,34 +275,35 @@
                 <div class="row justify-content-center mt-5">
                     <!--end col-->
                     <div class="col-md-3" style="margin-bottom: 2%;">
-                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
+                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" >
                             <div class="story_text">
                                 <h4>
                                     <span class="counter_value" data-target="{{($url)}}">{{($url)}}</span><span>+</span>
                                 </h4>
-                                <p class="text-muted">Tautan panjang telah dipersingkat</p>
+                                <p class="text-muted">
+                                    {{($url)}} tautan panjang telah berhasil dipersingkat dengan Go Link.
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3" style="margin-bottom: 2%;">
-                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
+                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
                             <div class="story_text">
                                 <h4>
                                     <span class="counter_value" data-target="{{( $micrositeuuid )}}">{{( $micrositeuuid )}}</span><span>+</span>
                                 </h4>
-                                <p class="text-muted">Microsite untuk bionik telah dibuat</p>
+                                <p class="text-muted"> Sudah lebih dari {{ $micrositeuuid }} microsite yang berhasil dibuat dengan Go Link.</p>
                             </div>
                         </div>
                     </div>
                     <!--end col-->
                     <div class="col-md-3" style="margin-bottom: 2%;">
-                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
+                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
                             <div class="story_text">
                                 <h4>
                                     <h3 class="counter_value" data-target="{{ $totalVisits }}">{{ $totalVisits }}</h3>
                                 </h4>
-                                <p class="text-muted">Tautan dan Pengunjung
-                                    Situs Mikro per hari</p>
+                                <p class="text-muted">Ratusan tautan dan pengunjung mengakses situs mikro dengan Go Link</p>
                             </div>
                         </div>
                     </div>

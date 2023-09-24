@@ -34,7 +34,9 @@
     <link id="fontsLink"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <!-- Layout config Js -->
     <!-- Bootstrap Css -->
     <link href="{{ asset('template/themesbrand.com/steex/layouts/assets/css/bootstrap.min.css') }}" rel="stylesheet"
@@ -47,6 +49,18 @@
 
 <body>
     <style>
+        .navbar-expand-lg .navbar-nav .nav-link {
+    padding: 5px 20px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif; 
+    color: var(--text-white);
+}
+.nav-link {
+    display: block;
+}
+.a {
+    text-decoration: none;
+}
         .custom-btn {
             width: 100%;
             max-width: 300px;
@@ -65,6 +79,7 @@
             /* Atur padding sesuai kebutuhan Anda */
         }
 
+        /* Menghapus aturan CSS yang membuat latar belakang gambar semi-transparan */
         .carousel-item::after {
             content: "";
             position: absolute;
@@ -100,106 +115,106 @@
 
         <!-- Header Start -->
         @auth
-        <header>
-            <!-- container start -->
-            <div class="container">
-                <!-- navigation bar -->
-                <nav class="navbar navbar-expand-lg" style="margin-top: -30px;">
-                    <a class="navbar-brand" href="#">
-                        <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon">
-                            <!-- <i class="icofont-navigation-menu ico_menu"></i> -->
-                            <div class="toggle-wrap">
-                                <span class="toggle-bar"></span>
-                            </div>
-                        </span>
-                    </button>
+            <header>
+                <!-- container start -->
+                <div class="container">
+                    <!-- navigation bar -->
+                    <nav class="navbar navbar-expand-lg" style="margin-top: -30px;">
+                        <a class="navbar-brand" href="#">
+                            <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon">
+                                <!-- <i class="icofont-navigation-menu ico_menu"></i> -->
+                                <div class="toggle-wrap">
+                                    <span class="toggle-bar"></span>
+                                </div>
+                            </span>
+                        </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <!-- secondery menu start -->
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/">Beranda</a>
-                            </li>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <!-- secondery menu start -->
+                                <li class="nav-item has_dropdown">
+                                    <a class="nav-link" href="/">Beranda</a>
+                                </li>
 
-                            <!-- secondery menu start -->
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/Shortlink">Perpendek Link</a>
-                            </li>
-                            <!-- secondery menu end -->
+                                <!-- secondery menu start -->
+                                <li class="nav-item has_dropdown">
+                                    <a class="nav-link" href="/Shortlink">Perpendek Link</a>
+                                </li>
+                                <!-- secondery menu end -->
 
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/Microsite">Situs Mikro</a>
-                            </li>
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/Subscribe">Berlangganan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link dark_btn" href="/dashboard-user">
-                                    Dashboard&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <!-- navigation end -->
-            </div>
-            <!-- container end -->
-        </header>
-    @else
-        <header>
-            <!-- container start -->
-            <div class="container">
-                <!-- navigation bar -->
-                <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
-                    <a class="navbar-brand" href="#">
-                        <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon">
-                            <!-- <i class="icofont-navigation-menu ico_menu"></i> -->
-                            <div class="toggle-wrap">
-                                <span class="toggle-bar"></span>
-                            </div>
-                        </span>
-                    </button>
+                                <li class="nav-item has_dropdown">
+                                    <a class="nav-link" href="/Microsite">Situs Mikro</a>
+                                </li>
+                                <li class="nav-item has_dropdown">
+                                    <a class="nav-link" href="/Subscribe">Berlangganan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link dark_btn" href="/dashboard-user">
+                                        Dashboard&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- navigation end -->
+                </div>
+                <!-- container end -->
+            </header>
+        @else
+            <header>
+                <!-- container start -->
+                <div class="container">
+                    <!-- navigation bar -->
+                    <nav class="navbar navbar-expand-lg" style="margin-top: -30px;">
+                        <a class="navbar-brand" href="#">
+                            <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon">
+                                <!-- <i class="icofont-navigation-menu ico_menu"></i> -->
+                                <div class="toggle-wrap">
+                                    <span class="toggle-bar"></span>
+                                </div>
+                            </span>
+                        </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <!-- secondery menu start -->
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link active" href="/">Beranda</a>
-                            </li>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <!-- secondery menu start -->
+                                <li class="nav-item has_dropdown">
+                                    <a class="nav-link" href="/">Beranda</a>
+                                </li>
 
-                            <!-- secondery menu start -->
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/Shortlink">Perpendek Link</a>
-                            </li>
-                            <!-- secondery menu end -->
+                                <!-- secondery menu start -->
+                                <li class="nav-item has_dropdown">
+                                    <a class="nav-link" href="/Shortlink">Perpendek Link</a>
+                                </li>
+                                <!-- secondery menu end -->
 
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/Microsite">Situs Mikro</a>
-                            </li>
-                            <li class="nav-item has_dropdown">
-                                <a class="nav-link" href="/Subscribe">Berlangganan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link dark_btn" href="/login">Login / Register</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <!-- navigation end -->
-            </div>
-            <!-- container end -->
-        </header>
-    @endauth
+                                <li class="nav-item has_dropdown">
+                                    <a class="nav-link" href="/Microsite">Situs Mikro</a>
+                                </li>
+                                <li class="nav-item has_dropdown">
+                                    <a class="nav-link" href="/Subscribe">Berlangganan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link dark_btn" href="/login">Login / Register</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- navigation end -->
+                </div>
+                <!-- container end -->
+            </header>
+        @endauth
 
         <!-- Banner-Section-Start -->
         <section class="banner_section" id="beranda">
@@ -232,40 +247,31 @@
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#genques-collapseOne" aria-expanded="true"
                                         aria-controls="genques-collapseOne">
-                                        Kami telah memperbarui Syarat dan Ketentuan & Kebijakan Privasi kami
+                                        Kami telah memperbarui Kebijakan Privasi kami
                                     </button>
                                 </h2>
                                 <div id="genques-collapseOne" class="accordion-collapse collapse show"
                                     aria-labelledby="genques-headingOne" data-bs-parent="#genques-accordion">
                                     <div class="accordion-body">
-                                        <h1>Selamat datang di Go.Link - Pemberi Layanan Penyingkat Tautan dan Pembangun
+                                        <h1>Selamat datang di Go Link - Pemberi Layanan Penyingkat Tautan dan Pembangun
                                             Microsite</h1>
 
-                                        <p>Halo Pengguna Go.Link,</p>
+                                        <p>Halo Pengguna Go Link,</p>
                                         <p>Kami ingin memberi tahu Anda bahwa kami telah melakukan beberapa perbaikan
-                                            dalam cara kami beroperasi dan telah memperbarui Syarat dan Ketentuan serta
+                                            dalam cara kami beroperasi dan telah memperbarui Kebijakan Privasi serta
                                             Kebijakan Privasi kami untuk mencerminkan perubahan ini. Perbaikan-perbaikan
                                             ini termasuk:</p>
 
                                         <ul>
-                                            <li><strong>Fitur Baru: Microsite</strong> - Kami dengan bangga meluncurkan
-                                                fitur terbaru kami, Microsite. Fitur ini berfungsi sebagai jembatan
-                                                antara pembuat konten, pemilik bisnis, merek, pendidik, dan aktivis
-                                                media sosial dengan pengikut mereka.</li>
-                                            <li><strong>Perubahan dalam cara tautan Go.Link berfungsi</strong> - Kami telah
-                                                mengubah arah pengembangan Go.Link. Tidak hanya sebagai penyingkat tautan,
-                                                Go.Link sekarang juga merupakan pembangun microsite yang dapat digunakan
+                                            <li><strong>Perubahan dalam cara tautan Go Link berfungsi</strong> - Kami telah
+                                                mengubah arah pengembangan Go Link. Tidak hanya sebagai penyingkat tautan,
+                                                Go Link sekarang juga merupakan pembangun microsite yang dapat digunakan
                                                 untuk membuat tautan di bio media sosial Anda lebih menarik dan
                                                 informatif.</li>
-                                            <li><strong>Perbaikan Sistem Keseluruhan</strong> - Dengan memperbarui
-                                                Syarat dan Ketentuan serta Kebijakan Privasi, kami memastikan bahwa
-                                                layanan Go.Link digunakan dengan benar, terintegrasi dengan komunitas, dan
-                                                memberikan layanan kelas dunia.</li>
                                         </ul>
 
-                                        <p>Kami mendorong Anda untuk membaca Syarat dan Ketentuan lengkap kami <a
-                                                href="link_ke_syarat_dan_ketentuan">di sini</a> dan Kebijakan Privasi
-                                            <a href="link_ke_kebijakan_privasi">di sini</a>.</p>
+                                        <p>Kami mendorong Anda untuk membaca Kebijakan Privasi lengkap kami <a
+                                                href="/privacy">di sini</a></p>
 
                                         <p>Harap pastikan bahwa Anda menerima perubahan ini melalui popup setelah Anda
                                             masuk ke situs kami. Ini akan membantu Anda dan komunitas kami memaksimalkan
@@ -273,10 +279,10 @@
                                             tidak akan dapat terus menggunakan layanan kami hingga Anda menerimanya.</p>
 
                                         <p>Jika Anda memerlukan bantuan lebih lanjut, jangan ragu untuk menghubungi kami
-                                            di <a href="mailto:helpdesk@S.id">helpdesk@S.id</a></p>
+                                            di <a href="go.link.id">go.link.id</a></p>
 
                                         <p>Terima kasih banyak,</p>
-                                        <p>S.id - Shortener Link dan Pembangun Microsite</p>
+                                        <p>Go Link - Penyingkat Tautan dan Pembangun Microsite</p>
                                     </div>
 
                                 </div>
@@ -289,232 +295,231 @@
         </div>
     </div>
     @auth
-    <footer>
-        <div class="top_footer" id="kontak">
-            <div class="container">
-                <div class="row">
-                    <!-- Logo -->
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="abt_side">
-                            <div class="logo">
-                                <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image"
-                                    style="margin-top: -5%;">
-                                <ul style="margin-bottom: -50%; margin-right:10px;">
-                                    <li style="color: white; font-size:14px;">{!! $data->description !!}</li>
+        <footer>
+            <div class="top_footer" id="kontak">
+                <div class="container">
+                    <div class="row">
+                        <!-- Logo -->
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="abt_side">
+                                <div class="logo">
+                                    <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image"
+                                        style="margin-top: -5%;">
+                                    <ul style="margin-bottom: -50%; margin-right:10px;">
+                                        <li style="color: white; font-size:14px;">{!! $data->description !!}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Links -->
+
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <div class="links">
+                                <h3>Dukungan</h3>
+                                <ul style="padding: 0;">
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/Privacy">Kebijakan Privasi</a></li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <div class="links">
+                                <h3>SiteMaps</h3>
+                                <ul style="padding: 0;">
+                                    <li><a href="/">Beranda</a></li>
+                                    <li><a href="/Shortlink">Perpendek Link</a></li>
+                                    <li><a href="/Microsite">Situs Mikro</a></li>
+                                    <li><a href="/Subscribe">Berlanggaan</a></li>
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/Privacy">Kebijakan Privasi</a></li>
 
-                    <!-- Footer Links -->
-
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <div class="links">
-                            <h3>Dukungan</h3>
-                            <ul style="padding: 0;">
-                                <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
-                                <li><a href="/Privacy">Kebijakan Privasi</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <div class="links">
-                            <h3>SiteMaps</h3>
-                            <ul style="padding: 0;">
-                                <li><a href="/">Beranda</a></li>
-                                <li><a href="/Shortlink">Perpendek Link</a></li>
-                                <li><a href="/Microsite">Situs Mikro</a></li>
-                                <li><a href="/Subscribe">Berlanggaan</a></li>
-                                <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
-                                <li><a href="/Privacy">Kebijakan Privasi</a></li>
-
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Contact Information -->
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <div class="links">
-                            <h3>Hubungi Kami</h3>
-                            <ul style="text-align: justify; padding:0;">
-                                <li>
-                                    <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID"
-                                        target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                        Whatsapp
-                                        {{-- {{ $data->whatsapp }} --}}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/{{ $data->instagram }}" target="_blank">
-                                        <i class="fab fa-instagram"></i>
-                                        Instagram
-                                        {{-- {{ $data->instagram }} --}}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/{{ $data->twitter }}" target="_blank">
-                                        <i class="fab fa-twitter"></i>
-                                        Twitter
-                                        {{-- {{ $data->twitter }} --}}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    @auth
-                        <!-- Comment Form -->
-                        <div class="col-lg-3 col-md-6 col-12 mb-1">
-                            <form action="/create/{{ Auth::user()->id }}" id="commentForm" method="POST"
-                                enctype="multipart/form-data" class="mt-3">
-                                @csrf
-                                <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
-                                @error('isikomentar')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                                <div class="text-start mt-2">
-                                    <button type="submit" class="btn btn-success">Kirim</button>
-                                </div>
-                            </form>
-                        </div>
-                    @endauth
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Footer -->
-        <div class="bottom_footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <p>© Go.Link Dikelola oleh PT. Hummatech</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Go Top Button -->
-        <div class="go_top">
-            <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
-        </div>
-    </footer>
-    <!-- Footer-Section end -->
-@else
-    <footer>
-        <div class="top_footer" id="kontak">
-            <div class="container">
-                <div class="row">
-                    <!-- Logo -->
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="abt_side">
-                            <div class="logo">
-                                <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image"
-                                    style="margin-top: -10%;">
-                                <ul style="margin-bottom: -50%; margin-right:10px;">
-                                    <li style="color: white; font-size:14px;">{!! $data->description !!}</li>
                                 </ul>
                             </div>
                         </div>
+
+                        <!-- Contact Information -->
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <div class="links">
+                                <h3>Hubungi Kami</h3>
+                                <ul style="text-align: justify; padding:0;">
+                                    <li>
+                                        <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID"
+                                            target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                            Whatsapp
+                                            {{-- {{ $data->whatsapp }} --}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/{{ $data->instagram }}" target="_blank">
+                                            <i class="fab fa-instagram"></i>
+                                            Instagram
+                                            {{-- {{ $data->instagram }} --}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/{{ $data->twitter }}" target="_blank">
+                                            <i class="fab fa-twitter"></i>
+                                            Twitter
+                                            {{-- {{ $data->twitter }} --}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        @auth
+                            <!-- Comment Form -->
+                            <div class="col-lg-3 col-md-6 col-12 mb-1">
+                                <form action="/create/{{ Auth::user()->id }}" id="commentForm" method="POST"
+                                    enctype="multipart/form-data" class="mt-3">
+                                    @csrf
+                                    <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
+                                        placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
+                                    @error('isikomentar')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div class="text-start mt-2">
+                                        <button type="submit" class="btn btn-success">Kirim</button>
+                                    </div>
+                                </form>
+                            </div>
+                        @endauth
                     </div>
+                </div>
+            </div>
 
-                    <!-- Footer Links -->
-
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <div class="links">
-                            <h3>Dukungan</h3>
-                            <ul>
-                                <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
-                                <li><a href="/Privacy">Kebijakan Privasi</a></li>
-                            </ul>
+            <!-- Bottom Footer -->
+            <div class="bottom_footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <p>© Go Link Dikelola oleh PT. Hummatech</p>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-12" style="margin-left: 6%;">
-                        <div class="links">
-                            <h3>SiteMaps</h3>
-                            <ul>
-                                <li><a href="/">Beranda</a></li>
-                                <li><a href="/Shortlink">Perpendek Link</a></li>
-                                <li><a href="/Microsite">Situs Mikro</a></li>
-                                <li><a href="/Subscribe">Berlanggaan</a></li>
-                                <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
-                                <li><a href="/Privacy">Kebijakan Privasi</a></li>
+                </div>
+            </div>
 
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Contact Information -->
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="links">
-                            <h3>Hubungi Kami</h3>
-                            <ul style="text-align: justify;">
-                                <li>
-                                    <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID"
-                                        target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                        Whatsapp
-                                        {{-- {{ $data->whatsapp }} --}}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/{{ $data->instagram }}" target="_blank">
-                                        <i class="fab fa-instagram"></i>
-                                        Instagram
-                                        {{-- {{ $data->instagram }} --}}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/{{ $data->twitter }}" target="_blank">
-                                        <i class="fab fa-twitter"></i>
-                                        Twitter
-                                        {{-- {{ $data->twitter }} --}}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    @auth
-                        <!-- Comment Form -->
-                        <div class="col-lg-3 col-md-6 col-12 mb-1">
-                            <form action="/create/{{ Auth::user()->id }}" id="commentForm" method="POST"
-                                enctype="multipart/form-data" class="mt-3">
-                                @csrf
-                                <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
-                                @error('isikomentar')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                                <div class="text-start mt-2">
-                                    <button type="submit" class="btn btn-success">Kirim</button>
+            <!-- Go Top Button -->
+            <div class="go_top">
+                <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
+            </div>
+        </footer>
+        <!-- Footer-Section end -->
+    @else
+        <footer>
+            <div class="top_footer" id="kontak">
+                <div class="container">
+                    <div class="row">
+                        <!-- Logo -->
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="abt_side">
+                                <div class="logo">
+                                    <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image"
+                                        style="margin-top: -10%;">
+                                    <ul style="margin-bottom: -50%; margin-right:10px;">
+                                        <li style="color: white; font-size:14px;">{!! $data->description !!}</li>
+                                    </ul>
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    @endauth
 
-                </div>
-            </div>
-        </div>
+                        <!-- Footer Links -->
 
-        <!-- Bottom Footer -->
-        <div class="bottom_footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <p>© Go.Link Dikelola oleh PT. Hummatech</p>
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <div class="links">
+                                <h3>Dukungan</h3>
+                                <ul style=" padding:0;">
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/Privacy">Kebijakan Privasi</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12" style="margin-left: 6%;">
+                            <div class="links">
+                                <h3>SiteMaps</h3>
+                                <ul style=" padding:0;">
+                                    <li><a href="/">Beranda</a></li>
+                                    <li><a href="/Shortlink">Perpendek Link</a></li>
+                                    <li><a href="/Microsite">Situs Mikro</a></li>
+                                    <li><a href="/Subscribe">Berlanggaan</a></li>
+                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
+                                    <li><a href="/Privacy">Kebijakan Privasi</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="links">
+                                <h3>Hubungi Kami</h3>
+                                <ul style="text-align: justify;  padding:0;">
+                                    <li>
+                                        <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID"
+                                            target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                            Whatsapp
+                                            {{-- {{ $data->whatsapp }} --}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/{{ $data->instagram }}" target="_blank">
+                                            <i class="fab fa-instagram"></i>
+                                            Instagram
+                                            {{-- {{ $data->instagram }} --}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/{{ $data->twitter }}" target="_blank">
+                                            <i class="fab fa-twitter"></i>
+                                            Twitter
+                                            {{-- {{ $data->twitter }} --}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        @auth
+                            <!-- Comment Form -->
+                            <div class="col-lg-3 col-md-6 col-12 mb-1">
+                                <form action="/create/{{ Auth::user()->id }}" id="commentForm" method="POST"
+                                    enctype="multipart/form-data" class="mt-3">
+                                    @csrf
+                                    <textarea class="form-control bg-light border-light" id="exampleFormControlTextarea1" rows="3"
+                                        placeholder="Tambahkan Komentar" name="isikomentar" style="font-size:12px ;"></textarea>
+                                    @error('isikomentar')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div class="text-start mt-2">
+                                        <button type="submit" class="btn btn-success">Kirim</button>
+                                    </div>
+                                </form>
+                            </div>
+                        @endauth
+
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Go Top Button -->
-        <div class="go_top">
-            <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
-        </div>
-    </footer>
-    <!-- Footer-Section end -->
-@endauth
+            <!-- Bottom Footer -->
+            <div class="bottom_footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <p>© Go Link Dikelola oleh PT. Hummatech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Go Top Button -->
+            <div class="go_top">
+                <span><img src="https://i.postimg.cc/MZtYYpPg/go-top.png" alt="image"></span>
+            </div>
+        </footer>
+        <!-- Footer-Section end -->
+    @endauth
     <!-- Footer-Section end -->
 
     <!-- VIDEO MODAL -->
@@ -576,6 +581,7 @@
 
     <!-- App js -->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/app.js') }}"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> --}}
 </body>
 
 

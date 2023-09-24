@@ -49,6 +49,18 @@
 
 <body>
     <style>
+        .navbar-expand-lg .navbar-nav .nav-link {
+    padding: 5px 20px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif; 
+    color: var(--text-white);
+}
+.nav-link {
+    display: block;
+}
+.a {
+    text-decoration: none;
+}
         .custom-btn {
             width: 100%;
             max-width: 300px;
@@ -158,7 +170,7 @@
                 <!-- container start -->
                 <div class="container">
                     <!-- navigation bar -->
-                    <nav class="navbar navbar-expand-lg" style="margin-top: -90px;">
+                    <nav class="navbar navbar-expand-lg" style="margin-top: -30px;">
                         <a class="navbar-brand" href="#">
                             <img src="https://i.postimg.cc/QxLvZmbf/linkbaru.png" alt="image">
                         </a>
@@ -177,7 +189,7 @@
                             <ul class="navbar-nav ml-auto">
                                 <!-- secondery menu start -->
                                 <li class="nav-item has_dropdown">
-                                    <a class="nav-link active" href="/">Beranda</a>
+                                    <a class="nav-link" href="/">Beranda</a>
                                 </li>
 
                                 <!-- secondery menu start -->
@@ -244,13 +256,9 @@
                                 <div id="genques-collapseOne" class="accordion-collapse collapse show"
                                     aria-labelledby="genques-headingOne" data-bs-parent="#genques-accordion">
                                     <div class="accordion-body">
-                                        <b>Go.Link</b> adalah platform untuk orang-orang untuk menunjukkan keahlian
-                                        mereka dalam membuat situs mikro dan memperpendek tautan terpendek dengan kode
-                                        <b>Go.Link/</b>. Tidak hanya aplikasi konten online, <b>Go.Link/</b>
-                                        juga merupakan alat pemasaran yang memudahkan masyarakat, terutama pembuat
-                                        konten, influencer, brand, atau marketing perusahaan, untuk berbagi informasi,
-                                        pengetahuan, keahlian, dan pengetahuan
-                                        produk yang dipasarkan ke semua orang melalui fitur-fitur yang disediakan oleh
+                                        <b>Go.Link</b> adalah platform untuk orang-orang menunjukkan keahlian
+                                        mereka dalam membuat situs mikro dan memperpendek tautan dengan kode
+                                        <b>Go.Link/</b>. Produk yang dipasarkan ke semua orang melalui fitur-fitur yang disediakan oleh
                                         <b>Go.Link</b>.Kami sangat senang Anda ada di sini. Anda dapat langsung masuk
                                         membuat microsite dan dengan mudah mempersingkat,
                                         memodifikasi, dan membagikan tautan Anda. Mari kita mulai dengan dasar-dasarnya.
@@ -260,13 +268,12 @@
                                         <p>Ubah tautan panjang Anda menjadi tautan pendek.</p>
                                         <b>Sesuaikan agar mudah diingat</b>
                                         <p>Ubah link dari https://go.link/11SUi menjadi link seperti ini
-                                            https://go.link/nwsltr.</p>
+                                            https://go.link/nwsltr. Atau bisa dengan nama Anda agar mudah diingat.</p>
                                         <b>Buat Tautan Situs Mikro/Bio</b>
                                         <p>Microsite adalah cara untuk membagikan seluruh konten online Anda hanya
                                             menggunakan satu tautan.</p>
                                         <b>Buat konten anda agar terlihat menarik</b>
                                         <p>Kreasikan microsite Anda dengan banyak pilihan komponen.</p>
-
                                     </div>
                                 </div>
                             </div>
@@ -284,13 +291,12 @@
                                         Sesuaikan Penyingkat URL Anda dengan fitur yang memberi Anda pemendekan tautan
                                         berkualitas lebih baik.
                                         <p>1. Masuk ke akun <b>Go.Link</b> Anda yang ada.</p>
-                                        <p>2. Klik Tautan di menu bilah sisi.</p>
+                                        <p>2. Klik Buat Tautan Baru di menu bilah sisi kanan.</p>
                                         <p>3. Terdapat empat fitur yang tersedia yang dapat anda gunakan.</p>
                                         <p>4. Pertama, anda dapat menyunting tautan pendek anda..</p>
-                                        <p>5. Kedua, klik gambar ini untuk salin tautan.</p>
-                                        <p>6. Ketiga, terdapat laporan statistik dari jumlah pengunjung dalam tujuh hari
-                                            terakhir.</p>
-                                        <p>7. Dan terakhir, jika ingin membagikan tautan, klik tombol bagikan.</p>
+                                        <p>5. Kedua, anda dapat menyalin tautan anda</p>
+                                        <p>6. Ketiga, terdapat laporan statistik dari jumlah pengunjung dalam seminggu</p>
+                                        <p>7. Dan terakhir, jika Anda ingin membagikan tautan, klik tombol bagikan. Ada juga Scan QR Code</p>
                                     </div>
                                 </div>
                             </div>
@@ -309,14 +315,16 @@
                                             ditampilkan di bio media sosial Anda?</p>
 
                                         <p>Membuat microsite sangat mudah:</p>
-                                        <ol>
-                                            <li>1. Masuk ke akun <b>Go.Link</b> Anda yang ada.</li>
-                                            <li>2. Dari menu sidebar, Klik Microsite kemudian Klik Create New.</li>
-                                            <li>3. Pilih satu tema microsite dan klik Next.</li>
-                                            <li>4. Masukkan Nama dan URL microsite Anda dan klik Buat.</li>
-                                            <li>5. Terakhir, mulailah menambahkan komponen lain melalui fitur Microsite.
-                                            </li>
-                                        </ol>
+                                        
+                                            <p>1. Masuk ke akun <b>Go.Link</b> Anda yang ada.</p>
+                                            <p>2. Dari menu Beranda, Klik Buat Microsite Baru kemudian Klik. Kemudian Anda akan diarahkan ke Buat Microsite Baru</p>
+                                            <p>3. Pilih satu tema microsite dan klik Selajutnya.</p>
+                                            <p>4. Masukkan Nama dan URL microsite Anda dan klik Selanjutnya.</p>
+                                            <p>5. Kemudian, mulailah menambahkan media sosial apa saja yang anda punya. 
+                                            </p>
+                                            <p>6. Terakhir, Anda akan diarahkan ke halaman Edit Microsite untuk melengkapi Microsite Anda.
+                                            </p>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -342,8 +350,6 @@
                                         <p>Dapat mengukur efektivitas tautan dan konten Anda secara real-time dan buat
                                             bisa membuat keputusan tepat.</p>
                                         <p><b>Menghemat Ruang</b></p>
-                                        <p>Baik di bio profil, di Tweet, atau di kartu nama, penyingkat URL dapat
-                                            menghemat ruang.</p>
                                         <p>Mulai mempersingkat dengan Go.Link hari ini!</p>
                                     </div>
                                 </div>
@@ -490,7 +496,7 @@
                         <div class="col-lg-2 col-md-6 col-12">
                             <div class="links">
                                 <h3>Dukungan</h3>
-                                <ul>
+                                <ul style=" padding:0;">
                                     <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
                                     <li><a href="/Privacy">Kebijakan Privasi</a></li>
                                 </ul>
@@ -499,7 +505,7 @@
                         <div class="col-lg-3 col-md-6 col-12" style="margin-left: 6%;">
                             <div class="links">
                                 <h3>SiteMaps</h3>
-                                <ul>
+                                <ul style=" padding:0;">
                                     <li><a href="/">Beranda</a></li>
                                     <li><a href="/Shortlink">Perpendek Link</a></li>
                                     <li><a href="/Microsite">Situs Mikro</a></li>
@@ -515,7 +521,7 @@
                         <div class="col-lg-3 col-md-6 col-12">
                             <div class="links">
                                 <h3>Hubungi Kami</h3>
-                                <ul style="text-align: justify;">
+                                <ul style="text-align: justify;  padding:0;">
                                     <li>
                                         <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID"
                                             target="_blank">

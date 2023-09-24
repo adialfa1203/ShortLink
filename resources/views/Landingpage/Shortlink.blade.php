@@ -91,14 +91,6 @@
                                 pemendekan tautan berkualitas lebih baik.
                             </p>
                             <div class="col-12 mt-3" style="margin-right: 100%;">
-                                {{-- <div class="input-group align-items-center rounded" style="background: #E9EEF5">
-                                    <input class="form-control" type="text"
-                                        placeholder="Https://Domain-mu/yang-ingin kau">
-                                    <div class="position-absolute ms-auto" style="margin-left: 75%;">
-                                        <button type="button" class="btn btn-danger btn-sm m-1"><i class="fas fa-link"></i>
-                                            Singkatkan</button>
-                                    </div>
-                                </div> --}}
                             </div>
                         </div>
                         <!-- app buttons -->
@@ -145,72 +137,66 @@
             <!-- container start -->
             <div class="container">
                 <div class="section_title" data-aos="fade-in" data-aos-duration="1500" data-aos-delay="100">
-                    <h2>Fitur Fitur <span>Go Link</span> Yang Dapat <br> Membantu Anda</h2>
+                    <h2>Fitur-Fitur <span>Go Link</span> yang Membantu Anda</h2>
                 </div>
-                <!-- row start -->
                 <div class="row d-flex justify-content-md-center" style="margin-top: 2%;">
                     <!-- story -->
                     <div class="col-md-4" style="margin-bottom: 2%;">
                         <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                            <svg xmlns="http://www.w3.org/2000/svg"width="80" height="80"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
                                 viewBox="0 0 448 512"
-                                style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                style="margin-top: 10%;">
+                                <!-- Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                 <path fill="#104898"
                                     d="M0 80C0 53.5 21.5 32 48 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80zM64
-                                96v64h64V96H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48
-                                 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336zm64 16v64h64V352H64zM304
-                                 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H304c-26.5 0-48-21.5-48-48V80c0-26.5
-                                 21.5-48 48-48zm80 64H320v64h64V96zM256 304c0-8.8 7.2-16 16-16h64c8.8 0 16 7.2 16 16s7.2 16 16
-                                 16h32c8.8 0 16-7.2 16-16s7.2-16 16-16s16 7.2 16 16v96c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-
-                                 16s-7.2-16-16-16s-16 7.2-16 16v64c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V304zM368 480a16 16
-                                 0 1 1 0-32 16 16 0 1 1 0 32zm64 0a16 16 0 1 1 0-32 16 16 0 1 1 0 32z" />
+                                    96v64h64V96H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48
+                                    48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336zm64 16v64h64V352H64zM304
+                                    32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H304c-26.5 0-48-21.5-48-48V80c0-26.5
+                                    21.5-48 48-48zm80 64H320v64h64V96zM256 304c0-8.8 7.2-16 16-16h64c8.8 0 16 7.2 16 16s7.2 16 16
+                                    16h32c8.8 0 16-7.2 16-16s7.2-16 16-16s16 7.2 16 16v96c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-
+                                    16s-7.2-16-16-16s-16 7.2-16 16v64c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V304zM368 480a16 16
+                                    0 1 1 0-32 16 16 0 1 1 0 32zm64 0a16 16 0 1 1 0-32 16 16 0 1 1 0 32z" />
                             </svg>
                             <div class="story_text">
-                                <h6 class="mb-3 fs-17">Kode QR</h6>
-                                <p class="text-muted">Anda dapat memotong URL
-                                    yang asli sesuai dengan keinginan
-                                    Anda</p>
+                                <h6 class="mb-3 fs-17">Kode QR yang Dapat Disesuaikan</h6>
+                                <p class="text-muted">Buat Kode QR yang sesuai dengan keinginan Anda dengan mudah.</p>
                             </div>
                         </div>
                     </div>
-
+                    
+            
                     <!-- story -->
                     <div class="col-md-4" style="margin-bottom: 2%;">
                         <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
                                 viewBox="0 0 512 512"
-                                style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                style="margin-top: 10%;"><!-- Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                 <path fill="#104898"
                                     d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
                             </svg>
                             <div class="story_text">
                                 <h6 class="mb-3 fs-17">Tautan Kadaluarsa</h6>
-                                <p class="text-muted">Juga Disebut tautan Bio sering digunakan
-                                    di profil media sosial mereka, resume online
-                                    atau CV, dan situs web jejaring profesional.</p>
+                                <p class="text-muted">Anda dapat membatasi akses ke tautan ini hanya untuk beberapa waktu.
+                                    Memberikan keamanan dengan tautan yang hanya aktif untuk jangka waktu tertentu.</p>
                             </div>
                         </div>
                     </div>
-
                     <!-- story -->
                     <div class="col-md-4" style="margin-bottom: 2%;">
                         <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
                                 viewBox="0 0 448 512"
-                                style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                style="margin-top: 10%;"><!-- Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                 <path fill="#104898"
                                     d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z" />
                             </svg>
                             <div class="story_text">
-                                <h6 class="mb-3 fs-17">Tautan terlindungi</h6>
-                                <p class="text-muted">Untuk melacak kinerja tautan Go Link Anda,
-                                    untuk mengidentifikasi tren dan pola
-                                    dalam penggunaan tautan, dan untuk
-                                    membuat keputusan yang tepat
-                                    tentang cara mengoptimalkan kinerja tautan.</p>
+                                <h6 class="mb-3 fs-17">Tautan Terlindungi</h6>
+                                <p class="text-muted">Dengan tautan terlindungi, keamanan tautan Anda adalah prioritas utama.</p>
                             </div>
                         </div>
                     </div>
+                    <!-- Story -->
                     <div class="col-md-4" style="margin-bottom: 2%;">
                         <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
@@ -221,30 +207,31 @@
                             </svg>
                             <div class="story_text">
                                 <h6 class="mb-3 fs-17">Tautan yang dibagikan</h6>
-                                <p class="text-muted">Tautan yang Anda buat dapat Anda bagikan
-                                    setelah Anda menyingkatkan link tsb.</p>
+                                <p class="text-muted">Anda dapat berbagi tautan yang telah Anda singkat kepada teman, keluarga, atau pengikut Anda.
+                                    Proses berbagi tautan yang dibagikan sangat sederhana dan cepat.
+                                </p>
                             </div>
                         </div>
                     </div>
+                    <!-- Story -->
                     <div class="col-md-4" style="margin-bottom: 2%;">
                         <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
                                 viewBox="0 0 640 512"
-                                style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                style="margin-top: 10%;"><!-- Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                 <path fill="#104898"
-                                    d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z" />
+                                    d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l-1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z" />
                             </svg>
                             <div class="story_text">
-                                <h6 class="mb-3 fs-17">Pemotongan URL</h6>
-                                <p class="text-muted">Anda dapat memotong URL
-                                    yang asli sesuai dengan keinginan
-                                    Anda</p>
+                                <h6 class="mb-3 fs-17">Potong URL dengan Lebih Mudah</h6>
+                                <p class="text-muted">Pemotongan URL yang cepat dan sesuai dengan keinginan Anda menggunakan Go Link.</p>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
-                <!-- row end -->
             </div>
+            
             <!-- container end -->
         </section>
         <!-- Banner-Section-end -->

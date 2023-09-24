@@ -201,7 +201,7 @@
                                     Aktif</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('archive-link-user') }}" class="nav-link"
+                                <a href="{{ url('history') }}" class="nav-link"
                                     data-key="t-products-grid">Riwayat</a>
                             </li>
                         </ul>

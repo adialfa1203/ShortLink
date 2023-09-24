@@ -200,11 +200,15 @@
                         <!-- banner text -->
                         <div class="banner_text">
                             <!-- h1 -->
-                            <h2 style="color: white">Berlangganan</h2>
+                            <h2 style="color: white">Jadilah Bagian dari Perubahan!</h2>
                             <!-- p -->
-                            <span style="color: white;">Mari berlangganan dari sekarang!!
-                                Agar Anda bebas untuk memangkas atau mempersingkat URL
-                                yang Anda inginkan.</span>
+                            <span style="color: white;">Selangkah lebih dekat menuju kemudahan dan kebebasan. Bergabunglah dengan langganan kami sekarang dan nikmati keuntungan berikut:</span>
+                            <ul style="color: white;">
+                                <li>- Mempersingkat URL sesuka hati.</li>
+                                <li>- Akses eksklusif ke fitur-fitur canggih.</li>
+                                <li>- Pengalaman pengguna yang tak terlupakan.</li>
+                            </ul>
+                            <p>Tunggu apa lagi? Mari berlangganan untuk masa depan yang lebih baik!</p>
                         </div>
                         <!-- app buttons -->
 

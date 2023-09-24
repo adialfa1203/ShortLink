@@ -15,63 +15,70 @@ use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 class DashboardAdminController extends Controller
 {
     public function dashboardChart()
-    {
-        $startDate = DateHelper::getSomeMonthsAgoFromNow(5)->format('Y-m-d H:i:s');
-        $endDate = DateHelper::getCurrentTimestamp('Y-m-d H:i:s');
+{
+    $startDate = DateHelper::getSomeMonthsAgoFromNow(5)->format('Y-m-d H:i:s');
+    $endDate = DateHelper::getCurrentTimestamp('Y-m-d H:i:s');
 
-        $totalUser = User::where('created_at', '>=', $startDate)
-            ->where('email', '!=', 'admin@gmail.com')
-            ->selectRaw('DATE(created_at) as date, COUNT(*) as totalUser')
-            ->groupBy('date')
-            ->orderBy('date')
-            ->get();
+    $totalUser = User::where('created_at', '>=', $startDate)
+        ->where('email', '!=', 'admin@gmail.com')
+        ->selectRaw('DATE(created_at) as date, COUNT(*) as totalUser')
+        ->groupBy('date')
+        ->orderBy('date')
+        ->get();
 
-        $totalUrl = ShortUrl::where('created_at', '>=', $startDate)
-            ->selectRaw('DATE(created_at) as date, COUNT(*) as totalUrl')
-            ->where('archive', '!=', 'yes')
-            ->groupBy('date')
-            ->orderBy('date')
-            ->get();
+    $totalUrl = ShortUrl::where('created_at', '>=', $startDate)
+        ->selectRaw('DATE(created_at) as date, COUNT(*) as totalUrl')
+        ->where('archive', '!=', 'yes')
+        ->groupBy('date')
+        ->orderBy('date')
+        ->get();
 
-        $totalVisits = ShortURLVisit::where('created_at', '>=', $startDate)
-            ->selectRaw('DATE(created_at) as date, COUNT(*) as totalVisits')
-            ->whereRelation('shortURL', 'archive', '!=', 'yes')
-            ->groupBy('date')
-            ->orderBy('date')
-            ->get();
+    $totalVisits = ShortURLVisit::where('created_at', '>=', $startDate)
+        ->selectRaw('DATE(created_at) as date, COUNT(*) as totalVisits')
+        ->whereRelation('shortURL', 'archive', '!=', 'yes')
+        ->groupBy('date')
+        ->orderBy('date')
+        ->get();
 
-        $result = [
-            'labels' => DateHelper::getAllMonths(5),
-            'series' => [
-                'totalUser' => [0, 0, 0, 0, 0, 0],
-                'totalUrl' => [0, 0, 0, 0, 0, 0],
-                'totalVisits' => [0, 0, 0, 0, 0, 0]
-            ]
-        ];
+    $result = [
+        'labels' => DateHelper::getAllMonths(5),
+        'series' => [
+            'totalUser' => [],
+            'totalUrl' => [],
+            'totalVisits' => []
+        ]
+    ];
 
-        foreach ($totalUser as $dataUser) {
-            $parse = Carbon::parse($dataUser->date);
-            $date = $parse->shortMonthName . ' ' . $parse->year;
-            $index = array_search($date, array_values($result['labels']));
-            $result['series']['totalUser'][$index] = (int)$dataUser->totalUser;
-        }
-
-        foreach ($totalUrl as $dataUrl) {
-            $parse = Carbon::parse($dataUrl->date);
-            $date = $parse->shortMonthName . ' ' . $parse->year;
-            $index = array_search($date, array_values($result['labels']));
-            $result['series']['totalUrl'][$index] = (int)$dataUrl->totalUrl;
-        }
-
-        foreach ($totalVisits as $dataVisits) {
-            $parse = Carbon::parse($dataVisits->date);
-            $date = $parse->shortMonthName . ' ' . $parse->year;
-            $index = array_search($date, array_values($result['labels']));
-            $result['series']['totalVisits'][$index] = (int)$dataVisits->totalVisits;
-        }
-
-        return response()->json(compact('startDate', 'result'));
+    foreach ($result['labels'] as $label) {
+        $result['series']['totalUser'][] = 0;
+        $result['series']['totalUrl'][] = 0;
+        $result['series']['totalVisits'][] = 0;
     }
+
+    foreach ($totalUser as $dataUser) {
+        $parse = Carbon::parse($dataUser->date);
+        $date = $parse->shortMonthName . ' ' . $parse->year;
+        $index = array_search($date, $result['labels']);
+        $result['series']['totalUser'][$index] = (int)$dataUser->totalUser;
+    }
+
+    foreach ($totalUrl as $dataUrl) {
+        $parse = Carbon::parse($dataUrl->date);
+        $date = $parse->shortMonthName . ' ' . $parse->year;
+        $index = array_search($date, $result['labels']);
+        $result['series']['totalUrl'][$index] = (int)$dataUrl->totalUrl;
+    }
+
+    foreach ($totalVisits as $dataVisits) {
+        $parse = Carbon::parse($dataVisits->date);
+        $date = $parse->shortMonthName . ' ' . $parse->year;
+        $index = array_search($date, $result['labels']);
+        $result['series']['totalVisits'][$index] = (int)$dataVisits->totalVisits;
+    }
+
+    return response()->json(compact('startDate', 'result'));
+}
+
 
     public function dashboardAdmin(){
         $totalUser = User::where('email', '!=', 'admin@gmail.com')

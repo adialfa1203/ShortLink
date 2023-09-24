@@ -126,13 +126,10 @@
                         <!-- banner text -->
                         <div class="banner_text">
                             <!-- h1 -->
-                            <h2 style="color: white;">Buat dan kreasikan tautan Anda</h2>
+                            <h2 style="color: white;">Situs Mikro yang Dibuat Sesuai dengan kebutuhan Anda</h2>
                             <!-- p -->
-                            <span style="color: white;">Penyingkat tautan terbaik dan Terpendek
-                                untuk</span>
-                            <p>Apakah kamu ingin mempersingkat URL sesuai dengan
-                                yang Anda inginkan?
-                            </p>
+                            <p style="color: white;">Tampilkan Identitas Anda dengan Lebih Personal</p>
+                            <p>Dengan Go Link Microsite, Anda dapat dengan mudah membuat dan mengkustomisasi situs web mikro sesuai keinginan Anda.</p>
                         </div>
                         <!-- app buttons -->
 
@@ -174,126 +171,55 @@
             <!-- wave animation end -->
 
         </section>
-
-
         <section class="bg-white overflow-hidden" id="home">
-            <div class="container">
+            <div class="container" data-aos="fade-in" data-aos-duration="1500">
                 <div class="position-relative" style="z-index: 1;">
                     <div class="row align-items-center">
                         <div class="col-xl-8 col-lg-6">
-                            <div>
-                                {{-- <h6 class="home-subtitle text-primary mb-4">Awesome</h6> --}}
-                                <h1 style="color: #1B5A6F;">Gak cuma untuk Bio-
-                                    Link</h1>
-                                <h6 class="" style="color:  #1B5A6F;">Microsite bukan hanya tentang memasukkan
-                                    banyak tautan ke dalam satu URL,
-                                    Anda juga dapat membuat dan menempatkan banyak konten dan berkreasi sendiri
-                                    dengan lebih banyak konten di dalam microsite Anda.</h6>
+                            <div class="" >
+                                <div>
+                                    <h1 style="color: #1B5A6F; font-size:25px;">Jelajahi dengan Microsite</h1>
+                                    <h6 class="" style="color: #1B5A6F;">Microsite adalah kanvas kreatif Anda, 
+                                        bukan hanya untuk menggabungkan banyak tautan menjadi satu URL. Di sini, 
+                                        Anda dapat menuangkan ide dan konten lebih bebas.</h6>
+                                </div>
                             </div>
                         </div>
                         <!--end col-->
-                        <div class="col-lg-1 offset-xl-1" style="margin-left:">
+                        <div class="col-lg-1 offset-xl-1">
                             <div class="mt-lg-0 mt-5 d-flex justify-content-center">
-                                <!-- Tambahkan kelas text-lg-start untuk memposisikan ke kiri pada layar lebar -->
-                                <img src="https://i.postimg.cc/ZqHQGxQD/Landing-Page2.png" alt="home04"
-                                    class="home-img" width="300" height="200">
+                                <img src="https://i.postimg.cc/ZqHQGxQD/Landing-Page2.png" alt="home04" class="home-img" width="300" height="200">
                             </div>
                         </div>
-
                     </div>
                     <!--end row-->
                 </div>
             </div>
             <!--end container-->
         </section>
-        <section class="bg-white overflow-hidden" id="home">
-            <div class="container">
+        
+        <section class="bg-white overflow-hidden mb-4" id="home" >
+            <div class="container" data-aos="fade-in" data-aos-duration="1500">
                 <div class="position-relative" style="z-index: 1;">
                     <div class="row align-items-center">
                         <div class="col-xl-5 col-lg-6">
                             <div class="mt-lg-0 mt-5 d-flex justify-content-center">
-                                <img src="{{ asset('template/image/situs mikro.png') }}" alt="home04"
-                                    class="home-img d-flex justify-content-start" width="350" height="200">
+                                <img src="{{ asset('template/image/situs mikro.png') }}" alt="home04" class="home-img d-flex justify-content-start" width="350" height="200">
                             </div>
                         </div>
                         <div class="col-lg-6 offset-xl-1">
-                            <div>
-                                <h1 style="color: #104898; font-family: 'Poppins', sans-serif;">Mau buat Acara?</h1>
-                                <h6 style="color: #104898;">bisa menjadi solusi untuk acara Anda. Gunakan komponen yang
-                                    kami
-                                    sediakan, seperti hitungan mundur, peta, dan apa saja untuk membuat halaman acara
-                                    Anda lebih
-                                    bernilai dan meyakinkan.</h6>
+                            <div class="" >
+                                <h1 style="color: #104898; font-size:25px;">Buat Acaramu Lebih Menarik!</h1>
+                                <h6 style="color: #104898;">Kami hadir sebagai solusi untuk acaramu. Manfaatkan berbagai komponen yang telah kami sediakan, seperti hitungan mundur, peta, dan masih banyak lagi untuk membuat halaman acaramu menjadi lebih menarik, informatif, dan meyakinkan.</h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="row_am latest_story" id="blog">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <div class="text-center mb-5">
-                            <h3 style="color: #104898;">Apa saja yang tersedia?</h3>
-                        </div>
-                    </div>
-                    <!--end col-->
-                </div>
-                <!--end row-->
-                <div class="row">
-                    <div class="col-md-4" style="margin-bottom: 2%;">
-                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
-                                viewBox="0 0 640 512"
-                                style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                <path fill="#104898"
-                                    d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z" />
-                            </svg>
-                            <div class="story_text">
-                                <h6 class="mb-3 fs-17">Tautan</h6>
-                                <p class="text-muted">Bagikan tautan Anda dan atur di
-                                    satu tempat.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="margin-bottom: 2%;">
-                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
-                                viewBox="0 0 512 512"
-                                style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                <path fill="#104898"
-                                    d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z" />
-                            </svg>
-                            <div class="story_text">
-                                <h6 class="mb-3 fs-17">Gambar-gambar</h6>
-                                <p class="text-muted">Microsite Anda tidak semuanya
-                                    tentang tautan, Anda juga dapat
-                                    menempatkan beberapa gambar
-                                    di dalamnya.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="margin-bottom: 2%;">
-                        <div class="story_box" data-aos="fade-up" data-aos-duration="1500" style="height: 100%;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
-                                viewBox="0 0 512 512"
-                                style="margin-top: 10%;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                <path fill="#104898"
-                                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM184 296c0 13.3 10.7 24 24 24s24-10.7 24-24V232h64c13.3 0 24-10.7 24-24s-10.7-24-24-24H232V120c0-13.3-10.7-24-24-24s-24 10.7-24 24v64H120c-13.3 0-24 10.7-24 24s10.7 24 24 24h64v64z" />
-                            </svg>
-                            <div class="story_text">
-                                <h6 class="mb-3 fs-17">Masih Banyak Lagi</h6>
-                                <p class="text-muted">Ada banyak komponen tersedia
-                                    di fitur platform microsite kami!.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--end row-->
-            </div>
-            <!--end container-->
-        </section>
+        
+        
+
         <!-- Trusted Section start -->
 
         <!-- Trusted Section ends -->
