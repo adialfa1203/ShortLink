@@ -121,6 +121,8 @@ Route::post('/url-microsite', [MicrositeController::class, 'urlMicrosite'])->nam
 Route::post('/update-short-link/{shortCode}', [ShortLinkController::class, 'updateShortLink'])->name('update.shortlink');
 //update tenggat
 Route::post('/update-deactivated/{keyTime}',[LinkController::class, 'updateDeactivated']);
+//Detele data
+Route::get('/delete-expired-links', [LinkController::class, 'deleteDeactive']);
 
 });
 Route::get('/microsite-link/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.short.link');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\DateHelper;
+use App\Models\History;
 use App\Models\ShortUrl;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -14,19 +15,22 @@ class LinkController extends Controller
 
     public function showLink($shortCode)
     {
-        $user = auth()->user(); // Mengambil objek User saat ini
+        $user = auth()->user(); 
         $user_id = $user->id;
+
+        $this->deleteDeactive();
+
         $urlshort = ShortUrl::withCount('visits')
         // ->selectRaw('MONTH(created_at) as created_at')
         ->where('user_id', $user_id)
         ->whereNull('microsite_uuid')
         ->orderBy('created_at', 'desc')
         ->paginate(5);
+        $history = History::all();
         $result = [
             'labels' => DateHelper::getAllMonths(5),
             'series' => []
         ];
-
         $startDate = DateHelper::getSomeMonthsAgoFromNow(5)->format('Y-m-d H:i:s');
         $endDate = DateHelper::getCurrentTimestamp('Y-m-d H:i:s');
 
@@ -40,9 +44,9 @@ class LinkController extends Controller
             $visits[4] = (int)$data->visits_count;
             $result['series'][$i] = $visits;
         }
+        
 
-        // dd($data);
-        return view('User.Link', compact('user','urlshort', 'shortCode','result'));
+        return view('User.Link', compact('user','urlshort', 'shortCode','result', 'history'));
     }
 
     public function archive($id)
@@ -54,6 +58,28 @@ class LinkController extends Controller
         ]);
         $link->delete();
         return redirect()->back()->with('success', 'Link telah diarsipkan');
+    }
+
+    public function deleteDeactive()
+    {
+        $now = Carbon::now();
+
+        $expiredEntries = ShortUrl::where('deactivated_at', '<=', $now)->get();
+
+        foreach ($expiredEntries as $entry) {
+            History::create([
+                'user_id' => $entry->user_id,
+                'title' => $entry->title,
+                'destination_url' => $entry->destination_url,
+                'default_short_url' => $entry->default_short_url,
+                'activated_at' => $entry->activated_at,
+                'deactivated_at' => $entry->deactivated_at,
+            ]);
+            
+            $entry->delete();
+        }
+
+        return response()->json(['message' => 'Tautan yang telah berakhir telah dihapus dan ditambahkan ke dalam riwayat.']);
     }
 
     public function updateDeactivated(HttpRequest $request, $keyTime)
