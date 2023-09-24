@@ -650,12 +650,27 @@
             $("#shortlinkSubmit").submit(function(event) {
                 event.preventDefault(); // Mencegah form submission bawaan
 
+                // Mengambil nilai dari input tautan panjang dan judul
+                var destinationUrl = $("#AmountInput").val();
+                var title = $("#cardNumber").val();
+
+                // Cek apakah input kosong
+                if (!destinationUrl || !title) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Kesalahan!",
+                        text: "Anda harus mengisi data terlebih dahulu.",
+                    });
+                }
+
+                // Jika input tidak kosong, lanjutkan dengan pengiriman permintaan AJAX
                 var formData = $(this).serialize(); // Mengambil data form
                 $.ajax({
                     type: "POST",
                     url: "short-link", // Ganti dengan URL endpoint Anda
                     data: formData,
                     success: function(response) {
+                        // Tangani respons dari server
                         if (response.status == 'gagal') {
                             Swal.fire({
                                 title: 'Kesalahan...',
@@ -690,6 +705,8 @@
                         $("#addAmount").modal("hide");
                     },
                     error: function(error) {
+                        $("#addAmount").modal("hide");
+                        $('#singkatkan').modal('hide')
                         console.error("Error:", error);
                     }
                 });

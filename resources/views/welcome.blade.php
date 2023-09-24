@@ -1,625 +1,859 @@
 @extends('layout.user.app')
 
-@section('title', 'Link')
+@section('title', 'Dashboard')
 @section('style')
     <style>
-        .card-header .col-12 {
-            margin-bottom: 0.25rem;
-            /* Sesuaikan jarak vertikal sesuai kebutuhan */
+        .custom-icon-size {
+            font-size: 24px;
+            /* Ubah ukuran sesuai kebutuhan */
         }
 
-        .card-header h6,
-        .card-header h5,
-        .card-header p {
-            margin: 0;
-            /* Hapus margin bawaan */
+        .custom-icon-size {
+            font-size: 30px;
+            /* Ubah ukuran font sesuai kebutuhan Anda */
+            color: #fafafa;
+            /* Warna merah muda */
         }
 
-        .card-header h6 {
-            margin-right: 0.5rem;
-            /* Jarak kanan untuk h6 */
+        .custom-card {
+            background-color: #910000;
+            /* Warna merah muda */
+            border-color: #FF69B4;
+            /* Warna border merah muda */
         }
 
-        .isi {
-            border: 2px solid #7B7B7B;
-            border-radius: 10px;
-            padding-top: 5px;
-            padding-right: 0px;
-            padding-bottom: 0px;
-            padding-left: 0px;
+        .form-label {
+            display: block;
         }
 
-        .card-footer {
-            padding-top: 10px;
-            padding-bottom: 5px;
-            border-top: 1px solid var(--tb-border-color-translucent)
+        .unavailable-text {
+            font-size: 10px;
+            opacity: 0.5;
+            /* Nilai opacity untuk membuat teks transparan */
         }
 
-        /* Gaya untuk tag <a> saat cursor di atasnya */
-        .garisbawah:hover {
-            text-decoration: underline;
-            /* Menambahkan garis bawah saat cursor di atasnya */
+        .quota-reset {
+            font-size: 12px;
+            opacity: 0.5;
+            /* Nilai opacity untuk membuat teks sedikit memudar */
         }
 
-        a:hover {
-            text-decoration: underline;
-            /* Menambahkan garis bawah saat cursor di atasnya */
+        .card-title {
+            font-size: 13px;
+            /* Anda bisa mengatur ukuran font sesuai keinginan */
+        }
+
+        .text-white {
+            color: white !important;
         }
     </style>
 @endsection
 @section('content')
-    <div class="page-content">
-        <div class="d-flex flex-column flex-sm-row">
-            <div class="col-12 col-sm-4">
-                <h5 class="mb-2">Tautan yang Dihasilkan Terbaru</h5>
-                <p id="clickCount" hidden>0 klik</p>
-            </div>
-            <div class="col-12 col-sm-8 mb-3">
-                <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-end">
-                    <div class="search-box mb-2 mb-sm-0">
-                        <input type="text" class="form-control search" placeholder="Search...">
-                        <i class="ri-search-line search-icon"></i>
+    <form action="{{ route('shortLink') }}" method="POST" id="shortlinkSubmit">
+        @csrf
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0">Dashboard</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-xl-4 col-sm-6">
 
 
-        <div class="row">
-            @php
-                $i = 0;
-            @endphp
-            @foreach ($urlshort as $row)
-                @php
-                    $i++;
-                @endphp
-                <form action="/archive/{{ $row->id }}">
-                    @csrf
-                    <div class="col-lg-12">
-                        <div class="card" style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;"
-                            id="card{{ $row->id }}">
+                        <div class="dropdown float-end">
+                            <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <span class="text-muted fs-lg"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">Today</a>
+                                <a class="dropdown-item" href="#">Last Week</a>
+                                <a class="dropdown-item" href="#">Last Month</a>
+                                <a class="dropdown-item" href="#">Current Year</a>
+                            </div>
+                        </div>
+
+                        <div class="card border-bottom border-2 card-animate" data-bs-toggle="modal"
+                            data-bs-target="#addAmount">
+                            <div class="card-body d-flex justify-content-between align-items-center"
+                                style="background-color: #910000">
+                                <div class="wrapper d-flex align-items-center">
+                                    <i class="bi bi-link-45deg custom-icon-size"></i>
+                                    <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white">Buat Tautan Baru</p>
+                                </div>
+                                <i class="ri-arrow-right-s-line custom-icon-size"></i>
+                            </div>
+                        </div>
+
+                        {{-- modal --}}
+                        <div class="modal fade" id="addAmount" tabindex="-1" aria-labelledby="addAmountLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title" id="addAmountLabel"
+                                            style="margin-left: 35%; margin-right: auto;">Buat Tautan Baru</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body" id="short-link">
+                                        <div class="row g-3">
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label for="AmountInput" class="form-label">Tautan Panjang</label>
+                                                    <input class="form-control" name="destination_url" id="AmountInput"
+                                                        placeholder="http://domain-mu.id/yang-paling-panjang-disini">
+                                                </div>
+                                                <div>
+                                                    @if ($errors->has('default_short_url'))
+                                                        <span
+                                                            class="text-danger">{{ $errors->first('default_short_url') }}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label for="cardNumber" class="form-label">Judul</label>
+                                                    <input name="title" class="form-control" id="cardNumber"
+                                                        placeholder="Judul">
+                                                </div>
+                                            </div>
+                                            <br>
+                                            {{-- modal panjang tautan terproteksi --}}
+                                            {{-- <div class="container-fluid">
+                                                    <div class="card">
+                                                            <button type="button"
+                                                                style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center;">
+                                                                <i class="bi bi-lock"
+                                                                    style="font-size: 12px; margin-right: 5px;"></i>Tautan
+                                                                Terproteksi
+                                                            </button>
+
+
+                                                        <div class="collapse" id="collapseExample">
+                                                            <div class="card card-body">
+                                                                <div class="container">
+
+                                                                    <div class="col-lg-12">
+
+                                                                        <div class="col-lg-12">
+                                                                            <div class="position-relative auth-pass-inputgroup mb-3">
+                                                                                <label for="emailInput" class="form-label">Kata sandi</label>
+                                                                                <div class="position-relative auth-pass-inputgroup mb-3">
+                                                                                    <input name="password" type="password" class="form-control pe-5 password-input" placeholder="Kata sandi">
+                                                                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon">
+                                                                                        <i class="ri-eye-fill align-middle"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                            <button type="button" id="resetButton" style="background-color: rgb(13, 13, 118); color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; justify-content: flex-end; float: right;">
+                                                                                <span class="bi bi-arrow-clockwise"> Reset</span>
+                                                                            </button>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn btn-primary" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                                                            aria-expanded="false" aria-controls="collapseExample"
+                                                            id="toggleButton" style="background-color: rgb(13, 13, 118)">
+                                                            Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </div> --}}
+                                            {{-- end modal panjang --}}
+                                            <br>
+                                            {{-- modal panjang tautan berjangka --}}
+                                            <div class="container-fluid mt-3">
+                                                <div class="card">
+                                                    <button type="button" class="bg-primary border border-0"
+                                                        style="color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; width: 100%; text-align: left;">
+                                                        <i class="bi bi-clock"
+                                                            style="font-size: 12px; margin-right: 5px;"></i>Tautan
+                                                        Berjangka
+                                                    </button>
+                                                    <div class="collapse" id="tautanberjangka">
+                                                        <div class="card card-body">
+                                                            <div class="container">
+
+                                                                <div class="col-lg-12">
+
+                                                                    <div class="col-lg-12">
+                                                                        <div
+                                                                            class="position-relative auth-pass-inputgroup mb-3">
+                                                                            <label for="old_password"
+                                                                                class="form-label">Tanggal dan Waktu</label>
+                                                                            <input name="deactivated_at"
+                                                                                type="datetime-local" id="old_password"
+                                                                                class="form-control pe-5 time-input"
+                                                                                min="">
+                                                                            <button
+                                                                                class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
+                                                                                type="button" id="password-addon">
+                                                                            </button>
+                                                                        </div>
+                                                                        <button class="bg-primary border border-0"
+                                                                            type="button" id="time-reset"
+                                                                            style="color: white; font-size: 13px; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center; justify-content: flex-end; float: right;">
+                                                                            <span class="bi bi-arrow-clockwise">
+                                                                                Reset</span>
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn btn-primary bg-primary" style="margin-top: 1px;"
+                                                        type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#tautanberjangka" aria-expanded="false"
+                                                        aria-controls="collapseExample" id="toggleButton">
+                                                        Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            {{-- end modal tautan berjangka --}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" style="width: 100%;" id="singkatkanButton">
+                                                <i class="bi bi-link-45deg"></i> Singkatkan!
+                                            </button>                                            
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal singkatkan-->
+
+                        <div class="modal fade" id="singkatkan" tabindex="-1" aria-labelledby="addAmountLabel"
+                            aria-hidden="true">
+
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title" id="addAmountLabel">Buat tautan pemendek baru</h1>
+
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="row g-3">
+                                            <div class="col-lg-12">
+
+                                                <label type="button" class="btn btn-primary" style="width: 100%;">
+                                                    Berhasil menyingkatkan tautan!
+                                                </label>
+
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <label class="form-label">Judul</label>
+                                                <input class="form-control" id="title">
+                                            </div>
+                                            <hr>
+                                            <div class="col-lg-12">
+                                                <div class="input-group align-items-center rounded"
+                                                    style="background: #E9EEF5">
+                                                    <input id="default_short_url" class="form-control" type="text"
+                                                        id="salin">
+                                                    {{-- salin --}}
+                                                    <div id="successCopy" class="alert alert-success mt-3"
+                                                        style="display: none; position: fixed; bottom: 570px; right: 560px; max-width: 500px;">
+                                                        Tautan berhasil disalin ke clipboard
+                                                    </div>
+                                                    {{-- end salin --}}
+                                                    <div class="wrapper end-0 position-absolute" style="z-index: 5">
+                                                        <button type="button" id="button-email" data-bs-toggle="modal"
+                                                            data-bs-target="#bagikan"
+                                                            class="btn btn-sm btn-danger text-white m-1"><i
+                                                                class="bi bi-share-fill"></i> Bagikan</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="countdown-input-subscribe">
+                                                    <label for="cardNumber" class="form-label">URL asli</label>
+                                                    <input class="form-control" id="destination_url">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Pemberitahuan "Data berhasil disimpan" (atur posisi dan ukuran) -->
+                            <div id="successAlert" class="alert alert-success mt-3"
+                                style="display: none; position: fixed; bottom: 570px; right: 590px; max-width: 500px;">
+                                Data berhasil disimpan.
+                            </div>
+                        </div>
+                        <!-- end Modal singkatkan -->
+
+                        <!-- Modal bagikan -->
+                        <div class="modal fade" id="bagikan" tabindex="-1" aria-labelledby="addAmountLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="row g-3">
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="facebook"><i
+                                                        class="bi bi-facebook"></i> &nbsp; Facebook</label>
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="twitter"><i
+                                                        class="bi bi-twitter"></i> &nbsp; Twitter</label>
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="whatsapp"><i
+                                                        class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
+                                            </div>
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="copy" id="copyButton"><i
+                                                        class="bi bi-clipboard-fill"></i> &nbsp; Copy</label>
+                                            </div>
+                                            {{-- <div class="countdown-input-subscribe">
+                                                <label class="platform copyButton" data-platform="copy"
+                                                    data-url="{{ $ShortLink->default_short_url }}"
+                                                    data-id-copy="{{ $ShortLink }}">
+                                                    <i class="bi bi-clipboard-fill"></i> &nbsp; Copy
+                                                </label>
+                                            </div> --}}
+                                            {{-- <div id="successCopyAlert" class="alert alert-success mt-3"
+                                                style="display: none; position: fixed; bottom: 570px; right: 433px; max-width: 500px;">
+                                                Tautan berhasil disalin ke clipboard
+                                            </div> --}}
+                                            <div class="countdown-input-subscribe">
+                                                <label class="platform" data-platform="qr"><i class="bi bi-qr-code"></i>
+                                                    &nbsp; QR Code</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- end Modal bagikan-->
+
+
+                    </div><!--end col-->
+                    <div class="col-xl-4 col-sm-6">
+
+
+                        <div class="dropdown float-end">
+                            <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <span class="text-muted fs-lg"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">Today</a>
+                                <a class="dropdown-item" href="#">Last Week</a>
+                                <a class="dropdown-item" href="#">Last Month</a>
+                                <a class="dropdown-item" href="#">Current Year</a>
+                            </div>
+                        </div>
+
+                        <a href="/add-microsite" class="card border-bottom border-2 card-animate">
+                            <div class="card-body d-flex justify-content-between align-items-center"
+                                style="background-color: rgb(13, 13, 118)">
+                                <div class="wrapper d-flex align-items-center">
+                                    <i class="bi bi-question-circle custom-icon-size"></i>
+                                    <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white"> Buat Microsite
+                                        baru</p>
+                                </div>
+                                <i class="ri-arrow-right-s-line custom-icon-size"></i>
+                            </div>
+                        </a>
+
+
+                    </div><!--end col-->
+
+
+                    <div class="col-xl-4 col-sm-6">
+
+
+                        <div class="dropdown float-end">
+                            <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <span class="text-muted fs-lg"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">Today</a>
+                                <a class="dropdown-item" href="#">Last Week</a>
+                                <a class="dropdown-item" href="#">Last Month</a>
+                                <a class="dropdown-item" href="#">Current Year</a>
+                            </div>
+                        </div>
+
+                        <a href="/HelpSupport" class="card border-bottom border-2 card-animate">
+                            <div class="card-body d-flex justify-content-between align-items-center"
+                                style="background-color: rgb(224, 113, 34)">
+                                <div class="wrapper d-flex align-items-center">
+                                    <i class="bi bi-question-circle custom-icon-size"></i>
+                                    <p class="text-muted fw-medium text-uppercase mb-0 mx-3 text-white"> Bantuan & Dukungan
+                                    </p>
+                                </div>
+                                <i class="ri-arrow-right-s-line custom-icon-size"></i>
+                            </div>
+                        </a>
+
+                    </div><!--end col-->
+                </div><!--end row-->
+
+                <div class="row">
+
+                    <div class="col-xl-6 col-md-6">
+                        <div class="card">
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <h6 class="col-3">{{ $row->title }}</h6>
-                                    <div class=" col-9 d-flex flex-row justify-content-end" style="margin-left:20px;">
-                                        <button type="button" id="button-email" class="btn btn-primary me-3 btn-sm"
-                                            data-bs-toggle="modal" data-bs-target="#bagikan{{ $i }}"
-                                            aria-haspopup="true" aria-expanded="false"><i
-                                                class="fa-solid fa-share-nodes"></i> &nbsp;Bagikan</button>
-
-                                        <!-- Modal bagikan -->
-                                        <div class="modal fade" id="bagikan{{ $i }}" tabindex="-1"
-                                            aria-labelledby="addAmountLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-body">
-                                                        <div class="row g-3">
-                                                            <div class="countdown-input-subscribe">
-                                                                <label class="platform"
-                                                                    onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
-                                                                        class="bi bi-facebook"></i> &nbsp; Facebook</label>
-                                                            </div>
-                                                            <div class="countdown-input-subscribe">
-                                                                <label class="platform"
-                                                                    onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
-                                                                        class="bi bi-twitter"></i> &nbsp; Twitter</label>
-                                                            </div>
-                                                            <div class="countdown-input-subscribe">
-                                                                <label class="platform"
-                                                                    onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
-                                                                        class="bi bi-whatsapp"></i> &nbsp; WhatsApp</label>
-                                                            </div>
-                                                            <div class="countdown-input-subscribe">
-                                                                <label class="platform" data-platform="copy"
-                                                                    id="copyButton{{ $i }}"
-                                                                    data-url="{{ $row->default_short_url }}"
-                                                                    data-id-copy="{{ $i }}">
-                                                                    <i class="bi bi-clipboard-fill"></i> &nbsp; Copy
-                                                                </label>
-                                                            </div>
-
-                                                            <div class="countdown-input-subscribe">
-                                                                <label class="platform"
-                                                                    onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
-                                                                        class="bi bi-qr-code"></i> &nbsp; QR Code</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex flex-column h-100">
+                                            <p class="fs-md text-muted mb-4">Pengunjung </p>
+                                            <h3 class="mb-0 mt-auto"><span class="counter-value"
+                                                    data-target="{{ $totalVisits }}">0</span></h3>
                                         </div>
-
-                                        <!-- end Modal bagikan-->
-                                        <button id="tombol-modal" onclick="tombolmodal('{{ $row->id }}')"
-                                            type="button" class="btn btn-light me-3 btn-sm clickButton"
-                                            data-bs-toggle="modal" data-bs-target="#tombol-modal-{{ $row->id }}"
-                                            data-id="{{ $row->id }}">
-                                            <span data-bs-toggle="tooltip" data-bs-placement="left" title="Kode QR"><i
-                                                    class="fa-solid fa-qrcode"></i></span>
-                                        </button>
-
-                                        <button type="button" class="btn btn-light me-3 btn-sm edit-link"
-                                            data-bs-toggle="modal" data-bs-target="#zoomInModal"
-                                            data-link="{{ $row->url_key }}">
-                                            <span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
-                                        </button>
-                                        <button type="button" class="btn btn-primary me-3 btn-sm"
-                                            data-bs-target="#arsip{{ $row->id }}" data-bs-toggle="modal"><i
-                                                class="bi bi-archive-fill"></i> Arsipkan</button>
                                     </div>
-                                </div>
-                                <a>
-                                    <h3 class="garisbawah card-title mb-2">{{ $row->default_short_url }}</h3>
-                                </a>
-                                <a href="{{ $row->destination_url }}"
-                                    class="card-subtitle font-14 text-muted">{{ $row->destination_url }}</a>
-                            </div>
-                            {{-- modal hapus --}}
-                            <div class="modal fade" id="arsip{{ $row->id }}">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <form action="/archive/{{ $row->id }}" method="GET">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title"></h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                </button>
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <h4 style="font-size: 19px">Yakin Ingin Mengarsip Data?</h4>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Batal</button>
-                                                <button type="submit"
-                                                    class="btn btn-primary btn-xs form-control1">Arsip</button>
-                                            </div>
-                                        </form>
+                                    <div class="flex-shrink-0">
+                                        <div id="property_sale" data-colors='["--tb-primary"]' dir="ltr"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
                                 <div class="d-flex">
-                                    <div class="d-flex col-5">
-                                        <p style="margin-top: 10px;">
-                                            {{ \Carbon\Carbon::parse($row->deactivated_at)->format('F j, Y, h:i A') }}
-                                        </p>
-                                        &nbsp
-                                        <?php
-                                        $deactivatedAt = $row->deactivated_at; // Ambil nilai deactivated_at dari data
-                                        $now = \Carbon\Carbon::now();
-
-                                        if ($deactivatedAt === null) {
-                                            echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
-                                        } elseif (\Carbon\Carbon::parse($deactivatedAt) >= $now) {
-                                            echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
-                                        } else {
-                                            echo '<p class="text-danger" style="margin-top: 10px;">Tautan kadaluarsa</p>';
-                                        }
-                                        ?>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex flex-column h-100">
+                                            <p class="fs-md text-muted mb-4">Pengunjung Microsite</p>
+                                            <h3 class="mb-0 mt-auto"><span class="counter-value"
+                                                    data-target="{{ $totalVisitsMicrosite }}">0</span></h3>
+                                        </div>
                                     </div>
-                                    <div class=" col-7 d-flex flex-row justify-content-end">
-                                        <button type="button" class="btn btn-light  me-3 btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#TimeModal-{{ $row->id }}"
-                                            data-link="{{ $row->url_key }}"><span data-bs-toggle="tooltip"
-                                                data-bs-placement="left" title="Tautan berbasis waktu"><i
-                                                    class="fa-solid fa-clock"></i>&nbsp;Atur
-                                                waktu</span></button>
-                                        <button type="button" class="btn btn-light me-3 btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#zoomInModal1"><span data-bs-toggle="tooltip"
-                                                data-bs-placement="left" title="Tautan terlindungi"><i
-                                                    class="fa-solid fa-lock"></i>&nbsp;kata sandi</span></button>
-                                        <button type="button" class="btn btn-light btn-sm" data-bs-toggle="collapse"
-                                            href="#collapseExample{{ $row->id }}" role="button"
-                                            aria-expanded="true" aria-controls="collapseExample{{ $row->id }}">
-                                            <i class="bi bi-bar-chart-line-fill"></i> statistik
-                                        </button>
+                                    <div class="flex-shrink-0">
+                                        <div id="property_sale" data-colors='["--tb-primary"]' dir="ltr"></div>
                                     </div>
-
                                 </div>
                             </div>
-                            <div id="zoomInModal1" class="modal fade zoomIn" tabindex="-1"
-                                aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="col-lg-12">
-                                            <div class="card">
-                                                <div class="card-header fw-bold">
-                                                    <div class="avatar-sm mx-auto mb-3">
-                                                        <div class="avatar-title bg-custom text-primary fs-xl rounded">
-                                                            <i class="fa-solid fa-lock"></i>
-                                                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex mb-4 pb-1">
+                                <div class="flex-grow-1">
+                                    <h6 class="card-title">Tautan dibuat/bulan <i
+                                            class="bi bi-exclamation-circle align-baseline ms-1 fs-sm"
+                                            data-bs-toggle="tooltip"
+                                            data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
+                                    </h6>
+
+                                </div>
+
+                            </div>
+                            <div class="progress" data-bs-toggle="tooltip"
+                                data-bs-title="{{ $countURL }} Tautan dibuat">
+                                <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated"
+                                    role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+                                    style="width: {{ ($countURL / 100) * 100 }}%"></div>
+                            </div>
+                            <p class="text-muted mb-0"><b>{{ $countURL }} dari 100</p>
+
+                            <br>
+                            <h6 class="card-title">Microsite dibuat/bulan <i
+                                    class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip"
+                                    data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
+                            </h6>
+                            <div class="progress" data-bs-toggle="tooltip"
+                                data-bs-title="{{ $countMIcrosite }} Nama diubah">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" id="total-microsite"
+                                    role="progressbar" aria-valuenow="{{ $countMIcrosite }}" aria-valuemin="0"
+                                    aria-valuemax="10" style="width: {{ ($countMIcrosite / 10) * 100 }}%"></div>
+                            </div>
+                            <p class="text-muted mb-0" id="microsite-total"><b>{{ $countMIcrosite }} dari 10</b></p>
+
+                            <br>
+
+                            <h6 class="card-title">Nama yang telah diubah/bulan <i
+                                    class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip"
+                                    data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
+                            </h6>
+                            <div class="progress" data-bs-toggle="tooltip"
+                                data-bs-title="{{ $countNameChanged }} Nama diubah">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" id="name-changed"
+                                    role="progressbar" aria-valuenow="{{ $countNameChanged }}" aria-valuemin="0"
+                                    aria-valuemax="5" style="width: {{ ($countNameChanged / 5) * 100 }}%;"></div>
+                            </div>
+                            <p class="text-muted mb-0" id="name-changed-text"><b>{{ $countNameChanged }} dari 5</b></p>
+                        </div>
+                        <div class="d-flex justify-content-end pe-3" data-bs-toggle="modal"
+                            data-bs-target="#lihatlebihbanyak">
+                            <p><a href="#"
+                                    class="link-primary link-offset-2 text-decoration-underline link-underline-opacity-25 link-underline-opacity-100-hover">Lihat
+                                    lebih banyak</a></p>
+                        </div>
+                        {{-- modal --}}
+                        <div class="modal fade" id="lihatlebihbanyak" tabindex="-1" aria-labelledby="addAmountLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title" id="addAmountLabel"
+                                            style="margin-left: 32%; margin-right: auto;">Kuota nama pendek</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="row g-3">
+                                            <div class="card-body">
+                                                {{-- <div class="d-flex mb-4 pb-1"> --}}
+                                                {{-- <div class="flex-grow-1"> --}}
+                                                <h6 class="card-title">Tautan dibuat/bulan <i
+                                                        class="bi bi-exclamation-circle align-baseline ms-1 fs-sm"
+                                                        data-bs-toggle="tooltip"
+                                                        data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
+                                                </h6>
+                                                {{-- </div> --}}
+
+                                                {{-- </div> --}}
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                                        role="progressbar" aria-valuenow="{{ $countURL }}"
+                                                        aria-valuemin="0" aria-valuemax="100"
+                                                        style="width: {{ ($countURL / 100) * 100 }}%;">
                                                     </div>
                                                 </div>
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Anda Tidak Bisa Mengakses Fitur Ini!</h4>
-                                                    <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan
-                                                        Untuk Bisa Menikmati Fitur Ini</p>
-                                                </div>
-                                                <div class="card-footer text-center">
-                                                    <a href="/subscribe-product-user" style="color: red;"> Mulai
-                                                        Berlangganan? </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.modal-dialog -->
-                                </div>
-                            </div>
-                            <!-- /.modal -->
-                            <div id="tombol-modal-{{ $row->id }}" class="modal fade zoomIn modal-sm" tabindex="-1"
-                                aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="zoomInModalLabel">Gambar Kode QR</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="visible-print text-center">
-                                                {!! QrCode::size(200)->generate($row->destination_url) !!}
+                                                <p class="text-muted mb-0"><b>{{ $countURL }} dari 100</p>
+
                                                 <br>
-                                                <p>{{ $row->default_short_url }}</p>
+                                                <h3 class="card-title">Microsite dibuat/bulan <i
+                                                        class="bi bi-exclamation-circle align-baseline ms-1 fs-sm"
+                                                        data-bs-toggle="tooltip"
+                                                        data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
+                                                </h3>
 
-                                            </div>
-                                            <!-- <center>
-                                                        <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
-                                                    </center> -->
-                                        </div>
-                                        <center>
-                                            <button type="button" class="btn btn-danger">Download</button>
-                                            <button type="button" class="btn btn-light  me-3"><span><i
-                                                        class="fa-solid fa-pen-to-square"></i>&nbsp;Ganti</span></button>
-                                        </center>
-                                        <div class="modal-footer"></div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
-                            <p class="d-none" id="default_short_url{{ $i }}">{{ $row->default_short_url }}
-                            </p>
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                                        id="progress-bar" role="progressbar"
+                                                        aria-valuenow="{{ $countMIcrosite }}" aria-valuemin="0"
+                                                        aria-valuemax="10"
+                                                        style="width: {{ ($countMIcrosite / 10) * 100 }}%;"></div>
+                                                </div>
 
-                            <form id="formKustom">
-                                <div id="zoomInModal" class="modal fade zoomIn" tabindex="-1"
-                                    aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="zoomInModalLabel"><i
-                                                        class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom Tautan
-                                                </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="card-body d-flex" style="background-color: #D9D9D9;">
-                                                    <p><i class="fa-solid fa-pen-to-square"></i></p>
-                                                    &nbsp;
-                                                    <p>Kustom tautan adalah fitur yang memungkinkan
-                                                        pengguna untuk membuat tautan pendek yang disesuaikan dengan
-                                                        keinginan mereka.
-                                                        Pengguna dapat mengganti atau menentukan bagian akhir dari tautan
-                                                        pendek
-                                                        untuk mencerminkan kata kunci, nama merek, atau informasi yang
-                                                        relevan dengan tautan tersebut.</p>
+                                                <p class="text-muted mb-0"><b>{{ $countMIcrosite }} dari 10</b></p>
+
+                                                <br>
+                                                <h3 class="card-title">Nama yang telah diubah/bulan <i
+                                                        class="bi bi-exclamation-circle align-baseline ms-1 fs-sm"
+                                                        data-bs-toggle="tooltip"
+                                                        data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
+                                                </h3>
+
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                                        id="progress-bar" role="progressbar"
+                                                        aria-valuenow="{{ $countNameChanged }}" aria-valuemin="0"
+                                                        aria-valuemax="5"
+                                                        style="width: {{ ($countNameChanged / 5) * 100 }}%;"></div>
                                                 </div>
-                                                <div class="col-lg-12 mb-3">
-                                                    <label for="new_url_key">Kustom Nama</label>
-                                                    <input type="text" class="form-control" name="new_url_key"
-                                                        id="new_url_key" placeholder="Kustom nama">
-                                                </div>
-                                                <div class="col-lg-12 mb-3">
-                                                    <label for="new_url_key"></label>
-                                                    <input type="hidden" class="form-control" name="custom_name"
-                                                        id="new_url_key" placeholder="Kustom nama">
-                                                </div>
+                                                <p class="text-muted mb-0"><b>{{ $countNameChanged }} dari 5</b></p>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-light"
-                                                    data-bs-dismiss="modal">Tutup</button>
-                                                <button id="submitKustom" type="button"
-                                                    class="btn btn-primary submitKustom">Simpan</button>
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
-                            </form>
-                            <form id="updateTime">
-                                <div id="TimeModal-{{ $row->id }}" class="modal fade Time" tabindex="-1"
-                                    aria-labelledby="TimeModalLabel" aria-hidden="true" style="display: none;">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="TimeModalLabel"><i
-                                                        class="fa-solid fa-clock"></i>&nbsp;Atur Waktu</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close" data-id="{{ $row->id }}"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="card-body d-flex" style="background-color: #D9D9D9;">
-                                                    <p><i class="fa-solid fa-clock"></i></p>
-                                                    &nbsp;
-                                                    <p>Tautan berbasis waktu adalah jenis tautan yang hanya berlangsung
-                                                        selama periode waktu tertentu.
-                                                        Ketika tautan telah kedaluwarsa, maka tautan tersebut tidak dapat
-                                                        diakses lagi.</p>
-                                                </div>
-                                                <div class="col-lg-12 mb-3">
-                                                    <label for="deactivated_at">Ubah Tanggal</label>
-                                                    <input type="datetime-local" class="form-control"
-                                                        name="deactivated_at"
-                                                        @if (!is_null($row->deactivated_at)) value="{{ \Carbon\Carbon::parse($row->deactivated_at)->format('Y-m-d\TH:i') }}" @endif
-                                                        data-id="{{ $row->id }}"
-                                                        id="deactivated_at-{{ $row->id }}"
-                                                        data-key="{{ $row->url_key }}" min="">
+                                            <div class="card-body">
+                                                <div class="col-lg-12">
+                                                    <div>
+                                                        <label for="AmountInput" class="form-label">Nama tautan
+                                                            terbatas/bulan</label>
+                                                        <label for="AmountInput" class="unavailable-text"><i>Tidak
+                                                                tersedia pada layanan ini</i></label>
+                                                    </div>
+                                                    <br>
+                                                    <div class="col-lg-12">
+                                                        <div>
+                                                            <label for="cardNumber" class="form-label">Tautan original
+                                                                diubah/bulan</label>
+                                                            <label for="AmountInput" class="unavailable-text"><i>Tidak
+                                                                    tersedia pada layanan ini</i></label>
+                                                        </div>
+
+                                                    </div>
+                                                    <br>
+                                                    <div class="quota-reset">
+                                                        Quota direset pada 1 September 2023 pukul 00.00
+                                                    </div>
+
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-light"
-                                                    data-bs-dismiss="modal">Tutup</button>
-                                                <button id="submitTime" data-key="{{ $row->url_key }}"
-                                                    data-id="{{ $row->id }}" type="button"
-                                                    class="btn-submit btn btn-primary submitKustom">Simpan</button>
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
-                            </form>
-                            <div class="collapse" id="collapseExample{{ $row->id }}">
-                                <div class="card-footer">
-                                    <div class="d-flex">
-                                        <div class="col-10">
-                                            <h5><i class="bi bi-bar-chart-line-fill"></i> statistik</h5>
-                                        </div>
-                                        <div class="col-2 d-flex flex-row justify-content-end">
-                                            <button type="button" class="btn btn-light "><span>Lihat
-                                                    Detail</span>&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+
+
+
                                         </div>
                                     </div>
+                                    <div class="col-lg-12">
+                                        <div class="modal-footer">
+                                            <a href="/subscribe-product-user" type="button" class="btn btn-danger"
+                                                style="width: 100%;">
+                                                Langganan untuk mendapatkan kuota
+                                            </a>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div id="chart{{ $row->id }}"></div>
-                                    </div><!-- end card-body -->
-                                </div><!-- end card -->
                             </div>
                         </div>
                     </div>
-                </form>
-            @endforeach
-            <div class="row align-items-center mb-4 justify-content-between text-center text-sm-start"
-                id="pagination-element">
-                <div class="col-sm">
-                    <div class="text-muted">
-                        Showing <span class="fw-semibold">{{ $urlshort->firstItem() }}</span>
-                        to <span class="fw-semibold">{{ $urlshort->lastItem() }}</span>
-                        of <span class="fw-semibold">{{ $urlshort->total() }}</span> Results
-                    </div>
                 </div>
-                <div class="col-sm-auto mt-3 mt-sm-0">
-                    <div
-                        class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
-                        <div class="page-item">
-                            {{ $urlshort->links('pagination::bootstrap-5') }}
-                        </div>
-                    </div>
-                </div>
+
             </div>
-            <!-- end col -->
+            <!-- container-fluid -->
         </div>
-        <!-- container-fluid -->
-    </div>
-    <!-- container-fluid -->
-    </div>
-    @php
-        use Carbon\Carbon;
-    @endphp
+    </form>
+@endsection
+
 @section('script')
-    @foreach ($urlshort as $row)
-        <script>
-            var options = {
-                series: [{
-                    name: "jumlah data",
-                    data: {!! json_encode($result['series']) !!},
-                }],
-                chart: {
-                    height: 350,
-                    type: 'line',
-                    zoom: {
-                        enabled: false
-                    }
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                stroke: {
-                    curve: 'straight'
-                },
-                title: {
-                    text: 'Product Trends by Month',
-                    align: 'left'
-                },
-                grid: {
-                    row: {
-                        colors: ['#f3f3f3', 'transparent'],
-                        opacity: 0.5
-                    },
-                },
-                xaxis: {
-                    categories: {!! json_encode($result['labels']) !!},
-                }
-            };
-
-            var chart = new ApexCharts(document.querySelector("#chart{{ $row->id }}"), options);
-            chart.render();
-        </script>
-    @endforeach
-    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js') }}"></script>
-    <script type="text/javascript" src="./jquery.qrcode.js"></script>
-    <script type="text/javascript" src="./qrcode.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Sweet Alerts js -->
-    <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script>
+        let edit = false;
 
-    <!-- Sweet alert init js-->
-    <script src="{{ asset('assets/js/pages/sweetalerts.init.js') }}"></script>
+        function statusEdit() {
+            edit = !edit;
+            console.log(edit);
+        }
+        $(document).ready(function() {
+            $("#shortlinkSubmit").submit(function(event) {
+                event.preventDefault(); // Mencegah form submission bawaan
+
+                var formData = $(this).serialize(); // Mengambil data form
+                $.ajax({
+                    type: "POST",
+                    url: "short-link", // Ganti dengan URL endpoint Anda
+                    data: formData,
+                    success: function(response) {
+                        if (response.status == 'gagal') {
+                            Swal.fire({
+                                title: 'Kesalahan...',
+                                icon: 'error',
+                                html: response.message +
+                                    ' Klik <a href="/BillingSubscriptions">di sini</a> ' +
+                                    'untuk info lebih lanjut tentang langganan premium.',
+                            });
+                        }
+                        // Tangani respons dari server
+                        console.log(response.default_short_url);
+                        var defaultShort = response.default_short_url;
+                        var title = response.title;
+                        var url = response.destination_url;
+
+                        // Tampilkan data yang dipotong di dalam input
+                        $("#default_short_url").val(defaultShort);
+                        $("#title").val(title);
+                        $('#destination_url').val(url);
+
+                        // Menampilkan tombol Copy
+                        $("#copyButton").show();
+
+                        // Mengosongkan nilai-nilai input di dalam modal
+                        $("#AmountInput").val(""); // Mengosongkan input tautan panjang
+                        $("#cardNumber").val(""); // Mengosongkan input judul
+                        $(".password-input").val(""); // Mengosongkan input kata sandi
+                        $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
+                        $(".close-edit").val(""); // Mengosongkan button edit
+
+                        // Menutup modal saat ini (jika perlu)
+                        $("#addAmount").modal("hide");
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                    }
+                });
+            });
+            // Menangani klik pada tombol mata
+            $("#password-addon").click(function() {
+                var passwordInput = $(".password-input");
+                var passwordAddon = $("#password-addon");
+
+                if (passwordInput.attr("type") === "password") {
+                    passwordInput.attr("type", "text");
+                    passwordAddon.html('<i class="ri-eye-off-fill align-middle"></i>');
+                } else {
+                    passwordInput.attr("type", "password");
+                    passwordAddon.html('<i class="ri-eye-fill align-middle"></i>');
+                }
+            });
+            // Menangani klik pada tombol Copy
+            $("#copyButton").click(function() {
+                var copyText = document.getElementById("default_short_url");
+                copyText.select();
+                document.execCommand("copy");
+                // Anda bisa menambahkan logika lain untuk memberi tahu pengguna bahwa tautan telah disalin
+            });
+            // Menangani klik pada tombol Reset untuk modal tautan terproteksi
+            $("#resetButton").click(function() {
+                $(".password-input").val(""); // Mengosongkan input kata sandi
+            });
+            // Menangani klik pada tombol Reset untuk modal tautan berjangka
+            $("#time-reset").click(function() {
+                $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
+            });
+            // Menangani klik pada label platform dalam modal "bagikan"
+            $(".platform").click(function() {
+                var platform = $(this).data("platform");
+                var shortUrl = $("#default_short_url").val();
+
+                switch (platform) {
+                    case "facebook":
+                        // Tambahkan logika untuk membagikan tautan ke Facebook
+                        // Misalnya, membuka jendela baru dengan tautan Facebook Share
+                        window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(
+                            shortUrl));
+                        break;
+                    case "twitter":
+                        // Tambahkan logika untuk membagikan tautan ke Twitter
+                        // Misalnya, membuka jendela baru dengan tautan Twitter Share
+                        window.open("https://twitter.com/intent/tweet?url=" + encodeURIComponent(shortUrl));
+                        break;
+                    case "whatsapp":
+                        // Tambahkan logika untuk membagikan tautan ke WhatsApp
+                        // Misalnya, membuka jendela baru dengan tautan WhatsApp Share
+                        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shortUrl));
+                        break;
+                    case "copy":
+                        var copyText = document.getElementById("default_short_url");
+                        copyText.select();
+
+                        navigator.clipboard.writeText(copyText.value)
+                            .then(function() {
+                                if (edit != true) {}
+                            })
+                            .catch(function(err) {
+                                console.error("Penyalinan gagal: ", err);
+                                alert("Penyalinan gagal. Silakan salin tautan secara manual.");
+                            });
+                        break;
+                    case "qr":
+                        // Tambahkan logika untuk menghasilkan QR Code dari tautan
+                        // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
+                        window.open(
+                            https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${ encodeURIComponent(shortUrl)}
+                        );
+                        break;
+                    default:
+                        break;
+                }
+            });
+            // $("#default_short_url").click(function() {
+            //     var copyText = document.getElementById("default_short_url");
+            //     copyText.select();
+            //     document.execCommand("copy");
+            //     if (edit != true) {
+            //         // Menambahkan pesan atau tindakan lain sesuai kebutuhan
+            //         // alert("Tautan telah disalin ke clipboardsdfg.");
+            //         // Setelah data berhasil disimpan, tampilkan pemberitahuan
+            //         $("#successCopy").fadeIn();
+
+            //         // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
+            //         setTimeout(function() {
+            //                 $("#successCopy").fadeOut();
+            //             },
+            //             3000
+            //             ); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
+
+
+            //     }
+            // });
+            // Menangani klik pada tombol "Simpan"
+            $("#simpanButton").click(function() {
+                // Lakukan aksi penyimpanan data di sini (misalnya, pengiriman data ke server).
+
+                // Setelah data berhasil disimpan, tampilkan pemberitahuan
+                $("#successAlert").fadeIn();
+
+                // Tunggu beberapa detik (misalnya, 3 detik) kemudian sembunyikan pemberitahuan
+                setTimeout(function() {
+                    $("#successAlert").fadeOut();
+                }, 3000); // Angka 3000 adalah durasi dalam milidetik (3 detik). Sesuaikan sesuai kebutuhan.
+
+                // Reset modal atau lakukan aksi lainnya sesuai kebutuhan
+                // resetEditModal();
+            });
+            // $("#simpanButton").click(function() {
+            //     alert('');
+            // });
+        });
+    </script>
+    <!-- apexcharts -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+
+    <!-- Echarts -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/echarts/echarts.min.js') }}"></script>
+
+    <!-- Vector map-->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/jsvectormap/js/jsvectormap.min.js') }}">
+    </script>
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/jsvectormap/maps/world-merc.js') }}">
+    </script>
+
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/list.js/list.min.js') }}"></script>
+
+    <!-- dashboard-analytics init js -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/dashboard-analytics.init.js') }}">
+    </script>
+
+    <!-- App js -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/app.js') }}"></script>
+    <!-- profile-setting init js -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/profile-setting.init.js') }}"></script>
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(document).ready(function() {
-            $("#copyButton").click(function() {
-                let id = $(this).data('id-copy');
-                let data = $("#default_short_url" + id);
-
-                data.select();
-                data.setSelectionRange(0, 99999);
-                navigator.clipboard.writeText(data.value);
-
-            })
-            $("#resetButton").click(function() {
-                $(".password-input").val("");
-            });
-            $("#time-reset").click(function() {
-                $(".time-input").val("");
-            });
-
-            $('.btn-qr').click(function() {
-
-                alert($(this).data('link'))
-                $(".demo").qrcode({
-                    mode: 1,
-                    label: 'jQueryScript.Net',
-                    fontname: 'sans',
-                    fontcolor: '#000'
-
-                });
-                $('#zoomInModal2').modal({
-                    show: true
-                })
-            })
-        });
-        $("#button-email").click(function() {
-            var linkToCopy = $("#link-to-copy").text();
-
-            $("#default_short_url").val(linkToCopy);
-
-            $("#copyButton").attr("data-clipboard-text", linkToCopy);
-        });
-        // $("#copyButton").click(function() {
-        //     var linkToCopy = $(this).attr("data-clipboard-text");
-
-        //     // Salin tautan ke clipboard
-        //     var tempInput = $("<input>");
-        //     $("body").append(tempInput);
-        //     tempInput.val(linkToCopy).select();
-        //     document.execCommand("copy");
-        //     tempInput.remove();
-
-        //     // Tampilkan pesan sukses
-        //     $("#successCopyAlert").fadeIn().delay(1500).fadeOut();
-        // });
-        // Menangani klik pada label platform dalam modal "bagikan"
-        $(".platform").click(function() {
-            var platform = $(this).data("platform");
-            //   alert(platform)
-            var shortUrl = $("#default_short_url").text();
-
-            switch (platform) {
-                case "facebook":
-                    window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shortUrl));
-                    break;
-                case "twitter":
-                    window.open("https://twitter.com/intent/tweet?url=" + encodeURIComponent(shortUrl));
-                    break;
-                case "whatsapp":
-                    console.log(shortUrl)
-                    window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shortUrl));
-                    break;
-                case "copy":
-                    var copyText = $(this).data('url')
-                    // alert(copyText)
-                    console.log()
-                    // copyText.focus();
-                    try {
-                        navigator.clipboard.writeText(copyText);
-                        console.log('Content copied to clipboard');
-                    } catch (err) {
-                        console.error('Failed to copy: ', err);
-                        alert('gagal ' + err)
-                    }
-
-                    // navigator.clipboard.writeText(copyText)
-                    // .then(function() {
-                    // if (edit != true) {
-                    // }
-                    // })
-                    // .catch(function(err) {
-                    // console.error("Penyalinan gagal: ", err);
-                    // alert("Penyalinan gagal. Silakan salin tautan secara manual.");
-                    // });
-                    break;
-
-                case "qr":
-                    window.open(
-                        " https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('default_short_url{{ $i }}').innerText}" +
-                        encodeURIComponent(shortUrl));
-                    break;
-                default:
-                    break;
-            }
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("#resetButton").click(function() {
-                $(".password-input").val("");
-            });
-
-            $("#time-reset").click(function() {
-                $(".time-input").val("");
+        document.addEventListener("DOMContentLoaded", function () {
+            // Pilih tombol "Singkatkan" berdasarkan ID
+            const singkatkanButton = document.getElementById("singkatkanButton");
+    
+            // Tambahkan event listener klik pada tombol
+            singkatkanButton.addEventListener("click", function () {
+                // Dapatkan nilai dari inputan
+                const destinationUrl = document.getElementById("AmountInput").value;
+                const title = document.getElementById("cardNumber").value;
+    
+                // Periksa apakah kedua inputan kosong
+                if (!destinationUrl.trim() && !title.trim()) {
+                    // Tampilkan pesan kesalahan SweetAlert
+                    Swal.fire({
+                        icon: "error",
+                        title: "Kesalahan!",
+                        text: "Anda harus mengisi data terlebih dahulu.",
+                    });
+                } else {
+                }
             });
         });
     </script>
-    <script>
-        // Fungsi untuk membuka modal
-        function bukaModal() {
-            var modal = document.getElementById("modal");
-            modal.style.display = "block";
-        }
-
-        var qrcodeSrc = 1;
-
-        var tombolModal = document.getElementById("tombol-modal");
-
-        function tombolmodal(id) {
-            console.log(id);
-            var qrcodeSrcString = qrcodeSrc.toString();
-
-            if (qrcodeSrcString !== null && qrcodeSrcString !== undefined) {
-                var dataToSend = {
-                    id: id,
-                    qrcodeSrc: qrcodeSrcString,
-                    _token: $('meta[name="csrf-token"]').attr('content')
-                };
-                $.ajax({
-                    url: "/qr",
-                    type: "POST",
-                    dataType: "json",
-                    data: dataToSend,
-                    success: function(response) {
-                        qrcodeSrc++;
-                    },
-                    error: function(response) {
-                        console.log(response)
-                    }
-                });
-            }
-        }
-        tombolModal.addEventListener("click", function() {
-
-        });
-        var tombolClose = document.getElementById("close-modal");
-        tombolClose.addEventListener("click", tutupModal);
-    </script>
-
+    
     <script>
         function copyToClipboard(text) {
             if (!navigator.clipboard) {
@@ -657,122 +891,119 @@
             });
         });
     </script>
-
-
     <script>
-        $(document).ready(function() {
-            var selectId = $('#new_url_key').val();
-            console.log(selectId);
-            // Mendapatkan token CSRF dari meta tag
-            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
+        var countData = {{ $countURL }}; // Contoh nilai statiskeluar
 
-            // Tambahkan kode berikut di bawahnya
-            $('#submitKustom').click(function() {
-                var newUrlKey = $('#new_url_key').val();
-                // alert('masuk')
-                $.ajax({
-                    headers: {
-                        'X-CSRF-Token': csrfToken,
-                    },
-                    url: "/update-short-link/" + $('#new_url_key').data("original"),
-                    method: 'POST',
-                    data: {
-                        newUrlKey: newUrlKey
-                    },
-                    dataType: 'JSON',
-                    error: function(e) {
-                        console.log(e.responseJSON)
-                        //    alert(e.responseJSON.newUrlKey[0])
-                        Swal.fire(e.responseJSON.newUrlKey[0])
-                    },
-                    success: function(e) {
-                        location.reload()
-                    }
-                })
-            });
-        });
-
-        $('.edit-link').click(function() {
-            var link = $(this).data('link');
-
-            // Mengisi nilai input dengan link yang dipilih
-            $('#new_url_key').val(link);
-            $('#new_url_key').attr("data-original", link);
-
-        });
+        // Ubah lebar bar progres sesuai dengan data yang diperoleh
+        var progressBar = document.getElementById("progress-bar");
+        var progressBarWidth = (countData / 100) * 100; // Ubah 100 menjadi nilai maksimum yang sesuai
+        progressBar.style.width = progressBarWidth + "%";
+        progressBar.setAttribute("aria-valuenow", countData);
     </script>
     <script>
-        $(document).ready(function() {
-            var selectId = $('#deactivated_at').val();
-            console.log(selectId);
-            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
+        var countData = {{ $countNameChanged }}; // Contoh nilai statis
 
-            $(document).on('click', '.btn-submit', function() {
-                var id = $(this).data('id');
-                var key = $(this).data('key');
-                var newTime = $('#deactivated_at-' + id).val();
-                if (newTime == null || newTime == "") {
-                    Swal.fire('Isi Data Terlebih Dahulu')
-                    return
-                }
+        // Ubah lebar bar progres sesuai dengan data yang diperoleh
+        var progressBar = document.getElementById("progress-bar");
+        var progressBarWidth = (countData / 5) * 100; // Maksimum adalah 5
+        progressBar.style.width = progressBarWidth + "%";
+        progressBar.setAttribute("aria-valuenow", countData);
 
-                $.ajax({
-                    headers: {
-                        'X-CSRF-Token': csrfToken,
-                    },
-                    url: "/update-deactivated/" + key,
-                    method: 'POST',
-                    data: {
-                        newTime: newTime
-                    },
-                    dataType: 'JSON',
-                    success: function(e) {
-                        location.reload()
-                    },
-                    error: function(response) {
-                        console.log(response);
-                    }
-                });
-            });
-        });
+        // Update teks
+        var progressText = document.querySelector('.text-muted.mb-0 b');
+        progressText.textContent = countData + " dari 5";
     </script>
     <script>
-        // Mendapatkan semua tautan dengan class "access-link"
-        var links = document.querySelectorAll('.access-link');
+        // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
+        var countData = {{ $countMIcrosite }}; // Contoh nilai statis
 
-        // Loop melalui setiap tautan
-        links.forEach(function(link) {
-            // Menambahkan event listener saat tautan diklik
-            link.addEventListener('click', function(event) {
-                // Jika tautan tidak memiliki class "inactive", maka tautan masih aktif
-                if (!link.classList.contains('inactive')) {
-                    // Lanjutkan ke URL tautan
-                    return;
-                }
-
-                // Mencegah tautan mengarahkan ke URL
-                event.preventDefault();
-
-                // Tampilkan alert bahwa tautan sudah tidak dapat diakses
-                alert('Tautan sudah tidak dapat diakses.');
-            });
-        });
+        // Ubah lebar bar progres sesuai dengan data yang diperoleh
+        var progressBar = document.getElementById("progress-bar");
+        var progressBarWidth = (countData / 10) * 100; // Maksimum adalah 10
+        progressBar.style.width = progressBarWidth + "%";
+        progressBar.setAttribute("aria-valuenow", countData);
     </script>
     <script>
-        $(document).ready(function() {
-            $('.search').keyup(function() {
-                var searchText = $(this).val().toLowerCase();
-                $('.card').each(function() {
-                    var cardText = $(this).text().toLowerCase();
-                    if (cardText.includes(searchText)) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-            });
+        const clickCountElement = document.getElementById("clickCount");
+
+        // Mengambil data jumlah klik dari localStorage
+        let clickCount = localStorage.getItem("clickCount");
+
+        if (clickCount !== null) {
+            // Jika ada data jumlah klik yang tersimpan, tampilkan pada halaman
+            clickCountElement.textContent = clickCount + "";
+        }
+    </script>
+    <script>
+        // Get the value from the server-side variable {{ $countURL }}
+        var countURLValue = {{ $countURL }};
+
+        // Calculate the percentage
+        var percentage = (countURLValue / 100) * 100; // Assuming 100 is the total
+
+        // Update the progress bar width
+        var progressBar = document.querySelector('.progress-bar');
+        progressBar.style.width = percentage + '%';
+        progressBar.setAttribute('aria-valuenow', countURLValue);
+
+        // Update the text
+        var progressText = document.querySelector('.text-muted.mb-0 b');
+        progressText.textContent = countURLValue + ' dari 100';
+    </script>
+    <script>
+        // Get the value from the server-side variable {{ $countMIcrosite }}
+        var countURLValue = {{ $countMIcrosite }};
+
+        // Update the progress bar width based on a maximum value of 10
+        var progressBar = document.querySelector('#total-microsite');
+        progressBar.style.width = ((countURLValue / 10) * 100) + '%';
+        progressBar.setAttribute('aria-valuenow', countURLValue);
+
+        // Update the text
+        var progressText = document.querySelector('#microsite-total');
+        progressText.textContent = countURLValue + ' dari 10';
+    </script>
+    <script>
+        // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
+        var countData = {{ $countNameChanged }}; // Contoh nilai statis
+
+        // Ubah lebar bar progres sesuai dengan data yang diperoleh
+        var progressBar = document.getElementById("name-changed");
+        var progressBarWidth = (countData / 5) * 100; // Maksimum adalah 5
+        progressBar.style.width = progressBarWidth + "%";
+        progressBar.setAttribute("aria-valuenow", countData);
+
+        // Update teks
+        var progressText = document.getElementById("name-changed-text");
+        progressText.textContent = countData + " dari 5";
+    </script>
+
+    <script>
+        // Temukan tombol "Keluar" berdasarkan ID
+        var keluarButton = document.getElementById("keluarButton");
+
+        // Temukan modal edit berdasarkan ID
+        var modalEdit = document.getElementById("edit");
+
+        // Tambahkan event listener untuk tombol "Keluar"
+        keluarButton.addEventListener("click", function() {
+            // Tutup modal edit
+            modalEdit.classList.remove("show");
         });
     </script>
+    <script src="{{ asset('vendor/yoeunes/toastr/toastr.min.js') }}"></script>
+    <script>
+        @if (session('toastr'))
+            {!! session('toastr') !!}
+        @endif
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
             $("#toggleButton").click(function() {
@@ -781,36 +1012,14 @@
                 if (buttonText.trim() === "Tampilkan lebih banyak") {
                     $(this).html('Tampilkan lebih sedikit <i class="fa-solid fa-angle-up"></i>');
                 } else {
-                    $(this).hide();
+                    $(this).html('Tampilkan lebih banyak <i class="fa-solid fa-angle-down"></i>');
                 }
             });
         });
     </script>
     <script>
-        // Mendapatkan semua tautan dengan class "access-link"
-        var links = document.querySelectorAll('.access-link');
-
-        // Loop melalui setiap tautan
-        links.forEach(function(link) {
-            // Menambahkan event listener saat tautan diklik
-            link.addEventListener('click', function(event) {
-                // Jika tautan tidak memiliki class "inactive", maka tautan masih aktif
-                if (!link.classList.contains('inactive')) {
-                    // Lanjutkan ke URL tautan
-                    return;
-                }
-
-                // Mencegah tautan mengarahkan ke URL
-                event.preventDefault();
-
-                // Tampilkan alert bahwa tautan sudah tidak dapat diakses
-                alert('Tautan sudah tidak dapat diakses.');
-            });
-        });
-    </script>
-    <script>
-        // Mendapatkan elemen input berdasarkan ID yang sesuai
-        var inputTanggal = document.querySelector('input[name="deactivated_at"]');
+        // Mendapatkan elemen input
+        var inputTanggal = document.getElementById('old_password');
 
         // Mendapatkan tanggal hari ini dalam format yang sesuai dengan datetime-local
         var today = new Date();
@@ -822,6 +1031,4 @@
         // Mengatur atribut "min" pada elemen input
         inputTanggal.setAttribute('min', waktuHariIni);
     </script>
-
-@endsection
 @endsection
