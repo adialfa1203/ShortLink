@@ -119,7 +119,7 @@
     @section('script')
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
+        {{-- <script>
             function updateChart() {
                 $.ajax({
                     url: "{{ route('dashboard.chart') }}",
@@ -198,5 +198,45 @@
                 });
             }
             updateChart();
+        </script> --}}
+        <script>
+            function updateChart() {
+                $.ajax({
+                    url: "{{ route('dashboard.chart') }}",
+                    method: "GET",
+                    success: function (data) {
+                        console.log(data);
+        
+                        var options = {
+                            chart: {
+                                type: 'line'
+                            },
+                            colors: ["#2DCB73", "#3762EA", "#F6B749"],
+                            series: [{
+                                name: 'Data Total User',
+                                data: data.result.series.totalUser
+                            }, {
+                                name: 'Data Total Url',
+                                data: data.result.series.totalUrl
+                            }, {
+                                name: 'Data Total Visits',
+                                data: data.result.series.totalVisits
+                            }],
+                            xaxis: {
+                                categories: data.result.labels
+                            }
+                        };
+        
+                        var chart = new ApexCharts(document.querySelector("#chartDataDashboard"), options);
+                        chart.render();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+            updateChart();
         </script>
+        
+        
     @endsection
