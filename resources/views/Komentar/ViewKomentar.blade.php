@@ -31,46 +31,53 @@
                             <div class="table-responsive">
                                 <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                     <thead class="text-muted table-light">
-                                        @if ($komentar->isEmpty())
-                                            <div class="d-flex flex-column align-items-center">
-                                                <img style="width: 300px; height: 300px;"
-                                                    src="{{ asset('images/Empty.jpg') }}" alt="Gambar">
-                                                <div class="d-flex justify-content-center align-items-center mt-2">
-                                                    <i class="ph-magnifying-glass fs-2 text-primary"></i>
-                                                    <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
-                                                </div>
-                                            </div>
-                                        @else
-                                            <tr class="searchable">
-                                                <th scope="col" data-sort="order_id">No</th>
-                                                <th scope="col" data-sort="order_id">Email</th>
-                                                <th scope="col" data-sort="order_id">Nama Pengguna</th>
-                                                <th scope="col" data-sort="order_date">Isi Komentar</th>
-                                            </tr>
+                                        <tr class="searchable">
+                                            <th scope="col" data-sort="order_id">No</th>
+                                            <th scope="col" data-sort="order_id">Email</th>
+                                            <th scope="col" data-sort="order_id">Nama Pengguna</th>
+                                            <th scope="col" data-sort="order_date">Isi Komentar</th>
+                                        </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
-                                        @foreach ($komentar as $row)
+                                        @if ($komentar->isEmpty())
                                             <tr>
-                                                <td class="order_id">{{ $loop->iteration }}</td>
-                                                <td class="products">
-                                                    @if ($row->user)
-                                                        {{ $row->user->email }}
-                                                    @else
-                                                        Email Tidak Ditemukan
-                                                    @endif
+                                                <td colspan="4">
+                                                    <div class="page-content">
+                                                        <div class="container-fluid">
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <img style="width: 300px; height: 300px;" src="{{ asset('images/Empty.jpg') }}" alt="Gambar">
+                                                                <div class="d-flex justify-content-center align-items-center mt-2">
+                                                                    <i class="ph-magnifying-glass mb-2 fs-2 text-primary"></i>
+                                                                    <h5 class="mt-2 mb-3">Maaf! Tidak Ada Data Ditemukan</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
-                                                <td>
-                                                    @if ($row->user)
-                                                        {{ $row->user->name }}
-                                                    @else
-                                                        Pengguna Tidak Ditemukan
-                                                    @endif
-                                                </td>
-                                                <td class="products">{{ $row->isikomentar }}</td>
                                             </tr>
-                                        @endforeach
+                                        @else
+                                            @foreach ($komentar as $row)
+                                                <tr>
+                                                    <td class="order_id">{{ $loop->iteration }}</td>
+                                                    <td class="products">
+                                                        @if ($row->user)
+                                                            {{ $row->user->email }}
+                                                        @else
+                                                            Email Tidak Ditemukan
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($row->user)
+                                                            {{ $row->user->name }}
+                                                        @else
+                                                            Pengguna Tidak Ditemukan
+                                                        @endif
+                                                    </td>
+                                                    <td class="products">{{ $row->isikomentar }}</td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
-                                    @endif
                                 </table>
                                 <br><!-- end table -->
                                 <div class="noresult" style="display: none">

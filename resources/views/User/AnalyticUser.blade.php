@@ -143,25 +143,30 @@
                                     Tautan Populer
                                 </div>
                                 <div class="card-body">
-                                    @if ($links->isEmpty())
-                                        <div class="text-center">
-                                            <img style="width: 200px; height: 200px;" src="{{ asset('images/Empty.jpg') }}"
-                                                alt="Gambar">
-                                            <div class="d-flex justify-content-center align-items-center mt-2">
-                                                <i class="ph-magnifying-glass fs-2 text-primary"></i>
-                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <table class="table table-bordered table-nowrap">
-                                            <thead>
+                                    <table class="table table-bordered table-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Tautan</th>
+                                                <th scope="col">Pengunjung</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if ($links->isEmpty())
                                                 <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Tautan</th>
-                                                    <th scope="col">Pengunjung</th>
+                                                    <td colspan="3">
+                                                        <div class="text-center">
+                                                            <img style="width: 200px; height: 200px;"
+                                                                src="{{ asset('images/Empty.jpg') }}" alt="Gambar">
+                                                            <div
+                                                                class="d-flex justify-content-center align-items-center mt-2">
+                                                                <i class="ph-magnifying-glass fs-2 text-primary"></i>
+                                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
+                                            @else
                                                 @foreach ($links->sortByDesc('totalVisits') as $link)
                                                     <tr>
                                                         <th scope="row">{{ $loop->iteration }}</th>
@@ -169,38 +174,42 @@
                                                         <td>{{ $link->totalVisits }} Pengunjung</td>
                                                     </tr>
                                                 @endforeach
-                                            </tbody>
-                                        </table>
-                                    @endif
+                                            @endif
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-lg-6">
                             <div class="card" id="agenciesList">
                                 <div class="card-header fw-bold">
                                     Microsite Populer
                                 </div>
                                 <div class="card-body">
-                                    @if ($microsites->isEmpty())
-                                        <div class="text-center">
-                                            <img style="width: 200px; height: 200px;" src="{{ asset('images/Empty.jpg') }}"
-                                                alt="Gambar">
-                                            <div class="d-flex justify-content-center align-items-center mt-2">
-                                                <i class="ph-magnifying-glass fs-2 text-primary"></i>
-                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <table class="table table-bordered table-nowrap">
-                                            <thead>
+                                    <table class="table table-bordered table-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Tautan</th>
+                                                <th scope="col">Pengunjung</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if ($microsites->isEmpty())
                                                 <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Tautan</th>
-                                                    <th scope="col">Pengunjung</th>
+                                                    <td colspan="3">
+                                                        <div class="text-center">
+                                                            <img style="width: 200px; height: 200px;"
+                                                                src="{{ asset('images/Empty.jpg') }}" alt="Gambar">
+                                                            <div
+                                                                class="d-flex justify-content-center align-items-center mt-2">
+                                                                <i class="ph-magnifying-glass fs-2 text-primary"></i>
+                                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
+                                            @else
                                                 @foreach ($microsites->sortByDesc('totalVisits') as $microsite)
                                                     <tr>
                                                         <th scope="row">{{ $loop->iteration }}</th>
@@ -208,9 +217,9 @@
                                                         <td>{{ $microsite->totalVisits }}</td>
                                                     </tr>
                                                 @endforeach
-                                            </tbody>
-                                        </table>
-                                    @endif
+                                            @endif
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

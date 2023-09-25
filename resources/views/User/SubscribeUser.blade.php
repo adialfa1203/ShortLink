@@ -91,26 +91,31 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    @if ($data->isEmpty())
-                                        <div class="d-flex flex-column align-items-center">
-                                            <img style="width: 300px; height: 300px;" src="{{ asset('images/Empty.jpg') }}"
-                                                alt="Gambar">
-                                            <div class="d-flex justify-content-center align-items-center mt-2">
-                                                <i class="ph-magnifying-glass fs-2 text-primary"></i>
-                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <table class="table table-centered align-middle table-nowrap mb-0">
-                                            <thead class="table-active">
+                                    <table class="table table-centered align-middle table-nowrap mb-0">
+                                        <thead class="table-active">
+                                            <tr>
+                                                <th class="" data-sort="products">Tanggal Bayar</th>
+                                                <th class="" data-sort="category">Layanan</th>
+                                                <th class="" data-sort="stock">Metode</th>
+                                                <th class="" data-sort="price">Harga</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if ($data->isEmpty())
                                                 <tr>
-                                                    <th class="" data-sort="products">Tanggal Bayar</th>
-                                                    <th class="" data-sort="category">Layanan</th>
-                                                    <th class="" data-sort="stock">Metode</th>
-                                                    <th class="" data-sort="price">Harga</th>
+                                                    <td colspan="4">
+                                                        <div class="d-flex flex-column align-items-center">
+                                                            <img style="width: 300px; height: 300px;"
+                                                                src="{{ asset('images/Empty.jpg') }}" alt="Gambar">
+                                                            <div
+                                                                class="d-flex justify-content-center align-items-center mt-2">
+                                                                <i class="ph-magnifying-glass fs-2 text-primary"></i>
+                                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
+                                            @else
                                                 @foreach ($data as $subs)
                                                     <tr>
                                                         <td>2023-09-19</td>
@@ -118,25 +123,13 @@
                                                         <td>Metode 1</td>
                                                         <td>$100</td>
                                                     </tr>
-                                            </tbody>
-                                        </table>
-                                    @endforeach
-                                    @endif
-                                </div>
-
-                                <div class="noresult" style="display: none">
-                                    <div class="text-center py-4">
-                                        <div class="avatar-md mx-auto mb-4">
-                                            <div class="avatar-title bg-light text-primary rounded-circle fs-4xl">
-                                                <i class="bi bi-search"></i>
-                                            </div>
-                                        </div>
-                                        <h5 class="mt-2">Sorry! No Result Found</h5>
-                                        <p class="text-muted mb-0">We've searched more than 150+ products We did not find
-                                            any products for you search.</p>
-                                    </div>
+                                                @endforeach
+                                            @endif
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
+
                             <div class="pagination-wrap hstack justify-content-center gap-2 mb-3">
                                 <a class="page-item pagination-prev {{ $data->previousPageUrl() ? '' : 'disabled' }}"
                                     href="{{ $data->previousPageUrl() ? $data->previousPageUrl() : '#' }}">
