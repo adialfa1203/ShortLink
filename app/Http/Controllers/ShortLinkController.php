@@ -109,7 +109,7 @@ class ShortLinkController extends Controller
         }
         $newUrlKey = $request->newUrlKey;
 
-        // dd($updateUrl->user->is_banned); 
+        // dd($updateUrl->user->is_banned);
         // dd($request);
         // return response()->json(['output' => $newUrlKey]);
 
