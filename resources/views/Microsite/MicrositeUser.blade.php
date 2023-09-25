@@ -157,157 +157,159 @@
                     </div>
                 @else
                     @foreach ($d as $row)
-                        @php
-                            $i++;
-                        @endphp
-                        <div class="">
-                            <div class="card card-body" id="searchResults">
-                                <div class="wrapper row  align-items-center">
-                                    <div class="avatar-md col-xl-1 col-lg-1 col-md-1 col-sm-1 col-12">
-                                        <div class="avatar-title">
-                                            <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/sidebar/img-1.png') }}"
-                                                style="width: 180%; height: 70%;" alt="Gambar">
-                                        </div>
-                                        <div class="initials">{{ $row->name[0] }}</div>
+                    @if ($row->user_id == $user_id)
+                    @php
+                        $i++;
+                    @endphp
+                    <div class="">
+                        <div class="card card-body" id="searchResults">
+                            <div class="wrapper row  align-items-center">
+                                <div class="avatar-md col-xl-1 col-lg-1 col-md-1 col-sm-1 col-12">
+                                    <div class="avatar-title">
+                                        <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/sidebar/img-1.png') }}"
+                                            style="width: 180%; height: 70%;" alt="Gambar">
                                     </div>
-                                    <div class="col-xl-7 col-lg-7 col-md-9 col-sm-3 col-9">
-                                        <h5 class="card-title ">{{ $row->name }}</h5>
-                                        <a>
-                                            <h3 class="garisbawah card-title mb-2">
-                                                {{ $row->shortUrl[0]->default_short_url }}
-                                            </h3>
-                                        </a>
-                                        <div id="customAlert" class="custom-alert">
-                                            <span class="alert-text"></span>
-                                        </div>
+                                    <div class="initials">{{ $row->name[0] }}</div>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-9 col-sm-3 col-9">
+                                    <h5 class="card-title ">{{ $row->name }}</h5>
+                                    <a>
+                                        <h3 class="garisbawah card-title mb-2">
+                                            {{ $row->shortUrl[0]->default_short_url }}
+                                        </h3>
+                                    </a>
+                                    <div id="customAlert" class="custom-alert">
+                                        <span class="alert-text"></span>
                                     </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-12" style="float: right ;">
-                                        <div class="" style="float: right;">
-                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse"
-                                                href="#collapseExample{{ $row->id }}" role="button"
-                                                aria-expanded="true" aria-controls="collapseExample{{ $row->id }}">
-                                                <i class="bi bi-bar-chart-fill"></i> statistik
-                                            </button>
-                                            {{-- @dd($row) --}}
-                                            <a href="{{ route('edit.microsite', ['id' => $row->id]) }}"
-                                                class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>
-                                                Edit</a>
-                                            <button type="button" id="button-email" class="btn btn-primary me-3 btn-sm"
-                                                data-bs-toggle="modal" data-bs-target="#bagikan{{ $i }}"
-                                                aria-haspopup="true" aria-expanded="false"><i
-                                                    class="fa-solid fa-share-nodes"></i>
-                                                &nbsp;Bagikan</button>
-                                            <!-- Modal bagikan -->
-                                            <div class="modal fade" id="bagikan{{ $i }}" tabindex="-1"
-                                                aria-labelledby="addAmountLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-body">
-                                                            <div class="row g-3">
-                                                                <div class="countdown-input-subscribe">
-                                                                    <label class="platform"
-                                                                        onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
-                                                                            class="bi bi-facebook"></i> &nbsp;
-                                                                        Facebook</label>
-                                                                </div>
-                                                                <div class="countdown-input-subscribe">
-                                                                    <label class="platform"
-                                                                        onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
-                                                                            class="bi bi-twitter"></i> &nbsp;
-                                                                        Twitter</label>
-                                                                </div>
-                                                                <div class="countdown-input-subscribe">
-                                                                    <label class="platform"
-                                                                        onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
-                                                                            class="bi bi-whatsapp"></i> &nbsp;
-                                                                        WhatsApp</label>
-                                                                </div>
-                                                                {{-- @dd($short_urls->destination_url) --}}
-                                                                {{-- @dd( $row->shortUrl->destination_url) --}}
-                                                                <div class="countdown-input-subscribe">
-                                                                    <label class="platform" data-platform="copy"
-                                                                        @if ($row->oneShortUrl) data-url="{{ $row->oneShortUrl->destination_url }}"
-                                                            data-id-microsite="{{ $row->oneShortUrl->id }}"
-                                                            @else
-                                                            data-url="" data-id-microsite="" @endif
-                                                                        data-id-alert="{{ $i }}">
-                                                                        <i class="bi bi-clipboard-fill"></i>
-                                                                        &nbsp;
-                                                                        Copy
-                                                                    </label>
-                                                                </div>
-                                                                <div class="countdown-input-subscribe">
-                                                                    <a id="tombol-modal"
-                                                                        onclick="tombolmodal('{{ $row->id }}')"
-                                                                        type="button" data-bs-toggle="modal"
-                                                                        data-bs-target="#tombol-modal-{{ $row->id }}"
-                                                                        data-id="{{ $row->id }}"><i
-                                                                            class="bi bi-qr-code"></i> &nbsp; QR Code</a>
-                                                                </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-12" style="float: right ;">
+                                    <div class="" style="float: right;">
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse"
+                                            href="#collapseExample{{ $row->id }}" role="button"
+                                            aria-expanded="true" aria-controls="collapseExample{{ $row->id }}">
+                                            <i class="bi bi-bar-chart-fill"></i> statistik
+                                        </button>
+                                        {{-- @dd($row) --}}
+                                        <a href="{{ route('edit.microsite', ['id' => $row->id]) }}"
+                                            class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>
+                                            Edit</a>
+                                        <button type="button" id="button-email" class="btn btn-primary me-3 btn-sm"
+                                            data-bs-toggle="modal" data-bs-target="#bagikan{{ $i }}"
+                                            aria-haspopup="true" aria-expanded="false"><i
+                                                class="fa-solid fa-share-nodes"></i>
+                                            &nbsp;Bagikan</button>
+                                        <!-- Modal bagikan -->
+                                        <div class="modal fade" id="bagikan{{ $i }}" tabindex="-1"
+                                            aria-labelledby="addAmountLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <div class="row g-3">
+                                                            <div class="countdown-input-subscribe">
+                                                                <label class="platform"
+                                                                    onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
+                                                                        class="bi bi-facebook"></i> &nbsp;
+                                                                    Facebook</label>
+                                                            </div>
+                                                            <div class="countdown-input-subscribe">
+                                                                <label class="platform"
+                                                                    onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
+                                                                        class="bi bi-twitter"></i> &nbsp;
+                                                                    Twitter</label>
+                                                            </div>
+                                                            <div class="countdown-input-subscribe">
+                                                                <label class="platform"
+                                                                    onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('link_microsite{{ $i }}').innerText}`)"><i
+                                                                        class="bi bi-whatsapp"></i> &nbsp;
+                                                                    WhatsApp</label>
+                                                            </div>
+                                                            {{-- @dd($short_urls->destination_url) --}}
+                                                            {{-- @dd( $row->shortUrl->destination_url) --}}
+                                                            <div class="countdown-input-subscribe">
+                                                                <label class="platform" data-platform="copy"
+                                                                    @if ($row->oneShortUrl) data-url="{{ $row->oneShortUrl->destination_url }}"
+                                                        data-id-microsite="{{ $row->oneShortUrl->id }}"
+                                                        @else
+                                                        data-url="" data-id-microsite="" @endif
+                                                                    data-id-alert="{{ $i }}">
+                                                                    <i class="bi bi-clipboard-fill"></i>
+                                                                    &nbsp;
+                                                                    Copy
+                                                                </label>
+                                                            </div>
+                                                            <div class="countdown-input-subscribe">
+                                                                <a id="tombol-modal"
+                                                                    onclick="tombolmodal('{{ $row->id }}')"
+                                                                    type="button" data-bs-toggle="modal"
+                                                                    data-bs-target="#tombol-modal-{{ $row->id }}"
+                                                                    data-id="{{ $row->id }}"><i
+                                                                        class="bi bi-qr-code"></i> &nbsp; QR Code</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                            </div>
-                                            <div id="tombol-modal-{{ $row->id }}" class="modal fade zoomIn modal-sm"
-                                                tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true"
-                                                style="display: none;">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="zoomInModalLabel">Gambar Kode QR
-                                                            </h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            @if ($row->shortUrl[0]->default_short_url)
-                                                                <div class="visible-print text-center">
-                                                                    {!! QrCode::size(200)->generate($row->shortUrl[0]->default_short_url) !!}
-                                                                </div>
-                                                            @else
-                                                                <p>Tidak ada URL yang tersedia untuk membuat kode QR.</p>
-                                                            @endif
-                                                            <br>
-                                                            <div class="text-center">
-                                                                <p> {{ $row->shortUrl[0]->default_short_url }}</p>
+                                        </div>
+                                        <div id="tombol-modal-{{ $row->id }}" class="modal fade zoomIn modal-sm"
+                                            tabindex="-1" aria-labelledby="zoomInModalLabel" aria-hidden="true"
+                                            style="display: none;">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="zoomInModalLabel">Gambar Kode QR
+                                                        </h5>
+                                                        <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        @if ($row->shortUrl[0]->default_short_url)
+                                                            <div class="visible-print text-center">
+                                                                {!! QrCode::size(200)->generate($row->shortUrl[0]->default_short_url) !!}
                                                             </div>
+                                                        @else
+                                                            <p>Tidak ada URL yang tersedia untuk membuat kode QR.</p>
+                                                        @endif
+                                                        <br>
+                                                        <div class="text-center">
+                                                            <p> {{ $row->shortUrl[0]->default_short_url }}</p>
                                                         </div>
-                                                        {{-- <center>
-                                            <button type="button" class="btn btn-danger">Download</button>
-                                            <button type="button" class="btn btn-light  me-3"><span><i
-                                                        class="fa-solid fa-pen-to-square"></i>&nbsp;Ganti</span></button>
-                                        </center> --}}
-                                                        <div class="modal-footer"></div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
-                                            <!-- end Modal bagikan-->
-                                        </div>
+                                                    </div>
+                                                    {{-- <center>
+                                        <button type="button" class="btn btn-danger">Download</button>
+                                        <button type="button" class="btn btn-light  me-3"><span><i
+                                                    class="fa-solid fa-pen-to-square"></i>&nbsp;Ganti</span></button>
+                                    </center> --}}
+                                                    <div class="modal-footer"></div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+                                        <!-- end Modal bagikan-->
                                     </div>
-                                </div>
-                                <p class="d-none" id="link_microsite{{ $i }}">{{ $row->link_microsite }}</p>
-                                <div class="collapse" id="collapseExample{{ $row->id }}">
-                                    <div class="card-footer">
-                                        <div class="d-flex">
-                                            <div class="col-10">
-                                                <h5><i class="bi bi-bar-chart-line-fill"></i> statistik</h5>
-                                            </div>
-                                            <div class="col-2 d-flex flex-row justify-content-end">
-                                                <button type="button" class="btn btn-light "><span>Lihat
-                                                        Detail</span>&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div id="chart{{ $row->id }}"></div>
-                                        </div><!-- end card-body -->
-                                    </div><!-- end card -->
                                 </div>
                             </div>
-                        </div><!-- end col -->
+                            <p class="d-none" id="link_microsite{{ $i }}">{{ $row->link_microsite }}</p>
+                            <div class="collapse" id="collapseExample{{ $row->id }}">
+                                <div class="card-footer">
+                                    <div class="d-flex">
+                                        <div class="col-10">
+                                            <h5><i class="bi bi-bar-chart-line-fill"></i> statistik</h5>
+                                        </div>
+                                        <div class="col-2 d-flex flex-row justify-content-end">
+                                            <button type="button" class="btn btn-light "><span>Lihat
+                                                    Detail</span>&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="chart{{ $row->id }}"></div>
+                                    </div><!-- end card-body -->
+                                </div><!-- end card -->
+                            </div>
+                        </div>
+                    </div><!-- end col -->
+                    @endif
                     @endforeach
                 @endif
             </div>
