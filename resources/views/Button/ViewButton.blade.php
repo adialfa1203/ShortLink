@@ -13,61 +13,71 @@
             </div>
 
             <div class="row mt-4">
-                @foreach ($button as $data)
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <div class="card">
-                            <div class="card-footer text-center">
-                                <div class="dropdown float-end">
-                                    <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <span class="text-muted fs-lg"><i
-                                                class="mdi mdi-dots-vertical align-middle"></i></span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item"
-                                            href="{{ route('edit.button', ['id' => $data->id]) }}">Edit</a>
-                                        <a class="dropdown-item"
-                                            href="{{ route('delete.button', ['id' => $data->id]) }}">Hapus</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <button style="background-color: {{ $data->color_hex }}; color: white;" type="button"
-                                    class="col-xl-12 col-12 btn btn-label rounded-pill" data-bs-toggle="collapse"
-                                    data-bs-target="{{ $data->id }}" aria-expanded="true"
-                                    aria-controls="{{ $data->id }}">
-                                    <i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2"
-                                        style="color: white;"></i>
-                                    {{ $data->name_button }}
-                                </button>
-                            </div>
+                @if ($button->isEmpty())
+                    <div class="d-flex flex-column align-items-center">
+                        <img style="width: 300px; height: 300px;" src="{{ asset('images/Empty.jpg') }}" alt="Gambar">
+                        <div class="d-flex justify-content-center align-items-center mt-2">
+                            <i class="ph-magnifying-glass fs-2 text-primary"></i>
+                            <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
                         </div>
                     </div>
-                @endforeach
+                @else
+                    @foreach ($button as $data)
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <div class="card">
+                                <div class="card-footer text-center">
+                                    <div class="dropdown float-end">
+                                        <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <span class="text-muted fs-lg"><i
+                                                    class="mdi mdi-dots-vertical align-middle"></i></span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a class="dropdown-item"
+                                                href="{{ route('edit.button', ['id' => $data->id]) }}">Edit</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('delete.button', ['id' => $data->id]) }}">Hapus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <button style="background-color: {{ $data->color_hex }}; color: white;" type="button"
+                                        class="col-xl-12 col-12 btn btn-label rounded-pill" data-bs-toggle="collapse"
+                                        data-bs-target="{{ $data->id }}" aria-expanded="true"
+                                        aria-controls="{{ $data->id }}">
+                                        <i class="{{ $data->icon }} label-icon align-middle rounded-pill fs-lg me-2"
+                                            style="color: white;"></i>
+                                        {{ $data->name_button }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
                 {{-- <div class="pagination-wrap hstack justify-content-center gap-2">
                     <a class="page-item pagination-prev {{ $button->previousPageUrl() ? '' : 'disabled' }}" href="{{ $button->previousPageUrl() ? $button->previousPageUrl() : '#' }}">
                         Previous
                     </a>
                     <ul class="pagination listjs-pagination mb-0">
-                        @if($button->currentPage() > 2)
+                        @if ($button->currentPage() > 2)
                             <li>
                                 <a class="page" href="{{ $button->url(1) }}">1</a>
                             </li>
-                            @if($button->currentPage() > 3)
+                            @if ($button->currentPage() > 3)
                                 <li class="ellipsis">
                                     <span>...</span>
                                 </li>
                             @endif
                         @endif
 
-                        @for($i = max(1, $button->currentPage() - 1); $i <= min($button->lastPage(), $button->currentPage() + 1); $i++)
+                        @for ($i = max(1, $button->currentPage() - 1); $i <= min($button->lastPage(), $button->currentPage() + 1); $i++)
                             <li class="{{ $i == $button->currentPage() ? 'active' : '' }}">
                                 <a class="page" href="{{ $button->url($i) }}" data-i="{{ $i }}">{{ $i }}</a>
                             </li>
                         @endfor
 
-                        @if($button->currentPage() < $button->lastPage() - 1)
-                            @if($button->currentPage() < $button->lastPage() - 2)
+                        @if ($button->currentPage() < $button->lastPage() - 1)
+                            @if ($button->currentPage() < $button->lastPage() - 2)
                                 <li class="ellipsis">
                                     <span>...</span>
                                 </li>

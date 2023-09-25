@@ -65,7 +65,7 @@ class MicrositeController extends Controller
         return view('Microsite.MicrositeUser', compact('data', 'urlshort', 'short_urls','result', 'd','qr'));
     }
 
-    public function addMicrosite()
+    public function addMicrosite(Request $request)
     {
         $data = Components::all();
         $button = Button::all();
@@ -88,11 +88,13 @@ class MicrositeController extends Controller
             'name' => 'required|string|regex:/^[^-+]+$/u|max:10',
             'link_microsite' => 'required|regex:/^[^+]+$/u|unique:microsites,link_microsite,id',
         ]);
+        $link = $request->link_microsite;
+        $micrositeStr = str_replace(' ', '-', $link);
         $data = [
             'components_uuid' => $request->microsite_selection,
             'user_id' => auth()->user()->id,
             'name' => $request->name,
-            'link_microsite' => $request->link_microsite,
+            'link_microsite' => $micrositeStr,
         ];
 
         $selectedComponentId = $request->input('microsite_selection');
@@ -100,16 +102,19 @@ class MicrositeController extends Controller
 
         $microsite = Microsite::create($data);
         $builder = new \AshAllenDesign\ShortURL\Classes\Builder();
-        $micrositeObject = $builder->destinationUrl(route('microsite.short.link', $microsite->link_microsite))->make();
+        $micrositeObject = $builder->destinationUrl(route('microsite.short.link', str_replace(' ', '-', $microsite->link_microsite)))->make();
+
         ShortUrl::where('url_key', $micrositeObject->url_key)->update([
             'user_id' => auth()->id(),
             'microsite_uuid' => $microsite->id,
         ]);
         $short_id = ShortUrl::where('url_key', $micrositeObject->url_key)->first()->id;
+        $link_microsite = str_replace(' ', '-', $request->link_microsite);
         ShortUrl::findOrFail($short_id)->update([
-            'url_key' => $request->link_microsite,
-            'default_short_url' => "http://127.0.0.1:8000/go.link/" . $request->link_microsite,
+            'url_key' => $link_microsite,
+            'default_short_url' => "http://127.0.0.1:8000/go.link/" . $link_microsite,
         ]);
+
 
         foreach ($selectedButtons as $select) {
             $socialData = [

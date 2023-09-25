@@ -91,43 +91,37 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-centered align-middle table-nowrap mb-0">
-                                        <thead class="table-active">
-                                            <tr>
-                                                {{-- <th>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="option"
-                                                            id="checkAll">
-                                                        <label class="form-check-label" for="checkAll"></label>
-                                                    </div>
-                                                </th> --}}
-                                                <th class="" data-sort="products">Tanggal Bayar</th>
-                                                <th class="" data-sort="category">Layanan</th>
-                                                <th class="" data-sort="stock">Metode</th>
-                                                <th class="" data-sort="price">Harga</th>
-                                            </tr>
-                                        </thead>
-                                        <!-- ... Isi tabel di sini ... -->
-                                        <tbody>
-                                            <!-- Baris pertama (data dummy) -->
-                                            <tr>
-                                                <td>2023-09-19</td>
-                                                <td>Layanan A</td>
-                                                <td>Metode 1</td>
-                                                <td>$100</td>
-                                            </tr>
-
-                                            <!-- Baris kedua (data dummy) -->
-                                            <tr>
-                                                <td>2023-09-20</td>
-                                                <td>Layanan B</td>
-                                                <td>Metode 2</td>
-                                                <td>$120</td>
-                                            </tr>
-
-                                            <!-- Tambahkan lebih banyak baris sesuai dengan data Anda -->
-                                        </tbody>
-                                    </table>
+                                    @if ($data->isEmpty())
+                                        <div class="d-flex flex-column align-items-center">
+                                            <img style="width: 300px; height: 300px;" src="{{ asset('images/Empty.jpg') }}"
+                                                alt="Gambar">
+                                            <div class="d-flex justify-content-center align-items-center mt-2">
+                                                <i class="ph-magnifying-glass fs-2 text-primary"></i>
+                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <table class="table table-centered align-middle table-nowrap mb-0">
+                                            <thead class="table-active">
+                                                <tr>
+                                                    <th class="" data-sort="products">Tanggal Bayar</th>
+                                                    <th class="" data-sort="category">Layanan</th>
+                                                    <th class="" data-sort="stock">Metode</th>
+                                                    <th class="" data-sort="price">Harga</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($data as $subs)
+                                                    <tr>
+                                                        <td>2023-09-19</td>
+                                                        <td>Layanan A</td>
+                                                        <td>Metode 1</td>
+                                                        <td>$100</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    @endforeach
+                                    @endif
                                 </div>
 
                                 <div class="noresult" style="display: none">
@@ -182,7 +176,7 @@
                                 <a class="page-item pagination-next {{ $data->nextPageUrl() ? '' : 'disabled' }}"
                                     href="{{ $data->nextPageUrl() ? $data->nextPageUrl() : '#' }}">
                                     Next
-                                    </a>
+                                </a>
                             </div>
                         </div><!--end card-->
                     </div><!--end col-->

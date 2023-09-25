@@ -29,7 +29,8 @@
     <link rel="shortcut icon" href="{{ asset('template/themesbrand.com/steex/layouts/assets/images/Logo.png') }}"
         style="width: 200px; height: 200px;">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <link href="{{ asset('template/themesbrand.com/steex/layouts/assets/css/icons.min.css') }}" rel="stylesheet"
+        type="text/css">
 </head>
 
 <body>
@@ -131,41 +132,52 @@
             <div class="col-xxl-12">
                 <div class="card mb-3">
                     <div class="card-header-white d-flex align-items-center">
-                        <h5 class="card-title mb-0 flex-grow-1 text-center mt-2">Aktivitas Terbaru</h5>
+                        <h5 class="card-title mb-0 flex-grow-1 text-center mt-4">Aktivitas Terbaru</h5>
                     </div>
                     <div class="card-body px-0" style="height: 500px; overflow-y: scroll;">
-                        @foreach ($komentar as $key => $row)
-                            <div class="card-body">
-                                <div
-                                    class="d-flex align-items-center text-muted mb-4 comment-container{{ $key < 1 ? '' : ' hidden' }}"">
-                                    <div class="flex-shrink-0 me-3">
-                                        <img src="{{ $row->user->profile_picture ? asset($row->user->profile_picture) : asset('profile_pictures/default.jpg') }}"
-                                            class="avatar-sm rounded" alt="..." width="50px" height="50px">
-                                    </div>
-                                    <div class="flex-grow-1 d-flex flex-column">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                            @foreach ($userId as $user)
-                                                @if ($user->id == $row->user_id)
-                                                    <h6 class="fs-md" style="margin-left:12px; font-size:14px;">
-                                                        {{ $user->name }}
-                                                    </h6>
-                                                @endif
-                                            @endforeach
-                                            @if ($row->created_at)
-                                                <h6 style="font-size:14px;">
-                                                    {{ $row->created_at->format('d F Y H:i') }}</h6>
-                                            @else
-                                                <h6 style="font-size:14px;">Tanggal tidak tersedia</h6>
-                                            @endif
+                        @if ($komentar->isEmpty())
+                            <div class="d-flex flex-column align-items-center">
+                                <img style="width: 300px; height: 300px;" src="{{ asset('images/Empty.jpg') }}"
+                                    alt="Gambar">
+                                <div class="d-flex justify-content-center align-items-center mt-2">
+                                    <i class="ph-magnifying-glass fs-2 text-primary"></i>
+                                    <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
+                                </div>
+                            </div>
+                        @else
+                            @foreach ($komentar as $key => $row)
+                                <div class="card-body">
+                                    <div
+                                        class="d-flex align-items-center text-muted mb-4 comment-container{{ $key < 1 ? '' : ' hidden' }}"">
+                                        <div class="flex-shrink-0 me-3">
+                                            <img src="{{ $row->user->profile_picture ? asset($row->user->profile_picture) : asset('profile_pictures/default.jpg') }}"
+                                                class="avatar-sm rounded" alt="..." width="50px" height="50px">
                                         </div>
-                                        <div class="d-flex justify-content-between align-items-start">
-                                            <h6 class="mb-1 mt-2" style="margin-left:12px; font-size:14px;">
-                                                {{ $row->isikomentar }}</h6>
+                                        <div class="flex-grow-1 d-flex flex-column">
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                @foreach ($userId as $user)
+                                                    @if ($user->id == $row->user_id)
+                                                        <h6 class="fs-md" style="margin-left:12px; font-size:14px;">
+                                                            {{ $user->name }}
+                                                        </h6>
+                                                    @endif
+                                                @endforeach
+                                                @if ($row->created_at)
+                                                    <h6 style="font-size:14px;">
+                                                        {{ $row->created_at->format('d F Y H:i') }}</h6>
+                                                @else
+                                                    <h6 style="font-size:14px;">Tanggal tidak tersedia</h6>
+                                                @endif
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                <h6 class="mb-1 mt-2" style="margin-left:12px; font-size:14px;">
+                                                    {{ $row->isikomentar }}</h6>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        @endif
 
                     </div><!-- end card-body -->
                 </div>
@@ -177,12 +189,10 @@
     <!-- Footer-Section end -->
 
     <!-- VIDEO MODAL -->
-    <div class="modal fade youtube-video" id="myModal" tabindex="-1" role="dialog"
-        aria-labelledby="myModalLabel">
+    <div class="modal fade youtube-video" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <button id="close-video" type="button" class="button btn btn-default text-right"
-                    data-dismiss="modal">
+                <button id="close-video" type="button" class="button btn btn-default text-right" data-dismiss="modal">
                     <i class="icofont-close-line-circled"></i>
                 </button>
                 <div class="modal-body">
