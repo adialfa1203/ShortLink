@@ -9,6 +9,7 @@ use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Footer;
+use App\Models\History;
 
 class DahsboardController extends Controller
 {
@@ -32,9 +33,12 @@ class DahsboardController extends Controller
             ->count();
         } if ($user) {
             $userId = $user->id;
-        $countURL = ShortURL::where('user_id', $userId)
+        $totalUrl = ShortURL::where('user_id', $userId)
                             ->whereNull('microsite_uuid')
                             ->count();
+        $countHistory = History::where('user_id', $userId)
+                            ->count();
+        $countURL = $totalUrl + $countHistory;
         } if ($user) {
             $userId = $user->id;
         $countMIcrosite = ShortURL::where('user_id', $userId)
