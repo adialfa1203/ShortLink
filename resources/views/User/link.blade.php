@@ -85,388 +85,421 @@
                                     @php
                                         $i = 0;
                                     @endphp
-                                    @foreach ($urlshort as $row)
-                                        @php
-                                            $i++;
-                                        @endphp
-                                        <form action="/archive/{{ $row->id }}">
-                                            @csrf
-                                            <div class="col-lg-12">
-                                                <div class="card"
-                                                    style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;"
-                                                    id="card{{ $row->id }}">
-                                                    <div class="card-body">
-                                                        <h6 class="col-lg-3 col-md-4 col-sm-12">{{ $row->title }}</h6>
-                                                        <div
-                                                            class="col-lg-12 col-md-12 col-sm-9 d-flex flex-row justify-content-end">
-                                                            <button type="button" id="button-email"
-                                                                class="btn btn-primary me-3 btn-sm" data-bs-toggle="modal"
-                                                                data-bs-target="#bagikan{{ $i }}"
-                                                                aria-haspopup="true" aria-expanded="false"><i
-                                                                    class="fa-solid fa-share-nodes"></i>
-                                                                &nbsp;Bagikan</button>
+                                    @if ($urlshort->isEmpty())
+                                        <div class="card d-flex flex-column align-items-center">
+                                            <img style="width: 300px; height: 300px;" src="{{ asset('images/Empty.jpg') }}"
+                                                alt="Gambar">
+                                            <div class="d-flex justify-content-center align-items-center mt-2 mb-4">
+                                                <i class="ph-magnifying-glass fs-2 text-primary"></i>
+                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
+                                            </div>
+                                        </div>
+                                    @else
+                                        @foreach ($urlshort as $row)
+                                            @php
+                                                $i++;
+                                            @endphp
+                                            <form action="/archive/{{ $row->id }}">
+                                                @csrf
+                                                <div class="col-lg-12">
+                                                    <div class="card"
+                                                        style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;"
+                                                        id="card{{ $row->id }}">
+                                                        <div class="card-body">
+                                                            <h6 class="col-lg-3 col-md-4 col-sm-12">{{ $row->title }}</h6>
+                                                            <div
+                                                                class="col-lg-12 col-md-12 col-sm-9 d-flex flex-row justify-content-end">
+                                                                <button type="button" id="button-email"
+                                                                    class="btn btn-primary me-3 btn-sm"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#bagikan{{ $i }}"
+                                                                    aria-haspopup="true" aria-expanded="false"><i
+                                                                        class="fa-solid fa-share-nodes"></i>
+                                                                    &nbsp;Bagikan</button>
 
-                                                            <!-- Modal bagikan -->
-                                                            <div class="modal fade" id="bagikan{{ $i }}"
-                                                                tabindex="-1" aria-labelledby="addAmountLabel"
-                                                                aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-body">
-                                                                            <div class="row g-3">
-                                                                                <div class="countdown-input-subscribe">
-                                                                                    <label class="platform"
-                                                                                        onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
-                                                                                            class="bi bi-facebook"></i>
-                                                                                        &nbsp; Facebook</label>
-                                                                                </div>
-                                                                                <div class="countdown-input-subscribe">
-                                                                                    <label class="platform"
-                                                                                        onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
-                                                                                            class="bi bi-twitter"></i>
-                                                                                        &nbsp; Twitter</label>
-                                                                                </div>
-                                                                                <div class="countdown-input-subscribe">
-                                                                                    <label class="platform"
-                                                                                        onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
-                                                                                            class="bi bi-whatsapp"></i>
-                                                                                        &nbsp; WhatsApp</label>
-                                                                                </div>
-                                                                                <div class="countdown-input-subscribe">
-                                                                                    <label class="platform"
-                                                                                        data-platform="copy"
-                                                                                        id="copyButton{{ $i }}"
-                                                                                        data-url="{{ $row->default_short_url }}"
-                                                                                        data-id-copy="{{ $i }}">
-                                                                                        <i class="bi bi-clipboard-fill"></i>
-                                                                                        &nbsp; Copy
-                                                                                    </label>
-                                                                                </div>
+                                                                <!-- Modal bagikan -->
+                                                                <div class="modal fade" id="bagikan{{ $i }}"
+                                                                    tabindex="-1" aria-labelledby="addAmountLabel"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-body">
+                                                                                <div class="row g-3">
+                                                                                    <div class="countdown-input-subscribe">
+                                                                                        <label class="platform"
+                                                                                            onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
+                                                                                                class="bi bi-facebook"></i>
+                                                                                            &nbsp; Facebook</label>
+                                                                                    </div>
+                                                                                    <div class="countdown-input-subscribe">
+                                                                                        <label class="platform"
+                                                                                            onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
+                                                                                                class="bi bi-twitter"></i>
+                                                                                            &nbsp; Twitter</label>
+                                                                                    </div>
+                                                                                    <div class="countdown-input-subscribe">
+                                                                                        <label class="platform"
+                                                                                            onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
+                                                                                                class="bi bi-whatsapp"></i>
+                                                                                            &nbsp; WhatsApp</label>
+                                                                                    </div>
+                                                                                    <div class="countdown-input-subscribe">
+                                                                                        <label class="platform"
+                                                                                            data-platform="copy"
+                                                                                            id="copyButton{{ $i }}"
+                                                                                            data-url="{{ $row->default_short_url }}"
+                                                                                            data-id-copy="{{ $i }}">
+                                                                                            <i
+                                                                                                class="bi bi-clipboard-fill"></i>
+                                                                                            &nbsp; Copy
+                                                                                        </label>
+                                                                                    </div>
 
-                                                                                <div class="countdown-input-subscribe">
-                                                                                    <label class="platform"
-                                                                                        onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
-                                                                                            class="bi bi-qr-code"></i>
-                                                                                        &nbsp; QR Code</label>
+                                                                                    <div class="countdown-input-subscribe">
+                                                                                        <label class="platform"
+                                                                                            onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
+                                                                                                class="bi bi-qr-code"></i>
+                                                                                            &nbsp; QR Code</label>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
 
-                                                            <!-- end Modal bagikan-->
-                                                            <button id="tombol-modal"
-                                                                onclick="tombolmodal('{{ $row->id }}')" type="button"
-                                                                class="btn btn-light me-3 btn-sm clickButton"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#tombol-modal-{{ $row->id }}"
-                                                                data-id="{{ $row->id }}">
-                                                                <span data-bs-toggle="tooltip" data-bs-placement="left"
-                                                                    title="Kode QR"><i
-                                                                        class="fa-solid fa-qrcode"></i></span>
-                                                            </button>
-
-                                                            <button type="button"
-                                                                class="btn btn-light me-3 btn-sm edit-link"
-                                                                data-bs-toggle="modal" data-bs-target="#zoomInModal"
-                                                                data-link="{{ $row->url_key }}">
-                                                                <span><i
-                                                                        class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
-                                                            </button>
-                                                        </div>
-                                                        <br>
-                                                        <a>
-                                                            <h3 class="garisbawah card-title mb-2">
-                                                                {{ $row->default_short_url }}</h3>
-                                                        </a>
-                                                        <a href="{{ $row->destination_url }}"
-                                                            class="card-subtitle font-14 text-muted">{{ $row->destination_url }}</a>
-                                                    </div>
-                                                    {{-- modal hapus --}}
-                                                    <div class="modal fade" id="arsip{{ $row->id }}">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                                <form action="/archive/{{ $row->id }}"
-                                                                    method="GET">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"></h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal">
-                                                                        </button>
-                                                                    </div>
-
-                                                                    <div class="modal-body">
-                                                                        <h4 style="font-size: 19px">Yakin Ingin Mengarsip
-                                                                            Data?</h4>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Batal</button>
-                                                                        <button type="submit"
-                                                                            class="btn btn-primary btn-xs form-control1">Arsip</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-footer">
-                                                        <div
-                                                            class="d-flex flex-column flex-sm-row justify-content-between">
-                                                            <div class="d-flex col-12 col-sm-5 ">
-                                                                <p style="margin-top: 10px;">
-                                                                    {{ \Carbon\Carbon::parse($row->deactivated_at)->format('F j, Y, h:i A') }}
-                                                                </p>
-                                                                &nbsp
-                                                                <?php
-                                                                $deactivatedAt = $row->deactivated_at; // Ambil nilai deactivated_at dari data
-                                                                $now = \Carbon\Carbon::now();
-
-                                                                if ($deactivatedAt === null) {
-                                                                    echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
-                                                                } elseif (\Carbon\Carbon::parse($deactivatedAt) >= $now) {
-                                                                    echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
-                                                                } else {
-                                                                    echo '<p class="text-danger" style="margin-top: 10px;">Tautan kadaluarsa</p>';
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                            <div
-                                                                class="col-12 col-sm-7 d-flex flex-row justify-content-end mt-2 mt-sm-0">
-                                                                <button type="button" class="btn btn-light  me-3 btn-sm"
+                                                                <!-- end Modal bagikan-->
+                                                                <button id="tombol-modal"
+                                                                    onclick="tombolmodal('{{ $row->id }}')"
+                                                                    type="button"
+                                                                    class="btn btn-light me-3 btn-sm clickButton"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#TimeModal-{{ $row->id }}"
-                                                                    data-link="{{ $row->url_key }}"><span
-                                                                        data-bs-toggle="tooltip" data-bs-placement="left"
-                                                                        title="Tautan berbasis waktu"><i
-                                                                            class="fa-solid fa-clock"></i>&nbsp;Atur
-                                                                        waktu</span></button>
-                                                                <button type="button" class="btn btn-light me-3 btn-sm"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#zoomInModal1"><span
-                                                                        data-bs-toggle="tooltip" data-bs-placement="left"
-                                                                        title="Tautan terlindungi"><i
-                                                                            class="fa-solid fa-lock"></i>&nbsp;kata
-                                                                        sandi</span></button>
-                                                                <button type="button" class="btn btn-light btn-sm"
-                                                                    data-bs-toggle="collapse"
-                                                                    href="#collapseExample{{ $row->id }}"
-                                                                    role="button" aria-expanded="true"
-                                                                    aria-controls="collapseExample{{ $row->id }}">
-                                                                    <i class="bi bi-bar-chart-line-fill"></i> statistik
+                                                                    data-bs-target="#tombol-modal-{{ $row->id }}"
+                                                                    data-id="{{ $row->id }}">
+                                                                    <span data-bs-toggle="tooltip" data-bs-placement="left"
+                                                                        title="Kode QR"><i
+                                                                            class="fa-solid fa-qrcode"></i></span>
+                                                                </button>
+
+                                                                <button type="button"
+                                                                    class="btn btn-light me-3 btn-sm edit-link"
+                                                                    data-bs-toggle="modal" data-bs-target="#zoomInModal"
+                                                                    data-link="{{ $row->url_key }}">
+                                                                    <span><i
+                                                                            class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
                                                                 </button>
                                                             </div>
-
+                                                            <br>
+                                                            <a>
+                                                                <h3 class="garisbawah card-title mb-2">
+                                                                    {{ $row->default_short_url }}</h3>
+                                                            </a>
+                                                            <a href="{{ $row->destination_url }}"
+                                                                class="card-subtitle font-14 text-muted">{{ $row->destination_url }}</a>
                                                         </div>
-                                                    </div>
-                                                    <div id="zoomInModal1" class="modal fade zoomIn" tabindex="-1"
-                                                        aria-labelledby="zoomInModalLabel" aria-hidden="true"
-                                                        style="display: none;">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="col-lg-12">
-                                                                    <div class="card">
-                                                                        <div class="card-header fw-bold">
-                                                                            <div class="avatar-sm mx-auto mb-3">
-                                                                                <div
-                                                                                    class="avatar-title bg-custom text-primary fs-xl rounded">
-                                                                                    <i class="fa-solid fa-lock"></i>
+                                                        {{-- modal hapus --}}
+                                                        <div class="modal fade" id="arsip{{ $row->id }}">
+                                                            <div class="modal-dialog modal-dialog-centered"
+                                                                role="document">
+                                                                <div class="modal-content">
+                                                                    <form action="/archive/{{ $row->id }}"
+                                                                        method="GET">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"></h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal">
+                                                                            </button>
+                                                                        </div>
+
+                                                                        <div class="modal-body">
+                                                                            <h4 style="font-size: 19px">Yakin Ingin
+                                                                                Mengarsip
+                                                                                Data?</h4>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Batal</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary btn-xs form-control1">Arsip</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <div
+                                                                class="d-flex flex-column flex-sm-row justify-content-between">
+                                                                <div class="d-flex col-12 col-sm-5 ">
+                                                                    <p style="margin-top: 10px;">
+                                                                        {{ \Carbon\Carbon::parse($row->deactivated_at)->format('F j, Y, h:i A') }}
+                                                                    </p>
+                                                                    &nbsp
+                                                                    <?php
+                                                                    $deactivatedAt = $row->deactivated_at; // Ambil nilai deactivated_at dari data
+                                                                    $now = \Carbon\Carbon::now();
+
+                                                                    if ($deactivatedAt === null) {
+                                                                        echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
+                                                                    } elseif (\Carbon\Carbon::parse($deactivatedAt) >= $now) {
+                                                                        echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
+                                                                    } else {
+                                                                        echo '<p class="text-danger" style="margin-top: 10px;">Tautan kadaluarsa</p>';
+                                                                    }
+                                                                    ?>
+                                                                </div>
+                                                                <div
+                                                                    class="col-12 col-sm-7 d-flex flex-row justify-content-end mt-2 mt-sm-0">
+                                                                    <button type="button"
+                                                                        class="btn btn-light  me-3 btn-sm"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#TimeModal-{{ $row->id }}"
+                                                                        data-link="{{ $row->url_key }}"><span
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="left"
+                                                                            title="Tautan berbasis waktu"><i
+                                                                                class="fa-solid fa-clock"></i>&nbsp;Atur
+                                                                            waktu</span></button>
+                                                                    <button type="button"
+                                                                        class="btn btn-light me-3 btn-sm"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#zoomInModal1"><span
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="left"
+                                                                            title="Tautan terlindungi"><i
+                                                                                class="fa-solid fa-lock"></i>&nbsp;kata
+                                                                            sandi</span></button>
+                                                                    <button type="button" class="btn btn-light btn-sm"
+                                                                        data-bs-toggle="collapse"
+                                                                        href="#collapseExample{{ $row->id }}"
+                                                                        role="button" aria-expanded="true"
+                                                                        aria-controls="collapseExample{{ $row->id }}">
+                                                                        <i class="bi bi-bar-chart-line-fill"></i> statistik
+                                                                    </button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div id="zoomInModal1" class="modal fade zoomIn" tabindex="-1"
+                                                            aria-labelledby="zoomInModalLabel" aria-hidden="true"
+                                                            style="display: none;">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="card">
+                                                                            <div class="card-header fw-bold">
+                                                                                <div class="avatar-sm mx-auto mb-3">
+                                                                                    <div
+                                                                                        class="avatar-title bg-custom text-primary fs-xl rounded">
+                                                                                        <i class="fa-solid fa-lock"></i>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="card-body text-center">
-                                                                            <h4 class="card-title">Anda Tidak Bisa
-                                                                                Mengakses Fitur Ini!</h4>
-                                                                            <p class="card-text text-muted">Anda perlu
-                                                                                Beralih ke Berlangganan
-                                                                                Untuk Bisa Menikmati Fitur Ini</p>
-                                                                        </div>
-                                                                        <div class="card-footer text-center">
-                                                                            <a href="/subscribe-product-user"
-                                                                                style="color: red;"> Mulai
-                                                                                Berlangganan? </a>
+                                                                            <div class="card-body text-center">
+                                                                                <h4 class="card-title">Anda Tidak Bisa
+                                                                                    Mengakses Fitur Ini!</h4>
+                                                                                <p class="card-text text-muted">Anda perlu
+                                                                                    Beralih ke Berlangganan
+                                                                                    Untuk Bisa Menikmati Fitur Ini</p>
+                                                                            </div>
+                                                                            <div class="card-footer text-center">
+                                                                                <a href="/subscribe-product-user"
+                                                                                    style="color: red;"> Mulai
+                                                                                    Berlangganan? </a>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div><!-- /.modal-dialog -->
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <!-- /.modal -->
-                                                    <div id="tombol-modal-{{ $row->id }}"
-                                                        class="modal fade zoomIn modal-sm" tabindex="-1"
-                                                        aria-labelledby="zoomInModalLabel" aria-hidden="true"
-                                                        style="display: none;">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="zoomInModalLabel">Gambar
-                                                                        Kode QR</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="visible-print text-center">
-                                                                        {!! QrCode::size(200)->generate($row->destination_url) !!}
-                                                                    </div>
-                                                                    <br>
-                                                                    <div class="text-center">
-                                                                        <p>{{ $row->default_short_url }}</p>
-                                                                    </div>
-                                                                    <!-- <center>
-                                                                                        <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
-                                                                                    </center> -->
-                                                                </div>
-                                                                {{-- <center>
-                                                                    <button type="button" class="btn btn-danger">Download</button>
-                                                                    <button type="button" class="btn btn-light  me-3"><span><i
-                                                                                class="fa-solid fa-pen-to-square"></i>&nbsp;Ganti</span></button>
-                                                                </center> --}}
-                                                                <div class="modal-footer"></div>
-                                                            </div><!-- /.modal-content -->
-                                                        </div><!-- /.modal-dialog -->
-                                                    </div><!-- /.modal -->
-                                                    <p class="d-none" id="default_short_url{{ $i }}">
-                                                        {{ $row->default_short_url }}
-                                                    </p>
-
-                                                    <form id="formKustom">
-                                                        <div id="zoomInModal" class="modal fade zoomIn" tabindex="-1"
+                                                        <!-- /.modal -->
+                                                        <div id="tombol-modal-{{ $row->id }}"
+                                                            class="modal fade zoomIn modal-sm" tabindex="-1"
                                                             aria-labelledby="zoomInModalLabel" aria-hidden="true"
                                                             style="display: none;">
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="zoomInModalLabel"><i
-                                                                                class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom
-                                                                            Tautan
-                                                                        </h5>
+                                                                        <h5 class="modal-title" id="zoomInModalLabel">
+                                                                            Gambar
+                                                                            Kode QR</h5>
                                                                         <button type="button" class="btn-close"
                                                                             data-bs-dismiss="modal"
                                                                             aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <div class="card-body d-flex"
-                                                                            style="background-color: #D9D9D9;">
-                                                                            <p><i class="fa-solid fa-pen-to-square"></i>
-                                                                            </p>
-                                                                            &nbsp;
-                                                                            <p>Kustom tautan adalah fitur yang memungkinkan
-                                                                                pengguna untuk membuat tautan pendek yang
-                                                                                disesuaikan dengan
-                                                                                keinginan mereka.
-                                                                                Pengguna dapat mengganti atau menentukan
-                                                                                bagian akhir dari
-                                                                                tautan
-                                                                                pendek
-                                                                                untuk mencerminkan kata kunci, nama merek,
-                                                                                atau informasi yang
-                                                                                relevan dengan tautan tersebut.</p>
+                                                                        <div class="visible-print text-center">
+                                                                            {!! QrCode::size(200)->generate($row->destination_url) !!}
                                                                         </div>
-                                                                        <div class="col-lg-12 mb-3">
-                                                                            <label for="new_url_key">Kustom Nama</label>
-                                                                            <input type="text" class="form-control"
-                                                                                name="new_url_key" id="new_url_key"
-                                                                                placeholder="Kustom nama">
+                                                                        <br>
+                                                                        <div class="text-center">
+                                                                            <p>{{ $row->default_short_url }}</p>
                                                                         </div>
-                                                                        <div class="col-lg-12 mb-3">
-                                                                            <label for="new_url_key"></label>
-                                                                            <input type="hidden" class="form-control"
-                                                                                name="custom_name" id="new_url_key"
-                                                                                placeholder="Kustom nama">
-                                                                        </div>
+                                                                        <!-- <center>
+                                                                                                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
+                                                                                            </center> -->
                                                                     </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-light"
-                                                                            data-bs-dismiss="modal">Tutup</button>
-                                                                        <button id="submitKustom" type="button"
-                                                                            class="btn btn-primary submitKustom">Simpan</button>
-                                                                    </div>
+                                                                    {{-- <center>
+                                                                    <button type="button" class="btn btn-danger">Download</button>
+                                                                    <button type="button" class="btn btn-light  me-3"><span><i
+                                                                                class="fa-solid fa-pen-to-square"></i>&nbsp;Ganti</span></button>
+                                                                </center> --}}
+                                                                    <div class="modal-footer"></div>
                                                                 </div><!-- /.modal-content -->
                                                             </div><!-- /.modal-dialog -->
                                                         </div><!-- /.modal -->
-                                                    </form>
-                                                    <form id="updateTime">
-                                                        <div id="TimeModal-{{ $row->id }}" class="modal fade Time"
-                                                            tabindex="-1" aria-labelledby="TimeModalLabel"
-                                                            aria-hidden="true" style="display: none;">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="TimeModalLabel"><i
-                                                                                class="fa-solid fa-clock"></i>&nbsp;Atur
-                                                                            Waktu</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal" aria-label="Close"
-                                                                            data-id="{{ $row->id }}"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="card-body d-flex"
-                                                                            style="background-color: #D9D9D9;">
-                                                                            <p><i class="fa-solid fa-clock"></i></p>
-                                                                            &nbsp;
-                                                                            <p>Tautan berbasis waktu adalah jenis tautan
-                                                                                yang hanya berlangsung
-                                                                                selama periode waktu tertentu.
-                                                                                Ketika tautan telah kedaluwarsa, maka tautan
-                                                                                tersebut tidak
-                                                                                dapat
-                                                                                diakses lagi.</p>
+                                                        <p class="d-none" id="default_short_url{{ $i }}">
+                                                            {{ $row->default_short_url }}
+                                                        </p>
+
+                                                        <form id="formKustom">
+                                                            <div id="zoomInModal" class="modal fade zoomIn"
+                                                                tabindex="-1" aria-labelledby="zoomInModalLabel"
+                                                                aria-hidden="true" style="display: none;">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="zoomInModalLabel">
+                                                                                <i
+                                                                                    class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom
+                                                                                Tautan
+                                                                            </h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
                                                                         </div>
-                                                                        <div class="col-lg-12 mb-3">
-                                                                            <label for="deactivated_at">Ubah
-                                                                                Tanggal</label>
-                                                                            <input type="datetime-local"
-                                                                                class="form-control" name="deactivated_at"
-                                                                                @if (!is_null($row->deactivated_at)) value="{{ \Carbon\Carbon::parse($row->deactivated_at)->format('Y-m-d\TH:i') }}" @endif
-                                                                                data-id="{{ $row->id }}"
-                                                                                id="deactivated_at-{{ $row->id }}"
+                                                                        <div class="modal-body">
+                                                                            <div class="card-body d-flex"
+                                                                                style="background-color: #D9D9D9;">
+                                                                                <p><i
+                                                                                        class="fa-solid fa-pen-to-square"></i>
+                                                                                </p>
+                                                                                &nbsp;
+                                                                                <p>Kustom tautan adalah fitur yang
+                                                                                    memungkinkan
+                                                                                    pengguna untuk membuat tautan pendek
+                                                                                    yang
+                                                                                    disesuaikan dengan
+                                                                                    keinginan mereka.
+                                                                                    Pengguna dapat mengganti atau menentukan
+                                                                                    bagian akhir dari
+                                                                                    tautan
+                                                                                    pendek
+                                                                                    untuk mencerminkan kata kunci, nama
+                                                                                    merek,
+                                                                                    atau informasi yang
+                                                                                    relevan dengan tautan tersebut.</p>
+                                                                            </div>
+                                                                            <div class="col-lg-12 mb-3">
+                                                                                <label for="new_url_key">Kustom
+                                                                                    Nama</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    name="new_url_key" id="new_url_key"
+                                                                                    placeholder="Kustom nama">
+                                                                            </div>
+                                                                            <div class="col-lg-12 mb-3">
+                                                                                <label for="new_url_key"></label>
+                                                                                <input type="hidden" class="form-control"
+                                                                                    name="custom_name" id="new_url_key"
+                                                                                    placeholder="Kustom nama">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-light"
+                                                                                data-bs-dismiss="modal">Tutup</button>
+                                                                            <button id="submitKustom" type="button"
+                                                                                class="btn btn-primary submitKustom">Simpan</button>
+                                                                        </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div><!-- /.modal -->
+                                                        </form>
+                                                        <form id="updateTime">
+                                                            <div id="TimeModal-{{ $row->id }}"
+                                                                class="modal fade Time" tabindex="-1"
+                                                                aria-labelledby="TimeModalLabel" aria-hidden="true"
+                                                                style="display: none;">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="TimeModalLabel"><i
+                                                                                    class="fa-solid fa-clock"></i>&nbsp;Atur
+                                                                                Waktu</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal" aria-label="Close"
+                                                                                data-id="{{ $row->id }}"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="card-body d-flex"
+                                                                                style="background-color: #D9D9D9;">
+                                                                                <p><i class="fa-solid fa-clock"></i></p>
+                                                                                &nbsp;
+                                                                                <p>Tautan berbasis waktu adalah jenis tautan
+                                                                                    yang hanya berlangsung
+                                                                                    selama periode waktu tertentu.
+                                                                                    Ketika tautan telah kedaluwarsa, maka
+                                                                                    tautan
+                                                                                    tersebut tidak
+                                                                                    dapat
+                                                                                    diakses lagi.</p>
+                                                                            </div>
+                                                                            <div class="col-lg-12 mb-3">
+                                                                                <label for="deactivated_at">Ubah
+                                                                                    Tanggal</label>
+                                                                                <input type="datetime-local"
+                                                                                    class="form-control"
+                                                                                    name="deactivated_at"
+                                                                                    @if (!is_null($row->deactivated_at)) value="{{ \Carbon\Carbon::parse($row->deactivated_at)->format('Y-m-d\TH:i') }}" @endif
+                                                                                    data-id="{{ $row->id }}"
+                                                                                    id="deactivated_at-{{ $row->id }}"
+                                                                                    data-key="{{ $row->url_key }}"
+                                                                                    min="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-light"
+                                                                                data-bs-dismiss="modal">Tutup</button>
+                                                                            <button id="submitTime"
                                                                                 data-key="{{ $row->url_key }}"
-                                                                                min="">
+                                                                                data-id="{{ $row->id }}"
+                                                                                type="button"
+                                                                                class="btn-submit btn btn-primary submitKustom">Simpan</button>
                                                                         </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div><!-- /.modal -->
+                                                        </form>
+                                                        <div class="collapse" id="collapseExample{{ $row->id }}">
+                                                            <div class="card-footer">
+                                                                <div class="d-flex">
+                                                                    <div class="col-10">
+                                                                        <h5><i class="bi bi-bar-chart-line-fill"></i>
+                                                                            statistik
+                                                                        </h5>
                                                                     </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-light"
-                                                                            data-bs-dismiss="modal">Tutup</button>
-                                                                        <button id="submitTime"
-                                                                            data-key="{{ $row->url_key }}"
-                                                                            data-id="{{ $row->id }}" type="button"
-                                                                            class="btn-submit btn btn-primary submitKustom">Simpan</button>
-                                                                    </div>
-                                                                </div><!-- /.modal-content -->
-                                                            </div><!-- /.modal-dialog -->
-                                                        </div><!-- /.modal -->
-                                                    </form>
-                                                    <div class="collapse" id="collapseExample{{ $row->id }}">
-                                                        <div class="card-footer">
-                                                            <div class="d-flex">
-                                                                <div class="col-10">
-                                                                    <h5><i class="bi bi-bar-chart-line-fill"></i> statistik
-                                                                    </h5>
-                                                                </div>
-                                                                {{-- <div class="col-2 d-flex flex-row justify-content-end">
+                                                                    {{-- <div class="col-2 d-flex flex-row justify-content-end">
                                                                     <button type="button" class="btn btn-light "><span>Lihat
                                                                             Detail</span>&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
                                                                 </div> --}}
+                                                                </div>
                                                             </div>
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <div id="chart{{ $row->id }}"></div>
+                                                                </div><!-- end card-body -->
+                                                            </div><!-- end card -->
                                                         </div>
-                                                        <div class="card">
-                                                            <div class="card-body">
-                                                                <div id="chart{{ $row->id }}"></div>
-                                                            </div><!-- end card-body -->
-                                                        </div><!-- end card -->
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                    @endforeach
+                                            </form>
+                                        @endforeach
+                                    @endif
                                     <div class="row align-items-center mb-4 justify-content-between text-center text-sm-start"
                                         id="pagination-element">
                                         <div class="col-sm">
                                             <div class="text-muted">
-                                                Showing <span class="fw-semibold">{{ $urlshort->firstItem() }}</span>
-                                                to <span class="fw-semibold">{{ $urlshort->lastItem() }}</span>
-                                                of <span class="fw-semibold">{{ $urlshort->total() }}</span> Results
+                                                Menampilkan <span class="fw-semibold">{{ $urlshort->firstItem() }}</span>
+                                                hingga <span class="fw-semibold">{{ $urlshort->lastItem() }}</span>
+                                                dari total <span class="fw-semibold">{{ $urlshort->total() }}</span> Hasil
                                             </div>
                                         </div>
                                         <div class="col-sm-auto mt-3 mt-sm-0">
@@ -486,397 +519,430 @@
                                     @php
                                         $i = 0;
                                     @endphp
-                                    @foreach ($history as $url)
-                                        @php
-                                            $i++;
-                                        @endphp
-                                        <form action="/archive/{{ $url->id }}">
-                                            @csrf
-                                            <div class="col-lg-12">
-                                                <div class="card"
-                                                    style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;"
-                                                    id="card{{ $url->id }}">
-                                                    <div class="card-body">
-                                                        <h6 class="col-lg-3 col-md-4 col-sm-12">{{ $url->title }}</h6>
-                                                        <div
-                                                            class="col-lg-12 col-md-12 col-sm-9 d-flex flex-url justify-content-end">
-                                                            <button disabled type="button" id="button-email"
-                                                                class="btn btn-primary me-3 btn-sm" data-bs-toggle="modal"
-                                                                data-bs-target="#bagikan{{ $i }}"
-                                                                aria-haspopup="true" aria-expanded="false"><i
-                                                                    class="fa-solid fa-share-nodes"></i>
-                                                                &nbsp;Bagikan</button>
+                                    @if ($history->isEmpty())
+                                        <div class="card d-flex flex-column align-items-center">
+                                            <img style="width: 300px; height: 300px;"
+                                                src="{{ asset('images/Empty.jpg') }}" alt="Gambar">
+                                            <div class="d-flex justify-content-center align-items-center mt-2 mb-4">
+                                                <i class="ph-magnifying-glass fs-2 text-primary"></i>
+                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
+                                            </div>
+                                        </div>
+                                    @else
+                                        @foreach ($history as $url)
+                                            @php
+                                                $i++;
+                                            @endphp
+                                            <form action="/archive/{{ $url->id }}">
+                                                @csrf
+                                                <div class="col-lg-12">
+                                                    <div class="card"
+                                                        style="border: 1px solid var(--tb-border-color-translucent); padding: 0px;"
+                                                        id="card{{ $url->id }}">
+                                                        <div class="card-body">
+                                                            <h6 class="col-lg-3 col-md-4 col-sm-12">{{ $url->title }}
+                                                            </h6>
+                                                            <div
+                                                                class="col-lg-12 col-md-12 col-sm-9 d-flex flex-url justify-content-end">
+                                                                <button disabled type="button" id="button-email"
+                                                                    class="btn btn-primary me-3 btn-sm"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#bagikan{{ $i }}"
+                                                                    aria-haspopup="true" aria-expanded="false"><i
+                                                                        class="fa-solid fa-share-nodes"></i>
+                                                                    &nbsp;Bagikan</button>
 
-                                                            <!-- Modal bagikan -->
-                                                            <div class="modal fade" id="bagikan{{ $i }}"
-                                                                tabindex="-1" aria-labelledby="addAmountLabel"
-                                                                aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-body">
-                                                                            <div class="url g-3">
-                                                                                <div class="countdown-input-subscribe">
-                                                                                    <label class="platform"
-                                                                                        onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
-                                                                                            class="bi bi-facebook"></i>
-                                                                                        &nbsp; Facebook</label>
-                                                                                </div>
-                                                                                <div class="countdown-input-subscribe">
-                                                                                    <label class="platform"
-                                                                                        onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
-                                                                                            class="bi bi-twitter"></i>
-                                                                                        &nbsp; Twitter</label>
-                                                                                </div>
-                                                                                <div class="countdown-input-subscribe">
-                                                                                    <label class="platform"
-                                                                                        onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
-                                                                                            class="bi bi-whatsapp"></i>
-                                                                                        &nbsp; WhatsApp</label>
-                                                                                </div>
-                                                                                <div class="countdown-input-subscribe">
-                                                                                    <label class="platform"
-                                                                                        data-platform="copy"
-                                                                                        id="copyButton{{ $i }}"
-                                                                                        data-url="{{ $url->default_short_url }}"
-                                                                                        data-id-copy="{{ $i }}">
-                                                                                        <i
-                                                                                            class="bi bi-clipboard-fill"></i>
-                                                                                        &nbsp; Copy
-                                                                                    </label>
-                                                                                </div>
+                                                                <!-- Modal bagikan -->
+                                                                <div class="modal fade" id="bagikan{{ $i }}"
+                                                                    tabindex="-1" aria-labelledby="addAmountLabel"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-body">
+                                                                                <div class="url g-3">
+                                                                                    <div class="countdown-input-subscribe">
+                                                                                        <label class="platform"
+                                                                                            onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
+                                                                                                class="bi bi-facebook"></i>
+                                                                                            &nbsp; Facebook</label>
+                                                                                    </div>
+                                                                                    <div class="countdown-input-subscribe">
+                                                                                        <label class="platform"
+                                                                                            onclick="window.open(`https://twitter.com/intent/tweet?url=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
+                                                                                                class="bi bi-twitter"></i>
+                                                                                            &nbsp; Twitter</label>
+                                                                                    </div>
+                                                                                    <div class="countdown-input-subscribe">
+                                                                                        <label class="platform"
+                                                                                            onclick="window.open(`https://api.whatsapp.com/send?text=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
+                                                                                                class="bi bi-whatsapp"></i>
+                                                                                            &nbsp; WhatsApp</label>
+                                                                                    </div>
+                                                                                    <div class="countdown-input-subscribe">
+                                                                                        <label class="platform"
+                                                                                            data-platform="copy"
+                                                                                            id="copyButton{{ $i }}"
+                                                                                            data-url="{{ $url->default_short_url }}"
+                                                                                            data-id-copy="{{ $i }}">
+                                                                                            <i
+                                                                                                class="bi bi-clipboard-fill"></i>
+                                                                                            &nbsp; Copy
+                                                                                        </label>
+                                                                                    </div>
 
-                                                                                <div class="countdown-input-subscribe">
-                                                                                    <label class="platform"
-                                                                                        onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
-                                                                                            class="bi bi-qr-code"></i>
-                                                                                        &nbsp; QR Code</label>
+                                                                                    <div class="countdown-input-subscribe">
+                                                                                        <label class="platform"
+                                                                                            onclick="window.open(` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${document.getElementById('default_short_url{{ $i }}').innerText}`)"><i
+                                                                                                class="bi bi-qr-code"></i>
+                                                                                            &nbsp; QR Code</label>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
 
-                                                            <!-- end Modal bagikan-->
-                                                            <button disabled id="tombol-modal"
-                                                                onclick="tombolmodal('{{ $url->id }}')"
-                                                                type="button"
-                                                                class="btn btn-light me-3 btn-sm clickButton"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#tombol-modal-{{ $url->id }}"
-                                                                data-id="{{ $url->id }}">
-                                                                <span data-bs-toggle="tooltip" data-bs-placement="left"
-                                                                    title="Kode QR"><i
-                                                                        class="fa-solid fa-qrcode"></i></span>
-                                                            </button>
-
-                                                            <button disabled type="button"
-                                                                class="btn btn-light me-3 btn-sm edit-link"
-                                                                data-bs-toggle="modal" data-bs-target="#zoomInModal"
-                                                                data-link="{{ $url->url_key }}">
-                                                                <span><i
-                                                                        class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
-                                                            </button>
-                                                        </div>
-                                                        <br>
-                                                        <a>
-                                                            <h3 class="garisbawah card-title mb-2">
-                                                                {{ $url->default_short_url }}</h3>
-                                                        </a>
-                                                        <a href="{{ $url->destination_url }}"
-                                                            class="card-subtitle font-14 text-muted">{{ $url->destination_url }}</a>
-                                                    </div>
-                                                    {{-- modal hapus --}}
-                                                    <div class="modal fade" id="arsip{{ $url->id }}">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                                <form action="/archive/{{ $url->id }}"
-                                                                    method="GET">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"></h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal">
-                                                                        </button>
-                                                                    </div>
-
-                                                                    <div class="modal-body">
-                                                                        <h4 style="font-size: 19px">Yakin Ingin Mengarsip
-                                                                            Data?</h4>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Batal</button>
-                                                                        <button type="submit"
-                                                                            class="btn btn-primary btn-xs form-control1">Arsip</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-footer">
-                                                        <div
-                                                            class="d-flex flex-column flex-sm-row justify-content-between">
-                                                            <div class="d-flex col-12 col-sm-5 ">
-                                                                <p style="margin-top: 10px;">
-                                                                    {{ \Carbon\Carbon::parse($url->deactivated_at)->format('F j, Y, h:i A') }}
-                                                                </p>
-                                                                &nbsp
-                                                                <?php
-                                                                $deactivatedAt = $url->deactivated_at; // Ambil nilai deactivated_at dari data
-                                                                $now = \Carbon\Carbon::now();
-
-                                                                if ($deactivatedAt === null) {
-                                                                    echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
-                                                                } elseif (\Carbon\Carbon::parse($deactivatedAt) >= $now) {
-                                                                    echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
-                                                                } else {
-                                                                    echo '<p class="text-danger" style="margin-top: 10px;">Tautan kadaluarsa</p>';
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                            <div
-                                                                class="col-12 col-sm-7 d-flex flex-row justify-content-end mt-2 mt-sm-0">
-                                                                <button disabled type="button" class="btn btn-light  me-3 btn-sm"
+                                                                <!-- end Modal bagikan-->
+                                                                <button disabled id="tombol-modal"
+                                                                    onclick="tombolmodal('{{ $url->id }}')"
+                                                                    type="button"
+                                                                    class="btn btn-light me-3 btn-sm clickButton"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#TimeModal-{{ $url->id }}"
-                                                                    data-link="{{ $url->url_key }}"><span
-                                                                        data-bs-toggle="tooltip" data-bs-placement="left"
-                                                                        title="Tautan berbasis waktu"><i
-                                                                            class="fa-solid fa-clock"></i>&nbsp;Atur
-                                                                        waktu</span></button>
-                                                                <button disabled type="button" class="btn btn-light me-3 btn-sm"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#zoomInModal1"><span
-                                                                        data-bs-toggle="tooltip" data-bs-placement="left"
-                                                                        title="Tautan terlindungi"><i
-                                                                            class="fa-solid fa-lock"></i>&nbsp;kata
-                                                                        sandi</span></button>
-                                                                <button disabled type="button" class="btn btn-light btn-sm"
-                                                                    data-bs-toggle="collapse"
-                                                                    href="#collapseExample{{ $url->id }}"
-                                                                    role="button" aria-expanded="true"
-                                                                    aria-controls="collapseExample{{ $url->id }}">
-                                                                    <i class="bi bi-bar-chart-line-fill"></i> statistik
+                                                                    data-bs-target="#tombol-modal-{{ $url->id }}"
+                                                                    data-id="{{ $url->id }}">
+                                                                    <span data-bs-toggle="tooltip"
+                                                                        data-bs-placement="left" title="Kode QR"><i
+                                                                            class="fa-solid fa-qrcode"></i></span>
+                                                                </button>
+
+                                                                <button disabled type="button"
+                                                                    class="btn btn-light me-3 btn-sm edit-link"
+                                                                    data-bs-toggle="modal" data-bs-target="#zoomInModal"
+                                                                    data-link="{{ $url->url_key }}">
+                                                                    <span><i
+                                                                            class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
                                                                 </button>
                                                             </div>
-
+                                                            <br>
+                                                            <a>
+                                                                <h3 class="garisbawah card-title mb-2">
+                                                                    {{ $url->default_short_url }}</h3>
+                                                            </a>
+                                                            <a href="{{ $url->destination_url }}"
+                                                                class="card-subtitle font-14 text-muted">{{ $url->destination_url }}</a>
                                                         </div>
-                                                    </div>
-                                                    <div id="zoomInModal1" class="modal fade zoomIn" tabindex="-1"
-                                                        aria-labelledby="zoomInModalLabel" aria-hidden="true"
-                                                        style="display: none;">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="col-lg-12">
-                                                                    <div class="card">
-                                                                        <div class="card-header fw-bold">
-                                                                            <div class="avatar-sm mx-auto mb-3">
-                                                                                <div
-                                                                                    class="avatar-title bg-custom text-primary fs-xl rounded">
-                                                                                    <i class="fa-solid fa-lock"></i>
+                                                        {{-- modal hapus --}}
+                                                        <div class="modal fade" id="arsip{{ $url->id }}">
+                                                            <div class="modal-dialog modal-dialog-centered"
+                                                                role="document">
+                                                                <div class="modal-content">
+                                                                    <form action="/archive/{{ $url->id }}"
+                                                                        method="GET">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"></h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal">
+                                                                            </button>
+                                                                        </div>
+
+                                                                        <div class="modal-body">
+                                                                            <h4 style="font-size: 19px">Yakin Ingin
+                                                                                Mengarsip
+                                                                                Data?</h4>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Batal</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary btn-xs form-control1">Arsip</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <div
+                                                                class="d-flex flex-column flex-sm-row justify-content-between">
+                                                                <div class="d-flex col-12 col-sm-5 ">
+                                                                    <p style="margin-top: 10px;">
+                                                                        {{ \Carbon\Carbon::parse($url->deactivated_at)->format('F j, Y, h:i A') }}
+                                                                    </p>
+                                                                    &nbsp
+                                                                    <?php
+                                                                    $deactivatedAt = $url->deactivated_at; // Ambil nilai deactivated_at dari data
+                                                                    $now = \Carbon\Carbon::now();
+
+                                                                    if ($deactivatedAt === null) {
+                                                                        echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
+                                                                    } elseif (\Carbon\Carbon::parse($deactivatedAt) >= $now) {
+                                                                        echo '<p style="margin-top: 10px;"><a href="#" class="access-link">Tautan Aktif</a></p>';
+                                                                    } else {
+                                                                        echo '<p class="text-danger" style="margin-top: 10px;">Tautan kadaluarsa</p>';
+                                                                    }
+                                                                    ?>
+                                                                </div>
+                                                                <div
+                                                                    class="col-12 col-sm-7 d-flex flex-row justify-content-end mt-2 mt-sm-0">
+                                                                    <button disabled type="button"
+                                                                        class="btn btn-light  me-3 btn-sm"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#TimeModal-{{ $url->id }}"
+                                                                        data-link="{{ $url->url_key }}"><span
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="left"
+                                                                            title="Tautan berbasis waktu"><i
+                                                                                class="fa-solid fa-clock"></i>&nbsp;Atur
+                                                                            waktu</span></button>
+                                                                    <button disabled type="button"
+                                                                        class="btn btn-light me-3 btn-sm"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#zoomInModal1"><span
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="left"
+                                                                            title="Tautan terlindungi"><i
+                                                                                class="fa-solid fa-lock"></i>&nbsp;kata
+                                                                            sandi</span></button>
+                                                                    <button disabled type="button"
+                                                                        class="btn btn-light btn-sm"
+                                                                        data-bs-toggle="collapse"
+                                                                        href="#collapseExample{{ $url->id }}"
+                                                                        role="button" aria-expanded="true"
+                                                                        aria-controls="collapseExample{{ $url->id }}">
+                                                                        <i class="bi bi-bar-chart-line-fill"></i> statistik
+                                                                    </button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div id="zoomInModal1" class="modal fade zoomIn" tabindex="-1"
+                                                            aria-labelledby="zoomInModalLabel" aria-hidden="true"
+                                                            style="display: none;">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="card">
+                                                                            <div class="card-header fw-bold">
+                                                                                <div class="avatar-sm mx-auto mb-3">
+                                                                                    <div
+                                                                                        class="avatar-title bg-custom text-primary fs-xl rounded">
+                                                                                        <i class="fa-solid fa-lock"></i>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="card-body text-center">
-                                                                            <h4 class="card-title">Anda Tidak Bisa
-                                                                                Mengakses Fitur Ini!</h4>
-                                                                            <p class="card-text text-muted">Anda perlu
-                                                                                Beralih ke Berlangganan
-                                                                                Untuk Bisa Menikmati Fitur Ini</p>
-                                                                        </div>
-                                                                        <div class="card-footer text-center">
-                                                                            <a href="/subscribe-product-user"
-                                                                                style="color: red;"> Mulai
-                                                                                Berlangganan? </a>
+                                                                            <div class="card-body text-center">
+                                                                                <h4 class="card-title">Anda Tidak Bisa
+                                                                                    Mengakses Fitur Ini!</h4>
+                                                                                <p class="card-text text-muted">Anda perlu
+                                                                                    Beralih ke Berlangganan
+                                                                                    Untuk Bisa Menikmati Fitur Ini</p>
+                                                                            </div>
+                                                                            <div class="card-footer text-center">
+                                                                                <a href="/subscribe-product-user"
+                                                                                    style="color: red;"> Mulai
+                                                                                    Berlangganan? </a>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div><!-- /.modal-dialog -->
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <!-- /.modal -->
-                                                    <div id="tombol-modal-{{ $url->id }}"
-                                                        class="modal fade zoomIn modal-sm" tabindex="-1"
-                                                        aria-labelledby="zoomInModalLabel" aria-hidden="true"
-                                                        style="display: none;">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="zoomInModalLabel">Gambar
-                                                                        Kode QR</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="visible-print text-center">
-                                                                        {!! QrCode::size(200)->generate($url->destination_url) !!}
-                                                                    </div>
-                                                                    <br>
-                                                                    <div class="text-center">
-                                                                        <p>{{ $url->default_short_url }}</p>
-                                                                    </div>
-                                                                    <!-- <center>
-                                                                                        <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
-                                                                                    </center> -->
-                                                                </div>
-                                                                {{-- <center>
-                                                                    <button type="button" class="btn btn-danger">Download</button>
-                                                                    <button type="button" class="btn btn-light  me-3"><span><i
-                                                                                class="fa-solid fa-pen-to-square"></i>&nbsp;Ganti</span></button>
-                                                                </center> --}}
-                                                                <div class="modal-footer"></div>
-                                                            </div><!-- /.modal-content -->
-                                                        </div><!-- /.modal-dialog -->
-                                                    </div><!-- /.modal -->
-                                                    <p class="d-none" id="default_short_url{{ $i }}">
-                                                        {{ $url->default_short_url }}
-                                                    </p>
-
-                                                    <form id="formKustom">
-                                                        <div id="zoomInModal" class="modal fade zoomIn" tabindex="-1"
+                                                        <!-- /.modal -->
+                                                        <div id="tombol-modal-{{ $url->id }}"
+                                                            class="modal fade zoomIn modal-sm" tabindex="-1"
                                                             aria-labelledby="zoomInModalLabel" aria-hidden="true"
                                                             style="display: none;">
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="zoomInModalLabel"><i
-                                                                                class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom
-                                                                            Tautan
-                                                                        </h5>
+                                                                        <h5 class="modal-title" id="zoomInModalLabel">
+                                                                            Gambar
+                                                                            Kode QR</h5>
                                                                         <button type="button" class="btn-close"
                                                                             data-bs-dismiss="modal"
                                                                             aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <div class="card-body d-flex"
-                                                                            style="background-color: #D9D9D9;">
-                                                                            <p><i class="fa-solid fa-pen-to-square"></i>
-                                                                            </p>
-                                                                            &nbsp;
-                                                                            <p>Kustom tautan adalah fitur yang memungkinkan
-                                                                                pengguna untuk membuat tautan pendek yang
-                                                                                disesuaikan dengan
-                                                                                keinginan mereka.
-                                                                                Pengguna dapat mengganti atau menentukan
-                                                                                bagian akhir dari
-                                                                                tautan
-                                                                                pendek
-                                                                                untuk mencerminkan kata kunci, nama merek,
-                                                                                atau informasi yang
-                                                                                relevan dengan tautan tersebut.</p>
+                                                                        <div class="visible-print text-center">
+                                                                            {!! QrCode::size(200)->generate($url->destination_url) !!}
                                                                         </div>
-                                                                        <div class="col-lg-12 mb-3">
-                                                                            <label for="new_url_key">Kustom Nama</label>
-                                                                            <input type="text" class="form-control"
-                                                                                name="new_url_key" id="new_url_key"
-                                                                                placeholder="Kustom nama">
+                                                                        <br>
+                                                                        <div class="text-center">
+                                                                            <p>{{ $url->default_short_url }}</p>
                                                                         </div>
-                                                                        <div class="col-lg-12 mb-3">
-                                                                            <label for="new_url_key"></label>
-                                                                            <input type="hidden" class="form-control"
-                                                                                name="custom_name" id="new_url_key"
-                                                                                placeholder="Kustom nama">
-                                                                        </div>
+                                                                        <!-- <center>
+                                                                                                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
+                                                                                            </center> -->
                                                                     </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-light"
-                                                                            data-bs-dismiss="modal">Tutup</button>
-                                                                        <button id="submitKustom" type="button"
-                                                                            class="btn btn-primary submitKustom">Simpan</button>
-                                                                    </div>
+                                                                    {{-- <center>
+                                                                    <button type="button" class="btn btn-danger">Download</button>
+                                                                    <button type="button" class="btn btn-light  me-3"><span><i
+                                                                                class="fa-solid fa-pen-to-square"></i>&nbsp;Ganti</span></button>
+                                                                </center> --}}
+                                                                    <div class="modal-footer"></div>
                                                                 </div><!-- /.modal-content -->
                                                             </div><!-- /.modal-dialog -->
                                                         </div><!-- /.modal -->
-                                                    </form>
-                                                    <form id="updateTime">
-                                                        <div id="TimeModal-{{ $url->id }}" class="modal fade Time"
-                                                            tabindex="-1" aria-labelledby="TimeModalLabel"
-                                                            aria-hidden="true" style="display: none;">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="TimeModalLabel"><i
-                                                                                class="fa-solid fa-clock"></i>&nbsp;Atur
-                                                                            Waktu</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal" aria-label="Close"
-                                                                            data-id="{{ $url->id }}"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="card-body d-flex"
-                                                                            style="background-color: #D9D9D9;">
-                                                                            <p><i class="fa-solid fa-clock"></i></p>
-                                                                            &nbsp;
-                                                                            <p>Tautan berbasis waktu adalah jenis tautan
-                                                                                yang hanya berlangsung
-                                                                                selama periode waktu tertentu.
-                                                                                Ketika tautan telah kedaluwarsa, maka tautan
-                                                                                tersebut tidak
-                                                                                dapat
-                                                                                diakses lagi.</p>
+                                                        <p class="d-none" id="default_short_url{{ $i }}">
+                                                            {{ $url->default_short_url }}
+                                                        </p>
+
+                                                        <form id="formKustom">
+                                                            <div id="zoomInModal" class="modal fade zoomIn"
+                                                                tabindex="-1" aria-labelledby="zoomInModalLabel"
+                                                                aria-hidden="true" style="display: none;">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="zoomInModalLabel">
+                                                                                <i
+                                                                                    class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom
+                                                                                Tautan
+                                                                            </h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
                                                                         </div>
-                                                                        <div class="col-lg-12 mb-3">
-                                                                            <label for="deactivated_at">Ubah
-                                                                                Tanggal</label>
-                                                                            <input type="datetime-local"
-                                                                                class="form-control" name="deactivated_at"
-                                                                                @if (!is_null($url->deactivated_at)) value="{{ \Carbon\Carbon::parse($url->deactivated_at)->format('Y-m-d\TH:i') }}" @endif
-                                                                                data-id="{{ $url->id }}"
-                                                                                id="deactivated_at-{{ $url->id }}"
+                                                                        <div class="modal-body">
+                                                                            <div class="card-body d-flex"
+                                                                                style="background-color: #D9D9D9;">
+                                                                                <p><i
+                                                                                        class="fa-solid fa-pen-to-square"></i>
+                                                                                </p>
+                                                                                &nbsp;
+                                                                                <p>Kustom tautan adalah fitur yang
+                                                                                    memungkinkan
+                                                                                    pengguna untuk membuat tautan pendek
+                                                                                    yang
+                                                                                    disesuaikan dengan
+                                                                                    keinginan mereka.
+                                                                                    Pengguna dapat mengganti atau menentukan
+                                                                                    bagian akhir dari
+                                                                                    tautan
+                                                                                    pendek
+                                                                                    untuk mencerminkan kata kunci, nama
+                                                                                    merek,
+                                                                                    atau informasi yang
+                                                                                    relevan dengan tautan tersebut.</p>
+                                                                            </div>
+                                                                            <div class="col-lg-12 mb-3">
+                                                                                <label for="new_url_key">Kustom
+                                                                                    Nama</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    name="new_url_key" id="new_url_key"
+                                                                                    placeholder="Kustom nama">
+                                                                            </div>
+                                                                            <div class="col-lg-12 mb-3">
+                                                                                <label for="new_url_key"></label>
+                                                                                <input type="hidden" class="form-control"
+                                                                                    name="custom_name" id="new_url_key"
+                                                                                    placeholder="Kustom nama">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-light"
+                                                                                data-bs-dismiss="modal">Tutup</button>
+                                                                            <button id="submitKustom" type="button"
+                                                                                class="btn btn-primary submitKustom">Simpan</button>
+                                                                        </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div><!-- /.modal -->
+                                                        </form>
+                                                        <form id="updateTime">
+                                                            <div id="TimeModal-{{ $url->id }}"
+                                                                class="modal fade Time" tabindex="-1"
+                                                                aria-labelledby="TimeModalLabel" aria-hidden="true"
+                                                                style="display: none;">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="TimeModalLabel"><i
+                                                                                    class="fa-solid fa-clock"></i>&nbsp;Atur
+                                                                                Waktu</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal" aria-label="Close"
+                                                                                data-id="{{ $url->id }}"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="card-body d-flex"
+                                                                                style="background-color: #D9D9D9;">
+                                                                                <p><i class="fa-solid fa-clock"></i></p>
+                                                                                &nbsp;
+                                                                                <p>Tautan berbasis waktu adalah jenis tautan
+                                                                                    yang hanya berlangsung
+                                                                                    selama periode waktu tertentu.
+                                                                                    Ketika tautan telah kedaluwarsa, maka
+                                                                                    tautan
+                                                                                    tersebut tidak
+                                                                                    dapat
+                                                                                    diakses lagi.</p>
+                                                                            </div>
+                                                                            <div class="col-lg-12 mb-3">
+                                                                                <label for="deactivated_at">Ubah
+                                                                                    Tanggal</label>
+                                                                                <input type="datetime-local"
+                                                                                    class="form-control"
+                                                                                    name="deactivated_at"
+                                                                                    @if (!is_null($url->deactivated_at)) value="{{ \Carbon\Carbon::parse($url->deactivated_at)->format('Y-m-d\TH:i') }}" @endif
+                                                                                    data-id="{{ $url->id }}"
+                                                                                    id="deactivated_at-{{ $url->id }}"
+                                                                                    data-key="{{ $url->url_key }}"
+                                                                                    min="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-light"
+                                                                                data-bs-dismiss="modal">Tutup</button>
+                                                                            <button id="submitTime"
                                                                                 data-key="{{ $url->url_key }}"
-                                                                                min="">
+                                                                                data-id="{{ $url->id }}"
+                                                                                type="button"
+                                                                                class="btn-submit btn btn-primary submitKustom">Simpan</button>
                                                                         </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div><!-- /.modal -->
+                                                        </form>
+                                                        <div class="collapse" id="collapseExample{{ $url->id }}">
+                                                            <div class="card-footer">
+                                                                <div class="d-flex">
+                                                                    <div class="col-10">
+                                                                        <h5><i class="bi bi-bar-chart-line-fill"></i>
+                                                                            statistik
+                                                                        </h5>
                                                                     </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-light"
-                                                                            data-bs-dismiss="modal">Tutup</button>
-                                                                        <button id="submitTime"
-                                                                            data-key="{{ $url->url_key }}"
-                                                                            data-id="{{ $url->id }}" type="button"
-                                                                            class="btn-submit btn btn-primary submitKustom">Simpan</button>
-                                                                    </div>
-                                                                </div><!-- /.modal-content -->
-                                                            </div><!-- /.modal-dialog -->
-                                                        </div><!-- /.modal -->
-                                                    </form>
-                                                    <div class="collapse" id="collapseExample{{ $url->id }}">
-                                                        <div class="card-footer">
-                                                            <div class="d-flex">
-                                                                <div class="col-10">
-                                                                    <h5><i class="bi bi-bar-chart-line-fill"></i> statistik
-                                                                    </h5>
-                                                                </div>
-                                                                {{-- <div class="col-2 d-flex flex-url justify-content-end">
+                                                                    {{-- <div class="col-2 d-flex flex-url justify-content-end">
                                                                     <button type="button" class="btn btn-light "><span>Lihat
                                                                             Detail</span>&nbsp;<i class="fa-solid fa-arurl-right"></i></button>
                                                                 </div> --}}
+                                                                </div>
                                                             </div>
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <div id="chart{{ $url->id }}"></div>
+                                                                </div><!-- end card-body -->
+                                                            </div><!-- end card -->
                                                         </div>
-                                                        <div class="card">
-                                                            <div class="card-body">
-                                                                <div id="chart{{ $url->id }}"></div>
-                                                            </div><!-- end card-body -->
-                                                        </div><!-- end card -->
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                    @endforeach
+                                            </form>
+                                        @endforeach
+                                    @endif
                                     <div class="row align-items-center mb-4 justify-content-between text-center text-sm-start"
                                         id="pagination-element">
                                         <div class="col-sm">
                                             <div class="text-muted">
-                                                Showing <span class="fw-semibold">{{ $urlshort->firstItem() }}</span>
-                                                to <span class="fw-semibold">{{ $urlshort->lastItem() }}</span>
-                                                of <span class="fw-semibold">{{ $urlshort->total() }}</span> Results
+                                                Menampilkan <span class="fw-semibold">{{ $history->firstItem() }}</span>
+                                                hingga <span class="fw-semibold">{{ $history->lastItem() }}</span>
+                                                dari total <span class="fw-semibold">{{ $history->total() }}</span> Hasil
                                             </div>
                                         </div>
                                         <div class="col-sm-auto mt-3 mt-sm-0">
                                             <div
                                                 class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
                                                 <div class="page-item">
-                                                    {{ $urlshort->links('pagination::bootstrap-5') }}
+                                                    {{ $history->links('pagination::bootstrap-5') }}
                                                 </div>
                                             </div>
                                         </div>

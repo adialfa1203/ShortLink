@@ -67,12 +67,20 @@ class MicrositeController extends Controller
 
     public function addMicrosite(Request $request)
     {
-        $data = Components::all();
-        $button = Button::all();
         $user = auth()->user();
+        $statusSubscribe = $user->subscribe;
+
+        if ($statusSubscribe === 'yes') {
+            $data = Components::all();
+        } else {
+            $data = Components::orderBy('created_at', 'asc')->take(3)->get();
+        }
+
+        $button = Button::all();
         $micrositeCount = $user->microsites()->count(); // Mendapatkan jumlah microsite pengguna
         return view('microsite.AddMicrosite', compact('data', 'button', 'micrositeCount'));
     }
+
 
     public function createMicrosite(Request $request, Microsite $microsite)
     {

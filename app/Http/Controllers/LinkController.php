@@ -15,7 +15,7 @@ class LinkController extends Controller
 
     public function showLink($shortCode)
     {
-        $user = auth()->user(); 
+        $user = auth()->user();
         $user_id = $user->id;
 
         $this->deleteDeactive();
@@ -26,7 +26,7 @@ class LinkController extends Controller
         ->whereNull('microsite_uuid')
         ->orderBy('created_at', 'desc')
         ->paginate(5);
-        $history = History::all();
+        $history = History::paginate(5);
         $result = [
             'labels' => DateHelper::getAllMonths(5),
             'series' => []
@@ -44,7 +44,7 @@ class LinkController extends Controller
             $visits[4] = (int)$data->visits_count;
             $result['series'][$i] = $visits;
         }
-        
+
 
         return view('User.Link', compact('user','urlshort', 'shortCode','result', 'history'));
     }
@@ -75,7 +75,7 @@ class LinkController extends Controller
                 'activated_at' => $entry->activated_at,
                 'deactivated_at' => $entry->deactivated_at,
             ]);
-            
+
             $entry->delete();
         }
 
