@@ -921,17 +921,6 @@
         progressBar.setAttribute("aria-valuenow", countData);
     </script>
     <script>
-        const clickCountElement = document.getElementById("clickCount");
-
-        // Mengambil data jumlah klik dari localStorage
-        let clickCount = localStorage.getItem("clickCount");
-
-        if (clickCount !== null) {
-            // Jika ada data jumlah klik yang tersimpan, tampilkan pada halaman
-            clickCountElement.textContent = clickCount + "";
-        }
-    </script>
-    <script>
         // Get the value from the server-side variable {{ $countURL }}
         var countURLValue = {{ $countURL }};
 
@@ -988,16 +977,9 @@
             modalEdit.classList.remove("show");
         });
     </script>
-    <script src="{{ asset('vendor/yoeunes/toastr/toastr.min.js') }}"></script>
-    <script>
-        @if (session('toastr'))
-            {!! session('toastr') !!}
-        @endif
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="sweetalert2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {

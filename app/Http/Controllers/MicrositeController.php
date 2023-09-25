@@ -27,12 +27,14 @@ class MicrositeController extends Controller
         if ($request->has('filter') && $request->filter == 'terakhir_diperbarui') {
             $data = Microsite::where('user_id', $user_id)
                 ->orderBy('updated_at', 'desc')
-                ->paginate(5);
+                ->paginate(10);
             $d = $data;
         }
         // Default: Tampilkan semua data
         else {
-            $data = Microsite::all();
+            $data = Microsite::whereHas('shortUrl')
+            ->with('shortUrl')
+            ->get();
             $d = $data;
         }
 
@@ -61,6 +63,7 @@ class MicrositeController extends Controller
             }
 
         $short_urls = ShortUrl::whereIn('microsite_uuid', $data->pluck('id'))->get();
+
         // dd($short_urls);
         return view('Microsite.MicrositeUser', compact('data', 'urlshort', 'short_urls','result', 'd','qr','user_id'));
     }
@@ -209,7 +212,7 @@ class MicrositeController extends Controller
             }
         }
 
-        return redirect()->route('microsite')->with('success', 'Microsite sudah berhasil diperbarui.');
+        return redirect()->route('microsite')->with('success', 'Microsite sudah berhasil dibuat.');
     }
 
     public function createComponent()
