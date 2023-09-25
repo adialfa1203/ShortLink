@@ -202,7 +202,7 @@
                             <!-- h1 -->
                             <h2 style="color: white">Jadilah Bagian dari Perubahan!</h2>
                             <!-- p -->
-                            <span style="color: white;">Selangkah lebih dekat menuju kemudahan dan kebebasan. Bergabunglah dengan langganan kami sekarang dan nikmati keuntungan berikut:</span>
+                            <span style="color: white;">Selangkah lebih dekat menuju kemudahan dan kebebasan. bergabung dengan kami sekarang dan niknati keuntungan berikut:</span>
                             <ul style="color: white;">
                                 <li>- Mempersingkat URL sesuka hati.</li>
                                 <li>- Akses eksklusif ke fitur-fitur canggih.</li>

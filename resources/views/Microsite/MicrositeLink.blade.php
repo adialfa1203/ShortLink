@@ -31,10 +31,12 @@
                                 <div class="d-flex flex-wrap justify-content-center text-center mb-4">
                                     @foreach ($social as $socialItem)
                                         <div class="mb-2 mx-2">
+                                            <a href="{{ $socialItem->button_link }}" target="_blank" style="text-decoration: none;">
                                             <button style="background-color: {{ $socialItem->button->color_hex }};"
                                                 type="button" class="btn btn-icon"><i
                                                     class="{{ $socialItem->button->icon }} " style="color:white;"></i>
                                             </button>
+                                            </a>
                                         </div>
                                     @endforeach
                                 </div>
