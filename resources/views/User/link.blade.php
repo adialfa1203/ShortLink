@@ -49,37 +49,17 @@
 @endsection
 @section('content')
     <div class="page-content">
-        <div class="d-flex flex-column flex-sm-row">
-            <div class="col-12 col-sm-4">
-                <h5 class="mb-2">Tautan yang Dihasilkan Terbaru</h5>
-                <p id="clickCount" hidden>0 klik</p>
-            </div>
-            <div class="col-12 col-sm-8 mb-3">
-                <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-end">
-                    <div class="search-box mb-2 mb-sm-0">
-                        <input type="text" class="form-control search" placeholder="Cari...">
-                        <i class="ri-search-line search-icon"></i>
-                    </div>
+        <div class="container-fluid">
+            <div class="d-flex flex-column flex-sm-row">
+                <div class="col-12 col-sm-4">
+                    <h5 class="mb-2">Tautan yang Dihasilkan Terbaru</h5>
+                    <p id="clickCount" hidden>0 klik</p>
                 </div>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="row align-items-center mb-4 justify-content-between text-center text-sm-start"
-                id="pagination-element">
-                {{-- <div class="col-sm">
-                    <div class="text-muted">
-                        Showing <span class="fw-semibold">{{ $urlshort->firstItem() }}</span>
-                        to <span class="fw-semibold">{{ $urlshort->lastItem() }}</span>
-                        of <span class="fw-semibold">{{ $urlshort->total() }}</span> Results
-                    </div>
-                </div> --}}
-                <div class="col-sm-auto mt-3 mt-sm-0">
-                    <div
-                        class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
-                        <div class="page-item">
-                            {{ $urlshort->links('pagination::bootstrap-5') }}
+                <div class="col-12 col-sm-8 mb-3">
+                    <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-end">
+                        <div class="search-box mb-2 mb-sm-0">
+                            <input type="text" class="form-control search" placeholder="Cari...">
+                            <i class="ri-search-line search-icon"></i>
                         </div>
                     </div>
                 </div>
@@ -95,7 +75,7 @@
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" data-bs-toggle="tab" href="#animation-settings" role="tab">
-                                    Histori
+                                    Riwayat
                                 </a>
                             </li>
                         </ul>
@@ -545,9 +525,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                </div>
-                            </div>
-                        </div>
+                                            </div>
+                                        </div>
+                                    </div>
                         {{-- modal hapus --}}
                         <div class="modal fade" id="arsip{{ $row->id }}">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -592,7 +572,6 @@
                                     <!-- end col -->
                                 </div>
                             </div>
-                            <!-- batas-->
                             <div class="tab-pane" id="animation-settings" role="tabpanel">
                                 <div class="row">
                                     @php

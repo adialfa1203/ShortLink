@@ -125,7 +125,7 @@ Route::post('/update-deactivated/{keyTime}',[LinkController::class, 'updateDeact
 Route::get('/delete-expired-links', [LinkController::class, 'deleteDeactive']);
 
 });
-Route::get('/microsite-link/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.short.link');
+Route::get('/go.microsite/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.short.link');
 
 Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/updateAdmin', [ProfilController::class, 'updateAdmin'])->name('updateAdmin');
