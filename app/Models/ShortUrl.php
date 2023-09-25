@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ShortUrl extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $table = "short_urls";
     protected $fillable = ['destination_url','url_key','user_id','password','qr_code','deleted_add','default_short_url','activated_at','deactivated_at','click_count','archive','title','archived_at', 'custom_name'];

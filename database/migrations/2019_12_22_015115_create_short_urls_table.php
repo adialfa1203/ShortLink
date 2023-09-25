@@ -30,7 +30,6 @@ class CreateShortUrlsTable extends Migration
             $table->bigInteger('click_count')->nullable();
             $table->enum('archive', ['yes', 'no'])->default('no');
             $table->boolean('track_visits');
-            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
 

@@ -485,29 +485,7 @@
                                         </div>
 
                                         <!-- end Modal bagikan-->
-                                        <button id="tombol-modal" onclick="tombolmodal('{{ $row->id }}')"
-                                            type="button" class="btn btn-light me-3 btn-sm clickButton"
-                                            data-bs-toggle="modal" data-bs-target="#tombol-modal-{{ $row->id }}"
-                                            data-id="{{ $row->id }}">
-                                            <span data-bs-toggle="tooltip" data-bs-placement="left" title="Kode QR"><i
-                                                    class="fa-solid fa-qrcode"></i></span>
-                                        </button>
-
-                                        <button type="button" class="btn btn-light me-3 btn-sm edit-link"
-                                            data-bs-toggle="modal" data-bs-target="#zoomInModal"
-                                            data-link="{{ $row->url_key }}">
-                                            <span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
-                                        </button>
-                                        <button type="button" class="btn btn-primary me-3 btn-sm"
-                                            data-bs-target="#arsip{{ $row->id }}" data-bs-toggle="modal"><i
-                                                class="bi bi-archive-fill"></i> Arsipkan</button>
                                     </div>
-                                    <br>
-                                <a>
-                                    <h3 class="garisbawah card-title mb-2">{{ $row->default_short_url }}</h3>
-                                </a>
-                                <a href="{{ $row->destination_url }}"
-                                    class="card-subtitle font-14 text-muted">{{ $row->destination_url }}</a>
                             </div>
                             {{-- modal hapus --}}
                             <div class="modal fade" id="arsip{{ $row->id }}">
