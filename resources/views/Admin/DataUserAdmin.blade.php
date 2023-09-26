@@ -211,7 +211,7 @@
             });
         });
     </script>
-    <script>
+    {{-- <script>
         // Mendapatkan referensi elemen checkbox utama dan semua checkbox anak dengan class yang sama
         var checkAllCheckbox = document.getElementById("checkAll");
         var childCheckboxes = document.querySelectorAll('.child-checkbox');
@@ -223,7 +223,7 @@
                 checkbox.checked = checkAllCheckbox.checked;
             });
         });
-    </script>
+    </script> --}}
     <script>
         $(document).ready(function () {
             $("#checkAll").change(function () {

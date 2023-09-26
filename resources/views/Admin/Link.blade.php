@@ -173,7 +173,7 @@
     </div>
 </div>
 @section('script')
-<script>
+{{-- <script>
     var options = {
         series: [{
             name: "sunardi",
@@ -209,7 +209,7 @@
 
     var chart = new ApexCharts(document.querySelector("#chart1"), options);
     chart.render();
-</script>
+</script> --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -221,7 +221,7 @@
                 });
             });
         </script>
-        <script>
+    {{-- <script>
             // Ambil elemen checkbox pertama
             var checkAllCheckbox = document.getElementById("checkAll");
 
@@ -235,6 +235,6 @@
                     childCheckbox.checked = checkAllCheckbox.checked;
                 });
             });
-        </script>
+    </script> --}}
 @endsection
 @endsection
