@@ -246,7 +246,7 @@
                                 <input id="customizer-theme01" name="data-theme" type="radio" value="default"
                                     class="form-check-input">
                                 <label class="form-check-label p-0" for="customizer-theme01">
-                                    <img src="assets/images/custom-theme/light-mode.png" alt=""
+                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/custom-theme/light-mode.png') }}" alt=""
                                         class="img-fluid">
                                 </label>
                             </div>
@@ -257,7 +257,7 @@
                                 <input id="customizer-theme02" name="data-theme" type="radio" value="material"
                                     class="form-check-input">
                                 <label class="form-check-label p-0" for="customizer-theme02">
-                                    <img src="assets/images/custom-theme/material.png" alt=""
+                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/custom-theme/material.png') }}" alt=""
                                         class="img-fluid">
                                 </label>
                             </div>
@@ -268,7 +268,7 @@
                                 <input id="customizer-theme03" name="data-theme" type="radio" value="creative"
                                     class="form-check-input">
                                 <label class="form-check-label p-0" for="customizer-theme03">
-                                    <img src="assets/images/custom-theme/creative.png" alt=""
+                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/custom-theme/creative.png') }}" alt=""
                                         class="img-fluid">
                                 </label>
                             </div>
@@ -279,7 +279,7 @@
                                 <input id="customizer-theme04" name="data-theme" type="radio" value="minimal"
                                     class="form-check-input">
                                 <label class="form-check-label p-0" for="customizer-theme04">
-                                    <img src="assets/images/custom-theme/minimal.png" alt=""
+                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/custom-theme/minimal.png') }}" alt=""
                                         class="img-fluid">
                                 </label>
                             </div>
@@ -290,7 +290,7 @@
                                 <input id="customizer-theme05" name="data-theme" type="radio" value="modern"
                                     class="form-check-input">
                                 <label class="form-check-label p-0" for="customizer-theme05">
-                                    <img src="assets/images/custom-theme/modern.png" alt=""
+                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/custom-theme/modern.png') }}" alt=""
                                         class="img-fluid">
                                 </label>
                             </div>
@@ -302,7 +302,7 @@
                                 <input id="customizer-theme06" name="data-theme" type="radio" value="interaction"
                                     class="form-check-input">
                                 <label class="form-check-label p-0" for="customizer-theme06">
-                                    <img src="assets/images/custom-theme/interaction.png" alt=""
+                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/custom-theme/interaction.png') }}" alt=""
                                         class="img-fluid">
                                 </label>
                             </div>
@@ -320,7 +320,7 @@
                                     <input class="form-check-input" type="radio" name="data-bs-theme"
                                         id="layout-mode-light" value="light">
                                     <label class="form-check-label p-0 bg-transparent" for="layout-mode-light">
-                                        <img src="assets/images/custom-theme/light-mode.png" alt=""
+                                        <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/custom-theme/light-mode.png') }}" alt=""
                                             class="img-fluid">
                                     </label>
                                 </div>
@@ -332,7 +332,7 @@
                                     <input class="form-check-input" type="radio" name="data-bs-theme"
                                         id="layout-mode-dark" value="dark">
                                     <label class="form-check-label p-0 bg-transparent" for="layout-mode-dark">
-                                        <img src="assets/images/custom-theme/dark-mode.png" alt=""
+                                        <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/custom-theme/dark-mode.png') }}" alt=""
                                             class="img-fluid">
                                     </label>
                                 </div>
@@ -348,7 +348,7 @@
                                         Coming Soon</h6>
                                     <label class="form-check-label cursor-none p-0 bg-transparent opacity-75"
                                         for="layout-mode-brand">
-                                        <img src="assets/images/custom-theme/brand-mode.png" alt=""
+                                        <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/custom-theme/brand-mode.png') }}" alt=""
                                             class="img-fluid">
                                     </label>
                                 </div>
@@ -803,8 +803,8 @@
                                 <input class="form-check-input" type="radio" name="data-sidebar-image"
                                     id="sidebarimg-01" value="img-1">
                                 <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-01">
-                                    <img src="assets/images/sidebar/img-sm-1.jpg" alt=""
-                                        class="avatar-md w-auto object-cover">
+                                    {{-- <img src="{{ asset('template/themesbrand.com/steex/layouts/') }}assets/images/sidebar/img-sm-1.jpg" alt=""
+                                        class="avatar-md w-auto object-cover"> --}}
                                 </label>
                             </div>
 
@@ -812,24 +812,24 @@
                                 <input class="form-check-input" type="radio" name="data-sidebar-image"
                                     id="sidebarimg-02" value="img-2">
                                 <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-02">
-                                    <img src="assets/images/sidebar/img-sm-2.jpg" alt=""
-                                        class="avatar-md w-auto object-cover">
+                                    {{-- <img src="{{ asset('template/themesbrand.com/steex/layouts/') }}assets/images/sidebar/img-sm-2.jpg" alt=""
+                                        class="avatar-md w-auto object-cover"> --}}
                                 </label>
                             </div>
                             <div class="form-check sidebar-setting card-radio">
                                 <input class="form-check-input" type="radio" name="data-sidebar-image"
                                     id="sidebarimg-03" value="img-3">
                                 <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-03">
-                                    <img src="assets/images/sidebar/img-sm-3.jpg" alt=""
-                                        class="avatar-md w-auto object-cover">
+                                    {{-- <img src="{{ asset('template/themesbrand.com/steex/layouts/') }}assets/images/sidebar/img-sm-3.jpg" alt=""
+                                        class="avatar-md w-auto object-cover"> --}}
                                 </label>
                             </div>
                             <div class="form-check sidebar-setting card-radio">
                                 <input class="form-check-input" type="radio" name="data-sidebar-image"
                                     id="sidebarimg-04" value="img-4">
                                 <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-04">
-                                    <img src="assets/images/sidebar/img-sm-4.jpg" alt=""
-                                        class="avatar-md w-auto object-cover">
+                                    {{-- <img src="{{ asset('template/themesbrand.com/steex/layouts/') }}assets/images/sidebar/img-sm-4.jpg" alt=""
+                                        class="avatar-md w-auto object-cover"> --}}
                                 </label>
                             </div>
                         </div>
@@ -925,8 +925,8 @@
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/plugins.js') }}"></script>
 
-    <!-- apexcharts -->
-    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    {{-- <!-- apexcharts -->
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
 
     <!-- Vector map-->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/jsvectormap/js/jsvectormap.min.js') }}">
@@ -944,11 +944,11 @@
     </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- apexcharts -->
-    <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    {{-- <!-- apexcharts -->
+    <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
 
-    <!-- real estate earnings init JS -->
-    <script src="{{ asset('assets/js/pages/real-estate-earnings.init.js') }}"></script>
+    {{-- <!-- real estate earnings init JS -->
+    <script src="{{ asset('assets/js/pages/real-estate-earnings.init.js') }}"></script> --}}
 
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/modal.init.js')}}"></script>
 <!-- Lord Icon -->
@@ -958,14 +958,14 @@
     <!-- App js -->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/app.js') }}"></script>
 
-    <script>
+    {{-- <script>
         const hamburgerButton = document.getElementById('topnav-hamburger-icon');
         const contentDiv = document.querySelector('.text-start');
 
         hamburgerButton.addEventListener('click', function() {
             contentDiv.classList.toggle('hamburger-icon-open');
         });
-    </script>
+    </script> --}}
     @yield('script')
 </body>
 

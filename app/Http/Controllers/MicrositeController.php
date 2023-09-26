@@ -21,20 +21,18 @@ class MicrositeController extends Controller
         $microsite_uuid = 'fb2ee8d9-d618-4578-8f34-84cac949cf0b';
         // dd($user_id);
         $qr = ShortUrl::where('microsite_uuid',$microsite_uuid)->get();
-        // dd($qr);
 
-        // Filter berdasarkan tombol "Terakhir Diperbarui"
         if ($request->has('filter') && $request->filter == 'terakhir_diperbarui') {
             $data = Microsite::where('user_id', $user_id)
                 ->orderBy('updated_at', 'desc')
-                ->paginate(10);
+                ->paginate(1);
             $d = $data;
         }
-        // Default: Tampilkan semua data
         else {
             $data = Microsite::whereHas('shortUrl')
             ->with('shortUrl')
-            ->get();
+            ->orderBy('updated_at', 'desc')
+            ->paginate(1);
             $d = $data;
         }
 
@@ -63,8 +61,6 @@ class MicrositeController extends Controller
             }
 
         $short_urls = ShortUrl::whereIn('microsite_uuid', $data->pluck('id'))->get();
-
-        // dd($short_urls);
         return view('Microsite.MicrositeUser', compact('data', 'urlshort', 'short_urls','result', 'd','qr','user_id'));
     }
 

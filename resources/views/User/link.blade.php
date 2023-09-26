@@ -335,8 +335,8 @@
                                                                             <p>{{ $row->default_short_url }}</p>
                                                                         </div>
                                                                         <!-- <center>
-                                                                                                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
-                                                                                            </center> -->
+                                                                                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
+                                                                                                </center> -->
                                                                     </div>
                                                                     {{-- <center>
                                                                     <button type="button" class="btn btn-danger">Download</button>
@@ -771,8 +771,8 @@
                                                                             <p>{{ $url->default_short_url }}</p>
                                                                         </div>
                                                                         <!-- <center>
-                                                                                                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
-                                                                                            </center> -->
+                                                                                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
+                                                                                                </center> -->
                                                                     </div>
                                                                     {{-- <center>
                                                                     <button type="button" class="btn btn-danger">Download</button>
@@ -963,6 +963,7 @@
         use Carbon\Carbon;
     @endphp
 @section('script')
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     @foreach ($urlshort as $i => $row)
         <script>
             var options = {
@@ -1006,11 +1007,13 @@
     <script type="text/javascript" src="./jquery.qrcode.js"></script>
     <script type="text/javascript" src="./qrcode.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Sweet Alerts js -->
-    <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script> --}}
 
     <!-- Sweet alert init js-->
-    <script src="{{ asset('assets/js/pages/sweetalerts.init.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/pages/sweetalerts.init.js') }}"></script> --}}
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
@@ -1165,8 +1168,8 @@
         tombolModal.addEventListener("click", function() {
 
         });
-        var tombolClose = document.getElementById("close-modal");
-        tombolClose.addEventListener("click", tutupModal);
+        // var tombolClose = document.getElementById("close-modal");
+        // tombolClose.addEventListener("click", tutupModal);
     </script>
 
     <script>
@@ -1211,7 +1214,7 @@
     <script>
         $(document).ready(function() {
             var selectId = $('#new_url_key').val();
-            console.log(selectId);
+            // console.log(selectId);
             // Mendapatkan token CSRF dari meta tag
             var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
@@ -1253,7 +1256,7 @@
     <script>
         $(document).ready(function() {
             var selectId = $('#deactivated_at').val();
-            console.log(selectId);
+            // console.log(selectId);
             var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
             $(document).on('click', '.btn-submit', function() {

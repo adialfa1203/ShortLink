@@ -836,9 +836,6 @@
             // });
         });
     </script>
-    <!-- apexcharts -->
-    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-
     <!-- Echarts -->
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/echarts/echarts.min.js') }}"></script>
 
@@ -960,7 +957,8 @@
         var progressText = document.querySelector('#microsite-total');
         progressText.textContent = countURLValue + ' dari 10';
     </script>
-    <script>
+    
+    {{-- <script>
         // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
         var countData = {{ $countNameChanged }}; // Contoh nilai statis
 
@@ -973,9 +971,8 @@
         // Update teks
         var progressText = document.getElementById("name-changed-text");
         progressText.textContent = countData + " dari 5";
-    </script>
-
-    <script>
+    </script> --}}
+    {{-- <script>
         // Temukan tombol "Keluar" berdasarkan ID
         var keluarButton = document.getElementById("keluarButton");
 
@@ -987,7 +984,8 @@
             // Tutup modal edit
             modalEdit.classList.remove("show");
         });
-    </script>
+    </script> --}}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
