@@ -253,8 +253,8 @@
                                     <div class="modal-header">
                                         <h1 class="modal-title" id="addAmountLabel">Buat tautan pemendek baru</h1>
 
-                                        <button type="button" class="btn-close" id="close-singkatkan" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        <button type="button" class="btn-close" id="close-singkatkan"
+                                            data-bs-dismiss="modal" aria-label="Close"></button>
 
                                     </div>
 
@@ -499,18 +499,19 @@
                             @php
                                 $userType = Auth::user()->subscribe; // Gantilah dengan logika yang sesuai dengan aplikasi Anda
                             @endphp
-                            @if($userType === 'yes')
-                            <h6 class="card-title">Nama yang telah diubah/bulan <i
-                                    class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip"
-                                    data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
-                            </h6>
-                            <div class="progress" data-bs-toggle="tooltip"
-                                data-bs-title="{{ $countNameChanged }} Nama diubah">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" id="name-changed"
-                                    role="progressbar" aria-valuenow="{{ $countNameChanged }}" aria-valuemin="0"
-                                    aria-valuemax="5" style="width: {{ ($countNameChanged / 5) * 100 }}%;"></div>
-                            </div>
-                            <p class="text-muted mb-0" id="name-changed-text"><b>{{ $countNameChanged }} dari 5</b></p>
+                            @if ($userType === 'yes')
+                                <h3 class="card-title">Nama yang telah diubah/bulan <i
+                                        class="bi bi-exclamation-circle align-baseline ms-1 fs-sm"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
+                                </h3>
+
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress-bar"
+                                        role="progressbar" aria-valuenow="{{ $countNameChanged }}" aria-valuemin="0"
+                                        aria-valuemax="5" style="width: {{ ($countNameChanged / 5) * 100 }}%;"></div>
+                                </div>
+                                <p class="text-muted mb-0"><b>{{ $countNameChanged }} dari 5</b></p>
                             @endif
                         </div>
                         <div class="d-flex justify-content-end pe-3" data-bs-toggle="modal"
@@ -667,59 +668,59 @@
                         // Tempatkan kode yang ingin Anda jalankan di sini
                         $('#close-singkatkan').click()
                     }, 1000);
-                } else{                    
-                // Jika input tidak kosong, lanjutkan dengan pengiriman permintaan AJAX
-                var formData = $(this).serialize(); // Mengambil data form
-                $.ajax({
-                    type: "POST",
-                    url: "short-link", // Ganti dengan URL endpoint Anda
-                    data: formData,
-                    success: function(response) {
-                        // Tangani respons dari server
-                        if (response.status == 'gagal') {
-                            Swal.fire({
-                                title: 'Kesalahan...',
-                                icon: 'error',
-                                html: response.message +
-                                    ' Klik <a href="/BillingSubscriptions">di sini</a> ' +
-                                    'untuk info lebih lanjut tentang langganan premium.',
-                            });
-                            setTimeout(function() {
-                                // Tempatkan kode yang ingin Anda jalankan di sini
-                                $('#close-singkatkan').click()
-                            }, 1000);
+                } else {
+                    // Jika input tidak kosong, lanjutkan dengan pengiriman permintaan AJAX
+                    var formData = $(this).serialize(); // Mengambil data form
+                    $.ajax({
+                        type: "POST",
+                        url: "short-link", // Ganti dengan URL endpoint Anda
+                        data: formData,
+                        success: function(response) {
+                            // Tangani respons dari server
+                            if (response.status == 'gagal') {
+                                Swal.fire({
+                                    title: 'Kesalahan...',
+                                    icon: 'error',
+                                    html: response.message +
+                                        ' Klik <a href="/BillingSubscriptions">di sini</a> ' +
+                                        'untuk info lebih lanjut tentang langganan premium.',
+                                });
+                                setTimeout(function() {
+                                    // Tempatkan kode yang ingin Anda jalankan di sini
+                                    $('#close-singkatkan').click()
+                                }, 1000);
+                            }
+                            // Tangani respons dari server
+                            console.log(response.default_short_url);
+                            var defaultShort = response.default_short_url;
+                            var title = response.title;
+                            var url = response.destination_url;
+
+                            // Tampilkan data yang dipotong di dalam input
+                            $("#default_short_url").val(defaultShort);
+                            $("#title").val(title);
+                            $('#destination_url').val(url);
+
+                            // Menampilkan tombol Copy
+                            $("#copyButton").show();
+                        },
+                        error: function(error) {
+                            $("#addAmount").modal("hide");
+                            $('#singkatkan').modal('hide')
+                            console.error("Error:", error);
                         }
-                        // Tangani respons dari server
-                        console.log(response.default_short_url);
-                        var defaultShort = response.default_short_url;
-                        var title = response.title;
-                        var url = response.destination_url; 
+                    });
 
-                        // Tampilkan data yang dipotong di dalam input
-                        $("#default_short_url").val(defaultShort);
-                        $("#title").val(title);
-                        $('#destination_url').val(url);
-
-                        // Menampilkan tombol Copy
-                        $("#copyButton").show();                       
-                    },
-                    error: function(error) {
-                        $("#addAmount").modal("hide");
-                        $('#singkatkan').modal('hide')
-                        console.error("Error:", error);
-                    }
-                });
-                    
                 }
-                 // Mengosongkan nilai-nilai input di dalam modal
-                        $("#AmountInput").val(""); // Mengosongkan input tautan panjang
-                        $("#cardNumber").val(""); // Mengosongkan input judul
-                        $(".password-input").val(""); // Mengosongkan input kata sandi
-                        $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
-                        $(".close-edit").val(""); // Mengosongkan button edit
+                // Mengosongkan nilai-nilai input di dalam modal
+                $("#AmountInput").val(""); // Mengosongkan input tautan panjang
+                $("#cardNumber").val(""); // Mengosongkan input judul
+                $(".password-input").val(""); // Mengosongkan input kata sandi
+                $(".time-input").val(""); // Mengosongkan input tanggal dan waktu
+                $(".close-edit").val(""); // Mengosongkan button edit
 
-                        // Menutup modal saat ini (jika perlu)
-                        $("#addAmount").modal("hide");
+                // Menutup modal saat ini (jika perlu)
+                $("#addAmount").modal("hide");
 
             });
             // Menangani klik pada tombol mata
@@ -957,7 +958,7 @@
         var progressText = document.querySelector('#microsite-total');
         progressText.textContent = countURLValue + ' dari 10';
     </script>
-    
+
     {{-- <script>
         // Ambil data dari {{ $countURL }} (misalnya menggunakan AJAX)
         var countData = {{ $countNameChanged }}; // Contoh nilai statis
