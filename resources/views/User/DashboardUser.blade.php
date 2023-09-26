@@ -253,7 +253,7 @@
                                     <div class="modal-header">
                                         <h1 class="modal-title" id="addAmountLabel">Buat tautan pemendek baru</h1>
 
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        <button type="button" class="btn-close" id="close-singkatkan" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
 
                                     </div>
@@ -661,8 +661,13 @@
                         title: "Kesalahan!",
                         text: "Anda harus mengisi data terlebih dahulu.",
                     });
-                }
-
+                    $("#addAmount").modal("hide");
+                    $("#addAmount").modal("hide");
+                    setTimeout(function() {
+                        // Tempatkan kode yang ingin Anda jalankan di sini
+                        $('#close-singkatkan').click()
+                    }, 1000);
+                } else{                    
                 // Jika input tidak kosong, lanjutkan dengan pengiriman permintaan AJAX
                 var formData = $(this).serialize(); // Mengambil data form
                 $.ajax({
@@ -679,12 +684,16 @@
                                     ' Klik <a href="/BillingSubscriptions">di sini</a> ' +
                                     'untuk info lebih lanjut tentang langganan premium.',
                             });
+                            setTimeout(function() {
+                                // Tempatkan kode yang ingin Anda jalankan di sini
+                                $('#close-singkatkan').click()
+                            }, 1000);
                         }
                         // Tangani respons dari server
                         console.log(response.default_short_url);
                         var defaultShort = response.default_short_url;
                         var title = response.title;
-                        var url = response.destination_url;
+                        var url = response.destination_url; 
 
                         // Tampilkan data yang dipotong di dalam input
                         $("#default_short_url").val(defaultShort);
@@ -692,9 +701,17 @@
                         $('#destination_url').val(url);
 
                         // Menampilkan tombol Copy
-                        $("#copyButton").show();
-
-                        // Mengosongkan nilai-nilai input di dalam modal
+                        $("#copyButton").show();                       
+                    },
+                    error: function(error) {
+                        $("#addAmount").modal("hide");
+                        $('#singkatkan').modal('hide')
+                        console.error("Error:", error);
+                    }
+                });
+                    
+                }
+                 // Mengosongkan nilai-nilai input di dalam modal
                         $("#AmountInput").val(""); // Mengosongkan input tautan panjang
                         $("#cardNumber").val(""); // Mengosongkan input judul
                         $(".password-input").val(""); // Mengosongkan input kata sandi
@@ -703,13 +720,7 @@
 
                         // Menutup modal saat ini (jika perlu)
                         $("#addAmount").modal("hide");
-                    },
-                    error: function(error) {
-                        $("#addAmount").modal("hide");
-                        $('#singkatkan').modal('hide')
-                        console.error("Error:", error);
-                    }
-                });
+
             });
             // Menangani klik pada tombol mata
             $("#password-addon").click(function() {

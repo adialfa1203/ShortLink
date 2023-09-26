@@ -231,10 +231,10 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" style="width: 100%;" id="singkatkanButton">
+                                            <button type="submit" class="btn btn-danger" style="width: 100%;"
+                                                data-bs-toggle="modal" data-bs-target="#singkatkan">
                                                 <i class="bi bi-link-45deg"></i> Singkatkan!
-                                            </button>                                            
-
+                                            </button>
                                         </div>
                                     </div>
 
@@ -245,7 +245,7 @@
 
                         <!-- Modal singkatkan-->
 
-                        <div class="modal fade" id="singkatkan" tabindex="-1" aria-labelledby="addAmountLabel"
+                        <div class="modal fade tautanBerhasil" id="singkatkan" tabindex="-1" aria-labelledby="addAmountLabel"
                             aria-hidden="true">
 
                             <div class="modal-dialog">
@@ -253,7 +253,7 @@
                                     <div class="modal-header">
                                         <h1 class="modal-title" id="addAmountLabel">Buat tautan pemendek baru</h1>
 
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        <button type="button" id="close-singkatkan" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
 
                                     </div>
@@ -295,7 +295,7 @@
                                             <div class="col-lg-12">
                                                 <div class="countdown-input-subscribe">
                                                     <label for="cardNumber" class="form-label">URL asli</label>
-                                                    <input class="form-control" id="destination_url">
+                                                    <input class="form-control" id="c">
                                                 </div>
                                             </div>
                                         </div>
@@ -496,7 +496,10 @@
                             <p class="text-muted mb-0" id="microsite-total"><b>{{ $countMIcrosite }} dari 10</b></p>
 
                             <br>
-
+                            @php
+                                $userType = Auth::user()->subscribe; // Gantilah dengan logika yang sesuai dengan aplikasi Anda
+                            @endphp
+                            @if($userType === 'yes')
                             <h6 class="card-title">Nama yang telah diubah/bulan <i
                                     class="bi bi-exclamation-circle align-baseline ms-1 fs-sm" data-bs-toggle="tooltip"
                                     data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
@@ -508,6 +511,7 @@
                                     aria-valuemax="5" style="width: {{ ($countNameChanged / 5) * 100 }}%;"></div>
                             </div>
                             <p class="text-muted mb-0" id="name-changed-text"><b>{{ $countNameChanged }} dari 5</b></p>
+                            @endif
                         </div>
                         <div class="d-flex justify-content-end pe-3" data-bs-toggle="modal"
                             data-bs-target="#lihatlebihbanyak">
@@ -646,12 +650,33 @@
             $("#shortlinkSubmit").submit(function(event) {
                 event.preventDefault(); // Mencegah form submission bawaan
 
+                // Mengambil nilai dari input tautan panjang dan judul
+                var destinationUrl = $("#AmountInput").val();
+                var title = $("#cardNumber").val();
+
+                // Cek apakah input kosong
+                if (!destinationUrl || !title) {
+                    $('#singkatkan').modal('hide');
+                    Swal.fire({
+                        icon: "error",
+                        title: "Kesalahan!",
+                        text: "Anda harus mengisi data terlebih dahulu.",
+                    });
+                    $("#addAmount").modal("hide");
+                    setTimeout(function() {
+                        // Tempatkan kode yang ingin Anda jalankan di sini
+                        $('#close-singkatkan').click()
+                    }, 1000); // 3000 milidetik (3 detik)
+                   
+                } else{                    
+                // Jika input tidak kosong, lanjutkan dengan pengiriman permintaan AJAX
                 var formData = $(this).serialize(); // Mengambil data form
                 $.ajax({
                     type: "POST",
                     url: "short-link", // Ganti dengan URL endpoint Anda
                     data: formData,
                     success: function(response) {
+                        // Tangani respons dari server
                         if (response.status == 'gagal') {
                             Swal.fire({
                                 title: 'Kesalahan...',
@@ -665,7 +690,7 @@
                         console.log(response.default_short_url);
                         var defaultShort = response.default_short_url;
                         var title = response.title;
-                        var url = response.destination_url;
+                        var url = response.destination_url; 
 
                         // Tampilkan data yang dipotong di dalam input
                         $("#default_short_url").val(defaultShort);
@@ -673,9 +698,16 @@
                         $('#destination_url').val(url);
 
                         // Menampilkan tombol Copy
-                        $("#copyButton").show();
-
-                        // Mengosongkan nilai-nilai input di dalam modal
+                        $("#copyButton").show();                       
+                    },
+                    error: function(error) {
+                        $("#addAmount").modal("hide");
+                        $('#singkatkan').modal('hide')
+                        console.error("Error:", error);
+                    }
+                });                    
+                }
+                 // Mengosongkan nilai-nilai input di dalam modal
                         $("#AmountInput").val(""); // Mengosongkan input tautan panjang
                         $("#cardNumber").val(""); // Mengosongkan input judul
                         $(".password-input").val(""); // Mengosongkan input kata sandi
@@ -683,12 +715,16 @@
                         $(".close-edit").val(""); // Mengosongkan button edit
 
                         // Menutup modal saat ini (jika perlu)
-                        $("#addAmount").modal("hide");
-                    },
-                    error: function(error) {
-                        console.error("Error:", error);
-                    }
-                });
+                        $("#addAmount").modal("hide");      
+                        
+                        
+                        var title = $("#title").val();
+                        var shortUrl = $("#default_short_url").val();
+                        var destinationtUrl = $("#destination_url").val();
+
+                        if (!title|| !shortUrl|| !destinationtUrl ) {
+                            $("#singkatkan").modal("hide");
+                        }   
             });
             // Menangani klik pada tombol mata
             $("#password-addon").click(function() {
@@ -757,7 +793,7 @@
                         // Tambahkan logika untuk menghasilkan QR Code dari tautan
                         // Misalnya, membuka jendela baru dengan layanan pembuatan QR Code
                         window.open(
-                            https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${ encodeURIComponent(shortUrl)}
+                            `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${ encodeURIComponent(shortUrl)}`
                         );
                         break;
                     default:
@@ -828,32 +864,6 @@
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/profile-setting.init.js') }}"></script>
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/password-addon.init.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Pilih tombol "Singkatkan" berdasarkan ID
-            const singkatkanButton = document.getElementById("singkatkanButton");
-    
-            // Tambahkan event listener klik pada tombol
-            singkatkanButton.addEventListener("click", function () {
-                // Dapatkan nilai dari inputan
-                const destinationUrl = document.getElementById("AmountInput").value;
-                const title = document.getElementById("cardNumber").value;
-    
-                // Periksa apakah kedua inputan kosong
-                if (!destinationUrl.trim() && !title.trim()) {
-                    // Tampilkan pesan kesalahan SweetAlert
-                    Swal.fire({
-                        icon: "error",
-                        title: "Kesalahan!",
-                        text: "Anda harus mengisi data terlebih dahulu.",
-                    });
-                } else {
-                }
-            });
-        });
-    </script>
-    
     <script>
         function copyToClipboard(text) {
             if (!navigator.clipboard) {
@@ -926,17 +936,6 @@
         progressBar.setAttribute("aria-valuenow", countData);
     </script>
     <script>
-        const clickCountElement = document.getElementById("clickCount");
-
-        // Mengambil data jumlah klik dari localStorage
-        let clickCount = localStorage.getItem("clickCount");
-
-        if (clickCount !== null) {
-            // Jika ada data jumlah klik yang tersimpan, tampilkan pada halaman
-            clickCountElement.textContent = clickCount + "";
-        }
-    </script>
-    <script>
         // Get the value from the server-side variable {{ $countURL }}
         var countURLValue = {{ $countURL }};
 
@@ -993,16 +992,9 @@
             modalEdit.classList.remove("show");
         });
     </script>
-    <script src="{{ asset('vendor/yoeunes/toastr/toastr.min.js') }}"></script>
-    <script>
-        @if (session('toastr'))
-            {!! session('toastr') !!}
-        @endif
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="sweetalert2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
