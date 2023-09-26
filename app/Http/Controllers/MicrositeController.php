@@ -61,6 +61,8 @@ class MicrositeController extends Controller
             }
 
         $short_urls = ShortUrl::whereIn('microsite_uuid', $data->pluck('id'))->get();
+
+        // dd($urlshort, $d);
         return view('Microsite.MicrositeUser', compact('data', 'urlshort', 'short_urls','result', 'd','qr','user_id'));
     }
 

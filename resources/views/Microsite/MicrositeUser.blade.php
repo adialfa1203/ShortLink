@@ -295,6 +295,7 @@
                                     </div>
                                     <p class="d-none" id="link_microsite{{ $i }}">{{ $row->link_microsite }}
                                     </p>
+
                                     <div class="collapse" id="collapseExample{{ $row->id }}">
                                         <div class="card-footer">
                                             <div class="d-flex">
@@ -314,6 +315,7 @@
                                             </div><!-- end card-body -->
                                         </div><!-- end card -->
                                     </div>
+
                                 </div>
                             </div><!-- end col -->
                         @endif
@@ -375,9 +377,7 @@
             var options = {
                 series: [{
                     name: "jumlah data",
-                    data: {
-                        !!json_encode($result['series'][$i]) !!
-                    },
+                    data: <?= json_encode($result['series'][$i]) ?>,
                 }],
                 chart: {
                     height: 350,
@@ -403,9 +403,7 @@
                     },
                 },
                 xaxis: {
-                    categories: {
-                        !!json_encode($result['labels']) !!
-                    },
+                    categories: <?= json_encode($result['labels']) ?>,
                 }
             };
 
@@ -565,13 +563,16 @@
             });
         });
     </script>
-    <script>
+    <!-- <script>
         $(document).ready(function() {
             $("button.btn").click(function() {
                 var buttonId = $(this).attr("id");
                 $.ajax({
                     type: "POST",
                     url: "{{ route('create.microsite') }}",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     data: {
                         button_id: buttonId
                     },
@@ -584,7 +585,7 @@
                 });
             });
         });
-    </script>
+    </script> -->
     <script>
         $(document).ready(function() {
             $(".btn").click(function() {
