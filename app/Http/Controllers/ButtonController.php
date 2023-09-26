@@ -59,6 +59,7 @@ class ButtonController extends Controller
             ],
             'color_hex' => 'nullable|string|max:7',
         ]);
+
         $existingButton = Button::where('icon', $request->icon)->where('id', '<>', $id)->first();
 
         if ($existingButton) {
@@ -73,9 +74,14 @@ class ButtonController extends Controller
 
         $button->save();
 
+        $socialCount = Social::where('buttons_uuid', $id)->count();
+
+        if ($socialCount > 0) {
+            return redirect()->back()->with('error', 'Tidak dapat mengupdate Sosial ini karena masih ada data terkait.');
+        }
+
         return redirect()->route('view.button')->with('success', 'Button berhasil diupdate.');
     }
-
 
     public function deleteButton($id)
     {

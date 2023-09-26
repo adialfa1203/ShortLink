@@ -38,8 +38,9 @@
                             <div class="col-xxl-12">
                                 <div class="card overflow-hidden">
                                     <div>
-                                        <img src="{{ asset('component/' . old('cover_img', $component->cover_img)) }}" alt=""
-                                            class="card-img-top profile-wid-img object-fit-cover" style="height: 200px;">
+                                        <img src="{{ asset('component/' . old('cover_img', $component->cover_img)) }}"
+                                            alt="" class="card-img-top profile-wid-img object-fit-cover"
+                                            style="height: 200px;">
                                         @if ($errors->has('cover_img'))
                                             <span class="text-danger">{{ $errors->first('cover_img') }}</span>
                                         @endif
@@ -55,37 +56,38 @@
                                     <div class="card-body pt-0 mt-n5">
                                         <div class="text-center">
                                             <div class="profile-user position-relative d-inline-block mx-auto">
-                                                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/default.jpg') }}" alt=""
+                                                <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/users/default.jpg') }}"
+                                                    alt=""
                                                     class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
                                             </div>
-                                                <div
-                                                    class="avatar-xs p-0 rounded-circle profile-photo-edit position-absolute end-0 bottom-0">
-                                                    <input id="profile-img-file-input" type="file"
-                                                        class="profile-img-file-input d-none" name="profile_img">
-                                                    <label for="profile-img-file-input"
-                                                        class="profile-photo-edit avatar-xs">
-                                                        {{-- <span class="avatar-title rounded-circle bg-light text-body">
+                                            <div
+                                                class="avatar-xs p-0 rounded-circle profile-photo-edit position-absolute end-0 bottom-0">
+                                                <input id="profile-img-file-input" type="file"
+                                                    class="profile-img-file-input d-none" name="profile_img">
+                                                <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
+                                                    {{-- <span class="avatar-title rounded-circle bg-light text-body">
                                                             <i class="bi bi-camera"></i>
                                                         </span> --}}
-                                                    </label>
-                                                </div>
+                                                </label>
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-center">
-                                            @if ($errors->has('profile_img'))
-                                                <span class="text-danger">{{ $errors->first('profile_img') }}</span>
-                                            @endif
-                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        @if ($errors->has('profile_img'))
+                                            <span class="text-danger">{{ $errors->first('profile_img') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-start gap-3 mt-4">
-                                <button type="submit" class="btn btn-success right ms-auto">Simpan Perubahan</button>
-                            </div>
+                        </div>
+                        <div class="d-flex align-items-start justify-content-between gap-3 mt-4">
+                            <a href="{{ route('view.component') }}" class="btn btn-light">Kembali</a>
+                            <button type="submit" class="btn btn-success">Simpan Perubahan</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </form>
 @endsection

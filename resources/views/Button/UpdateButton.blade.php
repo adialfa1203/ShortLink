@@ -62,8 +62,9 @@
                                         name="color_hex" value="{{ $button->color_hex }}">
                                 </div>
                             </div>
-                            <div class="d-flex align-items-start gap-3 mt-4">
-                                <button type="submit" class="btn btn-success right ms-auto">Simpan</button>
+                            <div class="d-flex align-items-start justify-content-between gap-3 mt-4">
+                                <a href="{{ route('view.button') }}" class="btn btn-light">Kembali</a>
+                                <button type="submit" class="btn btn-success right ms-auto">Kirim</button>
                             </div>
                         </form>
                     </div>

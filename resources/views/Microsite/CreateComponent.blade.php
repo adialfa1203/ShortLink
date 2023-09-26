@@ -88,8 +88,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-start gap-3 mt-4">
-                                <button type="submit" class="btn btn-success right ms-auto">Kirim</button>
+                            <div class="d-flex align-items-start justify-content-between gap-3 mt-4">
+                                <a href="{{ route('view.component') }}" class="btn btn-light">Kembali</a>
+                                <button type="submit" class="btn btn-success">Simpan Perubahan</button>
                             </div>
                         </div>
                     </div>

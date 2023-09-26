@@ -273,37 +273,39 @@ class MicrositeController extends Controller
 
         $component = Components::findOrFail($id);
 
+        $micrositeCount = Microsite::where('components_uuid', $id)->count();
+
+        if ($micrositeCount > 0) {
+            return redirect()->back()->with('error', 'Tidak dapat mengedit komponen ini karena masih ada data terkait.');
+        }
+
         if ($request->hasFile('cover_img')) {
             if (file_exists(public_path('component/' . $component->cover_img))) {
                 unlink(public_path('component/' . $component->cover_img));
             }
-        }
 
-        // if ($request->hasFile('profile_img')) {
-        //     if (file_exists(public_path('component/' . $component->profile_img))) {
-        //         unlink(public_path('component/' . $component->profile_img));
-        //     }
-        // }
-
-        if ($request->hasFile('cover_img')) {
             $coverImage = $request->file('cover_img');
             $coverImageName = time() . '_cover.' . $coverImage->getClientOriginalExtension();
             $coverImage->move(public_path('component'), $coverImageName);
             $component->cover_img = $coverImageName;
         }
 
-        // if ($request->hasFile('profile_img')) {
-        //     $profileImage = $request->file('profile_img');
-        //     $profileImageName = time() . '_profile.' . $profileImage->getClientOriginalExtension();
-        //     $profileImage->move(public_path('component'), $profileImageName);
-        //     $component->profile_img = $profileImageName;
-        // }
+        if ($request->hasFile('profile_img')) {
+            if (file_exists(public_path('component/' . $component->profile_img))) {
+                unlink(public_path('component/' . $component->profile_img));
+            }
+
+            $profileImage = $request->file('profile_img');
+            $profileImageName = time() . '_profile.' . $profileImage->getClientOriginalExtension();
+            $profileImage->move(public_path('component'), $profileImageName);
+            $component->profile_img = $profileImageName;
+        }
+
         $component->component_name = $request->component_name;
         $component->save();
-        // dd($request);
+
         return redirect()->route('view.component')->with('success', 'Komponen berhasil diupdate.');
     }
-
 
     public function deleteComponent($id)
     {

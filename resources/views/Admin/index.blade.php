@@ -28,92 +28,99 @@
     @endsection
     @section('content')
         <div class="page-content">
-            <div class="row">
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card border-bottom border-2 card-animate">
-                        <div class="card-body bg-success">
-                            <h5 class="fs-md text-muted mb-0 text-white">Pengguna</h5>
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Card 1 -->
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card border-bottom border-2 card-animate">
+                            <div class="card-body bg-success">
+                                <h5 class="fs-md text-muted mb-0 text-white">Pengguna</h5>
+                                <div class="row mt-3">
+                                    <div class="col-2">
+                                        <i class="fa-solid fa-user custom-icon-size" style="font-size: 30px;"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <h3 class="mb-4 custom-icon-size">
+                                            <span class="counter-value" data-target="{{ $totalUser }}">0</span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                            <div class="row mt-3">
-                                <div class="col-2">
-                                    <i class="fa-solid fa-user custom-icon-size" style="font-size: 30px;"></i>
-                                </div>
-                                <div class="col-10">
-                                    <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value"
-                                            data-target="{{ $totalUser }}">0</span>
-                                    </h3>
+                    <!-- Card 2 -->
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card border-bottom border-2 card-animate">
+                            <div class="card-body bg-primary">
+                                <h5 class="fs-md text-muted mb-0 text-white">Tautan</h5>
+                                <div class="row mt-3">
+                                    <div class="col-2">
+                                        <i class="fa-solid fa-link custom-icon-size" style="font-size: 30px;"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <h3 class="mb-4 custom-icon-size">
+                                            <span class="counter-value" data-target="{{ $totalUrl }}">0</span>
+                                        </h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div><!--end col-->
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card border-bottom border-2 card-animate">
-                        <div class="card-body bg-primary">
-                            <h5 class="fs-md text-muted mb-0 text-white">Tautan</h5>
 
-                            <div class="row mt-3">
-                                <div class="col-2">
-                                    <i class="fa-solid fa-link custom-icon-size" style="font-size: 30px;"></i>
-                                </div>
-                                <div class="col-10">
-                                    <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value"
-                                            data-target="{{ $totalUrl }}">0</span>
-                                    </h3>
+                    <!-- Card 3 -->
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card border-bottom border-2 card-animate">
+                            <div class="card-body bg-warning">
+                                <h5 class="fs-md text-muted mb-0 text-white">Pengunjung</h5>
+                                <div class="row mt-3">
+                                    <div class="col-2">
+                                        <i class="fa-solid fa-user custom-icon-size" style="font-size: 30px;"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <h3 class="mb-4 custom-icon-size">
+                                            <span class="counter-value" data-target="{{ $totalVisits }}">0</span>
+                                        </h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div><!--end col-->
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card border-bottom border-2 card-animate">
-                        <div class="card-body bg-warning">
-                            <h5 class="fs-md text-muted mb-0 text-white">Pengunjung</h5>
 
-                            <div class="row mt-3">
-                                <div class="col-2">
-                                    <i class="fa-solid fa-user custom-icon-size" style="font-size: 30px;"></i>
-                                </div>
-                                <div class="col-10">
-                                    <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value"
-                                            data-target="{{ $totalVisits }}">0</span>
-                                    </h3>
+                    <!-- Card 4 -->
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card border-bottom border-2 card-animate">
+                            <div class="card-body" style="background-color : #FF6C6C">
+                                <h5 class="fs-md text-muted mb-0 text-white">Subscription</h5>
+                                <div class="row mt-3">
+                                    <div class="col-2">
+                                        <i class="fa-solid fa-thumbs-up custom-icon-size" style="font-size: 30px;"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <h3 class="mb-4 custom-icon-size">
+                                            <span class="counter-value" data-target="0">0</span>
+                                        </h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div><!--end col-->
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card border-bottom border-2 card-animate">
-                        <div class="card-body" style="background-color : #FF6C6C">
-                            <h5 class="fs-md text-muted mb-0 text-white">Subscription</h5>
+                </div>
 
-                            <div class="row mt-3">
-                                <div class="col-2">
-                                    <i class="fa-solid fa-thumbs-up custom-icon-size" style="font-size: 30px;"></i>
-                                </div>
-                                <div class="col-10">
-                                    <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value"
-                                            data-target="0">0</span> </h3>
+                <!-- Chart Section -->
+                <div class="row mt-4">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body pb-0 mb-n4">
+                                <div class="d-flex z-1 position-relative"></div>
+                                <div class="card-body pt-0">
+                                    <div id="chartDataDashboard"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div><!--end col-->
-            </div><!--end row-->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body pb-0 mb-n4">
-                            <div class="d-flex z-1 position-relative">
-                            </div>
-                            <div class="card-body pt-0 mt-4 mt-md-0">
-                                <div id="chartDataDashboard" style="min-height: 365px; min-width: 100%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
+                </div>
+            </div>
         </div>
     @endsection
     @section('script')
@@ -204,9 +211,9 @@
                 $.ajax({
                     url: "{{ route('dashboard.chart') }}",
                     method: "GET",
-                    success: function (data) {
+                    success: function(data) {
                         console.log(data);
-        
+
                         var options = {
                             chart: {
                                 type: 'line'
@@ -226,17 +233,17 @@
                                 categories: data.result.labels
                             }
                         };
-        
+
                         var chart = new ApexCharts(document.querySelector("#chartDataDashboard"), options);
                         chart.render();
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         console.error(error);
                     }
                 });
             }
             updateChart();
         </script>
-        
-        
+
+
     @endsection
