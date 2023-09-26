@@ -500,18 +500,19 @@
                                 $userType = Auth::user()->subscribe; // Gantilah dengan logika yang sesuai dengan aplikasi Anda
                             @endphp
                             @if ($userType === 'yes')
-                                <h3 class="card-title">Nama yang telah diubah/bulan <i
+                                <h6 class="card-title">Nama yang telah diubah/bulan <i
                                         class="bi bi-exclamation-circle align-baseline ms-1 fs-sm"
                                         data-bs-toggle="tooltip"
                                         data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
-                                </h3>
-
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress-bar"
+                                </h6>
+                                <div class="progress" data-bs-toggle="tooltip"
+                                    data-bs-title="{{ $countNameChanged }} Nama diubah">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="name-changed"
                                         role="progressbar" aria-valuenow="{{ $countNameChanged }}" aria-valuemin="0"
                                         aria-valuemax="5" style="width: {{ ($countNameChanged / 5) * 100 }}%;"></div>
                                 </div>
-                                <p class="text-muted mb-0"><b>{{ $countNameChanged }} dari 5</b></p>
+                                <p class="text-muted mb-0" id="name-changed-text"><b>{{ $countNameChanged }} dari 5</b>
+                                </p>
                             @endif
                         </div>
                         <div class="d-flex justify-content-end pe-3" data-bs-toggle="modal"
@@ -572,20 +573,25 @@
                                                 <p class="text-muted mb-0"><b>{{ $countMIcrosite }} dari 10</b></p>
 
                                                 <br>
-                                                <h3 class="card-title">Nama yang telah diubah/bulan <i
-                                                        class="bi bi-exclamation-circle align-baseline ms-1 fs-sm"
-                                                        data-bs-toggle="tooltip"
-                                                        data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
-                                                </h3>
+                                                @php
+                                                    $userType = Auth::user()->subscribe; // Gantilah dengan logika yang sesuai dengan aplikasi Anda
+                                                @endphp
+                                                @if ($userType === 'yes')
+                                                    <h3 class="card-title">Nama yang telah diubah/bulan <i
+                                                            class="bi bi-exclamation-circle align-baseline ms-1 fs-sm"
+                                                            data-bs-toggle="tooltip"
+                                                            data-bs-title="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi"></i>
+                                                    </h3>
 
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                                        id="progress-bar" role="progressbar"
-                                                        aria-valuenow="{{ $countNameChanged }}" aria-valuemin="0"
-                                                        aria-valuemax="5"
-                                                        style="width: {{ ($countNameChanged / 5) * 100 }}%;"></div>
-                                                </div>
-                                                <p class="text-muted mb-0"><b>{{ $countNameChanged }} dari 5</b></p>
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                                            id="progress-bar" role="progressbar"
+                                                            aria-valuenow="{{ $countNameChanged }}" aria-valuemin="0"
+                                                            aria-valuemax="5"
+                                                            style="width: {{ ($countNameChanged / 5) * 100 }}%;"></div>
+                                                    </div>
+                                                    <p class="text-muted mb-0"><b>{{ $countNameChanged }} dari 5</b></p>
+                                                @endif
                                             </div>
                                             <div class="card-body">
                                                 <div class="col-lg-12">
@@ -616,7 +622,9 @@
 
 
                                         </div>
+
                                     </div>
+
                                     <div class="col-lg-12">
                                         <div class="modal-footer">
                                             <a href="/subscribe-product-user" type="button" class="btn btn-danger"
