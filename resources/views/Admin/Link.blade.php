@@ -87,7 +87,8 @@
                     <div class="row align-items-center gy-3">
                         <div class="col-lg-3 col-md-6">
                             <div class="search-box">
-                                <input type="text" class="form-control search" id="searchInput" placeholder="Cari...">
+                                <input type="text" class="form-control search" id="searchInput"
+                                    placeholder="Cari...">
                                 <i class="ri-search-line search-icon"></i>
                             </div>
                         </div>
@@ -107,7 +108,7 @@
                                     {{-- <th scope="col">Aksi</th> --}}
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="list form-check-all">
                                 @foreach ($userData as $userId => $data)
                                     @php
                                         $user = $users->find($userId);

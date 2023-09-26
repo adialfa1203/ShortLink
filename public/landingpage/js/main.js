@@ -104,79 +104,79 @@ $('#screen_slider').owlCarousel({
 // Number Count
 window.addEventListener('scroll', function() {
 	var element = document.querySelector('#counter');
-	var position = element.getBoundingClientRect();
+	// var position = element.getBoundingClientRect();
 
 	// checking whether fully visible
-	if(position.top >= 0 && position.bottom <= window.innerHeight) {
-    $('.counter-value').each(function() {
-      var $this = $(this),
-        countTo = $this.attr('data-count');
-      $({
-        countNum: $this.text()
-      }).animate({
-          countNum: countTo
-        },
+	// if(position.top >= 0 && position.bottom <= window.innerHeight) {
+  //   $('.counter-value').each(function() {
+  //     var $this = $(this),
+  //       countTo = $this.attr('data-count');
+  //     $({
+  //       countNum: $this.text()
+  //     }).animate({
+  //         countNum: countTo
+  //       },
 
-        {
+  //       {
 
-          duration: 2000,
-          easing: 'swing',
-          step: function() {
-            $this.text(Math.floor(this.countNum));
-          },
-          complete: function() {
-            $this.text(this.countNum);
-            //alert('finished');
-          }
+  //         duration: 2000,
+  //         easing: 'swing',
+  //         step: function() {
+  //           $this.text(Math.floor(this.countNum));
+  //         },
+  //         complete: function() {
+  //           $this.text(this.countNum);
+  //           //alert('finished');
+  //         }
 
-        });
-    });
-	}
+  //       });
+  //   });
+	// }
 
-	if(position.top < window.innerHeight && position.bottom >= 0) {
-		//console.log('Element is partially visible in screen');
-	}else{
-    //console.log('Element is not visible');
-    $('.counter-value').each(function() {
-      var $this = $(this),
-        countTo = 0;
-      $({
-        countNum: $this.text()
-      }).animate({
-          countNum: countTo
-        },
+	// if(position.top < window.innerHeight && position.bottom >= 0) {
+	// 	//console.log('Element is partially visible in screen');
+	// }else{
+  //   //console.log('Element is not visible');
+  //   $('.counter-value').each(function() {
+  //     var $this = $(this),
+  //       countTo = 0;
+  //     $({
+  //       countNum: $this.text()
+  //     }).animate({
+  //         countNum: countTo
+  //       },
 
-        {
+  //       {
 
-          duration: 100,
-          easing: 'swing',
-          step: function() {
-            $this.text(Math.floor(this.countNum));
-          },
-          complete: function() {
-            $this.text(this.countNum);
-            //alert('finished');
-          }
+  //         duration: 100,
+  //         easing: 'swing',
+  //         step: function() {
+  //           $this.text(Math.floor(this.countNum));
+  //         },
+  //         complete: function() {
+  //           $this.text(this.countNum);
+  //           //alert('finished');
+  //         }
 
-        });
-    });   
-  }
+  //       });
+  //   });   
+  // }
 });
 
 
 
 // --------Magnify-popup
 
-$(function() {
-    $('.popup-youtube').magnificPopup({
-        disableOn: 700,
-        type: 'iframe',
-        mainClass: 'mfp-fade',
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false
-    });
-});
+// $(function() {
+//     $('.popup-youtube').magnificPopup({
+//         disableOn: 700,
+//         type: 'iframe',
+//         mainClass: 'mfp-fade',
+//         removalDelay: 160,
+//         preloader: false,
+//         fixedContentPos: false
+//     });
+// });
 
 
 // Pricing Section Year Month Jquery
@@ -223,50 +223,50 @@ $(document).ready(function () {
 
 
 // Download Section Hover Jquery
-window.addEventListener('scroll', function() {
-	var element = document.querySelector('.free_text');
-	var position = element.getBoundingClientRect();
+// window.addEventListener('scroll', function() {
+// 	var element = document.querySelector('.free_text');
+// 	// var position = element.getBoundingClientRect();
 
-	if(position.top < window.innerHeight && position.bottom >= 0) {
-    $('.purple_backdrop').css("opacity", "1");
-	}else{
-    //console.log('Element is not visible');
-    $('.purple_backdrop').css("opacity", "0");
-  }
-});
+// 	if(position.top < window.innerHeight && position.bottom >= 0) {
+//     $('.purple_backdrop').css("opacity", "1");
+// 	}else{
+//     //console.log('Element is not visible');
+//     $('.purple_backdrop').css("opacity", "0");
+//   }
+// });
 
-$(window).on('resize', function() {
-  if ($(window).width()<768) {
+// $(window).on('resize', function() {
+//   if ($(window).width()<768) {
       
-    window.addEventListener('scroll', function() {
-      var element = document.querySelector('.mobile_mockup');
-      var position = element.getBoundingClientRect();
+//     window.addEventListener('scroll', function() {
+//       var element = document.querySelector('.mobile_mockup');
+//       // var position = element.getBoundingClientRect();
     
-      if(position.top < window.innerHeight && position.bottom >= 0) {
-        $('.purple_backdrop').css("opacity", "1");
-      }else{
-        //console.log('Element is not visible');
-        $('.purple_backdrop').css("opacity", "0");
-      }
-    });
+//       if(position.top < window.innerHeight && position.bottom >= 0) {
+//         $('.purple_backdrop').css("opacity", "1");
+//       }else{
+//         //console.log('Element is not visible');
+//         $('.purple_backdrop').css("opacity", "0");
+//       }
+//     });
 
-  }  
-  else {
+//   }  
+//   else {
 
-    window.addEventListener('scroll', function() {
-      var element = document.querySelector('.free_text');
-      var position = element.getBoundingClientRect();
+//     window.addEventListener('scroll', function() {
+//       var element = document.querySelector('.free_text');
+//       // var position = element.getBoundingClientRect();
     
-      if(position.top < window.innerHeight && position.bottom >= 0) {
-        $('.purple_backdrop').css("opacity", "1");
-      }else{
-        //console.log('Element is not visible');
-        $('.purple_backdrop').css("opacity", "0");
-      }
-    });
+//       if(position.top < window.innerHeight && position.bottom >= 0) {
+//         $('.purple_backdrop').css("opacity", "1");
+//       }else{
+//         //console.log('Element is not visible');
+//         $('.purple_backdrop').css("opacity", "0");
+//       }
+//     });
 
-  }
-});
+//   }
+// });
 
 
 // Scrool-top

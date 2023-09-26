@@ -568,22 +568,6 @@
     <script src="{{ asset('landingPage/js/aos.js') }}"></script>
     <!-- main-js-Link -->
     <script src="{{ asset('landingPage/js/main.js') }}"></script>
-    <script>
-        // Fungsi untuk mengarahkan ke halaman Facebook
-        document.getElementById("facebook-link").addEventListener("click", function() {
-            window.location.href = "https://www.facebook.com/nama_akun_facebook";
-        });
-
-        // Fungsi untuk mengarahkan ke halaman Twitter
-        document.getElementById("twitter-link").addEventListener("click", function() {
-            window.location.href = "https://twitter.com/nama_akun_twitter";
-        });
-
-        // Fungsi untuk mengarahkan ke halaman Instagram
-        document.getElementById("instagram-link").addEventListener("click", function() {
-            window.location.href = "https://www.instagram.com/nama_akun_instagram";
-        });
-    </script>
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}">
     </script>
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/simplebar/simplebar.min.js') }}"></script>
