@@ -1,6 +1,6 @@
     @extends('layout.admin.app')
 
-    @section('title', 'Link')
+    @section('title', 'Beranda')
     @section('style')
         <style>
             @import url(https://fonts.googleapis.com/css?family=Roboto);
@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="col-10">
                                         <h3 class="mb-4 custom-icon-size">
-                                            <span class="counter-value" data-target="{{ $totalUser }}">0</span>
+                                            <span class="counter-value" data-target="{{ $totalUser }}">{{ $totalUser }}</span>
                                         </h3>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="col-10">
                                         <h3 class="mb-4 custom-icon-size">
-                                            <span class="counter-value" data-target="{{ $totalUrl }}">0</span>
+                                            <span class="counter-value" data-target="{{ $totalUrl }}">{{ $totalUrl }}</span>
                                         </h3>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="col-10">
                                         <h3 class="mb-4 custom-icon-size">
-                                            <span class="counter-value" data-target="{{ $totalVisits }}">0</span>
+                                            <span class="counter-value" data-target="{{ $totalVisits }}">{{ $totalVisits }}</span>
                                         </h3>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                     <div class="col-xl-3 col-sm-6">
                         <div class="card border-bottom border-2 card-animate">
                             <div class="card-body" style="background-color : #FF6C6C">
-                                <h5 class="fs-md text-muted mb-0 text-white">Subscription</h5>
+                                <h5 class="fs-md text-muted mb-0 text-white">Berlangganan</h5>
                                 <div class="row mt-3">
                                     <div class="col-2">
                                         <i class="fa-solid fa-thumbs-up custom-icon-size" style="font-size: 30px;"></i>
@@ -108,6 +108,9 @@
                 </div>
 
                 <!-- Chart Section -->
+                <div>
+                    <h5 class="mb-sm-0">Rincian Data</h5>
+                </div>
                 <div class="row mt-4">
                     <div class="col-lg-12">
                         <div class="card">
