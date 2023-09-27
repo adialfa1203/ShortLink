@@ -1016,7 +1016,7 @@
                     curve: 'straight'
                 },
                 title: {
-                    text: 'Product Trends by Month',
+                    text: 'Link dikunjungi perbulan',
                     align: 'left'
                 },
                 grid: {

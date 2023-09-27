@@ -88,7 +88,7 @@ class DashboardAdminController extends Controller
         $totalVisits = ShortURLVisit::query()
                         ->whereRelation('shortURL', 'archive', '!=', 'yes')
                         ->count();
-
+        // dd($totalUser);
     return view('Admin.index', compact('totalUser','totalUrl','totalVisits'));
     }
 

@@ -54,6 +54,7 @@
                         <div class="card border-bottom border-2 card-animate">
                             <div class="card-body bg-primary">
                                 <h5 class="fs-md text-muted mb-0 text-white">Tautan</h5>
+    
                                 <div class="row mt-3">
                                     <div class="col-2">
                                         <i class="fa-solid fa-link custom-icon-size" style="font-size: 30px;"></i>
@@ -66,7 +67,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div><!--end col-->
 
                     <!-- Card 3 -->
                     <div class="col-xl-3 col-sm-6">

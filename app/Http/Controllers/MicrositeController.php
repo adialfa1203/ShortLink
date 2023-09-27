@@ -25,14 +25,15 @@ class MicrositeController extends Controller
         if ($request->has('filter') && $request->filter == 'terakhir_diperbarui') {
             $data = Microsite::where('user_id', $user_id)
                 ->orderBy('updated_at', 'desc')
-                ->paginate(1);
+                ->paginate(5);
             $d = $data;
         }
         else {
             $data = Microsite::whereHas('shortUrl')
+            ->where('user_id', $user_id)
             ->with('shortUrl')
             ->orderBy('updated_at', 'desc')
-            ->paginate(1);
+            ->paginate(10);
             $d = $data;
         }
 
