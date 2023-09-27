@@ -185,7 +185,7 @@
                     <div class="card">
                         <div class="card-header fw-bold">
                             <div>
-                                Referer Teratas
+                                Referensi Teratas
                             </div><br>
                             <div class="avatar-sm mx-auto mb-3">
                                 <div class="avatar-title bg-custom text-primary fs-xl rounded">
@@ -208,7 +208,7 @@
                             <div class="card">
                                 <div class="card-header fw-bold">
                                     <div>
-                                        Top Region
+                                        Wilayah Teratas
                                     </div><br>
                                     <div class="avatar-sm mx-auto mb-3">
                                         <div class="avatar-title bg-custom text-primary fs-xl rounded">
@@ -231,7 +231,7 @@
                             <div class="card">
                                 <div class="card-header fw-bold">
                                     <div>
-                                        Browser Teratas
+                                        Peramban Teratas
                                     </div><br>
                                     <div class="avatar-sm mx-auto mb-3">
                                         <div class="avatar-title bg-custom text-primary fs-xl rounded">
