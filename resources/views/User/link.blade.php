@@ -180,13 +180,13 @@
                                                                             class="fa-solid fa-qrcode"></i></span>
                                                                 </button>
 
-                                                                <button type="button"
-                                                                    class="btn btn-light me-3 btn-sm edit-link"
-                                                                    data-bs-toggle="modal" data-bs-target="#zoomInModal"
-                                                                    data-link="{{ $row->url_key }}">
-                                                                    <span><i
-                                                                            class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
-                                                                </button>
+                                                                @php
+                                                                    $userType = Auth::user()->subscribe; // Gantilah dengan logika yang sesuai dengan aplikasi Anda
+                                                                @endphp
+                                                            <button type="button" class="btn btn-light me-3 btn-sm edit-link" data-bs-toggle="modal"
+                                                                data-bs-target="{{ $userType === 'no' ? '#zoomInModalFree' : '#zoomInModal' }}" data-link="{{ $row->url_key }}">
+                                                                <span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
+                                                            </button>
                                                             </div>
                                                             <br>
                                                             <a>
@@ -350,7 +350,37 @@
                                                         <p class="d-none" id="default_short_url{{ $i }}">
                                                             {{ $row->default_short_url }}
                                                         </p>
-
+                                                        @if($userType === 'no')
+                                                        <div id="zoomInModalFree" class="modal fade zoomIn" tabindex="-1"
+                                                            aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="card">
+                                                                            <div class="card-header fw-bold">
+                                                                                <div class="avatar-sm mx-auto mb-3">
+                                                                                    <div class="avatar-title bg-custom text-primary fs-xl rounded">
+                                                                                        <i class="fa-solid fa-lock"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="card-body text-center">
+                                                                                <h4 class="card-title">Anda Tidak Bisa Mengakses Fitur Ini!</h4>
+                                                                                <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan
+                                                                                    Untuk Bisa Menikmati Fitur Ini!</p>
+                                                                                <p class="card-text text-muted">Dengan fitur kustom anda dapat mengubah tautan anda sesuai selera, seperti
+                                                                                    mengubahnya menjadi nama yang mudah diingat agar mempermudah anda untuk mengakses</p>
+                                                                            </div>
+                                                                            <div class="card-footer text-center">
+                                                                                <a href="/subscribe-product-user" style="color: red;"> Mulai
+                                                                                    Berlangganan? </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div>
+                                                        </div>
+                                                        @else
                                                         <form id="formKustom">
                                                             <div id="zoomInModal" class="modal fade zoomIn"
                                                                 tabindex="-1" aria-labelledby="zoomInModalLabel"
@@ -413,6 +443,7 @@
                                                                 </div><!-- /.modal-dialog -->
                                                             </div><!-- /.modal -->
                                                         </form>
+                                                        @endif
                                                         <form id="updateTime">
                                                             <div id="TimeModal-{{ $row->id }}"
                                                                 class="modal fade Time" tabindex="-1"
