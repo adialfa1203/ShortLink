@@ -107,12 +107,16 @@
                                 <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                     <thead class="text-muted table-light">
                                         <tr class="searchable">
-                                            <th scope="col" data-sort="order_id">#</th>
-                                            <th scope="col" data-sort="order_id">Nama Pengguna</th>
-                                            <th scope="col" data-sort="order_date">E-mail</th>
-                                            <th scope="col" data-sort="delivery_date">No Telepon</th>
-                                            <th scope="col" data-sort="status">Berlangganan</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col" data-sort="order_id">No</th>
+                                            <th scope="col" data-sort="order_id">Nama
+                                                Pengguna</th>
+                                            <th scope="col" data-sort="order_date">E-mail
+                                            </th>
+                                            <th scope="col" data-sort="delivery_date">No
+                                                Telepon</th>
+                                            <th scope="col" data-sort="status">Berlangganan
+                                            </th>
+                                            <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
@@ -123,7 +127,7 @@
                                                         <img style="width: 300px; height: 300px;" src="{{ asset('images/Empty.jpg') }}" alt="Gambar">
                                                         <div class="d-flex justify-content-center align-items-center mt-2">
                                                             <i class="ph-magnifying-glass fs-2 text-primary"></i>
-                                                            <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
+                                                            <h5 class="mt-2">Maaf! Belum Ada Data Yang Ditemukan</h5>
                                                         </div>
                                                     </div>
                                                 </td>

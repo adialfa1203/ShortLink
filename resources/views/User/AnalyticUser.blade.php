@@ -56,196 +56,151 @@
             </div>
             <!-- end page title -->
 
-            <div class="row">
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
-                    <div class="card border-bottom border-2 card-animate border-primary">
-                        <div class="card-body">
-                            <span class="badge bg-success-subtle text-success float-end"></span>
-                            <h4 class="mb-4"><span class="counter-value" data-target="{{ $countURL }}">0</span></h4>
-                            <p class="text-muted fw-medium text-uppercase mb-0">Jumlah tautan</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
-                    <div class="card border-bottom border-2 card-animate border-success">
-                        <div class="card-body">
-                            <span class="badge bg-success-subtle text-success float-end"></span>
-                            <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisits }}">0</span></h4>
-                            <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Tautan</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
-                    <div class="card border-bottom border-2 card-animate border-warning">
-                        <div class="card-body">
-                            <span class="badge bg-success-subtle text-success float-end"></span>
-                            <h4 class="mb-4"><span class="counter-value" data-target="{{ $countMicrosite }}">0</span></h4>
-                            <p class="text-muted fw-medium text-uppercase mb-0">Jumlah Microsite</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
-                    <div class="card border-bottom border-2 card-animate border-danger">
-                        <div class="card-body">
-                            <span class="badge bg-success-subtle text-success float-end"></span>
-                            <h4 class="mb-4"><span class="counter-value"
-                                    data-target="{{ $totalVisitsMicrosite }}">0</span></h4>
-                            <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Microsite</p>
-                        </div>
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="card border-bottom border-2 card-animate border-primary">
+                    <div class="card-body">
+                        <span class="badge bg-success-subtle text-success float-end"></span>
+                        <h4 class="mb-4"><span class="counter-value" data-target="{{ $countURL }}">{{ $countURL }}</span></h4>
+                        <p class="text-muted fw-medium text-uppercase mb-0">Jumlah tautan</p>
                     </div>
                 </div>
             </div>
-            <!---end row-->
-            <div>
-                <h5 class="mb-sm-0">Lini Masa</h5>
-            </div><br>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body pb-0 mb-n4">
-                            <div class="d-flex z-1 position-relative">
-                                <div class="flex-shrink-0">
-                                    @php
-                                        $firstDayOfMonth = now()
-                                            ->startOfMonth()
-                                            ->format('d F Y');
-                                        $lastDayOfMonth = now()
-                                            ->endOfMonth()
-                                            ->format('d F Y');
-                                    @endphp
-
-                                    <div data-provider="flatpickr" data-range-date="true" data-date-format="d M, Y"
-                                        data-default-date="{{ $firstDayOfMonth }} to {{ $lastDayOfMonth }}">
-                                        {{ $firstDayOfMonth }} sampai {{ $lastDayOfMonth }} <i
-                                            class="align-middle ms-1"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="card-body pt-0 mt-4 mt-md-0">
-                                <div id="chart"></div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-                <div>
-                    <button type="button" class="btn btn-subtle-primary active-hover" id="showPopularData"
-                        onclick="toggleHover('showPopularData')">Data Populer</button>
-                    <button type="button" class="btn btn-subtle-primary" id="showAdditionalData"
-                        onclick="toggleHover('showAdditionalData')">Data Tambahan</button>
-                </div>
-                <br>
-                <div class="row">
-                    <div id="popularDataContainer" class="row">
-                        <div class="col-lg-6">
-                            <div class="card" id="agenciesList">
-                                <div class="card-header fw-bold">
-                                    Tautan Populer
-                                </div>
-                                <div class="card-body">
-                                    <table class="table table-bordered table-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Tautan</th>
-                                                <th scope="col">Pengunjung</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if ($links->isEmpty())
-                                                <tr>
-                                                    <td colspan="3">
-                                                        <div class="text-center">
-                                                            <img style="width: 200px; height: 200px;"
-                                                                src="{{ asset('images/Empty.jpg') }}" alt="Gambar">
-                                                            <div
-                                                                class="d-flex justify-content-center align-items-center mt-2">
-                                                                <i class="ph-magnifying-glass fs-2 text-primary"></i>
-                                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @else
-                                                @foreach ($links->sortByDesc('totalVisits') as $link)
-                                                    <tr>
-                                                        <th scope="row">{{ $loop->iteration }}</th>
-                                                        <td>{{ $link->default_short_url }}</td>
-                                                        <td>{{ $link->totalVisits }} Pengunjung</td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="card" id="agenciesList">
-                                <div class="card-header fw-bold">
-                                    Microsite Populer
-                                </div>
-                                <div class="card-body">
-                                    <table class="table table-bordered table-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Tautan</th>
-                                                <th scope="col">Pengunjung</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if ($microsites->isEmpty())
-                                                <tr>
-                                                    <td colspan="3">
-                                                        <div class="text-center">
-                                                            <img style="width: 200px; height: 200px;"
-                                                                src="{{ asset('images/Empty.jpg') }}" alt="Gambar">
-                                                            <div
-                                                                class="d-flex justify-content-center align-items-center mt-2">
-                                                                <i class="ph-magnifying-glass fs-2 text-primary"></i>
-                                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @else
-                                                @foreach ($microsites->sortByDesc('totalVisits') as $microsite)
-                                                    <tr>
-                                                        <th scope="row">{{ $loop->iteration }}</th>
-                                                        <td>{{ $microsite->default_short_url }}</td>
-                                                        <td>{{ $microsite->totalVisits }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="card border-bottom border-2 card-animate border-success">
+                    <div class="card-body">
+                        <span class="badge bg-success-subtle text-success float-end"></span>
+                        <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisits }}">{{ $totalVisits }}</span></h4>
+                        <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Tautan</p>
                     </div>
-                    <div id="additionalDataContainer" class="row d-none">
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-header fw-bold">
-                                    <div>
-                                        Referer Teratas
-                                    </div><br>
-                                    <div class="avatar-sm mx-auto mb-3">
-                                        <div class="avatar-title bg-custom text-primary fs-xl rounded">
-                                            <i class="fa-solid fa-lock"></i>
-                                        </div>
-                                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="card border-bottom border-2 card-animate border-warning">
+                    <div class="card-body">
+                        <span class="badge bg-success-subtle text-success float-end"></span>
+                        <h4 class="mb-4"><span class="counter-value" data-target="{{ $countMicrosite }}">{{ $countMicrosite }}</span></h4>
+                        <p class="text-muted fw-medium text-uppercase mb-0">Jumlah Microsite</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="card border-bottom border-2 card-animate border-danger">
+                    <div class="card-body">
+                        <span class="badge bg-success-subtle text-success float-end"></span>
+                        <h4 class="mb-4"><span class="counter-value" data-target="{{ $totalVisitsMicrosite }}">{{ $totalVisitsMicrosite }}</span></h4>
+                        <p class="text-muted fw-medium text-uppercase mb-0">Pengunjung Microsite</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---end row-->
+        <div>
+            <h5 class="mb-sm-0">Lini Masa</h5>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body pb-0 mb-n4">
+                        <div class="d-flex z-1 position-relative">
+                            <div class="flex-shrink-0">
+                                <div data-provider="flatpickr" data-range-date="true" data-date-format="d M, Y" data-default-date="01 March 2023 to 31 March 2023">01 March 2023 to 31 March
+                                    2023 <i class="ph-caret-down align-middle ms-1"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card-body pt-0 mt-4 mt-md-0">
+                        <div id="chart"></div>
+                    </div>
+                </div>
+            </div><!--end col-->
+        </div><!--end row-->
+        <div>
+            <button type="button" class="btn btn-subtle-primary active-hover" id="showPopularData" onclick="toggleHover('showPopularData')">Data Populer</button>
+            <button type="button" class="btn btn-subtle-primary" id="showAdditionalData" onclick="toggleHover('showAdditionalData')">Data Tambahan</button>
+        </div>
+        <br>
+        <div class="row">
+            <div id="popularDataContainer" class="row">
+                <div class="col-lg-6">
+                    <div class="card" data-simplebar style="max-height: 320px;" id="agenciesList">
+                        <div class="card-header fw-bold">
+                            Tautan Populer
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Tautan</th>
+                                            <th scope="col">Pengunjung</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($links->sortByDesc('totalVisits') as $link)
+                                        <tr>
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $link->default_short_url }}</td>
+                                            <td>{{ $link->totalVisits }} Pengunjung</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card" id="agenciesList">
+                        <div class="card-header fw-bold">
+                            Microsite Populer
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-borderless table-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Tautan</th>
+                                        <th scope="col">Pengunjung</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($microsites->sortByDesc('totalVisits') as $microsite)
+                                    <tr>
+                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td>{{ $microsite->default_short_url }}</td>
+                                        <td>{{ $microsite->totalVisits }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div>
+            <div id="additionalDataContainer" class="row d-none">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header fw-bold">
+                            <div>
+                                Referer Teratas
+                            </div><br>
+                            <div class="avatar-sm mx-auto mb-3">
+                                <div class="avatar-title bg-custom text-primary fs-xl rounded">
+                                    <i class="fa-solid fa-lock"></i>
                                 </div>
-                                <div class="card-body text-center">
+                            </div>
+                        </div>
+                        <div class="card-body text-center">
 
                                     <h4 class="card-title">Anda Tidak Bisa Mengakses Fitur Ini!</h4>
                                     <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan Untuk Bisa Menikmati
                                         Fitur Ini</p>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="/subscribe-product-user"> Mulai Berlangganan? </a>
+                                    <a href="/subscribe-product-user" style="color :red;"> Mulai Berlangganan? </a>
                                 </div>
                             </div>
                         </div>
@@ -268,7 +223,7 @@
                                         Fitur Ini</p>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="/subscribe-product-user"> Mulai Berlangganan? </a>
+                                    <a href="/subscribe-product-user" style="color :red;"> Mulai Berlangganan? </a>
                                 </div>
                             </div>
                         </div>
@@ -291,7 +246,7 @@
                                         Fitur Ini</p>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="/subscribe-product-user"> Mulai Berlangganan? </a>
+                                    <a href="/subscribe-product-user" style="color :red;"> Mulai Berlangganan? </a>
                                 </div>
                             </div>
                         </div>
@@ -314,7 +269,7 @@
                                         Fitur Ini</p>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="/subscribe-product-user"> Mulai Berlangganan? </a>
+                                    <a href="/subscribe-product-user" style="color :red;"> Mulai Berlangganan? </a>
                                 </div>
                             </div>
                         </div>

@@ -84,6 +84,7 @@
         </div>
         </div>
     </form>
+    <br>
 @endsection
 @section('script')
     <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/dropzone/dropzone-min.js') }}"></script>

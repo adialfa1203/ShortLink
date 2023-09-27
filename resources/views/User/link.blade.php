@@ -91,7 +91,7 @@
                                                 alt="Gambar">
                                             <div class="d-flex justify-content-center align-items-center mt-2 mb-4">
                                                 <i class="ph-magnifying-glass fs-2 text-primary"></i>
-                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
+                                                <h5 class="mt-2">Maaf! Belum Ada Data Yang Ditemukan</h5>
                                             </div>
                                         </div>
                                     @else
@@ -525,7 +525,7 @@
                                                 src="{{ asset('images/Empty.jpg') }}" alt="Gambar">
                                             <div class="d-flex justify-content-center align-items-center mt-2 mb-4">
                                                 <i class="ph-magnifying-glass fs-2 text-primary"></i>
-                                                <h5 class="mt-2">Maaf! Tidak Ada Data Ditemukan</h5>
+                                                <h5 class="mt-2">Maaf! Belum Ada Data Yang Ditemukan</h5>
                                             </div>
                                         </div>
                                     @else
