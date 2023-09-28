@@ -123,7 +123,8 @@ Route::post('/update-short-link/{shortCode}', [ShortLinkController::class, 'upda
 Route::post('/update-deactivated/{keyTime}',[LinkController::class, 'updateDeactivated']);
 //Detele data
 Route::get('/delete-expired-links', [LinkController::class, 'deleteDeactive']);
-
+//Takedown User
+Route::get('/takedown', [DataUserController::class, 'takedownUser']);
 });
 Route::get('/go.microsite/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.short.link');
 

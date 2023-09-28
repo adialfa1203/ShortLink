@@ -36,9 +36,10 @@ class ShortLinkController extends Controller
                     return $builder
                         ->activateAt(now())
                         ->deactivateAt(Carbon::parse($request->deactivated_at));
-                },
-            )
-            ->make();
+                    },
+                    )
+                    ->make();
+                    // dd($request);
 
         $find = ShortUrl::query()->where('url_key', $shortURLObject->url_key)->first();
 
@@ -76,13 +77,14 @@ class ShortLinkController extends Controller
     }
     public function accessShortLink(Request $request, $shortCode)
     {
+
         // Anda mungkin perlu menyesuaikan ini dengan metode yang digunakan oleh pustaka tautan pendek yang Anda gunakan.
         // Contoh permintaan HTTP ke tautan pendek yang telah Anda buat.
         $response = Http::get($shortCode);
 
         // Ambil parameter dari permintaan yang masuk.
         $parameterValue = $request->query('parameter_name'); // Ganti 'parameter_name' dengan nama parameter yang sesuai.
-
+// dd($parameterValue);
         // Lakukan apa pun yang diperlukan dengan $parameterValue atau $response.
         // Misalnya, tampilkan tautan asli dan parameter di view.
         return view('shortlink', [
@@ -108,6 +110,16 @@ class ShortLinkController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 404);
         }
+        $validator = Validator::make($request->all(), [
+            'newUrlKey' => 'unique:Takedown,url_key'
+        ],[
+            'newUrlKey.unique' => 'Nama sudah digunakan'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 404);
+        }
+
         $newUrlKey = $request->newUrlKey;
 
         // dd($updateUrl->user->is_banned);

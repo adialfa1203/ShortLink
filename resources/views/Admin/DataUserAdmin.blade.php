@@ -48,7 +48,7 @@
                                     <i class="fa-solid fa-link custom-icon-size " style="font-size: 30px;"></i>
                                 </div>
                                 <div class="col-10">
-                                    <h3 class="mb-4 custom-icon-size " style="float: right;"><span class="counter-value" data-target="{{($totalUrl)}}">{{($totalUrl)}}</span> </h3>
+                                    <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value" data-target="{{($totalUrl)}}">{{($totalUrl)}}</span> </h3>
                                 </div>
                             </div>
                         </div>

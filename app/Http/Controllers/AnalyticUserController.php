@@ -12,6 +12,7 @@ class AnalyticUserController extends Controller
 {
     public function AnalyticUsersChart()
     {
+
         $user = Auth::user()->id;
         $endDate = Carbon::now();
         $startDate = $endDate->copy()->startOfMonth();
@@ -71,6 +72,7 @@ class AnalyticUserController extends Controller
     public function analyticUser()
     {
         $user = Auth::user()->id;
+    
 
         $links = ShortUrl::withCount([
             'visits AS totalVisits' => function ($query) use ($user) {
