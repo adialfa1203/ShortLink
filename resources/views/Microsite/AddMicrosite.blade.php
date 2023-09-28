@@ -234,7 +234,7 @@
                                                     aria-labelledby="v-pills-payment-tab">
                                                     <div>
                                                         <h5>Sosial Media</h5>
-                                                        <p class="text-muted">Pilih sosial media yang sering anda gunakan!
+                                                        <p class="text-muted">Pilih sosial media yang ingin anda gunakan!
                                                         </p>
                                                     </div>
                                                     <div class="row">
