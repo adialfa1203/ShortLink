@@ -156,14 +156,16 @@
                                                                                     </div>
 
                                                                                     <div class="countdown-input-subscribe">
-                                                                        <a id="tombol-modal"
-                                                                            onclick="tombolmodal('{{ $row->id }}')"
-                                                                            type="button" data-bs-toggle="modal"
-                                                                            data-bs-target="#tombol-modal-{{ $row->id }}"
-                                                                            data-id="{{ $row->id }}"><i
-                                                                                class="bi bi-qr-code"></i> &nbsp; QR
-                                                                            Code</a>
-                                                                    </div>
+                                                                                        <a id="tombol-modal"
+                                                                                            onclick="tombolmodal('{{ $row->id }}')"
+                                                                                            type="button"
+                                                                                            data-bs-toggle="modal"
+                                                                                            data-bs-target="#tombol-modal-{{ $row->id }}"
+                                                                                            data-id="{{ $row->id }}"><i
+                                                                                                class="bi bi-qr-code"></i>
+                                                                                            &nbsp; QR
+                                                                                            Code</a>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -186,10 +188,14 @@
                                                                 @php
                                                                     $userType = Auth::user()->subscribe; // Gantilah dengan logika yang sesuai dengan aplikasi Anda
                                                                 @endphp
-                                                            <button type="button" class="btn btn-light me-3 btn-sm edit-link" data-bs-toggle="modal"
-                                                                data-bs-target="{{ $userType === 'no' ? '#zoomInModalFree' : '#zoomInModal' }}" data-link="{{ $row->url_key }}">
-                                                                <span><i class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
-                                                            </button>
+                                                                <button type="button"
+                                                                    class="btn btn-light me-3 btn-sm edit-link"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="{{ $userType === 'no' ? '#zoomInModalFree' : '#zoomInModal' }}"
+                                                                    data-link="{{ $row->url_key }}">
+                                                                    <span><i
+                                                                            class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom</span>
+                                                                </button>
                                                             </div>
                                                             <br>
                                                             <a>
@@ -338,8 +344,8 @@
                                                                             <p>{{ $row->default_short_url }}</p>
                                                                         </div>
                                                                         <!-- <center>
-                                                                                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
-                                                                                                </center> -->
+                                                                                                            <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
+                                                                                                        </center> -->
                                                                     </div>
                                                                     {{-- <center>
                                                                     <button type="button" class="btn btn-danger">Download</button>
@@ -353,99 +359,116 @@
                                                         <p class="d-none" id="default_short_url{{ $i }}">
                                                             {{ $row->default_short_url }}
                                                         </p>
-                                                        @if($userType === 'no')
-                                                        <div id="zoomInModalFree" class="modal fade zoomIn" tabindex="-1"
-                                                            aria-labelledby="zoomInModalLabel" aria-hidden="true" style="display: none;">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <div class="modal-content">
-                                                                    <div class="col-lg-12">
-                                                                        <div class="card">
-                                                                            <div class="card-header fw-bold">
-                                                                                <div class="avatar-sm mx-auto mb-3">
-                                                                                    <div class="avatar-title bg-custom text-primary fs-xl rounded">
-                                                                                        <i class="fa-solid fa-lock"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="card-body text-center">
-                                                                                <h4 class="card-title">Anda Tidak Bisa Mengakses Fitur Ini!</h4>
-                                                                                <p class="card-text text-muted">Anda perlu Beralih ke Berlangganan
-                                                                                    Untuk Bisa Menikmati Fitur Ini!</p>
-                                                                                <p class="card-text text-muted">Dengan fitur kustom anda dapat mengubah tautan anda sesuai selera, seperti
-                                                                                    mengubahnya menjadi nama yang mudah diingat agar mempermudah anda untuk mengakses</p>
-                                                                            </div>
-                                                                            <div class="card-footer text-center">
-                                                                                <a href="/subscribe-product-user" style="color: red;"> Mulai
-                                                                                    Berlangganan? </a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div><!-- /.modal-dialog -->
-                                                            </div>
-                                                        </div>
-                                                        @else
-                                                        <form id="formKustom">
-                                                            <div id="zoomInModal" class="modal fade zoomIn"
+                                                        @if ($userType === 'no')
+                                                            <div id="zoomInModalFree" class="modal fade zoomIn"
                                                                 tabindex="-1" aria-labelledby="zoomInModalLabel"
                                                                 aria-hidden="true" style="display: none;">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="zoomInModalLabel">
-                                                                                <i
-                                                                                    class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom
-                                                                                Tautan
-                                                                            </h5>
-                                                                            <button type="button" class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <div class="card-body d-flex"
-                                                                                style="background-color: #D9D9D9;">
-                                                                                <p><i
-                                                                                        class="fa-solid fa-pen-to-square"></i>
-                                                                                </p>
-                                                                                &nbsp;
-                                                                                <p>Kustom tautan adalah fitur yang
-                                                                                    memungkinkan
-                                                                                    pengguna untuk membuat tautan pendek
-                                                                                    yang
-                                                                                    disesuaikan dengan
-                                                                                    keinginan mereka.
-                                                                                    Pengguna dapat mengganti atau menentukan
-                                                                                    bagian akhir dari
-                                                                                    tautan
-                                                                                    pendek
-                                                                                    untuk mencerminkan kata kunci, nama
-                                                                                    merek,
-                                                                                    atau informasi yang
-                                                                                    relevan dengan tautan tersebut.</p>
-                                                                            </div>
-                                                                            <div class="col-lg-12 mb-3">
-                                                                                <label for="new_url_key">Kustom
-                                                                                    Nama</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="new_url_key" id="new_url_key"
-                                                                                    placeholder="Kustom nama">
-                                                                            </div>
-                                                                            <div class="col-lg-12 mb-3">
-                                                                                <label for="new_url_key"></label>
-                                                                                <input type="hidden" class="form-control"
-                                                                                    name="custom_name" id="new_url_key"
-                                                                                    placeholder="Kustom nama">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="card">
+                                                                                <div class="card-header fw-bold">
+                                                                                    <div class="avatar-sm mx-auto mb-3">
+                                                                                        <div
+                                                                                            class="avatar-title bg-custom text-primary fs-xl rounded">
+                                                                                            <i
+                                                                                                class="fa-solid fa-lock"></i>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="card-body text-center">
+                                                                                    <h4 class="card-title">Anda Tidak Bisa
+                                                                                        Mengakses Fitur Ini!</h4>
+                                                                                    <p class="card-text text-muted">Anda
+                                                                                        perlu Beralih ke Berlangganan
+                                                                                        Untuk Bisa Menikmati Fitur Ini!</p>
+                                                                                    <p class="card-text text-muted">Dengan
+                                                                                        fitur kustom anda dapat mengubah
+                                                                                        tautan anda sesuai selera, seperti
+                                                                                        mengubahnya menjadi nama yang mudah
+                                                                                        diingat agar mempermudah anda untuk
+                                                                                        mengakses</p>
+                                                                                </div>
+                                                                                <div class="card-footer text-center">
+                                                                                    <a href="/subscribe-product-user"
+                                                                                        style="color: red;"> Mulai
+                                                                                        Berlangganan? </a>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-light"
-                                                                                data-bs-dismiss="modal">Tutup</button>
-                                                                            <button id="submitKustom" type="button"
-                                                                                class="btn btn-primary submitKustom">Simpan</button>
-                                                                        </div>
-                                                                    </div><!-- /.modal-content -->
-                                                                </div><!-- /.modal-dialog -->
-                                                            </div><!-- /.modal -->
-                                                        </form>
+                                                                    </div><!-- /.modal-dialog -->
+                                                                </div>
+                                                            </div>
+                                                        @else
+                                                            <form id="formKustom">
+                                                                <div id="zoomInModal" class="modal fade zoomIn"
+                                                                    tabindex="-1" aria-labelledby="zoomInModalLabel"
+                                                                    aria-hidden="true" style="display: none;">
+                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="zoomInModalLabel">
+                                                                                    <i
+                                                                                        class="fa-solid fa-pen-to-square"></i>&nbsp;Kustom
+                                                                                    Tautan
+                                                                                </h5>
+                                                                                <button type="button" class="btn-close"
+                                                                                    data-bs-dismiss="modal"
+                                                                                    aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="card-body d-flex"
+                                                                                    style="background-color: #D9D9D9;">
+                                                                                    <p><i
+                                                                                            class="fa-solid fa-pen-to-square"></i>
+                                                                                    </p>
+                                                                                    &nbsp;
+                                                                                    <p>Kustom tautan adalah fitur yang
+                                                                                        memungkinkan
+                                                                                        pengguna untuk membuat tautan pendek
+                                                                                        yang
+                                                                                        disesuaikan dengan
+                                                                                        keinginan mereka.
+                                                                                        Pengguna dapat mengganti atau
+                                                                                        menentukan
+                                                                                        bagian akhir dari
+                                                                                        tautan
+                                                                                        pendek
+                                                                                        untuk mencerminkan kata kunci, nama
+                                                                                        merek,
+                                                                                        atau informasi yang
+                                                                                        relevan dengan tautan tersebut.</p>
+                                                                                </div>
+                                                                                <div class="col-lg-12 mb-3">
+                                                                                    <label for="new_url_key">Kustom
+                                                                                        Nama</label>
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="new_url_key"
+                                                                                        id="new_url_key"
+                                                                                        placeholder="Kustom nama">
+                                                                                </div>
+                                                                                <div class="col-lg-12 mb-3">
+                                                                                    <label for="new_url_key"></label>
+                                                                                    <input type="hidden"
+                                                                                        class="form-control"
+                                                                                        name="custom_name"
+                                                                                        id="new_url_key"
+                                                                                        placeholder="Kustom nama">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-light"
+                                                                                    data-bs-dismiss="modal">Tutup</button>
+                                                                                <button id="submitKustom" type="button"
+                                                                                    class="btn btn-primary submitKustom">Simpan</button>
+                                                                            </div>
+                                                                        </div><!-- /.modal-content -->
+                                                                    </div><!-- /.modal-dialog -->
+                                                                </div><!-- /.modal -->
+                                                            </form>
                                                         @endif
                                                         <form id="updateTime">
                                                             <div id="TimeModal-{{ $row->id }}"
@@ -540,7 +563,7 @@
                                             <div
                                                 class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
                                                 <div class="page-item">
-                                                    {{ $urlshort->links('pagination::bootstrap-5') }}
+                                                    {{ $urlshort->appends(['page' => 'urlshort_page'])->links('pagination::bootstrap-5') }}
                                                 </div>
                                             </div>
                                         </div>
@@ -805,8 +828,8 @@
                                                                             <p>{{ $url->default_short_url }}</p>
                                                                         </div>
                                                                         <!-- <center>
-                                                                                                    <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
-                                                                                                </center> -->
+                                                                                                            <img src="{{ asset('template/themesbrand.com/steex/layouts/assets/images/qr.png') }}" alt="" width="100%">
+                                                                                                        </center> -->
                                                                     </div>
                                                                     {{-- <center>
                                                                     <button type="button" class="btn btn-danger">Download</button>
@@ -976,7 +999,7 @@
                                             <div
                                                 class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
                                                 <div class="page-item">
-                                                    {{ $history->links('pagination::bootstrap-5') }}
+                                                    {{ $history->appends(['page' => 'history_page'])->links('pagination::bootstrap-5') }}
                                                 </div>
                                             </div>
                                         </div>
