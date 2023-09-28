@@ -39,8 +39,7 @@
                                                 <a class="dropdown-item"
                                                     href="{{ route('edit.component', ['id' => $item->id]) }}">Edit</a>
                                                 <button type="button" class="dropdown-item"
-                                                    data-bs-target="#hapus{{ $item->id }}"
-                                                    data-bs-toggle="modal">Hapus</button>
+                                                    onclick="confirmDelete('{{ $item->id }}')">Hapus</button>
                                                 {{-- <a class="dropdown-item"
                                                 href="{{ route('delete.component', ['id' => $item->id]) }}">Hapus</a> --}}
                                             </div>
@@ -62,7 +61,7 @@
                                     </div>
                                 </div>
                                 {{-- modal hapus --}}
-                                <div class="modal fade" id="hapus{{ $item->id }}">
+                                {{-- <div class="modal fade" id="hapus{{ $item->id }}">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <form action="/delete-component/{{ $item->id }}" method="GET">
@@ -84,7 +83,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         @endforeach
                     @endif
@@ -133,4 +132,36 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Tindakan ini tidak dapat dibatalkan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Berhasil!',
+                        'Data telah dihapus.',
+                        'success'
+                    ).then(() => {
+                        window.location.href = '/delete-component/' + id;
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire(
+                        'Dibatalkan',
+                        'Data tetap aman :)',
+                        'error'
+                    );
+                }
+            });
+        }
+    </script>
 @endsection
