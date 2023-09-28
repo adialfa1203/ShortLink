@@ -22,13 +22,22 @@ class AuthController extends Controller
 
     public function loginUser(Request $request){
         $credentials = $request->only('email', 'password');
-        $remember = $request->input('remember'); 
+        $remember = $request->input('remember');
 
         $validator = Validator::make($request->all(), [
-            'remember' => 'required|string|max:15'
+            'remember' => 'required|string|max:15',
+            'email' => 'required|string|email|exists:users,email',
+            'password' => 'required|string',
         ], [
-            'remember.required' => 'Anda harus menyetujui Kebijakan Privasi.'
+            'remember.required' => 'Anda harus menyetujui Kebijakan Privasi.',
+            'email.required' => 'Kolom Email wajib diisi.',
+            'email.email' => 'Email harus memiliki format yang valid.',
+            'email.exists' => 'Email belum terdaftar.',
+            'password.required' => 'Kolom Password wajib diisi.',
+            'password.password' => 'Kata sandi yang Anda inputkan tidak sesuai.'
         ]);
+        
+        
 
         if ($validator->fails()) {
             return redirect()->back()
@@ -73,7 +82,8 @@ class AuthController extends Controller
             'name.required' => 'Nama Lengkap harus diisi',
             'email.required' => 'Email harus diisi',
             'email.email' => 'Email harus menyertakan karakter @ untuk menjadi alamat email yang valid.',
-            'number.required' => 'Nomor Ponsel harus diisi',
+            'number.required' => 'Nomor tidak boleh kosong',
+            'number' => 'Nomor tidak boleh kurang dari 11 dan tidak boleh lebih dari 12!',
             'password_confirmation.same' => 'Password dan Konfirmasi Password tidak cocok.',
             'email.unique' => 'Email sudah terdaftar, silahkan gunakan email lain.',
             'password.required' => 'Kata sandi harus diisi.',

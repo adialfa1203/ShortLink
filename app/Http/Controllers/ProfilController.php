@@ -36,16 +36,18 @@ class ProfilController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'number' => 'required|min:11|max:12', // Tambahkan aturan min dan max di sini
+            'number' => 'required|max:12|regex:/^[^+-]+$/u|min:11',
             'old_password' => 'required_with:new_password',
             'new_password' => 'nullable|min:8|confirmed',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
         ],[
+            'number.required' => 'Nomor tidak boleh kosong',
             'number' => 'Nomor tidak boleh kurang dari 11 dan tidak boleh lebih dari 12!',
+            'number.regex' => 'Nomor yang Anda inputkan tidak boleh berformat + atau -.',
             'email' => 'E-mail sudah pernah digunakan',
-            
-            // 'old_password' => 
-        
+
+            // 'old_password' =>
+
         ]);
 
         $user->name = $request->name;
