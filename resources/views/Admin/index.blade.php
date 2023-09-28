@@ -40,8 +40,8 @@
                                         <i class="fa-solid fa-user custom-icon-size" style="font-size: 30px;"></i>
                                     </div>
                                     <div class="col-10">
-                                        <h3 class="mb-4 custom-icon-size">
-                                            <span class="counter-value" data-target="{{ $totalUser }}">{{ $totalUser }}</span>
+                                        <h3 class="mb-4 custom-icon-size" style="float: right;">
+                                            <span class="counter-value" data-target="{{($totalUser)}}">{{($totalUser)}}</span>
                                         </h3>
                                     </div>
                                 </div>
@@ -54,14 +54,13 @@
                         <div class="card border-bottom border-2 card-animate">
                             <div class="card-body bg-primary">
                                 <h5 class="fs-md text-muted mb-0 text-white">Tautan</h5>
-    
                                 <div class="row mt-3">
                                     <div class="col-2">
                                         <i class="fa-solid fa-link custom-icon-size" style="font-size: 30px;"></i>
                                     </div>
                                     <div class="col-10">
-                                        <h3 class="mb-4 custom-icon-size">
-                                            <span class="counter-value" data-target="{{ $totalUrl }}">{{ $totalUrl }}</span>
+                                        <h3 class="mb-4 custom-icon-size" style="float: right;">
+                                            <span class="counter-value" data-target="{{($totalUrl)}}">{{($totalUrl)}}</span>
                                         </h3>
                                     </div>
                                 </div>
@@ -79,8 +78,8 @@
                                         <i class="fa-solid fa-user custom-icon-size" style="font-size: 30px;"></i>
                                     </div>
                                     <div class="col-10">
-                                        <h3 class="mb-4 custom-icon-size">
-                                            <span class="counter-value" data-target="{{ $totalVisits }}">{{ $totalVisits }}</span>
+                                        <h3 class="mb-4 custom-icon-size" style="float: right;">
+                                            <span class="counter-value" data-target="{{($totalVisits)}}">{{($totalVisits)}}</span>
                                         </h3>
                                     </div>
                                 </div>
@@ -98,8 +97,8 @@
                                         <i class="fa-solid fa-thumbs-up custom-icon-size" style="font-size: 30px;"></i>
                                     </div>
                                     <div class="col-10">
-                                        <h3 class="mb-4 custom-icon-size">
-                                            <span class="counter-value" data-target="0">0</span>
+                                        <h3 class="mb-4 custom-icon-size" style="float: right;">
+                                            <span class="counter-value" data-target="">0</span>
                                         </h3>
                                     </div>
                                 </div>

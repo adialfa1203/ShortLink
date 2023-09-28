@@ -23,7 +23,7 @@ class ShortLinkController extends Controller
         } else {
             $shortLinkTotal = $user->shortUrls()->count();
             $historyTotal = $user->history()->count();
-            if ($shortLinkTotal + $historyTotal >= 21) {
+            if ($shortLinkTotal + $historyTotal >= 100) {
                 return response()->json(['message' => 'Anda telah mencapai batasan pembuatan tautan baru. Untuk dapat membuat lebih banyak tautan baru, pertimbangkan untuk meningkatkan akun Anda ke versi premium. Dengan berlangganan, Anda akan mendapatkan akses ke fitur-fitur tambahan dan batasan yang lebih tinggi. ', 'status' => 'gagal']);
             }
         }
@@ -108,6 +108,16 @@ class ShortLinkController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 404);
         }
+        $validator = Validator::make($request->all(), [
+            'newUrlKey' => 'unique:Takedown,url_key'
+        ],[
+            'newUrlKey.unique' => 'Nama sudah digunakan'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 404);
+        }
+
         $newUrlKey = $request->newUrlKey;
 
         // dd($updateUrl->user->is_banned);
