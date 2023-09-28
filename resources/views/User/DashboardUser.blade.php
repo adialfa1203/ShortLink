@@ -606,20 +606,6 @@
                                                     </div>
                                                     <p class="text-muted mb-0"><b>{{ $countNameChanged }} dari 5</b></p>
                                                     <br>
-                                                    <h6 for="AmountInput" class="card-title">Nama tautan
-                                                        terbatas/bulan
-                                                        <span class="tooltip-icon" data-tooltip="Kuota nama tautan terbatas  ">
-                                                            <i class="bi bi-exclamation-circle align-baseline ms-1 fs-sm"></i>
-                                                        </span>
-                                                    </h6>
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                                            id="progress-bar" role="progressbar"
-                                                            aria-valuenow="0" aria-valuemin="0"
-                                                            aria-valuemax="5"></div>
-                                                    </div>
-                                                    <p class="text-muted mb-0"><b>0 dari 5</b></p>
-                                                    <br>
                                                     <h6 for="cardNumber" class="card-title">Tautan original
                                                         diubah/bulan
                                                         <span class="tooltip-icon" data-tooltip="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi">
@@ -653,8 +639,7 @@
                                                 @else
                                                 <div class="col-lg-12">
                                                     <div>
-                                                        <label for="AmountInput" class="form-label">Nama tautan
-                                                            terbatas/bulan</label>
+                                                        <label for="AmountInput" class="form-label">Nama yang telah diubah/bulan</label>
                                                         <label for="AmountInput" class="unavailable-text" style="color: red;"><i>Tidak
                                                                 tersedia pada layanan ini</i></label>
                                                     </div>

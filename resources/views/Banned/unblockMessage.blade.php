@@ -53,7 +53,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="https://i.postimg.cc/pLwGhTGZ/1.png" alt="Logo" class="logo" width="200">
+        <img src="https://i.postimg.cc/G2LD1M6D/Logo-740-740-piksel-5.png" alt="Logo" class="logo" width="200">
         <div class="header">
             <h1>Akun Diaktifkan Kembali</h1>
         </div>
