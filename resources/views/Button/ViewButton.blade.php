@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-12 mt-4">
                     <a class="btn btn-success btn-label" href="{{ route('create.button') }}" role="button">
-                        <i class="ri-add-line label-icon align-middle fs-lg"></i>Tambah Button
+                        <i class="ri-add-line label-icon align-middle fs-lg"></i>Tambah Sosial
                     </a>
                 </div>
             </div>

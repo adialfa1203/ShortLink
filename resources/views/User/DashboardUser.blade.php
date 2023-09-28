@@ -1,6 +1,6 @@
 @extends('layout.user.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Beranda')
 @section('style')
     <style>
         .custom-icon-size {
@@ -84,7 +84,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <h4 class="mb-sm-0">Dashboard</h4>
+                            <h4 class="mb-sm-0">Beranda</h4>
                         </div>
                     </div>
                 </div>
@@ -457,7 +457,7 @@
                                         <div class="d-flex flex-column h-100">
                                             <p class="fs-md text-muted mb-4">Pengunjung </p>
                                             <h3 class="mb-0 mt-auto"><span class="counter-value"
-                                                    data-target="{{ $totalVisits }}">0</span></h3>
+                                                    data-target="{{ $totalVisits }}">{{ $totalVisits }}</span></h3>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0">
@@ -475,7 +475,7 @@
                                         <div class="d-flex flex-column h-100">
                                             <p class="fs-md text-muted mb-4">Pengunjung Microsite</p>
                                             <h3 class="mb-0 mt-auto"><span class="counter-value"
-                                                    data-target="{{ $totalVisitsMicrosite }}">0</span></h3>
+                                                    data-target="{{ $totalVisitsMicrosite }}">{{ $totalVisitsMicrosite }}</span></h3>
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0">
@@ -1076,14 +1076,14 @@
     <script>
         // Dapatkan tanggal saat ini
         var currentDate = new Date();
-    
+
         // Hitung tanggal awal bulan depan
         var nextMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
-    
+
         // Format tanggal menjadi 'DD Month YYYY'
         var options = { year: 'numeric', month: 'long', day: 'numeric' };
         var formattedDate = nextMonthDate.toLocaleDateString('id-ID', options);
-    
+
         // Setel tanggal yang dihasilkan ke dalam elemen HTML
         document.getElementById('nextMonthDate').textContent = formattedDate;
     </script>

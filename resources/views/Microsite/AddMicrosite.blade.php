@@ -183,7 +183,7 @@
                                                     aria-labelledby="v-pills-bill-address-tab">
                                                     <div>
                                                         <h5>Pilih Nama</h5>
-                                                        <p class="text-muted">Buat nama dan link sesuai keinginan Anda!</p>
+                                                        <p class="text-muted">Buat nama dan tautan sesuai keinginan Anda!</p>
                                                     </div>
                                                     <div>
                                                         <div class="row g-2">
@@ -191,7 +191,7 @@
                                                                 <label for="address" class="form-label">Nama
                                                                     Microsite</label>
                                                                 <input type="text" class="form-control" id="address"
-                                                                    name="name" placeholder="aqua-link">
+                                                                    name="name" placeholder="Masukkan nama microsite">
                                                             </div>
                                                             <div>
                                                                 @if ($errors->has('name'))
@@ -206,7 +206,7 @@
                                                                     <button type="button"
                                                                         class="btn btn-danger bg-gradient">Go.Link/</button>
                                                                     <input type="text" class="form-control"
-                                                                        id="link" placeholder="aqua-link"
+                                                                        id="link" placeholder="Masukkan nama tautan"
                                                                         name="link_microsite">
                                                                 </div>
                                                                 <div>
@@ -274,7 +274,7 @@
                                                             data-previous="v-pills-bill-address-tab"><i
                                                                 class="ri-arrow-left-line label-icon align-middle fs-lg me-2"></i>
                                                             Sebelumnya</button>
-                                                            <button type="submit" id="submitButton" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="v-pills-finish-tab" onclick="return validateForm();"><i class="ri-arrow-right-line label-icon align-middle fs-lg ms-2"></i>Submit</button>
+                                                            <button type="submit" id="submitButton" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="v-pills-finish-tab" onclick="return validateForm();"><i class="ri-arrow-right-line label-icon align-middle fs-lg ms-2"></i>Kirim</button>
 
                                                     </div>
                                                 </div>

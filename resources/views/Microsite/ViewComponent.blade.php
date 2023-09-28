@@ -1,5 +1,5 @@
 @extends('layout.admin.app')
-@section('title', 'Microsite')
+@section('title', 'Kategori')
 
 @section('content')
     <div class="page-content">
@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="d-flex align-items-start gap-3 mt-4">
                     <a class="btn btn-success btn-label" href="{{ route('create.component') }}" role="button">
-                        <i class="ri-add-line label-icon align-middle fs-lg ms-2"></i>Tambah Komponen
+                        <i class="ri-add-line label-icon align-middle fs-lg ms-2"></i>Tambah Kategori
                     </a>
                 </div>
                 <div class="row mt-4">

@@ -1,5 +1,5 @@
 @extends('layout.admin.app')
-@section('title', 'Data Pengguna')
+@section('title', 'Data Blokir')
 @section('style')
     <link href="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/sweetalert2/sweetalert2.min.css') }}"
         rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="col-10">
                                     <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value"
-                                            data-target="{{ $totalUser }}">0</span> </h3>
+                                            data-target="{{ $totalUser }}">{{ $totalUser }}</span> </h3>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="col-10">
                                     <h3 class="mb-4 custom-icon-size" style="float: right;"><span class="counter-value"
-                                            data-target="{{ $totaldiblokir }}">0</span> </h3>
+                                            data-target="{{ $totaldiblokir }}">{{ $totaldiblokir }}</span> </h3>
                                 </div>
                             </div>
                         </div>

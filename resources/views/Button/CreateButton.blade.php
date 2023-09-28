@@ -23,9 +23,9 @@
                             @csrf
                             <div class="col-xxl-12 mt-2 col-md-12">
                                 <div class="mt-2">
-                                    <label for="name_button" class="form-label">Nama Button</label>
+                                    <label for="name_button" class="form-label">Nama Sosial</label>
                                     <input type="text" name="name_button" class="form-control" id="name_button"
-                                        placeholder="Nama Button" required value="{{ old('name_button') }}">
+                                        placeholder="Masukkan nama sosial" required value="{{ old('name_button') }}">
                                     <div class="invalid-feedback">
                                         Harap isi kolom ini sebelum melanjutkan proses.
                                     </div>
@@ -35,7 +35,7 @@
                                 <div class="mt-2">
                                     <label for="icon" class="form-label">Sosial Media</label>
                                     <select name="icon" class="form-select" id="icon" required>
-                                        <option value="" disabled selected>Pilih Sosial Media...</option>
+                                        <option value="" disabled selected>Pilih sosial media...</option>
                                         <option value="bi bi-facebook"
                                             {{ old('icon') === 'bi bi-facebook' ? 'selected' : '' }}>Facebook</option>
                                         <option value="bi bi-twitter"
@@ -55,17 +55,17 @@
                                             {{ old('icon') === 'bi bi-spotify' ? 'selected' : '' }}>Spotify</option>
                                     </select>
                                     <div class="invalid-feedback">
-                                        Harap isi kolom ini sebelum melanjutkan proses.
+                                        Harap isi kolom sosial media sebelum melanjutkan proses!
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-12 mt-2 col-md-6">
                                 <div>
-                                    <label for="colorPicker" class="form-label">Color Picker</label>
+                                    <label for="colorPicker" class="form-label">Warna</label>
                                     <input type="color" class="form-control form-control-color w-100" id="colorPicker"
                                         name="color_hex" required value="{{ old('color_hex') }}">
                                     <div class="invalid-feedback">
-                                        Harap isi kolom ini sebelum melanjutkan proses.
+                                        Harap isi kolom warna sebelum melanjutkan proses!
                                     </div>
                                 </div>
                             </div>

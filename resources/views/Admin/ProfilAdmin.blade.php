@@ -1,6 +1,6 @@
 @extends('layout.admin.app')
 
-@section('title', 'Profile')
+@section('title', 'Profil')
 
 @section('content')
     <form action="{{ route('updateProfile') }}" method="POST" enctype="multipart/form-data">
@@ -13,7 +13,7 @@
                     <div class="col-xl-12 ">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                             <h4 class="mb-sm-0">Profil Admin</h4>
-                            @if ($errors->any())
+                            {{-- @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
                                         @foreach ($errors->all() as $error)
@@ -21,7 +21,7 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                            @endif
+                            @endif --}}
 
                             {{-- <div class="page-title-right">
                             <ol class="breadcrumb m-0">
@@ -68,7 +68,7 @@
                                     <div class="mt-3">
                                         <h5>{{ $admin->name }}<i
                                                 class="bi bi-patch-check-fill align-baseline text-info ms-1"></i></h5>
-                                        <p class="text-muted">Web Developer</p>
+                                        <p class="text-muted">Admin</p>
                                     </div>
                                 </div>
                             </div>

@@ -38,7 +38,7 @@
                             <ul class="nav nav-pills animation-nav nav-justified gap-2 mb-3" role="tablist">
                                 <li class="nav-item ">
                                     <a class="nav-link active" data-bs-toggle="tab" href="#animation-home" role="tab">
-                                        Komponen
+                                        Kategori
                                     </a>
                                 </li>
                                 <li class="nav-item ">
@@ -51,9 +51,9 @@
                                 <div class="tab-pane active" id="animation-home" role="tabpanel">
                                     <div>
                                         <div class="mb-3">
-                                            <label for="employeeName" class="form-label">Nama Profile</label>
+                                            <label for="employeeName" class="form-label">Nama Profil</label>
                                             <input type="text" class="form-control" id="employeeName"
-                                                placeholder="Nama Profile"
+                                                placeholder="Nama Profil"
                                                 value="{{ old('name_microsite', $microsite->name_microsite) }}"
                                                 name="name_microsite">
                                             <div>

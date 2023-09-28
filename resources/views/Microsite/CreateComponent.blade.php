@@ -1,5 +1,5 @@
 @extends('layout.admin.app')
-@section('title', 'Komponen Baru')
+@section('title', 'Tambah Kategori')
 
 @section('content')
     <form action="{{ Route('save.component') }}" method="POST" enctype="multipart/form-data"
@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Tambah Komponen</h4>
+                        <h4 class="mb-sm-0">Tambah Kategori</h4>
                     </div>
                 </div>
             </div>
@@ -23,15 +23,15 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label for="validationCustom01" class="form-label">Nama Komponen</label>
+                                    <label for="validationCustom01" class="form-label">Nama Kategori</label>
                                     <input type="text" class="form-control" id="validationCustom01"
-                                        placeholder="Designation" name="component_name" required>
+                                        placeholder="Masukkan nama kategori" name="component_name" required>
 
                                     @if ($errors->has('component_name'))
                                         <span class="text-danger">{{ $errors->first('component_name') }}</span>
                                     @endif
                                     <div class="invalid-feedback">
-                                        Harap Isi Nama Sebelum Melanjutkan Proses.
+                                        Harap isi nama sebelum melanjutkan proses!
                                     </div>
                                 </div>
                             </div>
@@ -52,11 +52,11 @@
                                             <input id="profile-foreground-img-file-input" type="file"
                                                 class="profile-foreground-img-file-input d-none" name="cover_img" required>
                                             <div class="invalid-feedback">
-                                                Harap isi cover dan profil sebelum melanjutkan proses.
+                                                Harap isi sampul dan profil sebelum melanjutkan proses!
                                             </div>
                                             <label for="profile-foreground-img-file-input"
                                                 class="profile-photo-edit btn btn-light btn-sm position-absolute end-0 top-0 m-3">
-                                                <i class="ri-image-edit-line align-bottom me-1"></i> Edit Gambar Cover
+                                                <i class="ri-image-edit-line align-bottom me-1"></i> Edit Gambar Sampul
                                             </label>
                                         </div>
                                     </div>
