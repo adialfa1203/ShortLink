@@ -25,7 +25,7 @@ class LinkController extends Controller
         ->where('user_id', $user_id)
         ->whereNull('microsite_uuid')
         ->orderBy('created_at', 'desc')
-        ->paginate(5, ['*'], 'urlshort_page');
+        ->paginate(2, ['*'], 'urlshort_page');
         $history = History::paginate(5, ['*'], 'history_page');;
         $result = [
             'labels' => DateHelper::getAllMonths(5),
@@ -44,9 +44,9 @@ class LinkController extends Controller
             $visits[4] = (int)$data->visits_count;
             $result['series'][$i] = $visits;
         }
+        $d= $urlshort;
 
-
-        return view('User.Link', compact('user','urlshort', 'shortCode','result', 'history'));
+        return view('User.Link', compact('user','urlshort', 'shortCode','result','d', 'history'));
     }
     public function search(Request $request)
     {

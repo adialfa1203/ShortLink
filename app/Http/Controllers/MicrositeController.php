@@ -25,7 +25,7 @@ class MicrositeController extends Controller
         if ($request->has('filter') && $request->filter == 'terakhir_diperbarui') {
             $data = Microsite::where('user_id', $user_id)
                 ->orderBy('updated_at', 'desc')
-                ->paginate(5);
+                ->paginate(2);
             $d = $data;
         }
         else {
@@ -347,7 +347,7 @@ class MicrositeController extends Controller
 
     public function viewComponent()
     {
-        $component = Components::paginate(6);
+        $component = Components::paginate(2);
         return view('Microsite.ViewComponent', compact('component'));
     }
 

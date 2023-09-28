@@ -87,10 +87,10 @@
                             </div>
                         @endforeach
                     @endif
-                    <div class="pagination-wrap hstack justify-content-center gap-2 mb-3">
+                    <div class="pagination-wrap hstack justify-content-center gap-2 mb-4">
                         <a class="page-item pagination-prev {{ $component->previousPageUrl() ? '' : 'disabled' }}"
                             href="{{ $component->previousPageUrl() ? $component->previousPageUrl() : '#' }}">
-                            Previous
+                            Sebelumnya
                         </a>
                         <ul class="pagination listjs-pagination mb-0">
                             @if ($component->currentPage() > 2)
@@ -125,7 +125,7 @@
                         </ul>
                         <a class="page-item pagination-next {{ $component->nextPageUrl() ? '' : 'disabled' }}"
                             href="{{ $component->nextPageUrl() ? $component->nextPageUrl() : '#' }}">
-                            Next
+                            Selanjutnya
                         </a>
                     </div>
                 </div>

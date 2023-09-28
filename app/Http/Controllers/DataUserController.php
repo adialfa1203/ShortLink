@@ -10,17 +10,19 @@ use App\Models\User;
 use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 use Illuminate\Support\Facades\Mail;
 
+
 class DataUserController extends Controller
 {
     public function dataUser() {
-        $data = User::where('is_banned', 0)->role('user')->get();
+        $data = User::where('is_banned', 0)->role('user')
+        ->paginate(2);
 
         $totalUser = User::where('email', '!=', 'admin@gmail.com')
                     ->where('is_banned', '!=', '1')
                     ->count();
 
         $totalUrl = ShortUrl::where('archive', '!=', 'yes')->count();
-
+        $d=$data;
         $totalMicrosite = ShortUrl::whereNotNull('microsite_uuid')->count();
 
         $totalVisits = ShortURLVisit::query()
@@ -37,7 +39,7 @@ class DataUserController extends Controller
 
         // Mengurutkan data berdasarkan jumlah pengunjung
         arsort($count);
-        return view('Admin.DataUserAdmin', compact('data','totalUser', 'totalUrl', 'totalVisits', 'users', 'count','totalMicrosite', 'totaldiblokir'));
+        return view('Admin.DataUserAdmin', compact('d','data','totalUser', 'totalUrl', 'totalVisits', 'users', 'count','totalMicrosite', 'totaldiblokir'));
     }
 
 
