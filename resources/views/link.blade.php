@@ -48,7 +48,7 @@
 </style>
 @endsection
 @section('content')
-
+ierugdyi
 <div class="page-content">
     <div class="container-fluid">
         <div class="card">
