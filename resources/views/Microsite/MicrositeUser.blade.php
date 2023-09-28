@@ -302,11 +302,6 @@
                                                 <div class="col-10">
                                                     <h5><i class="bi bi-bar-chart-line-fill"></i> statistik</h5>
                                                 </div>
-                                                <div class="col-2 d-flex flex-row justify-content-end">
-                                                    <button type="button" class="btn btn-light "><span>Lihat
-                                                            Detail</span>&nbsp;<i
-                                                            class="fa-solid fa-arrow-right"></i></button>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="card">
@@ -324,7 +319,7 @@
                 <div class="pagination-wrap hstack justify-content-center gap-2">
                     <a class="page-item pagination-prev {{ $d->previousPageUrl() ? '' : 'disabled' }}"
                         href="{{ $d->previousPageUrl() ? $d->previousPageUrl() : '#' }}">
-                        Previous
+                        Sebelumnya
                     </a>
                     <ul class="pagination listjs-pagination mb-0">
                         @if ($d->currentPage() > 2)
@@ -359,7 +354,7 @@
                     </ul>
                     <a class="page-item pagination-next {{ $d->nextPageUrl() ? '' : 'disabled' }}"
                         href="{{ $d->nextPageUrl() ? $d->nextPageUrl() : '#' }}">
-                        Next
+                        Selanjutnya
                         </a>
                 </div>
             </div>

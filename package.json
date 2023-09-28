@@ -12,6 +12,6 @@
     },
     "dependencies": {
         "apexcharts": "^3.42.0",
-        "sweetalert2": "^11.7.27"
+        "sweetalert2": "^11.6.13"
     }
 }

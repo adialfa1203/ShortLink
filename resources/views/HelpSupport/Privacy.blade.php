@@ -262,7 +262,7 @@
                             dijelaskan dalam Kebijakan Privasi ini.</p>
 
                         <p>Istilah yang digunakan dalam Kebijakan Privasi ini memiliki arti yang sama dengan <a
-                                href="/Privasi">Syarat dan Ketentuan</a>, yang dapat diakses di
+                                href="/Privacy">Syarat dan Ketentuan</a>, yang dapat diakses di
                             Go.Link kecuali ditentukan lain dalam Kebijakan Privasi ini.</p>
 
                         <h3>

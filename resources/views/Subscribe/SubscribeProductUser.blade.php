@@ -31,7 +31,7 @@
                             <div class="card-body text-center">
                                 <h4 class="card-title mb-2">Geratis</h4>
                                 <p class="card-text">Paket Dasar untuk memulai perjalanan Anda bersama kami</p>
-                                <p>Benar-benar Geratis</p>
+                                <p>Benar-benar Gratis</p>
                             </div>
                         </div><!-- end card -->
                     </div><!-- end col -->

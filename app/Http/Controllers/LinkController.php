@@ -48,7 +48,12 @@ class LinkController extends Controller
 
         return view('User.Link', compact('user','urlshort', 'shortCode','result', 'history'));
     }
-
+    public function search(Request $request)
+    {
+        $searchText = $request->input('search');
+        $history = History::where('title', 'LIKE', "%$searchText%")->paginate(3);
+        return view('User.Link', compact('history'));
+    }
     public function archive($id)
     {
         $link = ShortUrl::find($id);

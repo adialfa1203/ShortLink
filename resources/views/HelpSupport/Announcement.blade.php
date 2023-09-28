@@ -277,10 +277,6 @@
                                             masuk ke situs kami. Ini akan membantu Anda dan komunitas kami memaksimalkan
                                             fitur-fitur yang baru. Jika Anda tidak menerima perubahan tersebut, Anda
                                             tidak akan dapat terus menggunakan layanan kami hingga Anda menerimanya.</p>
-
-                                        <p>Jika Anda memerlukan bantuan lebih lanjut, jangan ragu untuk menghubungi kami
-                                            di <a href="go.link.id">go.link.id</a></p>
-
                                         <p>Terima kasih banyak,</p>
                                         <p>Go Link - Penyingkat Tautan dan Pembangun Microsite</p>
                                     </div>
