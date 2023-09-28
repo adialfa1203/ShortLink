@@ -335,7 +335,7 @@
                         </div>
                         <div class="col-lg-2 col-md-6 col-12">
                             <div class="links">
-                                <h3>SiteMaps</h3>
+                                <h3>Peta Situs</h3>
                                 <ul style="padding: 0;">
                                     <li><a href="/">Beranda</a></li>
                                     <li><a href="/Shortlink">Perpendek Link</a></li>
@@ -447,7 +447,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 col-12" style="margin-left: 6%;">
                             <div class="links">
-                                <h3>SiteMaps</h3>
+                                <h3>Peta Situs</h3>
                                 <ul style=" padding:0;">
                                     <li><a href="/">Beranda</a></li>
                                     <li><a href="/Shortlink">Perpendek Link</a></li>

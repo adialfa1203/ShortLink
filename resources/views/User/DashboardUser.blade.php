@@ -525,7 +525,7 @@
                             @endphp
                             @if ($userType === 'yes')
                             <h6 class="card-title">Nama yang telah diubah/bulan
-                                <span class="tooltip-icon" data-tooltip="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi">
+                                <span class="tooltip-icon" data-tooltip="Kuota nama yang telah diubah berlaku untuk setiap kali pengguna melakukan pengubahan nama pendek tautan yang sebelumnya sudah diubah.">
                                     <i class="bi bi-exclamation-circle align-baseline ms-1 fs-sm"></i>
                                   </span>
                             </h6>
@@ -593,7 +593,7 @@
                                                 @endphp
                                                 @if ($userType === 'yes')
                                                 <h6 class="card-title">Nama yang telah diubah/bulan
-                                                    <span class="tooltip-icon" data-tooltip="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi">
+                                                    <span class="tooltip-icon" data-tooltip="Kuota nama yang telah diubah berlaku untuk setiap kali pengguna melakukan pengubahan nama pendek tautan yang sebelumnya sudah diubah.">
                                                         <i class="bi bi-exclamation-circle align-baseline ms-1 fs-sm"></i>
                                                       </span>
                                                 </h6>
@@ -608,7 +608,7 @@
                                                     <br>
                                                     <h6 for="AmountInput" class="card-title">Nama tautan
                                                         terbatas/bulan
-                                                        <span class="tooltip-icon" data-tooltip="Setiap bulan pengguna akan dikenakan kuota sesuai dengan layanan yang digunakan. Kuota akan tersedia kembali setelah tanggal reset kuota atau melakukan upgrade ke layanan yang lebih tinggi">
+                                                        <span class="tooltip-icon" data-tooltip="Kuota nama tautan terbatas  ">
                                                             <i class="bi bi-exclamation-circle align-baseline ms-1 fs-sm"></i>
                                                         </span>
                                                     </h6>
