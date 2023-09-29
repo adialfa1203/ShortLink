@@ -17,7 +17,7 @@ use Laravel\Socialite\Facades\Socialite;
 class AuthController extends Controller
 {
     public function login(Request $request){
-        return view('Auth\Login');
+        return view('Auth.login');
     }
 
     public function loginUser(Request $request){
@@ -118,8 +118,6 @@ class AuthController extends Controller
         return view('Auth.ForgotPassword.SendEmail');
     }
 
-
-
     public function sendSampleEmail(Request $request)
     {
         $this->validate($request, [
@@ -127,9 +125,9 @@ class AuthController extends Controller
         ], [
             'email.required' => 'Email tidak boleh kosong',
         ]);
-    
+
         // Lakukan logika pengiriman email jika validasi berhasil.
-    
+
 
         $user = User::where('email', $request->email)->first();
 

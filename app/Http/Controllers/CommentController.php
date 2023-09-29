@@ -17,8 +17,8 @@ class CommentController extends Controller
         $d = $komentar;
         return view('Komentar.ViewKomentar', compact('komentar', 'user', 'd'));
     }
-    
-    
+
+
 
     public function create(Request $request, $user) // Menggunakan route model binding untuk mendapatkan objek User
     {
@@ -28,15 +28,15 @@ class CommentController extends Controller
         ], [
             'isikomentar.max' => 'Isi komentar harus maksimal :max karakter.',
         ]);
-    
+
         // Buat objek komentar
         $komentar = new Comment;
         $komentar->user_id = $user; // Menggunakan ID dari objek User yang diberikan melalui route model binding
         $komentar->isikomentar = $request->input('isikomentar');
         $komentar->save();
-    
+
         return redirect()->back()->with('success', 'Komentar ditambahkan');
-    }    
+    }
 
     public function blokir(){
         $totalUser = User::where('email', '!=', 'admin@gmail.com')->where('is_banned', '!=', '1')->count();

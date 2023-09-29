@@ -72,7 +72,7 @@ class AnalyticUserController extends Controller
     public function analyticUser()
     {
         $user = Auth::user()->id;
-    
+
 
         $links = ShortUrl::withCount([
             'visits AS totalVisits' => function ($query) use ($user) {
