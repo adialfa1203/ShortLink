@@ -161,23 +161,23 @@ class MicrositeController extends Controller
         $buttonLinks = $request->input('button_link');
 
         $validator = Validator::make($request->all(), [
-            'name' => 'nullable|string|max:10',
-            'name_microsite' => 'nullable|string|max:10',
-            'description' => 'nullable|string|max:115',
-            'company_name' => 'required|string|max:15', // Menghapus 'nullable'
-            'company_address' => 'required|string|max:35', // Menghapus 'nullable'
+            'name' => 'nullable|string|max:50',
+            'name_microsite' => 'nullable|string|max:50',
+            'description' => 'nullable|string|max:500',
+            'company_name' => 'required|string|max:50', // Menghapus 'nullable'
+            'company_address' => 'required|string|max:50', // Menghapus 'nullable'
             'button_link.*' => 'required|string|url',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ], [
-            'name_microsite' => 'Kolom nama microsite tidak boleh lebih besar dari 10 karakter.',
-            'description' => 'Deskripsi tidak boleh lebih besar dari 115 karakter.',
+            'name_microsite' => 'Kolom nama microsite tidak boleh lebih besar dari 50 karakter.',
+            'description' => 'Deskripsi tidak boleh lebih besar dari 500 karakter.',
             'image.image' => 'Kolom harus berupa gambar!',
             'button_link.*.required' => 'Kolom ini wajib diisi!',
             'button_link.*.url' => 'URL tidak valid.',
             'company_name.required' => 'Nama perusahaan wajib diisi!', // Menambah pesan validasi baru
-            'company_name.max' => 'Nama perusahaan tidak boleh lebih besar dari 15 karakter.', // Memindahkan pesan validasi max ke sini
+            'company_name.max' => 'Nama perusahaan tidak boleh lebih besar dari 50 karakter.', // Memindahkan pesan validasi max ke sini
             'company_address.required' => 'Alamat perusahaan wajib diisi!', // Menambah pesan validasi baru
-            'company_address.max' => 'Alamat perusahaan tidak boleh lebih besar dari 35 karakter.', // Memindahkan pesan validasi max ke sini
+            'company_address.max' => 'Alamat perusahaan tidak boleh lebih besar dari 50 karakter.', // Memindahkan pesan validasi max ke sini
         ]);
 
         if ($validator->fails()) {
