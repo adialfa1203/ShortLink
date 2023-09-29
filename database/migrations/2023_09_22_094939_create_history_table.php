@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('history', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users');
-            $table->string('title')->nullable();
+            $table->string('title');
             $table->string('destination_url')->nullable();
             $table->string('default_short_url')->nullable();
             $table->timestamp('activated_at')->nullable();

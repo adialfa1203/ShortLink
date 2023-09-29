@@ -12,10 +12,13 @@ use App\Models\User;
 class CommentController extends Controller
 {
     public function viewKomentar(){
-        $komentar = Comment::all();
         $user = Auth::user()->id;
-        return view('Komentar.ViewKomentar', compact('komentar','user'));
+        $komentar = Comment::orderBy('created_at', 'desc')->paginate(10);
+        $d = $komentar;
+        return view('Komentar.ViewKomentar', compact('komentar', 'user', 'd'));
     }
+    
+    
 
     public function create(Request $request, $user) // Menggunakan route model binding untuk mendapatkan objek User
     {
