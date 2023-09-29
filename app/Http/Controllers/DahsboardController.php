@@ -54,7 +54,7 @@ class DahsboardController extends Controller
         return view('User.DashboardUser', compact( 'countURL', 'totalVisits', 'countNameChanged', 'totalVisitsMicrosite', 'qr', 'countMIcrosite'));
     }
 
-    public function HelpSupport()
+    public function helpSupport()
     {
         $komentar = Comment::orderBy('created_at', 'desc')->get();
         $data = Footer::first();
@@ -63,27 +63,27 @@ class DahsboardController extends Controller
         $userId = User::all();
         return view('HelpSupport.HelpSupport', compact('komentar','users', 'userId','data'));
     }
-    public function Start (){
+    public function start (){
         $data = Footer::first();
         return view('HelpSupport.Start', compact('data'));
     }
-    public function Announcement (){
+    public function announcement (){
         $data = Footer::first();
         return view('HelpSupport.Announcement', compact('data'));
     }
-    public function Account (){
+    public function account (){
         $data = Footer::first();
         return view('HelpSupport.Account', compact('data'));
     }
-    public function BillingSubscriptions (){
+    public function billingSubscriptions (){
         $data = Footer::first();
         return view('HelpSupport.BillingSubscriptions', compact('data'));
     }
-    public function PlatformMicrosite (){
+    public function platformMicrosite (){
         $data = Footer::first();
         return view('HelpSupport.PlatformMicrosite', compact('data'));
     }
-    public function ShortLink (){
+    public function shortLink (){
         $data = Footer::first();
         return view('HelpSupport.ShortLink', compact('data'));
     }

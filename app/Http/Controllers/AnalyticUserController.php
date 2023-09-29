@@ -10,7 +10,7 @@ use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 
 class AnalyticUserController extends Controller
 {
-    public function AnalyticUsersChart()
+    public function analyticUsersChart()
     {
 
         $user = Auth::user()->id;

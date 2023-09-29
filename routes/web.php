@@ -55,13 +55,13 @@ Route::get('/Microsite', [LandingPageController::class, 'micrositePage'])->name(
 Route::get('/Subscribe', [LandingPageController::class, 'subscribePage'])->name('subscribe.page');
 Route::get('/Privacy', [LandingPageController::class, 'privacyPage'])->name('privacy.page');
 
-Route::get('/Start', [DahsboardController::class, 'Start']);
-Route::get('/Announcement', [DahsboardController::class, 'Announcement']);
-Route::get('/Account', [DahsboardController::class, 'Account']);
-Route::get('/BillingSubscriptions', [DahsboardController::class, 'BillingSubscriptions']);
-Route::get('/PlatformMicrosite', [DahsboardController::class, 'PlatformMicrosite']);
-Route::get('/ShortLink', [DahsboardController::class, 'ShortLink']);
-Route::get('/HelpSupport', [DahsboardController::class, 'HelpSupport']);
+Route::get('/Start', [DahsboardController::class, 'start']);
+Route::get('/Announcement', [DahsboardController::class, 'announcement']);
+Route::get('/Account', [DahsboardController::class, 'account']);
+Route::get('/BillingSubscriptions', [DahsboardController::class, 'billingSubscriptions']);
+Route::get('/PlatformMicrosite', [DahsboardController::class, 'platformMicrosite']);
+Route::get('/ShortLink', [DahsboardController::class, 'shortLink']);
+Route::get('/HelpSupport', [DahsboardController::class, 'helpSupport']);
 Route::post('/create/{id}', [CommentController::class, 'create'])->name('create');
 // Route::get('/qr', function()
 // {
@@ -103,7 +103,7 @@ Route::get('/restore/{id}', [ArchiveLinkController::class, 'restore'])->name('re
 Route::get('/profil-user', [ProfilController::class, 'profile'])->name('profile');
 //analytic
 Route::get('/analytic-user', [AnalyticUserController::class, 'analyticUser'])->name('analytic.user');
-Route::get('/analytic-chart', [AnalyticUserController::class, 'AnalyticUsersChart'])->name('analytic.users.chart');
+Route::get('/analytic-chart', [AnalyticUserController::class, 'analyticUsersChart'])->name('analytic.users.chart');
 
 //subscribe
 Route::get('/subscribe-user', [SubscribeUserController::class, 'subscribeUser'])->name('subscribe.user');
