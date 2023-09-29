@@ -75,7 +75,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:15',
             'email' => 'required|email|unique:users',
-            'number' => 'required|max:12|regex:/^[^-+]+$/u|min:12',
+            'number' => 'required|max:13|regex:/^[^-+]+$/u|min:11',
             'password' => 'required|min:8',
             'password_confirmation' => 'required_with:password|same:password'
         ], [
@@ -83,7 +83,7 @@ class AuthController extends Controller
             'email.required' => 'Email harus diisi',
             'email.email' => 'Email harus menyertakan karakter @ untuk menjadi alamat email yang valid.',
             'number.required' => 'Nomor tidak boleh kosong',
-            'number' => 'Nomor tidak boleh kurang dari 11 dan tidak boleh lebih dari 12!',
+            'number' => 'Nomor tidak boleh kurang dari 11 dan tidak boleh lebih dari 13!',
             'password_confirmation.same' => 'Password dan Konfirmasi Password tidak cocok.',
             'email.unique' => 'Email sudah terdaftar, silahkan gunakan email lain.',
             'password.required' => 'Kata sandi harus diisi.',
