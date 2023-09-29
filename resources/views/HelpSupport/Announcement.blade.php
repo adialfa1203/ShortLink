@@ -53,7 +53,6 @@
     padding: 5px 20px;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
-    color: var(--text-white);
 }
 .nav-link {
     display: block;
@@ -270,8 +269,8 @@
                                                 informatif.</li>
                                         </ul>
 
-                                        <p>Kami mendorong Anda untuk membaca Kebijakan Privasi lengkap kami <a
-                                                href="/privacy">di sini</a></p>
+                                        <p>Kami mendorong Anda untuk membaca Kebijakan Privasi lengkap kami <a style="color: #104898"
+                                                href="/Privacy">di sini</a></p>
 
                                         <p>Harap pastikan bahwa Anda menerima perubahan ini melalui popup setelah Anda
                                             masuk ke situs kami. Ini akan membantu Anda dan komunitas kami memaksimalkan
