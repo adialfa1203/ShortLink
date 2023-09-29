@@ -44,9 +44,8 @@
 
         @section('script')
     <!-- nouisliderribute js -->
-    <script src="{{ asset('assets/libs/nouislider/nouislider.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/wnumb/wNumb.min.js') }}"></script>
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/libs/wnumb/wNumb.min.js') }}"></script>
 
     <!-- ecommerce-product-grid-list js -->
-    <script src="{{ asset('assets/js/pages/ecommerce-product-grid-list.init.js') }}"></script>
+    <script src="{{ asset('template/themesbrand.com/steex/layouts/assets/js/pages/ecommerce-product-grid-list.init.js') }}"></script>
     @endsection

@@ -94,6 +94,15 @@
             }
         }
     </style>
+    <style>
+        /* Gaya CSS untuk tampilan hp */
+        @media (max-width: 576px) {
+            .search-box {
+                width: 100%; /* Lebar 100% untuk tampilan hp */
+                margin-top: 10px; /* Spasi atas untuk tampilan hp */
+            }
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -107,7 +116,7 @@
                         <h4 class="mb-sm-0">Microsite</h4>
                     </div>
                 </div>
-                <div class=" col-8 col-sm mb-3">
+                <div class=" col-8 col-sm-12 mb-3">
                     <div class="d-flex justify-content-sm-end">
                         <div class="search-box ms-2">
                             <input type="text" class="form-control search" placeholder="Cari...">
@@ -388,7 +397,7 @@
                     curve: 'straight'
                 },
                 title: {
-                    text: 'Product Trends by Month',
+                    text: 'Data Perbulan',
                     align: 'left'
                 },
                 grid: {
