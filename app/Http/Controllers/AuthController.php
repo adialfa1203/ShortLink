@@ -30,14 +30,14 @@ class AuthController extends Controller
             'password' => 'required|string',
         ], [
             'remember.required' => 'Anda harus menyetujui Kebijakan Privasi.',
-            'email.required' => 'Kolom Email wajib diisi.',
+            'email.required' => 'Email tidak boleh kosong',
             'email.email' => 'Email harus memiliki format yang valid.',
             'email.exists' => 'Email belum terdaftar.',
-            'password.required' => 'Kolom Password wajib diisi.',
-            'password.password' => 'Kata sandi yang Anda inputkan tidak sesuai.'
+            'password.required' => 'Password tidak boleh kosong',
+            'password.password' => 'Kata sandi yang Anda inputkan tidak sesuai'
         ]);
-        
-        
+
+
 
         if ($validator->fails()) {
             return redirect()->back()
@@ -75,18 +75,18 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:15',
             'email' => 'required|email|unique:users',
-            'number' => 'required|max:13|regex:/^[^-+]+$/u|min:11',
+            'number' => 'required|max:12|regex:/^[^-+]+$/u|min:11',
             'password' => 'required|min:8',
             'password_confirmation' => 'required_with:password|same:password'
         ], [
-            'name.required' => 'Nama Lengkap harus diisi',
-            'email.required' => 'Email harus diisi',
+            'name.required' => 'Nama Lengkap tidak boleh kosong',
+            'email.required' => 'Email tidak boleh kosong',
             'email.email' => 'Email harus menyertakan karakter @ untuk menjadi alamat email yang valid.',
             'number.required' => 'Nomor tidak boleh kosong',
             'number' => 'Nomor tidak boleh kurang dari 11 dan tidak boleh lebih dari 13!',
             'password_confirmation.same' => 'Password dan Konfirmasi Password tidak cocok.',
             'email.unique' => 'Email sudah terdaftar, silahkan gunakan email lain.',
-            'password.required' => 'Kata sandi harus diisi.',
+            'password.required' => 'Kata sandi tidak boleh kosong',
             'password.min' => 'Kata sandi minimal terdiri dari 8 karakter.'
         ]);
         if ($validator->fails()) {
@@ -124,7 +124,12 @@ class AuthController extends Controller
     {
         $this->validate($request, [
             'email' => 'required|email',
+        ], [
+            'email.required' => 'Email tidak boleh kosong',
         ]);
+    
+        // Lakukan logika pengiriman email jika validasi berhasil.
+    
 
         $user = User::where('email', $request->email)->first();
 

@@ -150,18 +150,18 @@
                                                             <div class="position-relative auth-pass-inputgroup mb-3">
                                                                 <input name="password" type="password"
                                                                     class="form-control pe-5 password-input "
-                                                                    placeholder="Kata Sandi" id="password-input"
+                                                                    placeholder="Masukkan Kata Sandi" id="password-input"
                                                                     value="{{ old('password') }}">
                                                                 <button
                                                                     class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
                                                                     type="button" id="password-addon"><i
                                                                         class="ri-eye-fill align-middle"></i></button>
-                                                            </div>
-                                                            <div>
-                                                                @if ($errors->has('password'))
-                                                                    <span
-                                                                        class="text-danger">{{ $errors->first('password') }}</span>
-                                                                @endif
+                                                                        <div>
+                                                                            @if ($errors->has('password'))
+                                                                                <span
+                                                                                    class="text-danger">{{ $errors->first('password') }}</span>
+                                                                            @endif
+                                                                        </div>
                                                             </div>
                                                         </div>
                                                     </div>
