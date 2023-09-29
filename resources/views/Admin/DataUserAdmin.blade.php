@@ -133,9 +133,9 @@
                                                 </td>
                                             </tr>
                                         @else
-                                            @foreach ($data as $row)
+                                            @foreach ($data as $index =>$row)
                                                 <tr id="user_{{ $row->id }}">
-                                                    <th class="order_id">{{$loop->iteration}}</th>
+                                                    <th class="order_id">{{ $data->firstItem() + $index }}</th>
                                                     <td class="order_id">{{ $row->name }}</td>
                                                     <td class="order_date">{{ $row->email }}</td>
                                                     <td class="products">{{ $row->number }}</td>
