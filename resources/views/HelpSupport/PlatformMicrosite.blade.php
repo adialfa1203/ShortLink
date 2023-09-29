@@ -345,7 +345,6 @@
                                     <li><a href="/Shortlink">Perpendek Link</a></li>
                                     <li><a href="/Microsite">Situs Mikro</a></li>
                                     <li><a href="/Subscribe">Berlanggaan</a></li>
-                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
                                     <li><a href="/Privacy">Kebijakan Privasi</a></li>
 
                                 </ul>
@@ -358,7 +357,7 @@
                                 <h3>Hubungi Kami</h3>
                                 <ul style="text-align: justify; padding:0;">
                                     <li>
-                                        <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID"
+                                        <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20GOLINK"
                                             target="_blank">
                                             <i class="fab fa-whatsapp"></i>
                                             Whatsapp
@@ -457,7 +456,6 @@
                                     <li><a href="/Shortlink">Perpendek Link</a></li>
                                     <li><a href="/Microsite">Situs Mikro</a></li>
                                     <li><a href="/Subscribe">Berlanggaan</a></li>
-                                    <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
                                     <li><a href="/Privacy">Kebijakan Privasi</a></li>
 
                                 </ul>
@@ -470,7 +468,7 @@
                                 <h3>Hubungi Kami</h3>
                                 <ul style="text-align: justify;  padding:0;">
                                     <li>
-                                        <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20LINKID"
+                                        <a href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}&text=Halo%2C%20saya%20pengguna%20GOLINK"
                                             target="_blank">
                                             <i class="fab fa-whatsapp"></i>
                                             Whatsapp

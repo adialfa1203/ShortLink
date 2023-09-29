@@ -37,7 +37,6 @@
                                 <li><a href="/Home">Perpendek Link</a></li>
                                 <li><a href="#features">Situs Mikro</a></li>
                                 <li><a href="#kontak">Berlanggaan</a></li>
-                                <li><a href="/HelpSupport">Bantuan dan Dukungan</a></li>
                                 <li><a href="/HelpSupport">Kebijakan Privasi</a></li>
 
                             </ul>

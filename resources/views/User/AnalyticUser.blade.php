@@ -166,7 +166,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="card" id="agenciesList">
+                    <div class="card" data-simplebar style="max-height: 320px;" id="agenciesList">
                         <div class="card-header fw-bold">
                             Microsite Populer
                         </div>
@@ -175,7 +175,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">Tautan</th>
+                                        <th scope="col">Microsite</th>
                                         <th scope="col">Pengunjung</th>
                                     </tr>
                                 </thead>
@@ -184,7 +184,7 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $microsite->default_short_url }}</td>
-                                        <td>{{ $microsite->totalVisits }}</td>
+                                        <td>{{ $microsite->totalVisits }} Pengunjung</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
