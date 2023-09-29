@@ -120,7 +120,7 @@ class LinkController extends Controller
     //     return response()->json(compact('startDate', 'user','totalVisits'));
     // }
 
-    public function LinkUsersChart(Request $request)
+    public function linkUsersChart(Request $request)
     {
         $urlKey= $request->id;
         // Ambil data link berdasarkan url_key

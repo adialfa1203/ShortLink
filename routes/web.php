@@ -91,7 +91,7 @@ Route::post('/short/{link}', [ShortLinkController::class, 'accessShortLink'])->n
 // Route::post('/microsite/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.link');
 //ActiveLink
 // Route::get('/link-chart', [LinkController::class, 'LinkUsersChart'])->name('link.users.chart');
-Route::get('/link-chart', [LinkController::class, 'LinkUsersChart'])->name('link.users.chart');
+Route::get('/link-chart', [LinkController::class, 'linkUsersChart'])->name('link.users.chart');
 Route::get('/Link/{shortCode}', [LinkController::class, 'showLink'])->name('link.show');
 Route::post('/active-link', [LinkController::class,'activeLink'])->name('active.link');
 Route::get('/archive/{id}', [LinkController::class, 'archive'])->name('archive');
