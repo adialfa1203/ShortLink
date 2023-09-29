@@ -37,15 +37,15 @@ Route::get('/login-user',[AuthController::class,'loginUser'])->name('login.user'
 Route::get('/register', [AuthController::class, 'register']);
 Route::post('/register-user', [AuthController::class, 'registerUser'])->name('register.user');
 //Send email
-Route::get('send-email', [AuthController::class, 'sendEmail']);
-Route::get('change-password/{email}', [AuthController::class, 'changePassword'])->name('changePassword');
+Route::get('/send-email', [AuthController::class, 'sendEmail']);
+Route::get('/change-password/{email}', [AuthController::class, 'changePassword'])->name('changePassword');
 //change password
-Route::post('updatePassword', [AuthController::class, 'updatePassword'])->name('updatePassword');
+Route::post('/updatePassword', [AuthController::class, 'updatePassword'])->name('updatePassword');
 //sendEmail
-Route::get('sample', [AuthController::class, 'sendEmail']);
-Route::post('send-emails', [AuthController::class, 'sendSampleEmail'])->name('sendEmail');
-Route::get('verification', [AuthController::class, 'verification'])->name('verification');
-Route::post('verificationCode', [AuthController::class, 'verificationCode'])->name('verificationCode');
+Route::get('/sample', [AuthController::class, 'sendEmail']);
+Route::post('/send-emails', [AuthController::class, 'sendSampleEmail'])->name('sendEmail');
+Route::get('/verification', [AuthController::class, 'verification'])->name('verification');
+Route::post('/verificationCode', [AuthController::class, 'verificationCode'])->name('verificationCode');
 // Route::get('/', [DahsboardController::class, 'home']);
 });
 
@@ -55,13 +55,13 @@ Route::get('/Microsite', [LandingPageController::class, 'micrositePage'])->name(
 Route::get('/Subscribe', [LandingPageController::class, 'subscribePage'])->name('subscribe.page');
 Route::get('/Privacy', [LandingPageController::class, 'privacyPage'])->name('privacy.page');
 
-Route::get('Start', [DahsboardController::class, 'Start']);
-Route::get('Announcement', [DahsboardController::class, 'Announcement']);
-Route::get('Account', [DahsboardController::class, 'Account']);
-Route::get('BillingSubscriptions', [DahsboardController::class, 'BillingSubscriptions']);
-Route::get('PlatformMicrosite', [DahsboardController::class, 'PlatformMicrosite']);
-Route::get('ShortLink', [DahsboardController::class, 'ShortLink']);
-Route::get('HelpSupport', [DahsboardController::class, 'HelpSupport']);
+Route::get('/Start', [DahsboardController::class, 'Start']);
+Route::get('/Announcement', [DahsboardController::class, 'Announcement']);
+Route::get('/Account', [DahsboardController::class, 'Account']);
+Route::get('/BillingSubscriptions', [DahsboardController::class, 'BillingSubscriptions']);
+Route::get('/PlatformMicrosite', [DahsboardController::class, 'PlatformMicrosite']);
+Route::get('/ShortLink', [DahsboardController::class, 'ShortLink']);
+Route::get('/HelpSupport', [DahsboardController::class, 'HelpSupport']);
 Route::post('/create/{id}', [CommentController::class, 'create'])->name('create');
 // Route::get('/qr', function()
 // {
@@ -83,20 +83,20 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 //Dashboard
 Route::get('/dashboard-user', [DahsboardController::class, 'dashboardUser'])->name('dashboard.user');
 //ShortLink
-Route::post('short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
-Route::post('qr', [ShortLinkController::class,'qr'])->name('qr');
+Route::post('/short-link', [ShortLinkController::class,'shortLink'])->name('shortLink');
+Route::post('/qr', [ShortLinkController::class,'qr'])->name('qr');
 
 //AccessLink
-Route::post('short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
+Route::post('/short/{link}', [ShortLinkController::class, 'accessShortLink'])->name('access.shortlink');
 // Route::post('/microsite/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.link');
 //ActiveLink
 // Route::get('/link-chart', [LinkController::class, 'LinkUsersChart'])->name('link.users.chart');
 Route::get('/link-chart', [LinkController::class, 'LinkUsersChart'])->name('link.users.chart');
 Route::get('/Link/{shortCode}', [LinkController::class, 'showLink'])->name('link.show');
-// Route::post('active-link', [LinkController::class,'activeLink'])->name('active.link');
+Route::post('/active-link', [LinkController::class,'activeLink'])->name('active.link');
 Route::get('/archive/{id}', [LinkController::class, 'archive'])->name('archive');
 //ArchiveLink
-// Route::post('archive-link', [LinkController::class,'archiveLink'])->name('archive.link');
+Route::post('/archive-link', [LinkController::class,'archiveLink'])->name('archive.link');
 Route::get('/archive-link-user', [ArchiveLinkController::class, 'archiveLinkUser'])->name('archive.link.user');
 Route::get('/restore/{id}', [ArchiveLinkController::class, 'restore'])->name('restore');
 //Profile
@@ -126,7 +126,7 @@ Route::get('/takedown', [DataUserController::class, 'takedownUser']);
 });
 Route::get('/go.link/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.short.link');
 
-Route::post('update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
+Route::post('/update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/updateAdmin', [ProfilController::class, 'updateAdmin'])->name('updateAdmin');
 //Middleware Admin
 Route::group(['middleware' => ['role:admin']], function () {
@@ -136,13 +136,13 @@ Route::get('/dashboard-admin', [DashboardAdminController::class, 'dashboardAdmin
 //Data User (Admin)
 Route::get('/data-user', [DataUserController::class, 'dataUser'])->name('data.user');
 Route::get('/selected-banned', [DataUserController::class, 'banned'])->name('data.banned');
-Route::get('admin/user/{userId}/ban', [DataUserController::class, 'banUser'])->name('user.ban');
-Route::get('admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
+Route::get('/admin/user/{userId}/ban', [DataUserController::class, 'banUser'])->name('user.ban');
+Route::get('/admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
 //Link Admin
-Route::get('link-admin', [LinkAdminController::class, 'linkAdmin'])->name('linkAdmin');
+Route::get('/link-admin', [LinkAdminController::class, 'linkAdmin'])->name('linkAdmin');
 // microsite Admin
 Route::get('/profil-admin', [ProfilController::class, 'profile'])->name('profile');
-Route::get('admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
+Route::get('/admin/user/{userId}/unban', [DataUserController::class, 'unbanUser'])->name('user.unban');
 
 Route::get('/create-component', [MicrositeController::class, 'createComponent'])->name('create.component');
 Route::post('/save-component', [MicrositeController::class, 'saveComponent'])->name('save.component');
@@ -152,7 +152,7 @@ Route::get('/delete-component/{id}', [MicrositeController::class, 'deleteCompone
 Route::get('/view-component', [MicrositeController::class, 'viewComponent'])->name('view.component');
 //Subscribe
 Route::get('/subscribe-admin', [SubscribeController::class, 'subscribe'])->name ('subscribe');
-Route::get('add-subscribe', [SubscribeController::class, 'addSubscribe'])->name ('addSubscribe');
+Route::get('/add-subscribe', [SubscribeController::class, 'addSubscribe'])->name ('addSubscribe');
 // button
 Route::get('/create-button', [ButtonController::class, 'createButton'])->name('create.button');
 Route::post('/save-button', [ButtonController::class, 'saveButton'])->name('save.button');
@@ -161,8 +161,8 @@ Route::get('/edit-button/{id}', [ButtonController::class, 'editButton'])->name('
 Route::get('/delete-button/{id}', [ButtonController::class, 'deleteButton'])->name('delete.button');
 Route::get('/view-button', [ButtonController::class, 'viewButton'])->name('view.button');
 
-Route::get('view-footer', [DashboardAdminController::class, 'viewFooter'])->name('view.footer');
-Route::put('edit-footer', [DashboardAdminController::class, 'editFooter'])->name('edit.footer');
+Route::get('/view-footer', [DashboardAdminController::class, 'viewFooter'])->name('view.footer');
+Route::put('/edit-footer', [DashboardAdminController::class, 'editFooter'])->name('edit.footer');
 
 //profile
 Route::get('/profil-admin', [ProfilController::class, 'profileAdmin'])->name('profileAdmin');
