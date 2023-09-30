@@ -50,7 +50,7 @@ Route::post('/verificationCode', [AuthController::class, 'verificationCode'])->n
 });
 
 Route::get('/', [LandingPageController::class, 'landingPage'])->name('landing.page');
-Route::get('/Shortlink', [LandingPageController::class, 'shortLink'])->name('short.link');
+Route::get('/Shortlink', [LandingPageController::class, 'landingPageShortLink'])->name('short.link');
 Route::get('/Microsite', [LandingPageController::class, 'micrositePage'])->name('microsite.page');
 Route::get('/Subscribe', [LandingPageController::class, 'subscribePage'])->name('subscribe.page');
 Route::get('/Privacy', [LandingPageController::class, 'privacyPage'])->name('privacy.page');
@@ -60,7 +60,7 @@ Route::get('/Announcement', [DahsboardController::class, 'announcement']);
 Route::get('/Account', [DahsboardController::class, 'account']);
 Route::get('/BillingSubscriptions', [DahsboardController::class, 'billingSubscriptions']);
 Route::get('/PlatformMicrosite', [DahsboardController::class, 'platformMicrosite']);
-Route::get('/ShortLink', [DahsboardController::class, 'shortLink']);
+Route::get('/ShortLink', [DahsboardController::class, 'dahsboardShortLink']);
 Route::get('/HelpSupport', [DahsboardController::class, 'helpSupport']);
 Route::post('/create/{id}', [CommentController::class, 'create'])->name('create');
 // Route::get('/qr', function()
@@ -124,7 +124,7 @@ Route::get('/delete-expired-links', [LinkController::class, 'deleteDeactive']);
 //Takedown User
 Route::get('/takedown', [DataUserController::class, 'takedownUser']);
 });
-Route::get('/go.link/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.short.link');
+Route::get('/go.microsite/{micrositeLink}', [ShortLinkController::class, 'micrositeLink'])->name('microsite.short.link');
 
 Route::post('/update-profil', [ProfilController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/updateAdmin', [ProfilController::class, 'updateAdmin'])->name('updateAdmin');

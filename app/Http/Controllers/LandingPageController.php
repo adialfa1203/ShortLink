@@ -22,7 +22,7 @@ class LandingPageController extends Controller
             ->count();
         return view('Landingpage.Home',compact('data','url','micrositeuuid','totalVisits',));
     }
-    public function shortLink(){
+    public function landingPageShortLink(){
         $data = Footer::first();
         return view('Landingpage.Shortlink', compact('data'));
     }
