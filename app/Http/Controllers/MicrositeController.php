@@ -131,7 +131,6 @@ class MicrositeController extends Controller
             'default_short_url' => "http://127.0.0.1:8000/go.link/" . $link_microsite,
         ]);
 
-
         foreach ($selectedButtons as $select) {
             $socialData = [
                 'buttons_uuid' => $select,
