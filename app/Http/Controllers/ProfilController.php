@@ -36,7 +36,7 @@ class ProfilController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|regex:/^[^+-]+$/u|unique:users,email,' . $user->id,
-            'number' => 'required|max:12|regex:/^[^+-]+$/u|min:11',
+            'number' => 'required|max:13|regex:/^[^+-]+$/u|min:11',
             'old_password' => 'required_with:new_password',
             'new_password' => 'nullable|min:8|confirmed',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
