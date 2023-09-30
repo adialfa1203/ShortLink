@@ -261,13 +261,11 @@
                                             Kebijakan Privasi kami untuk mencerminkan perubahan ini. Perbaikan-perbaikan
                                             ini termasuk:</p>
 
-                                        <ul>
-                                            <li><strong>Perubahan dalam cara tautan Go Link berfungsi</strong> - Kami telah
-                                                mengubah arah pengembangan Go Link. Tidak hanya sebagai penyingkat tautan,
-                                                Go Link sekarang juga merupakan pembangun microsite yang dapat digunakan
-                                                untuk membuat tautan di bio media sosial Anda lebih menarik dan
-                                                informatif.</li>
-                                        </ul>
+                                        <p><strong>Perubahan dalam cara tautan Go Link berfungsi</strong> - Kami telah
+                                            mengubah arah pengembangan Go Link. Tidak hanya sebagai penyingkat tautan,
+                                            Go Link sekarang juga merupakan pembangun microsite yang dapat digunakan
+                                            untuk membuat tautan di bio media sosial Anda lebih menarik dan
+                                            informatif.</p>
 
                                         <p>Kami mendorong Anda untuk membaca Kebijakan Privasi lengkap kami <a style="color: #104898"
                                                 href="/Privacy">di sini</a></p>
