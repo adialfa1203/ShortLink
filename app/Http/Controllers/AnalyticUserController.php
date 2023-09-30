@@ -29,13 +29,13 @@ class AnalyticUserController extends Controller
             $endDateOfMonth = $date->endOfMonth()->format('Y-m-d');
 
             $countURL = ShortUrl::where('user_id', $user)
-                ->whereNull('microsite_uuid')
-                ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
-                ->count();
+            ->whereNull('microsite_uuid')
+            ->whereBetween('created_at', [$startDateOfMonth . ' 00:00:00', $endDateOfMonth . ' 23:59:59'])
+            ->count();
 
             $countMicrosite = ShortUrl::where('user_id', $user)
                 ->whereNotNull('microsite_uuid')
-                ->whereBetween('created_at', [$startDateOfMonth, $endDateOfMonth])
+                ->whereBetween('created_at', [$startDateOfMonth . ' 00:00:00', $endDateOfMonth . ' 23:59:59'])
                 ->count();
 
             $totalVisits = ShortURLVisit::whereHas('shortUrl', function ($query) use ($user) {
@@ -52,7 +52,7 @@ class AnalyticUserController extends Controller
             })
             ->whereBetween('visited_at', [$startDateOfMonth, $endDateOfMonth])
             ->count();
-
+// dd($countURL);
             $totalUrlData[] = ['date' => $startDateOfMonth, 'totalUrl' => $countURL];
             $totalVisitsData[] = ['date' => $startDateOfMonth, 'totalVisits' => $totalVisits];
             $totalVisitsMicrositeData[] = ['date' => $startDateOfMonth, 'totalVisitsMicrosite' => $totalVisitsMicrosite];
