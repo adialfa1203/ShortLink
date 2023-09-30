@@ -26,13 +26,14 @@ class AuthController extends Controller
 
         $validator = Validator::make($request->all(), [
             'remember' => 'required|string|max:15',
-            'email' => 'required|string|email|exists:users,email',
+            'email' => 'required|string|email|regex:/^[^-+]+$/u|exists:users,email',
             'password' => 'required|string',
         ], [
             'remember.required' => 'Anda harus menyetujui Kebijakan Privasi.',
             'email.required' => 'Email tidak boleh kosong',
             'email.email' => 'Email harus memiliki format yang valid.',
             'email.exists' => 'Email belum terdaftar.',
+            'email.regex' => 'Email tidak boleh mengandung simbol',
             'password.required' => 'Password tidak boleh kosong',
             'password.password' => 'Kata sandi yang Anda inputkan tidak sesuai'
         ]);
@@ -74,16 +75,18 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:15',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|regex:/^[^-+]+$/u|unique:users',
             'number' => 'required|max:13|regex:/^[^-+]+$/u|min:11',
             'password' => 'required|min:8',
             'password_confirmation' => 'required_with:password|same:password'
         ], [
             'name.required' => 'Nama Lengkap tidak boleh kosong',
             'email.required' => 'Email tidak boleh kosong',
+            'email.regex' => 'Email tidak boleh dengan simbol',
             'email.email' => 'Email harus menyertakan karakter @ untuk menjadi alamat email yang valid.',
             'number.required' => 'Nomor tidak boleh kosong',
-            'number' => 'Nomor tidak boleh kurang dari 11 dan tidak boleh lebih dari 13!',
+            'number' => 'Nomor tidak boleh kurang dari 10 dan tidak boleh lebih dari 13!',
+            'number.regex' => 'Nomor wajib angka',
             'password_confirmation.same' => 'Password dan Konfirmasi Password tidak cocok.',
             'email.unique' => 'Email sudah terdaftar, silahkan gunakan email lain.',
             'password.required' => 'Kata sandi tidak boleh kosong',
