@@ -14,7 +14,7 @@ class ArchiveLinkController extends Controller
         $user_id = $user->id;
         $data = History::where('user_id', $user_id)
         ->orderBy('created_at','desc')
-        ->paginate(5);
+        ->paginate(10);
 
         return view('User.ArchiveLink', compact('user','data'));
     }

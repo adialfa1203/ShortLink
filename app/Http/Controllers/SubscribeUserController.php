@@ -9,7 +9,7 @@ class SubscribeUserController extends Controller
 {
     public function subscribeUser()
     {
-        $data = Subscribe::paginate(5);
+        $data = Subscribe::paginate(10);
         return view('User.SubscribeUser', compact('data'));
     }
 

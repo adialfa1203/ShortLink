@@ -31,7 +31,7 @@ class LinkAdminController extends Controller
         // foreach ($users as $user) {
         //     $count[$user->id] = ShortUrl::where('user_id', $user->id)->count();
         //
-        $users = User::where('email', '!=', 'admin@gmail.com')->paginate(2);
+        $users = User::where('email', '!=', 'admin@gmail.com')->paginate(10);
         $d=$users;
         foreach ($users as $user) {
             $userData[$user->id] = [

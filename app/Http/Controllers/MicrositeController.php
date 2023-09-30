@@ -25,7 +25,7 @@ class MicrositeController extends Controller
         if ($request->has('filter') && $request->filter == 'terakhir_diperbarui') {
             $data = Microsite::where('user_id', $user_id)
                 ->orderBy('updated_at', 'desc')
-                ->paginate(2);
+                ->paginate(10);
             $d = $data;
         }
         else {
@@ -162,9 +162,9 @@ class MicrositeController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'nullable|string|max:50',
             'name_microsite' => 'nullable|string|max:50',
-            'description' => 'nullable|string|max:500',
+            'description' => 'nullable|string|max:800',
             'company_name' => 'required|string|max:50', // Menghapus 'nullable'
-            'company_address' => 'required|string|max:50', // Menghapus 'nullable'
+            'company_address' => 'required|string|max:100', // Menghapus 'nullable'
             'button_link.*' => 'required|string|url',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ], [
@@ -233,7 +233,7 @@ class MicrositeController extends Controller
     public function saveComponent(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'component_name' => 'required|string|max:12',
+            'component_name' => 'required|string|max:50',
             'cover_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             // 'profile_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
@@ -268,7 +268,7 @@ class MicrositeController extends Controller
     public function updateComponent(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'component_name' => 'required|max:10',
+            'component_name' => 'required|max:50',
             'cover_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'profile_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ], [
@@ -346,7 +346,7 @@ class MicrositeController extends Controller
 
     public function viewComponent()
     {
-        $component = Components::paginate(2);
+        $component = Components::paginate(8);
         return view('Microsite.ViewComponent', compact('component'));
     }
 

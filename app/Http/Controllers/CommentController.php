@@ -41,7 +41,7 @@ class CommentController extends Controller
     public function blokir(){
         $totalUser = User::where('email', '!=', 'admin@gmail.com')->where('is_banned', '!=', '1')->count();
         $totaldiblokir = User::where('is_banned', 1)->count();
-        $data = User::where('is_banned', 1)->paginate(1);
+        $data = User::where('is_banned', 1)->paginate(10);
         $d=$data;
         return view('Banned.view-banned', compact('data', 'totaldiblokir', 'totalUser','d'));
     }

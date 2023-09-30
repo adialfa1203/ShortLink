@@ -15,7 +15,7 @@ class DataUserController extends Controller
 {
     public function dataUser() {
         $data = User::where('is_banned', 0)->role('user')
-        ->paginate(2);
+        ->paginate(10);
 
         $totalUser = User::where('email', '!=', 'admin@gmail.com')
                     ->where('is_banned', '!=', '1')
