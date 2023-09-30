@@ -57,24 +57,6 @@ class ShortLinkController extends Controller
 
         return response()->json($find);
     }
-    public function  qr(Request $request)
-    {
-        $user = auth()->user();
-        $find = ShortUrl::query()->where('id',  $request->id)->first();
-        $find->update([
-            'user_id' => auth()->id(),
-            // 'default_short_url' => $shortURLObject->default_short_url,
-            // 'password' => Hash::make($request->password),
-            // 'active' => $request->active,
-            // 'deleted_add' => $request->deleted_add,
-            'click_count' => $request->click_count,
-            'qr_code' => $request->qrcodeSrc,
-            'title' => $request->title,
-            'deactivated_at' => $request->deactivated_at
-        ]);
-
-        return response()->json($find);
-    }
     public function accessShortLink(Request $request, $shortCode)
     {
 
