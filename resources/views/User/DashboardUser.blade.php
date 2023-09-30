@@ -140,9 +140,9 @@
                                                         placeholder="http://domain-mu.id/yang-paling-panjang-disini">
                                                 </div>
                                                 <div>
-                                                    @if ($errors->has('default_short_url'))
+                                                    @if ($errors->has('destination_url'))
                                                         <span
-                                                            class="text-danger">{{ $errors->first('default_short_url') }}</span>
+                                                            class="text-danger">{{ $errors->first('destination_url') }}</span>
                                                     @endif
                                                 </div>
                                             </div>

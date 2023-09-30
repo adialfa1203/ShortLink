@@ -83,7 +83,7 @@ class DahsboardController extends Controller
         $data = Footer::first();
         return view('HelpSupport.PlatformMicrosite', compact('data'));
     }
-    public function shortLink (){
+    public function dahsboardShortLink (){
         $data = Footer::first();
         return view('HelpSupport.ShortLink', compact('data'));
     }

@@ -72,7 +72,7 @@
         </div>
 
         <!-- Header Start -->
-        @include('layout.landingpage.header')
+        @include('layout.Landingpage.header')
 
         <!-- Banner-Section-Start -->
         <section class="banner_section mb-5" id="beranda">
