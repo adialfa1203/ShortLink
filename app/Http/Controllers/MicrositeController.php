@@ -95,7 +95,7 @@ class MicrositeController extends Controller
 
         $validator = Validator::make($request->all(), [
             'microsite_selection' => 'required',
-            'name' => 'required|string|regex:/^[^-+]+$/u|max:10',
+            'name' => 'required|string|regex:/^[^-+]+$/u|max:35',
             'link_microsite' => 'required|regex:/^[^+]+$/u|unique:microsites,link_microsite,id',
         ]);
         if ($validator->fails()) {
