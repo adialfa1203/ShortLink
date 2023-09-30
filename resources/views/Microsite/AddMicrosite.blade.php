@@ -156,7 +156,7 @@
                                                                                     class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image">
                                                                             </div>
                                                                         </div>
-                                                                        <div class="text-center mt-3">
+                                                                        <div class="text-center mt-3 hide">
                                                                             <label class="form-check-label">
                                                                                 <input type="radio"
                                                                                     id="tema{{ $microsite->id }}"
